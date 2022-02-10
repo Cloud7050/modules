@@ -91,121 +91,38 @@ export default function render(canvas: HTMLCanvasElement, shape: Shape) {
   let zoomToFit = true;
   let updateView = true;
 
-  const doRotatePanZoom = () => {
-    if (rotateDelta[0] || rotateDelta[1]) {
-      const updated = orbitControls.rotate(
-        { controls: viewControls, camera, speed: rotateSpeed },
-        rotateDelta
-      );
-      viewControls = { ...viewControls, ...updated.controls };
-      updateView = true;
-      rotateDelta = [0, 0];
-    }
-
-    if (panDelta[0] || panDelta[1]) {
-      const updated = orbitControls.pan(
-        { controls: viewControls, camera, speed: panSpeed },
-        panDelta
-      );
-      viewControls = { ...viewControls, ...updated.controls };
-      panDelta = [0, 0];
-      camera.position = updated.camera.position;
-      camera.target = updated.camera.target;
-      updateView = true;
-    }
-
-    if (zoomDelta) {
-      const updated = orbitControls.zoom(
-        { controls: viewControls, camera, speed: zoomSpeed },
-        zoomDelta
-      );
-      viewControls = { ...viewControls, ...updated.controls };
-      zoomDelta = 0;
-      updateView = true;
-    }
-
-    if (zoomToFit) {
-      viewControls.zoomToFit.tightness = 1.5;
-      const updated = orbitControls.zoomToFit({
-        controls: viewControls,
-        camera,
-        entities: geometries,
-      });
-      viewControls = { ...viewControls, ...updated.controls };
-      zoomToFit = false;
-      updateView = true;
-    }
-  };
-
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  function test(a, x) {
+    console.log(a, JSON.stringify(x, null, 4))
+  }
   const updateAndRender = (timestamp: DOMHighResTimeStamp) => {
-    doRotatePanZoom();
+    test("viewControls", viewControls);
+    test("camera", camera);
 
-    if (updateView) {
-      const updates = orbitControls.update({
-        controls: viewControls,
-        camera,
-      });
-      viewControls = { ...viewControls, ...updates.controls };
-      updateView = viewControls.changed;
+    const updated = orbitControls.zoomToFit({
+      controls: viewControls,
+      camera,
+      entities: geometries,
+    });
+    test("updated", updated);
+    viewControls = { ...viewControls, ...updated.controls };
+    test("viewControls", viewControls);
 
-      camera.position = updates.camera.position;
-      perspectiveCamera.update(camera);
+    const updates = orbitControls.update({
+      controls: viewControls,
+      camera,
+    });
+    test("updates", updates);
+    viewControls = { ...viewControls, ...updates.controls };
+    test("viewControls", viewControls);
 
-      preparedRenderer(renderOptions);
-    }
-    window.requestAnimationFrame(updateAndRender);
+    test("camera.position", camera.position);
+    camera.position = updates.camera.position;
+    test("camera.position", camera.position);
+    perspectiveCamera.update(camera);
+
+    preparedRenderer(renderOptions);
+    // window.requestAnimationFrame(updateAndRender);
   };
   window.requestAnimationFrame(updateAndRender);
-
-  /* eslint-disable no-param-reassign */
-  const moveHandler = (ev) => {
-    if (!pointerDown) return;
-    const dx = lastX - ev.pageX;
-    const dy = ev.pageY - lastY;
-
-    const shiftKey =
-      ev.shiftKey === true || (ev.touches && ev.touches.length > 2);
-    if (shiftKey) {
-      panDelta[0] += dx;
-      panDelta[1] += dy;
-    } else {
-      rotateDelta[0] -= dx;
-      rotateDelta[1] -= dy;
-    }
-
-    lastX = ev.pageX;
-    lastY = ev.pageY;
-
-    ev.preventDefault();
-  };
-  const downHandler = (ev) => {
-    pointerDown = true;
-    lastX = ev.pageX;
-    lastY = ev.pageY;
-    canvas.setPointerCapture(ev.pointerId);
-    ev.preventDefault();
-  };
-
-  const upHandler = (ev) => {
-    pointerDown = false;
-    canvas.releasePointerCapture(ev.pointerId);
-    ev.preventDefault();
-  };
-
-  const wheelHandler = (ev) => {
-    zoomDelta += ev.deltaY;
-    ev.preventDefault();
-  };
-
-  const doubleClickHandler = (ev) => {
-    zoomToFit = true;
-    ev.preventDefault();
-  };
-
-  canvas.addEventListener('pointermove', moveHandler);
-  canvas.addEventListener('pointerdown', downHandler);
-  canvas.addEventListener('pointerup', upHandler);
-  canvas.addEventListener('wheel', wheelHandler);
-  canvas.addEventListener('dblclick', doubleClickHandler);
 }
