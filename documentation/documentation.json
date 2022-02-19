@@ -153,6 +153,2486 @@
 			]
 		},
 		{
+			"id": 927,
+			"name": "csg",
+			"kind": 1,
+			"kindString": "Module",
+			"flags": {},
+			"comment": {
+				"shortText": "The module `csg` provides functions for drawing Constructive Solid Geometry (CSG) called `Shape`.",
+				"text": "A *Shape* is defined by its polygons and vertices.\n",
+				"tags": [
+					{
+						"tag": "author",
+						"text": "Liu Muchen"
+					},
+					{
+						"tag": "author",
+						"text": "Joel Leow\n"
+					}
+				]
+			},
+			"originalName": "csg/functions",
+			"children": [
+				{
+					"id": 1051,
+					"name": "black",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"comment": {
+						"shortText": "Black attribute for colorize function"
+					},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 61,
+							"character": 18
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "RGB"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 1059,
+					"name": "blue",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"comment": {
+						"shortText": "Blue attribute for colorize function"
+					},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 117,
+							"character": 17
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "RGB"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 1065,
+					"name": "cube",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"comment": {
+						"shortText": "Primitive Shape of a cube."
+					},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 653,
+							"character": 17
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "Shape"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 1061,
+					"name": "cyan",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"comment": {
+						"shortText": "Cyan attribute for colorize function"
+					},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 131,
+							"character": 17
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "RGB"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 1067,
+					"name": "cylinder",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"comment": {
+						"shortText": "Primitive Shape of a cylinder."
+					},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 671,
+							"character": 21
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "Shape"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 1069,
+					"name": "extrudedStar",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"comment": {
+						"shortText": "Primitive Shape of an extruded star."
+					},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 691,
+							"character": 25
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "Shape"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 1053,
+					"name": "green",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"comment": {
+						"shortText": "Green attribute for colorize function"
+					},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 75,
+							"character": 18
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "RGB"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 1058,
+					"name": "grey",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"comment": {
+						"shortText": "Grey attribute for colorize function"
+					},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 110,
+							"character": 17
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "RGB"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 1060,
+					"name": "lime",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"comment": {
+						"shortText": "Lime attribute for colorize function"
+					},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 124,
+							"character": 17
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "RGB"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 1052,
+					"name": "navy",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"comment": {
+						"shortText": "Navy attribute for colorize function"
+					},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 68,
+							"character": 17
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "RGB"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 1056,
+					"name": "orange",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"comment": {
+						"shortText": "Orange attribute for colorize function"
+					},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 96,
+							"character": 19
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "RGB"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 1062,
+					"name": "pink",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"comment": {
+						"shortText": "Pink attribute for colorize function"
+					},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 138,
+							"character": 17
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "RGB"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 1068,
+					"name": "prism",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"comment": {
+						"shortText": "Primitive Shape of a prism."
+					},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 682,
+							"character": 18
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "Shape"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 1055,
+					"name": "purple",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"comment": {
+						"shortText": "Purple attribute for colorize function"
+					},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 89,
+							"character": 19
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "RGB"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 1057,
+					"name": "silver",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"comment": {
+						"shortText": "Silver attribute for colorize function"
+					},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 103,
+							"character": 19
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "RGB"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 1066,
+					"name": "sphere",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"comment": {
+						"shortText": "Primitive Shape of a sphere."
+					},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 662,
+							"character": 19
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "Shape"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 1070,
+					"name": "squarePyramid",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"comment": {
+						"shortText": "Primitive Shape of a square pyramid."
+					},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 704,
+							"character": 26
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "Shape"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 1054,
+					"name": "teal",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"comment": {
+						"shortText": "Teal attribute for colorize function"
+					},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 82,
+							"character": 17
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "RGB"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 1064,
+					"name": "white",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"comment": {
+						"shortText": "White attribute for colorize function"
+					},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 152,
+							"character": 18
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "RGB"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 1063,
+					"name": "yellow",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"comment": {
+						"shortText": "Yellow attribute for colorize function"
+					},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 145,
+							"character": 19
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "RGB"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 981,
+					"name": "area",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 353,
+							"character": 20
+						}
+					],
+					"signatures": [
+						{
+							"id": 982,
+							"name": "area",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Measure the area of the provided shape.",
+								"returns": "The area of the shape\n"
+							},
+							"parameters": [
+								{
+									"id": 983,
+									"name": "shape",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The shape to measure the area from"
+									},
+									"type": {
+										"type": "reference",
+										"name": "Shape"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					]
+				},
+				{
+					"id": 940,
+					"name": "colorize",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 198,
+							"character": 24
+						}
+					],
+					"signatures": [
+						{
+							"id": 941,
+							"name": "colorize",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Colours the given shape with the colour provided.",
+								"returns": "Resulting Shape\n"
+							},
+							"parameters": [
+								{
+									"id": 942,
+									"name": "shape",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The shape to be coloured"
+									},
+									"type": {
+										"type": "reference",
+										"name": "Shape"
+									}
+								},
+								{
+									"id": 943,
+									"name": "color",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The colour to colour the shape with"
+									},
+									"type": {
+										"type": "reference",
+										"name": "RGB"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Shape"
+							}
+						}
+					]
+				},
+				{
+					"id": 950,
+					"name": "colorize_hex",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 246,
+							"character": 28
+						}
+					],
+					"signatures": [
+						{
+							"id": 951,
+							"name": "colorize_hex",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Colours the given shape by specifying the hex, in the form of #xxxxxx or\nxxxxxx.\nFor example hex value of #FFFFFF is white while the hex value of #000000\nis black.",
+								"returns": "Resulting Shape\n"
+							},
+							"parameters": [
+								{
+									"id": 952,
+									"name": "shape",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The shape to be coloured"
+									},
+									"type": {
+										"type": "reference",
+										"name": "Shape"
+									}
+								},
+								{
+									"id": 953,
+									"name": "hex",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The hex value to colour the shape with"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Shape"
+							}
+						}
+					]
+				},
+				{
+					"id": 944,
+					"name": "colorize_rgb",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 218,
+							"character": 28
+						}
+					],
+					"signatures": [
+						{
+							"id": 945,
+							"name": "colorize_rgb",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Colours the given shape by specifying the red, green, blue (RGB) value,\nranging from 0.0 to 1.0.\nFor example RGB value of (1.0, 1.0, 1.0) is white while the RGB value of\n(0.0, 0.0, 0.0) is black.",
+								"returns": "Resulting Shape\n"
+							},
+							"parameters": [
+								{
+									"id": 946,
+									"name": "shape",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The shape to be coloured"
+									},
+									"type": {
+										"type": "reference",
+										"name": "Shape"
+									}
+								},
+								{
+									"id": 947,
+									"name": "r",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Red value [0.0 - 1.0]"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 948,
+									"name": "g",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Green value [0.0 - 1.0]"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 949,
+									"name": "b",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Blue value [0.0 - 1.0]"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Shape"
+							}
+						}
+					]
+				},
+				{
+					"id": 987,
+					"name": "flip_x",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 387,
+							"character": 22
+						}
+					],
+					"signatures": [
+						{
+							"id": 988,
+							"name": "flip_x",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Mirror / Flip the provided shape by the x axis.",
+								"returns": "The mirrored / flipped shape\n"
+							},
+							"parameters": [
+								{
+									"id": 989,
+									"name": "shape",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The shape to mirror / flip"
+									},
+									"type": {
+										"type": "reference",
+										"name": "Shape"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Shape"
+							}
+						}
+					]
+				},
+				{
+					"id": 990,
+					"name": "flip_y",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 397,
+							"character": 22
+						}
+					],
+					"signatures": [
+						{
+							"id": 991,
+							"name": "flip_y",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Mirror / Flip the provided shape by the y axis.",
+								"returns": "The mirrored / flipped shape\n"
+							},
+							"parameters": [
+								{
+									"id": 992,
+									"name": "shape",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The shape to mirror / flip"
+									},
+									"type": {
+										"type": "reference",
+										"name": "Shape"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Shape"
+							}
+						}
+					]
+				},
+				{
+					"id": 993,
+					"name": "flip_z",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 407,
+							"character": 22
+						}
+					],
+					"signatures": [
+						{
+							"id": 994,
+							"name": "flip_z",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Mirror / Flip the provided shape by the z axis.",
+								"returns": "The mirrored / flipped shape\n"
+							},
+							"parameters": [
+								{
+									"id": 995,
+									"name": "shape",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The shape to mirror / flip"
+									},
+									"type": {
+										"type": "reference",
+										"name": "Shape"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Shape"
+							}
+						}
+					]
+				},
+				{
+					"id": 936,
+					"name": "intersect",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 187,
+							"character": 25
+						}
+					],
+					"signatures": [
+						{
+							"id": 937,
+							"name": "intersect",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Intersection of the two shape to produce a new shape.",
+								"returns": "The resulting intersection shape\n"
+							},
+							"parameters": [
+								{
+									"id": 938,
+									"name": "a",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The first shape"
+									},
+									"type": {
+										"type": "reference",
+										"name": "Shape"
+									}
+								},
+								{
+									"id": 939,
+									"name": "b",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The second shape"
+									},
+									"type": {
+										"type": "reference",
+										"name": "Shape"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Shape"
+							}
+						}
+					]
+				},
+				{
+					"id": 1036,
+					"name": "is_shape",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 553,
+							"character": 24
+						}
+					],
+					"signatures": [
+						{
+							"id": 1037,
+							"name": "is_shape",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Checks whether the given shape is a Shape.",
+								"returns": "Boolean on whether shape provided is a Shape\n"
+							},
+							"parameters": [
+								{
+									"id": 1038,
+									"name": "shape",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The shape to be checked"
+									},
+									"type": {
+										"type": "reference",
+										"name": "Shape"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "boolean"
+							}
+						}
+					]
+				},
+				{
+					"id": 1039,
+					"name": "render",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 589,
+							"character": 22
+						}
+					],
+					"signatures": [
+						{
+							"id": 1040,
+							"name": "render",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Returns a copy of the specified Shape that will get rendered in a tab,\nif your Source program results in that Shape.\nI.e., use this function as the last statement in your program to render the\nspecified shape.",
+								"returns": "A copy of the specified Shape, marked for rendering.\n"
+							},
+							"parameters": [
+								{
+									"id": 1041,
+									"name": "shape",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The Shape to render."
+									},
+									"type": {
+										"type": "reference",
+										"name": "Shape"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Shape"
+							}
+						}
+					]
+				},
+				{
+					"id": 1042,
+					"name": "render_axis",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 605,
+							"character": 27
+						}
+					],
+					"signatures": [
+						{
+							"id": 1043,
+							"name": "render_axis",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Returns a copy of the specified Shape that will get rendered in a tab with axis,\nif your Source program results in that Shape.\nI.e., use this function as the last statement in your program to render the\nspecified shape.",
+								"returns": "A copy of the specified Shape, marked for rendering.\n"
+							},
+							"parameters": [
+								{
+									"id": 1044,
+									"name": "shape",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The Shape to render."
+									},
+									"type": {
+										"type": "reference",
+										"name": "Shape"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Shape"
+							}
+						}
+					]
+				},
+				{
+					"id": 1048,
+					"name": "render_axis_grid",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 637,
+							"character": 32
+						}
+					],
+					"signatures": [
+						{
+							"id": 1049,
+							"name": "render_axis_grid",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Returns a copy of the specified Shape that will get rendered in a tab with axis and\ngrid, if your Source program results in that Shape.\nI.e., use this function as the last statement in your program to render the\nspecified shape.",
+								"returns": "A copy of the specified Shape, marked for rendering.\n"
+							},
+							"parameters": [
+								{
+									"id": 1050,
+									"name": "shape",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The Shape to render."
+									},
+									"type": {
+										"type": "reference",
+										"name": "Shape"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Shape"
+							}
+						}
+					]
+				},
+				{
+					"id": 1045,
+					"name": "render_grid",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 621,
+							"character": 27
+						}
+					],
+					"signatures": [
+						{
+							"id": 1046,
+							"name": "render_grid",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Returns a copy of the specified Shape that will get rendered in a tab with grid,\nif your Source program results in that Shape.\nI.e., use this function as the last statement in your program to render the\nspecified shape.",
+								"returns": "A copy of the specified Shape, marked for rendering.\n"
+							},
+							"parameters": [
+								{
+									"id": 1047,
+									"name": "shape",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The Shape to render."
+									},
+									"type": {
+										"type": "reference",
+										"name": "Shape"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Shape"
+							}
+						}
+					]
+				},
+				{
+					"id": 1018,
+					"name": "rotate",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 497,
+							"character": 22
+						}
+					],
+					"signatures": [
+						{
+							"id": 1019,
+							"name": "rotate",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Rotate the shape by the provided angles in the x, y and z direction.\nAngles provided are in the form of radians (i.e. 2π represent 360\ndegrees)",
+								"returns": "The rotated shape\n"
+							},
+							"parameters": [
+								{
+									"id": 1020,
+									"name": "shape",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The shape to be rotated"
+									},
+									"type": {
+										"type": "reference",
+										"name": "Shape"
+									}
+								},
+								{
+									"id": 1021,
+									"name": "x",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Angle of rotation in the x direction"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 1022,
+									"name": "y",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Angle of rotation in the y direction"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 1023,
+									"name": "z",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Angle of rotation in the z direction"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Shape"
+							}
+						}
+					]
+				},
+				{
+					"id": 1024,
+					"name": "rotate_x",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 509,
+							"character": 24
+						}
+					],
+					"signatures": [
+						{
+							"id": 1025,
+							"name": "rotate_x",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Rotate the shape by the provided angles in the x direction. Angles\nprovided are in the form of radians (i.e. 2π represent 360 degrees)",
+								"returns": "The rotated shape\n"
+							},
+							"parameters": [
+								{
+									"id": 1026,
+									"name": "shape",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The shape to be rotated"
+									},
+									"type": {
+										"type": "reference",
+										"name": "Shape"
+									}
+								},
+								{
+									"id": 1027,
+									"name": "x",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Angle of rotation in the x direction"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Shape"
+							}
+						}
+					]
+				},
+				{
+					"id": 1028,
+					"name": "rotate_y",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 521,
+							"character": 24
+						}
+					],
+					"signatures": [
+						{
+							"id": 1029,
+							"name": "rotate_y",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Rotate the shape by the provided angles in the y direction. Angles\nprovided are in the form of radians (i.e. 2π represent 360 degrees)",
+								"returns": "The rotated shape\n"
+							},
+							"parameters": [
+								{
+									"id": 1030,
+									"name": "shape",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The shape to be rotated"
+									},
+									"type": {
+										"type": "reference",
+										"name": "Shape"
+									}
+								},
+								{
+									"id": 1031,
+									"name": "y",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Angle of rotation in the y direction"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Shape"
+							}
+						}
+					]
+				},
+				{
+					"id": 1032,
+					"name": "rotate_z",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 533,
+							"character": 24
+						}
+					],
+					"signatures": [
+						{
+							"id": 1033,
+							"name": "rotate_z",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Rotate the shape by the provided angles in the z direction. Angles\nprovided are in the form of radians (i.e. 2π represent 360 degrees)",
+								"returns": "The rotated shape\n"
+							},
+							"parameters": [
+								{
+									"id": 1034,
+									"name": "shape",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The shape to be rotated"
+									},
+									"type": {
+										"type": "reference",
+										"name": "Shape"
+									}
+								},
+								{
+									"id": 1035,
+									"name": "z",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Angle of rotation in the z direction"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Shape"
+							}
+						}
+					]
+				},
+				{
+					"id": 954,
+					"name": "scale",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 267,
+							"character": 21
+						}
+					],
+					"signatures": [
+						{
+							"id": 955,
+							"name": "scale",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Scales the shape in the x, y and z direction with the specified factor,\nranging from 0 to infinity.\nFor example scaling the shape by 1 in x, y and z direction results in\nthe original shape.",
+								"returns": "Resulting Shape\n"
+							},
+							"parameters": [
+								{
+									"id": 956,
+									"name": "shape",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The shape to be scaled"
+									},
+									"type": {
+										"type": "reference",
+										"name": "Shape"
+									}
+								},
+								{
+									"id": 957,
+									"name": "x",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Scaling in the x direction"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 958,
+									"name": "y",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Scaling in the y direction"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 959,
+									"name": "z",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Scaling in the z direction"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Shape"
+							}
+						}
+					]
+				},
+				{
+					"id": 960,
+					"name": "scale_x",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 281,
+							"character": 23
+						}
+					],
+					"signatures": [
+						{
+							"id": 961,
+							"name": "scale_x",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Scales the shape in the x direction with the specified factor,\nranging from 0 to infinity.\nFor example scaling the shape by 1 in x direction results in the\noriginal shape.",
+								"returns": "Resulting Shape\n"
+							},
+							"parameters": [
+								{
+									"id": 962,
+									"name": "shape",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The shape to be scaled"
+									},
+									"type": {
+										"type": "reference",
+										"name": "Shape"
+									}
+								},
+								{
+									"id": 963,
+									"name": "x",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Scaling in the x direction"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Shape"
+							}
+						}
+					]
+				},
+				{
+					"id": 964,
+					"name": "scale_y",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 295,
+							"character": 23
+						}
+					],
+					"signatures": [
+						{
+							"id": 965,
+							"name": "scale_y",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Scales the shape in the y direction with the specified factor,\nranging from 0 to infinity.\nFor example scaling the shape by 1 in y direction results in the\noriginal shape.",
+								"returns": "Resulting Shape\n"
+							},
+							"parameters": [
+								{
+									"id": 966,
+									"name": "shape",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The shape to be scaled"
+									},
+									"type": {
+										"type": "reference",
+										"name": "Shape"
+									}
+								},
+								{
+									"id": 967,
+									"name": "y",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Scaling in the y direction"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Shape"
+							}
+						}
+					]
+				},
+				{
+					"id": 968,
+					"name": "scale_z",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 309,
+							"character": 23
+						}
+					],
+					"signatures": [
+						{
+							"id": 969,
+							"name": "scale_z",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Scales the shape in the z direction with the specified factor,\nranging from 0 to infinity.\nFor example scaling the shape by 1 in z direction results in the\noriginal shape.",
+								"returns": "Resulting Shape\n"
+							},
+							"parameters": [
+								{
+									"id": 970,
+									"name": "shape",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The shape to be scaled"
+									},
+									"type": {
+										"type": "reference",
+										"name": "Shape"
+									}
+								},
+								{
+									"id": 971,
+									"name": "z",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Scaling in the z direction"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Shape"
+							}
+						}
+					]
+				},
+				{
+					"id": 972,
+					"name": "shape_center",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 320,
+							"character": 28
+						}
+					],
+					"signatures": [
+						{
+							"id": 973,
+							"name": "shape_center",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Obtain the center of the given shape in the x, y and z direction.",
+								"returns": "An array of number representing the center in the form of\n[x, y, z]\n"
+							},
+							"parameters": [
+								{
+									"id": 974,
+									"name": "shape",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The scale to be measured"
+									},
+									"type": {
+										"type": "reference",
+										"name": "Shape"
+									}
+								}
+							],
+							"type": {
+								"type": "array",
+								"elementType": {
+									"type": "intrinsic",
+									"name": "number"
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 975,
+					"name": "shape_set_center",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 338,
+							"character": 32
+						}
+					],
+					"signatures": [
+						{
+							"id": 976,
+							"name": "shape_set_center",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Set the center of the shape with the provided x, y and z coordinates.",
+								"returns": "The shape with the new center\n"
+							},
+							"parameters": [
+								{
+									"id": 977,
+									"name": "shape",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The scale to have the center set"
+									},
+									"type": {
+										"type": "reference",
+										"name": "Shape"
+									}
+								},
+								{
+									"id": 978,
+									"name": "x",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The center with the x coordinate"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 979,
+									"name": "y",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The center with the y coordinate"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 980,
+									"name": "z",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The center with the z coordinate"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Shape"
+							}
+						}
+					]
+				},
+				{
+					"id": 1014,
+					"name": "stack",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 473,
+							"character": 21
+						}
+					],
+					"signatures": [
+						{
+							"id": 1015,
+							"name": "stack",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Stack the second shape ontop of the first shape in the z direction",
+								"returns": "The stacked shape\n"
+							},
+							"parameters": [
+								{
+									"id": 1016,
+									"name": "a",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The shape to be stacked on"
+									},
+									"type": {
+										"type": "reference",
+										"name": "Shape"
+									}
+								},
+								{
+									"id": 1017,
+									"name": "b",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The stacking shape"
+									},
+									"type": {
+										"type": "reference",
+										"name": "Shape"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Shape"
+							}
+						}
+					]
+				},
+				{
+					"id": 932,
+					"name": "subtract",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 176,
+							"character": 24
+						}
+					],
+					"signatures": [
+						{
+							"id": 933,
+							"name": "subtract",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Subtraction of the second shape from the first shape to produce a new shape.",
+								"returns": "The resulting subtracted shape\n"
+							},
+							"parameters": [
+								{
+									"id": 934,
+									"name": "a",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The shape to be subtracted from"
+									},
+									"type": {
+										"type": "reference",
+										"name": "Shape"
+									}
+								},
+								{
+									"id": 935,
+									"name": "b",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The shape to remove from the first shape"
+									},
+									"type": {
+										"type": "reference",
+										"name": "Shape"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Shape"
+							}
+						}
+					]
+				},
+				{
+					"id": 996,
+					"name": "translate",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 421,
+							"character": 25
+						}
+					],
+					"signatures": [
+						{
+							"id": 997,
+							"name": "translate",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Translate / Move the shape by the provided x, y and z units from negative\ninfinity to infinity.",
+								"returns": "The translated shape\n"
+							},
+							"parameters": [
+								{
+									"id": 998,
+									"name": "shape",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {},
+									"type": {
+										"type": "reference",
+										"name": "Shape"
+									}
+								},
+								{
+									"id": 999,
+									"name": "x",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The number to shift the shape in the x direction"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 1000,
+									"name": "y",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The number to shift the shape in the y direction"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 1001,
+									"name": "z",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The number to shift the shape in the z direction"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Shape"
+							}
+						}
+					]
+				},
+				{
+					"id": 1002,
+					"name": "translate_x",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 438,
+							"character": 27
+						}
+					],
+					"signatures": [
+						{
+							"id": 1003,
+							"name": "translate_x",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Translate / Move the shape by the provided x units from negative infinity\nto infinity.",
+								"returns": "The translated shape\n"
+							},
+							"parameters": [
+								{
+									"id": 1004,
+									"name": "shape",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {},
+									"type": {
+										"type": "reference",
+										"name": "Shape"
+									}
+								},
+								{
+									"id": 1005,
+									"name": "x",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The number to shift the shape in the x direction"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Shape"
+							}
+						}
+					]
+				},
+				{
+					"id": 1006,
+					"name": "translate_y",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 450,
+							"character": 27
+						}
+					],
+					"signatures": [
+						{
+							"id": 1007,
+							"name": "translate_y",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Translate / Move the shape by the provided y units from negative infinity\nto infinity.",
+								"returns": "The translated shape\n"
+							},
+							"parameters": [
+								{
+									"id": 1008,
+									"name": "shape",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {},
+									"type": {
+										"type": "reference",
+										"name": "Shape"
+									}
+								},
+								{
+									"id": 1009,
+									"name": "y",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The number to shift the shape in the y direction"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Shape"
+							}
+						}
+					]
+				},
+				{
+					"id": 1010,
+					"name": "translate_z",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 462,
+							"character": 27
+						}
+					],
+					"signatures": [
+						{
+							"id": 1011,
+							"name": "translate_z",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Translate / Move the shape by the provided z units from negative infinity\nto infinity.",
+								"returns": "The translated shape\n"
+							},
+							"parameters": [
+								{
+									"id": 1012,
+									"name": "shape",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {},
+									"type": {
+										"type": "reference",
+										"name": "Shape"
+									}
+								},
+								{
+									"id": 1013,
+									"name": "z",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The number to shift the shape in the z direction"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Shape"
+							}
+						}
+					]
+				},
+				{
+					"id": 928,
+					"name": "union",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 165,
+							"character": 21
+						}
+					],
+					"signatures": [
+						{
+							"id": 929,
+							"name": "union",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Union of the two provided shapes to produce a new shape.",
+								"returns": "The resulting unioned shape\n"
+							},
+							"parameters": [
+								{
+									"id": 930,
+									"name": "a",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The first shape"
+									},
+									"type": {
+										"type": "reference",
+										"name": "Shape"
+									}
+								},
+								{
+									"id": 931,
+									"name": "b",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The second shape"
+									},
+									"type": {
+										"type": "reference",
+										"name": "Shape"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Shape"
+							}
+						}
+					]
+				},
+				{
+					"id": 984,
+					"name": "volume",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 363,
+							"character": 22
+						}
+					],
+					"signatures": [
+						{
+							"id": 985,
+							"name": "volume",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Measure the volume of the provided shape.",
+								"returns": "The volume of the shape\n"
+							},
+							"parameters": [
+								{
+									"id": 986,
+									"name": "shape",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The shape to measure the volume from"
+									},
+									"type": {
+										"type": "reference",
+										"name": "Shape"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Variables",
+					"kind": 32,
+					"children": [
+						1051,
+						1059,
+						1065,
+						1061,
+						1067,
+						1069,
+						1053,
+						1058,
+						1060,
+						1052,
+						1056,
+						1062,
+						1068,
+						1055,
+						1057,
+						1066,
+						1070,
+						1054,
+						1064,
+						1063
+					],
+					"categories": [
+						{
+							"title": "Colour",
+							"children": [
+								1051,
+								1059,
+								1061,
+								1053,
+								1058,
+								1060,
+								1052,
+								1056,
+								1062,
+								1055,
+								1057,
+								1054,
+								1064,
+								1063
+							]
+						},
+						{
+							"title": "Primitive",
+							"children": [
+								1065,
+								1067,
+								1069,
+								1068,
+								1066,
+								1070
+							]
+						}
+					]
+				},
+				{
+					"title": "Functions",
+					"kind": 64,
+					"children": [
+						981,
+						940,
+						950,
+						944,
+						987,
+						990,
+						993,
+						936,
+						1036,
+						1039,
+						1042,
+						1048,
+						1045,
+						1018,
+						1024,
+						1028,
+						1032,
+						954,
+						960,
+						964,
+						968,
+						972,
+						975,
+						1014,
+						932,
+						996,
+						1002,
+						1006,
+						1010,
+						928,
+						984
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "csg/functions.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		},
+		{
 			"id": 69,
 			"name": "curve",
 			"kind": 1,
@@ -5511,7 +7991,7 @@
 					"sources": [
 						{
 							"fileName": "pix_n_flix/functions.ts",
-							"line": 414,
+							"line": 433,
 							"character": 24
 						}
 					],
@@ -5558,7 +8038,7 @@
 					"sources": [
 						{
 							"fileName": "pix_n_flix/functions.ts",
-							"line": 403,
+							"line": 422,
 							"character": 23
 						}
 					],
@@ -5605,7 +8085,7 @@
 					"sources": [
 						{
 							"fileName": "pix_n_flix/functions.ts",
-							"line": 513,
+							"line": 532,
 							"character": 30
 						}
 					],
@@ -5666,7 +8146,7 @@
 					"sources": [
 						{
 							"fileName": "pix_n_flix/functions.ts",
-							"line": 474,
+							"line": 493,
 							"character": 26
 						}
 					],
@@ -5726,7 +8206,7 @@
 					"sources": [
 						{
 							"fileName": "pix_n_flix/functions.ts",
-							"line": 392,
+							"line": 411,
 							"character": 24
 						}
 					],
@@ -5773,7 +8253,7 @@
 					"sources": [
 						{
 							"fileName": "pix_n_flix/functions.ts",
-							"line": 494,
+							"line": 513,
 							"character": 30
 						}
 					],
@@ -5809,6 +8289,52 @@
 					]
 				},
 				{
+					"id": 51,
+					"name": "pause_after",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "pix_n_flix/functions.ts",
+							"line": 545,
+							"character": 27
+						}
+					],
+					"signatures": [
+						{
+							"id": 52,
+							"name": "pause_after",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Pauses the video after a set delay."
+							},
+							"parameters": [
+								{
+									"id": 53,
+									"name": "delay",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Delay in ms after the video starts.\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							}
+						}
+					]
+				},
+				{
 					"id": 15,
 					"name": "red_of",
 					"kind": 64,
@@ -5817,7 +8343,7 @@
 					"sources": [
 						{
 							"fileName": "pix_n_flix/functions.ts",
-							"line": 381,
+							"line": 400,
 							"character": 22
 						}
 					],
@@ -5864,7 +8390,7 @@
 					"sources": [
 						{
 							"fileName": "pix_n_flix/functions.ts",
-							"line": 501,
+							"line": 520,
 							"character": 28
 						}
 					],
@@ -5894,7 +8420,7 @@
 					"sources": [
 						{
 							"fileName": "pix_n_flix/functions.ts",
-							"line": 538,
+							"line": 557,
 							"character": 30
 						}
 					],
@@ -5954,7 +8480,7 @@
 					"sources": [
 						{
 							"fileName": "pix_n_flix/functions.ts",
-							"line": 548,
+							"line": 567,
 							"character": 23
 						}
 					],
@@ -6000,7 +8526,7 @@
 					"sources": [
 						{
 							"fileName": "pix_n_flix/functions.ts",
-							"line": 429,
+							"line": 448,
 							"character": 24
 						}
 					],
@@ -6094,52 +8620,6 @@
 					]
 				},
 				{
-					"id": 51,
-					"name": "snapshot",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "pix_n_flix/functions.ts",
-							"line": 526,
-							"character": 24
-						}
-					],
-					"signatures": [
-						{
-							"id": 52,
-							"name": "snapshot",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "Takes a snapshot of image after a set delay."
-							},
-							"parameters": [
-								{
-									"id": 53,
-									"name": "delay",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "Delay in ms before a snapshot is taken\n"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								}
-							],
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
-							}
-						}
-					]
-				},
-				{
 					"id": 13,
 					"name": "start",
 					"kind": 64,
@@ -6148,7 +8628,7 @@
 					"sources": [
 						{
 							"fileName": "pix_n_flix/functions.ts",
-							"line": 363,
+							"line": 382,
 							"character": 21
 						}
 					],
@@ -6178,7 +8658,7 @@
 					"sources": [
 						{
 							"fileName": "pix_n_flix/functions.ts",
-							"line": 453,
+							"line": 472,
 							"character": 28
 						}
 					],
@@ -6209,7 +8689,7 @@
 					"sources": [
 						{
 							"fileName": "pix_n_flix/functions.ts",
-							"line": 463,
+							"line": 482,
 							"character": 27
 						}
 					],
@@ -6243,12 +8723,12 @@
 						38,
 						18,
 						42,
+						51,
 						15,
 						45,
 						54,
 						58,
 						27,
-						51,
 						13,
 						34,
 						36
@@ -15292,6 +17772,7 @@
 			"kind": 1,
 			"children": [
 				61,
+				927,
 				69,
 				552,
 				12,
