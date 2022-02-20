@@ -295,30 +295,6 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 1069,
-					"name": "extrudedStar",
-					"kind": 32,
-					"kindString": "Variable",
-					"flags": {
-						"isConst": true
-					},
-					"comment": {
-						"shortText": "Primitive Shape of an extruded star."
-					},
-					"sources": [
-						{
-							"fileName": "csg/functions.ts",
-							"line": 691,
-							"character": 25
-						}
-					],
-					"type": {
-						"type": "reference",
-						"name": "Shape"
-					},
-					"defaultValue": "..."
-				},
-				{
 					"id": 1053,
 					"name": "green",
 					"kind": 32,
@@ -476,7 +452,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 682,
+							"line": 680,
 							"character": 18
 						}
 					],
@@ -507,6 +483,30 @@
 					"type": {
 						"type": "reference",
 						"name": "RGB"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 1070,
+					"name": "pyramid",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"comment": {
+						"shortText": "Primitive Shape of a square pyramid."
+					},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 702,
+							"character": 20
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "Shape"
 					},
 					"defaultValue": "..."
 				},
@@ -559,21 +559,21 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 1070,
-					"name": "squarePyramid",
+					"id": 1069,
+					"name": "star",
 					"kind": 32,
 					"kindString": "Variable",
 					"flags": {
 						"isConst": true
 					},
 					"comment": {
-						"shortText": "Primitive Shape of a square pyramid."
+						"shortText": "Primitive Shape of an extruded star."
 					},
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 704,
-							"character": 26
+							"line": 689,
+							"character": 17
 						}
 					],
 					"type": {
@@ -2537,7 +2537,6 @@
 						1065,
 						1061,
 						1067,
-						1069,
 						1053,
 						1058,
 						1060,
@@ -2546,9 +2545,10 @@
 						1062,
 						1068,
 						1055,
+						1070,
 						1057,
 						1066,
-						1070,
+						1069,
 						1054,
 						1064,
 						1063
@@ -2578,10 +2578,10 @@
 							"children": [
 								1065,
 								1067,
-								1069,
 								1068,
+								1070,
 								1066,
-								1070
+								1069
 							]
 						}
 					]
