@@ -153,7 +153,7 @@
 			]
 		},
 		{
-			"id": 927,
+			"id": 825,
 			"name": "csg",
 			"kind": 1,
 			"kindString": "Module",
@@ -175,7 +175,7 @@
 			"originalName": "csg/functions",
 			"children": [
 				{
-					"id": 1065,
+					"id": 963,
 					"name": "black",
 					"kind": 32,
 					"kindString": "Variable",
@@ -199,7 +199,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 1073,
+					"id": 971,
 					"name": "blue",
 					"kind": 32,
 					"kindString": "Variable",
@@ -223,7 +223,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 1079,
+					"id": 977,
 					"name": "cube",
 					"kind": 32,
 					"kindString": "Variable",
@@ -247,7 +247,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 1075,
+					"id": 973,
 					"name": "cyan",
 					"kind": 32,
 					"kindString": "Variable",
@@ -271,7 +271,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 1081,
+					"id": 979,
 					"name": "cylinder",
 					"kind": 32,
 					"kindString": "Variable",
@@ -295,7 +295,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 1067,
+					"id": 965,
 					"name": "green",
 					"kind": 32,
 					"kindString": "Variable",
@@ -319,7 +319,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 1072,
+					"id": 970,
 					"name": "grey",
 					"kind": 32,
 					"kindString": "Variable",
@@ -343,7 +343,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 1074,
+					"id": 972,
 					"name": "lime",
 					"kind": 32,
 					"kindString": "Variable",
@@ -367,7 +367,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 1066,
+					"id": 964,
 					"name": "navy",
 					"kind": 32,
 					"kindString": "Variable",
@@ -391,7 +391,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 1070,
+					"id": 968,
 					"name": "orange",
 					"kind": 32,
 					"kindString": "Variable",
@@ -415,7 +415,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 1076,
+					"id": 974,
 					"name": "pink",
 					"kind": 32,
 					"kindString": "Variable",
@@ -439,7 +439,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 1082,
+					"id": 980,
 					"name": "prism",
 					"kind": 32,
 					"kindString": "Variable",
@@ -463,7 +463,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 1069,
+					"id": 967,
 					"name": "purple",
 					"kind": 32,
 					"kindString": "Variable",
@@ -487,7 +487,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 1084,
+					"id": 982,
 					"name": "pyramid",
 					"kind": 32,
 					"kindString": "Variable",
@@ -511,7 +511,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 1071,
+					"id": 969,
 					"name": "silver",
 					"kind": 32,
 					"kindString": "Variable",
@@ -535,7 +535,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 1080,
+					"id": 978,
 					"name": "sphere",
 					"kind": 32,
 					"kindString": "Variable",
@@ -559,7 +559,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 1083,
+					"id": 981,
 					"name": "star",
 					"kind": 32,
 					"kindString": "Variable",
@@ -583,7 +583,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 1068,
+					"id": 966,
 					"name": "teal",
 					"kind": 32,
 					"kindString": "Variable",
@@ -607,7 +607,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 1078,
+					"id": 976,
 					"name": "white",
 					"kind": 32,
 					"kindString": "Variable",
@@ -631,7 +631,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 1077,
+					"id": 975,
 					"name": "yellow",
 					"kind": 32,
 					"kindString": "Variable",
@@ -655,7 +655,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 984,
+					"id": 882,
 					"name": "area",
 					"kind": 64,
 					"kindString": "Function",
@@ -669,7 +669,7 @@
 					],
 					"signatures": [
 						{
-							"id": 985,
+							"id": 883,
 							"name": "area",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -680,7 +680,7 @@
 							},
 							"parameters": [
 								{
-									"id": 986,
+									"id": 884,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -702,7 +702,7 @@
 					]
 				},
 				{
-					"id": 943,
+					"id": 841,
 					"name": "colorize",
 					"kind": 64,
 					"kindString": "Function",
@@ -716,7 +716,7 @@
 					],
 					"signatures": [
 						{
-							"id": 944,
+							"id": 842,
 							"name": "colorize",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -727,7 +727,7 @@
 							},
 							"parameters": [
 								{
-									"id": 945,
+									"id": 843,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -741,7 +741,7 @@
 									}
 								},
 								{
-									"id": 946,
+									"id": 844,
 									"name": "color",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -763,7 +763,7 @@
 					]
 				},
 				{
-					"id": 953,
+					"id": 851,
 					"name": "colorize_hex",
 					"kind": 64,
 					"kindString": "Function",
@@ -777,7 +777,7 @@
 					],
 					"signatures": [
 						{
-							"id": 954,
+							"id": 852,
 							"name": "colorize_hex",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -788,7 +788,7 @@
 							},
 							"parameters": [
 								{
-									"id": 955,
+									"id": 853,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -802,7 +802,7 @@
 									}
 								},
 								{
-									"id": 956,
+									"id": 854,
 									"name": "hex",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -824,7 +824,7 @@
 					]
 				},
 				{
-					"id": 947,
+					"id": 845,
 					"name": "colorize_rgb",
 					"kind": 64,
 					"kindString": "Function",
@@ -838,7 +838,7 @@
 					],
 					"signatures": [
 						{
-							"id": 948,
+							"id": 846,
 							"name": "colorize_rgb",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -849,7 +849,7 @@
 							},
 							"parameters": [
 								{
-									"id": 949,
+									"id": 847,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -863,7 +863,7 @@
 									}
 								},
 								{
-									"id": 950,
+									"id": 848,
 									"name": "r",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -877,7 +877,7 @@
 									}
 								},
 								{
-									"id": 951,
+									"id": 849,
 									"name": "g",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -891,7 +891,7 @@
 									}
 								},
 								{
-									"id": 952,
+									"id": 850,
 									"name": "b",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -913,7 +913,7 @@
 					]
 				},
 				{
-					"id": 996,
+					"id": 894,
 					"name": "flip_x",
 					"kind": 64,
 					"kindString": "Function",
@@ -927,7 +927,7 @@
 					],
 					"signatures": [
 						{
-							"id": 997,
+							"id": 895,
 							"name": "flip_x",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -938,7 +938,7 @@
 							},
 							"parameters": [
 								{
-									"id": 998,
+									"id": 896,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -960,7 +960,7 @@
 					]
 				},
 				{
-					"id": 999,
+					"id": 897,
 					"name": "flip_y",
 					"kind": 64,
 					"kindString": "Function",
@@ -974,7 +974,7 @@
 					],
 					"signatures": [
 						{
-							"id": 1000,
+							"id": 898,
 							"name": "flip_y",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -985,7 +985,7 @@
 							},
 							"parameters": [
 								{
-									"id": 1001,
+									"id": 899,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1007,7 +1007,7 @@
 					]
 				},
 				{
-					"id": 1002,
+					"id": 900,
 					"name": "flip_z",
 					"kind": 64,
 					"kindString": "Function",
@@ -1021,7 +1021,7 @@
 					],
 					"signatures": [
 						{
-							"id": 1003,
+							"id": 901,
 							"name": "flip_z",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1032,7 +1032,7 @@
 							},
 							"parameters": [
 								{
-									"id": 1004,
+									"id": 902,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1054,7 +1054,7 @@
 					]
 				},
 				{
-					"id": 928,
+					"id": 826,
 					"name": "generate_shape",
 					"kind": 64,
 					"kindString": "Function",
@@ -1068,7 +1068,7 @@
 					],
 					"signatures": [
 						{
-							"id": 929,
+							"id": 827,
 							"name": "generate_shape",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1079,7 +1079,7 @@
 							},
 							"parameters": [
 								{
-									"id": 930,
+									"id": 828,
 									"name": "geom",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1099,7 +1099,7 @@
 					]
 				},
 				{
-					"id": 939,
+					"id": 837,
 					"name": "intersect",
 					"kind": 64,
 					"kindString": "Function",
@@ -1113,7 +1113,7 @@
 					],
 					"signatures": [
 						{
-							"id": 940,
+							"id": 838,
 							"name": "intersect",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1124,7 +1124,7 @@
 							},
 							"parameters": [
 								{
-									"id": 941,
+									"id": 839,
 									"name": "a",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1138,7 +1138,7 @@
 									}
 								},
 								{
-									"id": 942,
+									"id": 840,
 									"name": "b",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1160,7 +1160,7 @@
 					]
 				},
 				{
-					"id": 1045,
+					"id": 943,
 					"name": "is_shape",
 					"kind": 64,
 					"kindString": "Function",
@@ -1174,7 +1174,7 @@
 					],
 					"signatures": [
 						{
-							"id": 1046,
+							"id": 944,
 							"name": "is_shape",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1185,7 +1185,7 @@
 							},
 							"parameters": [
 								{
-									"id": 1047,
+									"id": 945,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1207,7 +1207,7 @@
 					]
 				},
 				{
-					"id": 1053,
+					"id": 951,
 					"name": "render",
 					"kind": 64,
 					"kindString": "Function",
@@ -1221,7 +1221,7 @@
 					],
 					"signatures": [
 						{
-							"id": 1054,
+							"id": 952,
 							"name": "render",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1232,7 +1232,7 @@
 							},
 							"parameters": [
 								{
-									"id": 1055,
+									"id": 953,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1254,7 +1254,7 @@
 					]
 				},
 				{
-					"id": 1056,
+					"id": 954,
 					"name": "render_axis",
 					"kind": 64,
 					"kindString": "Function",
@@ -1268,7 +1268,7 @@
 					],
 					"signatures": [
 						{
-							"id": 1057,
+							"id": 955,
 							"name": "render_axis",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1279,7 +1279,7 @@
 							},
 							"parameters": [
 								{
-									"id": 1058,
+									"id": 956,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1301,7 +1301,7 @@
 					]
 				},
 				{
-					"id": 1062,
+					"id": 960,
 					"name": "render_axis_grid",
 					"kind": 64,
 					"kindString": "Function",
@@ -1315,7 +1315,7 @@
 					],
 					"signatures": [
 						{
-							"id": 1063,
+							"id": 961,
 							"name": "render_axis_grid",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1326,7 +1326,7 @@
 							},
 							"parameters": [
 								{
-									"id": 1064,
+									"id": 962,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1348,7 +1348,7 @@
 					]
 				},
 				{
-					"id": 1059,
+					"id": 957,
 					"name": "render_grid",
 					"kind": 64,
 					"kindString": "Function",
@@ -1362,7 +1362,7 @@
 					],
 					"signatures": [
 						{
-							"id": 1060,
+							"id": 958,
 							"name": "render_grid",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1373,7 +1373,7 @@
 							},
 							"parameters": [
 								{
-									"id": 1061,
+									"id": 959,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1395,7 +1395,7 @@
 					]
 				},
 				{
-					"id": 1027,
+					"id": 925,
 					"name": "rotate",
 					"kind": 64,
 					"kindString": "Function",
@@ -1409,7 +1409,7 @@
 					],
 					"signatures": [
 						{
-							"id": 1028,
+							"id": 926,
 							"name": "rotate",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1420,7 +1420,7 @@
 							},
 							"parameters": [
 								{
-									"id": 1029,
+									"id": 927,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1434,7 +1434,7 @@
 									}
 								},
 								{
-									"id": 1030,
+									"id": 928,
 									"name": "x",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1448,7 +1448,7 @@
 									}
 								},
 								{
-									"id": 1031,
+									"id": 929,
 									"name": "y",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1462,7 +1462,7 @@
 									}
 								},
 								{
-									"id": 1032,
+									"id": 930,
 									"name": "z",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1484,7 +1484,7 @@
 					]
 				},
 				{
-					"id": 1033,
+					"id": 931,
 					"name": "rotate_x",
 					"kind": 64,
 					"kindString": "Function",
@@ -1498,7 +1498,7 @@
 					],
 					"signatures": [
 						{
-							"id": 1034,
+							"id": 932,
 							"name": "rotate_x",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1509,7 +1509,7 @@
 							},
 							"parameters": [
 								{
-									"id": 1035,
+									"id": 933,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1523,7 +1523,7 @@
 									}
 								},
 								{
-									"id": 1036,
+									"id": 934,
 									"name": "x",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1545,7 +1545,7 @@
 					]
 				},
 				{
-					"id": 1037,
+					"id": 935,
 					"name": "rotate_y",
 					"kind": 64,
 					"kindString": "Function",
@@ -1559,7 +1559,7 @@
 					],
 					"signatures": [
 						{
-							"id": 1038,
+							"id": 936,
 							"name": "rotate_y",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1570,7 +1570,7 @@
 							},
 							"parameters": [
 								{
-									"id": 1039,
+									"id": 937,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1584,7 +1584,7 @@
 									}
 								},
 								{
-									"id": 1040,
+									"id": 938,
 									"name": "y",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1606,7 +1606,7 @@
 					]
 				},
 				{
-					"id": 1041,
+					"id": 939,
 					"name": "rotate_z",
 					"kind": 64,
 					"kindString": "Function",
@@ -1620,7 +1620,7 @@
 					],
 					"signatures": [
 						{
-							"id": 1042,
+							"id": 940,
 							"name": "rotate_z",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1631,7 +1631,7 @@
 							},
 							"parameters": [
 								{
-									"id": 1043,
+									"id": 941,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1645,7 +1645,7 @@
 									}
 								},
 								{
-									"id": 1044,
+									"id": 942,
 									"name": "z",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1667,7 +1667,7 @@
 					]
 				},
 				{
-					"id": 957,
+					"id": 855,
 					"name": "scale",
 					"kind": 64,
 					"kindString": "Function",
@@ -1681,7 +1681,7 @@
 					],
 					"signatures": [
 						{
-							"id": 958,
+							"id": 856,
 							"name": "scale",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1692,7 +1692,7 @@
 							},
 							"parameters": [
 								{
-									"id": 959,
+									"id": 857,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1706,7 +1706,7 @@
 									}
 								},
 								{
-									"id": 960,
+									"id": 858,
 									"name": "x",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1720,7 +1720,7 @@
 									}
 								},
 								{
-									"id": 961,
+									"id": 859,
 									"name": "y",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1734,7 +1734,7 @@
 									}
 								},
 								{
-									"id": 962,
+									"id": 860,
 									"name": "z",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1756,7 +1756,7 @@
 					]
 				},
 				{
-					"id": 963,
+					"id": 861,
 					"name": "scale_x",
 					"kind": 64,
 					"kindString": "Function",
@@ -1770,7 +1770,7 @@
 					],
 					"signatures": [
 						{
-							"id": 964,
+							"id": 862,
 							"name": "scale_x",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1781,7 +1781,7 @@
 							},
 							"parameters": [
 								{
-									"id": 965,
+									"id": 863,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1795,7 +1795,7 @@
 									}
 								},
 								{
-									"id": 966,
+									"id": 864,
 									"name": "x",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1817,7 +1817,7 @@
 					]
 				},
 				{
-					"id": 967,
+					"id": 865,
 					"name": "scale_y",
 					"kind": 64,
 					"kindString": "Function",
@@ -1831,7 +1831,7 @@
 					],
 					"signatures": [
 						{
-							"id": 968,
+							"id": 866,
 							"name": "scale_y",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1842,7 +1842,7 @@
 							},
 							"parameters": [
 								{
-									"id": 969,
+									"id": 867,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1856,7 +1856,7 @@
 									}
 								},
 								{
-									"id": 970,
+									"id": 868,
 									"name": "y",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1878,7 +1878,7 @@
 					]
 				},
 				{
-					"id": 971,
+					"id": 869,
 					"name": "scale_z",
 					"kind": 64,
 					"kindString": "Function",
@@ -1892,7 +1892,7 @@
 					],
 					"signatures": [
 						{
-							"id": 972,
+							"id": 870,
 							"name": "scale_z",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1903,7 +1903,7 @@
 							},
 							"parameters": [
 								{
-									"id": 973,
+									"id": 871,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1917,7 +1917,7 @@
 									}
 								},
 								{
-									"id": 974,
+									"id": 872,
 									"name": "z",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1939,7 +1939,7 @@
 					]
 				},
 				{
-					"id": 975,
+					"id": 873,
 					"name": "shape_center",
 					"kind": 64,
 					"kindString": "Function",
@@ -1953,7 +1953,7 @@
 					],
 					"signatures": [
 						{
-							"id": 976,
+							"id": 874,
 							"name": "shape_center",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1964,7 +1964,7 @@
 							},
 							"parameters": [
 								{
-									"id": 977,
+									"id": 875,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1989,7 +1989,7 @@
 					]
 				},
 				{
-					"id": 1048,
+					"id": 946,
 					"name": "shape_clone",
 					"kind": 64,
 					"kindString": "Function",
@@ -2003,7 +2003,7 @@
 					],
 					"signatures": [
 						{
-							"id": 1049,
+							"id": 947,
 							"name": "shape_clone",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -2014,7 +2014,7 @@
 							},
 							"parameters": [
 								{
-									"id": 1050,
+									"id": 948,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2028,7 +2028,7 @@
 									}
 								},
 								{
-									"id": 1051,
+									"id": 949,
 									"name": "axis",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2042,7 +2042,7 @@
 									}
 								},
 								{
-									"id": 1052,
+									"id": 950,
 									"name": "grid",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2064,7 +2064,7 @@
 					]
 				},
 				{
-					"id": 990,
+					"id": 888,
 					"name": "shape_mirror",
 					"kind": 64,
 					"kindString": "Function",
@@ -2078,7 +2078,7 @@
 					],
 					"signatures": [
 						{
-							"id": 991,
+							"id": 889,
 							"name": "shape_mirror",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -2089,7 +2089,7 @@
 							},
 							"parameters": [
 								{
-									"id": 992,
+									"id": 890,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2103,7 +2103,7 @@
 									}
 								},
 								{
-									"id": 993,
+									"id": 891,
 									"name": "x",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2117,7 +2117,7 @@
 									}
 								},
 								{
-									"id": 994,
+									"id": 892,
 									"name": "y",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2131,7 +2131,7 @@
 									}
 								},
 								{
-									"id": 995,
+									"id": 893,
 									"name": "z",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2153,7 +2153,7 @@
 					]
 				},
 				{
-					"id": 978,
+					"id": 876,
 					"name": "shape_set_center",
 					"kind": 64,
 					"kindString": "Function",
@@ -2167,7 +2167,7 @@
 					],
 					"signatures": [
 						{
-							"id": 979,
+							"id": 877,
 							"name": "shape_set_center",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -2178,7 +2178,7 @@
 							},
 							"parameters": [
 								{
-									"id": 980,
+									"id": 878,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2192,7 +2192,7 @@
 									}
 								},
 								{
-									"id": 981,
+									"id": 879,
 									"name": "x",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2206,7 +2206,7 @@
 									}
 								},
 								{
-									"id": 982,
+									"id": 880,
 									"name": "y",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2220,7 +2220,7 @@
 									}
 								},
 								{
-									"id": 983,
+									"id": 881,
 									"name": "z",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2242,7 +2242,7 @@
 					]
 				},
 				{
-					"id": 1023,
+					"id": 921,
 					"name": "stack",
 					"kind": 64,
 					"kindString": "Function",
@@ -2256,7 +2256,7 @@
 					],
 					"signatures": [
 						{
-							"id": 1024,
+							"id": 922,
 							"name": "stack",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -2267,7 +2267,7 @@
 							},
 							"parameters": [
 								{
-									"id": 1025,
+									"id": 923,
 									"name": "a",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2281,7 +2281,7 @@
 									}
 								},
 								{
-									"id": 1026,
+									"id": 924,
 									"name": "b",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2303,7 +2303,7 @@
 					]
 				},
 				{
-					"id": 935,
+					"id": 833,
 					"name": "subtract",
 					"kind": 64,
 					"kindString": "Function",
@@ -2317,7 +2317,7 @@
 					],
 					"signatures": [
 						{
-							"id": 936,
+							"id": 834,
 							"name": "subtract",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -2328,7 +2328,7 @@
 							},
 							"parameters": [
 								{
-									"id": 937,
+									"id": 835,
 									"name": "a",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2342,7 +2342,7 @@
 									}
 								},
 								{
-									"id": 938,
+									"id": 836,
 									"name": "b",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2364,7 +2364,7 @@
 					]
 				},
 				{
-					"id": 1005,
+					"id": 903,
 					"name": "translate",
 					"kind": 64,
 					"kindString": "Function",
@@ -2378,7 +2378,7 @@
 					],
 					"signatures": [
 						{
-							"id": 1006,
+							"id": 904,
 							"name": "translate",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -2389,7 +2389,7 @@
 							},
 							"parameters": [
 								{
-									"id": 1007,
+									"id": 905,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2401,7 +2401,7 @@
 									}
 								},
 								{
-									"id": 1008,
+									"id": 906,
 									"name": "x",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2415,7 +2415,7 @@
 									}
 								},
 								{
-									"id": 1009,
+									"id": 907,
 									"name": "y",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2429,7 +2429,7 @@
 									}
 								},
 								{
-									"id": 1010,
+									"id": 908,
 									"name": "z",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2451,7 +2451,7 @@
 					]
 				},
 				{
-					"id": 1011,
+					"id": 909,
 					"name": "translate_x",
 					"kind": 64,
 					"kindString": "Function",
@@ -2465,7 +2465,7 @@
 					],
 					"signatures": [
 						{
-							"id": 1012,
+							"id": 910,
 							"name": "translate_x",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -2476,7 +2476,7 @@
 							},
 							"parameters": [
 								{
-									"id": 1013,
+									"id": 911,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2488,7 +2488,7 @@
 									}
 								},
 								{
-									"id": 1014,
+									"id": 912,
 									"name": "x",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2510,7 +2510,7 @@
 					]
 				},
 				{
-					"id": 1015,
+					"id": 913,
 					"name": "translate_y",
 					"kind": 64,
 					"kindString": "Function",
@@ -2524,7 +2524,7 @@
 					],
 					"signatures": [
 						{
-							"id": 1016,
+							"id": 914,
 							"name": "translate_y",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -2535,7 +2535,7 @@
 							},
 							"parameters": [
 								{
-									"id": 1017,
+									"id": 915,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2547,7 +2547,7 @@
 									}
 								},
 								{
-									"id": 1018,
+									"id": 916,
 									"name": "y",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2569,7 +2569,7 @@
 					]
 				},
 				{
-					"id": 1019,
+					"id": 917,
 					"name": "translate_z",
 					"kind": 64,
 					"kindString": "Function",
@@ -2583,7 +2583,7 @@
 					],
 					"signatures": [
 						{
-							"id": 1020,
+							"id": 918,
 							"name": "translate_z",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -2594,7 +2594,7 @@
 							},
 							"parameters": [
 								{
-									"id": 1021,
+									"id": 919,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2606,7 +2606,7 @@
 									}
 								},
 								{
-									"id": 1022,
+									"id": 920,
 									"name": "z",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2628,7 +2628,7 @@
 					]
 				},
 				{
-					"id": 931,
+					"id": 829,
 					"name": "union",
 					"kind": 64,
 					"kindString": "Function",
@@ -2642,7 +2642,7 @@
 					],
 					"signatures": [
 						{
-							"id": 932,
+							"id": 830,
 							"name": "union",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -2653,7 +2653,7 @@
 							},
 							"parameters": [
 								{
-									"id": 933,
+									"id": 831,
 									"name": "a",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2667,7 +2667,7 @@
 									}
 								},
 								{
-									"id": 934,
+									"id": 832,
 									"name": "b",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2689,7 +2689,7 @@
 					]
 				},
 				{
-					"id": 987,
+					"id": 885,
 					"name": "volume",
 					"kind": 64,
 					"kindString": "Function",
@@ -2703,7 +2703,7 @@
 					],
 					"signatures": [
 						{
-							"id": 988,
+							"id": 886,
 							"name": "volume",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -2714,7 +2714,7 @@
 							},
 							"parameters": [
 								{
-									"id": 989,
+									"id": 887,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2741,56 +2741,56 @@
 					"title": "Variables",
 					"kind": 32,
 					"children": [
-						1065,
-						1073,
-						1079,
-						1075,
-						1081,
-						1067,
-						1072,
-						1074,
-						1066,
-						1070,
-						1076,
-						1082,
-						1069,
-						1084,
-						1071,
-						1080,
-						1083,
-						1068,
-						1078,
-						1077
+						963,
+						971,
+						977,
+						973,
+						979,
+						965,
+						970,
+						972,
+						964,
+						968,
+						974,
+						980,
+						967,
+						982,
+						969,
+						978,
+						981,
+						966,
+						976,
+						975
 					],
 					"categories": [
 						{
 							"title": "Colour",
 							"children": [
-								1065,
-								1073,
-								1075,
-								1067,
-								1072,
-								1074,
-								1066,
-								1070,
-								1076,
-								1069,
-								1071,
-								1068,
-								1078,
-								1077
+								963,
+								971,
+								973,
+								965,
+								970,
+								972,
+								964,
+								968,
+								974,
+								967,
+								969,
+								966,
+								976,
+								975
 							]
 						},
 						{
 							"title": "Primitive",
 							"children": [
-								1079,
-								1081,
-								1082,
-								1084,
-								1080,
-								1083
+								977,
+								979,
+								980,
+								982,
+								978,
+								981
 							]
 						}
 					]
@@ -2799,40 +2799,40 @@
 					"title": "Functions",
 					"kind": 64,
 					"children": [
-						984,
+						882,
+						841,
+						851,
+						845,
+						894,
+						897,
+						900,
+						826,
+						837,
 						943,
-						953,
-						947,
-						996,
-						999,
-						1002,
-						928,
-						939,
-						1045,
-						1053,
-						1056,
-						1062,
-						1059,
-						1027,
-						1033,
-						1037,
-						1041,
+						951,
+						954,
+						960,
 						957,
-						963,
-						967,
-						971,
-						975,
-						1048,
-						990,
-						978,
-						1023,
-						935,
-						1005,
-						1011,
-						1015,
-						1019,
+						925,
 						931,
-						987
+						935,
+						939,
+						855,
+						861,
+						865,
+						869,
+						873,
+						946,
+						888,
+						876,
+						921,
+						833,
+						903,
+						909,
+						913,
+						917,
+						829,
+						885
 					]
 				}
 			],
@@ -4898,7 +4898,7 @@
 			]
 		},
 		{
-			"id": 552,
+			"id": 450,
 			"name": "game",
 			"kind": 1,
 			"kindString": "Module",
@@ -4928,7 +4928,7 @@
 			"originalName": "game/functions",
 			"children": [
 				{
-					"id": 645,
+					"id": 543,
 					"name": "add",
 					"kind": 64,
 					"kindString": "Function",
@@ -4942,7 +4942,7 @@
 					],
 					"signatures": [
 						{
-							"id": 646,
+							"id": 544,
 							"name": "add",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -4952,7 +4952,7 @@
 							},
 							"parameters": [
 								{
-									"id": 647,
+									"id": 545,
 									"name": "obj",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -4983,7 +4983,7 @@
 					]
 				},
 				{
-					"id": 748,
+					"id": 646,
 					"name": "add_keyboard_listener",
 					"kind": 64,
 					"kindString": "Function",
@@ -4997,7 +4997,7 @@
 					],
 					"signatures": [
 						{
-							"id": 749,
+							"id": 647,
 							"name": "add_keyboard_listener",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -5009,7 +5009,7 @@
 							},
 							"parameters": [
 								{
-									"id": 750,
+									"id": 648,
 									"name": "key",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -5032,7 +5032,7 @@
 									}
 								},
 								{
-									"id": 751,
+									"id": 649,
 									"name": "event",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -5046,7 +5046,7 @@
 									}
 								},
 								{
-									"id": 752,
+									"id": 650,
 									"name": "callback",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -5068,7 +5068,7 @@
 					]
 				},
 				{
-					"id": 743,
+					"id": 641,
 					"name": "add_listener",
 					"kind": 64,
 					"kindString": "Function",
@@ -5082,7 +5082,7 @@
 					],
 					"signatures": [
 						{
-							"id": 744,
+							"id": 642,
 							"name": "add_listener",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -5094,7 +5094,7 @@
 							},
 							"parameters": [
 								{
-									"id": 745,
+									"id": 643,
 									"name": "obj",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -5108,7 +5108,7 @@
 									}
 								},
 								{
-									"id": 746,
+									"id": 644,
 									"name": "event",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -5122,7 +5122,7 @@
 									}
 								},
 								{
-									"id": 747,
+									"id": 645,
 									"name": "callback",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -5153,7 +5153,7 @@
 					]
 				},
 				{
-					"id": 695,
+					"id": 593,
 					"name": "add_to_container",
 					"kind": 64,
 					"kindString": "Function",
@@ -5167,7 +5167,7 @@
 					],
 					"signatures": [
 						{
-							"id": 696,
+							"id": 594,
 							"name": "add_to_container",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -5178,7 +5178,7 @@
 							},
 							"parameters": [
 								{
-									"id": 697,
+									"id": 595,
 									"name": "container",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -5192,7 +5192,7 @@
 									}
 								},
 								{
-									"id": 698,
+									"id": 596,
 									"name": "obj",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -5223,7 +5223,7 @@
 					]
 				},
 				{
-					"id": 739,
+					"id": 637,
 					"name": "add_tween",
 					"kind": 64,
 					"kindString": "Function",
@@ -5237,7 +5237,7 @@
 					],
 					"signatures": [
 						{
-							"id": 740,
+							"id": 638,
 							"name": "add_tween",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -5248,7 +5248,7 @@
 							},
 							"parameters": [
 								{
-									"id": 741,
+									"id": 639,
 									"name": "obj",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -5262,7 +5262,7 @@
 									}
 								},
 								{
-									"id": 742,
+									"id": 640,
 									"name": "config",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -5300,7 +5300,7 @@
 					]
 				},
 				{
-					"id": 652,
+					"id": 550,
 					"name": "create_anim",
 					"kind": 64,
 					"kindString": "Function",
@@ -5314,7 +5314,7 @@
 					],
 					"signatures": [
 						{
-							"id": 653,
+							"id": 551,
 							"name": "create_anim",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -5326,7 +5326,7 @@
 							},
 							"parameters": [
 								{
-									"id": 654,
+									"id": 552,
 									"name": "anim_config",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -5346,7 +5346,7 @@
 					]
 				},
 				{
-					"id": 598,
+					"id": 496,
 					"name": "create_anim_config",
 					"kind": 64,
 					"kindString": "Function",
@@ -5360,7 +5360,7 @@
 					],
 					"signatures": [
 						{
-							"id": 599,
+							"id": 497,
 							"name": "create_anim_config",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -5372,7 +5372,7 @@
 							},
 							"parameters": [
 								{
-									"id": 600,
+									"id": 498,
 									"name": "anims_key",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -5386,7 +5386,7 @@
 									}
 								},
 								{
-									"id": 601,
+									"id": 499,
 									"name": "anim_frames",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -5403,7 +5403,7 @@
 									}
 								},
 								{
-									"id": 602,
+									"id": 500,
 									"name": "frame_rate",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -5418,7 +5418,7 @@
 									"defaultValue": "24"
 								},
 								{
-									"id": 603,
+									"id": 501,
 									"name": "duration",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -5433,7 +5433,7 @@
 									"defaultValue": "null"
 								},
 								{
-									"id": 604,
+									"id": 502,
 									"name": "repeat",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -5448,7 +5448,7 @@
 									"defaultValue": "-1"
 								},
 								{
-									"id": 605,
+									"id": 503,
 									"name": "yoyo",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -5463,7 +5463,7 @@
 									"defaultValue": "false"
 								},
 								{
-									"id": 606,
+									"id": 504,
 									"name": "show_on_start",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -5478,7 +5478,7 @@
 									"defaultValue": "true"
 								},
 								{
-									"id": 607,
+									"id": 505,
 									"name": "hide_on_complete",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -5501,7 +5501,7 @@
 					]
 				},
 				{
-					"id": 608,
+					"id": 506,
 					"name": "create_anim_frame_config",
 					"kind": 64,
 					"kindString": "Function",
@@ -5515,7 +5515,7 @@
 					],
 					"signatures": [
 						{
-							"id": 609,
+							"id": 507,
 							"name": "create_anim_frame_config",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -5527,7 +5527,7 @@
 							},
 							"parameters": [
 								{
-									"id": 610,
+									"id": 508,
 									"name": "key",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -5541,7 +5541,7 @@
 									}
 								},
 								{
-									"id": 611,
+									"id": 509,
 									"name": "duration",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -5556,7 +5556,7 @@
 									"defaultValue": "0"
 								},
 								{
-									"id": 612,
+									"id": 510,
 									"name": "visible",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -5579,7 +5579,7 @@
 					]
 				},
 				{
-					"id": 613,
+					"id": 511,
 					"name": "create_anim_spritesheet_frame_configs",
 					"kind": 64,
 					"kindString": "Function",
@@ -5593,7 +5593,7 @@
 					],
 					"signatures": [
 						{
-							"id": 614,
+							"id": 512,
 							"name": "create_anim_spritesheet_frame_configs",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -5605,7 +5605,7 @@
 							},
 							"parameters": [
 								{
-									"id": 615,
+									"id": 513,
 									"name": "key",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -5639,7 +5639,7 @@
 					]
 				},
 				{
-					"id": 664,
+					"id": 562,
 					"name": "create_award",
 					"kind": 64,
 					"kindString": "Function",
@@ -5653,7 +5653,7 @@
 					],
 					"signatures": [
 						{
-							"id": 665,
+							"id": 563,
 							"name": "create_award",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -5665,7 +5665,7 @@
 							},
 							"parameters": [
 								{
-									"id": 666,
+									"id": 564,
 									"name": "x",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -5679,7 +5679,7 @@
 									}
 								},
 								{
-									"id": 667,
+									"id": 565,
 									"name": "y",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -5693,7 +5693,7 @@
 									}
 								},
 								{
-									"id": 668,
+									"id": 566,
 									"name": "award_key",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -5715,7 +5715,7 @@
 					]
 				},
 				{
-					"id": 560,
+					"id": 458,
 					"name": "create_config",
 					"kind": 64,
 					"kindString": "Function",
@@ -5729,7 +5729,7 @@
 					],
 					"signatures": [
 						{
-							"id": 561,
+							"id": 459,
 							"name": "create_config",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -5741,7 +5741,7 @@
 							},
 							"parameters": [
 								{
-									"id": 562,
+									"id": 460,
 									"name": "lst",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -5763,7 +5763,7 @@
 					]
 				},
 				{
-					"id": 691,
+					"id": 589,
 					"name": "create_container",
 					"kind": 64,
 					"kindString": "Function",
@@ -5777,7 +5777,7 @@
 					],
 					"signatures": [
 						{
-							"id": 692,
+							"id": 590,
 							"name": "create_container",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -5789,7 +5789,7 @@
 							},
 							"parameters": [
 								{
-									"id": 693,
+									"id": 591,
 									"name": "x",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -5803,7 +5803,7 @@
 									}
 								},
 								{
-									"id": 694,
+									"id": 592,
 									"name": "y",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -5825,7 +5825,7 @@
 					]
 				},
 				{
-					"id": 683,
+					"id": 581,
 					"name": "create_ellipse",
 					"kind": 64,
 					"kindString": "Function",
@@ -5839,7 +5839,7 @@
 					],
 					"signatures": [
 						{
-							"id": 684,
+							"id": 582,
 							"name": "create_ellipse",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -5850,7 +5850,7 @@
 							},
 							"parameters": [
 								{
-									"id": 685,
+									"id": 583,
 									"name": "x",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -5864,7 +5864,7 @@
 									}
 								},
 								{
-									"id": 686,
+									"id": 584,
 									"name": "y",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -5878,7 +5878,7 @@
 									}
 								},
 								{
-									"id": 687,
+									"id": 585,
 									"name": "width",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -5892,7 +5892,7 @@
 									}
 								},
 								{
-									"id": 688,
+									"id": 586,
 									"name": "height",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -5906,7 +5906,7 @@
 									}
 								},
 								{
-									"id": 689,
+									"id": 587,
 									"name": "fill",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -5921,7 +5921,7 @@
 									"defaultValue": "0"
 								},
 								{
-									"id": 690,
+									"id": 588,
 									"name": "alpha",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -5944,7 +5944,7 @@
 					]
 				},
 				{
-					"id": 659,
+					"id": 557,
 					"name": "create_image",
 					"kind": 64,
 					"kindString": "Function",
@@ -5958,7 +5958,7 @@
 					],
 					"signatures": [
 						{
-							"id": 660,
+							"id": 558,
 							"name": "create_image",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -5970,7 +5970,7 @@
 							},
 							"parameters": [
 								{
-									"id": 661,
+									"id": 559,
 									"name": "x",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -5984,7 +5984,7 @@
 									}
 								},
 								{
-									"id": 662,
+									"id": 560,
 									"name": "y",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -5998,7 +5998,7 @@
 									}
 								},
 								{
-									"id": 663,
+									"id": 561,
 									"name": "asset_key",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6029,7 +6029,7 @@
 					]
 				},
 				{
-					"id": 571,
+					"id": 469,
 					"name": "create_interactive_config",
 					"kind": 64,
 					"kindString": "Function",
@@ -6043,7 +6043,7 @@
 					],
 					"signatures": [
 						{
-							"id": 572,
+							"id": 470,
 							"name": "create_interactive_config",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -6055,7 +6055,7 @@
 							},
 							"parameters": [
 								{
-									"id": 573,
+									"id": 471,
 									"name": "draggable",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6070,7 +6070,7 @@
 									"defaultValue": "false"
 								},
 								{
-									"id": 574,
+									"id": 472,
 									"name": "use_hand_cursor",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6085,7 +6085,7 @@
 									"defaultValue": "false"
 								},
 								{
-									"id": 575,
+									"id": 473,
 									"name": "pixel_perfect",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6100,7 +6100,7 @@
 									"defaultValue": "false"
 								},
 								{
-									"id": 576,
+									"id": 474,
 									"name": "alpha_tolerance",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6123,7 +6123,7 @@
 					]
 				},
 				{
-					"id": 675,
+					"id": 573,
 					"name": "create_rect",
 					"kind": 64,
 					"kindString": "Function",
@@ -6137,7 +6137,7 @@
 					],
 					"signatures": [
 						{
-							"id": 676,
+							"id": 574,
 							"name": "create_rect",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -6149,7 +6149,7 @@
 							},
 							"parameters": [
 								{
-									"id": 677,
+									"id": 575,
 									"name": "x",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6163,7 +6163,7 @@
 									}
 								},
 								{
-									"id": 678,
+									"id": 576,
 									"name": "y",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6177,7 +6177,7 @@
 									}
 								},
 								{
-									"id": 679,
+									"id": 577,
 									"name": "width",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6191,7 +6191,7 @@
 									}
 								},
 								{
-									"id": 680,
+									"id": 578,
 									"name": "height",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6205,7 +6205,7 @@
 									}
 								},
 								{
-									"id": 681,
+									"id": 579,
 									"name": "fill",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6220,7 +6220,7 @@
 									"defaultValue": "0"
 								},
 								{
-									"id": 682,
+									"id": 580,
 									"name": "alpha",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6243,7 +6243,7 @@
 					]
 				},
 				{
-					"id": 577,
+					"id": 475,
 					"name": "create_sound_config",
 					"kind": 64,
 					"kindString": "Function",
@@ -6257,7 +6257,7 @@
 					],
 					"signatures": [
 						{
-							"id": 578,
+							"id": 476,
 							"name": "create_sound_config",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -6269,7 +6269,7 @@
 							},
 							"parameters": [
 								{
-									"id": 579,
+									"id": 477,
 									"name": "mute",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6284,7 +6284,7 @@
 									"defaultValue": "false"
 								},
 								{
-									"id": 580,
+									"id": 478,
 									"name": "volume",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6299,7 +6299,7 @@
 									"defaultValue": "1"
 								},
 								{
-									"id": 581,
+									"id": 479,
 									"name": "rate",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6314,7 +6314,7 @@
 									"defaultValue": "1"
 								},
 								{
-									"id": 582,
+									"id": 480,
 									"name": "detune",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6329,7 +6329,7 @@
 									"defaultValue": "0"
 								},
 								{
-									"id": 583,
+									"id": 481,
 									"name": "seek",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6344,7 +6344,7 @@
 									"defaultValue": "0"
 								},
 								{
-									"id": 584,
+									"id": 482,
 									"name": "loop",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6359,7 +6359,7 @@
 									"defaultValue": "false"
 								},
 								{
-									"id": 585,
+									"id": 483,
 									"name": "delay",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6382,7 +6382,7 @@
 					]
 				},
 				{
-					"id": 616,
+					"id": 514,
 					"name": "create_spritesheet_config",
 					"kind": 64,
 					"kindString": "Function",
@@ -6396,7 +6396,7 @@
 					],
 					"signatures": [
 						{
-							"id": 617,
+							"id": 515,
 							"name": "create_spritesheet_config",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -6407,7 +6407,7 @@
 							},
 							"parameters": [
 								{
-									"id": 618,
+									"id": 516,
 									"name": "frame_width",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6421,7 +6421,7 @@
 									}
 								},
 								{
-									"id": 619,
+									"id": 517,
 									"name": "frame_height",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6435,7 +6435,7 @@
 									}
 								},
 								{
-									"id": 620,
+									"id": 518,
 									"name": "start_frame",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6450,7 +6450,7 @@
 									"defaultValue": "0"
 								},
 								{
-									"id": 621,
+									"id": 519,
 									"name": "margin",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6465,7 +6465,7 @@
 									"defaultValue": "0"
 								},
 								{
-									"id": 622,
+									"id": 520,
 									"name": "spacing",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6488,7 +6488,7 @@
 					]
 				},
 				{
-					"id": 669,
+					"id": 567,
 					"name": "create_text",
 					"kind": 64,
 					"kindString": "Function",
@@ -6502,7 +6502,7 @@
 					],
 					"signatures": [
 						{
-							"id": 670,
+							"id": 568,
 							"name": "create_text",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -6514,7 +6514,7 @@
 							},
 							"parameters": [
 								{
-									"id": 671,
+									"id": 569,
 									"name": "x",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6528,7 +6528,7 @@
 									}
 								},
 								{
-									"id": 672,
+									"id": 570,
 									"name": "y",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6542,7 +6542,7 @@
 									}
 								},
 								{
-									"id": 673,
+									"id": 571,
 									"name": "text",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6556,7 +6556,7 @@
 									}
 								},
 								{
-									"id": 674,
+									"id": 572,
 									"name": "config",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6579,7 +6579,7 @@
 					]
 				},
 				{
-					"id": 563,
+					"id": 461,
 					"name": "create_text_config",
 					"kind": 64,
 					"kindString": "Function",
@@ -6593,7 +6593,7 @@
 					],
 					"signatures": [
 						{
-							"id": 564,
+							"id": 462,
 							"name": "create_text_config",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -6605,7 +6605,7 @@
 							},
 							"parameters": [
 								{
-									"id": 565,
+									"id": 463,
 									"name": "font_family",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6620,7 +6620,7 @@
 									"defaultValue": "'Courier'"
 								},
 								{
-									"id": 566,
+									"id": 464,
 									"name": "font_size",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6635,7 +6635,7 @@
 									"defaultValue": "'16px'"
 								},
 								{
-									"id": 567,
+									"id": 465,
 									"name": "color",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6650,7 +6650,7 @@
 									"defaultValue": "'#fff'"
 								},
 								{
-									"id": 568,
+									"id": 466,
 									"name": "stroke",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6665,7 +6665,7 @@
 									"defaultValue": "'#fff'"
 								},
 								{
-									"id": 569,
+									"id": 467,
 									"name": "stroke_thickness",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6680,7 +6680,7 @@
 									"defaultValue": "0"
 								},
 								{
-									"id": 570,
+									"id": 468,
 									"name": "align",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6703,7 +6703,7 @@
 					]
 				},
 				{
-					"id": 586,
+					"id": 484,
 					"name": "create_tween_config",
 					"kind": 64,
 					"kindString": "Function",
@@ -6717,7 +6717,7 @@
 					],
 					"signatures": [
 						{
-							"id": 587,
+							"id": 485,
 							"name": "create_tween_config",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -6729,7 +6729,7 @@
 							},
 							"parameters": [
 								{
-									"id": 588,
+									"id": 486,
 									"name": "target_prop",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6744,7 +6744,7 @@
 									"defaultValue": "'x'"
 								},
 								{
-									"id": 589,
+									"id": 487,
 									"name": "target_value",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6768,7 +6768,7 @@
 									"defaultValue": "0"
 								},
 								{
-									"id": 590,
+									"id": 488,
 									"name": "delay",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6783,7 +6783,7 @@
 									"defaultValue": "0"
 								},
 								{
-									"id": 591,
+									"id": 489,
 									"name": "duration",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6798,7 +6798,7 @@
 									"defaultValue": "1000"
 								},
 								{
-									"id": 592,
+									"id": 490,
 									"name": "ease",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6822,7 +6822,7 @@
 									"defaultValue": "'Power0'"
 								},
 								{
-									"id": 593,
+									"id": 491,
 									"name": "on_complete",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6836,7 +6836,7 @@
 									}
 								},
 								{
-									"id": 594,
+									"id": 492,
 									"name": "yoyo",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6851,7 +6851,7 @@
 									"defaultValue": "false"
 								},
 								{
-									"id": 595,
+									"id": 493,
 									"name": "loop",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6866,7 +6866,7 @@
 									"defaultValue": "0"
 								},
 								{
-									"id": 596,
+									"id": 494,
 									"name": "loop_delay",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6881,7 +6881,7 @@
 									"defaultValue": "0"
 								},
 								{
-									"id": 597,
+									"id": 495,
 									"name": "on_loop",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6903,7 +6903,7 @@
 					]
 				},
 				{
-					"id": 699,
+					"id": 597,
 					"name": "destroy_obj",
 					"kind": 64,
 					"kindString": "Function",
@@ -6917,7 +6917,7 @@
 					],
 					"signatures": [
 						{
-							"id": 700,
+							"id": 598,
 							"name": "destroy_obj",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -6927,7 +6927,7 @@
 							},
 							"parameters": [
 								{
-									"id": 701,
+									"id": 599,
 									"name": "obj",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6949,7 +6949,7 @@
 					]
 				},
 				{
-					"id": 629,
+					"id": 527,
 					"name": "get_screen_display_height",
 					"kind": 64,
 					"kindString": "Function",
@@ -6963,7 +6963,7 @@
 					],
 					"signatures": [
 						{
-							"id": 630,
+							"id": 528,
 							"name": "get_screen_display_height",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -6980,7 +6980,7 @@
 					]
 				},
 				{
-					"id": 627,
+					"id": 525,
 					"name": "get_screen_display_width",
 					"kind": 64,
 					"kindString": "Function",
@@ -6994,7 +6994,7 @@
 					],
 					"signatures": [
 						{
-							"id": 628,
+							"id": 526,
 							"name": "get_screen_display_width",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -7011,7 +7011,7 @@
 					]
 				},
 				{
-					"id": 625,
+					"id": 523,
 					"name": "get_screen_height",
 					"kind": 64,
 					"kindString": "Function",
@@ -7025,7 +7025,7 @@
 					],
 					"signatures": [
 						{
-							"id": 626,
+							"id": 524,
 							"name": "get_screen_height",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -7042,7 +7042,7 @@
 					]
 				},
 				{
-					"id": 623,
+					"id": 521,
 					"name": "get_screen_width",
 					"kind": 64,
 					"kindString": "Function",
@@ -7056,7 +7056,7 @@
 					],
 					"signatures": [
 						{
-							"id": 624,
+							"id": 522,
 							"name": "get_screen_width",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -7073,7 +7073,7 @@
 					]
 				},
 				{
-					"id": 631,
+					"id": 529,
 					"name": "load_image",
 					"kind": 64,
 					"kindString": "Function",
@@ -7087,7 +7087,7 @@
 					],
 					"signatures": [
 						{
-							"id": 632,
+							"id": 530,
 							"name": "load_image",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -7097,7 +7097,7 @@
 							},
 							"parameters": [
 								{
-									"id": 633,
+									"id": 531,
 									"name": "key",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -7111,7 +7111,7 @@
 									}
 								},
 								{
-									"id": 634,
+									"id": 532,
 									"name": "url",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -7133,7 +7133,7 @@
 					]
 				},
 				{
-					"id": 635,
+					"id": 533,
 					"name": "load_sound",
 					"kind": 64,
 					"kindString": "Function",
@@ -7147,7 +7147,7 @@
 					],
 					"signatures": [
 						{
-							"id": 636,
+							"id": 534,
 							"name": "load_sound",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -7157,7 +7157,7 @@
 							},
 							"parameters": [
 								{
-									"id": 637,
+									"id": 535,
 									"name": "key",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -7171,7 +7171,7 @@
 									}
 								},
 								{
-									"id": 638,
+									"id": 536,
 									"name": "url",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -7193,7 +7193,7 @@
 					]
 				},
 				{
-					"id": 639,
+					"id": 537,
 					"name": "load_spritesheet",
 					"kind": 64,
 					"kindString": "Function",
@@ -7207,7 +7207,7 @@
 					],
 					"signatures": [
 						{
-							"id": 640,
+							"id": 538,
 							"name": "load_spritesheet",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -7217,7 +7217,7 @@
 							},
 							"parameters": [
 								{
-									"id": 641,
+									"id": 539,
 									"name": "key",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -7231,7 +7231,7 @@
 									}
 								},
 								{
-									"id": 642,
+									"id": 540,
 									"name": "url",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -7245,7 +7245,7 @@
 									}
 								},
 								{
-									"id": 643,
+									"id": 541,
 									"name": "spritesheet_config",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -7262,7 +7262,7 @@
 							"type": {
 								"type": "reflection",
 								"declaration": {
-									"id": 644,
+									"id": 542,
 									"name": "__type",
 									"kind": 65536,
 									"kindString": "Type literal",
@@ -7273,7 +7273,7 @@
 					]
 				},
 				{
-					"id": 655,
+					"id": 553,
 					"name": "play_anim_on_image",
 					"kind": 64,
 					"kindString": "Function",
@@ -7287,7 +7287,7 @@
 					],
 					"signatures": [
 						{
-							"id": 656,
+							"id": 554,
 							"name": "play_anim_on_image",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -7297,7 +7297,7 @@
 							},
 							"parameters": [
 								{
-									"id": 657,
+									"id": 555,
 									"name": "image",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -7311,7 +7311,7 @@
 									}
 								},
 								{
-									"id": 658,
+									"id": 556,
 									"name": "anims_key",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -7342,7 +7342,7 @@
 					]
 				},
 				{
-					"id": 648,
+					"id": 546,
 					"name": "play_sound",
 					"kind": 64,
 					"kindString": "Function",
@@ -7356,7 +7356,7 @@
 					],
 					"signatures": [
 						{
-							"id": 649,
+							"id": 547,
 							"name": "play_sound",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -7366,7 +7366,7 @@
 							},
 							"parameters": [
 								{
-									"id": 650,
+									"id": 548,
 									"name": "key",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -7380,7 +7380,7 @@
 									}
 								},
 								{
-									"id": 651,
+									"id": 549,
 									"name": "config",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -7403,7 +7403,7 @@
 					]
 				},
 				{
-					"id": 557,
+					"id": 455,
 					"name": "prepend_remote_url",
 					"kind": 64,
 					"kindString": "Function",
@@ -7417,7 +7417,7 @@
 					],
 					"signatures": [
 						{
-							"id": 558,
+							"id": 456,
 							"name": "prepend_remote_url",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -7428,7 +7428,7 @@
 							},
 							"parameters": [
 								{
-									"id": 559,
+									"id": 457,
 									"name": "asset_key",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -7448,7 +7448,7 @@
 					]
 				},
 				{
-					"id": 753,
+					"id": 651,
 					"name": "remove_listener",
 					"kind": 64,
 					"kindString": "Function",
@@ -7462,7 +7462,7 @@
 					],
 					"signatures": [
 						{
-							"id": 754,
+							"id": 652,
 							"name": "remove_listener",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -7473,7 +7473,7 @@
 							},
 							"parameters": [
 								{
-									"id": 755,
+									"id": 653,
 									"name": "listener",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -7493,7 +7493,7 @@
 					]
 				},
 				{
-					"id": 707,
+					"id": 605,
 					"name": "set_alpha",
 					"kind": 64,
 					"kindString": "Function",
@@ -7507,7 +7507,7 @@
 					],
 					"signatures": [
 						{
-							"id": 708,
+							"id": 606,
 							"name": "set_alpha",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -7518,7 +7518,7 @@
 							},
 							"parameters": [
 								{
-									"id": 709,
+									"id": 607,
 									"name": "obj",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -7532,7 +7532,7 @@
 									}
 								},
 								{
-									"id": 710,
+									"id": 608,
 									"name": "alpha",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -7563,7 +7563,7 @@
 					]
 				},
 				{
-					"id": 702,
+					"id": 600,
 					"name": "set_display_size",
 					"kind": 64,
 					"kindString": "Function",
@@ -7577,7 +7577,7 @@
 					],
 					"signatures": [
 						{
-							"id": 703,
+							"id": 601,
 							"name": "set_display_size",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -7588,7 +7588,7 @@
 							},
 							"parameters": [
 								{
-									"id": 704,
+									"id": 602,
 									"name": "obj",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -7602,7 +7602,7 @@
 									}
 								},
 								{
-									"id": 705,
+									"id": 603,
 									"name": "x",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -7616,7 +7616,7 @@
 									}
 								},
 								{
-									"id": 706,
+									"id": 604,
 									"name": "y",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -7647,7 +7647,7 @@
 					]
 				},
 				{
-					"id": 734,
+					"id": 632,
 					"name": "set_flip",
 					"kind": 64,
 					"kindString": "Function",
@@ -7661,7 +7661,7 @@
 					],
 					"signatures": [
 						{
-							"id": 735,
+							"id": 633,
 							"name": "set_flip",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -7672,7 +7672,7 @@
 							},
 							"parameters": [
 								{
-									"id": 736,
+									"id": 634,
 									"name": "obj",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -7686,7 +7686,7 @@
 									}
 								},
 								{
-									"id": 737,
+									"id": 635,
 									"name": "x",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -7700,7 +7700,7 @@
 									}
 								},
 								{
-									"id": 738,
+									"id": 636,
 									"name": "y",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -7731,7 +7731,7 @@
 					]
 				},
 				{
-					"id": 711,
+					"id": 609,
 					"name": "set_interactive",
 					"kind": 64,
 					"kindString": "Function",
@@ -7745,7 +7745,7 @@
 					],
 					"signatures": [
 						{
-							"id": 712,
+							"id": 610,
 							"name": "set_interactive",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -7757,7 +7757,7 @@
 							},
 							"parameters": [
 								{
-									"id": 713,
+									"id": 611,
 									"name": "obj",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -7771,7 +7771,7 @@
 									}
 								},
 								{
-									"id": 714,
+									"id": 612,
 									"name": "config",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -7803,7 +7803,7 @@
 					]
 				},
 				{
-					"id": 715,
+					"id": 613,
 					"name": "set_origin",
 					"kind": 64,
 					"kindString": "Function",
@@ -7817,7 +7817,7 @@
 					],
 					"signatures": [
 						{
-							"id": 716,
+							"id": 614,
 							"name": "set_origin",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -7828,7 +7828,7 @@
 							},
 							"parameters": [
 								{
-									"id": 717,
+									"id": 615,
 									"name": "obj",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -7842,7 +7842,7 @@
 									}
 								},
 								{
-									"id": 718,
+									"id": 616,
 									"name": "x",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -7856,7 +7856,7 @@
 									}
 								},
 								{
-									"id": 719,
+									"id": 617,
 									"name": "y",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -7887,7 +7887,7 @@
 					]
 				},
 				{
-					"id": 720,
+					"id": 618,
 					"name": "set_position",
 					"kind": 64,
 					"kindString": "Function",
@@ -7901,7 +7901,7 @@
 					],
 					"signatures": [
 						{
-							"id": 721,
+							"id": 619,
 							"name": "set_position",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -7912,7 +7912,7 @@
 							},
 							"parameters": [
 								{
-									"id": 722,
+									"id": 620,
 									"name": "obj",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -7926,7 +7926,7 @@
 									}
 								},
 								{
-									"id": 723,
+									"id": 621,
 									"name": "x",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -7940,7 +7940,7 @@
 									}
 								},
 								{
-									"id": 724,
+									"id": 622,
 									"name": "y",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -7971,7 +7971,7 @@
 					]
 				},
 				{
-					"id": 730,
+					"id": 628,
 					"name": "set_rotation",
 					"kind": 64,
 					"kindString": "Function",
@@ -7985,7 +7985,7 @@
 					],
 					"signatures": [
 						{
-							"id": 731,
+							"id": 629,
 							"name": "set_rotation",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -7996,7 +7996,7 @@
 							},
 							"parameters": [
 								{
-									"id": 732,
+									"id": 630,
 									"name": "obj",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -8010,7 +8010,7 @@
 									}
 								},
 								{
-									"id": 733,
+									"id": 631,
 									"name": "rad",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -8041,7 +8041,7 @@
 					]
 				},
 				{
-					"id": 725,
+					"id": 623,
 					"name": "set_scale",
 					"kind": 64,
 					"kindString": "Function",
@@ -8055,7 +8055,7 @@
 					],
 					"signatures": [
 						{
-							"id": 726,
+							"id": 624,
 							"name": "set_scale",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -8066,7 +8066,7 @@
 							},
 							"parameters": [
 								{
-									"id": 727,
+									"id": 625,
 									"name": "obj",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -8080,7 +8080,7 @@
 									}
 								},
 								{
-									"id": 728,
+									"id": 626,
 									"name": "x",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -8094,7 +8094,7 @@
 									}
 								},
 								{
-									"id": 729,
+									"id": 627,
 									"name": "y",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -8130,47 +8130,47 @@
 					"title": "Functions",
 					"kind": 64,
 					"children": [
-						645,
-						748,
-						743,
-						695,
-						739,
-						652,
-						598,
-						608,
-						613,
-						664,
-						560,
-						691,
-						683,
-						659,
-						571,
-						675,
-						577,
-						616,
-						669,
-						563,
-						586,
-						699,
-						629,
-						627,
-						625,
-						623,
-						631,
-						635,
-						639,
-						655,
-						648,
+						543,
+						646,
+						641,
+						593,
+						637,
+						550,
+						496,
+						506,
+						511,
+						562,
+						458,
+						589,
+						581,
 						557,
-						753,
-						707,
-						702,
-						734,
-						711,
-						715,
-						720,
-						730,
-						725
+						469,
+						573,
+						475,
+						514,
+						567,
+						461,
+						484,
+						597,
+						527,
+						525,
+						523,
+						521,
+						529,
+						533,
+						537,
+						553,
+						546,
+						455,
+						651,
+						605,
+						600,
+						632,
+						609,
+						613,
+						618,
+						628,
+						623
 					]
 				}
 			],
@@ -9160,7 +9160,7 @@
 			]
 		},
 		{
-			"id": 756,
+			"id": 654,
 			"name": "rune",
 			"kind": 1,
 			"kindString": "Module",
@@ -9172,7 +9172,7 @@
 			"originalName": "rune/functions",
 			"children": [
 				{
-					"id": 891,
+					"id": 789,
 					"name": "blank",
 					"kind": 32,
 					"kindString": "Variable",
@@ -9196,7 +9196,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 897,
+					"id": 795,
 					"name": "circle",
 					"kind": 32,
 					"kindString": "Variable",
@@ -9220,7 +9220,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 895,
+					"id": 793,
 					"name": "corner",
 					"kind": 32,
 					"kindString": "Variable",
@@ -9244,7 +9244,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 898,
+					"id": 796,
 					"name": "heart",
 					"kind": 32,
 					"kindString": "Variable",
@@ -9268,7 +9268,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 896,
+					"id": 794,
 					"name": "nova",
 					"kind": 32,
 					"kindString": "Variable",
@@ -9292,7 +9292,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 899,
+					"id": 797,
 					"name": "pentagram",
 					"kind": 32,
 					"kindString": "Variable",
@@ -9316,7 +9316,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 892,
+					"id": 790,
 					"name": "rcross",
 					"kind": 32,
 					"kindString": "Variable",
@@ -9340,7 +9340,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 900,
+					"id": 798,
 					"name": "ribbon",
 					"kind": 32,
 					"kindString": "Variable",
@@ -9364,7 +9364,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 893,
+					"id": 791,
 					"name": "sail",
 					"kind": 32,
 					"kindString": "Variable",
@@ -9388,7 +9388,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 890,
+					"id": 788,
 					"name": "square",
 					"kind": 32,
 					"kindString": "Variable",
@@ -9412,7 +9412,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 894,
+					"id": 792,
 					"name": "triangle",
 					"kind": 32,
 					"kindString": "Variable",
@@ -9436,7 +9436,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 880,
+					"id": 778,
 					"name": "anaglyph",
 					"kind": 64,
 					"kindString": "Function",
@@ -9450,7 +9450,7 @@
 					],
 					"signatures": [
 						{
-							"id": 881,
+							"id": 779,
 							"name": "anaglyph",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -9461,7 +9461,7 @@
 							},
 							"parameters": [
 								{
-									"id": 882,
+									"id": 780,
 									"name": "rune",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -9483,7 +9483,7 @@
 					]
 				},
 				{
-					"id": 805,
+					"id": 703,
 					"name": "beside",
 					"kind": 64,
 					"kindString": "Function",
@@ -9497,7 +9497,7 @@
 					],
 					"signatures": [
 						{
-							"id": 806,
+							"id": 704,
 							"name": "beside",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -9508,7 +9508,7 @@
 							},
 							"parameters": [
 								{
-									"id": 807,
+									"id": 705,
 									"name": "rune1",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -9522,7 +9522,7 @@
 									}
 								},
 								{
-									"id": 808,
+									"id": 706,
 									"name": "rune2",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -9544,7 +9544,7 @@
 					]
 				},
 				{
-					"id": 800,
+					"id": 698,
 					"name": "beside_frac",
 					"kind": 64,
 					"kindString": "Function",
@@ -9558,7 +9558,7 @@
 					],
 					"signatures": [
 						{
-							"id": 801,
+							"id": 699,
 							"name": "beside_frac",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -9569,7 +9569,7 @@
 							},
 							"parameters": [
 								{
-									"id": 802,
+									"id": 700,
 									"name": "frac",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -9583,7 +9583,7 @@
 									}
 								},
 								{
-									"id": 803,
+									"id": 701,
 									"name": "rune1",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -9597,7 +9597,7 @@
 									}
 								},
 								{
-									"id": 804,
+									"id": 702,
 									"name": "rune2",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -9619,7 +9619,7 @@
 					]
 				},
 				{
-					"id": 871,
+					"id": 769,
 					"name": "black",
 					"kind": 64,
 					"kindString": "Function",
@@ -9633,7 +9633,7 @@
 					],
 					"signatures": [
 						{
-							"id": 872,
+							"id": 770,
 							"name": "black",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -9644,7 +9644,7 @@
 							},
 							"parameters": [
 								{
-									"id": 873,
+									"id": 771,
 									"name": "rune",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -9666,7 +9666,7 @@
 					]
 				},
 				{
-					"id": 856,
+					"id": 754,
 					"name": "blue",
 					"kind": 64,
 					"kindString": "Function",
@@ -9680,7 +9680,7 @@
 					],
 					"signatures": [
 						{
-							"id": 857,
+							"id": 755,
 							"name": "blue",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -9691,7 +9691,7 @@
 							},
 							"parameters": [
 								{
-									"id": 858,
+									"id": 756,
 									"name": "rune",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -9713,7 +9713,7 @@
 					]
 				},
 				{
-					"id": 868,
+					"id": 766,
 					"name": "brown",
 					"kind": 64,
 					"kindString": "Function",
@@ -9727,7 +9727,7 @@
 					],
 					"signatures": [
 						{
-							"id": 869,
+							"id": 767,
 							"name": "brown",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -9738,7 +9738,7 @@
 							},
 							"parameters": [
 								{
-									"id": 870,
+									"id": 768,
 									"name": "rune",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -9760,7 +9760,7 @@
 					]
 				},
 				{
-					"id": 835,
+					"id": 733,
 					"name": "color",
 					"kind": 64,
 					"kindString": "Function",
@@ -9774,7 +9774,7 @@
 					],
 					"signatures": [
 						{
-							"id": 836,
+							"id": 734,
 							"name": "color",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -9785,7 +9785,7 @@
 							},
 							"parameters": [
 								{
-									"id": 837,
+									"id": 735,
 									"name": "rune",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -9799,7 +9799,7 @@
 									}
 								},
 								{
-									"id": 838,
+									"id": 736,
 									"name": "r",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -9813,7 +9813,7 @@
 									}
 								},
 								{
-									"id": 839,
+									"id": 737,
 									"name": "g",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -9827,7 +9827,7 @@
 									}
 								},
 								{
-									"id": 840,
+									"id": 738,
 									"name": "b",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -9849,7 +9849,7 @@
 					]
 				},
 				{
-					"id": 812,
+					"id": 710,
 					"name": "flip_horiz",
 					"kind": 64,
 					"kindString": "Function",
@@ -9863,7 +9863,7 @@
 					],
 					"signatures": [
 						{
-							"id": 813,
+							"id": 711,
 							"name": "flip_horiz",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -9874,7 +9874,7 @@
 							},
 							"parameters": [
 								{
-									"id": 814,
+									"id": 712,
 									"name": "rune",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -9896,7 +9896,7 @@
 					]
 				},
 				{
-					"id": 809,
+					"id": 707,
 					"name": "flip_vert",
 					"kind": 64,
 					"kindString": "Function",
@@ -9910,7 +9910,7 @@
 					],
 					"signatures": [
 						{
-							"id": 810,
+							"id": 708,
 							"name": "flip_vert",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -9921,7 +9921,7 @@
 							},
 							"parameters": [
 								{
-									"id": 811,
+									"id": 709,
 									"name": "rune",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -9943,7 +9943,7 @@
 					]
 				},
 				{
-					"id": 757,
+					"id": 655,
 					"name": "from_url",
 					"kind": 64,
 					"kindString": "Function",
@@ -9957,7 +9957,7 @@
 					],
 					"signatures": [
 						{
-							"id": 758,
+							"id": 656,
 							"name": "from_url",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -9968,7 +9968,7 @@
 							},
 							"parameters": [
 								{
-									"id": 759,
+									"id": 657,
 									"name": "imageUrl",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -9990,7 +9990,7 @@
 					]
 				},
 				{
-					"id": 859,
+					"id": 757,
 					"name": "green",
 					"kind": 64,
 					"kindString": "Function",
@@ -10004,7 +10004,7 @@
 					],
 					"signatures": [
 						{
-							"id": 860,
+							"id": 758,
 							"name": "green",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -10015,7 +10015,7 @@
 							},
 							"parameters": [
 								{
-									"id": 861,
+									"id": 759,
 									"name": "rune",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -10037,7 +10037,7 @@
 					]
 				},
 				{
-					"id": 887,
+					"id": 785,
 					"name": "hollusion",
 					"kind": 64,
 					"kindString": "Function",
@@ -10051,7 +10051,7 @@
 					],
 					"signatures": [
 						{
-							"id": 888,
+							"id": 786,
 							"name": "hollusion",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -10062,7 +10062,7 @@
 							},
 							"parameters": [
 								{
-									"id": 889,
+									"id": 787,
 									"name": "rune",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -10084,7 +10084,7 @@
 					]
 				},
 				{
-					"id": 883,
+					"id": 781,
 					"name": "hollusion_magnitude",
 					"kind": 64,
 					"kindString": "Function",
@@ -10098,7 +10098,7 @@
 					],
 					"signatures": [
 						{
-							"id": 884,
+							"id": 782,
 							"name": "hollusion_magnitude",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -10109,7 +10109,7 @@
 							},
 							"parameters": [
 								{
-									"id": 885,
+									"id": 783,
 									"name": "rune",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -10123,7 +10123,7 @@
 									}
 								},
 								{
-									"id": 886,
+									"id": 784,
 									"name": "magnitude",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -10146,7 +10146,7 @@
 					]
 				},
 				{
-					"id": 853,
+					"id": 751,
 					"name": "indigo",
 					"kind": 64,
 					"kindString": "Function",
@@ -10160,7 +10160,7 @@
 					],
 					"signatures": [
 						{
-							"id": 854,
+							"id": 752,
 							"name": "indigo",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -10171,7 +10171,7 @@
 							},
 							"parameters": [
 								{
-									"id": 855,
+									"id": 753,
 									"name": "rune",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -10193,7 +10193,7 @@
 					]
 				},
 				{
-					"id": 815,
+					"id": 713,
 					"name": "make_cross",
 					"kind": 64,
 					"kindString": "Function",
@@ -10207,7 +10207,7 @@
 					],
 					"signatures": [
 						{
-							"id": 816,
+							"id": 714,
 							"name": "make_cross",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -10218,7 +10218,7 @@
 							},
 							"parameters": [
 								{
-									"id": 817,
+									"id": 715,
 									"name": "rune",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -10240,7 +10240,7 @@
 					]
 				},
 				{
-					"id": 865,
+					"id": 763,
 					"name": "orange",
 					"kind": 64,
 					"kindString": "Function",
@@ -10254,7 +10254,7 @@
 					],
 					"signatures": [
 						{
-							"id": 866,
+							"id": 764,
 							"name": "orange",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -10265,7 +10265,7 @@
 							},
 							"parameters": [
 								{
-									"id": 867,
+									"id": 765,
 									"name": "rune",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -10287,7 +10287,7 @@
 					]
 				},
 				{
-					"id": 831,
+					"id": 729,
 					"name": "overlay",
 					"kind": 64,
 					"kindString": "Function",
@@ -10301,7 +10301,7 @@
 					],
 					"signatures": [
 						{
-							"id": 832,
+							"id": 730,
 							"name": "overlay",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -10312,7 +10312,7 @@
 							},
 							"parameters": [
 								{
-									"id": 833,
+									"id": 731,
 									"name": "rune1",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -10326,7 +10326,7 @@
 									}
 								},
 								{
-									"id": 834,
+									"id": 732,
 									"name": "rune2",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -10348,7 +10348,7 @@
 					]
 				},
 				{
-					"id": 826,
+					"id": 724,
 					"name": "overlay_frac",
 					"kind": 64,
 					"kindString": "Function",
@@ -10362,7 +10362,7 @@
 					],
 					"signatures": [
 						{
-							"id": 827,
+							"id": 725,
 							"name": "overlay_frac",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -10373,7 +10373,7 @@
 							},
 							"parameters": [
 								{
-									"id": 828,
+									"id": 726,
 									"name": "frac",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -10387,7 +10387,7 @@
 									}
 								},
 								{
-									"id": 829,
+									"id": 727,
 									"name": "rune1",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -10401,7 +10401,7 @@
 									}
 								},
 								{
-									"id": 830,
+									"id": 728,
 									"name": "rune2",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -10423,7 +10423,7 @@
 					]
 				},
 				{
-					"id": 847,
+					"id": 745,
 					"name": "pink",
 					"kind": 64,
 					"kindString": "Function",
@@ -10437,7 +10437,7 @@
 					],
 					"signatures": [
 						{
-							"id": 848,
+							"id": 746,
 							"name": "pink",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -10448,7 +10448,7 @@
 							},
 							"parameters": [
 								{
-									"id": 849,
+									"id": 747,
 									"name": "rune",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -10470,7 +10470,7 @@
 					]
 				},
 				{
-					"id": 850,
+					"id": 748,
 					"name": "purple",
 					"kind": 64,
 					"kindString": "Function",
@@ -10484,7 +10484,7 @@
 					],
 					"signatures": [
 						{
-							"id": 851,
+							"id": 749,
 							"name": "purple",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -10495,7 +10495,7 @@
 							},
 							"parameters": [
 								{
-									"id": 852,
+									"id": 750,
 									"name": "rune",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -10517,7 +10517,7 @@
 					]
 				},
 				{
-					"id": 794,
+					"id": 692,
 					"name": "quarter_turn_left",
 					"kind": 64,
 					"kindString": "Function",
@@ -10531,7 +10531,7 @@
 					],
 					"signatures": [
 						{
-							"id": 795,
+							"id": 693,
 							"name": "quarter_turn_left",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -10542,7 +10542,7 @@
 							},
 							"parameters": [
 								{
-									"id": 796,
+									"id": 694,
 									"name": "rune",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -10564,7 +10564,7 @@
 					]
 				},
 				{
-					"id": 791,
+					"id": 689,
 					"name": "quarter_turn_right",
 					"kind": 64,
 					"kindString": "Function",
@@ -10578,7 +10578,7 @@
 					],
 					"signatures": [
 						{
-							"id": 792,
+							"id": 690,
 							"name": "quarter_turn_right",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -10589,7 +10589,7 @@
 							},
 							"parameters": [
 								{
-									"id": 793,
+									"id": 691,
 									"name": "rune",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -10611,7 +10611,7 @@
 					]
 				},
 				{
-					"id": 841,
+					"id": 739,
 					"name": "random_color",
 					"kind": 64,
 					"kindString": "Function",
@@ -10625,7 +10625,7 @@
 					],
 					"signatures": [
 						{
-							"id": 842,
+							"id": 740,
 							"name": "random_color",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -10636,7 +10636,7 @@
 							},
 							"parameters": [
 								{
-									"id": 843,
+									"id": 741,
 									"name": "rune",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -10658,7 +10658,7 @@
 					]
 				},
 				{
-					"id": 844,
+					"id": 742,
 					"name": "red",
 					"kind": 64,
 					"kindString": "Function",
@@ -10672,7 +10672,7 @@
 					],
 					"signatures": [
 						{
-							"id": 845,
+							"id": 743,
 							"name": "red",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -10683,7 +10683,7 @@
 							},
 							"parameters": [
 								{
-									"id": 846,
+									"id": 744,
 									"name": "rune",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -10705,7 +10705,7 @@
 					]
 				},
 				{
-					"id": 818,
+					"id": 716,
 					"name": "repeat_pattern",
 					"kind": 64,
 					"kindString": "Function",
@@ -10719,7 +10719,7 @@
 					],
 					"signatures": [
 						{
-							"id": 819,
+							"id": 717,
 							"name": "repeat_pattern",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -10730,7 +10730,7 @@
 							},
 							"parameters": [
 								{
-									"id": 820,
+									"id": 718,
 									"name": "n",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -10744,7 +10744,7 @@
 									}
 								},
 								{
-									"id": 821,
+									"id": 719,
 									"name": "pattern",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -10755,7 +10755,7 @@
 									"type": {
 										"type": "reflection",
 										"declaration": {
-											"id": 822,
+											"id": 720,
 											"name": "__type",
 											"kind": 65536,
 											"kindString": "Type literal",
@@ -10769,14 +10769,14 @@
 											],
 											"signatures": [
 												{
-													"id": 823,
+													"id": 721,
 													"name": "__type",
 													"kind": 4096,
 													"kindString": "Call signature",
 													"flags": {},
 													"parameters": [
 														{
-															"id": 824,
+															"id": 722,
 															"name": "a",
 															"kind": 32768,
 															"kindString": "Parameter",
@@ -10797,7 +10797,7 @@
 									}
 								},
 								{
-									"id": 825,
+									"id": 723,
 									"name": "initial",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -10819,7 +10819,7 @@
 					]
 				},
 				{
-					"id": 774,
+					"id": 672,
 					"name": "rotate",
 					"kind": 64,
 					"kindString": "Function",
@@ -10833,7 +10833,7 @@
 					],
 					"signatures": [
 						{
-							"id": 775,
+							"id": 673,
 							"name": "rotate",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -10844,7 +10844,7 @@
 							},
 							"parameters": [
 								{
-									"id": 776,
+									"id": 674,
 									"name": "rad",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -10858,7 +10858,7 @@
 									}
 								},
 								{
-									"id": 777,
+									"id": 675,
 									"name": "rune",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -10880,7 +10880,7 @@
 					]
 				},
 				{
-					"id": 765,
+					"id": 663,
 					"name": "scale",
 					"kind": 64,
 					"kindString": "Function",
@@ -10894,7 +10894,7 @@
 					],
 					"signatures": [
 						{
-							"id": 766,
+							"id": 664,
 							"name": "scale",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -10905,7 +10905,7 @@
 							},
 							"parameters": [
 								{
-									"id": 767,
+									"id": 665,
 									"name": "ratio",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -10919,7 +10919,7 @@
 									}
 								},
 								{
-									"id": 768,
+									"id": 666,
 									"name": "rune",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -10941,7 +10941,7 @@
 					]
 				},
 				{
-					"id": 760,
+					"id": 658,
 					"name": "scale_independent",
 					"kind": 64,
 					"kindString": "Function",
@@ -10955,7 +10955,7 @@
 					],
 					"signatures": [
 						{
-							"id": 761,
+							"id": 659,
 							"name": "scale_independent",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -10966,7 +10966,7 @@
 							},
 							"parameters": [
 								{
-									"id": 762,
+									"id": 660,
 									"name": "ratio_x",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -10980,7 +10980,7 @@
 									}
 								},
 								{
-									"id": 763,
+									"id": 661,
 									"name": "ratio_y",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -10994,7 +10994,7 @@
 									}
 								},
 								{
-									"id": 764,
+									"id": 662,
 									"name": "rune",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -11016,7 +11016,7 @@
 					]
 				},
 				{
-					"id": 877,
+					"id": 775,
 					"name": "show",
 					"kind": 64,
 					"kindString": "Function",
@@ -11030,7 +11030,7 @@
 					],
 					"signatures": [
 						{
-							"id": 878,
+							"id": 776,
 							"name": "show",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -11041,7 +11041,7 @@
 							},
 							"parameters": [
 								{
-									"id": 879,
+									"id": 777,
 									"name": "rune",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -11063,7 +11063,7 @@
 					]
 				},
 				{
-					"id": 783,
+					"id": 681,
 					"name": "stack",
 					"kind": 64,
 					"kindString": "Function",
@@ -11077,7 +11077,7 @@
 					],
 					"signatures": [
 						{
-							"id": 784,
+							"id": 682,
 							"name": "stack",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -11088,7 +11088,7 @@
 							},
 							"parameters": [
 								{
-									"id": 785,
+									"id": 683,
 									"name": "rune1",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -11102,7 +11102,7 @@
 									}
 								},
 								{
-									"id": 786,
+									"id": 684,
 									"name": "rune2",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -11124,7 +11124,7 @@
 					]
 				},
 				{
-					"id": 778,
+					"id": 676,
 					"name": "stack_frac",
 					"kind": 64,
 					"kindString": "Function",
@@ -11138,7 +11138,7 @@
 					],
 					"signatures": [
 						{
-							"id": 779,
+							"id": 677,
 							"name": "stack_frac",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -11149,7 +11149,7 @@
 							},
 							"parameters": [
 								{
-									"id": 780,
+									"id": 678,
 									"name": "frac",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -11163,7 +11163,7 @@
 									}
 								},
 								{
-									"id": 781,
+									"id": 679,
 									"name": "rune1",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -11177,7 +11177,7 @@
 									}
 								},
 								{
-									"id": 782,
+									"id": 680,
 									"name": "rune2",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -11199,7 +11199,7 @@
 					]
 				},
 				{
-					"id": 787,
+					"id": 685,
 					"name": "stackn",
 					"kind": 64,
 					"kindString": "Function",
@@ -11213,7 +11213,7 @@
 					],
 					"signatures": [
 						{
-							"id": 788,
+							"id": 686,
 							"name": "stackn",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -11224,7 +11224,7 @@
 							},
 							"parameters": [
 								{
-									"id": 789,
+									"id": 687,
 									"name": "n",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -11238,7 +11238,7 @@
 									}
 								},
 								{
-									"id": 790,
+									"id": 688,
 									"name": "rune",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -11260,7 +11260,7 @@
 					]
 				},
 				{
-					"id": 769,
+					"id": 667,
 					"name": "translate",
 					"kind": 64,
 					"kindString": "Function",
@@ -11274,7 +11274,7 @@
 					],
 					"signatures": [
 						{
-							"id": 770,
+							"id": 668,
 							"name": "translate",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -11285,7 +11285,7 @@
 							},
 							"parameters": [
 								{
-									"id": 771,
+									"id": 669,
 									"name": "x",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -11299,7 +11299,7 @@
 									}
 								},
 								{
-									"id": 772,
+									"id": 670,
 									"name": "y",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -11313,7 +11313,7 @@
 									}
 								},
 								{
-									"id": 773,
+									"id": 671,
 									"name": "rune",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -11335,7 +11335,7 @@
 					]
 				},
 				{
-					"id": 797,
+					"id": 695,
 					"name": "turn_upside_down",
 					"kind": 64,
 					"kindString": "Function",
@@ -11349,7 +11349,7 @@
 					],
 					"signatures": [
 						{
-							"id": 798,
+							"id": 696,
 							"name": "turn_upside_down",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -11360,7 +11360,7 @@
 							},
 							"parameters": [
 								{
-									"id": 799,
+									"id": 697,
 									"name": "rune",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -11382,7 +11382,7 @@
 					]
 				},
 				{
-					"id": 874,
+					"id": 772,
 					"name": "white",
 					"kind": 64,
 					"kindString": "Function",
@@ -11396,7 +11396,7 @@
 					],
 					"signatures": [
 						{
-							"id": 875,
+							"id": 773,
 							"name": "white",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -11407,7 +11407,7 @@
 							},
 							"parameters": [
 								{
-									"id": 876,
+									"id": 774,
 									"name": "rune",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -11429,7 +11429,7 @@
 					]
 				},
 				{
-					"id": 862,
+					"id": 760,
 					"name": "yellow",
 					"kind": 64,
 					"kindString": "Function",
@@ -11443,7 +11443,7 @@
 					],
 					"signatures": [
 						{
-							"id": 863,
+							"id": 761,
 							"name": "yellow",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -11454,7 +11454,7 @@
 							},
 							"parameters": [
 								{
-									"id": 864,
+									"id": 762,
 									"name": "rune",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -11481,59 +11481,59 @@
 					"title": "Variables",
 					"kind": 32,
 					"children": [
-						891,
-						897,
-						895,
-						898,
-						896,
-						899,
-						892,
-						900,
-						893,
-						890,
-						894
+						789,
+						795,
+						793,
+						796,
+						794,
+						797,
+						790,
+						798,
+						791,
+						788,
+						792
 					]
 				},
 				{
 					"title": "Functions",
 					"kind": 64,
 					"children": [
-						880,
-						805,
-						800,
-						871,
-						856,
-						868,
-						835,
-						812,
-						809,
-						757,
-						859,
-						887,
-						883,
-						853,
-						815,
-						865,
-						831,
-						826,
-						847,
-						850,
-						794,
-						791,
-						841,
-						844,
-						818,
-						774,
-						765,
-						760,
-						877,
-						783,
 						778,
-						787,
+						703,
+						698,
 						769,
-						797,
-						874,
-						862
+						754,
+						766,
+						733,
+						710,
+						707,
+						655,
+						757,
+						785,
+						781,
+						751,
+						713,
+						763,
+						729,
+						724,
+						745,
+						748,
+						692,
+						689,
+						739,
+						742,
+						716,
+						672,
+						663,
+						658,
+						775,
+						681,
+						676,
+						685,
+						667,
+						695,
+						772,
+						760
 					]
 				}
 			],
@@ -11546,7 +11546,7 @@
 			]
 		},
 		{
-			"id": 414,
+			"id": 303,
 			"name": "scrabble",
 			"kind": 1,
 			"kindString": "Module",
@@ -11557,7 +11557,7 @@
 			"originalName": "scrabble/functions",
 			"children": [
 				{
-					"id": 422,
+					"id": 311,
 					"name": "scrabble_array",
 					"kind": 32,
 					"kindString": "Variable",
@@ -11584,7 +11584,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 423,
+					"id": 312,
 					"name": "scrabble_list",
 					"kind": 32,
 					"kindString": "Variable",
@@ -11608,7 +11608,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 419,
+					"id": 308,
 					"name": "arrayLength",
 					"kind": 64,
 					"kindString": "Function",
@@ -11622,14 +11622,14 @@
 					],
 					"signatures": [
 						{
-							"id": 420,
+							"id": 309,
 							"name": "arrayLength",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
 							"parameters": [
 								{
-									"id": 421,
+									"id": 310,
 									"name": "x",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -11648,7 +11648,7 @@
 					]
 				},
 				{
-					"id": 415,
+					"id": 304,
 					"name": "charAt",
 					"kind": 64,
 					"kindString": "Function",
@@ -11662,14 +11662,14 @@
 					],
 					"signatures": [
 						{
-							"id": 416,
+							"id": 305,
 							"name": "charAt",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
 							"parameters": [
 								{
-									"id": 417,
+									"id": 306,
 									"name": "s",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -11680,7 +11680,7 @@
 									}
 								},
 								{
-									"id": 418,
+									"id": 307,
 									"name": "i",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -11704,16 +11704,16 @@
 					"title": "Variables",
 					"kind": 32,
 					"children": [
-						422,
-						423
+						311,
+						312
 					]
 				},
 				{
 					"title": "Functions",
 					"kind": 64,
 					"children": [
-						419,
-						415
+						308,
+						304
 					]
 				}
 			],
@@ -13608,14 +13608,14 @@
 			]
 		},
 		{
-			"id": 901,
+			"id": 799,
 			"name": "sound_matrix/functions",
 			"kind": 1,
 			"kindString": "Module",
 			"flags": {},
 			"children": [
 				{
-					"id": 912,
+					"id": 810,
 					"name": "ToneMatrix",
 					"kind": 32,
 					"kindString": "Variable",
@@ -13632,14 +13632,14 @@
 					"type": {
 						"type": "reflection",
 						"declaration": {
-							"id": 913,
+							"id": 811,
 							"name": "__type",
 							"kind": 65536,
 							"kindString": "Type literal",
 							"flags": {},
 							"children": [
 								{
-									"id": 924,
+									"id": 822,
 									"name": "bindMatrixButtons",
 									"kind": 1024,
 									"kindString": "Property",
@@ -13647,14 +13647,14 @@
 									"type": {
 										"type": "reflection",
 										"declaration": {
-											"id": 925,
+											"id": 823,
 											"name": "__type",
 											"kind": 65536,
 											"kindString": "Type literal",
 											"flags": {},
 											"signatures": [
 												{
-													"id": 926,
+													"id": 824,
 													"name": "__type",
 													"kind": 4096,
 													"kindString": "Call signature",
@@ -13669,7 +13669,7 @@
 									}
 								},
 								{
-									"id": 918,
+									"id": 816,
 									"name": "clear_matrix",
 									"kind": 1024,
 									"kindString": "Property",
@@ -13677,14 +13677,14 @@
 									"type": {
 										"type": "reflection",
 										"declaration": {
-											"id": 919,
+											"id": 817,
 											"name": "__type",
 											"kind": 65536,
 											"kindString": "Type literal",
 											"flags": {},
 											"signatures": [
 												{
-													"id": 920,
+													"id": 818,
 													"name": "__type",
 													"kind": 4096,
 													"kindString": "Call signature",
@@ -13699,7 +13699,7 @@
 									}
 								},
 								{
-									"id": 914,
+									"id": 812,
 									"name": "initialise_matrix",
 									"kind": 1024,
 									"kindString": "Property",
@@ -13707,21 +13707,21 @@
 									"type": {
 										"type": "reflection",
 										"declaration": {
-											"id": 915,
+											"id": 813,
 											"name": "__type",
 											"kind": 65536,
 											"kindString": "Type literal",
 											"flags": {},
 											"signatures": [
 												{
-													"id": 916,
+													"id": 814,
 													"name": "__type",
 													"kind": 4096,
 													"kindString": "Call signature",
 													"flags": {},
 													"parameters": [
 														{
-															"id": 917,
+															"id": 815,
 															"name": "$container",
 															"kind": 32768,
 															"kindString": "Parameter",
@@ -13742,7 +13742,7 @@
 									}
 								},
 								{
-									"id": 921,
+									"id": 819,
 									"name": "randomise_matrix",
 									"kind": 1024,
 									"kindString": "Property",
@@ -13750,14 +13750,14 @@
 									"type": {
 										"type": "reflection",
 										"declaration": {
-											"id": 922,
+											"id": 820,
 											"name": "__type",
 											"kind": 65536,
 											"kindString": "Type literal",
 											"flags": {},
 											"signatures": [
 												{
-													"id": 923,
+													"id": 821,
 													"name": "__type",
 													"kind": 4096,
 													"kindString": "Call signature",
@@ -13777,10 +13777,10 @@
 									"title": "Properties",
 									"kind": 1024,
 									"children": [
-										924,
-										918,
-										914,
-										921
+										822,
+										816,
+										812,
+										819
 									]
 								}
 							]
@@ -13789,7 +13789,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 910,
+					"id": 808,
 					"name": "clear_all_timeout",
 					"kind": 64,
 					"kindString": "Function",
@@ -13803,7 +13803,7 @@
 					],
 					"signatures": [
 						{
-							"id": 911,
+							"id": 809,
 							"name": "clear_all_timeout",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -13816,7 +13816,7 @@
 					]
 				},
 				{
-					"id": 904,
+					"id": 802,
 					"name": "clear_matrix",
 					"kind": 64,
 					"kindString": "Function",
@@ -13830,7 +13830,7 @@
 					],
 					"signatures": [
 						{
-							"id": 905,
+							"id": 803,
 							"name": "clear_matrix",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -13843,7 +13843,7 @@
 					]
 				},
 				{
-					"id": 902,
+					"id": 800,
 					"name": "get_matrix",
 					"kind": 64,
 					"kindString": "Function",
@@ -13857,7 +13857,7 @@
 					],
 					"signatures": [
 						{
-							"id": 903,
+							"id": 801,
 							"name": "get_matrix",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -13870,7 +13870,7 @@
 					]
 				},
 				{
-					"id": 906,
+					"id": 804,
 					"name": "set_timeout",
 					"kind": 64,
 					"kindString": "Function",
@@ -13884,14 +13884,14 @@
 					],
 					"signatures": [
 						{
-							"id": 907,
+							"id": 805,
 							"name": "set_timeout",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
 							"parameters": [
 								{
-									"id": 908,
+									"id": 806,
 									"name": "f",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -13902,7 +13902,7 @@
 									}
 								},
 								{
-									"id": 909,
+									"id": 807,
 									"name": "t",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -13926,17 +13926,17 @@
 					"title": "Variables",
 					"kind": 32,
 					"children": [
-						912
+						810
 					]
 				},
 				{
 					"title": "Functions",
 					"kind": 64,
 					"children": [
-						910,
-						904,
-						902,
-						906
+						808,
+						802,
+						800,
+						804
 					]
 				}
 			],
@@ -13949,28 +13949,43 @@
 			]
 		},
 		{
-			"id": 303,
-			"name": "sounds/functions",
+			"id": 313,
+			"name": "stereo_sound",
 			"kind": 1,
 			"kindString": "Module",
 			"flags": {},
+			"comment": {
+				"shortText": "The stereo sounds library build on the sounds library by accommodating stereo sounds.\nWithin this library, all sounds are represented in stereo, with two waves, left and right.",
+				"text": "A Stereo Sound is a `pair(pair(left_wave, right_wave), duration)` where duration is the length of the sound in seconds.\nThe constructor `make_stereo_sound` and accessors `get_left_wave`, `get_right_wave`, and `get_duration` are provided.\nThe `make_sound` constructor from sounds is syntatic sugar for `make_stereo_sounds` with equal waves.\n",
+				"tags": [
+					{
+						"tag": "author",
+						"text": "Koh Shang Hui"
+					},
+					{
+						"tag": "author",
+						"text": "Samyukta Sounderraman\n"
+					}
+				]
+			},
+			"originalName": "stereo_sound/functions",
 			"children": [
 				{
-					"id": 368,
+					"id": 404,
 					"name": "adsr",
 					"kind": 64,
 					"kindString": "Function",
 					"flags": {},
 					"sources": [
 						{
-							"fileName": "sounds/functions.ts",
-							"line": 634,
+							"fileName": "stereo_sound/functions.ts",
+							"line": 830,
 							"character": 20
 						}
 					],
 					"signatures": [
 						{
-							"id": 369,
+							"id": 405,
 							"name": "adsr",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -13987,7 +14002,7 @@
 							},
 							"parameters": [
 								{
-									"id": 370,
+									"id": 406,
 									"name": "attack_ratio",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -14001,7 +14016,7 @@
 									}
 								},
 								{
-									"id": 371,
+									"id": 407,
 									"name": "decay_ratio",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -14015,7 +14030,7 @@
 									}
 								},
 								{
-									"id": 372,
+									"id": 408,
 									"name": "sustain_level",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -14029,7 +14044,7 @@
 									}
 								},
 								{
-									"id": 373,
+									"id": 409,
 									"name": "release_ratio",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -14051,21 +14066,21 @@
 					]
 				},
 				{
-					"id": 394,
+					"id": 430,
 					"name": "bell",
 					"kind": 64,
 					"kindString": "Function",
 					"flags": {},
 					"sources": [
 						{
-							"fileName": "sounds/functions.ts",
-							"line": 832,
+							"fileName": "stereo_sound/functions.ts",
+							"line": 1038,
 							"character": 20
 						}
 					],
 					"signatures": [
 						{
-							"id": 395,
+							"id": 431,
 							"name": "bell",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -14082,7 +14097,7 @@
 							},
 							"parameters": [
 								{
-									"id": 396,
+									"id": 432,
 									"name": "note",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -14096,7 +14111,74 @@
 									}
 								},
 								{
-									"id": 397,
+									"id": 433,
+									"name": "duration",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "duration in seconds"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Sound"
+							}
+						}
+					]
+				},
+				{
+					"id": 434,
+					"name": "cello",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "stereo_sound/functions.ts",
+							"line": 1060,
+							"character": 21
+						}
+					],
+					"signatures": [
+						{
+							"id": 435,
+							"name": "cello",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "returns a Sound reminiscent of a cello, playing\na given note for a given duration",
+								"returns": "Sound resulting cello Sound with given pitch and duration",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "cello(36, 5);\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 436,
+									"name": "note",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "MIDI note"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 437,
 									"name": "duration",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -14119,104 +14201,37 @@
 				},
 				{
 					"id": 398,
-					"name": "cello",
+					"name": "consecutively",
 					"kind": 64,
 					"kindString": "Function",
 					"flags": {},
 					"sources": [
 						{
-							"fileName": "sounds/functions.ts",
-							"line": 854,
-							"character": 21
+							"fileName": "stereo_sound/functions.ts",
+							"line": 764,
+							"character": 29
 						}
 					],
 					"signatures": [
 						{
 							"id": 399,
-							"name": "cello",
+							"name": "consecutively",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "returns a Sound reminiscent of a cello, playing\na given note for a given duration",
-								"returns": "Sound resulting cello Sound with given pitch and duration",
+								"shortText": "Makes a new Sound by combining the sounds in a given list\nwhere the second sound is appended to the end of the first sound,\nthe third sound is appended to the end of the second sound, and\nso on. The effect is that the sounds in the list are joined end-to-end",
+								"returns": "the combined Sound",
 								"tags": [
 									{
 										"tag": "example",
-										"text": "cello(36, 5);\n"
+										"text": "consecutively(list(sine_sound(200, 2), sine_sound(400, 3)));\n"
 									}
 								]
 							},
 							"parameters": [
 								{
 									"id": 400,
-									"name": "note",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "MIDI note"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								},
-								{
-									"id": 401,
-									"name": "duration",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "duration in seconds"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								}
-							],
-							"type": {
-								"type": "reference",
-								"name": "Sound"
-							}
-						}
-					]
-				},
-				{
-					"id": 362,
-					"name": "consecutively",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "sounds/functions.ts",
-							"line": 579,
-							"character": 29
-						}
-					],
-					"signatures": [
-						{
-							"id": 363,
-							"name": "consecutively",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "Makes a new Sound by combining the sounds in a given list\nwhere the second sound is appended to the end of the first sound,\nthe third sound is appended to the end of the second sound, and\nso on. The effect is that the sounds in the list are joined end-to-end",
-								"returns": "the combined Sound",
-								"tags": [
-									{
-										"tag": "example",
-										"text": "consecutively(list(sine_sound(200, 2), sine_sound(400, 3)));\n"
-									}
-								]
-							},
-							"parameters": [
-								{
-									"id": 364,
 									"name": "list_of_sounds",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -14238,21 +14253,21 @@
 					]
 				},
 				{
-					"id": 326,
+					"id": 344,
 					"name": "get_duration",
 					"kind": 64,
 					"kindString": "Function",
 					"flags": {},
 					"sources": [
 						{
-							"fileName": "sounds/functions.ts",
-							"line": 284,
+							"fileName": "stereo_sound/functions.ts",
+							"line": 310,
 							"character": 28
 						}
 					],
 					"signatures": [
 						{
-							"id": 327,
+							"id": 345,
 							"name": "get_duration",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -14269,7 +14284,7 @@
 							},
 							"parameters": [
 								{
-									"id": 328,
+									"id": 346,
 									"name": "sound",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -14286,1894 +14301,12 @@
 							"type": {
 								"type": "intrinsic",
 								"name": "number"
-							}
-						}
-					]
-				},
-				{
-					"id": 323,
-					"name": "get_wave",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "sounds/functions.ts",
-							"line": 273,
-							"character": 24
-						}
-					],
-					"signatures": [
-						{
-							"id": 324,
-							"name": "get_wave",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "Accesses the wave function of a given Sound.",
-								"returns": "the wave function of the Sound",
-								"tags": [
-									{
-										"tag": "example",
-										"text": "get_wave(make_sound(t => Math_sin(2 * Math_PI * 440 * t), 5)); // Returns t => Math_sin(2 * Math_PI * 440 * t)\n"
-									}
-								]
-							},
-							"parameters": [
-								{
-									"id": 325,
-									"name": "sound",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "given Sound"
-									},
-									"type": {
-										"type": "reference",
-										"name": "Sound"
-									}
-								}
-							],
-							"type": {
-								"type": "reference",
-								"name": "Wave"
-							}
-						}
-					]
-				},
-				{
-					"id": 304,
-					"name": "init_record",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "sounds/functions.ts",
-							"line": 163,
-							"character": 27
-						}
-					],
-					"signatures": [
-						{
-							"id": 305,
-							"name": "init_record",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "Initialize recording by obtaining permission\nto use the default device microphone",
-								"returns": "string \"obtaining recording permission\"\n"
-							},
-							"type": {
-								"type": "intrinsic",
-								"name": "string"
-							}
-						}
-					]
-				},
-				{
-					"id": 329,
-					"name": "is_sound",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "sounds/functions.ts",
-							"line": 295,
-							"character": 24
-						}
-					],
-					"signatures": [
-						{
-							"id": 330,
-							"name": "is_sound",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "Checks if the argument is a Sound",
-								"returns": "true if x is a Sound, false otherwise",
-								"tags": [
-									{
-										"tag": "example",
-										"text": "is_sound(make_sound(t => 0, 2)); // Returns true\n"
-									}
-								]
-							},
-							"parameters": [
-								{
-									"id": 331,
-									"name": "x",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "input to be checked"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "any"
-									}
-								}
-							],
-							"type": {
-								"type": "intrinsic",
-								"name": "boolean"
-							}
-						}
-					]
-				},
-				{
-					"id": 391,
-					"name": "letter_name_to_frequency",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "sounds/functions.ts",
-							"line": 818,
-							"character": 40
-						}
-					],
-					"signatures": [
-						{
-							"id": 392,
-							"name": "letter_name_to_frequency",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "Converts a letter name to its corresponding frequency.",
-								"returns": "the corresponding frequency",
-								"tags": [
-									{
-										"tag": "example",
-										"text": "letter_name_to_frequency(\"A4\"); // Returns 440\n"
-									}
-								]
-							},
-							"parameters": [
-								{
-									"id": 393,
-									"name": "note",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"type": {
-										"type": "intrinsic",
-										"name": "string"
-									}
-								}
-							],
-							"type": {
-								"type": "intrinsic",
-								"name": "number"
-							}
-						}
-					]
-				},
-				{
-					"id": 385,
-					"name": "letter_name_to_midi_note",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "sounds/functions.ts",
-							"line": 747,
-							"character": 40
-						}
-					],
-					"signatures": [
-						{
-							"id": 386,
-							"name": "letter_name_to_midi_note",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "Converts a letter name to its corresponding MIDI note.\nThe letter name is represented in standard pitch notation.\nExamples are \"A5\", \"Db3\", \"C#7\".\nRefer to <a href=\"https://i.imgur.com/qGQgmYr.png\">this mapping from\nletter name to midi notes.",
-								"returns": "the corresponding midi note",
-								"tags": [
-									{
-										"tag": "example",
-										"text": "letter_name_to_midi_note(\"C4\"); // Returns 60\n"
-									}
-								]
-							},
-							"parameters": [
-								{
-									"id": 387,
-									"name": "note",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"type": {
-										"type": "intrinsic",
-										"name": "string"
-									}
-								}
-							],
-							"type": {
-								"type": "intrinsic",
-								"name": "number"
-							}
-						}
-					]
-				},
-				{
-					"id": 319,
-					"name": "make_sound",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "sounds/functions.ts",
-							"line": 262,
-							"character": 26
-						}
-					],
-					"signatures": [
-						{
-							"id": 320,
-							"name": "make_sound",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "Makes a Sound with given wave function and duration.\nThe wave function is a function: number -> number\nthat takes in a non-negative input time and returns an amplitude\nbetween -1 and 1.",
-								"returns": "with wave as wave function and duration as duration",
-								"tags": [
-									{
-										"tag": "example",
-										"text": "const s = make_sound(t => Math_sin(2 * Math_PI * 440 * t), 5);\n"
-									}
-								]
-							},
-							"parameters": [
-								{
-									"id": 321,
-									"name": "wave",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "wave function of the sound"
-									},
-									"type": {
-										"type": "reference",
-										"name": "Wave"
-									}
-								},
-								{
-									"id": 322,
-									"name": "duration",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "duration of the sound"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								}
-							],
-							"type": {
-								"type": "reference",
-								"name": "Sound"
-							}
-						}
-					]
-				},
-				{
-					"id": 388,
-					"name": "midi_note_to_frequency",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "sounds/functions.ts",
-							"line": 806,
-							"character": 38
-						}
-					],
-					"signatures": [
-						{
-							"id": 389,
-							"name": "midi_note_to_frequency",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "Converts a MIDI note to its corresponding frequency.",
-								"returns": "the frequency of the MIDI note",
-								"tags": [
-									{
-										"tag": "example",
-										"text": "midi_note_to_frequency(69); // Returns 440\n"
-									}
-								]
-							},
-							"parameters": [
-								{
-									"id": 390,
-									"name": "note",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "given MIDI note"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								}
-							],
-							"type": {
-								"type": "intrinsic",
-								"name": "number"
-							}
-						}
-					]
-				},
-				{
-					"id": 340,
-					"name": "noise_sound",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "sounds/functions.ts",
-							"line": 472,
-							"character": 27
-						}
-					],
-					"signatures": [
-						{
-							"id": 341,
-							"name": "noise_sound",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "Makes a noise sound with given duration",
-								"returns": "resulting noise sound",
-								"tags": [
-									{
-										"tag": "example",
-										"text": "noise_sound(5);\n"
-									}
-								]
-							},
-							"parameters": [
-								{
-									"id": 342,
-									"name": "duration",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "the duration of the noise sound"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								}
-							],
-							"type": {
-								"type": "reference",
-								"name": "Sound"
-							}
-						}
-					]
-				},
-				{
-					"id": 380,
-					"name": "phase_mod",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "sounds/functions.ts",
-							"line": 722,
-							"character": 25
-						}
-					],
-					"signatures": [
-						{
-							"id": 381,
-							"name": "phase_mod",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "Returns a SoundTransformer which uses its argument\nto modulate the phase of a (carrier) sine wave\nof given frequency and duration with a given Sound.\nModulating with a low frequency Sound results in a vibrato effect.\nModulating with a Sound with frequencies comparable to\nthe sine wave frequency results in more complex wave forms.",
-								"returns": "function which takes in a Sound and returns a Sound",
-								"tags": [
-									{
-										"tag": "example",
-										"text": "phase_mod(440, 5, 1)(sine_sound(220, 5));\n"
-									}
-								]
-							},
-							"parameters": [
-								{
-									"id": 382,
-									"name": "freq",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "the frequency of the sine wave to be modulated"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								},
-								{
-									"id": 383,
-									"name": "duration",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "the duration of the output soud"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								},
-								{
-									"id": 384,
-									"name": "amount",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "the amount of modulation to apply to the carrier sine wave"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								}
-							],
-							"type": {
-								"type": "reference",
-								"name": "SoundTransformer"
-							}
-						}
-					]
-				},
-				{
-					"id": 402,
-					"name": "piano",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "sounds/functions.ts",
-							"line": 871,
-							"character": 21
-						}
-					],
-					"signatures": [
-						{
-							"id": 403,
-							"name": "piano",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "returns a Sound reminiscent of a piano, playing\na given note for a given duration",
-								"returns": "Sound resulting piano Sound with given pitch and duration",
-								"tags": [
-									{
-										"tag": "example",
-										"text": "piano(48, 5);\n"
-									}
-								]
-							},
-							"parameters": [
-								{
-									"id": 404,
-									"name": "note",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "MIDI note"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								},
-								{
-									"id": 405,
-									"name": "duration",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "duration in seconds"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								}
-							],
-							"type": {
-								"type": "reference",
-								"name": "Sound"
-							}
-						}
-					]
-				},
-				{
-					"id": 332,
-					"name": "play",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "sounds/functions.ts",
-							"line": 311,
-							"character": 20
-						}
-					],
-					"signatures": [
-						{
-							"id": 333,
-							"name": "play",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "Plays the given Sound using the computer’s sound device.\nThe sound is only played if no other sounds are currently being played.",
-								"returns": "the given sound",
-								"tags": [
-									{
-										"tag": "example",
-										"text": "play(sine_sound(440, 5));\n"
-									}
-								]
-							},
-							"parameters": [
-								{
-									"id": 334,
-									"name": "sound",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "the sound to play"
-									},
-									"type": {
-										"type": "reference",
-										"name": "Sound"
-									}
-								}
-							],
-							"type": {
-								"type": "reference",
-								"name": "AudioPlayed"
-							}
-						}
-					]
-				},
-				{
-					"id": 335,
-					"name": "play_concurrently",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "sounds/functions.ts",
-							"line": 397,
-							"character": 33
-						}
-					],
-					"signatures": [
-						{
-							"id": 336,
-							"name": "play_concurrently",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "Plays the given Sound using the computer’s sound device\non top of any sounds that are currently playing.",
-								"tags": [
-									{
-										"tag": "example",
-										"text": "play_concurrently(sine_sound(440, 5));\n"
-									}
-								]
-							},
-							"parameters": [
-								{
-									"id": 337,
-									"name": "sound",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "the sound to play"
-									},
-									"type": {
-										"type": "reference",
-										"name": "Sound"
-									}
-								}
-							],
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
-							}
-						}
-					]
-				},
-				{
-					"id": 306,
-					"name": "record",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "sounds/functions.ts",
-							"line": 186,
-							"character": 22
-						}
-					],
-					"signatures": [
-						{
-							"id": 307,
-							"name": "record",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "takes a <CODE>buffer</CODE> duration (in seconds) as argument, and\nreturns a nullary stop function <CODE>stop</CODE>. A call\n<CODE>stop()</CODE> returns a sound promise: a nullary function\nthat returns a sound. Example: <PRE><CODE>init_record();\nconst stop = record(0.5);\n// record after 0.5 seconds. Then in next query:\nconst promise = stop();\n// In next query, you can play the promised sound, by\n// applying the promise:\nplay(promise());</CODE></PRE>",
-								"returns": "nullary <CODE>stop</CODE> function;\n<CODE>stop()</CODE> stops the recording and\nreturns a sound promise: a nullary function that returns the recorded sound\n"
-							},
-							"parameters": [
-								{
-									"id": 308,
-									"name": "buffer",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "pause before recording, in seconds"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								}
-							],
-							"type": {
-								"type": "reflection",
-								"declaration": {
-									"id": 309,
-									"name": "__type",
-									"kind": 65536,
-									"kindString": "Type literal",
-									"flags": {},
-									"sources": [
-										{
-											"fileName": "sounds/functions.ts",
-											"line": 186,
-											"character": 39
-										}
-									],
-									"signatures": [
-										{
-											"id": 310,
-											"name": "__type",
-											"kind": 4096,
-											"kindString": "Call signature",
-											"flags": {},
-											"type": {
-												"type": "reflection",
-												"declaration": {
-													"id": 311,
-													"name": "__type",
-													"kind": 65536,
-													"kindString": "Type literal",
-													"flags": {},
-													"sources": [
-														{
-															"fileName": "sounds/functions.ts",
-															"line": 186,
-															"character": 45
-														}
-													],
-													"signatures": [
-														{
-															"id": 312,
-															"name": "__type",
-															"kind": 4096,
-															"kindString": "Call signature",
-															"flags": {},
-															"type": {
-																"type": "reference",
-																"name": "Sound"
-															}
-														}
-													]
-												}
-											}
-										}
-									]
-								}
-							}
-						}
-					]
-				},
-				{
-					"id": 313,
-					"name": "record_for",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "sounds/functions.ts",
-							"line": 219,
-							"character": 26
-						}
-					],
-					"signatures": [
-						{
-							"id": 314,
-							"name": "record_for",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "Records a sound of given <CODE>duration</CODE> in seconds, after\na <CODE>buffer</CODE> also in seconds, and\nreturns a sound promise: a nullary function\nthat returns a sound. Example: <PRE><CODE>init_record();\nconst promise = record_for(2, 0.5);\n// In next query, you can play the promised sound, by\n// applying the promise:\nplay(promise());</CODE></PRE>",
-								"returns": "<CODE>promise</CODE>: nullary function which returns the recorded sound\n"
-							},
-							"parameters": [
-								{
-									"id": 315,
-									"name": "duration",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "duration in seconds"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								},
-								{
-									"id": 316,
-									"name": "buffer",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "pause before recording, in seconds"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								}
-							],
-							"type": {
-								"type": "reflection",
-								"declaration": {
-									"id": 317,
-									"name": "__type",
-									"kind": 65536,
-									"kindString": "Type literal",
-									"flags": {},
-									"sources": [
-										{
-											"fileName": "sounds/functions.ts",
-											"line": 219,
-											"character": 61
-										}
-									],
-									"signatures": [
-										{
-											"id": 318,
-											"name": "__type",
-											"kind": 4096,
-											"kindString": "Call signature",
-											"flags": {},
-											"type": {
-												"type": "reference",
-												"name": "Sound"
-											}
-										}
-									]
-								}
-							}
-						}
-					]
-				},
-				{
-					"id": 358,
-					"name": "sawtooth_sound",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "sounds/functions.ts",
-							"line": 553,
-							"character": 30
-						}
-					],
-					"signatures": [
-						{
-							"id": 359,
-							"name": "sawtooth_sound",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "Makes a sawtooth wave sound with given frequency and duration",
-								"returns": "resulting sawtooth wave sound",
-								"tags": [
-									{
-										"tag": "example",
-										"text": "sawtooth_sound(440, 5);\n"
-									}
-								]
-							},
-							"parameters": [
-								{
-									"id": 360,
-									"name": "freq",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "the frequency of the sawtooth wave sound"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								},
-								{
-									"id": 361,
-									"name": "duration",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "the duration of the sawtooth wave sound"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								}
-							],
-							"type": {
-								"type": "reference",
-								"name": "Sound"
-							}
-						}
-					]
-				},
-				{
-					"id": 343,
-					"name": "silence_sound",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "sounds/functions.ts",
-							"line": 483,
-							"character": 29
-						}
-					],
-					"signatures": [
-						{
-							"id": 344,
-							"name": "silence_sound",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "Makes a silence sound with given duration",
-								"returns": "resulting silence sound",
-								"tags": [
-									{
-										"tag": "example",
-										"text": "silence_sound(5);\n"
-									}
-								]
-							},
-							"parameters": [
-								{
-									"id": 345,
-									"name": "duration",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "the duration of the silence sound"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								}
-							],
-							"type": {
-								"type": "reference",
-								"name": "Sound"
-							}
-						}
-					]
-				},
-				{
-					"id": 365,
-					"name": "simultaneously",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "sounds/functions.ts",
-							"line": 599,
-							"character": 30
-						}
-					],
-					"signatures": [
-						{
-							"id": 366,
-							"name": "simultaneously",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "Makes a new Sound by combining the sounds in a given list\nwhere all the sounds are overlapped on top of each other.",
-								"returns": "the combined Sound",
-								"tags": [
-									{
-										"tag": "example",
-										"text": "simultaneously(list(sine_sound(200, 2), sine_sound(400, 3)))\n"
-									}
-								]
-							},
-							"parameters": [
-								{
-									"id": 367,
-									"name": "list_of_sounds",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "given list of sounds"
-									},
-									"type": {
-										"type": "reference",
-										"name": "List"
-									}
-								}
-							],
-							"type": {
-								"type": "reference",
-								"name": "Sound"
-							}
-						}
-					]
-				},
-				{
-					"id": 346,
-					"name": "sine_sound",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "sounds/functions.ts",
-							"line": 495,
-							"character": 26
-						}
-					],
-					"signatures": [
-						{
-							"id": 347,
-							"name": "sine_sound",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "Makes a sine wave sound with given frequency and duration",
-								"returns": "resulting sine wave sound",
-								"tags": [
-									{
-										"tag": "example",
-										"text": "sine_sound(440, 5);\n"
-									}
-								]
-							},
-							"parameters": [
-								{
-									"id": 348,
-									"name": "freq",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "the frequency of the sine wave sound"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								},
-								{
-									"id": 349,
-									"name": "duration",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "the duration of the sine wave sound"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								}
-							],
-							"type": {
-								"type": "reference",
-								"name": "Sound"
-							}
-						}
-					]
-				},
-				{
-					"id": 350,
-					"name": "square_sound",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "sounds/functions.ts",
-							"line": 507,
-							"character": 28
-						}
-					],
-					"signatures": [
-						{
-							"id": 351,
-							"name": "square_sound",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "Makes a square wave sound with given frequency and duration",
-								"returns": "resulting square wave sound",
-								"tags": [
-									{
-										"tag": "example",
-										"text": "square_sound(440, 5);\n"
-									}
-								]
-							},
-							"parameters": [
-								{
-									"id": 352,
-									"name": "f",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								},
-								{
-									"id": 353,
-									"name": "duration",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "the duration of the square wave sound"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								}
-							],
-							"type": {
-								"type": "reference",
-								"name": "Sound"
-							}
-						}
-					]
-				},
-				{
-					"id": 374,
-					"name": "stacking_adsr",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "sounds/functions.ts",
-							"line": 685,
-							"character": 29
-						}
-					],
-					"signatures": [
-						{
-							"id": 375,
-							"name": "stacking_adsr",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "Returns a Sound that results from applying a list of envelopes\nto a given wave form. The wave form is a Sound generator that\ntakes a frequency and a duration as arguments and produces a\nSound with the given frequency and duration. Each envelope is\napplied to a harmonic: the first harmonic has the given frequency,\nthe second has twice the frequency, the third three times the\nfrequency etc. The harmonics are then layered simultaneously to\nproduce the resulting Sound.",
-								"returns": "Sound resulting Sound",
-								"tags": [
-									{
-										"tag": "example",
-										"text": "stacking_adsr(sine_sound, 300, 5, list(adsr(0.1, 0.3, 0.2, 0.5), adsr(0.2, 0.5, 0.6, 0.1), adsr(0.3, 0.1, 0.7, 0.3)));\n"
-									}
-								]
-							},
-							"parameters": [
-								{
-									"id": 376,
-									"name": "waveform",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "function from pair(frequency, duration) to Sound"
-									},
-									"type": {
-										"type": "reference",
-										"name": "SoundProducer"
-									}
-								},
-								{
-									"id": 377,
-									"name": "base_frequency",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "frequency of the first harmonic"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								},
-								{
-									"id": 378,
-									"name": "duration",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "duration of the produced Sound, in seconds"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								},
-								{
-									"id": 379,
-									"name": "envelopes",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "– list of envelopes, which are functions from Sound to Sound"
-									},
-									"type": {
-										"type": "reference",
-										"name": "List"
-									}
-								}
-							],
-							"type": {
-								"type": "reference",
-								"name": "Sound"
 							}
 						}
 					]
 				},
 				{
 					"id": 338,
-					"name": "stop",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "sounds/functions.ts",
-							"line": 458,
-							"character": 20
-						}
-					],
-					"signatures": [
-						{
-							"id": 339,
-							"name": "stop",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "Stops all currently playing sounds."
-							},
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
-							}
-						}
-					]
-				},
-				{
-					"id": 354,
-					"name": "triangle_sound",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "sounds/functions.ts",
-							"line": 529,
-							"character": 30
-						}
-					],
-					"signatures": [
-						{
-							"id": 355,
-							"name": "triangle_sound",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "Makes a triangle wave sound with given frequency and duration",
-								"returns": "resulting triangle wave sound",
-								"tags": [
-									{
-										"tag": "example",
-										"text": "triangle_sound(440, 5);\n"
-									}
-								]
-							},
-							"parameters": [
-								{
-									"id": 356,
-									"name": "freq",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "the frequency of the triangle wave sound"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								},
-								{
-									"id": 357,
-									"name": "duration",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "the duration of the triangle wave sound"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								}
-							],
-							"type": {
-								"type": "reference",
-								"name": "Sound"
-							}
-						}
-					]
-				},
-				{
-					"id": 406,
-					"name": "trombone",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "sounds/functions.ts",
-							"line": 888,
-							"character": 24
-						}
-					],
-					"signatures": [
-						{
-							"id": 407,
-							"name": "trombone",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "returns a Sound reminiscent of a trombone, playing\na given note for a given duration",
-								"returns": "Sound resulting trombone Sound with given pitch and duration",
-								"tags": [
-									{
-										"tag": "example",
-										"text": "trombone(60, 2);\n"
-									}
-								]
-							},
-							"parameters": [
-								{
-									"id": 408,
-									"name": "note",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "MIDI note"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								},
-								{
-									"id": 409,
-									"name": "duration",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "duration in seconds"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								}
-							],
-							"type": {
-								"type": "reference",
-								"name": "Sound"
-							}
-						}
-					]
-				},
-				{
-					"id": 410,
-					"name": "violin",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "sounds/functions.ts",
-							"line": 905,
-							"character": 22
-						}
-					],
-					"signatures": [
-						{
-							"id": 411,
-							"name": "violin",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "returns a Sound reminiscent of a violin, playing\na given note for a given duration",
-								"returns": "Sound resulting violin Sound with given pitch and duration",
-								"tags": [
-									{
-										"tag": "example",
-										"text": "violin(53, 4);\n"
-									}
-								]
-							},
-							"parameters": [
-								{
-									"id": 412,
-									"name": "note",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "MIDI note"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								},
-								{
-									"id": 413,
-									"name": "duration",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "duration in seconds"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								}
-							],
-							"type": {
-								"type": "reference",
-								"name": "Sound"
-							}
-						}
-					]
-				}
-			],
-			"groups": [
-				{
-					"title": "Functions",
-					"kind": 64,
-					"children": [
-						368,
-						394,
-						398,
-						362,
-						326,
-						323,
-						304,
-						329,
-						391,
-						385,
-						319,
-						388,
-						340,
-						380,
-						402,
-						332,
-						335,
-						306,
-						313,
-						358,
-						343,
-						365,
-						346,
-						350,
-						374,
-						338,
-						354,
-						406,
-						410
-					]
-				}
-			],
-			"sources": [
-				{
-					"fileName": "sounds/functions.ts",
-					"line": 1,
-					"character": 0
-				}
-			]
-		},
-		{
-			"id": 424,
-			"name": "stereo_sound",
-			"kind": 1,
-			"kindString": "Module",
-			"flags": {},
-			"comment": {
-				"shortText": "The stereo sounds library build on the sounds library by accommodating stereo sounds.\nWithin this library, all sounds are represented in stereo, with two waves, left and right.",
-				"text": "A Stereo Sound is a `pair(pair(left_wave, right_wave), duration)` where duration is the length of the sound in seconds.\nThe constructor `make_stereo_sound` and accessors `get_left_wave`, `get_right_wave`, and `get_duration` are provided.\nThe `make_sound` constructor from sounds is syntatic sugar for `make_stereo_sounds` with equal waves.\n",
-				"tags": [
-					{
-						"tag": "author",
-						"text": "Koh Shang Hui"
-					},
-					{
-						"tag": "author",
-						"text": "Samyukta Sounderraman\n"
-					}
-				]
-			},
-			"originalName": "stereo_sound/functions",
-			"children": [
-				{
-					"id": 506,
-					"name": "adsr",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "stereo_sound/functions.ts",
-							"line": 802,
-							"character": 20
-						}
-					],
-					"signatures": [
-						{
-							"id": 507,
-							"name": "adsr",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "Returns an envelope: a function from Sound to Sound.\nWhen the adsr envelope is applied to a Sound, it returns\na new Sound with its amplitude modified according to parameters\nThe relative amplitude increases from 0 to 1 linearly over the\nattack proportion, then decreases from 1 to sustain level over the\ndecay proportion, and remains at that level until the release\nproportion when it decays back to 0.",
-								"returns": "Envelope a function from Sound to Sound",
-								"tags": [
-									{
-										"tag": "example",
-										"text": "adsr(0.2, 0.3, 0.3, 0.1)(sound);\n"
-									}
-								]
-							},
-							"parameters": [
-								{
-									"id": 508,
-									"name": "attack_ratio",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "proportion of Sound in attack phase"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								},
-								{
-									"id": 509,
-									"name": "decay_ratio",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "proportion of Sound decay phase"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								},
-								{
-									"id": 510,
-									"name": "sustain_level",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "sustain level between 0 and 1"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								},
-								{
-									"id": 511,
-									"name": "release_ratio",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "proportion of Sound in release phase"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								}
-							],
-							"type": {
-								"type": "reference",
-								"name": "SoundTransformer"
-							}
-						}
-					]
-				},
-				{
-					"id": 532,
-					"name": "bell",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "stereo_sound/functions.ts",
-							"line": 1010,
-							"character": 20
-						}
-					],
-					"signatures": [
-						{
-							"id": 533,
-							"name": "bell",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "returns a Sound reminiscent of a bell, playing\na given note for a given duration",
-								"returns": "Sound resulting bell Sound with given pitch and duration",
-								"tags": [
-									{
-										"tag": "example",
-										"text": "bell(40, 1);\n"
-									}
-								]
-							},
-							"parameters": [
-								{
-									"id": 534,
-									"name": "note",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "MIDI note"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								},
-								{
-									"id": 535,
-									"name": "duration",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "duration in seconds"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								}
-							],
-							"type": {
-								"type": "reference",
-								"name": "Sound"
-							}
-						}
-					]
-				},
-				{
-					"id": 536,
-					"name": "cello",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "stereo_sound/functions.ts",
-							"line": 1032,
-							"character": 21
-						}
-					],
-					"signatures": [
-						{
-							"id": 537,
-							"name": "cello",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "returns a Sound reminiscent of a cello, playing\na given note for a given duration",
-								"returns": "Sound resulting cello Sound with given pitch and duration",
-								"tags": [
-									{
-										"tag": "example",
-										"text": "cello(36, 5);\n"
-									}
-								]
-							},
-							"parameters": [
-								{
-									"id": 538,
-									"name": "note",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "MIDI note"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								},
-								{
-									"id": 539,
-									"name": "duration",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "duration in seconds"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								}
-							],
-							"type": {
-								"type": "reference",
-								"name": "Sound"
-							}
-						}
-					]
-				},
-				{
-					"id": 500,
-					"name": "consecutively",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "stereo_sound/functions.ts",
-							"line": 736,
-							"character": 29
-						}
-					],
-					"signatures": [
-						{
-							"id": 501,
-							"name": "consecutively",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "Makes a new Sound by combining the sounds in a given list\nwhere the second sound is appended to the end of the first sound,\nthe third sound is appended to the end of the second sound, and\nso on. The effect is that the sounds in the list are joined end-to-end",
-								"returns": "the combined Sound",
-								"tags": [
-									{
-										"tag": "example",
-										"text": "consecutively(list(sine_sound(200, 2), sine_sound(400, 3)));\n"
-									}
-								]
-							},
-							"parameters": [
-								{
-									"id": 502,
-									"name": "list_of_sounds",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "given list of sounds"
-									},
-									"type": {
-										"type": "reference",
-										"name": "List"
-									}
-								}
-							],
-							"type": {
-								"type": "reference",
-								"name": "Sound"
-							}
-						}
-					]
-				},
-				{
-					"id": 455,
-					"name": "get_duration",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "stereo_sound/functions.ts",
-							"line": 314,
-							"character": 28
-						}
-					],
-					"signatures": [
-						{
-							"id": 456,
-							"name": "get_duration",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "Accesses the duration of a given Sound.",
-								"returns": "the duration of the Sound",
-								"tags": [
-									{
-										"tag": "example",
-										"text": "get_duration(make_sound(t => Math_sin(2 * Math_PI * 440 * t), 5)); // Returns 5\n"
-									}
-								]
-							},
-							"parameters": [
-								{
-									"id": 457,
-									"name": "sound",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "given Sound"
-									},
-									"type": {
-										"type": "reference",
-										"name": "Sound"
-									}
-								}
-							],
-							"type": {
-								"type": "intrinsic",
-								"name": "number"
-							}
-						}
-					]
-				},
-				{
-					"id": 449,
 					"name": "get_left_wave",
 					"kind": 64,
 					"kindString": "Function",
@@ -16181,13 +14314,13 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 292,
+							"line": 288,
 							"character": 29
 						}
 					],
 					"signatures": [
 						{
-							"id": 450,
+							"id": 339,
 							"name": "get_left_wave",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -16204,7 +14337,7 @@
 							},
 							"parameters": [
 								{
-									"id": 451,
+									"id": 340,
 									"name": "sound",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -16226,7 +14359,7 @@
 					]
 				},
 				{
-					"id": 452,
+					"id": 341,
 					"name": "get_right_wave",
 					"kind": 64,
 					"kindString": "Function",
@@ -16234,13 +14367,13 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 303,
+							"line": 299,
 							"character": 30
 						}
 					],
 					"signatures": [
 						{
-							"id": 453,
+							"id": 342,
 							"name": "get_right_wave",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -16257,7 +14390,7 @@
 							},
 							"parameters": [
 								{
-									"id": 454,
+									"id": 343,
 									"name": "sound",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -16279,7 +14412,7 @@
 					]
 				},
 				{
-					"id": 425,
+					"id": 314,
 					"name": "init_record",
 					"kind": 64,
 					"kindString": "Function",
@@ -16293,7 +14426,7 @@
 					],
 					"signatures": [
 						{
-							"id": 426,
+							"id": 315,
 							"name": "init_record",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -16310,7 +14443,7 @@
 					]
 				},
 				{
-					"id": 458,
+					"id": 347,
 					"name": "is_sound",
 					"kind": 64,
 					"kindString": "Function",
@@ -16318,13 +14451,13 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 325,
+							"line": 321,
 							"character": 24
 						}
 					],
 					"signatures": [
 						{
-							"id": 459,
+							"id": 348,
 							"name": "is_sound",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -16341,7 +14474,7 @@
 							},
 							"parameters": [
 								{
-									"id": 460,
+									"id": 349,
 									"name": "x",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -16363,7 +14496,7 @@
 					]
 				},
 				{
-					"id": 529,
+					"id": 427,
 					"name": "letter_name_to_frequency",
 					"kind": 64,
 					"kindString": "Function",
@@ -16371,13 +14504,13 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 996,
+							"line": 1024,
 							"character": 40
 						}
 					],
 					"signatures": [
 						{
-							"id": 530,
+							"id": 428,
 							"name": "letter_name_to_frequency",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -16394,7 +14527,7 @@
 							},
 							"parameters": [
 								{
-									"id": 531,
+									"id": 429,
 									"name": "note",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -16413,7 +14546,7 @@
 					]
 				},
 				{
-					"id": 523,
+					"id": 421,
 					"name": "letter_name_to_midi_note",
 					"kind": 64,
 					"kindString": "Function",
@@ -16421,13 +14554,13 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 925,
+							"line": 953,
 							"character": 40
 						}
 					],
 					"signatures": [
 						{
-							"id": 524,
+							"id": 422,
 							"name": "letter_name_to_midi_note",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -16444,7 +14577,7 @@
 							},
 							"parameters": [
 								{
-									"id": 525,
+									"id": 423,
 									"name": "note",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -16463,7 +14596,7 @@
 					]
 				},
 				{
-					"id": 445,
+					"id": 334,
 					"name": "make_sound",
 					"kind": 64,
 					"kindString": "Function",
@@ -16477,7 +14610,7 @@
 					],
 					"signatures": [
 						{
-							"id": 446,
+							"id": 335,
 							"name": "make_sound",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -16494,7 +14627,7 @@
 							},
 							"parameters": [
 								{
-									"id": 447,
+									"id": 336,
 									"name": "wave",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -16508,7 +14641,7 @@
 									}
 								},
 								{
-									"id": 448,
+									"id": 337,
 									"name": "duration",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -16530,7 +14663,7 @@
 					]
 				},
 				{
-					"id": 440,
+					"id": 329,
 					"name": "make_stereo_sound",
 					"kind": 64,
 					"kindString": "Function",
@@ -16544,7 +14677,7 @@
 					],
 					"signatures": [
 						{
-							"id": 441,
+							"id": 330,
 							"name": "make_stereo_sound",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -16561,7 +14694,7 @@
 							},
 							"parameters": [
 								{
-									"id": 442,
+									"id": 331,
 									"name": "left_wave",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -16575,7 +14708,7 @@
 									}
 								},
 								{
-									"id": 443,
+									"id": 332,
 									"name": "right_wave",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -16589,7 +14722,7 @@
 									}
 								},
 								{
-									"id": 444,
+									"id": 333,
 									"name": "duration",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -16611,7 +14744,7 @@
 					]
 				},
 				{
-					"id": 526,
+					"id": 424,
 					"name": "midi_note_to_frequency",
 					"kind": 64,
 					"kindString": "Function",
@@ -16619,13 +14752,13 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 984,
+							"line": 1012,
 							"character": 38
 						}
 					],
 					"signatures": [
 						{
-							"id": 527,
+							"id": 425,
 							"name": "midi_note_to_frequency",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -16642,7 +14775,7 @@
 							},
 							"parameters": [
 								{
-									"id": 528,
+									"id": 426,
 									"name": "note",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -16664,7 +14797,7 @@
 					]
 				},
 				{
-					"id": 478,
+					"id": 376,
 					"name": "noise_sound",
 					"kind": 64,
 					"kindString": "Function",
@@ -16672,13 +14805,13 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 629,
+							"line": 657,
 							"character": 27
 						}
 					],
 					"signatures": [
 						{
-							"id": 479,
+							"id": 377,
 							"name": "noise_sound",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -16695,7 +14828,7 @@
 							},
 							"parameters": [
 								{
-									"id": 480,
+									"id": 378,
 									"name": "duration",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -16717,7 +14850,7 @@
 					]
 				},
 				{
-					"id": 472,
+					"id": 370,
 					"name": "pan",
 					"kind": 64,
 					"kindString": "Function",
@@ -16725,13 +14858,13 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 569,
+							"line": 597,
 							"character": 19
 						}
 					],
 					"signatures": [
 						{
-							"id": 473,
+							"id": 371,
 							"name": "pan",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -16742,7 +14875,7 @@
 							},
 							"parameters": [
 								{
-									"id": 474,
+									"id": 372,
 									"name": "amount",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -16764,7 +14897,7 @@
 					]
 				},
 				{
-					"id": 475,
+					"id": 373,
 					"name": "pan_mod",
 					"kind": 64,
 					"kindString": "Function",
@@ -16772,13 +14905,13 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 598,
+							"line": 626,
 							"character": 23
 						}
 					],
 					"signatures": [
 						{
-							"id": 476,
+							"id": 374,
 							"name": "pan_mod",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -16789,7 +14922,7 @@
 							},
 							"parameters": [
 								{
-									"id": 477,
+									"id": 375,
 									"name": "modulator",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -16811,7 +14944,7 @@
 					]
 				},
 				{
-					"id": 518,
+					"id": 416,
 					"name": "phase_mod",
 					"kind": 64,
 					"kindString": "Function",
@@ -16819,13 +14952,13 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 895,
+							"line": 923,
 							"character": 25
 						}
 					],
 					"signatures": [
 						{
-							"id": 519,
+							"id": 417,
 							"name": "phase_mod",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -16842,7 +14975,7 @@
 							},
 							"parameters": [
 								{
-									"id": 520,
+									"id": 418,
 									"name": "freq",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -16856,7 +14989,7 @@
 									}
 								},
 								{
-									"id": 521,
+									"id": 419,
 									"name": "duration",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -16870,7 +15003,7 @@
 									}
 								},
 								{
-									"id": 522,
+									"id": 420,
 									"name": "amount",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -16892,7 +15025,7 @@
 					]
 				},
 				{
-					"id": 540,
+					"id": 438,
 					"name": "piano",
 					"kind": 64,
 					"kindString": "Function",
@@ -16900,13 +15033,13 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 1049,
+							"line": 1077,
 							"character": 21
 						}
 					],
 					"signatures": [
 						{
-							"id": 541,
+							"id": 439,
 							"name": "piano",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -16923,7 +15056,7 @@
 							},
 							"parameters": [
 								{
-									"id": 542,
+									"id": 440,
 									"name": "note",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -16937,7 +15070,7 @@
 									}
 								},
 								{
-									"id": 543,
+									"id": 441,
 									"name": "duration",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -16959,7 +15092,7 @@
 					]
 				},
 				{
-					"id": 461,
+					"id": 359,
 					"name": "play",
 					"kind": 64,
 					"kindString": "Function",
@@ -16967,13 +15100,13 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 342,
+							"line": 370,
 							"character": 20
 						}
 					],
 					"signatures": [
 						{
-							"id": 462,
+							"id": 360,
 							"name": "play",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -16990,7 +15123,7 @@
 							},
 							"parameters": [
 								{
-									"id": 463,
+									"id": 361,
 									"name": "sound",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -17012,7 +15145,7 @@
 					]
 				},
 				{
-					"id": 464,
+					"id": 362,
 					"name": "play_concurrently",
 					"kind": 64,
 					"kindString": "Function",
@@ -17020,13 +15153,13 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 452,
+							"line": 480,
 							"character": 33
 						}
 					],
 					"signatures": [
 						{
-							"id": 465,
+							"id": 363,
 							"name": "play_concurrently",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -17042,7 +15175,7 @@
 							},
 							"parameters": [
 								{
-									"id": 466,
+									"id": 364,
 									"name": "sound",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -17064,7 +15197,149 @@
 					]
 				},
 				{
-					"id": 427,
+					"id": 350,
+					"name": "play_wave",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "stereo_sound/functions.ts",
+							"line": 339,
+							"character": 25
+						}
+					],
+					"signatures": [
+						{
+							"id": 351,
+							"name": "play_wave",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Plays the given Wave using the computer’s sound device, for the duration\ngiven in seconds.\nThe sound is only played if no other sounds are currently being played.",
+								"returns": "the given sound",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "play_wave(t => math_sin(t * 3000), 5);\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 352,
+									"name": "wave",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "the wave function to play, starting at 0"
+									},
+									"type": {
+										"type": "reference",
+										"name": "Wave"
+									}
+								},
+								{
+									"id": 353,
+									"name": "duration",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "AudioPlayed"
+							}
+						}
+					]
+				},
+				{
+					"id": 354,
+					"name": "play_waves",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "stereo_sound/functions.ts",
+							"line": 354,
+							"character": 26
+						}
+					],
+					"signatures": [
+						{
+							"id": 355,
+							"name": "play_waves",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Plays the given two Waves using the computer’s sound device, for the duration\ngiven in seconds. The first Wave is for the left channel, the second for the\nright channel.\nThe sound is only played if no other sounds are currently being played.",
+								"returns": "the given sound",
+								"tags": [
+									{
+										"tag": "example",
+										"text": "play_waves(t => math_sin(t * 3000), t => math_sin(t * 6000), 5);\n"
+									}
+								]
+							},
+							"parameters": [
+								{
+									"id": 356,
+									"name": "wave1",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "the wave function to play on the left channel, starting at 0"
+									},
+									"type": {
+										"type": "reference",
+										"name": "Wave"
+									}
+								},
+								{
+									"id": 357,
+									"name": "wave2",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "the wave function to play on the right channel, starting at 0"
+									},
+									"type": {
+										"type": "reference",
+										"name": "Wave"
+									}
+								},
+								{
+									"id": 358,
+									"name": "duration",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "AudioPlayed"
+							}
+						}
+					]
+				},
+				{
+					"id": 316,
 					"name": "record",
 					"kind": 64,
 					"kindString": "Function",
@@ -17078,7 +15353,7 @@
 					],
 					"signatures": [
 						{
-							"id": 428,
+							"id": 317,
 							"name": "record",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -17089,7 +15364,7 @@
 							},
 							"parameters": [
 								{
-									"id": 429,
+									"id": 318,
 									"name": "buffer",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -17106,7 +15381,7 @@
 							"type": {
 								"type": "reflection",
 								"declaration": {
-									"id": 430,
+									"id": 319,
 									"name": "__type",
 									"kind": 65536,
 									"kindString": "Type literal",
@@ -17120,7 +15395,7 @@
 									],
 									"signatures": [
 										{
-											"id": 431,
+											"id": 320,
 											"name": "__type",
 											"kind": 4096,
 											"kindString": "Call signature",
@@ -17128,7 +15403,7 @@
 											"type": {
 												"type": "reflection",
 												"declaration": {
-													"id": 432,
+													"id": 321,
 													"name": "__type",
 													"kind": 65536,
 													"kindString": "Type literal",
@@ -17142,7 +15417,7 @@
 													],
 													"signatures": [
 														{
-															"id": 433,
+															"id": 322,
 															"name": "__type",
 															"kind": 4096,
 															"kindString": "Call signature",
@@ -17163,7 +15438,7 @@
 					]
 				},
 				{
-					"id": 434,
+					"id": 323,
 					"name": "record_for",
 					"kind": 64,
 					"kindString": "Function",
@@ -17177,7 +15452,7 @@
 					],
 					"signatures": [
 						{
-							"id": 435,
+							"id": 324,
 							"name": "record_for",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -17188,7 +15463,7 @@
 							},
 							"parameters": [
 								{
-									"id": 436,
+									"id": 325,
 									"name": "duration",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -17202,7 +15477,7 @@
 									}
 								},
 								{
-									"id": 437,
+									"id": 326,
 									"name": "buffer",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -17219,7 +15494,7 @@
 							"type": {
 								"type": "reflection",
 								"declaration": {
-									"id": 438,
+									"id": 327,
 									"name": "__type",
 									"kind": 65536,
 									"kindString": "Type literal",
@@ -17233,7 +15508,7 @@
 									],
 									"signatures": [
 										{
-											"id": 439,
+											"id": 328,
 											"name": "__type",
 											"kind": 4096,
 											"kindString": "Call signature",
@@ -17250,7 +15525,7 @@
 					]
 				},
 				{
-					"id": 496,
+					"id": 394,
 					"name": "sawtooth_sound",
 					"kind": 64,
 					"kindString": "Function",
@@ -17258,13 +15533,13 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 710,
+							"line": 738,
 							"character": 30
 						}
 					],
 					"signatures": [
 						{
-							"id": 497,
+							"id": 395,
 							"name": "sawtooth_sound",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -17281,7 +15556,7 @@
 							},
 							"parameters": [
 								{
-									"id": 498,
+									"id": 396,
 									"name": "freq",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -17295,7 +15570,7 @@
 									}
 								},
 								{
-									"id": 499,
+									"id": 397,
 									"name": "duration",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -17317,7 +15592,7 @@
 					]
 				},
 				{
-					"id": 481,
+					"id": 379,
 					"name": "silence_sound",
 					"kind": 64,
 					"kindString": "Function",
@@ -17325,13 +15600,13 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 640,
+							"line": 668,
 							"character": 29
 						}
 					],
 					"signatures": [
 						{
-							"id": 482,
+							"id": 380,
 							"name": "silence_sound",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -17348,7 +15623,7 @@
 							},
 							"parameters": [
 								{
-									"id": 483,
+									"id": 381,
 									"name": "duration",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -17370,7 +15645,7 @@
 					]
 				},
 				{
-					"id": 503,
+					"id": 401,
 					"name": "simultaneously",
 					"kind": 64,
 					"kindString": "Function",
@@ -17378,13 +15653,13 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 759,
+							"line": 787,
 							"character": 30
 						}
 					],
 					"signatures": [
 						{
-							"id": 504,
+							"id": 402,
 							"name": "simultaneously",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -17401,7 +15676,7 @@
 							},
 							"parameters": [
 								{
-									"id": 505,
+									"id": 403,
 									"name": "list_of_sounds",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -17423,7 +15698,7 @@
 					]
 				},
 				{
-					"id": 484,
+					"id": 382,
 					"name": "sine_sound",
 					"kind": 64,
 					"kindString": "Function",
@@ -17431,13 +15706,13 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 652,
+							"line": 680,
 							"character": 26
 						}
 					],
 					"signatures": [
 						{
-							"id": 485,
+							"id": 383,
 							"name": "sine_sound",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -17454,7 +15729,7 @@
 							},
 							"parameters": [
 								{
-									"id": 486,
+									"id": 384,
 									"name": "freq",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -17468,7 +15743,7 @@
 									}
 								},
 								{
-									"id": 487,
+									"id": 385,
 									"name": "duration",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -17490,7 +15765,7 @@
 					]
 				},
 				{
-					"id": 488,
+					"id": 386,
 					"name": "square_sound",
 					"kind": 64,
 					"kindString": "Function",
@@ -17498,13 +15773,13 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 664,
+							"line": 692,
 							"character": 28
 						}
 					],
 					"signatures": [
 						{
-							"id": 489,
+							"id": 387,
 							"name": "square_sound",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -17521,7 +15796,7 @@
 							},
 							"parameters": [
 								{
-									"id": 490,
+									"id": 388,
 									"name": "f",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -17532,7 +15807,7 @@
 									}
 								},
 								{
-									"id": 491,
+									"id": 389,
 									"name": "duration",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -17554,7 +15829,7 @@
 					]
 				},
 				{
-					"id": 469,
+					"id": 367,
 					"name": "squash",
 					"kind": 64,
 					"kindString": "Function",
@@ -17562,13 +15837,13 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 555,
+							"line": 583,
 							"character": 22
 						}
 					],
 					"signatures": [
 						{
-							"id": 470,
+							"id": 368,
 							"name": "squash",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -17579,7 +15854,7 @@
 							},
 							"parameters": [
 								{
-									"id": 471,
+									"id": 369,
 									"name": "sound",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -17601,7 +15876,7 @@
 					]
 				},
 				{
-					"id": 512,
+					"id": 410,
 					"name": "stacking_adsr",
 					"kind": 64,
 					"kindString": "Function",
@@ -17609,13 +15884,13 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 858,
+							"line": 886,
 							"character": 29
 						}
 					],
 					"signatures": [
 						{
-							"id": 513,
+							"id": 411,
 							"name": "stacking_adsr",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -17632,7 +15907,7 @@
 							},
 							"parameters": [
 								{
-									"id": 514,
+									"id": 412,
 									"name": "waveform",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -17646,7 +15921,7 @@
 									}
 								},
 								{
-									"id": 515,
+									"id": 413,
 									"name": "base_frequency",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -17660,7 +15935,7 @@
 									}
 								},
 								{
-									"id": 516,
+									"id": 414,
 									"name": "duration",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -17674,7 +15949,7 @@
 									}
 								},
 								{
-									"id": 517,
+									"id": 415,
 									"name": "envelopes",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -17696,7 +15971,7 @@
 					]
 				},
 				{
-					"id": 467,
+					"id": 365,
 					"name": "stop",
 					"kind": 64,
 					"kindString": "Function",
@@ -17704,13 +15979,13 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 541,
+							"line": 569,
 							"character": 20
 						}
 					],
 					"signatures": [
 						{
-							"id": 468,
+							"id": 366,
 							"name": "stop",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -17726,7 +16001,7 @@
 					]
 				},
 				{
-					"id": 492,
+					"id": 390,
 					"name": "triangle_sound",
 					"kind": 64,
 					"kindString": "Function",
@@ -17734,13 +16009,13 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 686,
+							"line": 714,
 							"character": 30
 						}
 					],
 					"signatures": [
 						{
-							"id": 493,
+							"id": 391,
 							"name": "triangle_sound",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -17757,7 +16032,7 @@
 							},
 							"parameters": [
 								{
-									"id": 494,
+									"id": 392,
 									"name": "freq",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -17771,7 +16046,7 @@
 									}
 								},
 								{
-									"id": 495,
+									"id": 393,
 									"name": "duration",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -17793,7 +16068,7 @@
 					]
 				},
 				{
-					"id": 544,
+					"id": 442,
 					"name": "trombone",
 					"kind": 64,
 					"kindString": "Function",
@@ -17801,13 +16076,13 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 1066,
+							"line": 1094,
 							"character": 24
 						}
 					],
 					"signatures": [
 						{
-							"id": 545,
+							"id": 443,
 							"name": "trombone",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -17824,7 +16099,7 @@
 							},
 							"parameters": [
 								{
-									"id": 546,
+									"id": 444,
 									"name": "note",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -17838,7 +16113,7 @@
 									}
 								},
 								{
-									"id": 547,
+									"id": 445,
 									"name": "duration",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -17860,7 +16135,7 @@
 					]
 				},
 				{
-					"id": 548,
+					"id": 446,
 					"name": "violin",
 					"kind": 64,
 					"kindString": "Function",
@@ -17868,13 +16143,13 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 1083,
+							"line": 1111,
 							"character": 22
 						}
 					],
 					"signatures": [
 						{
-							"id": 549,
+							"id": 447,
 							"name": "violin",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -17891,7 +16166,7 @@
 							},
 							"parameters": [
 								{
-									"id": 550,
+									"id": 448,
 									"name": "note",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -17905,7 +16180,7 @@
 									}
 								},
 								{
-									"id": 551,
+									"id": 449,
 									"name": "duration",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -17932,40 +16207,42 @@
 					"title": "Functions",
 					"kind": 64,
 					"children": [
-						506,
-						532,
-						536,
-						500,
-						455,
-						449,
-						452,
-						425,
-						458,
-						529,
-						523,
-						445,
-						440,
-						526,
-						478,
-						472,
-						475,
-						518,
-						540,
-						461,
-						464,
-						427,
+						404,
+						430,
 						434,
-						496,
-						481,
-						503,
-						484,
-						488,
-						469,
-						512,
-						467,
-						492,
-						544,
-						548
+						398,
+						344,
+						338,
+						341,
+						314,
+						347,
+						427,
+						421,
+						334,
+						329,
+						424,
+						376,
+						370,
+						373,
+						416,
+						438,
+						359,
+						362,
+						350,
+						354,
+						316,
+						323,
+						394,
+						379,
+						401,
+						382,
+						386,
+						367,
+						410,
+						365,
+						390,
+						442,
+						446
 					]
 				}
 			],
@@ -17984,17 +16261,16 @@
 			"kind": 1,
 			"children": [
 				61,
-				927,
+				825,
 				69,
-				552,
+				450,
 				12,
 				1,
-				756,
-				414,
-				192,
-				901,
+				654,
 				303,
-				424
+				192,
+				799,
+				313
 			]
 		}
 	]
