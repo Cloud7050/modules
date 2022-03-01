@@ -5,6 +5,7 @@
   "repository": "https://github.com/source-academy/modules.git",
   "license": "Apache-2.0",
   "scripts-info": {
+    "//NOTE": "Run `npm i npm-scripts-info -g` to install once globally, then run `npm-scripts-info` as needed to list these descriptions.",
     "module": "Add a new bundle or tab",
     "lint": "Check code for errors",
     "lint:fix": "Automatically fix lint errors",
@@ -14,19 +15,21 @@
     "serve": "Start the http-server to serve all files in the build folder with the same directory structure",
     "prepare": "Enable git hooks",
     "test": "Run unit tests",
-    "test:watch": "Watch files for changes and rerun tests related to changed files"
+    "test:watch": "Watch files for changes and rerun tests related to changed files",
+    "dev": "Run `yarn dev` to conveniently build just the modules & serve in one command, for rapid dev work / testing"
   },
   "scripts": {
     "module": "node ./scripts/templates/app.js",
     "lint": "./node_modules/.bin/eslint --config ./.eslintrc.js --ext \".ts, .tsx\" src",
     "lint:fix": "./node_modules/.bin/eslint --config ./.eslintrc.js --ext \".ts, .tsx\" src --fix",
-    "build": "yarn lint && yarn build:docs && yarn build:modules",
+    "build": "yarn lint:fix && yarn build:docs && yarn build:modules",
     "build:modules": "./node_modules/.bin/tsc && rollup --config rollup.config.js",
     "build:docs": "node ./scripts/docs/index.js",
     "serve": "http-server --cors=* -c-1 -p 8022 ./build",
     "prepare": "husky install",
     "test": "jest --verbose",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "dev": "yarn build:modules && yarn serve"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.10",
@@ -72,6 +75,8 @@
     "@blueprintjs/core": "^3.47.0",
     "@blueprintjs/icons": "^3.27.0",
     "@blueprintjs/popover2": "^0.4.0",
+    "@jscad/modeling": "^2.7.1",
+    "@jscad/regl-renderer": "^2.5.3",
     "@types/dom-mediacapture-record": "^1.0.7",
     "chalk": "^4.1.0",
     "classnames": "^2.3.1",
@@ -82,10 +87,9 @@
     "phaser": "^3.54.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "regl": "^2.1.0",
+    "tslib": "^2.3.1",
     "typedoc-default-themes": "^0.12.10"
-  },
-  "peerDependencies": {
-    "tslib": "^2.1.0"
   },
   "jest": {
     "roots": [
