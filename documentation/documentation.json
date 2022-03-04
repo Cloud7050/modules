@@ -236,7 +236,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 726,
+							"line": 727,
 							"character": 17
 						}
 					],
@@ -284,7 +284,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 744,
+							"line": 745,
 							"character": 21
 						}
 					],
@@ -452,7 +452,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 753,
+							"line": 754,
 							"character": 18
 						}
 					],
@@ -500,7 +500,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 775,
+							"line": 776,
 							"character": 20
 						}
 					],
@@ -548,7 +548,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 735,
+							"line": 736,
 							"character": 19
 						}
 					],
@@ -572,7 +572,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 762,
+							"line": 763,
 							"character": 17
 						}
 					],
@@ -722,8 +722,8 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Returns a lambda function that contains the coordinates of the bounding box.\nProvided with the axis 'x', 'y' or 'z' and value 0 for bottom and 1 for top,\nit returns the coordinates of the bounding box.",
-								"text": "For example\n````\nconst a = bounding_box(sphere);\na('x', 1); // Returns the top x coordinate of the bounding box\n````\n",
+								"shortText": "Returns a lambda function that contains the coordinates of the bounding box.\nProvided with the axis 'x', 'y' or 'z' and value 'min' for minimum and 'max'\nfor maximum, it returns the coordinates of the bounding box.",
+								"text": "For example\n````\nconst a = bounding_box(sphere);\na('x', 'min'); // Returns the maximum x coordinate of the bounding box\n````\n",
 								"returns": "A lambda function providing the\nshape's bounding box coordinates\n"
 							},
 							"parameters": [
@@ -783,8 +783,8 @@
 													"kindString": "Parameter",
 													"flags": {},
 													"type": {
-														"type": "intrinsic",
-														"name": "number"
+														"type": "reference",
+														"name": "String"
 													}
 												}
 											],
@@ -1221,7 +1221,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 626,
+							"line": 627,
 							"character": 24
 						}
 					],
@@ -1268,7 +1268,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 662,
+							"line": 663,
 							"character": 22
 						}
 					],
@@ -1315,7 +1315,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 678,
+							"line": 679,
 							"character": 27
 						}
 					],
@@ -1362,7 +1362,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 710,
+							"line": 711,
 							"character": 32
 						}
 					],
@@ -1409,7 +1409,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 694,
+							"line": 695,
 							"character": 27
 						}
 					],
@@ -1456,7 +1456,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 568,
+							"line": 569,
 							"character": 22
 						}
 					],
@@ -1545,7 +1545,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 581,
+							"line": 582,
 							"character": 24
 						}
 					],
@@ -1606,7 +1606,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 593,
+							"line": 594,
 							"character": 24
 						}
 					],
@@ -1667,7 +1667,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 605,
+							"line": 606,
 							"character": 24
 						}
 					],
