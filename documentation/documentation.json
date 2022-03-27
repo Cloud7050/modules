@@ -295,6 +295,30 @@
 					"defaultValue": "..."
 				},
 				{
+					"id": 980,
+					"name": "gray",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"comment": {
+						"shortText": "Grey attribute for colorize function"
+					},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 112,
+							"character": 17
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "RGB"
+					},
+					"defaultValue": "..."
+				},
+				{
 					"id": 975,
 					"name": "green",
 					"kind": 32,
@@ -310,30 +334,6 @@
 							"fileName": "csg/functions.ts",
 							"line": 77,
 							"character": 18
-						}
-					],
-					"type": {
-						"type": "reference",
-						"name": "RGB"
-					},
-					"defaultValue": "..."
-				},
-				{
-					"id": 980,
-					"name": "grey",
-					"kind": 32,
-					"kindString": "Variable",
-					"flags": {
-						"isConst": true
-					},
-					"comment": {
-						"shortText": "Grey attribute for colorize function"
-					},
-					"sources": [
-						{
-							"fileName": "csg/functions.ts",
-							"line": 112,
-							"character": 17
 						}
 					],
 					"type": {
@@ -2794,8 +2794,8 @@
 						987,
 						983,
 						989,
-						975,
 						980,
+						975,
 						982,
 						974,
 						978,
@@ -2817,8 +2817,8 @@
 								973,
 								981,
 								983,
-								975,
 								980,
+								975,
 								982,
 								974,
 								978,
