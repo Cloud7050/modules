@@ -223,6 +223,30 @@
 					"defaultValue": "..."
 				},
 				{
+					"id": 993,
+					"name": "cone",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"comment": {
+						"shortText": "Primitive Shape of a cone."
+					},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 851,
+							"character": 17
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "Shape"
+					},
+					"defaultValue": "..."
+				},
+				{
 					"id": 987,
 					"name": "cube",
 					"kind": 32,
@@ -2791,6 +2815,7 @@
 					"children": [
 						973,
 						981,
+						993,
 						987,
 						983,
 						989,
@@ -2833,6 +2858,7 @@
 						{
 							"title": "Primitive",
 							"children": [
+								993,
 								987,
 								989,
 								990,
