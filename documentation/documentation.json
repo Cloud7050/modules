@@ -175,7 +175,7 @@
 			"originalName": "csg/functions",
 			"children": [
 				{
-					"id": 973,
+					"id": 972,
 					"name": "black",
 					"kind": 32,
 					"kindString": "Variable",
@@ -199,7 +199,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 981,
+					"id": 980,
 					"name": "blue",
 					"kind": 32,
 					"kindString": "Variable",
@@ -223,7 +223,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 993,
+					"id": 992,
 					"name": "cone",
 					"kind": 32,
 					"kindString": "Variable",
@@ -236,7 +236,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 851,
+							"line": 854,
 							"character": 17
 						}
 					],
@@ -247,7 +247,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 987,
+					"id": 986,
 					"name": "cube",
 					"kind": 32,
 					"kindString": "Variable",
@@ -260,7 +260,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 786,
+							"line": 789,
 							"character": 17
 						}
 					],
@@ -271,7 +271,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 983,
+					"id": 982,
 					"name": "cyan",
 					"kind": 32,
 					"kindString": "Variable",
@@ -295,7 +295,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 989,
+					"id": 988,
 					"name": "cylinder",
 					"kind": 32,
 					"kindString": "Variable",
@@ -308,7 +308,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 804,
+							"line": 807,
 							"character": 21
 						}
 					],
@@ -319,7 +319,31 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 980,
+					"id": 996,
+					"name": "geodesicSphere",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"comment": {
+						"shortText": "Primitive Shape of a geodesic sphere."
+					},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 896,
+							"character": 28
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "Shape"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 979,
 					"name": "gray",
 					"kind": 32,
 					"kindString": "Variable",
@@ -343,7 +367,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 975,
+					"id": 974,
 					"name": "green",
 					"kind": 32,
 					"kindString": "Variable",
@@ -367,7 +391,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 982,
+					"id": 981,
 					"name": "lime",
 					"kind": 32,
 					"kindString": "Variable",
@@ -391,7 +415,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 974,
+					"id": 973,
 					"name": "navy",
 					"kind": 32,
 					"kindString": "Variable",
@@ -415,7 +439,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 978,
+					"id": 977,
 					"name": "orange",
 					"kind": 32,
 					"kindString": "Variable",
@@ -439,7 +463,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 984,
+					"id": 983,
 					"name": "pink",
 					"kind": 32,
 					"kindString": "Variable",
@@ -463,7 +487,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 990,
+					"id": 989,
 					"name": "prism",
 					"kind": 32,
 					"kindString": "Variable",
@@ -476,7 +500,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 813,
+							"line": 816,
 							"character": 18
 						}
 					],
@@ -487,7 +511,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 977,
+					"id": 976,
 					"name": "purple",
 					"kind": 32,
 					"kindString": "Variable",
@@ -511,7 +535,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 992,
+					"id": 991,
 					"name": "pyramid",
 					"kind": 32,
 					"kindString": "Variable",
@@ -524,7 +548,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 835,
+							"line": 838,
 							"character": 20
 						}
 					],
@@ -535,7 +559,55 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 979,
+					"id": 994,
+					"name": "roundedCube",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"comment": {
+						"shortText": "Primitive Shape of a rounded cube."
+					},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 878,
+							"character": 24
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "Shape"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 995,
+					"name": "roundedCylinder",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"comment": {
+						"shortText": "Primitive Shape of a rounded cylinder."
+					},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 887,
+							"character": 28
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "Shape"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 978,
 					"name": "silver",
 					"kind": 32,
 					"kindString": "Variable",
@@ -559,7 +631,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 988,
+					"id": 987,
 					"name": "sphere",
 					"kind": 32,
 					"kindString": "Variable",
@@ -572,7 +644,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 795,
+							"line": 798,
 							"character": 19
 						}
 					],
@@ -583,7 +655,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 991,
+					"id": 990,
 					"name": "star",
 					"kind": 32,
 					"kindString": "Variable",
@@ -596,7 +668,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 822,
+							"line": 825,
 							"character": 17
 						}
 					],
@@ -607,7 +679,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 976,
+					"id": 975,
 					"name": "teal",
 					"kind": 32,
 					"kindString": "Variable",
@@ -631,7 +703,31 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 986,
+					"id": 993,
+					"name": "torus",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"comment": {
+						"shortText": "Primitive Shape of a torus."
+					},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 869,
+							"character": 18
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "Shape"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 985,
 					"name": "white",
 					"kind": 32,
 					"kindString": "Variable",
@@ -655,7 +751,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 985,
+					"id": 984,
 					"name": "yellow",
 					"kind": 32,
 					"kindString": "Variable",
@@ -679,7 +775,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 888,
+					"id": 887,
 					"name": "area",
 					"kind": 64,
 					"kindString": "Function",
@@ -693,7 +789,7 @@
 					],
 					"signatures": [
 						{
-							"id": 889,
+							"id": 888,
 							"name": "area",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -704,7 +800,7 @@
 							},
 							"parameters": [
 								{
-									"id": 890,
+									"id": 889,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -726,7 +822,7 @@
 					]
 				},
 				{
-					"id": 921,
+					"id": 920,
 					"name": "beside_x",
 					"kind": 64,
 					"kindString": "Function",
@@ -740,7 +836,7 @@
 					],
 					"signatures": [
 						{
-							"id": 922,
+							"id": 921,
 							"name": "beside_x",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -751,7 +847,7 @@
 							},
 							"parameters": [
 								{
-									"id": 923,
+									"id": 922,
 									"name": "a",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -765,7 +861,7 @@
 									}
 								},
 								{
-									"id": 924,
+									"id": 923,
 									"name": "b",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -787,7 +883,7 @@
 					]
 				},
 				{
-					"id": 925,
+					"id": 924,
 					"name": "beside_y",
 					"kind": 64,
 					"kindString": "Function",
@@ -801,7 +897,7 @@
 					],
 					"signatures": [
 						{
-							"id": 926,
+							"id": 925,
 							"name": "beside_y",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -812,7 +908,7 @@
 							},
 							"parameters": [
 								{
-									"id": 927,
+									"id": 926,
 									"name": "a",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -826,7 +922,7 @@
 									}
 								},
 								{
-									"id": 928,
+									"id": 927,
 									"name": "b",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -848,7 +944,7 @@
 					]
 				},
 				{
-					"id": 929,
+					"id": 928,
 					"name": "beside_z",
 					"kind": 64,
 					"kindString": "Function",
@@ -862,7 +958,7 @@
 					],
 					"signatures": [
 						{
-							"id": 930,
+							"id": 929,
 							"name": "beside_z",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -873,7 +969,7 @@
 							},
 							"parameters": [
 								{
-									"id": 931,
+									"id": 930,
 									"name": "a",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -887,7 +983,7 @@
 									}
 								},
 								{
-									"id": 932,
+									"id": 931,
 									"name": "b",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -909,7 +1005,7 @@
 					]
 				},
 				{
-					"id": 933,
+					"id": 932,
 					"name": "bounding_box",
 					"kind": 64,
 					"kindString": "Function",
@@ -923,7 +1019,7 @@
 					],
 					"signatures": [
 						{
-							"id": 934,
+							"id": 933,
 							"name": "bounding_box",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -935,7 +1031,7 @@
 							},
 							"parameters": [
 								{
-									"id": 935,
+									"id": 934,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -952,7 +1048,7 @@
 							"type": {
 								"type": "reflection",
 								"declaration": {
-									"id": 936,
+									"id": 935,
 									"name": "__type",
 									"kind": 65536,
 									"kindString": "Type literal",
@@ -966,14 +1062,14 @@
 									],
 									"signatures": [
 										{
-											"id": 937,
+											"id": 936,
 											"name": "__type",
 											"kind": 4096,
 											"kindString": "Call signature",
 											"flags": {},
 											"parameters": [
 												{
-													"id": 938,
+													"id": 937,
 													"name": "axis",
 													"kind": 32768,
 													"kindString": "Parameter",
@@ -984,7 +1080,7 @@
 													}
 												},
 												{
-													"id": 939,
+													"id": 938,
 													"name": "min",
 													"kind": 32768,
 													"kindString": "Parameter",
@@ -1007,7 +1103,7 @@
 					]
 				},
 				{
-					"id": 844,
+					"id": 843,
 					"name": "colorize",
 					"kind": 64,
 					"kindString": "Function",
@@ -1021,7 +1117,7 @@
 					],
 					"signatures": [
 						{
-							"id": 845,
+							"id": 844,
 							"name": "colorize",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1032,7 +1128,7 @@
 							},
 							"parameters": [
 								{
-									"id": 846,
+									"id": 845,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1046,7 +1142,7 @@
 									}
 								},
 								{
-									"id": 847,
+									"id": 846,
 									"name": "color",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1068,7 +1164,7 @@
 					]
 				},
 				{
-					"id": 854,
+					"id": 853,
 					"name": "colorize_hex",
 					"kind": 64,
 					"kindString": "Function",
@@ -1082,7 +1178,7 @@
 					],
 					"signatures": [
 						{
-							"id": 855,
+							"id": 854,
 							"name": "colorize_hex",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1093,7 +1189,7 @@
 							},
 							"parameters": [
 								{
-									"id": 856,
+									"id": 855,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1107,7 +1203,7 @@
 									}
 								},
 								{
-									"id": 857,
+									"id": 856,
 									"name": "hex",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1129,7 +1225,7 @@
 					]
 				},
 				{
-					"id": 848,
+					"id": 847,
 					"name": "colorize_rgb",
 					"kind": 64,
 					"kindString": "Function",
@@ -1143,7 +1239,7 @@
 					],
 					"signatures": [
 						{
-							"id": 849,
+							"id": 848,
 							"name": "colorize_rgb",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1154,7 +1250,7 @@
 							},
 							"parameters": [
 								{
-									"id": 850,
+									"id": 849,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1168,7 +1264,7 @@
 									}
 								},
 								{
-									"id": 851,
+									"id": 850,
 									"name": "r",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1182,7 +1278,7 @@
 									}
 								},
 								{
-									"id": 852,
+									"id": 851,
 									"name": "g",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1196,7 +1292,7 @@
 									}
 								},
 								{
-									"id": 853,
+									"id": 852,
 									"name": "b",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1218,7 +1314,7 @@
 					]
 				},
 				{
-					"id": 894,
+					"id": 893,
 					"name": "flip_x",
 					"kind": 64,
 					"kindString": "Function",
@@ -1232,7 +1328,7 @@
 					],
 					"signatures": [
 						{
-							"id": 895,
+							"id": 894,
 							"name": "flip_x",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1243,7 +1339,7 @@
 							},
 							"parameters": [
 								{
-									"id": 896,
+									"id": 895,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1265,7 +1361,7 @@
 					]
 				},
 				{
-					"id": 897,
+					"id": 896,
 					"name": "flip_y",
 					"kind": 64,
 					"kindString": "Function",
@@ -1279,7 +1375,7 @@
 					],
 					"signatures": [
 						{
-							"id": 898,
+							"id": 897,
 							"name": "flip_y",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1290,7 +1386,7 @@
 							},
 							"parameters": [
 								{
-									"id": 899,
+									"id": 898,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1312,7 +1408,7 @@
 					]
 				},
 				{
-					"id": 900,
+					"id": 899,
 					"name": "flip_z",
 					"kind": 64,
 					"kindString": "Function",
@@ -1326,7 +1422,7 @@
 					],
 					"signatures": [
 						{
-							"id": 901,
+							"id": 900,
 							"name": "flip_z",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1337,7 +1433,7 @@
 							},
 							"parameters": [
 								{
-									"id": 902,
+									"id": 901,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1359,7 +1455,7 @@
 					]
 				},
 				{
-					"id": 840,
+					"id": 839,
 					"name": "intersect",
 					"kind": 64,
 					"kindString": "Function",
@@ -1373,7 +1469,7 @@
 					],
 					"signatures": [
 						{
-							"id": 841,
+							"id": 840,
 							"name": "intersect",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1384,7 +1480,7 @@
 							},
 							"parameters": [
 								{
-									"id": 842,
+									"id": 841,
 									"name": "a",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1398,7 +1494,7 @@
 									}
 								},
 								{
-									"id": 843,
+									"id": 842,
 									"name": "b",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1420,7 +1516,7 @@
 					]
 				},
 				{
-					"id": 958,
+					"id": 957,
 					"name": "is_shape",
 					"kind": 64,
 					"kindString": "Function",
@@ -1428,13 +1524,13 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 686,
+							"line": 689,
 							"character": 24
 						}
 					],
 					"signatures": [
 						{
-							"id": 959,
+							"id": 958,
 							"name": "is_shape",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1445,7 +1541,7 @@
 							},
 							"parameters": [
 								{
-									"id": 960,
+									"id": 959,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1467,7 +1563,7 @@
 					]
 				},
 				{
-					"id": 961,
+					"id": 960,
 					"name": "render",
 					"kind": 64,
 					"kindString": "Function",
@@ -1475,13 +1571,13 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 722,
+							"line": 725,
 							"character": 22
 						}
 					],
 					"signatures": [
 						{
-							"id": 962,
+							"id": 961,
 							"name": "render",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1492,7 +1588,7 @@
 							},
 							"parameters": [
 								{
-									"id": 963,
+									"id": 962,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1514,7 +1610,7 @@
 					]
 				},
 				{
-					"id": 964,
+					"id": 963,
 					"name": "render_axis",
 					"kind": 64,
 					"kindString": "Function",
@@ -1522,13 +1618,13 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 738,
+							"line": 741,
 							"character": 27
 						}
 					],
 					"signatures": [
 						{
-							"id": 965,
+							"id": 964,
 							"name": "render_axis",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1539,7 +1635,7 @@
 							},
 							"parameters": [
 								{
-									"id": 966,
+									"id": 965,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1561,7 +1657,7 @@
 					]
 				},
 				{
-					"id": 970,
+					"id": 969,
 					"name": "render_axis_grid",
 					"kind": 64,
 					"kindString": "Function",
@@ -1569,13 +1665,13 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 770,
+							"line": 773,
 							"character": 32
 						}
 					],
 					"signatures": [
 						{
-							"id": 971,
+							"id": 970,
 							"name": "render_axis_grid",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1586,7 +1682,7 @@
 							},
 							"parameters": [
 								{
-									"id": 972,
+									"id": 971,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1608,7 +1704,7 @@
 					]
 				},
 				{
-					"id": 967,
+					"id": 966,
 					"name": "render_grid",
 					"kind": 64,
 					"kindString": "Function",
@@ -1616,13 +1712,13 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 754,
+							"line": 757,
 							"character": 27
 						}
 					],
 					"signatures": [
 						{
-							"id": 968,
+							"id": 967,
 							"name": "render_grid",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1633,7 +1729,7 @@
 							},
 							"parameters": [
 								{
-									"id": 969,
+									"id": 968,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1655,7 +1751,7 @@
 					]
 				},
 				{
-					"id": 940,
+					"id": 939,
 					"name": "rotate",
 					"kind": 64,
 					"kindString": "Function",
@@ -1669,7 +1765,7 @@
 					],
 					"signatures": [
 						{
-							"id": 941,
+							"id": 940,
 							"name": "rotate",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1680,7 +1776,7 @@
 							},
 							"parameters": [
 								{
-									"id": 942,
+									"id": 941,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1694,7 +1790,7 @@
 									}
 								},
 								{
-									"id": 943,
+									"id": 942,
 									"name": "x",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1708,7 +1804,7 @@
 									}
 								},
 								{
-									"id": 944,
+									"id": 943,
 									"name": "y",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1722,7 +1818,7 @@
 									}
 								},
 								{
-									"id": 945,
+									"id": 944,
 									"name": "z",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1744,7 +1840,7 @@
 					]
 				},
 				{
-					"id": 946,
+					"id": 945,
 					"name": "rotate_x",
 					"kind": 64,
 					"kindString": "Function",
@@ -1758,7 +1854,7 @@
 					],
 					"signatures": [
 						{
-							"id": 947,
+							"id": 946,
 							"name": "rotate_x",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1769,7 +1865,7 @@
 							},
 							"parameters": [
 								{
-									"id": 948,
+									"id": 947,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1783,7 +1879,7 @@
 									}
 								},
 								{
-									"id": 949,
+									"id": 948,
 									"name": "x",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1805,7 +1901,7 @@
 					]
 				},
 				{
-					"id": 950,
+					"id": 949,
 					"name": "rotate_y",
 					"kind": 64,
 					"kindString": "Function",
@@ -1819,7 +1915,7 @@
 					],
 					"signatures": [
 						{
-							"id": 951,
+							"id": 950,
 							"name": "rotate_y",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1830,7 +1926,7 @@
 							},
 							"parameters": [
 								{
-									"id": 952,
+									"id": 951,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1844,7 +1940,7 @@
 									}
 								},
 								{
-									"id": 953,
+									"id": 952,
 									"name": "y",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1866,7 +1962,7 @@
 					]
 				},
 				{
-					"id": 954,
+					"id": 953,
 					"name": "rotate_z",
 					"kind": 64,
 					"kindString": "Function",
@@ -1880,7 +1976,7 @@
 					],
 					"signatures": [
 						{
-							"id": 955,
+							"id": 954,
 							"name": "rotate_z",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1891,7 +1987,7 @@
 							},
 							"parameters": [
 								{
-									"id": 956,
+									"id": 955,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1905,7 +2001,7 @@
 									}
 								},
 								{
-									"id": 957,
+									"id": 956,
 									"name": "z",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1927,7 +2023,7 @@
 					]
 				},
 				{
-					"id": 858,
+					"id": 857,
 					"name": "scale",
 					"kind": 64,
 					"kindString": "Function",
@@ -1941,7 +2037,7 @@
 					],
 					"signatures": [
 						{
-							"id": 859,
+							"id": 858,
 							"name": "scale",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1952,7 +2048,7 @@
 							},
 							"parameters": [
 								{
-									"id": 860,
+									"id": 859,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1966,7 +2062,7 @@
 									}
 								},
 								{
-									"id": 861,
+									"id": 860,
 									"name": "x",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1980,7 +2076,7 @@
 									}
 								},
 								{
-									"id": 862,
+									"id": 861,
 									"name": "y",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1994,7 +2090,7 @@
 									}
 								},
 								{
-									"id": 863,
+									"id": 862,
 									"name": "z",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2016,7 +2112,7 @@
 					]
 				},
 				{
-					"id": 864,
+					"id": 863,
 					"name": "scale_x",
 					"kind": 64,
 					"kindString": "Function",
@@ -2030,7 +2126,7 @@
 					],
 					"signatures": [
 						{
-							"id": 865,
+							"id": 864,
 							"name": "scale_x",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -2041,7 +2137,7 @@
 							},
 							"parameters": [
 								{
-									"id": 866,
+									"id": 865,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2055,7 +2151,7 @@
 									}
 								},
 								{
-									"id": 867,
+									"id": 866,
 									"name": "x",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2077,7 +2173,7 @@
 					]
 				},
 				{
-					"id": 868,
+					"id": 867,
 					"name": "scale_y",
 					"kind": 64,
 					"kindString": "Function",
@@ -2091,7 +2187,7 @@
 					],
 					"signatures": [
 						{
-							"id": 869,
+							"id": 868,
 							"name": "scale_y",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -2102,7 +2198,7 @@
 							},
 							"parameters": [
 								{
-									"id": 870,
+									"id": 869,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2116,7 +2212,7 @@
 									}
 								},
 								{
-									"id": 871,
+									"id": 870,
 									"name": "y",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2138,7 +2234,7 @@
 					]
 				},
 				{
-					"id": 872,
+					"id": 871,
 					"name": "scale_z",
 					"kind": 64,
 					"kindString": "Function",
@@ -2152,7 +2248,7 @@
 					],
 					"signatures": [
 						{
-							"id": 873,
+							"id": 872,
 							"name": "scale_z",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -2163,7 +2259,7 @@
 							},
 							"parameters": [
 								{
-									"id": 874,
+									"id": 873,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2177,7 +2273,7 @@
 									}
 								},
 								{
-									"id": 875,
+									"id": 874,
 									"name": "z",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2199,7 +2295,7 @@
 					]
 				},
 				{
-					"id": 876,
+					"id": 875,
 					"name": "shape_center",
 					"kind": 64,
 					"kindString": "Function",
@@ -2213,7 +2309,7 @@
 					],
 					"signatures": [
 						{
-							"id": 877,
+							"id": 876,
 							"name": "shape_center",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -2225,7 +2321,7 @@
 							},
 							"parameters": [
 								{
-									"id": 878,
+									"id": 877,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2242,7 +2338,7 @@
 							"type": {
 								"type": "reflection",
 								"declaration": {
-									"id": 879,
+									"id": 878,
 									"name": "__type",
 									"kind": 65536,
 									"kindString": "Type literal",
@@ -2256,14 +2352,14 @@
 									],
 									"signatures": [
 										{
-											"id": 880,
+											"id": 879,
 											"name": "__type",
 											"kind": 4096,
 											"kindString": "Call signature",
 											"flags": {},
 											"parameters": [
 												{
-													"id": 881,
+													"id": 880,
 													"name": "axis",
 													"kind": 32768,
 													"kindString": "Parameter",
@@ -2286,7 +2382,7 @@
 					]
 				},
 				{
-					"id": 882,
+					"id": 881,
 					"name": "shape_set_center",
 					"kind": 64,
 					"kindString": "Function",
@@ -2300,7 +2396,7 @@
 					],
 					"signatures": [
 						{
-							"id": 883,
+							"id": 882,
 							"name": "shape_set_center",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -2311,7 +2407,7 @@
 							},
 							"parameters": [
 								{
-									"id": 884,
+									"id": 883,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2325,7 +2421,7 @@
 									}
 								},
 								{
-									"id": 885,
+									"id": 884,
 									"name": "x",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2339,7 +2435,7 @@
 									}
 								},
 								{
-									"id": 886,
+									"id": 885,
 									"name": "y",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2353,7 +2449,7 @@
 									}
 								},
 								{
-									"id": 887,
+									"id": 886,
 									"name": "z",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2375,7 +2471,7 @@
 					]
 				},
 				{
-					"id": 836,
+					"id": 835,
 					"name": "subtract",
 					"kind": 64,
 					"kindString": "Function",
@@ -2389,7 +2485,7 @@
 					],
 					"signatures": [
 						{
-							"id": 837,
+							"id": 836,
 							"name": "subtract",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -2400,7 +2496,7 @@
 							},
 							"parameters": [
 								{
-									"id": 838,
+									"id": 837,
 									"name": "a",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2414,7 +2510,7 @@
 									}
 								},
 								{
-									"id": 839,
+									"id": 838,
 									"name": "b",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2436,7 +2532,7 @@
 					]
 				},
 				{
-					"id": 903,
+					"id": 902,
 					"name": "translate",
 					"kind": 64,
 					"kindString": "Function",
@@ -2450,7 +2546,7 @@
 					],
 					"signatures": [
 						{
-							"id": 904,
+							"id": 903,
 							"name": "translate",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -2461,7 +2557,7 @@
 							},
 							"parameters": [
 								{
-									"id": 905,
+									"id": 904,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2473,7 +2569,7 @@
 									}
 								},
 								{
-									"id": 906,
+									"id": 905,
 									"name": "x",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2487,7 +2583,7 @@
 									}
 								},
 								{
-									"id": 907,
+									"id": 906,
 									"name": "y",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2501,7 +2597,7 @@
 									}
 								},
 								{
-									"id": 908,
+									"id": 907,
 									"name": "z",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2523,7 +2619,7 @@
 					]
 				},
 				{
-					"id": 909,
+					"id": 908,
 					"name": "translate_x",
 					"kind": 64,
 					"kindString": "Function",
@@ -2537,7 +2633,7 @@
 					],
 					"signatures": [
 						{
-							"id": 910,
+							"id": 909,
 							"name": "translate_x",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -2548,7 +2644,7 @@
 							},
 							"parameters": [
 								{
-									"id": 911,
+									"id": 910,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2560,7 +2656,7 @@
 									}
 								},
 								{
-									"id": 912,
+									"id": 911,
 									"name": "x",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2582,7 +2678,7 @@
 					]
 				},
 				{
-					"id": 913,
+					"id": 912,
 					"name": "translate_y",
 					"kind": 64,
 					"kindString": "Function",
@@ -2596,7 +2692,7 @@
 					],
 					"signatures": [
 						{
-							"id": 914,
+							"id": 913,
 							"name": "translate_y",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -2607,7 +2703,7 @@
 							},
 							"parameters": [
 								{
-									"id": 915,
+									"id": 914,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2619,7 +2715,7 @@
 									}
 								},
 								{
-									"id": 916,
+									"id": 915,
 									"name": "y",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2641,7 +2737,7 @@
 					]
 				},
 				{
-					"id": 917,
+					"id": 916,
 					"name": "translate_z",
 					"kind": 64,
 					"kindString": "Function",
@@ -2655,7 +2751,7 @@
 					],
 					"signatures": [
 						{
-							"id": 918,
+							"id": 917,
 							"name": "translate_z",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -2666,7 +2762,7 @@
 							},
 							"parameters": [
 								{
-									"id": 919,
+									"id": 918,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2678,7 +2774,7 @@
 									}
 								},
 								{
-									"id": 920,
+									"id": 919,
 									"name": "z",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2726,30 +2822,18 @@
 							"parameters": [
 								{
 									"id": 834,
-									"name": "a",
+									"name": "shapes",
 									"kind": 32768,
 									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "The first shape"
+									"flags": {
+										"isRest": true
 									},
 									"type": {
-										"type": "reference",
-										"name": "Shape"
-									}
-								},
-								{
-									"id": 835,
-									"name": "b",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "The second shape"
-									},
-									"type": {
-										"type": "reference",
-										"name": "Shape"
+										"type": "array",
+										"elementType": {
+											"type": "reference",
+											"name": "Shape"
+										}
 									}
 								}
 							],
@@ -2761,7 +2845,7 @@
 					]
 				},
 				{
-					"id": 891,
+					"id": 890,
 					"name": "volume",
 					"kind": 64,
 					"kindString": "Function",
@@ -2775,7 +2859,7 @@
 					],
 					"signatures": [
 						{
-							"id": 892,
+							"id": 891,
 							"name": "volume",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -2786,7 +2870,7 @@
 							},
 							"parameters": [
 								{
-									"id": 893,
+									"id": 892,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2813,58 +2897,66 @@
 					"title": "Variables",
 					"kind": 32,
 					"children": [
-						973,
+						972,
+						980,
+						992,
+						986,
+						982,
+						988,
+						996,
+						979,
+						974,
 						981,
-						993,
-						987,
+						973,
+						977,
 						983,
 						989,
-						980,
-						975,
-						982,
-						974,
-						978,
-						984,
-						990,
-						977,
-						992,
-						979,
-						988,
-						991,
 						976,
-						986,
-						985
+						991,
+						994,
+						995,
+						978,
+						987,
+						990,
+						975,
+						993,
+						985,
+						984
 					],
 					"categories": [
 						{
 							"title": "Colour",
 							"children": [
-								973,
-								981,
-								983,
+								972,
 								980,
-								975,
 								982,
-								974,
-								978,
-								984,
-								977,
 								979,
+								974,
+								981,
+								973,
+								977,
+								983,
 								976,
-								986,
-								985
+								978,
+								975,
+								985,
+								984
 							]
 						},
 						{
 							"title": "Primitive",
 							"children": [
-								993,
-								987,
-								989,
-								990,
 								992,
+								986,
 								988,
-								991
+								996,
+								989,
+								991,
+								994,
+								995,
+								987,
+								990,
+								993
 							]
 						}
 					]
@@ -2873,40 +2965,40 @@
 					"title": "Functions",
 					"kind": 64,
 					"children": [
-						888,
-						921,
-						925,
-						929,
-						933,
-						844,
-						854,
-						848,
-						894,
-						897,
-						900,
-						840,
-						958,
-						961,
-						964,
-						970,
-						967,
-						940,
-						946,
-						950,
-						954,
-						858,
-						864,
-						868,
-						872,
-						876,
-						882,
-						836,
-						903,
-						909,
-						913,
-						917,
+						887,
+						920,
+						924,
+						928,
+						932,
+						843,
+						853,
+						847,
+						893,
+						896,
+						899,
+						839,
+						957,
+						960,
+						963,
+						969,
+						966,
+						939,
+						945,
+						949,
+						953,
+						857,
+						863,
+						867,
+						871,
+						875,
+						881,
+						835,
+						902,
+						908,
+						912,
+						916,
 						832,
-						891
+						890
 					]
 				}
 			],
