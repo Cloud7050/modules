@@ -1670,8 +1670,8 @@
       const bx = b[0];
       const by = b[1];
       const bz = b[2];
-      const mag1 = Math.sqrt(ax * ax + ay * ay + az * az);
-      const mag2 = Math.sqrt(bx * bx + by * by + bz * bz);
+      const mag1 = Math.hypot(ax, ay, az);
+      const mag2 = Math.hypot(bx, by, bz);
       const mag = mag1 * mag2;
       const cosine = mag && dot_1$1(a, b) / mag;
       return Math.acos(Math.min(Math.max(cosine, -1), 1))
@@ -1807,7 +1807,7 @@
      *
      * @param {vec3} out - receiving vector
      * @param {Number} scalar
-     * @returns {Vec3} out
+     * @returns {vec3} out
      * @alias module:modeling/maths/vec3.fromScalar
      */
     const fromScalar = (out, scalar) => {
@@ -1847,9 +1847,9 @@
      * @returns {vec3} out
      * @alias module:modeling/maths/vec3.fromVec2
      */
-    const fromVector2 = (out, vec2, z = 0) => {
-      out[0] = vec2[0];
-      out[1] = vec2[1];
+    const fromVector2 = (out, vector, z = 0) => {
+      out[0] = vector[0];
+      out[1] = vector[1];
       out[2] = z;
       return out
     };
@@ -1863,10 +1863,10 @@
      * @returns {Number} length
      * @alias module:modeling/maths/vec3.length
      */
-    const length$1 = (a) => {
-      const x = a[0];
-      const y = a[1];
-      const z = a[2];
+    const length$1 = (vector) => {
+      const x = vector[0];
+      const y = vector[1];
+      const z = vector[2];
       return Math.hypot(x, y, z)
     };
 
@@ -2164,10 +2164,10 @@
      * @returns {Number} squared length
      * @alias module:modeling/maths/vec3.squaredLength
      */
-    const squaredLength$1 = (a) => {
-      const x = a[0];
-      const y = a[1];
-      const z = a[2];
+    const squaredLength$1 = (vector) => {
+      const x = vector[0];
+      const y = vector[1];
+      const z = vector[2];
       return x * x + y * y + z * z
     };
 
@@ -2193,7 +2193,7 @@
 
     /**
      * Convert the given vector to a representative string.
-     * @param {vec3} vector - vector of reference
+     * @param {vec3} vec - vector of reference
      * @returns {String} string representation
      * @alias module:modeling/maths/vec3.toString
      */
@@ -14078,7 +14078,6 @@
 
       // create the main draw command
       const command = (props) => {
-        // console.log('params in render', props)
         props.rendering = Object.assign({}, renderDefaults, props.rendering);
 
         // props is the first parameter, the second one is a function, doing the actual rendering
@@ -14109,7 +14108,6 @@
                     drawCmd = props.drawCommands[visuals.drawCmd](regl$1, entity);
                     drawCache2.set(visuals.cacheId, drawCmd);
                   }
-                  // console.log('drawing with', drawCmd, entity)
                   const drawParams = { // FIXME: horrible, tidy up !!: what is needed/should be passed to render pass ?
                     ...entity,
                     ...visuals,
@@ -14429,20 +14427,7 @@ void main () {
   float specularLightWeight = pow(max(dot(reflectionDirection, eyeDirection), 0.0), uMaterialShininess);
   vec3 specular = specularColor.rgb * specularLightWeight * specularLightAmount;
 
-  /*float light2Multiplier = 0.2;
-  float diffuseWeight2 = dot(surfaceNormal, vec3(-lightDirection.x, lightDirection.y, lightDirection.z));
-  vec3 diffuse2 = diffuseLightAmount * endColor.rgb * clamp(diffuseWeight2 , 0.0, 1.0 ) * light2Multiplier;
-
-  float light3Multiplier = 0.2;  
-  float diffuseWeight3 = dot(surfaceNormal, vec3(lightDirection.x, -lightDirection.y, lightDirection.z));
-  vec3 diffuse3 = diffuseLightAmount * endColor.rgb * clamp(diffuseWeight3 , 0.0, 1.0 ) * light3Multiplier;
-
-  float light4Multiplier = 0.2;  
-  float diffuseWeight4 = dot(surfaceNormal, vec3(-lightDirection.x, -lightDirection.y, lightDirection.z));
-  vec3 diffuse4 = diffuseLightAmount * endColor.rgb * clamp(diffuseWeight4 , 0.0, 1.0 ) * light4Multiplier;*/
-  
   gl_FragColor = vec4((ambient + diffuse + specular), endColor.a);
-  //gl_FragColor = vec4((ambient + diffuse + diffuse2 + diffuse3 + diffuse4), endColor.a);
 }
 `;
 
@@ -14531,15 +14516,13 @@ void main() {
       const frag = hasVertexColors ? vColorShaders.frag : meshShaders$1.frag;
       const modelMatrixInv = glMat4.invert(glMat4.create(), transforms);
 
-      // console.log('type', geometry.type, 'color', color, hasVertexColors)
-
       let commandParams = {
         primitive: 'triangles',
         vert,
         frag,
 
         uniforms: {
-          model: (context, props) => transforms ,
+          model: (context, props) => transforms,
           ucolor: (context, props) => (props && props.color) ? props.color : color,
           // semi hack, woraround to enable/disable vertex colors !!!
           vColorToggler: (context, props) => (props && props.useVertexColors && props.useVertexColors === true) ? 1.0 : 0.0,
@@ -14672,9 +14655,7 @@ void main () {
       const hasIndices = !!(geometry.indices && geometry.indices.length > 0);
       const hasNormals = !!(geometry.normals && geometry.normals.length > 0);
 
-      // console.log('type', geometry.type, 'color', color, hasIndices, hasNormals)
-
-      let commandParams = {
+      const commandParams = {
         primitive: 'lines',
         vert: meshShaders.vert,
         frag: colorOnlyShaders.frag,
@@ -15512,7 +15493,6 @@ void main () {
     const defaults$1 = Object.assign({}, cameraState$1, cameraProps$1);
 
     const setProjection$1 = (output, camera, input) => {
-      // console.log('input', input, 'camera', camera)
       // context.viewportWidth / context.viewportHeight,
       const aspect = input.width / input.height;
 
@@ -15588,8 +15568,6 @@ void main () {
 
     const fromOrthographicToPerspective = (orthographicCamera) => {
       const { near, far, fov, zoom } = orthographicCamera;
-      console.log('fov', fov, 'zoom', zoom);
-      // : fov / zoom
       // recompute projection matrix to use perspective camera projection matrix
       const { viewport } = orthographicCamera;
       const projection = perspectiveCamera$1.setProjection(orthographicCamera, { width: viewport[2], height: viewport[3] });
@@ -15602,21 +15580,10 @@ void main () {
 
       // set the orthographic view rectangle to 0,0,width,height
       // see here : http://stackoverflow.com/questions/13483775/set-zoomvalue-of-a-perspective-equal-to-perspective
-      // const target = perspectiveCamera.target === undefined ? vec3.create() : perspectiveCamera.target
 
       const distance = glVec3.length(glVec3.subtract([], perspectiveCamera.position, perspectiveCamera.target)) * 0.3;
       const width = Math.tan(fov) * distance * aspect;
       const height = Math.tan(fov) * distance;
-
-      // const halfWidth = width
-      // const halfHeight = height
-
-      // const left = halfWidth
-      // const right = -halfWidth
-      // const top = -halfHeight
-      // const bottom = halfHeight
-
-      // we need to compute zoom from distance ? or pass it from controls ?
 
       // we re-use near, far, & projection matrix of orthographicCamera
       const { near, far, viewport } = perspectiveCamera;
@@ -15624,7 +15591,6 @@ void main () {
       const orthographicCamera$1 = orthographicCamera.cameraState;
       const projection = orthographicCamera.setProjection(fCam, { width, height });
       return Object.assign({}, orthographicCamera$1, perspectiveCamera, projection, { projectionType: orthographicCamera$1.projectionType, viewport })
-      // return Object.assign({}, orthoCam, projection, {near, far, left, right, top, bottom, target})
     };
 
     const toPerspectiveView = ({ camera }) => {
@@ -16052,9 +16018,6 @@ void main () {
       let theta;
       let phi;
 
-      // console.log('target', target)
-      // console.log(matrix)
-
       if (up[2] === 1) {
         // angle from z-axis around y-axis, upVector : z
         theta = atan2(offset[0], offset[1]);
@@ -16362,14 +16325,13 @@ void main () {
      * Convert the given solid into one or more geometries for rendering.
      * @param {Object} options - options for conversion
      * @param {Array} options.color - RGBA of solid
-     * @param {Float} options.normalThreshold - threshold beyond which to split normals
      * @param {Boolean} options.smoothLighting - set to true in order to use interpolated vertex normals
      * this creates nice round spheres but does not represent the shape of the actual model
      * @param {geom3} solid - the solid to convert
      * @return {Array} list of new geometries
      */
     const geom3ToGeometries = (options, solid) => {
-      let { color, smoothLighting, normalThreshold } = options;
+      let { color, smoothLighting } = options;
 
       if ('color' in solid) color = solid.color;
 

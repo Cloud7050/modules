@@ -152,27 +152,27 @@
      * code from https://github.com/jlmakes/rematrix/blob/master/src/index.js
      *
      * @param {mat4} out - receiving matrix
-     * @param {mat4} m - matrix to invert
+     * @param {mat4} matrix - matrix to invert
      * @returns {mat4} out
      * @alias module:modeling/maths/mat4.invert
      */
-    const invert$3 = (out, a) => {
-      const a00 = a[0];
-      const a01 = a[1];
-      const a02 = a[2];
-      const a03 = a[3];
-      const a10 = a[4];
-      const a11 = a[5];
-      const a12 = a[6];
-      const a13 = a[7];
-      const a20 = a[8];
-      const a21 = a[9];
-      const a22 = a[10];
-      const a23 = a[11];
-      const a30 = a[12];
-      const a31 = a[13];
-      const a32 = a[14];
-      const a33 = a[15];
+    const invert$3 = (out, matrix) => {
+      const a00 = matrix[0];
+      const a01 = matrix[1];
+      const a02 = matrix[2];
+      const a03 = matrix[3];
+      const a10 = matrix[4];
+      const a11 = matrix[5];
+      const a12 = matrix[6];
+      const a13 = matrix[7];
+      const a20 = matrix[8];
+      const a21 = matrix[9];
+      const a22 = matrix[10];
+      const a23 = matrix[11];
+      const a30 = matrix[12];
+      const a31 = matrix[13];
+      const a32 = matrix[14];
+      const a33 = matrix[15];
 
       const b00 = a00 * a11 - a01 * a10;
       const b01 = a00 * a12 - a02 * a10;
@@ -226,14 +226,14 @@
      * @returns {Boolean} true if the matrices are equal
      * @alias module:modeling/maths/mat4.equals
      */
-    const equals$8 = (a, b) => (
+    const equals$9 = (a, b) => (
       a[0] === b[0] && a[1] === b[1] && a[2] === b[2] && a[3] === b[3] &&
       a[4] === b[4] && a[5] === b[5] && a[6] === b[6] && a[7] === b[7] &&
       a[8] === b[8] && a[9] === b[9] && a[10] === b[10] && a[11] === b[11] &&
       a[12] === b[12] && a[13] === b[13] && a[14] === b[14] && a[15] === b[15]
     );
 
-    var equals_1$7 = equals$8;
+    var equals_1$7 = equals$9;
 
     /**
      * Set a matrix to the identity transform.
@@ -289,7 +289,7 @@
      */
     const fromRotation$1 = (out, rad, axis) => {
       let [x, y, z] = axis;
-      let len = Math.sqrt(x * x + y * y + z * z);
+      let len = Math.hypot(x, y, z);
 
       if (Math.abs(len) < EPSILON) {
         // axis is 0,0,0 or almost
@@ -567,8 +567,8 @@
       const bx = b[0];
       const by = b[1];
       const bz = b[2];
-      const mag1 = Math.sqrt(ax * ax + ay * ay + az * az);
-      const mag2 = Math.sqrt(bx * bx + by * by + bz * bz);
+      const mag1 = Math.hypot(ax, ay, az);
+      const mag2 = Math.hypot(bx, by, bz);
       const mag = mag1 * mag2;
       const cosine = mag && dot_1$2(a, b) / mag;
       return Math.acos(Math.min(Math.max(cosine, -1), 1))
@@ -694,9 +694,9 @@
      * @returns {Boolean} true if a and b are equal
      * @alias module:modeling/maths/vec3.equals
      */
-    const equals$7 = (a, b) => (a[0] === b[0]) && (a[1] === b[1]) && (a[2] === b[2]);
+    const equals$8 = (a, b) => (a[0] === b[0]) && (a[1] === b[1]) && (a[2] === b[2]);
 
-    var equals_1$6 = equals$7;
+    var equals_1$6 = equals$8;
 
     /**
      * Creates a vector from a single scalar value.
@@ -704,7 +704,7 @@
      *
      * @param {vec3} out - receiving vector
      * @param {Number} scalar
-     * @returns {Vec3} out
+     * @returns {vec3} out
      * @alias module:modeling/maths/vec3.fromScalar
      */
     const fromScalar$2 = (out, scalar) => {
@@ -744,9 +744,9 @@
      * @returns {vec3} out
      * @alias module:modeling/maths/vec3.fromVec2
      */
-    const fromVector2 = (out, vec2, z = 0) => {
-      out[0] = vec2[0];
-      out[1] = vec2[1];
+    const fromVector2 = (out, vector, z = 0) => {
+      out[0] = vector[0];
+      out[1] = vector[1];
       out[2] = z;
       return out
     };
@@ -760,10 +760,10 @@
      * @returns {Number} length
      * @alias module:modeling/maths/vec3.length
      */
-    const length$1 = (a) => {
-      const x = a[0];
-      const y = a[1];
-      const z = a[2];
+    const length$1 = (vector) => {
+      const x = vector[0];
+      const y = vector[1];
+      const z = vector[2];
       return Math.hypot(x, y, z)
     };
 
@@ -1061,10 +1061,10 @@
      * @returns {Number} squared length
      * @alias module:modeling/maths/vec3.squaredLength
      */
-    const squaredLength$1 = (a) => {
-      const x = a[0];
-      const y = a[1];
-      const z = a[2];
+    const squaredLength$1 = (vector) => {
+      const x = vector[0];
+      const y = vector[1];
+      const z = vector[2];
       return x * x + y * y + z * z
     };
 
@@ -1090,7 +1090,7 @@
 
     /**
      * Convert the given vector to a representative string.
-     * @param {vec3} vector - vector of reference
+     * @param {vec3} vec - vector of reference
      * @returns {String} string representation
      * @alias module:modeling/maths/vec3.toString
      */
@@ -1164,7 +1164,7 @@
     /**
      * Create a matrix that rotates the given source to the given target vector.
      *
-     * Each vector must be a directional vector with a length greater then zero.
+     * Each vector must be a directional vector with a length greater than zero.
      * @see https://gist.github.com/kevinmoran/b45980723e53edeb8a5a43c49f134724
      * @param {mat4} out - receiving matrix
      * @param {vec3} source - source vector
@@ -1328,7 +1328,7 @@
     var fromZRotation_1$1 = fromZRotation$1;
 
     /**
-     * Determine whether the given matris is the identity transform.
+     * Determine whether the given matrix is the identity transform.
      * This is equivalent to (but much faster than):
      *
      *     mat4.equals(mat4.create(), matrix)
@@ -1377,10 +1377,10 @@
      * @returns {Boolean} true if matrix is a mirroring transformation
      * @alias module:modeling/maths/mat4.isMirroring
      */
-    const isMirroring = (mat) => {
-      const u = fromValues_1$3(mat[0], mat[4], mat[8]);
-      const v = fromValues_1$3(mat[1], mat[5], mat[9]);
-      const w = fromValues_1$3(mat[2], mat[6], mat[10]);
+    const isMirroring = (matrix) => {
+      const u = fromValues_1$3(matrix[0], matrix[4], matrix[8]);
+      const v = fromValues_1$3(matrix[1], matrix[5], matrix[9]);
+      const w = fromValues_1$3(matrix[2], matrix[6], matrix[10]);
 
       // for a true orthogonal, non-mirrored base, u.cross(v) == w
       // If they have an opposite direction then we are mirroring
@@ -1504,7 +1504,7 @@
      */
     const rotate$5 = (out, matrix, radians, axis) => {
       let [x, y, z] = axis;
-      let len = Math.sqrt(x * x + y * y + z * z);
+      let len = Math.hypot(x, y, z);
 
       if (Math.abs(len) < 0.000001) {
         // axis is 0,0,0 or almost
@@ -1776,11 +1776,11 @@
     /**
      * Return a string representing the given matrix.
      *
-     * @param {mat4} matrix - matrix of reference
+     * @param {mat4} mat - matrix of reference
      * @returns {String} string representation
      * @alias module:modeling/maths/mat4.toString
      */
-    const toString$9 = (mat) => `[${mat[0].toFixed(7)}, ${mat[1].toFixed(7)}, ${mat[2].toFixed(7)}, ${mat[3].toFixed(7)}, ${mat[4].toFixed(7)}, ${mat[5].toFixed(7)}, ${mat[6].toFixed(7)}, ${mat[7].toFixed(7)}, ${mat[8].toFixed(7)}, ${mat[9].toFixed(7)}, ${mat[10].toFixed(7)}, ${mat[11].toFixed(7)}, ${mat[12].toFixed(7)}, ${mat[13].toFixed(7)}, ${mat[14].toFixed(7)}, ${mat[15].toFixed(7)}]`;
+    const toString$9 = (mat) => mat.map((n) => n.toFixed(7)).toString();
 
     var toString_1$9 = toString$9;
 
@@ -1962,7 +1962,7 @@
      */
 
     /**
-     * Creates a new vector, intialized to [0,0].
+     * Creates a new vector, initialized to [0,0].
      *
      * @returns {vec2} a new vector
      * @alias module:modeling/maths/vec2.create
@@ -2074,9 +2074,9 @@
      * @returns {Boolean} true if a and b are equal
      * @alias module:modeling/maths/vec2.equals
      */
-    const equals$6 = (a, b) => (a[0] === b[0]) && (a[1] === b[1]);
+    const equals$7 = (a, b) => (a[0] === b[0]) && (a[1] === b[1]);
 
-    var equals_1$5 = equals$6;
+    var equals_1$5 = equals$7;
 
     /**
      * Create a new vector in the direction of the given angle.
@@ -2098,7 +2098,7 @@
      * Create a new vector in the direction of the given angle.
      *
      * @param {vec2} out - receiving vector
-     * @param {Number} angle - angle in degrees
+     * @param {Number} degrees - angle in degrees
      * @returns {vec2} out
      * @alias module:modeling/maths/vec2.fromAngleDegrees
      */
@@ -2111,7 +2111,7 @@
      *
      * @param {vec2} out - receiving vector
      * @param {Number} scalar - the scalar value
-     * @returns {Vec2} out
+     * @returns {vec2} out
      * @alias module:modeling/maths/vec2.fromScalar
      */
     const fromScalar$1 = (out, scalar) => {
@@ -2146,7 +2146,7 @@
      * @returns {Number} length
      * @alias module:modeling/maths/vec2.length
      */
-    const length = (a) => Math.hypot(a[0], a[1]);
+    const length = (vector) => Math.hypot(vector[0], vector[1]);
 
     var length_1 = length;
 
@@ -2263,7 +2263,7 @@
 
     /**
      * Calculates the normal of the given vector.
-     * The normal value is the given vector rotated 90 degress.
+     * The normal value is the given vector rotated 90 degrees.
      *
      * @param {vec2} out - receiving vector
      * @param {vec2} vector - given value
@@ -2355,9 +2355,9 @@
      * @returns {Number} squared length
      * @alias module:modeling/maths/vec2.squaredLength
      */
-    const squaredLength = (a) => {
-      const x = a[0];
-      const y = a[1];
+    const squaredLength = (vector) => {
+      const x = vector[0];
+      const y = vector[1];
       return x * x + y * y
     };
 
@@ -2387,7 +2387,7 @@
      * @returns {String} string representation
      * @alias module:modeling/maths/vec2.toString
      */
-    const toString$8 = (vec) => `[${vec[0].toFixed(7)}, ${vec[1].toFixed(7)}]`;
+    const toString$8 = (vector) => `[${vector[0].toFixed(7)}, ${vector[1].toFixed(7)}]`;
 
     var toString_1$8 = toString$8;
 
@@ -2511,8 +2511,8 @@
     var fromCompactBinary_1$2 = fromCompactBinary$2;
 
     /**
-     * Determin if the given object is a 2D geometry.
-     * @param {Object} object - the object to interogate
+     * Determine if the given object is a 2D geometry.
+     * @param {Object} object - the object to interrogate
      * @returns {Boolean} true, if the object matches a geom2 based object
      * @alias module:modeling/geometries/geom2.isA
      */
@@ -2593,21 +2593,16 @@
      * This allows the edges to be traversed in order.
      */
     const toEdges$1 = (sides) => {
-      const uniquevertices = [];
+      const vertices = {};
       const getUniqueVertex = (vertex) => {
-        const i = uniquevertices.findIndex((v) => vec2.equals(v, vertex));
-        if (i < 0) {
-          uniquevertices.push(vertex);
-          return vertex
+        const key = vertex.toString();
+        if (!vertices[key]) {
+          vertices[key] = vertex;
         }
-        return uniquevertices[i]
+        return vertices[key]
       };
 
-      const edges = [];
-      sides.forEach((side) => {
-        edges.push([getUniqueVertex(side[0]), getUniqueVertex(side[1])]);
-      });
-      return edges
+      return sides.map((side) => side.map(getUniqueVertex))
     };
 
     /**
@@ -2620,7 +2615,7 @@
      * let geometry = subtract(rectangle({size: [5, 5]}), rectangle({size: [3, 3]}))
      * let outlines = toOutlines(geometry) // returns two outlines
      */
-    const toOutlines = (geometry) => {
+    const toOutlines$1 = (geometry) => {
       const vertexMap = new Map();
       const edges = toEdges$1(toSides_1(geometry));
       edges.forEach((edge) => {
@@ -2693,7 +2688,7 @@
       return outlines
     };
 
-    var toOutlines_1 = toOutlines;
+    var toOutlines_1 = toOutlines$1;
 
     /**
      * Produces an array of points from the given geometry.
@@ -2722,7 +2717,7 @@
     /**
      * Create a string representing the contents of the given geometry.
      * @param {geom2} geometry - the geometry
-     * @returns {String} a representive string
+     * @returns {String} a representative string
      * @alias module:modeling/geometries/geom2.toString
      *
      * @example
@@ -2746,11 +2741,11 @@
      * @returns {TypedArray} compact binary representation
      * @alias module:modeling/geometries/geom2.toCompactBinary
      */
-    const toCompactBinary$2 = (geom) => {
-      const sides = geom.sides;
-      const transforms = geom.transforms;
+    const toCompactBinary$2 = (geometry) => {
+      const sides = geometry.sides;
+      const transforms = geometry.transforms;
       let color = [-1, -1, -1, -1];
-      if (geom.color) color = geom.color;
+      if (geometry.color) color = geometry.color;
 
       // FIXME why Float32Array?
       const compacted = new Float32Array(1 + 16 + 4 + (sides.length * 4)); // type + transforms + color + sides data
@@ -2814,9 +2809,52 @@
     var transform_1$9 = transform$9;
 
     /**
+     * Determine if the given object is a valid geom2.
+     * Checks for closedness, self-edges, and valid data points.
+     *
+     * **If the geometry is not valid, an exception will be thrown with details of the geometry error.**
+     *
+     * @param {Object} object - the object to interrogate
+     * @throws {Error} error if the geometry is not valid
+     * @alias module:modeling/geometries/geom2.validate
+     */
+    const validate$3 = (object) => {
+      if (!isA_1$4(object)) {
+        throw new Error('invalid geom2 structure')
+      }
+
+      // check for closedness
+      toOutlines_1(object);
+
+      // check for self-edges
+      object.sides.forEach((side) => {
+        if (vec2.equals(side[0], side[1])) {
+          throw new Error(`geom2 self-edge ${side[0]}`)
+        }
+      });
+
+      // check transforms
+      if (!object.transforms.every(Number.isFinite)) {
+        throw new Error(`geom2 invalid transforms ${object.transforms}`)
+      }
+    };
+
+    var validate_1$3 = validate$3;
+
+    /**
      * Represents a 2D geometry consisting of a list of sides.
      * @see {@link geom2} for data structure information.
      * @module modeling/geometries/geom2
+     *
+     * @example
+     * colorize([0.5,0,1,1], square()) // purple square
+     *
+     * @example
+     * {
+     *   "sides": [[[-1,1],[-1,-1]],[[-1,-1],[1,-1]],[[1,-1],[1,1]],[[1,1],[-1,1]]],
+     *   "transforms": [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],
+     *   "color": [0.5,0,1,1]
+     * }
      */
     var geom2$2 = {
       clone: clone_1$b,
@@ -2830,7 +2868,8 @@
       toSides: toSides_1,
       toString: toString_1$7,
       toCompactBinary: toCompactBinary_1$2,
-      transform: transform_1$9
+      transform: transform_1$9,
+      validate: validate_1$3
     };
 
     /**
@@ -2956,39 +2995,6 @@
     var fromPointsAndPlane_1 = fromPointsAndPlane;
 
     /**
-     * Invert the give polygon to face the opposite direction.
-     *
-     * @param {poly3} polygon - the polygon to invert
-     * @returns {poly3} a new poly3
-     * @alias module:modeling/geometries/poly3.invert
-     */
-    const invert$2 = (polygon) => {
-      const vertices = polygon.vertices.slice().reverse();
-      return create_1$9(vertices)
-    };
-
-    var invert_1$2 = invert$2;
-
-    /**
-     * Determin if the given object is a polygon.
-     * @param {Object} object - the object to interogate
-     * @returns {Boolean} true if the object matches a poly3
-     * @alias module:modeling/geometries/poly3.isA
-     */
-    const isA$3 = (object) => {
-      if (object && typeof object === 'object') {
-        if ('vertices' in object) {
-          if (Array.isArray(object.vertices)) {
-            return true
-          }
-        }
-      }
-      return false
-    };
-
-    var isA_1$3 = isA$3;
-
-    /**
      * Represents a four dimensional vector.
      * See fromValues().
      * @typedef {Array} vec4
@@ -3048,9 +3054,9 @@
      * @return {Boolean} true if vectors are equal
      * @alias module:modeling/maths/vec4.equals
      */
-    const equals$5 = (a, b) => ((a[0] === b[0]) && (a[1] === b[1]) && (a[2] === b[2]) && (a[3] === b[3]));
+    const equals$6 = (a, b) => ((a[0] === b[0]) && (a[1] === b[1]) && (a[2] === b[2]) && (a[3] === b[3]));
 
-    var equals_1$4 = equals$5;
+    var equals_1$4 = equals$6;
 
     /**
      * Flip the given plane.
@@ -3126,9 +3132,7 @@
      * Create a plane from the given points.
      *
      * @param {plane} out - receiving plane
-     * @param {vec3} a - 3D point
-     * @param {vec3} b - 3D point
-     * @param {vec3} c - 3D point
+     * @param {Array} vertices - points on the plane
      * @returns {plane} out
      * @alias module:modeling/maths/plane.fromPoints
      */
@@ -3260,14 +3264,14 @@
      * @return {Number} signed distance to point
      * @alias module:modeling/maths/plane.signedDistanceToPoint
      */
-    const signedDistanceToPoint = (plane, vector) => vec3$1.dot(plane, vector) - plane[3];
+    const signedDistanceToPoint = (plane, point) => vec3$1.dot(plane, point) - plane[3];
 
     var signedDistanceToPoint_1 = signedDistanceToPoint;
 
     /**
      * Convert the given vector to a representative string.
      *
-     * @param {vec4} vector - vector to convert
+     * @param {vec4} vec - vector to convert
      * @returns {String} representative string
      * @alias module:modeling/maths/vec4.toString
      */
@@ -3357,12 +3361,50 @@
     };
 
     /**
+     * Invert the give polygon to face the opposite direction.
+     *
+     * @param {poly3} polygon - the polygon to invert
+     * @returns {poly3} a new poly3
+     * @alias module:modeling/geometries/poly3.invert
+     */
+    const invert$2 = (polygon) => {
+      const vertices = polygon.vertices.slice().reverse();
+      const inverted = create_1$9(vertices);
+      if (polygon.plane) {
+        // Flip existing plane to save recompute
+        inverted.plane = plane$1.flip(plane$1.create(), polygon.plane);
+      }
+      return inverted
+    };
+
+    var invert_1$2 = invert$2;
+
+    /**
+     * Determine if the given object is a polygon.
+     * @param {Object} object - the object to interrogate
+     * @returns {Boolean} true if the object matches a poly3
+     * @alias module:modeling/geometries/poly3.isA
+     */
+    const isA$3 = (object) => {
+      if (object && typeof object === 'object') {
+        if ('vertices' in object) {
+          if (Array.isArray(object.vertices)) {
+            return true
+          }
+        }
+      }
+      return false
+    };
+
+    var isA_1$3 = isA$3;
+
+    /**
      * Check whether the given polygon is convex.
-     * @param {poly3} polygon - the polygon to interogate
+     * @param {poly3} polygon - the polygon to interrogate
      * @returns {Boolean} true if convex
      * @alias module:modeling/geometries/poly3.isConvex
      */
-    const isConvex = (poly3) => areVerticesConvex(poly3.vertices);
+    const isConvex = (polygon) => areVerticesConvex(polygon.vertices);
 
     const areVerticesConvex = (vertices) => {
       const numvertices = vertices.length;
@@ -3414,15 +3456,15 @@
      * @return {Number} area of the polygon
      * @alias module:modeling/geometries/poly3.measureArea
      */
-    const measureArea$2 = (poly3) => {
-      const n = poly3.vertices.length;
+    const measureArea$2 = (polygon) => {
+      const n = polygon.vertices.length;
       if (n < 3) {
         return 0 // degenerate polygon
       }
-      const vertices = poly3.vertices;
+      const vertices = polygon.vertices;
 
       // calculate a normal vector
-      const normal = plane_1(poly3);
+      const normal = plane_1(polygon);
 
       // determine direction of projection
       const ax = Math.abs(normal[0]);
@@ -3494,8 +3536,8 @@
      * @returns {Array} an array of two vectors (3D);  minimum and maximum coordinates
      * @alias module:modeling/geometries/poly3.measureBoundingBox
      */
-    const measureBoundingBox$1 = (poly3) => {
-      const vertices = poly3.vertices;
+    const measureBoundingBox$1 = (polygon) => {
+      const vertices = polygon.vertices;
       const numvertices = vertices.length;
       const min = numvertices === 0 ? vec3$1.create() : vec3$1.clone(vertices[0]);
       const max = vec3$1.clone(min);
@@ -3514,8 +3556,8 @@
      * @returns {Array} the computed bounding sphere; center point (3D) and radius
      * @alias module:modeling/geometries/poly3.measureBoundingSphere
      */
-    const measureBoundingSphere$1 = (poly3) => {
-      const box = measureBoundingBox_1$1(poly3);
+    const measureBoundingSphere$1 = (polygon) => {
+      const box = measureBoundingBox_1$1(polygon);
       const center = box[0];
       vec3$1.add(center, box[0], box[1]);
       vec3$1.scale(center, center, 0.5);
@@ -3527,17 +3569,17 @@
 
     /**
      * Measure the signed volume of the given polygon, which must be convex.
-     * The volume is that formed by the tetrahedon connected to the axis [0,0,0],
+     * The volume is that formed by the tetrahedron connected to the axis [0,0,0],
      * and will be positive or negative based on the rotation of the vertices.
      * @see http://chenlab.ece.cornell.edu/Publication/Cha/icip01_Cha.pdf
      * @param {poly3} polygon - the polygon to measure
      * @return {Number} volume of the polygon
      * @alias module:modeling/geometries/poly3.measureSignedVolume
      */
-    const measureSignedVolume = (poly3) => {
+    const measureSignedVolume = (polygon) => {
       let signedVolume = 0;
-      const vertices = poly3.vertices;
-      // calculate based on triangluar polygons
+      const vertices = polygon.vertices;
+      // calculate based on triangular polygons
       const cross = vec3$1.create();
       for (let i = 0; i < vertices.length - 2; i++) {
         vec3$1.cross(cross, vertices[i + 1], vertices[i + 2]);
@@ -3550,13 +3592,13 @@
     var measureSignedVolume_1 = measureSignedVolume;
 
     /**
-     * Return the given geometry as a list of points.
+     * Return the given polygon as a list of points.
      * NOTE: The returned array should not be modified as the points are shared with the geometry.
      * @param {poly3} polygon - the polygon
      * @return {Array} list of points (3D)
      * @alias module:modeling/geometries/poly3.toPoints
      */
-    const toPoints$2 = (geometry) => geometry.vertices;
+    const toPoints$2 = (polygon) => polygon.vertices;
 
     var toPoints_1$2 = toPoints$2;
 
@@ -3565,9 +3607,9 @@
      * @return {String} the string representation
      * @alias module:modeling/geometries/poly3.toString
      */
-    const toString$5 = (poly3) => {
+    const toString$5 = (polygon) => {
       let result = 'poly3: vertices: [';
-      poly3.vertices.forEach((vertex) => {
+      polygon.vertices.forEach((vertex) => {
         result += `${vec3$1.toString(vertex)}, `;
       });
       result += ']';
@@ -3583,8 +3625,8 @@
      * @returns {poly3} a new polygon
      * @alias module:modeling/geometries/poly3.transform
      */
-    const transform$7 = (matrix, poly3) => {
-      const vertices = poly3.vertices.map((vertex) => vec3$1.transform(vec3$1.create(), vertex, matrix));
+    const transform$7 = (matrix, polygon) => {
+      const vertices = polygon.vertices.map((vertex) => vec3$1.transform(vec3$1.create(), vertex, matrix));
       if (mat4.isMirroring(matrix)) {
         // reverse the order to preserve the orientation
         vertices.reverse();
@@ -3595,9 +3637,61 @@
     var transform_1$7 = transform$7;
 
     /**
-     * Represents a convex 3D polygon consisting of a list of vertices.
+     * Determine if the given object is a valid polygon.
+     * Checks for valid data structure, convex polygons, and duplicate points.
+     *
+     * **If the geometry is not valid, an exception will be thrown with details of the geometry error.**
+     *
+     * @param {Object} object - the object to interrogate
+     * @throws {Error} error if the geometry is not valid
+     * @alias module:modeling/geometries/poly3.validate
+     */
+    const validate$2 = (object) => {
+      if (!isA_1$3(object)) {
+        throw new Error('invalid poly3 structure')
+      }
+
+      // check for empty polygon
+      if (object.vertices.length < 3) {
+        throw new Error(`poly3 not enough vertices ${object.vertices.length}`)
+      }
+      // check area
+      if (measureArea_1$2(object) <= 0) {
+        throw new Error('poly3 area must be greater than zero')
+      }
+
+      // check for duplicate points
+      for (let i = 0; i < object.vertices.length; i++) {
+        if (vec3$1.equals(object.vertices[i], object.vertices[(i + 1) % object.vertices.length])) {
+          throw new Error(`poly3 duplicate vertex ${object.vertices[i]}`)
+        }
+      }
+
+      // check convexity
+      if (!isConvex_1(object)) {
+        throw new Error('poly3 must be convex')
+      }
+
+      // check for infinity, nan
+      object.vertices.forEach((vertex) => {
+        if (!vertex.every(Number.isFinite)) {
+          throw new Error(`poly3 invalid vertex ${vertex}`)
+        }
+      });
+    };
+
+    var validate_1$2 = validate$2;
+
+    /**
+     * Represents a convex 3D polygon consisting of a list of ordered vertices.
      * @see {@link poly3} for data structure information.
      * @module modeling/geometries/poly3
+     *
+     * @example
+     * poly3.create([[0,0,0], [4,0,0], [4,3,12]])
+     *
+     * @example
+     * {"vertices": [[0,0,0], [4,0,0], [4,3,12]]}
      */
     var poly3 = {
       clone: clone_1$6,
@@ -3614,7 +3708,8 @@
       plane: plane_1,
       toPoints: toPoints_1$2,
       toString: toString_1$5,
-      transform: transform_1$7
+      transform: transform_1$7,
+      validate: validate_1$2
     };
 
     /**
@@ -3670,7 +3765,7 @@
         created.polygons.push(poly3.create(vertices));
       }
 
-      // transfer known properities, i.e. color
+      // transfer known properties, i.e. color
       if (data[17] >= 0) {
         created.color = [data[17], data[18], data[19], data[20]];
       }
@@ -3717,8 +3812,8 @@
 
     /**
      * Invert the given geometry, transposing solid and empty space.
-     * @params {geom3} geometry - the geometry to invert
-     * @returns {geom3} a new geometry
+     * @param {geom3} geometry - the geometry to invert
+     * @return {geom3} a new geometry
      * @alias module:modeling/geometries/geom3.invert
      */
     const invert$1 = (geometry) => {
@@ -3730,8 +3825,8 @@
     var invert_1$1 = invert$1;
 
     /**
-     * Determin if the given object is a 3D geometry.
-     * @param {object} object - the object to interogate
+     * Determine if the given object is a 3D geometry.
+     * @param {Object} object - the object to interrogate
      * @returns {Boolean} true if the object matches a geom3
      * @alias module:modeling/geometries/geom3.isA
      */
@@ -3751,6 +3846,7 @@
     /**
      * Return the given geometry as a list of points, after applying transforms.
      * The returned array should not be modified as the points are shared with the geometry.
+     * @param {geom3} geometry - the geometry
      * @return {Array} list of points, where each sub-array represents a polygon
      * @alias module:modeling/geometries/geom3.toPoints
      */
@@ -3765,7 +3861,7 @@
     /**
      * Create a string representing the contents of the given geometry.
      * @param {geom3} geometry - the geometry
-     * @returns {String} a representive string
+     * @returns {String} a representative string
      * @alias module:modeling/geometries/geom3.toString
      *
      * @example
@@ -3788,14 +3884,14 @@
      * @return {TypedArray} compact binary representation
      * @alias module:modeling/geometries/geom3.toCompactBinary
      */
-    const toCompactBinary$1 = (geom) => {
-      const polygons = geom.polygons;
-      const transforms = geom.transforms;
+    const toCompactBinary$1 = (geometry) => {
+      const polygons = geometry.polygons;
+      const transforms = geometry.transforms;
 
       const numberOfPolygons = polygons.length;
       const numberOfVertices = polygons.reduce((count, polygon) => count + polygon.vertices.length, 0);
       let color = [-1, -1, -1, -1];
-      if (geom.color) color = geom.color;
+      if (geometry.color) color = geometry.color;
 
       // FIXME why Float32Array?
       const compacted = new Float32Array(1 + 16 + 4 + 1 + numberOfPolygons + (numberOfVertices * 3));
@@ -3869,9 +3965,86 @@
     var transform_1$6 = transform$6;
 
     /**
+     * Determine if the given object is a valid 3D geometry.
+     * Checks for valid data structure, convex polygon faces, and manifold edges.
+     *
+     * **If the geometry is not valid, an exception will be thrown with details of the geometry error.**
+     *
+     * @param {Object} object - the object to interrogate
+     * @throws {Error} error if the geometry is not valid
+     * @alias module:modeling/geometries/geom3.validate
+     */
+    const validate$1 = (object) => {
+      if (!isA_1$2(object)) {
+        throw new Error('invalid geom3 structure')
+      }
+
+      // check polygons
+      object.polygons.forEach(poly3.validate);
+      validateManifold(object);
+
+      // check transforms
+      if (!object.transforms.every(Number.isFinite)) {
+        throw new Error(`geom3 invalid transforms ${object.transforms}`)
+      }
+
+      // TODO: check for self-intersecting
+    };
+
+    /*
+     * Check manifold edge condition: Every edge is in exactly 2 faces
+     */
+    const validateManifold = (object) => {
+      // count of each edge
+      const edgeCount = new Map();
+      object.polygons.forEach(({ vertices }) => {
+        vertices.forEach((v, i) => {
+          const v1 = `${v}`;
+          const v2 = `${vertices[(i + 1) % vertices.length]}`;
+          // sort for undirected edge
+          const edge = `${v1}/${v2}`;
+          const count = edgeCount.has(edge) ? edgeCount.get(edge) : 0;
+          edgeCount.set(edge, count + 1);
+        });
+      });
+
+      // check that edges are always matched
+      const nonManifold = [];
+      edgeCount.forEach((count, edge) => {
+        const complementEdge = edge.split('/').reverse().join('/');
+        const complementCount = edgeCount.get(complementEdge);
+        if (count !== complementCount) {
+          nonManifold.push(edge.replace('/', ' -> '));
+        }
+      });
+      if (nonManifold.length > 0) {
+        throw new Error(`non-manifold edges ${nonManifold.length}\n${nonManifold.join('\n')}`)
+      }
+    };
+
+    var validate_1$1 = validate$1;
+
+    /**
      * Represents a 3D geometry consisting of a list of polygons.
      * @see {@link geom3} for data structure information.
      * @module modeling/geometries/geom3
+     *
+     * @example
+     * colorize([0,0.5,1,0.6], cube()) // transparent ice cube
+     *
+     * @example
+     * {
+     *   "polygons": [
+     *     {"vertices": [[-1,-1,-1], [-1,-1,1], [-1,1,1], [-1,1,-1]]},
+     *     {"vertices": [[1,-1,-1], [1,1,-1], [1,1,1], [1,-1,1]]},
+     *     {"vertices": [[-1,-1,-1], [1,-1,-1], [1,-1,1], [-1,-1,1]]},
+     *     {"vertices": [[-1,1,-1], [-1,1,1], [1,1,1], [1,1,-1]]},
+     *     {"vertices": [[-1,-1,-1], [-1,1,-1], [1,1,-1], [1,-1,-1]]},
+     *     {"vertices": [[-1,-1,1], [1,-1,1], [1,1,1], [-1,1,1]]}
+     *   ],
+     *   "transforms": [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],
+     *   "color": [0,0.5,1,0.6]
+     * }
      */
     var geom3$2 = {
       clone: clone_1$7,
@@ -3884,7 +4057,8 @@
       toPolygons: toPolygons_1$1,
       toString: toString_1$4,
       toCompactBinary: toCompactBinary_1$1,
-      transform: transform_1$6
+      transform: transform_1$6,
+      validate: validate_1$1
     };
 
     /**
@@ -4349,7 +4523,7 @@
 
     var appendBezier_1 = appendBezier;
 
-    const { equals: equals$4 } = vec2;
+    const { equals: equals$5 } = vec2;
     /**
      * Concatenate the given paths.
      * If both contain the same point at the junction, merge it into one.
@@ -4375,7 +4549,7 @@
       let newpoints = [];
       paths.forEach((path) => {
         const tmp = toPoints_1(path);
-        if (newpoints.length > 0 && tmp.length > 0 && equals$4(tmp[0], newpoints[newpoints.length - 1])) tmp.shift();
+        if (newpoints.length > 0 && tmp.length > 0 && equals$5(tmp[0], newpoints[newpoints.length - 1])) tmp.shift();
         newpoints = newpoints.concat(tmp);
       });
       return fromPoints_1$3({ closed: isClosed }, newpoints)
@@ -4384,14 +4558,14 @@
     var concat_1 = concat;
 
     /**
-     * Calls a function for each point in the geometry.
+     * Calls a function for each point in the path.
      * @param {Object} options - options
      * @param {Function} thunk - the function to call
-     * @param {path2} geometry - the geometry to traverse
+     * @param {path2} path - the path to traverse
      * @alias module:modeling/geometries/path2.eachPoint
      *
      * @example
-     * eachPoint({}, accumulate, geometry)
+     * eachPoint({}, accumulate, path)
      */
     const eachPoint = (options, thunk, path) => {
       toPoints_1(path).forEach(thunk);
@@ -4407,7 +4581,7 @@
       * @returns {Boolean}
       * @alias module:modeling/geometries/path2.equals
       */
-    const equals$3 = (a, b) => {
+    const equals$4 = (a, b) => {
       if (a.isClosed !== b.isClosed) {
         return false
       }
@@ -4441,7 +4615,7 @@
       return false
     };
 
-    var equals_1$3 = equals$3;
+    var equals_1$3 = equals$4;
 
     /**
      * Create a new path from the given compact binary data.
@@ -4473,8 +4647,8 @@
     var fromCompactBinary_1 = fromCompactBinary;
 
     /**
-     * Determin if the given object is a path2 geometry.
-     * @param {Object} object - the object to interogate
+     * Determine if the given object is a path2 geometry.
+     * @param {Object} object - the object to interrogate
      * @returns {Boolean} true if the object matches a path2
      * @alias module:modeling/geometries/path2.isA
      */
@@ -4496,17 +4670,17 @@
     /**
      * Reverses the path so that the points are in the opposite order.
      * This swaps the left (interior) and right (exterior) edges.
-     * @param {path2} geometry - the geometry to reverse
+     * @param {path2} geometry - the path to reverse
      * @returns {path2} a new path
      * @alias module:modeling/geometries/path2.reverse
      *
      * @example
      * let newpath = reverse(mypath)
      */
-    const reverse$3 = (path) => {
+    const reverse$3 = (geometry) => {
       // NOTE: this only updates the order of the points
-      const cloned = clone_1$4(path);
-      cloned.points = path.points.slice().reverse();
+      const cloned = clone_1$4(geometry);
+      cloned.points = geometry.points.slice().reverse();
       return cloned
     };
 
@@ -4515,7 +4689,7 @@
     /**
      * Create a string representing the contents of the given path.
      * @param {path2} geometry - the path
-     * @returns {String} a representive string
+     * @returns {String} a representative string
      * @alias module:modeling/geometries/path2.toString
      *
      * @example
@@ -4535,15 +4709,15 @@
 
     /**
      * Produce a compact binary representation from the given path.
-     * @param {path2} geometry - the path
+     * @param {path2} geometry - the path geometry
      * @returns {TypedArray} compact binary representation
      * @alias module:modeling/geometries/path2.toCompactBinary
      */
-    const toCompactBinary = (geom) => {
-      const points = geom.points;
-      const transforms = geom.transforms;
+    const toCompactBinary = (geometry) => {
+      const points = geometry.points;
+      const transforms = geometry.transforms;
       let color = [-1, -1, -1, -1];
-      if (geom.color) color = geom.color;
+      if (geometry.color) color = geometry.color;
 
       // FIXME why Float32Array?
       const compacted = new Float32Array(1 + 16 + 1 + 4 + (points.length * 2)); // type + transforms + isClosed + color + points data
@@ -4567,7 +4741,7 @@
       compacted[15] = transforms[14];
       compacted[16] = transforms[15];
 
-      compacted[17] = geom.isClosed ? 1 : 0;
+      compacted[17] = geometry.isClosed ? 1 : 0;
 
       compacted[18] = color[0];
       compacted[19] = color[1];
@@ -4606,9 +4780,59 @@
     var transform_1$5 = transform$5;
 
     /**
+     * Determine if the given object is a valid path2.
+     * Checks for valid data points, and duplicate points.
+     *
+     * **If the geometry is not valid, an exception will be thrown with details of the geometry error.**
+     *
+     * @param {Object} object - the object to interrogate
+     * @throws {Error} error if the geometry is not valid
+     * @alias module:modeling/geometries/path2.validate
+     */
+    const validate = (object) => {
+      if (!isA_1$1(object)) {
+        throw new Error('invalid path2 structure')
+      }
+
+      // check for duplicate points
+      if (object.points.length > 1) {
+        for (let i = 0; i < object.points.length; i++) {
+          if (vec2.equals(object.points[i], object.points[(i + 1) % object.points.length])) {
+            throw new Error(`path2 duplicate points ${object.points[i]}`)
+          }
+        }
+      }
+
+      // check for infinity, nan
+      object.points.forEach((point) => {
+        if (!point.every(Number.isFinite)) {
+          throw new Error(`path2 invalid point ${point}`)
+        }
+      });
+
+      // check transforms
+      if (!object.transforms.every(Number.isFinite)) {
+        throw new Error(`path2 invalid transforms ${object.transforms}`)
+      }
+    };
+
+    var validate_1 = validate;
+
+    /**
      * Represents a 2D geometry consisting of a list of ordered points.
      * @see {@link path2} for data structure information.
      * @module modeling/geometries/path2
+     *
+     * @example
+     * colorize([0,0,0,1], path2.fromPoints({ closed: true }, [[0,0], [4,0], [4,3]]))
+     *
+     * @example
+     * {
+     *   "points": [[0,0], [4,0], [4,3]],
+     *   "isClosed": true,
+     *   "transforms": [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],
+     *   "color": [0,0,0,1]
+     * }
      */
     var path2$2 = {
       appendArc: appendArc_1,
@@ -4627,7 +4851,8 @@
       toPoints: toPoints_1,
       toString: toString_1$3,
       toCompactBinary: toCompactBinary_1,
-      transform: transform_1$5
+      transform: transform_1$5,
+      validate: validate_1
     };
 
     const colorGeom2 = (color, object) => {
@@ -4911,6 +5136,7 @@
      * @param  {Number} p
      * @param  {Number} q
      * @param  {Number} t
+     * @return {Number} color component
      * @alias module:modeling/colors.hueToColorComponent
      */
     const hueToColorComponent = (p, q, t) => {
@@ -4927,7 +5153,7 @@
     /**
      * Converts HSL color values to RGB color values.
      *
-     * @see http://en.wikipedia.org/wiki/HSL_color_space.
+     * @see http://en.wikipedia.org/wiki/HSL_color_space
      * @param {...Number|Array} values - HSL or HSLA color values
      * @return {Array} RGB or RGBA color values
      * @alias module:modeling/colors.hslToRgb
@@ -5322,12 +5548,12 @@
      * See the example called extrudeAlongPath.js
      *
      * @example
-     * const b = bezier.create([0,0,0], [0,5,10], [10,0,-5], [10,10,10]]) // a cubic 3 dimensional easing curve that can generate position arrays for modelling
+     * const b = bezier.create([[0,0,0], [0,5,10], [10,0,-5], [10,10,10]]) // a cubic 3 dimensional easing curve that can generate position arrays for modelling
      * let tangent = bezier.tangentAt(t, b)
      *
      * @param {number} t : the position of which to calculate the bezier's tangent value; 0 < t < 1
      * @param {Object} bezier : an array with at least 2 elements of either all numbers, or all arrays of numbers that are the same size.
-     * @returns {array | number} the tangent at the requested position.
+     * @return {array | number} the tangent at the requested position.
      * @alias module:modeling/curves/bezier.tangentAt
      */
     const tangentAt = (t, bezier) => {
@@ -5390,7 +5616,7 @@
      * @return {Number} area under the given points
      * @alias module:modeling/maths/utils.area
      */
-    const area$2 = (points) => {
+    const area$7 = (points) => {
       let area = 0;
       for (let i = 0; i < points.length; i++) {
         const j = (i + 1) % points.length;
@@ -5400,7 +5626,7 @@
       return (area / 2.0)
     };
 
-    var area_1 = area$2;
+    var area_1 = area$7;
 
     /**
      * Measure the area under the given polygon.
@@ -5462,7 +5688,7 @@
      * @return {Integer} 1 if all points are inside, 0 if some or none are inside
      * @alias module:modeling/geometries/poly2.arePointsInside
      */
-    const arePointsInside = (points, polygon) => {
+    const arePointsInside$1 = (points, polygon) => {
       if (points.length === 0) return 0 // nothing to check
 
       const vertices = polygon.vertices;
@@ -5533,12 +5759,18 @@
       return insideFlag
     };
 
-    var arePointsInside_1 = arePointsInside;
+    var arePointsInside_1 = arePointsInside$1;
 
     /**
      * Represents a 2D polygon consisting of a list of ordered vertices.
      * @see {@link poly2} for data structure information.
      * @module modeling/geometries/poly2
+     *
+     * @example
+     * poly2.create([[0,0], [4,0], [4,3]])
+     *
+     * @example
+     * {"vertices": [[0,0], [4,0], [4,3]]}
      */
     var poly2 = {
       arePointsInside: arePointsInside_1,
@@ -5549,7 +5781,14 @@
 
     /**
      * Geometries are objects that represent the contents of primitives or the results of operations.
-     * Note: Geometries are consider immutable, so never change the contents directly.
+     * Note: Geometries are considered immutable, so never change the contents directly.
+     *
+     * @see {@link geom2} - 2D geometry consisting of sides
+     * @see {@link geom3} - 3D geometry consisting of polygons
+     * @see {@link path2} - 2D geometry consisting of ordered points
+     * @see {@link poly2} - 2D polygon consisting of ordered vertices
+     * @see {@link poly3} - 3D polygon consisting of ordered vertices
+     *
      * @module modeling/geometries
      * @example
      * const { geom2, geom3, path2, poly2, poly3 } = require('@jscad/modeling').geometries
@@ -5689,14 +5928,14 @@
     /**
      * Compare the given lines for equality.
      *
-     * @param {line2} a - first line to compare
-     * @param {line2} b - second line to compare
+     * @param {line2} line1 - first line to compare
+     * @param {line2} line2 - second line to compare
      * @return {Boolean} true if lines are equal
      * @alias module:modeling/maths/line2.equals
      */
-    const equals$2 = (line1, line2) => (line1[0] === line2[0]) && (line1[1] === line2[1] && (line1[2] === line2[2]));
+    const equals$3 = (line1, line2) => (line1[0] === line2[0]) && (line1[1] === line2[1] && (line1[2] === line2[2]));
 
-    var equals_1$2 = equals$2;
+    var equals_1$2 = equals$3;
 
     /**
      * Create a new line that passes through the given points.
@@ -5732,21 +5971,21 @@
      * @returns {line2} a new unbounded line
      * @alias module:modeling/maths/line2.fromValues
      */
-    const fromValues = (x, y, w) => {
+    const fromValues = (x, y, d) => {
       const out = create_1$4();
       out[0] = x;
       out[1] = y;
-      out[2] = w;
+      out[2] = d;
       return out
     };
 
     var fromValues_1 = fromValues;
 
-    // Normals are directional vectors with component values from 0 to 1.0, requiring specialized comparision
-    // This EPS is derived from a serieas of tests to determine the optimal precision for comparing coplanar polygons,
+    // Normals are directional vectors with component values from 0 to 1.0, requiring specialized comparison
+    // This EPS is derived from a series of tests to determine the optimal precision for comparing coplanar polygons,
     // as provided by the sphere primitive at high segmentation
     // This EPS is for 64 bit Number values
-    const NEPS$3 = 1e-13;
+    const NEPS$4 = 1e-13;
 
     /**
      * Compare two normals (unit vectors) for near equality.
@@ -5755,7 +5994,7 @@
      * @returns {Boolean} true if a and b are nearly equal
      * @alias module:modeling/maths/utils.aboutEqualNormals
      */
-    const aboutEqualNormals$2 = (a, b) => (Math.abs(a[0] - b[0]) <= NEPS$3 && Math.abs(a[1] - b[1]) <= NEPS$3 && Math.abs(a[2] - b[2]) <= NEPS$3);
+    const aboutEqualNormals$2 = (a, b) => (Math.abs(a[0] - b[0]) <= NEPS$4 && Math.abs(a[1] - b[1]) <= NEPS$4 && Math.abs(a[2] - b[2]) <= NEPS$4);
 
     var aboutEqualNormals_1 = aboutEqualNormals$2;
 
@@ -5864,7 +6103,7 @@
      * Return the point of intersection between the given lines.
      *
      * NOTES:
-     * The point will have Infinity values if the lines are paralell.
+     * The point will have Infinity values if the lines are parallel.
      * The point will have NaN values if the lines are the same.
      *
      * @param {line2} line1 - line of reference
@@ -6078,12 +6317,12 @@
     /**
      * Compare the given lines for equality.
      *
-     * @param {line3} a - first line to compare
-     * @param {line3} b - second line to compare
+     * @param {line3} line1 - first line to compare
+     * @param {line3} line2 - second line to compare
      * @return {Boolean} true if lines are equal
      * @alias module:modeling/maths/line3.equals
      */
-    const equals$1 = (line1, line2) => {
+    const equals$2 = (line1, line2) => {
       // compare directions (unit vectors)
       if (!vec3$1.equals(line1[1], line2[1])) return false
 
@@ -6097,7 +6336,7 @@
       return true
     };
 
-    var equals_1$1 = equals$1;
+    var equals_1$1 = equals$2;
 
     /**
      * Create a line from the given point (origin) and direction.
@@ -6372,7 +6611,7 @@
 
     /**
      * Maths are computational units for fundamental Euclidean geometry. All maths operate upon array data structures.
-     * Note: Maths data structues are consider immutable, so never change the contents directly.
+     * Note: Maths data structures are considered immutable, so never change the contents directly.
      * @see Most computations are based upon the glMatrix library (glmatrix.net)
      * @module modeling/maths
      * @example
@@ -6778,7 +7017,7 @@
       const points = path2$2.toPoints(geometry);
 
       if (points.length > 0) {
-        // calculate the centriod of the geometry
+        // calculate the centroid of the geometry
         let numPoints = 0;
         const temp = vec3$1.create();
         points.forEach((point) => {
@@ -6814,7 +7053,7 @@
       const sides = geom2$2.toSides(geometry);
 
       if (sides.length > 0) {
-        // calculate the centriod of the geometry
+        // calculate the centroid of the geometry
         let numPoints = 0;
         const temp = vec3$1.create();
         sides.forEach((side) => {
@@ -6850,7 +7089,7 @@
       const polygons = geom3$2.toPolygons(geometry);
 
       if (polygons.length > 0) {
-        // calculate the centriod of the geometry
+        // calculate the centroid of the geometry
         let numPoints = 0;
         polygons.forEach((polygon) => {
           poly3.toPoints(polygon).forEach((point) => {
@@ -6876,7 +7115,7 @@
     };
 
     /**
-     * Measure the (aproximate) bounding sphere of the given geometries.
+     * Measure the (approximate) bounding sphere of the given geometries.
      * @see https://en.wikipedia.org/wiki/Bounding_sphere
      * @param {...Object} geometries - the geometries to measure
      * @return {Array} the bounding sphere for each geometry, i.e. [centroid, radius]
@@ -6980,7 +7219,7 @@
       let totalVolume = 0;
       const vector = vec3$1.create(); // for speed
       polygons.forEach((polygon) => {
-        // calculate volume and center of each tetrahedon
+        // calculate volume and center of each tetrahedron
         const vertices = polygon.vertices;
         for (let i = 0; i < vertices.length - 2; i++) {
           vec3$1.cross(vector, vertices[i + 1], vertices[i + 2]);
@@ -7221,16 +7460,53 @@
           pointArray.push(point);
         }
       }
-      return path2$2.fromPoints({ close: false }, pointArray)
+      return path2$2.fromPoints({ closed: false }, pointArray)
     };
 
     var arc_1 = arc;
+
+    const NEPS$3 = 1e-13;
+
+    /*
+     * Returns zero if n is within epsilon of zero, otherwise return n
+     */
+    const rezero = (n) => Math.abs(n) < NEPS$3 ? 0 : n;
+
+    /**
+     * Return Math.sin but accurate for 90 degree rotations.
+     * Fixes rounding errors when sin should be 0.
+     *
+     * @param {Number} radians - angle in radians
+     * @returns {Number} sine of the given angle
+     * @alias module:modeling/utils.sin
+     * @example
+     * sin(Math.PI) == 0
+     * sin(2 * Math.PI) == 0
+     */
+    const sin$4 = (radians) => rezero(Math.sin(radians));
+
+    /**
+     * Return Math.cos but accurate for 90 degree rotations.
+     * Fixes rounding errors when cos should be 0.
+     *
+     * @param {Number} radians - angle in radians
+     * @returns {Number} cosine of the given angle
+     * @alias module:modeling/utils.cos
+     * @example
+     * cos(0.5 * Math.PI) == 0
+     * cos(1.5 * Math.PI) == 0
+     */
+    const cos$4 = (radians) => rezero(Math.cos(radians));
+
+    var trigonometry = { sin: sin$4, cos: cos$4 };
 
     const { EPS: EPS$b } = constants;
 
 
 
 
+
+    const { sin: sin$3, cos: cos$3 } = trigonometry;
 
     const { isGTE: isGTE$8, isNumberArray: isNumberArray$a } = commonChecks;
 
@@ -7290,7 +7566,7 @@
       segments = (rotation < Math.PI * 2) ? segments + 1 : segments;
       for (let i = 0; i < segments; i++) {
         const angle = (step * i) + startAngle;
-        const point = vec2.fromValues(radius[0] * Math.cos(angle), radius[1] * Math.sin(angle));
+        const point = vec2.fromValues(radius[0] * cos$3(angle), radius[1] * sin$3(angle));
         vec2.add(point, centerv, point);
         points.push(point);
       }
@@ -7421,6 +7697,8 @@
 
 
 
+    const { sin: sin$2, cos: cos$2 } = trigonometry;
+
     const { isGT: isGT$9, isGTE: isGTE$7, isNumberArray: isNumberArray$8 } = commonChecks;
 
     /**
@@ -7454,9 +7732,10 @@
       if (!isNumberArray$8(center, 3)) throw new Error('center must be an array of X, Y and Z values')
       if (!isGT$9(height, 0)) throw new Error('height must be greater then zero')
       if (!isNumberArray$8(startRadius, 2)) throw new Error('startRadius must be an array of X and Y values')
-      if (!startRadius.every((n) => n > 0)) throw new Error('startRadius values must be greater than zero')
+      if (!startRadius.every((n) => n >= 0)) throw new Error('startRadius values must be positive')
       if (!isNumberArray$8(endRadius, 2)) throw new Error('endRadius must be an array of X and Y values')
-      if (!endRadius.every((n) => n > 0)) throw new Error('endRadius values must be greater than zero')
+      if (!endRadius.every((n) => n >= 0)) throw new Error('endRadius values must be positive')
+      if (endRadius.every((n) => n === 0) && startRadius.every((n) => n === 0)) throw new Error('at least one radius must be positive')
       if (!isGTE$7(startAngle, 0)) throw new Error('startAngle must be positive')
       if (!isGTE$7(endAngle, 0)) throw new Error('endAngle must be positive')
       if (!isGTE$7(segments, 4)) throw new Error('segments must be four or more')
@@ -7491,8 +7770,8 @@
       const v3 = vec3$1.create();
       const point = (stack, slice, radius) => {
         const angle = slice * rotation + startAngle;
-        vec3$1.scale(v1, axisX, radius[0] * Math.cos(angle));
-        vec3$1.scale(v2, axisY, radius[1] * Math.sin(angle));
+        vec3$1.scale(v1, axisX, radius[0] * cos$2(angle));
+        vec3$1.scale(v2, axisY, radius[1] * sin$2(angle));
         vec3$1.add(v1, v1, v2);
 
         vec3$1.scale(v3, ray, stack);
@@ -7516,12 +7795,16 @@
           polygons.push(fromPoints(point(0, t1, endRadius), point(1, t1, endRadius), point(1, t0, endRadius), point(0, t0, endRadius)));
           polygons.push(fromPoints(end, point(1, t0, endRadius), point(1, t1, endRadius)));
         } else {
-          if (startRadius[0] > 0) {
+          if (startRadius[0] > 0 && startRadius[1] > 0) {
             polygons.push(fromPoints(start, point(0, t1, startRadius), point(0, t0, startRadius)));
+          }
+          if (startRadius[0] > 0 || startRadius[1] > 0) {
             polygons.push(fromPoints(point(0, t0, startRadius), point(0, t1, startRadius), point(1, t0, endRadius)));
           }
-          if (endRadius[0] > 0) {
+          if (endRadius[0] > 0 && endRadius[1] > 0) {
             polygons.push(fromPoints(end, point(1, t0, endRadius), point(1, t1, endRadius)));
+          }
+          if (endRadius[0] > 0 || endRadius[1] > 0) {
             polygons.push(fromPoints(point(1, t0, endRadius), point(0, t1, startRadius), point(1, t1, endRadius)));
           }
         }
@@ -7578,6 +7861,8 @@
 
     var cylinder_1 = cylinder$1;
 
+    const { sin: sin$1, cos: cos$1 } = trigonometry;
+
     const { isGTE: isGTE$6, isNumberArray: isNumberArray$7 } = commonChecks;
 
     /**
@@ -7585,7 +7870,7 @@
      * @param {Object} [options] - options for construction
      * @param {Array} [options.center=[0,0,0]] - center of ellipsoid
      * @param {Array} [options.radius=[1,1,1]] - radius of ellipsoid, along X, Y and Z
-     * @param {Number} [options.segments=32] - number of segements to create per full rotation
+     * @param {Number} [options.segments=32] - number of segments to create per full rotation
      * @param {Array} [options.axes] -  an array with three vectors for the x, y and z base vectors
      * @returns {geom3} new 3D geometry
      * @alias module:modeling/primitives.ellipsoid
@@ -7617,14 +7902,14 @@
       const p1 = vec3$1.create();
       const p2 = vec3$1.create();
       for (let slice1 = 0; slice1 <= segments; slice1++) {
-        const angle = Math.PI * 2.0 * slice1 / segments;
-        const cylinderpoint = vec3$1.add(vec3$1.create(), vec3$1.scale(p1, xvector, Math.cos(angle)), vec3$1.scale(p2, yvector, Math.sin(angle)));
+        const angle = 2 * Math.PI * slice1 / segments;
+        const cylinderpoint = vec3$1.add(vec3$1.create(), vec3$1.scale(p1, xvector, cos$1(angle)), vec3$1.scale(p2, yvector, sin$1(angle)));
         if (slice1 > 0) {
           let prevcospitch, prevsinpitch;
           for (let slice2 = 0; slice2 <= qsegments; slice2++) {
             const pitch = 0.5 * Math.PI * slice2 / qsegments;
-            const cospitch = Math.cos(pitch);
-            const sinpitch = Math.sin(pitch);
+            const cospitch = cos$1(pitch);
+            const sinpitch = sin$1(pitch);
             if (slice2 > 0) {
               let points = [];
               let point;
@@ -7677,7 +7962,7 @@
      * @param {Array} options.points - list of points in 3D space
      * @param {Array} options.faces - list of faces, where each face is a set of indexes into the points
      * @param {Array} [options.colors=undefined] - list of RGBA colors to apply to each face
-     * @param {Array} [options.orientation='outward'] - orientation of faces
+     * @param {String} [options.orientation='outward'] - orientation of faces
      * @returns {geom3} new 3D geometry
      * @alias module:modeling/primitives.polyhedron
      *
@@ -7811,7 +8096,7 @@
 
             // -- normalize
             for (let k = 0; k < 3; k++) {
-              const r = Math.sqrt(q[k][0] * q[k][0] + q[k][1] * q[k][1] + q[k][2] * q[k][2]);
+              const r = Math.hypot(q[k][0], q[k][1], q[k][2]);
               for (let l = 0; l < 3; l++) {
                 q[k][l] /= r;
               }
@@ -7827,7 +8112,7 @@
 
               // -- normalize
               for (let k = 0; k < 3; k++) {
-                const r = Math.sqrt(q[k][0] * q[k][0] + q[k][1] * q[k][1] + q[k][2] * q[k][2]);
+                const r = Math.hypot(q[k][0], q[k][1], q[k][2]);
                 for (let l = 0; l < 3; l++) {
                   q[k][l] /= r;
                 }
@@ -8184,13 +8469,15 @@
 
 
 
+    const { sin, cos } = trigonometry;
+
     const { isGT: isGT$5, isGTE: isGTE$3, isNumberArray: isNumberArray$3 } = commonChecks;
 
     /**
      * Construct a Z axis-aligned solid cylinder in three dimensional space with rounded ends.
      * @param {Object} [options] - options for construction
      * @param {Array} [options.center=[0,0,0]] - center of cylinder
-     * @param {Array} [options.height=2] - height of cylinder
+     * @param {Number} [options.height=2] - height of cylinder
      * @param {Number} [options.radius=1] - radius of cylinder
      * @param {Number} [options.roundRadius=0.2] - radius of rounded edges
      * @param {Number} [options.segments=32] - number of segments to create per full rotation
@@ -8251,8 +8538,8 @@
       const v2 = vec3$1.create();
       let prevcylinderpoint;
       for (let slice1 = 0; slice1 <= segments; slice1++) {
-        const angle = Math.PI * 2.0 * slice1 / segments;
-        const cylinderpoint = vec3$1.add(vec3$1.create(), vec3$1.scale(v1, xvector, Math.cos(angle)), vec3$1.scale(v2, yvector, Math.sin(angle)));
+        const angle = 2 * Math.PI * slice1 / segments;
+        const cylinderpoint = vec3$1.add(vec3$1.create(), vec3$1.scale(v1, xvector, cos(angle)), vec3$1.scale(v2, yvector, sin(angle)));
         if (slice1 > 0) {
           // cylinder wall
           let points = [];
@@ -8265,8 +8552,8 @@
           let prevcospitch, prevsinpitch;
           for (let slice2 = 0; slice2 <= qsegments; slice2++) {
             const pitch = 0.5 * Math.PI * slice2 / qsegments;
-            const cospitch = Math.cos(pitch);
-            const sinpitch = Math.sin(pitch);
+            const cospitch = cos(pitch);
+            const sinpitch = sin(pitch);
             if (slice2 > 0) {
               // cylinder rounding, start
               points = [];
@@ -8535,12 +8822,12 @@
     var star_1 = star$1;
 
     /**
-     * Mirror the given geometries using the given options.
+     * Mirror the given objects using the given options.
      * @param {Object} options - options for mirror
      * @param {Array} [options.origin=[0,0,0]] - the origin of the plane
      * @param {Array} [options.normal=[0,0,1]] - the normal vector of the plane
-     * @param {...Object} geometries - the geometries to mirror
-     * @return {Object|Array} the mirrored geometry, or a list of mirrored geometry
+     * @param {...Object} objects - the objects to mirror
+     * @return {Object|Array} the mirrored object, or a list of mirrored objects
      * @alias module:modeling/transforms.mirror
      *
      * @example
@@ -8574,25 +8861,25 @@
     };
 
     /**
-     * Mirror the given geometries about the X axis.
-     * @param {...Object} geometries - the geometries to mirror
-     * @return {Object|Array} the mirrored geometry, or a list of mirrored geometry
+     * Mirror the given objects about the X axis.
+     * @param {...Object} objects - the objects to mirror
+     * @return {Object|Array} the mirrored object, or a list of mirrored objects
      * @alias module:modeling/transforms.mirrorX
      */
     const mirrorX$1 = (...objects) => mirror({ normal: [1, 0, 0] }, objects);
 
     /**
-     * Mirror the given geometries about the Y axis.
-     * @param {...Object} geometries - the geometries to mirror
-     * @return {Object|Array} the mirrored geometry, or a list of mirrored geometry
+     * Mirror the given objects about the Y axis.
+     * @param {...Object} objects - the geometries to mirror
+     * @return {Object|Array} the mirrored object, or a list of mirrored objects
      * @alias module:modeling/transforms.mirrorY
      */
     const mirrorY = (...objects) => mirror({ normal: [0, 1, 0] }, objects);
 
     /**
-     * Mirror the given object(s) about the Z axis.
+     * Mirror the given objects about the Z axis.
      * @param {...Object} objects - the geometries to mirror
-     * @return {Object|Array} the mirrored geometry, or a list of mirrored geometry
+     * @return {Object|Array} the mirrored object, or a list of mirrored objects
      * @alias module:modeling/transforms.mirrorZ
      */
     const mirrorZ = (...objects) => mirror({ normal: [0, 0, 1] }, objects);
@@ -8626,10 +8913,13 @@
       let farthestEdge;
       let distance = 0;
       edges.forEach((edge) => {
-        const d = vec3$1.squaredDistance(midpoint, edge[0]);
-        if (d > distance) {
-          farthestEdge = edge;
-          distance = d;
+        // Make sure that the farthest edge is not a self-edge
+        if (!vec3$1.equals(edge[0], edge[1])) {
+          const d = vec3$1.squaredDistance(midpoint, edge[0]);
+          if (d > distance) {
+            farthestEdge = edge;
+            distance = d;
+          }
         }
       });
       // find the before edge
@@ -8693,7 +8983,7 @@
      * @returns {Boolean} true if the slices are equal
      * @alias module:modeling/extrusions/slice.equals
      */
-    const equals = (a, b) => {
+    const equals$1 = (a, b) => {
       const aedges = a.edges;
       const bedges = b.edges;
 
@@ -8710,7 +9000,7 @@
       return isEqual
     };
 
-    var equals_1 = equals;
+    var equals_1 = equals$1;
 
     /**
      * Create a slice from the given points.
@@ -8769,8 +9059,8 @@
     var fromSides_1 = fromSides;
 
     /**
-     * Determin if the given object is a slice.
-     * @param {slice} object - the object to interogate
+     * Determine if the given object is a slice.
+     * @param {slice} object - the object to interrogate
      * @returns {Boolean} true if the object matches a slice
      * @alias module:modeling/extrusions/slice.isA
      */
@@ -8826,683 +9116,864 @@
 
     var toEdges_1 = toEdges;
 
-    const { EPS: EPS$6 } = constants;
+    // Simon Tatham's linked list merge sort algorithm
+    // https://www.chiark.greenend.org.uk/~sgtatham/algorithms/listsort.html
+    const sortLinked$1 = (list, fn) => {
+      let i, p, q, e, numMerges;
+      let inSize = 1;
 
+      do {
+        p = list;
+        list = null;
+        let tail = null;
+        numMerges = 0;
 
+        while (p) {
+          numMerges++;
+          q = p;
+          let pSize = 0;
+          for (i = 0; i < inSize; i++) {
+            pSize++;
+            q = q.nextZ;
+            if (!q) break
+          }
+
+          let qSize = inSize;
+
+          while (pSize > 0 || (qSize > 0 && q)) {
+            if (pSize !== 0 && (qSize === 0 || !q || fn(p) <= fn(q))) {
+              e = p;
+              p = p.nextZ;
+              pSize--;
+            } else {
+              e = q;
+              q = q.nextZ;
+              qSize--;
+            }
+
+            if (tail) tail.nextZ = e;
+            else list = e;
+
+            e.prevZ = tail;
+            tail = e;
+          }
+
+          p = q;
+        }
+
+        tail.nextZ = null;
+        inSize *= 2;
+      } while (numMerges > 1)
+
+      return list
+    };
+
+    var linkedListSort = sortLinked$1;
+
+    class Node$2 {
+      constructor (i, x, y) {
+        // vertex index in coordinates array
+        this.i = i;
+
+        // vertex coordinates
+        this.x = x;
+        this.y = y;
+
+        // previous and next vertex nodes in a polygon ring
+        this.prev = null;
+        this.next = null;
+
+        // z-order curve value
+        this.z = null;
+
+        // previous and next nodes in z-order
+        this.prevZ = null;
+        this.nextZ = null;
+
+        // indicates whether this is a steiner point
+        this.steiner = false;
+      }
+    }
 
     /*
-     * Determine if the given geometries overlap by comparing min and max bounds.
-     * NOTE: This is used in union for performace gains.
-     * @param {geom3} geometry1 - geometry for comparision
-     * @param {geom3} geometry2 - geometry for comparision
-     * @returns {boolean} true if the geometries overlap
+     * create a node and optionally link it with previous one (in a circular doubly linked list)
      */
-    const mayOverlap = (geometry1, geometry2) => {
-      // FIXME accessing the data structure of the geometry should not be allowed
-      if ((geometry1.polygons.length === 0) || (geometry2.polygons.length === 0)) {
-        return false
+    const insertNode$1 = (i, x, y, last) => {
+      const p = new Node$2(i, x, y);
+
+      if (!last) {
+        p.prev = p;
+        p.next = p;
+      } else {
+        p.next = last.next;
+        p.prev = last;
+        last.next.prev = p;
+        last.next = p;
       }
 
-      const bounds1 = measureBoundingBox_1(geometry1);
-      const min1 = bounds1[0];
-      const max1 = bounds1[1];
+      return p
+    };
 
-      const bounds2 = measureBoundingBox_1(geometry2);
-      const min2 = bounds2[0];
-      const max2 = bounds2[1];
+    /*
+     * remove a node and join prev with next nodes
+     */
+    const removeNode$2 = (p) => {
+      p.next.prev = p.prev;
+      p.prev.next = p.next;
 
-      if ((min2[0] - max1[0]) > EPS$6) return false
-      if ((min1[0] - max2[0]) > EPS$6) return false
-      if ((min2[1] - max1[1]) > EPS$6) return false
-      if ((min1[1] - max2[1]) > EPS$6) return false
-      if ((min2[2] - max1[2]) > EPS$6) return false
-      if ((min1[2] - max2[2]) > EPS$6) return false
+      if (p.prevZ) p.prevZ.nextZ = p.nextZ;
+      if (p.nextZ) p.nextZ.prevZ = p.prevZ;
+    };
+
+    var linkedList = { Node: Node$2, insertNode: insertNode$1, removeNode: removeNode$2, sortLinked: linkedListSort };
+
+    /*
+     * check if a point lies within a convex triangle
+     */
+    const pointInTriangle$2 = (ax, ay, bx, by, cx, cy, px, py) => (
+      (cx - px) * (ay - py) - (ax - px) * (cy - py) >= 0 &&
+          (ax - px) * (by - py) - (bx - px) * (ay - py) >= 0 &&
+          (bx - px) * (cy - py) - (cx - px) * (by - py) >= 0
+    );
+
+    /*
+     * signed area of a triangle
+     */
+    const area$6 = (p, q, r) => (q.y - p.y) * (r.x - q.x) - (q.x - p.x) * (r.y - q.y);
+
+    var triangle$1 = { area: area$6, pointInTriangle: pointInTriangle$2 };
+
+    const { Node: Node$1, insertNode, removeNode: removeNode$1 } = linkedList;
+    const { area: area$5 } = triangle$1;
+
+    /*
+     * create a circular doubly linked list from polygon points in the specified winding order
+     */
+    const linkedPolygon$2 = (data, start, end, dim, clockwise) => {
+      let last;
+
+      if (clockwise === (signedArea(data, start, end, dim) > 0)) {
+        for (let i = start; i < end; i += dim) {
+          last = insertNode(i, data[i], data[i + 1], last);
+        }
+      } else {
+        for (let i = end - dim; i >= start; i -= dim) {
+          last = insertNode(i, data[i], data[i + 1], last);
+        }
+      }
+
+      if (last && equals(last, last.next)) {
+        removeNode$1(last);
+        last = last.next;
+      }
+
+      return last
+    };
+
+    /*
+     * eliminate colinear or duplicate points
+     */
+    const filterPoints$2 = (start, end) => {
+      if (!start) return start
+      if (!end) end = start;
+
+      let p = start;
+      let again;
+      do {
+        again = false;
+
+        if (!p.steiner && (equals(p, p.next) || area$5(p.prev, p, p.next) === 0)) {
+          removeNode$1(p);
+          p = end = p.prev;
+          if (p === p.next) break
+          again = true;
+        } else {
+          p = p.next;
+        }
+      } while (again || p !== end)
+
+      return end
+    };
+
+    /*
+     * go through all polygon nodes and cure small local self-intersections
+     */
+    const cureLocalIntersections$1 = (start, triangles, dim) => {
+      let p = start;
+      do {
+        const a = p.prev;
+        const b = p.next.next;
+
+        if (!equals(a, b) && intersects(a, p, p.next, b) && locallyInside$1(a, b) && locallyInside$1(b, a)) {
+          triangles.push(a.i / dim);
+          triangles.push(p.i / dim);
+          triangles.push(b.i / dim);
+
+          // remove two nodes involved
+          removeNode$1(p);
+          removeNode$1(p.next);
+
+          p = start = b;
+        }
+
+        p = p.next;
+      } while (p !== start)
+
+      return filterPoints$2(p)
+    };
+
+    /*
+     * check if a polygon diagonal intersects any polygon segments
+     */
+    const intersectsPolygon = (a, b) => {
+      let p = a;
+      do {
+        if (p.i !== a.i && p.next.i !== a.i && p.i !== b.i && p.next.i !== b.i &&
+            intersects(p, p.next, a, b)) return true
+        p = p.next;
+      } while (p !== a)
+
+      return false
+    };
+
+    /*
+     * check if a polygon diagonal is locally inside the polygon
+     */
+    const locallyInside$1 = (a, b) => area$5(a.prev, a, a.next) < 0
+      ? area$5(a, b, a.next) >= 0 && area$5(a, a.prev, b) >= 0
+      : area$5(a, b, a.prev) < 0 || area$5(a, a.next, b) < 0;
+
+    /*
+     * check if the middle point of a polygon diagonal is inside the polygon
+     */
+    const middleInside = (a, b) => {
+      let p = a;
+      let inside = false;
+      const px = (a.x + b.x) / 2;
+      const py = (a.y + b.y) / 2;
+      do {
+        if (((p.y > py) !== (p.next.y > py)) && p.next.y !== p.y &&
+            (px < (p.next.x - p.x) * (py - p.y) / (p.next.y - p.y) + p.x)) { inside = !inside; }
+        p = p.next;
+      } while (p !== a)
+
+      return inside
+    };
+
+    /*
+     * link two polygon vertices with a bridge; if the vertices belong to the same ring, it splits polygon into two
+     * if one belongs to the outer ring and another to a hole, it merges it into a single ring
+     */
+    const splitPolygon$3 = (a, b) => {
+      const a2 = new Node$1(a.i, a.x, a.y);
+      const b2 = new Node$1(b.i, b.x, b.y);
+      const an = a.next;
+      const bp = b.prev;
+
+      a.next = b;
+      b.prev = a;
+
+      a2.next = an;
+      an.prev = a2;
+
+      b2.next = a2;
+      a2.prev = b2;
+
+      bp.next = b2;
+      b2.prev = bp;
+
+      return b2
+    };
+
+    /*
+     * check if a diagonal between two polygon nodes is valid (lies in polygon interior)
+     */
+    const isValidDiagonal$1 = (a, b) => a.next.i !== b.i &&
+        a.prev.i !== b.i &&
+        !intersectsPolygon(a, b) && // doesn't intersect other edges
+        (
+          locallyInside$1(a, b) && locallyInside$1(b, a) && middleInside(a, b) && // locally visible
+            (area$5(a.prev, a, b.prev) || area$5(a, b.prev, b)) || // does not create opposite-facing sectors
+            equals(a, b) && area$5(a.prev, a, a.next) > 0 && area$5(b.prev, b, b.next) > 0
+        );
+
+    /*
+     * check if two segments intersect
+     */
+    const intersects = (p1, q1, p2, q2) => {
+      const o1 = Math.sign(area$5(p1, q1, p2));
+      const o2 = Math.sign(area$5(p1, q1, q2));
+      const o3 = Math.sign(area$5(p2, q2, p1));
+      const o4 = Math.sign(area$5(p2, q2, q1));
+
+      if (o1 !== o2 && o3 !== o4) return true // general case
+
+      if (o1 === 0 && onSegment(p1, p2, q1)) return true // p1, q1 and p2 are colinear and p2 lies on p1q1
+      if (o2 === 0 && onSegment(p1, q2, q1)) return true // p1, q1 and q2 are colinear and q2 lies on p1q1
+      if (o3 === 0 && onSegment(p2, p1, q2)) return true // p2, q2 and p1 are colinear and p1 lies on p2q2
+      if (o4 === 0 && onSegment(p2, q1, q2)) return true // p2, q2 and q1 are colinear and q1 lies on p2q2
+
+      return false
+    };
+
+    /*
+     * for colinear points p, q, r, check if point q lies on segment pr
+     */
+    const onSegment = (p, q, r) => q.x <= Math.max(p.x, r.x) &&
+        q.x >= Math.min(p.x, r.x) &&
+        q.y <= Math.max(p.y, r.y) &&
+        q.y >= Math.min(p.y, r.y);
+
+    const signedArea = (data, start, end, dim) => {
+      let sum = 0;
+      for (let i = start, j = end - dim; i < end; i += dim) {
+        sum += (data[j] - data[i]) * (data[i + 1] + data[j + 1]);
+        j = i;
+      }
+
+      return sum
+    };
+
+    /*
+     * check if two points are equal
+     */
+    const equals = (p1, p2) => p1.x === p2.x && p1.y === p2.y;
+
+    var linkedPolygon_1 = { cureLocalIntersections: cureLocalIntersections$1, filterPoints: filterPoints$2, isValidDiagonal: isValidDiagonal$1, linkedPolygon: linkedPolygon$2, locallyInside: locallyInside$1, splitPolygon: splitPolygon$3 };
+
+    const { filterPoints: filterPoints$1, linkedPolygon: linkedPolygon$1, locallyInside, splitPolygon: splitPolygon$2 } = linkedPolygon_1;
+    const { area: area$4, pointInTriangle: pointInTriangle$1 } = triangle$1;
+
+    /*
+     * link every hole into the outer loop, producing a single-ring polygon without holes
+     *
+     * Original source from https://github.com/mapbox/earcut
+     * Copyright (c) 2016 Mapbox
+     */
+    const eliminateHoles = (data, holeIndices, outerNode, dim) => {
+      const queue = [];
+
+      for (let i = 0, len = holeIndices.length; i < len; i++) {
+        const start = holeIndices[i] * dim;
+        const end = i < len - 1 ? holeIndices[i + 1] * dim : data.length;
+        const list = linkedPolygon$1(data, start, end, dim, false);
+        if (list === list.next) list.steiner = true;
+        queue.push(getLeftmost(list));
+      }
+
+      queue.sort((a, b) => a.x - b.x); // compare X
+
+      // process holes from left to right
+      for (let i = 0; i < queue.length; i++) {
+        outerNode = eliminateHole(queue[i], outerNode);
+        outerNode = filterPoints$1(outerNode, outerNode.next);
+      }
+
+      return outerNode
+    };
+
+    /*
+     * find a bridge between vertices that connects hole with an outer ring and link it
+     */
+    const eliminateHole = (hole, outerNode) => {
+      const bridge = findHoleBridge(hole, outerNode);
+      if (!bridge) {
+        return outerNode
+      }
+
+      const bridgeReverse = splitPolygon$2(bridge, hole);
+
+      // filter colinear points around the cuts
+      const filteredBridge = filterPoints$1(bridge, bridge.next);
+      filterPoints$1(bridgeReverse, bridgeReverse.next);
+
+      // Check if input node was removed by the filtering
+      return outerNode === bridge ? filteredBridge : outerNode
+    };
+
+    /*
+     * David Eberly's algorithm for finding a bridge between hole and outer polygon
+     */
+    const findHoleBridge = (hole, outerNode) => {
+      let p = outerNode;
+      const hx = hole.x;
+      const hy = hole.y;
+      let qx = -Infinity;
+      let m;
+
+      // find a segment intersected by a ray from the hole's leftmost point to the left
+      // segment's endpoint with lesser x will be potential connection point
+      do {
+        if (hy <= p.y && hy >= p.next.y && p.next.y !== p.y) {
+          const x = p.x + (hy - p.y) * (p.next.x - p.x) / (p.next.y - p.y);
+          if (x <= hx && x > qx) {
+            qx = x;
+            if (x === hx) {
+              if (hy === p.y) return p
+              if (hy === p.next.y) return p.next
+            }
+
+            m = p.x < p.next.x ? p : p.next;
+          }
+        }
+
+        p = p.next;
+      } while (p !== outerNode)
+
+      if (!m) return null
+
+      if (hx === qx) return m // hole touches outer segment; pick leftmost endpoint
+
+      // look for points inside the triangle of hole point, segment intersection and endpoint
+      // if there are no points found, we have a valid connection
+      // otherwise choose the point of the minimum angle with the ray as connection point
+
+      const stop = m;
+      const mx = m.x;
+      const my = m.y;
+      let tanMin = Infinity;
+
+      p = m;
+
+      do {
+        if (hx >= p.x && p.x >= mx && hx !== p.x &&
+            pointInTriangle$1(hy < my ? hx : qx, hy, mx, my, hy < my ? qx : hx, hy, p.x, p.y)) {
+          const tan = Math.abs(hy - p.y) / (hx - p.x); // tangential
+
+          if (locallyInside(p, hole) && (tan < tanMin || (tan === tanMin && (p.x > m.x || (p.x === m.x && sectorContainsSector(m, p)))))) {
+            m = p;
+            tanMin = tan;
+          }
+        }
+
+        p = p.next;
+      } while (p !== stop)
+
+      return m
+    };
+
+    /*
+     * whether sector in vertex m contains sector in vertex p in the same coordinates
+     */
+    const sectorContainsSector = (m, p) => area$4(m.prev, m, p.prev) < 0 && area$4(p.next, m, m.next) < 0;
+
+    /*
+     * find the leftmost node of a polygon ring
+     */
+    const getLeftmost = (start) => {
+      let p = start;
+      let leftmost = start;
+      do {
+        if (p.x < leftmost.x || (p.x === leftmost.x && p.y < leftmost.y)) leftmost = p;
+        p = p.next;
+      } while (p !== start)
+
+      return leftmost
+    };
+
+    var eliminateHoles_1 = eliminateHoles;
+
+    const { removeNode, sortLinked } = linkedList;
+    const { cureLocalIntersections, filterPoints, isValidDiagonal, linkedPolygon, splitPolygon: splitPolygon$1 } = linkedPolygon_1;
+    const { area: area$3, pointInTriangle } = triangle$1;
+
+    /*
+     * An implementation of the earcut polygon triangulation algorithm.
+     *
+     * Original source from https://github.com/mapbox/earcut
+     * Copyright (c) 2016 Mapbox
+     *
+     * @param {data} A flat array of vertex coordinates.
+     * @param {holeIndices} An array of hole indices if any.
+     * @param {dim} The number of coordinates per vertex in the input array.
+     */
+    const triangulate = (data, holeIndices, dim = 2) => {
+      const hasHoles = holeIndices && holeIndices.length;
+      const outerLen = hasHoles ? holeIndices[0] * dim : data.length;
+      let outerNode = linkedPolygon(data, 0, outerLen, dim, true);
+      const triangles = [];
+
+      if (!outerNode || outerNode.next === outerNode.prev) return triangles
+
+      let minX, minY, maxX, maxY, invSize;
+
+      if (hasHoles) outerNode = eliminateHoles_1(data, holeIndices, outerNode, dim);
+
+      // if the shape is not too simple, we'll use z-order curve hash later; calculate polygon bbox
+      if (data.length > 80 * dim) {
+        minX = maxX = data[0];
+        minY = maxY = data[1];
+
+        for (let i = dim; i < outerLen; i += dim) {
+          const x = data[i];
+          const y = data[i + 1];
+          if (x < minX) minX = x;
+          if (y < minY) minY = y;
+          if (x > maxX) maxX = x;
+          if (y > maxY) maxY = y;
+        }
+
+        // minX, minY and invSize are later used to transform coords into integers for z-order calculation
+        invSize = Math.max(maxX - minX, maxY - minY);
+        invSize = invSize !== 0 ? 1 / invSize : 0;
+      }
+
+      earcutLinked(outerNode, triangles, dim, minX, minY, invSize);
+
+      return triangles
+    };
+
+    /*
+     * main ear slicing loop which triangulates a polygon (given as a linked list)
+     */
+    const earcutLinked = (ear, triangles, dim, minX, minY, invSize, pass) => {
+      if (!ear) return
+
+      // interlink polygon nodes in z-order
+      if (!pass && invSize) indexCurve(ear, minX, minY, invSize);
+
+      let stop = ear;
+      let prev;
+      let next;
+
+      // iterate through ears, slicing them one by one
+      while (ear.prev !== ear.next) {
+        prev = ear.prev;
+        next = ear.next;
+
+        if (invSize ? isEarHashed(ear, minX, minY, invSize) : isEar(ear)) {
+          // cut off the triangle
+          triangles.push(prev.i / dim);
+          triangles.push(ear.i / dim);
+          triangles.push(next.i / dim);
+
+          removeNode(ear);
+
+          // skipping the next vertex leads to less sliver triangles
+          ear = next.next;
+          stop = next.next;
+
+          continue
+        }
+
+        ear = next;
+
+        // if we looped through the whole remaining polygon and can't find any more ears
+        if (ear === stop) {
+          // try filtering points and slicing again
+          if (!pass) {
+            earcutLinked(filterPoints(ear), triangles, dim, minX, minY, invSize, 1);
+
+            // if this didn't work, try curing all small self-intersections locally
+          } else if (pass === 1) {
+            ear = cureLocalIntersections(filterPoints(ear), triangles, dim);
+            earcutLinked(ear, triangles, dim, minX, minY, invSize, 2);
+
+            // as a last resort, try splitting the remaining polygon into two
+          } else if (pass === 2) {
+            splitEarcut(ear, triangles, dim, minX, minY, invSize);
+          }
+
+          break
+        }
+      }
+    };
+
+    /*
+     * check whether a polygon node forms a valid ear with adjacent nodes
+     */
+    const isEar = (ear) => {
+      const a = ear.prev;
+      const b = ear;
+      const c = ear.next;
+
+      if (area$3(a, b, c) >= 0) return false // reflex, can't be an ear
+
+      // now make sure we don't have other points inside the potential ear
+      let p = ear.next.next;
+
+      while (p !== ear.prev) {
+        if (pointInTriangle(a.x, a.y, b.x, b.y, c.x, c.y, p.x, p.y) && area$3(p.prev, p, p.next) >= 0) {
+          return false
+        }
+        p = p.next;
+      }
+
       return true
     };
 
-    var mayOverlap_1 = mayOverlap;
+    const isEarHashed = (ear, minX, minY, invSize) => {
+      const a = ear.prev;
+      const b = ear;
+      const c = ear.next;
 
-    // # class Node
-    // Holds a node in a BSP tree.
-    // A BSP tree is built from a collection of polygons by picking a polygon to split along.
-    // Polygons are not stored directly in the tree, but in PolygonTreeNodes, stored in this.polygontreenodes.
-    // Those PolygonTreeNodes are children of the owning Tree.polygonTree.
-    // This is not a leafy BSP tree since there is no distinction between internal and leaf nodes.
-    class Node {
-      constructor (parent) {
-        this.plane = null;
-        this.front = null;
-        this.back = null;
-        this.polygontreenodes = [];
-        this.parent = parent;
+      if (area$3(a, b, c) >= 0) return false // reflex, can't be an ear
+
+      // triangle bbox; min & max are calculated like this for speed
+      const minTX = a.x < b.x ? (a.x < c.x ? a.x : c.x) : (b.x < c.x ? b.x : c.x);
+      const minTY = a.y < b.y ? (a.y < c.y ? a.y : c.y) : (b.y < c.y ? b.y : c.y);
+      const maxTX = a.x > b.x ? (a.x > c.x ? a.x : c.x) : (b.x > c.x ? b.x : c.x);
+      const maxTY = a.y > b.y ? (a.y > c.y ? a.y : c.y) : (b.y > c.y ? b.y : c.y);
+
+      // z-order range for the current triangle bbox
+      const minZ = zOrder(minTX, minTY, minX, minY, invSize);
+      const maxZ = zOrder(maxTX, maxTY, minX, minY, invSize);
+
+      let p = ear.prevZ;
+      let n = ear.nextZ;
+
+      // look for points inside the triangle in both directions
+      while (p && p.z >= minZ && n && n.z <= maxZ) {
+        if (p !== ear.prev && p !== ear.next &&
+          pointInTriangle(a.x, a.y, b.x, b.y, c.x, c.y, p.x, p.y) &&
+          area$3(p.prev, p, p.next) >= 0) return false
+        p = p.prevZ;
+
+        if (n !== ear.prev && n !== ear.next &&
+          pointInTriangle(a.x, a.y, b.x, b.y, c.x, c.y, n.x, n.y) &&
+          area$3(n.prev, n, n.next) >= 0) return false
+        n = n.nextZ;
       }
 
-      // Convert solid space to empty space and empty space to solid space.
-      invert () {
-        const queue = [this];
-        let node;
-        for (let i = 0; i < queue.length; i++) {
-          node = queue[i];
-          if (node.plane) node.plane = plane$1.flip(plane$1.create(), node.plane);
-          if (node.front) queue.push(node.front);
-          if (node.back) queue.push(node.back);
-          const temp = node.front;
-          node.front = node.back;
-          node.back = temp;
-        }
+      // look for remaining points in decreasing z-order
+      while (p && p.z >= minZ) {
+        if (p !== ear.prev && p !== ear.next &&
+          pointInTriangle(a.x, a.y, b.x, b.y, c.x, c.y, p.x, p.y) &&
+          area$3(p.prev, p, p.next) >= 0) return false
+        p = p.prevZ;
       }
 
-      // clip polygontreenodes to our plane
-      // calls remove() for all clipped PolygonTreeNodes
-      clipPolygons (polygontreenodes, alsoRemovecoplanarFront) {
-        let current = { node: this, polygontreenodes: polygontreenodes };
-        let node;
-        const stack = [];
-
-        do {
-          node = current.node;
-          polygontreenodes = current.polygontreenodes;
-
-          // begin "function"
-          if (node.plane) {
-            const backnodes = [];
-            const frontnodes = [];
-            const coplanarfrontnodes = alsoRemovecoplanarFront ? backnodes : frontnodes;
-            const plane = node.plane;
-            const numpolygontreenodes = polygontreenodes.length;
-            for (let i = 0; i < numpolygontreenodes; i++) {
-              const node1 = polygontreenodes[i];
-              if (!node1.isRemoved()) {
-                node1.splitByPlane(plane, coplanarfrontnodes, backnodes, frontnodes, backnodes);
-              }
-            }
-
-            if (node.front && (frontnodes.length > 0)) {
-              stack.push({ node: node.front, polygontreenodes: frontnodes });
-            }
-            const numbacknodes = backnodes.length;
-            if (node.back && (numbacknodes > 0)) {
-              stack.push({ node: node.back, polygontreenodes: backnodes });
-            } else {
-              // there's nothing behind this plane. Delete the nodes behind this plane:
-              for (let i = 0; i < numbacknodes; i++) {
-                backnodes[i].remove();
-              }
-            }
-          }
-          current = stack.pop();
-        } while (current !== undefined)
+      // look for remaining points in increasing z-order
+      while (n && n.z <= maxZ) {
+        if (n !== ear.prev && n !== ear.next &&
+          pointInTriangle(a.x, a.y, b.x, b.y, c.x, c.y, n.x, n.y) &&
+          area$3(n.prev, n, n.next) >= 0) return false
+        n = n.nextZ;
       }
 
-      // Remove all polygons in this BSP tree that are inside the other BSP tree
-      // `tree`.
-      clipTo (tree, alsoRemovecoplanarFront) {
-        let node = this;
-        const stack = [];
-        do {
-          if (node.polygontreenodes.length > 0) {
-            tree.rootnode.clipPolygons(node.polygontreenodes, alsoRemovecoplanarFront);
-          }
-          if (node.front) stack.push(node.front);
-          if (node.back) stack.push(node.back);
-          node = stack.pop();
-        } while (node !== undefined)
-      }
-
-      addPolygonTreeNodes (newpolygontreenodes) {
-        let current = { node: this, polygontreenodes: newpolygontreenodes };
-        const stack = [];
-        do {
-          const node = current.node;
-          const polygontreenodes = current.polygontreenodes;
-
-          if (polygontreenodes.length === 0) {
-            current = stack.pop();
-            continue
-          }
-          if (!node.plane) {
-            let index = 0; // default
-            index = Math.floor(polygontreenodes.length / 2);
-            // index = polygontreenodes.length >> 1
-            // index = Math.floor(Math.random()*polygontreenodes.length)
-            const bestpoly = polygontreenodes[index].getPolygon();
-            node.plane = poly3.plane(bestpoly);
-          }
-          const frontnodes = [];
-          const backnodes = [];
-          const n = polygontreenodes.length;
-          for (let i = 0; i < n; ++i) {
-            polygontreenodes[i].splitByPlane(node.plane, node.polygontreenodes, backnodes, frontnodes, backnodes);
-          }
-
-          if (frontnodes.length > 0) {
-            if (!node.front) node.front = new Node(node);
-
-            // unable to split by any of the current nodes
-            const stopCondition = n === frontnodes.length && backnodes.length === 0;
-            if (stopCondition) node.front.polygontreenodes = frontnodes;
-            else stack.push({ node: node.front, polygontreenodes: frontnodes });
-          }
-          if (backnodes.length > 0) {
-            if (!node.back) node.back = new Node(node);
-
-            // unable to split by any of the current nodes
-            const stopCondition = n === backnodes.length && frontnodes.length === 0;
-
-            if (stopCondition) node.back.polygontreenodes = backnodes;
-            else stack.push({ node: node.back, polygontreenodes: backnodes });
-          }
-
-          current = stack.pop();
-        } while (current !== undefined)
-      }
-
-      // TODO is this still used?
-      getParentPlaneNormals (normals, maxdepth) {
-        if (maxdepth > 0) {
-          if (this.parent) {
-            normals.push(this.parent.plane.normal);
-            this.parent.getParentPlaneNormals(normals, maxdepth - 1);
-          }
-        }
-      }
-    }
-
-    var Node_1 = Node;
-
-    const splitLineSegmentByPlane = (plane, p1, p2) => {
-      const direction = vec3$1.subtract(vec3$1.create(), p2, p1);
-      let lambda = (plane[3] - vec3$1.dot(plane, p1)) / vec3$1.dot(plane, direction);
-      if (Number.isNaN(lambda)) lambda = 0;
-      if (lambda > 1) lambda = 1;
-      if (lambda < 0) lambda = 0;
-
-      vec3$1.scale(direction, direction, lambda);
-      vec3$1.add(direction, p1, direction);
-      return direction
+      return true
     };
-
-    var splitLineSegmentByPlane_1 = splitLineSegmentByPlane;
-
-    const { EPS: EPS$5 } = constants;
-
-
-
-
-
-
-
-
-    // Returns object:
-    // .type:
-    //   0: coplanar-front
-    //   1: coplanar-back
-    //   2: front
-    //   3: back
-    //   4: spanning
-    // In case the polygon is spanning, returns:
-    // .front: a Polygon3 of the front part
-    // .back: a Polygon3 of the back part
-    const splitPolygonByPlane = (splane, polygon) => {
-      const result = {
-        type: null,
-        front: null,
-        back: null
-      };
-      // cache in local lets (speedup):
-      const vertices = polygon.vertices;
-      const numvertices = vertices.length;
-      const pplane = poly3.plane(polygon);
-      if (plane$1.equals(pplane, splane)) {
-        result.type = 0;
-      } else {
-        let hasfront = false;
-        let hasback = false;
-        const vertexIsBack = [];
-        const MINEPS = -EPS$5;
-        for (let i = 0; i < numvertices; i++) {
-          const t = vec3$1.dot(splane, vertices[i]) - splane[3];
-          const isback = (t < 0);
-          vertexIsBack.push(isback);
-          if (t > EPS$5) hasfront = true;
-          if (t < MINEPS) hasback = true;
-        }
-        if ((!hasfront) && (!hasback)) {
-          // all points coplanar
-          const t = vec3$1.dot(splane, pplane);
-          result.type = (t >= 0) ? 0 : 1;
-        } else if (!hasback) {
-          result.type = 2;
-        } else if (!hasfront) {
-          result.type = 3;
-        } else {
-          // spanning
-          result.type = 4;
-          const frontvertices = [];
-          const backvertices = [];
-          let isback = vertexIsBack[0];
-          for (let vertexindex = 0; vertexindex < numvertices; vertexindex++) {
-            const vertex = vertices[vertexindex];
-            let nextvertexindex = vertexindex + 1;
-            if (nextvertexindex >= numvertices) nextvertexindex = 0;
-            const nextisback = vertexIsBack[nextvertexindex];
-            if (isback === nextisback) {
-              // line segment is on one side of the plane:
-              if (isback) {
-                backvertices.push(vertex);
-              } else {
-                frontvertices.push(vertex);
-              }
-            } else {
-              // line segment intersects plane:
-              const point = vertex;
-              const nextpoint = vertices[nextvertexindex];
-              const intersectionpoint = splitLineSegmentByPlane_1(splane, point, nextpoint);
-              if (isback) {
-                backvertices.push(vertex);
-                backvertices.push(intersectionpoint);
-                frontvertices.push(intersectionpoint);
-              } else {
-                frontvertices.push(vertex);
-                frontvertices.push(intersectionpoint);
-                backvertices.push(intersectionpoint);
-              }
-            }
-            isback = nextisback;
-          } // for vertexindex
-          // remove duplicate vertices:
-          const EPS_SQUARED = EPS$5 * EPS$5;
-          if (backvertices.length >= 3) {
-            let prevvertex = backvertices[backvertices.length - 1];
-            for (let vertexindex = 0; vertexindex < backvertices.length; vertexindex++) {
-              const vertex = backvertices[vertexindex];
-              if (vec3$1.squaredDistance(vertex, prevvertex) < EPS_SQUARED) {
-                backvertices.splice(vertexindex, 1);
-                vertexindex--;
-              }
-              prevvertex = vertex;
-            }
-          }
-          if (frontvertices.length >= 3) {
-            let prevvertex = frontvertices[frontvertices.length - 1];
-            for (let vertexindex = 0; vertexindex < frontvertices.length; vertexindex++) {
-              const vertex = frontvertices[vertexindex];
-              if (vec3$1.squaredDistance(vertex, prevvertex) < EPS_SQUARED) {
-                frontvertices.splice(vertexindex, 1);
-                vertexindex--;
-              }
-              prevvertex = vertex;
-            }
-          }
-          if (frontvertices.length >= 3) {
-            result.front = poly3.fromPointsAndPlane(frontvertices, pplane);
-          }
-          if (backvertices.length >= 3) {
-            result.back = poly3.fromPointsAndPlane(backvertices, pplane);
-          }
-        }
-      }
-      return result
-    };
-
-    var splitPolygonByPlane_1 = splitPolygonByPlane;
-
-    const { EPS: EPS$4 } = constants;
-
-
-
-
-
-
-
-    // # class PolygonTreeNode
-    // This class manages hierarchical splits of polygons.
-    // At the top is a root node which does not hold a polygon, only child PolygonTreeNodes.
-    // Below that are zero or more 'top' nodes; each holds a polygon.
-    // The polygons can be in different planes.
-    // splitByPlane() splits a node by a plane. If the plane intersects the polygon, two new child nodes
-    // are created holding the splitted polygon.
-    // getPolygons() retrieves the polygons from the tree. If for PolygonTreeNode the polygon is split but
-    // the two split parts (child nodes) are still intact, then the unsplit polygon is returned.
-    // This ensures that we can safely split a polygon into many fragments. If the fragments are untouched,
-    // getPolygons() will return the original unsplit polygon instead of the fragments.
-    // remove() removes a polygon from the tree. Once a polygon is removed, the parent polygons are invalidated
-    // since they are no longer intact.
-    class PolygonTreeNode {
-      // constructor creates the root node
-      constructor () {
-        this.parent = null;
-        this.children = [];
-        this.polygon = null;
-        this.removed = false;
-      }
-
-      // fill the tree with polygons. Should be called on the root node only; child nodes must
-      // always be a derivate (split) of the parent node.
-      addPolygons (polygons) {
-        // new polygons can only be added to root node; children can only be splitted polygons
-        if (!this.isRootNode()) {
-          throw new Error('Assertion failed')
-        }
-        const _this = this;
-        polygons.forEach((polygon) => {
-          _this.addChild(polygon);
-        });
-      }
-
-      // remove a node
-      // - the siblings become toplevel nodes
-      // - the parent is removed recursively
-      remove () {
-        if (!this.removed) {
-          this.removed = true;
-
-          // remove ourselves from the parent's children list:
-          const parentschildren = this.parent.children;
-          const i = parentschildren.indexOf(this);
-          if (i < 0) throw new Error('Assertion failed')
-          parentschildren.splice(i, 1);
-
-          // invalidate the parent's polygon, and of all parents above it:
-          this.parent.recursivelyInvalidatePolygon();
-        }
-      }
-
-      isRemoved () {
-        return this.removed
-      }
-
-      isRootNode () {
-        return !this.parent
-      }
-
-      // invert all polygons in the tree. Call on the root node
-      invert () {
-        if (!this.isRootNode()) throw new Error('Assertion failed') // can only call this on the root node
-        this.invertSub();
-      }
-
-      getPolygon () {
-        if (!this.polygon) throw new Error('Assertion failed') // doesn't have a polygon, which means that it has been broken down
-        return this.polygon
-      }
-
-      getPolygons (result) {
-        let children = [this];
-        const queue = [children];
-        let i, j, l, node;
-        for (i = 0; i < queue.length; ++i) { // queue size can change in loop, don't cache length
-          children = queue[i];
-          for (j = 0, l = children.length; j < l; j++) { // ok to cache length
-            node = children[j];
-            if (node.polygon) {
-              // the polygon hasn't been broken yet. We can ignore the children and return our polygon:
-              result.push(node.polygon);
-            } else {
-              // our polygon has been split up and broken, so gather all subpolygons from the children
-              if (node.children.length > 0) queue.push(node.children);
-            }
-          }
-        }
-      }
-
-      // split the node by a plane; add the resulting nodes to the frontnodes and backnodes array
-      // If the plane doesn't intersect the polygon, the 'this' object is added to one of the arrays
-      // If the plane does intersect the polygon, two new child nodes are created for the front and back fragments,
-      //  and added to both arrays.
-      splitByPlane (plane, coplanarfrontnodes, coplanarbacknodes, frontnodes, backnodes) {
-        if (this.children.length) {
-          const queue = [this.children];
-          let i;
-          let j;
-          let l;
-          let node;
-          let nodes;
-          for (i = 0; i < queue.length; i++) { // queue.length can increase, do not cache
-            nodes = queue[i];
-            for (j = 0, l = nodes.length; j < l; j++) { // ok to cache length
-              node = nodes[j];
-              if (node.children.length > 0) {
-                queue.push(node.children);
-              } else {
-                // no children. Split the polygon:
-                node._splitByPlane(plane, coplanarfrontnodes, coplanarbacknodes, frontnodes, backnodes);
-              }
-            }
-          }
-        } else {
-          this._splitByPlane(plane, coplanarfrontnodes, coplanarbacknodes, frontnodes, backnodes);
-        }
-      }
-
-      // only to be called for nodes with no children
-      _splitByPlane (splane, coplanarfrontnodes, coplanarbacknodes, frontnodes, backnodes) {
-        const polygon = this.polygon;
-        if (polygon) {
-          const bound = poly3.measureBoundingSphere(polygon);
-          const sphereradius = bound[1] + EPS$4; // ensure radius is LARGER then polygon
-          const spherecenter = bound[0];
-          const d = vec3$1.dot(splane, spherecenter) - splane[3];
-          if (d > sphereradius) {
-            frontnodes.push(this);
-          } else if (d < -sphereradius) {
-            backnodes.push(this);
-          } else {
-            const splitresult = splitPolygonByPlane_1(splane, polygon);
-            switch (splitresult.type) {
-              case 0:
-                // coplanar front:
-                coplanarfrontnodes.push(this);
-                break
-
-              case 1:
-                // coplanar back:
-                coplanarbacknodes.push(this);
-                break
-
-              case 2:
-                // front:
-                frontnodes.push(this);
-                break
-
-              case 3:
-                // back:
-                backnodes.push(this);
-                break
-
-              case 4:
-                // spanning:
-                if (splitresult.front) {
-                  const frontnode = this.addChild(splitresult.front);
-                  frontnodes.push(frontnode);
-                }
-                if (splitresult.back) {
-                  const backnode = this.addChild(splitresult.back);
-                  backnodes.push(backnode);
-                }
-                break
-            }
-          }
-        }
-      }
-
-      // PRIVATE methods from here:
-      // add child to a node
-      // this should be called whenever the polygon is split
-      // a child should be created for every fragment of the split polygon
-      // returns the newly created child
-      addChild (polygon) {
-        const newchild = new PolygonTreeNode();
-        newchild.parent = this;
-        newchild.polygon = polygon;
-        this.children.push(newchild);
-        return newchild
-      }
-
-      invertSub () {
-        let children = [this];
-        const queue = [children];
-        let i, j, l, node;
-        for (i = 0; i < queue.length; i++) {
-          children = queue[i];
-          for (j = 0, l = children.length; j < l; j++) {
-            node = children[j];
-            if (node.polygon) {
-              node.polygon = poly3.invert(node.polygon);
-            }
-            if (node.children.length > 0) queue.push(node.children);
-          }
-        }
-      }
-
-      recursivelyInvalidatePolygon () {
-        let node = this;
-        while (node.polygon) {
-          node.polygon = null;
-          if (node.parent) {
-            node = node.parent;
-          }
-        }
-      }
-
-      clear () {
-        let children = [this];
-        const queue = [children];
-        for (let i = 0; i < queue.length; ++i) { // queue size can change in loop, don't cache length
-          children = queue[i];
-          const l = children.length;
-          for (let j = 0; j < l; j++) {
-            const node = children[j];
-            if (node.polygon) {
-              node.polygon = null;
-            }
-            if (node.parent) {
-              node.parent = null;
-            }
-            if (node.children.length > 0) queue.push(node.children);
-            node.children = [];
-          }
-        }
-      }
-
-      toString () {
-        let result = '';
-        let children = [this];
-        const queue = [children];
-        let i, j, l, node;
-        for (i = 0; i < queue.length; ++i) { // queue size can change in loop, don't cache length
-          children = queue[i];
-          const prefix = ' '.repeat(i);
-          for (j = 0, l = children.length; j < l; j++) { // ok to cache length
-            node = children[j];
-            result += `${prefix}PolygonTreeNode (${node.isRootNode()}): ${node.children.length}`;
-            if (node.polygon) {
-              result += `\n ${prefix}poly3\n`;
-            } else {
-              result += '\n';
-            }
-            if (node.children.length > 0) queue.push(node.children);
-          }
-        }
-        return result
-      }
-    }
-
-    var PolygonTreeNode_1 = PolygonTreeNode;
-
-    // # class Tree
-    // This is the root of a BSP tree.
-    // This separate class for the root of the tree in order to hold the PolygonTreeNode root.
-    // The actual tree is kept in this.rootnode
-    class Tree$3 {
-      constructor (polygons) {
-        this.polygonTree = new PolygonTreeNode_1();
-        this.rootnode = new Node_1(null);
-        if (polygons) this.addPolygons(polygons);
-      }
-
-      invert () {
-        this.polygonTree.invert();
-        this.rootnode.invert();
-      }
-
-      // Remove all polygons in this BSP tree that are inside the other BSP tree
-      // `tree`.
-      clipTo (tree, alsoRemovecoplanarFront) {
-        alsoRemovecoplanarFront = !!alsoRemovecoplanarFront;
-        this.rootnode.clipTo(tree, alsoRemovecoplanarFront);
-      }
-
-      allPolygons () {
-        const result = [];
-        this.polygonTree.getPolygons(result);
-        return result
-      }
-
-      addPolygons (polygons) {
-        const polygontreenodes = new Array(polygons.length);
-        for (let i = 0; i < polygons.length; i++) {
-          polygontreenodes[i] = this.polygonTree.addChild(polygons[i]);
-        }
-        this.rootnode.addPolygonTreeNodes(polygontreenodes);
-      }
-
-      clear () {
-        this.polygonTree.clear();
-      }
-
-      toString () {
-        const result = 'Tree: ' + this.polygonTree.toString('');
-        return result
-      }
-    }
-
-    var Tree_1 = Tree$3;
-
-    var trees = {
-      Tree: Tree_1
-    };
-
-    const { Tree: Tree$2 } = trees;
 
     /*
-     * Return a new 3D geometry representing the space in both the first geometry and
-     * the second geometry. None of the given geometries are modified.
-     * @param {geom3} geometry1 - a geometry
-     * @param {geom3} geometry2 - a geometry
-     * @returns {geom3} new 3D geometry
+     * try splitting polygon into two and triangulate them independently
      */
-    const intersectGeom3Sub = (geometry1, geometry2) => {
-      if (!mayOverlap_1(geometry1, geometry2)) {
-        return geom3$2.create() // empty geometry
+    const splitEarcut = (start, triangles, dim, minX, minY, invSize) => {
+      // look for a valid diagonal that divides the polygon into two
+      let a = start;
+      do {
+        let b = a.next.next;
+        while (b !== a.prev) {
+          if (a.i !== b.i && isValidDiagonal(a, b)) {
+            // split the polygon in two by the diagonal
+            let c = splitPolygon$1(a, b);
+
+            // filter colinear points around the cuts
+            a = filterPoints(a, a.next);
+            c = filterPoints(c, c.next);
+
+            // run earcut on each half
+            earcutLinked(a, triangles, dim, minX, minY, invSize);
+            earcutLinked(c, triangles, dim, minX, minY, invSize);
+            return
+          }
+
+          b = b.next;
+        }
+
+        a = a.next;
+      } while (a !== start)
+    };
+
+    /*
+     * interlink polygon nodes in z-order
+     */
+    const indexCurve = (start, minX, minY, invSize) => {
+      let p = start;
+      do {
+        if (p.z === null) p.z = zOrder(p.x, p.y, minX, minY, invSize);
+        p.prevZ = p.prev;
+        p.nextZ = p.next;
+        p = p.next;
+      } while (p !== start)
+
+      p.prevZ.nextZ = null;
+      p.prevZ = null;
+
+      sortLinked(p, (p) => p.z);
+    };
+
+    /*
+     * z-order of a point given coords and inverse of the longer side of data bbox
+     */
+    const zOrder = (x, y, minX, minY, invSize) => {
+      // coords are transformed into non-negative 15-bit integer range
+      x = 32767 * (x - minX) * invSize;
+      y = 32767 * (y - minY) * invSize;
+
+      x = (x | (x << 8)) & 0x00FF00FF;
+      x = (x | (x << 4)) & 0x0F0F0F0F;
+      x = (x | (x << 2)) & 0x33333333;
+      x = (x | (x << 1)) & 0x55555555;
+
+      y = (y | (y << 8)) & 0x00FF00FF;
+      y = (y | (y << 4)) & 0x0F0F0F0F;
+      y = (y | (y << 2)) & 0x33333333;
+      y = (y | (y << 1)) & 0x55555555;
+
+      return x | (y << 1)
+    };
+
+    var earcut = triangulate;
+
+    const { area: area$2 } = utils$1;
+    const { toOutlines } = geom2$2;
+    const { arePointsInside } = poly2;
+
+    /*
+     * Constructs a polygon hierarchy of solids and holes.
+     * The hierarchy is represented as a forest of trees. All trees shall be depth at most 2.
+     * If a solid exists inside the hole of another solid, it will be split out as its own root.
+     *
+     * @param {geom2} geometry
+     * @returns {Array} an array of polygons with associated holes
+     * @alias module:modeling/geometries/geom2.toTree
+     *
+     * @example
+     * const geometry = subtract(rectangle({size: [5, 5]}), rectangle({size: [3, 3]}))
+     * console.log(assignHoles(geometry))
+     * [{
+     *   "solid": [[-2.5,-2.5],[2.5,-2.5],[2.5,2.5],[-2.5,2.5]],
+     *   "holes": [[[-1.5,1.5],[1.5,1.5],[1.5,-1.5],[-1.5,-1.5]]]
+     * }]
+     */
+    const assignHoles = (geometry) => {
+      const outlines = toOutlines(geometry);
+      const solids = []; // solid indices
+      const holes = []; // hole indices
+      outlines.forEach((outline, i) => {
+        const a = area$2(outline);
+        if (a < 0) {
+          holes.push(i);
+        } else if (a > 0) {
+          solids.push(i);
+        }
+      });
+
+      // for each hole, determine what solids it is inside of
+      const children = []; // child holes of solid[i]
+      const parents = []; // parent solids of hole[i]
+      solids.forEach((s, i) => {
+        const solid = outlines[s];
+        children[i] = [];
+        holes.forEach((h, j) => {
+          const hole = outlines[h];
+          // check if a point of hole j is inside solid i
+          if (arePointsInside([hole[0]], { vertices: solid })) {
+            children[i].push(h);
+            if (!parents[j]) parents[j] = [];
+            parents[j].push(i);
+          }
+        });
+      });
+
+      // check if holes have multiple parents and choose one with fewest children
+      holes.forEach((h, j) => {
+        // ensure at least one parent exists
+        if (parents[j] && parents[j].length > 1) {
+          // the solid directly containing this hole
+          const directParent = minIndex(parents[j], (p) => children[p].length);
+          parents[j].forEach((p, i) => {
+            if (i !== directParent) {
+              // Remove hole from skip level parents
+              children[p] = children[p].filter((c) => c !== h);
+            }
+          });
+        }
+      });
+
+      // map indices back to points
+      return children.map((holes, i) => ({
+        solid: outlines[solids[i]],
+        holes: holes.map((h) => outlines[h])
+      }))
+    };
+
+    /*
+     * Find the item in the list with smallest score(item).
+     * If the list is empty, return undefined.
+     */
+    const minIndex = (list, score) => {
+      let bestIndex;
+      let best;
+      list.forEach((item, index) => {
+        const value = score(item);
+        if (best === undefined || value < best) {
+          bestIndex = index;
+          best = value;
+        }
+      });
+      return bestIndex
+    };
+
+    var assignHoles_1 = assignHoles;
+
+    /*
+     * Constructs a polygon hierarchy which associates holes with their outer solids.
+     * This class maps a 3D polygon onto a 2D space using an orthonormal basis.
+     * It tracks the mapping so that points can be reversed back to 3D losslessly.
+     */
+    class PolygonHierarchy {
+      constructor (slice) {
+        this.plane = calculatePlane_1(slice);
+
+        // create an orthonormal basis
+        // choose an arbitrary right hand vector, making sure it is somewhat orthogonal to the plane normal
+        const rightvector = vec3$1.orthogonal(vec3$1.create(), this.plane);
+        const perp = vec3$1.cross(vec3$1.create(), this.plane, rightvector);
+        this.v = vec3$1.normalize(perp, perp);
+        this.u = vec3$1.cross(vec3$1.create(), this.v, this.plane);
+
+        // map from 2D to original 3D points
+        this.basisMap = new Map();
+
+        // project slice onto 2D plane
+        const projected = slice.edges.map((e) => e.map((v) => this.to2D(v)));
+
+        // compute polygon hierarchies, assign holes to solids
+        const geometry = geom2$2.create(projected);
+        this.roots = assignHoles_1(geometry);
       }
 
-      const a = new Tree$2(geom3$2.toPolygons(geometry1));
-      const b = new Tree$2(geom3$2.toPolygons(geometry2));
+      /*
+       * project a 3D point onto the 2D plane
+       */
+      to2D (vector3) {
+        const vector2 = vec2.fromValues(vec3$1.dot(vector3, this.u), vec3$1.dot(vector3, this.v));
+        this.basisMap.set(vector2, vector3);
+        return vector2
+      }
 
-      a.invert();
-      b.clipTo(a);
-      b.invert();
-      a.clipTo(b);
-      b.clipTo(a);
-      a.addPolygons(b.allPolygons());
-      a.invert();
+      /*
+       * un-project a 2D point back into 3D
+       */
+      to3D (vector2) {
+        // use a map to get the original 3D, no floating point error
+        const original = this.basisMap.get(vector2);
+        if (original) {
+          return original
+        } else {
+          console.log('Warning: point not in original slice');
+          const v1 = vec3$1.scale(vec3$1.create(), this.u, vector2[0]);
+          const v2 = vec3$1.scale(vec3$1.create(), this.v, vector2[1]);
 
-      const newpolygons = a.allPolygons();
-      return geom3$2.create(newpolygons)
-    };
+          const planeOrigin = vec3$1.scale(vec3$1.create(), plane$1, plane$1[3]);
+          const v3 = vec3$1.add(v1, v1, planeOrigin);
+          return vec3$1.add(v2, v2, v3)
+        }
+      }
+    }
 
-    var intersectGeom3Sub_1 = intersectGeom3Sub;
-
-    const toPolygon3D = (vector, edge) => {
-      const points = [
-        vec3$1.subtract(vec3$1.create(), edge[0], vector),
-        vec3$1.subtract(vec3$1.create(), edge[1], vector),
-        vec3$1.add(vec3$1.create(), edge[1], vector),
-        vec3$1.add(vec3$1.create(), edge[0], vector)
-      ];
-      return poly3.fromPoints(points)
-    };
+    var polygonHierarchy = PolygonHierarchy;
 
     /**
      * Return a list of polygons which are enclosed by the slice.
@@ -9511,52 +9982,31 @@
      * @alias module:modeling/extrusions/slice.toPolygons
      */
     const toPolygons = (slice) => {
-      const splane = calculatePlane_1(slice);
+      const hierarchy = new polygonHierarchy(slice);
 
-      // find the midpoint of the slice, which will lie on the plane by definition
-      const edges = slice.edges;
-      const midpoint = edges.reduce((point, edge) => vec3$1.add(vec3$1.create(), point, edge[0]), vec3$1.create());
-      vec3$1.scale(midpoint, midpoint, 1 / edges.length);
+      const polygons = [];
+      hierarchy.roots.forEach(({ solid, holes }) => {
+        // hole indices
+        let index = solid.length;
+        const holesIndex = [];
+        holes.forEach((hole, i) => {
+          holesIndex.push(index);
+          index += hole.length;
+        });
 
-      // find the farthest edge from the midpoint, which will be on an outside edge
-      let farthestEdge = [[NaN, NaN, NaN], [NaN, NaN, NaN]];
-      let distance = 0;
-      edges.forEach((edge) => {
-        const d = vec3$1.squaredDistance(midpoint, edge[0]);
-        if (d > distance) {
-          farthestEdge = edge;
-          distance = d;
+        // compute earcut triangulation for each solid
+        const vertices = [solid, ...holes].flat();
+        const data = vertices.flat();
+        // Get original 3D vertex by index
+        const getVertex = (i) => hierarchy.to3D(vertices[i]);
+        const indices = earcut(data, holesIndex);
+        for (let i = 0; i < indices.length; i += 3) {
+          // Map back to original vertices
+          const tri = indices.slice(i, i + 3).map(getVertex);
+          polygons.push(poly3.fromPointsAndPlane(tri, hierarchy.plane));
         }
       });
 
-      // create one LARGE polygon to encompass the side, i.e. base
-      const direction = vec3$1.subtract(vec3$1.create(), farthestEdge[0], midpoint);
-      const perpendicular = vec3$1.cross(vec3$1.create(), splane, direction);
-
-      const p1 = vec3$1.add(vec3$1.create(), midpoint, direction);
-      vec3$1.add(p1, p1, direction);
-      const p2 = vec3$1.add(vec3$1.create(), midpoint, perpendicular);
-      vec3$1.add(p2, p2, perpendicular);
-      const p3 = vec3$1.subtract(vec3$1.create(), midpoint, direction);
-      vec3$1.subtract(p3, p3, direction);
-      const p4 = vec3$1.subtract(vec3$1.create(), midpoint, perpendicular);
-      vec3$1.subtract(p4, p4, perpendicular);
-      const poly1 = poly3.fromPoints([p1, p2, p3, p4]);
-      const base = geom3$2.create([poly1]);
-
-      const wallPolygons = edges.map((edge) => toPolygon3D(splane, edge));
-      const walls = geom3$2.create(wallPolygons);
-
-      // make an insection of the base and the walls, creating... a set of polygons!
-      const geometry3 = intersectGeom3Sub_1(base, walls);
-
-      // return only those polygons from the base
-      let polygons = geom3$2.toPolygons(geometry3);
-      polygons = polygons.filter((polygon) => {
-        const a = vec3$1.angle(splane, poly3.plane(polygon));
-        // walls should be PI / 2 radians rotated from the base
-        return Math.abs(a) < (Math.PI / 90)
-      });
       return polygons
     };
 
@@ -9612,7 +10062,53 @@
       transform: transform_1$1
     };
 
-    const { EPS: EPS$3 } = constants;
+    /*
+     * Mend gaps in a 2D slice to make it a closed polygon
+     */
+    const repairSlice = (slice) => {
+      if (!slice.edges) return slice
+      const vertexMap = {}; // string key to vertex map
+      const edgeCount = {}; // count of (in - out) edges
+      slice.edges.forEach((edge) => {
+        const inKey = edge[0].toString();
+        const outKey = edge[1].toString();
+        vertexMap[inKey] = edge[0];
+        vertexMap[outKey] = edge[1];
+        edgeCount[inKey] = (edgeCount[inKey] || 0) + 1; // in
+        edgeCount[outKey] = (edgeCount[outKey] || 0) - 1; // out
+      });
+      // find vertices which are missing in or out edges
+      const missingIn = Object.keys(edgeCount).filter((e) => edgeCount[e] < 0);
+      const missingOut = Object.keys(edgeCount).filter((e) => edgeCount[e] > 0);
+      // pairwise distance of bad vertices
+      missingIn.forEach((key1) => {
+        const v1 = vertexMap[key1];
+        // find the closest vertex that is missing an out edge
+        let bestDistance = Infinity;
+        let bestReplacement;
+        missingOut.forEach((key2) => {
+          const v2 = vertexMap[key2];
+          const distance = Math.hypot(v1[0] - v2[0], v1[1] - v2[1]);
+          if (distance < bestDistance) {
+            bestDistance = distance;
+            bestReplacement = v2;
+          }
+        });
+        console.warn(`repairSlice: repairing vertex gap ${v1} to ${bestReplacement} distance ${bestDistance}`);
+        // merge broken vertices
+        slice.edges.forEach((edge) => {
+          if (edge[0].toString() === key1) edge[0] = bestReplacement;
+          if (edge[1].toString() === key1) edge[1] = bestReplacement;
+        });
+      });
+      // Remove self-edges
+      slice.edges = slice.edges.filter((e) => !vec3$1.equals(e[0], e[1]));
+      return slice
+    };
+
+    var repairSlice_1 = repairSlice;
+
+    const { EPS: EPS$6 } = constants;
 
 
 
@@ -9657,7 +10153,7 @@
       return newEdges
     };
 
-    const EPSAREA = (EPS$3 * EPS$3 / 2) * Math.sin(Math.PI / 3);
+    const EPSAREA = (EPS$6 * EPS$6 / 2) * Math.sin(Math.PI / 3);
 
     /*
      * Extrude (build) walls between the given slices.
@@ -9708,6 +10204,7 @@
      * @param {Boolean} [options.capStart=true] the solid should have a cap at the start
      * @param {Boolean} [options.capEnd=true] the solid should have a cap at the end
      * @param {Boolean} [options.close=false] the solid should have a closing section between start and end
+     * @param {Boolean} [options.repair=true] - repair gaps in the geometry
      * @param {Function} [options.callback] the callback function that generates each slice
      * @param {Object} base - the base object which is used to create slices (see the example for callback information)
      * @return {geom3} the extruded shape
@@ -9731,11 +10228,17 @@
         capStart: true,
         capEnd: true,
         close: false,
+        repair: true,
         callback: defaultCallback
       };
-      const { numberOfSlices, capStart, capEnd, close, callback: generate } = Object.assign({ }, defaults, options);
+      const { numberOfSlices, capStart, capEnd, close, repair, callback: generate } = Object.assign({ }, defaults, options);
 
       if (numberOfSlices < 2) throw new Error('numberOfSlices must be 2 or more')
+
+      // Repair gaps in the base slice
+      if (repair) {
+        repairSlice_1(base);
+      }
 
       const sMax = numberOfSlices - 1;
 
@@ -9773,8 +10276,7 @@
       }
       if (capStart) {
         // create a cap at the start
-        slice.reverse(startSlice, startSlice);
-        const startPolygons = slice.toPolygons(startSlice);
+        const startPolygons = slice.toPolygons(startSlice).map(poly3.invert);
         polygons = polygons.concat(startPolygons);
       }
       if (!capStart && !capEnd) {
@@ -9921,10 +10423,10 @@
     var extrudeRotate_1 = extrudeRotate;
 
     /**
-     * Rotate the given geometries using the given options.
+     * Rotate the given objects using the given options.
      * @param {Array} angles - angle (RADIANS) of rotations about X, Y, and Z axis
-     * @param {...Object} geometries - the geometries to rotate
-     * @return {Object|Array} the rotated geometry, or a list of rotated geometries
+     * @param {...Object} objects - the objects to rotate
+     * @return {Object|Array} the rotated object, or a list of rotated objects
      * @alias module:modeling/transforms.rotate
      *
      * @example
@@ -9956,28 +10458,28 @@
     };
 
     /**
-     * Rotate the given object(s) about the X axis, using the given options.
+     * Rotate the given objects about the X axis, using the given options.
      * @param {Number} angle - angle (RADIANS) of rotations about X
-     * @param {...Object} geometries - the geometries to rotate
-     * @return {Object|Array} the rotated geometry, or a list of rotated geometries
+     * @param {...Object} objects - the objects to rotate
+     * @return {Object|Array} the rotated object, or a list of rotated objects
      * @alias module:modeling/transforms.rotateX
      */
     const rotateX$1 = (angle, ...objects) => rotate$3([angle, 0, 0], objects);
 
     /**
-     * Rotate the given object(s) about the Y axis, using the given options.
+     * Rotate the given objects about the Y axis, using the given options.
      * @param {Number} angle - angle (RADIANS) of rotations about Y
-     * @param {...Object} geometries - the geometries to rotate
-     * @return {Object|Array} the rotated geometry, or a list of rotated geometries
+     * @param {...Object} objects - the objects to rotate
+     * @return {Object|Array} the rotated object, or a list of rotated objects
      * @alias module:modeling/transforms.rotateY
      */
     const rotateY$1 = (angle, ...objects) => rotate$3([0, angle, 0], objects);
 
     /**
-     * Rotate the given object(s) about the Z axis, using the given options.
+     * Rotate the given objects about the Z axis, using the given options.
      * @param {Number} angle - angle (RADIANS) of rotations about Z
-     * @param {...Object} geometries - the geometries to rotate
-     * @return {Object|Array} the rotated geometry, or a list of rotated geometries
+     * @param {...Object} objects - the objects to rotate
+     * @return {Object|Array} the rotated object, or a list of rotated objects
      * @alias module:modeling/transforms.rotateZ
      */
     const rotateZ$1 = (angle, ...objects) => rotate$3([0, 0, angle], objects);
@@ -9990,10 +10492,10 @@
     };
 
     /**
-     * Translate the given geometries using the given options.
-     * @param {Array} offset - offset (vector) of which to translate the geometries
-     * @param {...Object} geometries - the geometries to translate
-     * @return {Object|Array} the translated geometry, or a list of translated geometries
+     * Translate the given objects using the given options.
+     * @param {Array} offset - offset (vector) of which to translate the objects
+     * @param {...Object} objects - the objects to translate
+     * @return {Object|Array} the translated object, or a list of translated objects
      * @alias module:modeling/transforms.translate
      *
      * @example
@@ -10021,28 +10523,28 @@
     };
 
     /**
-     * Translate the given geometries along the X axis using the given options.
-     * @param {Number} offset - X offset of which to translate the geometries
-     * @param {...Object} geometries - the geometries to translate
-     * @return {Object|Array} the translated geometry, or a list of translated geometries
+     * Translate the given objects along the X axis using the given options.
+     * @param {Number} offset - X offset of which to translate the objects
+     * @param {...Object} objects - the objects to translate
+     * @return {Object|Array} the translated object, or a list of translated objects
      * @alias module:modeling/transforms.translateX
      */
     const translateX = (offset, ...objects) => translate$5([offset, 0, 0], objects);
 
     /**
-     * Translate the given geometries along the Y axis using the given options.
+     * Translate the given objects along the Y axis using the given options.
      * @param {Number} offset - Y offset of which to translate the geometries
-     * @param {...Object} geometries - the geometries to translate
-     * @return {Object|Array} the translated geometry, or a list of translated geometries
+     * @param {...Object} objects - the objects to translate
+     * @return {Object|Array} the translated object, or a list of translated objects
      * @alias module:modeling/transforms.translateY
      */
     const translateY = (offset, ...objects) => translate$5([0, offset, 0], objects);
 
     /**
-     * Translate the given geometries along the Z axis using the given options.
+     * Translate the given objects along the Z axis using the given options.
      * @param {Number} offset - Z offset of which to translate the geometries
-     * @param {...Object} geometries - the geometries to translate
-     * @return {Object|Array} the translated geometry, or a list of translated geometries
+     * @param {...Object} objects - the objects to translate
+     * @return {Object|Array} the translated object, or a list of translated objects
      * @alias module:modeling/transforms.translateZ
      */
     const translateZ = (offset, ...objects) => translate$5([0, 0, offset], objects);
@@ -10233,7 +10735,7 @@
      * The triangle is always constructed CCW from the origin, [0, 0, 0].
      * @see https://www.mathsisfun.com/algebra/trig-solving-triangles.html
      * @param {Object} [options] - options for construction
-     * @param {String} [options.type='SSS' - type of triangle to construct; A ~ angle, S ~ side
+     * @param {String} [options.type='SSS'] - type of triangle to construct; A ~ angle, S ~ side
      * @param {Array} [options.values=[1,1,1]] - angle (radians) of corners or length of sides
      * @returns {geom2} new 2D geometry
      * @alias module:modeling/primitives.triangle
@@ -10523,7 +11025,7 @@
      * @param {Float} [options.height=21] - font size (uppercase height)
      * @param {Float} [options.lineSpacing=1.4] - line spacing expressed as a percentage of font size
      * @param {Float} [options.letterSpacing=1] - extra letter spacing expressed as a percentage of font size
-     * @param {String} [options.align='left'] - multi-line text alignement: left, center or right
+     * @param {String} [options.align='left'] - multi-line text alignment: left, center, right
      * @param {Float} [options.extrudeOffset=0] - width of the extrusion that will be applied (manually) after the creation of the character
      * @param {String} [options.input='?'] - ascii string (ignored/overwrited if provided as seconds parameter)
      * @param {String} [text='?'] - ascii string
@@ -10544,7 +11046,7 @@
         xOffset, yOffset, input, font, height, align, extrudeOffset, lineSpacing, letterSpacing
       } = vectorParams_1(options, text);
       let [x, y] = [xOffset, yOffset];
-      let [i, il, char, vect, width, diff] = [];
+      let i, il, char, vect, width, diff;
       let line = { width: 0, segments: [] };
       const lines = [];
       let output = [];
@@ -10616,7 +11118,7 @@
      */
     const areAllShapesTheSameType = (shapes) => {
       let previousType;
-      shapes.forEach((shape) => {
+      for (const shape of shapes) {
         let currentType = 0;
         if (geom2$2.isA(shape)) currentType = 1;
         if (geom3$2.isA(shape)) currentType = 2;
@@ -10624,7 +11126,7 @@
 
         if (previousType && currentType !== previousType) return false
         previousType = currentType;
-      });
+      }
       return true
     };
 
@@ -10704,12 +11206,14 @@
      */
     var utils = {
       areAllShapesTheSameType: areAllShapesTheSameType_1,
+      cos: trigonometry.cos,
       degToRad: degToRad_1,
       flatten: flatten_1,
       fnNumberSort: fnNumberSort_1,
       insertSorted: insertSorted_1,
       radiusToSegments: radiusToSegments_1,
-      radToDeg: radToDeg_1
+      radToDeg: radToDeg_1,
+      sin: trigonometry.sin
     };
 
     const fromFakePolygon = (epsilon, polygon) => {
@@ -10995,7 +11499,7 @@
 
     var OrthoNormalBasis_1 = OrthoNormalBasis;
 
-    const { EPS: EPS$2 } = constants;
+    const { EPS: EPS$5 } = constants;
 
 
 
@@ -11028,7 +11532,7 @@
       // convert all polygon vertices to 2D
       // Make a list of all encountered y coordinates
       // And build a map of all polygons that have a vertex at a certain y coordinate:
-      const ycoordinateBinningFactor = 1.0 / EPS$2 * 10;
+      const ycoordinateBinningFactor = 1.0 / EPS$5 * 10;
       for (let polygonindex = 0; polygonindex < numpolygons; polygonindex++) {
         const poly3d = sourcepolygons[polygonindex];
         let vertices2d = [];
@@ -11237,7 +11741,7 @@
             const prevoutpolygon = newoutpolygonrow[newoutpolygonrow.length - 1];
             const d1 = vec2.distance(outpolygon.topleft, prevoutpolygon.topright);
             const d2 = vec2.distance(outpolygon.bottomleft, prevoutpolygon.bottomright);
-            if ((d1 < EPS$2) && (d2 < EPS$2)) {
+            if ((d1 < EPS$5) && (d2 < EPS$5)) {
               // we can join this polygon with the one to the left:
               outpolygon.topleft = prevoutpolygon.topleft;
               outpolygon.leftline = prevoutpolygon.leftline;
@@ -11258,8 +11762,8 @@
                 // We have a match if the sidelines are equal or if the top coordinates
                 // are on the sidelines of the previous polygon
                 const prevpolygon = prevoutpolygonrow[ii];
-                if (vec2.distance(prevpolygon.bottomleft, thispolygon.topleft) < EPS$2) {
-                  if (vec2.distance(prevpolygon.bottomright, thispolygon.topright) < EPS$2) {
+                if (vec2.distance(prevpolygon.bottomleft, thispolygon.topleft) < EPS$5) {
+                  if (vec2.distance(prevpolygon.bottomright, thispolygon.topright) < EPS$5) {
                     // Yes, the top of this polygon matches the bottom of the previous:
                     matchedindexes[ii] = true;
                     // Now check if the joined polygon would remain convex:
@@ -11271,8 +11775,8 @@
                     const v4 = line2.direction(prevpolygon.rightline);
                     const d2 = v3[0] - v4[0];
 
-                    const leftlinecontinues = Math.abs(d1) < EPS$2;
-                    const rightlinecontinues = Math.abs(d2) < EPS$2;
+                    const leftlinecontinues = Math.abs(d1) < EPS$5;
+                    const rightlinecontinues = Math.abs(d2) < EPS$5;
                     const leftlineisconvex = leftlinecontinues || (d1 >= 0);
                     const rightlineisconvex = rightlinecontinues || (d2 >= 0);
                     if (leftlineisconvex && rightlineisconvex) {
@@ -11295,7 +11799,7 @@
               // Finish the polygon with the last point(s):
               const prevpolygon = prevoutpolygonrow[ii];
               prevpolygon.outpolygon.rightpoints.push(prevpolygon.bottomright);
-              if (vec2.distance(prevpolygon.bottomright, prevpolygon.bottomleft) > EPS$2) {
+              if (vec2.distance(prevpolygon.bottomright, prevpolygon.bottomleft) > EPS$5) {
                 // polygon ends with a horizontal line:
                 prevpolygon.outpolygon.leftpoints.push(prevpolygon.bottomleft);
               }
@@ -11319,7 +11823,7 @@
               rightpoints: []
             };
             thispolygon.outpolygon.leftpoints.push(thispolygon.topleft);
-            if (vec2.distance(thispolygon.topleft, thispolygon.topright) > EPS$2) {
+            if (vec2.distance(thispolygon.topleft, thispolygon.topright) > EPS$5) {
               // we have a horizontal line at the top:
               thispolygon.outpolygon.rightpoints.push(thispolygon.topright);
             }
@@ -11340,16 +11844,14 @@
 
     var reTesselateCoplanarPolygons_1 = reTesselateCoplanarPolygons;
 
-    // Normals are directional vectors with component values from 0 to 1.0, requiring specialized comparision
-    // This EPS is derived from a serieas of tests to determine the optimal precision for comparing coplanar polygons,
+    // Normals are directional vectors with component values from 0 to 1.0, requiring specialized comparison
+    // This EPS is derived from a series of tests to determine the optimal precision for comparing coplanar polygons,
     // as provided by the sphere primitive at high segmentation
     // This EPS is for 64 bit Number values
     const NEPS$1 = 1e-13;
 
     // Compare two normals (unit vectors) for equality.
-    const aboutEqualNormals$1 = (a, b) => {
-      return (Math.abs(a[0] - b[0]) <= NEPS$1 && Math.abs(a[1] - b[1]) <= NEPS$1 && Math.abs(a[2] - b[2]) <= NEPS$1)
-    };
+    const aboutEqualNormals$1 = (a, b) => (Math.abs(a[0] - b[0]) <= NEPS$1 && Math.abs(a[1] - b[1]) <= NEPS$1 && Math.abs(a[2] - b[2]) <= NEPS$1);
 
     const coplanar$1 = (plane1, plane2) => {
       // expect the same distance from the origin, within tolerance
@@ -11398,6 +11900,665 @@
     };
 
     var retessellate_1 = retessellate;
+
+    const { EPS: EPS$4 } = constants;
+
+
+
+    /*
+     * Determine if the given geometries overlap by comparing min and max bounds.
+     * NOTE: This is used in union for performance gains.
+     * @param {geom3} geometry1 - geometry for comparison
+     * @param {geom3} geometry2 - geometry for comparison
+     * @returns {boolean} true if the geometries overlap
+     */
+    const mayOverlap = (geometry1, geometry2) => {
+      // FIXME accessing the data structure of the geometry should not be allowed
+      if ((geometry1.polygons.length === 0) || (geometry2.polygons.length === 0)) {
+        return false
+      }
+
+      const bounds1 = measureBoundingBox_1(geometry1);
+      const min1 = bounds1[0];
+      const max1 = bounds1[1];
+
+      const bounds2 = measureBoundingBox_1(geometry2);
+      const min2 = bounds2[0];
+      const max2 = bounds2[1];
+
+      if ((min2[0] - max1[0]) > EPS$4) return false
+      if ((min1[0] - max2[0]) > EPS$4) return false
+      if ((min2[1] - max1[1]) > EPS$4) return false
+      if ((min1[1] - max2[1]) > EPS$4) return false
+      if ((min2[2] - max1[2]) > EPS$4) return false
+      if ((min1[2] - max2[2]) > EPS$4) return false
+      return true
+    };
+
+    var mayOverlap_1 = mayOverlap;
+
+    // # class Node
+    // Holds a node in a BSP tree.
+    // A BSP tree is built from a collection of polygons by picking a polygon to split along.
+    // Polygons are not stored directly in the tree, but in PolygonTreeNodes, stored in this.polygontreenodes.
+    // Those PolygonTreeNodes are children of the owning Tree.polygonTree.
+    // This is not a leafy BSP tree since there is no distinction between internal and leaf nodes.
+    class Node {
+      constructor (parent) {
+        this.plane = null;
+        this.front = null;
+        this.back = null;
+        this.polygontreenodes = [];
+        this.parent = parent;
+      }
+
+      // Convert solid space to empty space and empty space to solid space.
+      invert () {
+        const queue = [this];
+        let node;
+        for (let i = 0; i < queue.length; i++) {
+          node = queue[i];
+          if (node.plane) node.plane = plane$1.flip(plane$1.create(), node.plane);
+          if (node.front) queue.push(node.front);
+          if (node.back) queue.push(node.back);
+          const temp = node.front;
+          node.front = node.back;
+          node.back = temp;
+        }
+      }
+
+      // clip polygontreenodes to our plane
+      // calls remove() for all clipped PolygonTreeNodes
+      clipPolygons (polygontreenodes, alsoRemovecoplanarFront) {
+        let current = { node: this, polygontreenodes: polygontreenodes };
+        let node;
+        const stack = [];
+
+        do {
+          node = current.node;
+          polygontreenodes = current.polygontreenodes;
+
+          if (node.plane) {
+            const plane = node.plane;
+
+            const backnodes = [];
+            const frontnodes = [];
+            const coplanarfrontnodes = alsoRemovecoplanarFront ? backnodes : frontnodes;
+            const numpolygontreenodes = polygontreenodes.length;
+            for (let i = 0; i < numpolygontreenodes; i++) {
+              const treenode = polygontreenodes[i];
+              if (!treenode.isRemoved()) {
+                // split this polygon tree node using the plane
+                // NOTE: children are added to the tree if there are spanning polygons
+                treenode.splitByPlane(plane, coplanarfrontnodes, backnodes, frontnodes, backnodes);
+              }
+            }
+
+            if (node.front && (frontnodes.length > 0)) {
+              // add front node for further splitting
+              stack.push({ node: node.front, polygontreenodes: frontnodes });
+            }
+            const numbacknodes = backnodes.length;
+            if (node.back && (numbacknodes > 0)) {
+              // add back node for further splitting
+              stack.push({ node: node.back, polygontreenodes: backnodes });
+            } else {
+              // remove all back nodes from processing
+              for (let i = 0; i < numbacknodes; i++) {
+                backnodes[i].remove();
+              }
+            }
+          }
+          current = stack.pop();
+        } while (current !== undefined)
+      }
+
+      // Remove all polygons in this BSP tree that are inside the other BSP tree
+      // `tree`.
+      clipTo (tree, alsoRemovecoplanarFront) {
+        let node = this;
+        const stack = [];
+        do {
+          if (node.polygontreenodes.length > 0) {
+            tree.rootnode.clipPolygons(node.polygontreenodes, alsoRemovecoplanarFront);
+          }
+          if (node.front) stack.push(node.front);
+          if (node.back) stack.push(node.back);
+          node = stack.pop();
+        } while (node !== undefined)
+      }
+
+      addPolygonTreeNodes (newpolygontreenodes) {
+        let current = { node: this, polygontreenodes: newpolygontreenodes };
+        const stack = [];
+        do {
+          const node = current.node;
+          const polygontreenodes = current.polygontreenodes;
+
+          if (polygontreenodes.length === 0) {
+            current = stack.pop();
+            continue
+          }
+          if (!node.plane) {
+            let index = 0; // default
+            index = Math.floor(polygontreenodes.length / 2);
+            // index = polygontreenodes.length >> 1
+            // index = Math.floor(Math.random()*polygontreenodes.length)
+            const bestpoly = polygontreenodes[index].getPolygon();
+            node.plane = poly3.plane(bestpoly);
+          }
+          const frontnodes = [];
+          const backnodes = [];
+          const n = polygontreenodes.length;
+          for (let i = 0; i < n; ++i) {
+            polygontreenodes[i].splitByPlane(node.plane, node.polygontreenodes, backnodes, frontnodes, backnodes);
+          }
+
+          if (frontnodes.length > 0) {
+            if (!node.front) node.front = new Node(node);
+
+            // unable to split by any of the current nodes
+            const stopCondition = n === frontnodes.length && backnodes.length === 0;
+            if (stopCondition) node.front.polygontreenodes = frontnodes;
+            else stack.push({ node: node.front, polygontreenodes: frontnodes });
+          }
+          if (backnodes.length > 0) {
+            if (!node.back) node.back = new Node(node);
+
+            // unable to split by any of the current nodes
+            const stopCondition = n === backnodes.length && frontnodes.length === 0;
+
+            if (stopCondition) node.back.polygontreenodes = backnodes;
+            else stack.push({ node: node.back, polygontreenodes: backnodes });
+          }
+
+          current = stack.pop();
+        } while (current !== undefined)
+      }
+    }
+
+    var Node_1 = Node;
+
+    const splitLineSegmentByPlane = (plane, p1, p2) => {
+      const direction = vec3$1.subtract(vec3$1.create(), p2, p1);
+      let lambda = (plane[3] - vec3$1.dot(plane, p1)) / vec3$1.dot(plane, direction);
+      if (Number.isNaN(lambda)) lambda = 0;
+      if (lambda > 1) lambda = 1;
+      if (lambda < 0) lambda = 0;
+
+      vec3$1.scale(direction, direction, lambda);
+      vec3$1.add(direction, p1, direction);
+      return direction
+    };
+
+    var splitLineSegmentByPlane_1 = splitLineSegmentByPlane;
+
+    const { EPS: EPS$3 } = constants;
+
+
+
+
+
+
+
+
+    // Returns object:
+    // .type:
+    //   0: coplanar-front
+    //   1: coplanar-back
+    //   2: front
+    //   3: back
+    //   4: spanning
+    // In case the polygon is spanning, returns:
+    // .front: a Polygon3 of the front part
+    // .back: a Polygon3 of the back part
+    const splitPolygonByPlane = (splane, polygon) => {
+      const result = {
+        type: null,
+        front: null,
+        back: null
+      };
+      // cache in local lets (speedup):
+      const vertices = polygon.vertices;
+      const numvertices = vertices.length;
+      const pplane = poly3.plane(polygon);
+      if (plane$1.equals(pplane, splane)) {
+        result.type = 0;
+      } else {
+        let hasfront = false;
+        let hasback = false;
+        const vertexIsBack = [];
+        const MINEPS = -EPS$3;
+        for (let i = 0; i < numvertices; i++) {
+          const t = vec3$1.dot(splane, vertices[i]) - splane[3];
+          const isback = (t < MINEPS);
+          vertexIsBack.push(isback);
+          if (t > EPS$3) hasfront = true;
+          if (t < MINEPS) hasback = true;
+        }
+        if ((!hasfront) && (!hasback)) {
+          // all points coplanar
+          const t = vec3$1.dot(splane, pplane);
+          result.type = (t >= 0) ? 0 : 1;
+        } else if (!hasback) {
+          result.type = 2;
+        } else if (!hasfront) {
+          result.type = 3;
+        } else {
+          // spanning
+          result.type = 4;
+          const frontvertices = [];
+          const backvertices = [];
+          let isback = vertexIsBack[0];
+          for (let vertexindex = 0; vertexindex < numvertices; vertexindex++) {
+            const vertex = vertices[vertexindex];
+            let nextvertexindex = vertexindex + 1;
+            if (nextvertexindex >= numvertices) nextvertexindex = 0;
+            const nextisback = vertexIsBack[nextvertexindex];
+            if (isback === nextisback) {
+              // line segment is on one side of the plane:
+              if (isback) {
+                backvertices.push(vertex);
+              } else {
+                frontvertices.push(vertex);
+              }
+            } else {
+              // line segment intersects plane:
+              const nextpoint = vertices[nextvertexindex];
+              const intersectionpoint = splitLineSegmentByPlane_1(splane, vertex, nextpoint);
+              if (isback) {
+                backvertices.push(vertex);
+                backvertices.push(intersectionpoint);
+                frontvertices.push(intersectionpoint);
+              } else {
+                frontvertices.push(vertex);
+                frontvertices.push(intersectionpoint);
+                backvertices.push(intersectionpoint);
+              }
+            }
+            isback = nextisback;
+          } // for vertexindex
+          // remove duplicate vertices:
+          const EPS_SQUARED = EPS$3 * EPS$3;
+          if (backvertices.length >= 3) {
+            let prevvertex = backvertices[backvertices.length - 1];
+            for (let vertexindex = 0; vertexindex < backvertices.length; vertexindex++) {
+              const vertex = backvertices[vertexindex];
+              if (vec3$1.squaredDistance(vertex, prevvertex) < EPS_SQUARED) {
+                backvertices.splice(vertexindex, 1);
+                vertexindex--;
+              }
+              prevvertex = vertex;
+            }
+          }
+          if (frontvertices.length >= 3) {
+            let prevvertex = frontvertices[frontvertices.length - 1];
+            for (let vertexindex = 0; vertexindex < frontvertices.length; vertexindex++) {
+              const vertex = frontvertices[vertexindex];
+              if (vec3$1.squaredDistance(vertex, prevvertex) < EPS_SQUARED) {
+                frontvertices.splice(vertexindex, 1);
+                vertexindex--;
+              }
+              prevvertex = vertex;
+            }
+          }
+          if (frontvertices.length >= 3) {
+            result.front = poly3.fromPointsAndPlane(frontvertices, pplane);
+          }
+          if (backvertices.length >= 3) {
+            result.back = poly3.fromPointsAndPlane(backvertices, pplane);
+          }
+        }
+      }
+      return result
+    };
+
+    var splitPolygonByPlane_1 = splitPolygonByPlane;
+
+    const { EPS: EPS$2 } = constants;
+
+
+
+
+
+
+
+    // # class PolygonTreeNode
+    // This class manages hierarchical splits of polygons.
+    // At the top is a root node which does not hold a polygon, only child PolygonTreeNodes.
+    // Below that are zero or more 'top' nodes; each holds a polygon.
+    // The polygons can be in different planes.
+    // splitByPlane() splits a node by a plane. If the plane intersects the polygon, two new child nodes
+    // are created holding the splitted polygon.
+    // getPolygons() retrieves the polygons from the tree. If for PolygonTreeNode the polygon is split but
+    // the two split parts (child nodes) are still intact, then the unsplit polygon is returned.
+    // This ensures that we can safely split a polygon into many fragments. If the fragments are untouched,
+    // getPolygons() will return the original unsplit polygon instead of the fragments.
+    // remove() removes a polygon from the tree. Once a polygon is removed, the parent polygons are invalidated
+    // since they are no longer intact.
+    class PolygonTreeNode {
+      // constructor creates the root node
+      constructor (parent, polygon) {
+        this.parent = parent;
+        this.children = [];
+        this.polygon = polygon;
+        this.removed = false;  // state of branch or leaf
+      }
+
+      // fill the tree with polygons. Should be called on the root node only; child nodes must
+      // always be a derivate (split) of the parent node.
+      addPolygons (polygons) {
+        // new polygons can only be added to root node; children can only be splitted polygons
+        if (!this.isRootNode()) {
+          throw new Error('Assertion failed')
+        }
+        const _this = this;
+        polygons.forEach((polygon) => {
+          _this.addChild(polygon);
+        });
+      }
+
+      // remove a node
+      // - the siblings become toplevel nodes
+      // - the parent is removed recursively
+      remove () {
+        if (!this.removed) {
+          this.removed = true;
+          this.polygon = null;
+
+          // remove ourselves from the parent's children list:
+          const parentschildren = this.parent.children;
+          const i = parentschildren.indexOf(this);
+          if (i < 0) throw new Error('Assertion failed')
+          parentschildren.splice(i, 1);
+
+          // invalidate the parent's polygon, and of all parents above it:
+          this.parent.recursivelyInvalidatePolygon();
+        }
+      }
+
+      isRemoved () {
+        return this.removed
+      }
+
+      isRootNode () {
+        return !this.parent
+      }
+
+      // invert all polygons in the tree. Call on the root node
+      invert () {
+        if (!this.isRootNode()) throw new Error('Assertion failed') // can only call this on the root node
+        this.invertSub();
+      }
+
+      getPolygon () {
+        if (!this.polygon) throw new Error('Assertion failed') // doesn't have a polygon, which means that it has been broken down
+        return this.polygon
+      }
+
+      getPolygons (result) {
+        let children = [this];
+        const queue = [children];
+        let i, j, l, node;
+        for (i = 0; i < queue.length; ++i) { // queue size can change in loop, don't cache length
+          children = queue[i];
+          for (j = 0, l = children.length; j < l; j++) { // ok to cache length
+            node = children[j];
+            if (node.polygon) {
+              // the polygon hasn't been broken yet. We can ignore the children and return our polygon:
+              result.push(node.polygon);
+            } else {
+              // our polygon has been split up and broken, so gather all subpolygons from the children
+              if (node.children.length > 0) queue.push(node.children);
+            }
+          }
+        }
+      }
+
+      // split the node by a plane; add the resulting nodes to the frontnodes and backnodes array
+      // If the plane doesn't intersect the polygon, the 'this' object is added to one of the arrays
+      // If the plane does intersect the polygon, two new child nodes are created for the front and back fragments,
+      //  and added to both arrays.
+      splitByPlane (plane, coplanarfrontnodes, coplanarbacknodes, frontnodes, backnodes) {
+        if (this.children.length) {
+          const queue = [this.children];
+          let i;
+          let j;
+          let l;
+          let node;
+          let nodes;
+          for (i = 0; i < queue.length; i++) { // queue.length can increase, do not cache
+            nodes = queue[i];
+            for (j = 0, l = nodes.length; j < l; j++) { // ok to cache length
+              node = nodes[j];
+              if (node.children.length > 0) {
+                queue.push(node.children);
+              } else {
+                // no children. Split the polygon:
+                node._splitByPlane(plane, coplanarfrontnodes, coplanarbacknodes, frontnodes, backnodes);
+              }
+            }
+          }
+        } else {
+          this._splitByPlane(plane, coplanarfrontnodes, coplanarbacknodes, frontnodes, backnodes);
+        }
+      }
+
+      // only to be called for nodes with no children
+      _splitByPlane (splane, coplanarfrontnodes, coplanarbacknodes, frontnodes, backnodes) {
+        const polygon = this.polygon;
+        if (polygon) {
+          const bound = poly3.measureBoundingSphere(polygon);
+          const sphereradius = bound[1] + EPS$2; // ensure radius is LARGER then polygon
+          const spherecenter = bound[0];
+          const d = vec3$1.dot(splane, spherecenter) - splane[3];
+          if (d > sphereradius) {
+            frontnodes.push(this);
+          } else if (d < -sphereradius) {
+            backnodes.push(this);
+          } else {
+            const splitresult = splitPolygonByPlane_1(splane, polygon);
+            switch (splitresult.type) {
+              case 0:
+                // coplanar front:
+                coplanarfrontnodes.push(this);
+                break
+
+              case 1:
+                // coplanar back:
+                coplanarbacknodes.push(this);
+                break
+
+              case 2:
+                // front:
+                frontnodes.push(this);
+                break
+
+              case 3:
+                // back:
+                backnodes.push(this);
+                break
+
+              case 4:
+                // spanning:
+                if (splitresult.front) {
+                  const frontnode = this.addChild(splitresult.front);
+                  frontnodes.push(frontnode);
+                }
+                if (splitresult.back) {
+                  const backnode = this.addChild(splitresult.back);
+                  backnodes.push(backnode);
+                }
+                break
+            }
+          }
+        }
+      }
+
+      // PRIVATE methods from here:
+      // add child to a node
+      // this should be called whenever the polygon is split
+      // a child should be created for every fragment of the split polygon
+      // returns the newly created child
+      addChild (polygon) {
+        const newchild = new PolygonTreeNode(this, polygon);
+        this.children.push(newchild);
+        return newchild
+      }
+
+      invertSub () {
+        let children = [this];
+        const queue = [children];
+        let i, j, l, node;
+        for (i = 0; i < queue.length; i++) {
+          children = queue[i];
+          for (j = 0, l = children.length; j < l; j++) {
+            node = children[j];
+            if (node.polygon) {
+              node.polygon = poly3.invert(node.polygon);
+            }
+            if (node.children.length > 0) queue.push(node.children);
+          }
+        }
+      }
+
+      // private method
+      // remove the polygon from the node, and all parent nodes above it
+      // called to invalidate parents of removed nodes
+      recursivelyInvalidatePolygon () {
+        this.polygon = null;
+        if (this.parent) {
+          this.parent.recursivelyInvalidatePolygon();
+        }
+      }
+
+      clear () {
+        let children = [this];
+        const queue = [children];
+        for (let i = 0; i < queue.length; ++i) { // queue size can change in loop, don't cache length
+          children = queue[i];
+          const l = children.length;
+          for (let j = 0; j < l; j++) {
+            const node = children[j];
+            if (node.polygon) {
+              node.polygon = null;
+            }
+            if (node.parent) {
+              node.parent = null;
+            }
+            if (node.children.length > 0) queue.push(node.children);
+            node.children = [];
+          }
+        }
+      }
+
+      toString () {
+        let result = '';
+        let children = [this];
+        const queue = [children];
+        let i, j, l, node;
+        for (i = 0; i < queue.length; ++i) { // queue size can change in loop, don't cache length
+          children = queue[i];
+          const prefix = ' '.repeat(i);
+          for (j = 0, l = children.length; j < l; j++) { // ok to cache length
+            node = children[j];
+            result += `${prefix}PolygonTreeNode (${node.isRootNode()}): ${node.children.length}`;
+            if (node.polygon) {
+              result += `\n ${prefix}polygon: ${node.polygon.vertices}\n`;
+            } else {
+              result += '\n';
+            }
+            if (node.children.length > 0) queue.push(node.children);
+          }
+        }
+        return result
+      }
+    }
+
+    var PolygonTreeNode_1 = PolygonTreeNode;
+
+    // # class Tree
+    // This is the root of a BSP tree.
+    // This separate class for the root of the tree in order to hold the PolygonTreeNode root.
+    // The actual tree is kept in this.rootnode
+    class Tree$3 {
+      constructor (polygons) {
+        this.polygonTree = new PolygonTreeNode_1();
+        this.rootnode = new Node_1(null);
+        if (polygons) this.addPolygons(polygons);
+      }
+
+      invert () {
+        this.polygonTree.invert();
+        this.rootnode.invert();
+      }
+
+      // Remove all polygons in this BSP tree that are inside the other BSP tree
+      // `tree`.
+      clipTo (tree, alsoRemovecoplanarFront = false) {
+        this.rootnode.clipTo(tree, alsoRemovecoplanarFront);
+      }
+
+      allPolygons () {
+        const result = [];
+        this.polygonTree.getPolygons(result);
+        return result
+      }
+
+      addPolygons (polygons) {
+        const polygontreenodes = new Array(polygons.length);
+        for (let i = 0; i < polygons.length; i++) {
+          polygontreenodes[i] = this.polygonTree.addChild(polygons[i]);
+        }
+        this.rootnode.addPolygonTreeNodes(polygontreenodes);
+      }
+
+      clear () {
+        this.polygonTree.clear();
+      }
+
+      toString () {
+        const result = 'Tree: ' + this.polygonTree.toString('');
+        return result
+      }
+    }
+
+    var Tree_1 = Tree$3;
+
+    var trees = {
+      Tree: Tree_1
+    };
+
+    const { Tree: Tree$2 } = trees;
+
+    /*
+     * Return a new 3D geometry representing the space in both the first geometry and
+     * the second geometry. None of the given geometries are modified.
+     * @param {geom3} geometry1 - a geometry
+     * @param {geom3} geometry2 - a geometry
+     * @returns {geom3} new 3D geometry
+     */
+    const intersectGeom3Sub = (geometry1, geometry2) => {
+      if (!mayOverlap_1(geometry1, geometry2)) {
+        return geom3$2.create() // empty geometry
+      }
+
+      const a = new Tree$2(geom3$2.toPolygons(geometry1));
+      const b = new Tree$2(geom3$2.toPolygons(geometry2));
+
+      a.invert();
+      b.clipTo(a);
+      b.invert();
+      a.clipTo(b);
+      b.clipTo(a);
+      a.addPolygons(b.allPolygons());
+      a.invert();
+
+      const newpolygons = a.allPolygons();
+      return geom3$2.create(newpolygons)
+    };
+
+    var intersectGeom3Sub_1 = intersectGeom3Sub;
 
     /*
      * Return a new 3D geometry representing space in both the first geometry and
@@ -11463,7 +12624,9 @@
       geometries = flatten_1(geometries);
       if (geometries.length === 0) throw new Error('wrong number of arguments')
 
-      if (!areAllShapesTheSameType_1(geometries)) ;
+      if (!areAllShapesTheSameType_1(geometries)) {
+        throw new Error('only intersect of the types are supported')
+      }
 
       const geometry = geometries[0];
       // if (path.isA(geometry)) return pathintersect(matrix, geometries)
@@ -11572,7 +12735,7 @@
     /**
      * Scission (divide) the given geometry into the component pieces.
      *
-     * @param {...Object} geometries - list of geometries
+     * @param {...Object} objects - list of geometries
      * @returns {Array} list of pieces from each geometry
      * @alias module:modeling/booleans.scission
      *
@@ -11682,7 +12845,7 @@
      * @alias module:modeling/booleans.subtract
      *
      * @example
-     * let myshape = subtract(cubiod({size: [5,5,5]}), cubiod({size: [5,5,5], center: [5,5,5]}))
+     * let myshape = subtract(cuboid({size: [5,5,5]}), cuboid({size: [5,5,5], center: [5,5,5]}))
      *
      * @example
      * +-------+            +-------+
@@ -11698,7 +12861,9 @@
       geometries = flatten_1(geometries);
       if (geometries.length === 0) throw new Error('wrong number of arguments')
 
-      if (!areAllShapesTheSameType_1(geometries)) ;
+      if (!areAllShapesTheSameType_1(geometries)) {
+        throw new Error('only subtract of the types are supported')
+      }
 
       const geometry = geometries[0];
       // if (path.isA(geometry)) return pathsubtract(matrix, geometries)
@@ -11715,7 +12880,7 @@
      * Return a new 3D geometry representing the space in the given geometries.
      * @param {geom3} geometry1 - geometry to union
      * @param {geom3} geometry2 - geometry to union
-     * @returns {goem3} new 3D geometry
+     * @returns {geom3} new 3D geometry
      */
     const unionSub = (geometry1, geometry2) => {
       if (!mayOverlap_1(geometry1, geometry2)) {
@@ -11809,7 +12974,9 @@
       geometries = flatten_1(geometries);
       if (geometries.length === 0) throw new Error('wrong number of arguments')
 
-      if (!areAllShapesTheSameType_1(geometries)) ;
+      if (!areAllShapesTheSameType_1(geometries)) {
+        throw new Error('only unions of the same type are supported')
+      }
 
       const geometry = geometries[0];
       // if (path.isA(geometry)) return pathunion(matrix, geometries)
@@ -11874,7 +13041,7 @@
       delta = Math.abs(delta); // sign is no longer required
 
       let previousSegment = null;
-      const newPoints = [];
+      let newPoints = [];
       const newCorners = [];
       const of = vec2.create();
       const n = points.length;
@@ -11934,6 +13101,10 @@
       // generate corners if necessary
 
       if (corners === 'edge') {
+        // map for fast point index lookup
+        const pointIndex = new Map(); // {point: index}
+        newPoints.forEach((point, index) => pointIndex.set(point, index));
+
         // create edge corners
         const line0 = line2.create();
         const line1 = line2.create();
@@ -11943,16 +13114,17 @@
           const ip = line2.intersectPointOfLines(line0, line1);
           if (Number.isFinite(ip[0]) && Number.isFinite(ip[1])) {
             const p0 = corner.s0[1];
-            let i = newPoints.findIndex((point) => vec2.equals(p0, point));
-            i = (i + 1) % newPoints.length;
-            newPoints.splice(i, 0, ip);
+            const i = pointIndex.get(p0);
+            newPoints[i] = ip;
+            newPoints[(i + 1) % newPoints.length] = undefined;
           } else {
             // paralell segments, drop one
             const p0 = corner.s1[0];
-            const i = newPoints.findIndex((point) => vec2.equals(p0, point));
-            newPoints.splice(i, 1);
+            const i = pointIndex.get(p0);
+            newPoints[i] = undefined;
           }
         });
+        newPoints = newPoints.filter((p) => p !== undefined);
       }
 
       if (corners === 'round') {
@@ -12090,37 +13262,43 @@
 
 
 
+    /*
+     * Collect all planes adjacent to each vertex
+     */
     const mapPlaneToVertex = (map, vertex, plane) => {
-      const i = map.findIndex((item) => vec3$1.equals(item[0], vertex));
-      if (i < 0) {
+      const key = vertex.toString();
+      if (!map.has(key)) {
         const entry = [vertex, [plane]];
-        map.push(entry);
-        return map.length
+        map.set(key, entry);
+      } else {
+        const planes = map.get(key)[1];
+        planes.push(plane);
       }
-      const planes = map[i][1];
-      planes.push(plane);
-      return i
     };
 
+    /*
+     * Collect all planes adjacent to each edge.
+     * Combine undirected edges, no need for duplicate cylinders.
+     */
     const mapPlaneToEdge = (map, edge, plane) => {
-      const i = map.findIndex((item) => (vec3$1.equals(item[0], edge[0]) && vec3$1.equals(item[1], edge[1])) || (vec3$1.equals(item[0], edge[1]) && vec3$1.equals(item[1], edge[0])));
-      if (i < 0) {
+      const key0 = edge[0].toString();
+      const key1 = edge[1].toString();
+      // Sort keys to make edges undirected
+      const key = key0 < key1 ? `${key0},${key1}` : `${key1},${key0}`;
+      if (!map.has(key)) {
         const entry = [edge, [plane]];
-        map.push(entry);
-        return map.length
+        map.set(key, entry);
+      } else {
+        const planes = map.get(key)[1];
+        planes.push(plane);
       }
-      const planes = map[i][1];
-      planes.push(plane);
-      return i
     };
 
     const addUniqueAngle = (map, angle) => {
       const i = map.findIndex((item) => item === angle);
       if (i < 0) {
         map.push(angle);
-        return map.length
       }
-      return i
     };
 
     /*
@@ -12140,8 +13318,8 @@
       const { delta, segments } = Object.assign({ }, defaults, options);
 
       let result = geom3$2.create();
-      const vertices2planes = []; // contents: [vertex, [plane, ...]]
-      const edges2planes = []; // contents: [[vertex, vertex], [plane, ...]]
+      const vertices2planes = new Map(); // {vertex: [vertex, [plane, ...]]}
+      const edges2planes = new Map(); // {edge: [[vertex, vertex], [plane, ...]]}
 
       const v1 = vec3$1.create();
       const v2 = vec3$1.create();
@@ -12415,14 +13593,14 @@
 
     /**
      * Expand the given geometry using the given options.
-     * Both interal and external space is expanded for 2D and 3D shapes.
+     * Both internal and external space is expanded for 2D and 3D shapes.
      *
      * Note: Contract is expand using a negative delta.
      * @param {Object} options - options for expand
      * @param {Number} [options.delta=1] - delta (+/-) of expansion
      * @param {String} [options.corners='edge'] - type of corner to create after expanding; edge, chamfer, round
      * @param {Integer} [options.segments=16] - number of segments when creating round corners
-     * @param {...Objects} geometry - the list of geometry to expand
+     * @param {...Objects} objects - the geometries to expand
      * @return {Object|Array} new geometry, or list of new geometries
      * @alias module:modeling/expansions.expand
      *
@@ -12525,7 +13703,7 @@
      * @param {Float} [options.delta=1] - delta of offset (+ to exterior, - from interior)
      * @param {String} [options.corners='edge'] - type of corner to create after offseting; edge, chamfer, round
      * @param {Integer} [options.segments=16] - number of segments when creating round corners
-     * @param {...Object} geometry - the list of geometry to offset
+     * @param {...Object} objects - the geometries to offset
      * @return {Object|Array} new geometry, or list of new geometries
      * @alias module:modeling/expansions.offset
      *
@@ -12566,6 +13744,7 @@
      * @param {Array} [options.offset] - the direction of the extrusion as a 3D vector
      * @param {Number} [options.twistAngle] - the final rotation (RADIANS) about the origin
      * @param {Integer} [options.twistSteps] - the number of steps created to produce the twist (if any)
+     * @param {Boolean} [options.repair] - repair gaps in the geometry
      * @param {geom2} geometry - the geometry to extrude
      * @returns {geom3} the extruded 3D geometry
     */
@@ -12573,9 +13752,10 @@
       const defaults = {
         offset: [0, 0, 1],
         twistAngle: 0,
-        twistSteps: 12
+        twistSteps: 12,
+        repair: true
       };
-      let { offset, twistAngle, twistSteps } = Object.assign({ }, defaults, options);
+      let { offset, twistAngle, twistSteps, repair } = Object.assign({ }, defaults, options);
 
       if (twistSteps < 1) throw new Error('twistSteps must be 1 or more')
 
@@ -12605,6 +13785,7 @@
         numberOfSlices: twistSteps + 1,
         capStart: true,
         capEnd: true,
+        repair,
         callback: createTwist
       };
       return extrudeFromSlices_1(options, baseSlice)
@@ -12612,13 +13793,35 @@
 
     var extrudeLinearGeom2 = extrudeGeom2;
 
+    /*
+     * Extrude the given geometry using the given options.
+     *
+     * @param {Object} [options] - options for extrude
+     * @param {Array} [options.offset] - the direction of the extrusion as a 3D vector
+     * @param {Number} [options.twistAngle] - the final rotation (RADIANS) about the origin
+     * @param {Integer} [options.twistSteps] - the number of steps created to produce the twist (if any)
+     * @param {path2} geometry - the geometry to extrude
+     * @returns {geom3} the extruded 3D geometry
+    */
+    const extrudePath2 = (options, geometry) => {
+      if (!geometry.isClosed) throw new Error('extruded path must be closed')
+      // Convert path2 to geom2
+      const points = path2$2.toPoints(geometry);
+      const geometry2 = geom2$2.fromPoints(points);
+      return extrudeLinearGeom2(options, geometry2)
+    };
+
+    var extrudeLinearPath2 = extrudePath2;
+
     /**
      * Extrude the given geometry in an upward linear direction using the given options.
+     * Accepts path2 or geom2 objects as input. Paths must be closed.
+     *
      * @param {Object} options - options for extrude
-     * @param {Array} [options.height=1] the height of the extrusion
+     * @param {Number} [options.height=1] the height of the extrusion
      * @param {Number} [options.twistAngle=0] the final rotation (RADIANS) about the origin of the shape (if any)
      * @param {Integer} [options.twistSteps=1] the resolution of the twist about the axis (if any)
-     * @param {...Object} geometry - the list of geometry to extrude
+     * @param {...Object} objects - the geometries to extrude
      * @return {Object|Array} the extruded geometry, or a list of extruded geometry
      * @alias module:modeling/extrusions.extrudeLinear
      *
@@ -12629,17 +13832,18 @@
       const defaults = {
         height: 1,
         twistAngle: 0,
-        twistSteps: 1
+        twistSteps: 1,
+        repair: true
       };
-      const { height, twistAngle, twistSteps } = Object.assign({ }, defaults, options);
+      const { height, twistAngle, twistSteps, repair } = Object.assign({ }, defaults, options);
 
       objects = flatten_1(objects);
       if (objects.length === 0) throw new Error('wrong number of arguments')
 
-      options = { offset: [0, 0, height], twistAngle: twistAngle, twistSteps: twistSteps };
+      options = { offset: [0, 0, height], twistAngle, twistSteps, repair };
 
       const results = objects.map((object) => {
-        // if (path.isA(object)) return pathextrude(options, object)
+        if (path2$2.isA(object)) return extrudeLinearPath2(options, object)
         if (geom2$2.isA(object)) return extrudeLinearGeom2(options, object)
         // if (geom3.isA(object)) return geom3.extrude(options, object)
         return object
@@ -12730,7 +13934,7 @@
      * @param {Object} options - options for extrusion, if any
      * @param {Number} [options.size=1] - size of the rectangle
      * @param {Number} [options.height=1] - height of the extrusion
-     * @param {...Object} geometry - the list of geometry to extrude
+     * @param {...Object} objects - the geometries to extrude
      * @return {Object|Array} the extruded object, or a list of extruded objects
      * @alias module:modeling/extrusions.extrudeRectangular
      *
@@ -12809,7 +14013,7 @@
      * @param {Object} options - options for project
      * @param {Array} [options.axis=[0,0,1]] the axis of the plane (default is Z axis)
      * @param {Array} [options.origin=[0,0,0]] the origin of the plane
-     * @param {...Object} geometry - the list of 3D geometry to project
+     * @param {...Object} objects - the list of 3D geometry to project
      * @return {geom2|Array} the projected 2D geometry, or a list of 2D projected geometry
      * @alias module:modeling/extrusions.project
      *
@@ -12973,11 +14177,15 @@
 
       // extract the unique points from the geometries
       const uniquepoints = [];
+      const found = new Set();
       geometries.forEach((geometry) => {
         const points = path2$2.toPoints(geometry);
         points.forEach((point) => {
-          const index = uniquepoints.findIndex((unique) => vec2.equals(unique, point));
-          if (index < 0) uniquepoints.push(point);
+          const key = point.toString();
+          if (!found.has(key)) {
+            uniquepoints.push(point);
+            found.add(key);
+          }
         });
       });
 
@@ -13015,7 +14223,7 @@
 
       const hullpoints = hullPoints2_1(uniquepoints);
 
-      // NOTE: more then three points are required to create a new geometry
+      // NOTE: more than three points are required to create a new geometry
       if (hullpoints.length < 3) return geom2$2.create()
 
       // assemble a new geometry from the list of points
@@ -14346,7 +15554,7 @@
         for (let i = 0; i < this.newFaces.length; i += 1) {
           const face = this.newFaces[i];
           if (face.mark === VISIBLE) {
-            while (this.doAdjacentMerge(face, MERGE_NON_CONVEX_WRT_LARGER_FACE)) {}
+            while (this.doAdjacentMerge(face, MERGE_NON_CONVEX_WRT_LARGER_FACE)) {} // eslint-disable-line no-empty
           }
         }
 
@@ -14357,7 +15565,7 @@
           const face = this.newFaces[i];
           if (face.mark === NON_CONVEX) {
             face.mark = VISIBLE;
-            while (this.doAdjacentMerge(face, MERGE_NON_CONVEX)) {}
+            while (this.doAdjacentMerge(face, MERGE_NON_CONVEX)) {} // eslint-disable-line no-empty
           }
         }
 
@@ -14458,7 +15666,9 @@
       geometries = flatten_1(geometries);
       if (geometries.length === 0) throw new Error('wrong number of arguments')
 
-      if (!areAllShapesTheSameType_1(geometries)) ;
+      if (!areAllShapesTheSameType_1(geometries)) {
+        throw new Error('only hulls of the same type are supported')
+      }
 
       const geometry = geometries[0];
       if (path2$2.isA(geometry)) return hullPath2_1(geometries)
@@ -14472,7 +15682,7 @@
     var hull_1 = hull;
 
     /**
-     * Create a chain of hulled geometries from the given gemetries.
+     * Create a chain of hulled geometries from the given geometries.
      * Essentially hull A+B, B+C, C+D, etc., then union the results.
      * The given geometries should be of the same type, either geom2 or geom3 or path2.
      *
@@ -15179,9 +16389,7 @@
     /*
      * TBD This should be part of vec3.
      */
-    const almostEquals = (eps, v1, v2) => {
-      return (Math.abs(v1[0] - v2[0]) <= eps && Math.abs(v1[1] - v2[1]) <= eps && Math.abs(v1[2] - v2[2]) <= eps)
-    };
+    const almostEquals = (eps, v1, v2) => (Math.abs(v1[0] - v2[0]) <= eps && Math.abs(v1[1] - v2[1]) <= eps && Math.abs(v1[2] - v2[2]) <= eps);
 
     const enclosedEdge = (openedge, edge, eps) => {
       if (openedge.distance < edge.distance) {
@@ -15231,7 +16439,7 @@
      */
     const cullOpenEdges$1 = (edges) => {
       const openedges = [];
-      edges.forEach((edge, i) => {
+      edges.forEach((edge) => {
         const polygons = edge.polygons;
         if (polygons.length === 1) {
           // console.log('open edge: ',edge[0],'<-->',edge[1])
@@ -15323,15 +16531,11 @@
 
     /*
      */
-    const generalizePath2 = (options, geometry) => {
-      return geometry
-    };
+    const generalizePath2 = (options, geometry) => geometry;
 
     /*
      */
-    const generalizeGeom2 = (options, geometry) => {
-      return geometry
-    };
+    const generalizeGeom2 = (options, geometry) => geometry;
 
     /*
      */
@@ -15385,6 +16589,7 @@
      * @param {Boolean} [options.simplify=false] the geometries should be simplified
      * @param {Boolean} [options.triangulate=false] the geometries should be triangulated
      * @param {Boolean} [options.repair=false] the geometries should be repaired
+     * @param {...Object} geometries - the geometries to generalize
      * @return {Object|Array} the modified geometry, or a list of modified geometries
      * @alias module:modeling/modifiers.generalize
      */
@@ -15392,7 +16597,7 @@
       geometries = flatten_1(geometries);
       if (geometries.length === 0) throw new Error('wrong number of arguments')
 
-      const results = geometries.map((geometry, i) => {
+      const results = geometries.map((geometry) => {
         if (path2$2.isA(geometry)) return generalizePath2(options, geometry)
         if (geom2$2.isA(geometry)) return generalizeGeom2(options, geometry)
         if (geom3$2.isA(geometry)) return generalizeGeom3(options, geometry)
@@ -15466,7 +16671,7 @@
      * @param {Array} anArray - the source array to copy into the result.
      * @param {*} padding - the value to add to the new array to reach the desired length.
      * @param {Number} targetLength - The desired length of the return array.
-     * @returns {Array} an array of at least 'targetLength" length
+     * @returns {Array} an array of at least 'targetLength' length
      * @alias module:modeling/utils.padArrayToLength
      */
     const padArrayToLength = (anArray, padding, targetLength) => {
@@ -15584,18 +16789,18 @@
     };
 
     /**
-     * Center the given geometries using the given options.
+     * Center the given objects using the given options.
      * @param {Object} options - options for centering
      * @param {Array} [options.axes=[true,true,true]] - axis of which to center, true or false
-     * @param {Array} [options.relativeTo=[0,0,0]] - relative point of which to center the geometries
-     * @param {...Object} geometries - the geometries to center
-     * @return {Object|Array} the centered geometry, or a list of centered geometries
+     * @param {Array} [options.relativeTo=[0,0,0]] - relative point of which to center the objects
+     * @param {...Object} objects - the objects to center
+     * @return {Object|Array} the centered object, or a list of centered objects
      * @alias module:modeling/transforms.center
      *
      * @example
      * let myshape = center({axes: [true,false,false]}, sphere()) // center about the X axis
      */
-    const center = (options, ...geometries) => {
+    const center = (options, ...objects) => {
       const defaults = {
         axes: [true, true, true],
         relativeTo: [0, 0, 0]
@@ -15603,13 +16808,13 @@
       };
       const { axes, relativeTo } = Object.assign({}, defaults, options);
 
-      geometries = flatten_1(geometries);
-      if (geometries.length === 0) throw new Error('wrong number of arguments')
+      objects = flatten_1(objects);
+      if (objects.length === 0) throw new Error('wrong number of arguments')
       if (relativeTo.length !== 3) throw new Error('relativeTo must be an array of length 3')
 
       options = { axes, relativeTo };
 
-      const results = geometries.map((object) => {
+      const results = objects.map((object) => {
         if (path2$2.isA(object)) return centerGeometry(options, object)
         if (geom2$2.isA(object)) return centerGeometry(options, object)
         if (geom3$2.isA(object)) return centerGeometry(options, object)
@@ -15619,25 +16824,25 @@
     };
 
     /**
-     * Center the given geometries about the X axis.
-     * @param {...Object} geometries - the geometries to center
-     * @return {Object|Array} the centered geometry, or a list of centered geometry
+     * Center the given objects about the X axis.
+     * @param {...Object} objects - the objects to center
+     * @return {Object|Array} the centered object, or a list of centered objects
      * @alias module:modeling/transforms.centerX
      */
     const centerX = (...objects) => center({ axes: [true, false, false] }, objects);
 
     /**
-     * Center the given geometries about the Y axis.
-     * @param {...Object} geometries - the geometries to center
-     * @return {Object|Array} the centered geometry, or a list of centered geometry
+     * Center the given objects about the Y axis.
+     * @param {...Object} objects - the objects to center
+     * @return {Object|Array} the centered object, or a list of centered objects
      * @alias module:modeling/transforms.centerY
      */
     const centerY = (...objects) => center({ axes: [false, true, false] }, objects);
 
     /**
-     * Center the given geometries about the Z axis.
-     * @param {...Object} geometries - the geometries to center
-     * @return {Object|Array} the centered geometry, or a list of centered geometry
+     * Center the given objects about the Z axis.
+     * @param {...Object} objects - the objects to center
+     * @return {Object|Array} the centered object, or a list of centered objects
      * @alias module:modeling/transforms.centerZ
      */
     const centerZ = (...objects) => center({ axes: [false, false, true] }, objects);
@@ -15650,10 +16855,10 @@
     };
 
     /**
-     * Scale the given geometries using the given options.
-     * @param {Array} factors - X, Y, Z factors by which to scale the geometries
-     * @param {...Object} geometries - the geometries to scale
-     * @return {Object|Array} the scaled geometry, or a list of scaled geometries
+     * Scale the given objects using the given options.
+     * @param {Array} factors - X, Y, Z factors by which to scale the objects
+     * @param {...Object} objects - the objects to scale
+     * @return {Object|Array} the scaled object, or a list of scaled objects
      * @alias module:modeling/transforms.scale
      *
      * @example
@@ -15683,31 +16888,31 @@
     };
 
     /**
-     * Scale the given geometries about the X axis using the given options.
-     * @param {Number} factor - X factor by which to scale the geometries
-     * @param {...Object} geometries - the geometries to scale
-     * @return {Object|Array} the scaled geometry, or a list of scaled geometries
+     * Scale the given objects about the X axis using the given options.
+     * @param {Number} factor - X factor by which to scale the objects
+     * @param {...Object} objects - the objects to scale
+     * @return {Object|Array} the scaled object, or a list of scaled objects
      * @alias module:modeling/transforms.scaleX
      */
-    const scaleX = (offset, ...objects) => scale$2([offset, 1, 1], objects);
+    const scaleX = (factor, ...objects) => scale$2([factor, 1, 1], objects);
 
     /**
-     * Scale the given geometries about the Y axis using the given options.
-     * @param {Number} factor - Y factor by which to scale the geometries
-     * @param {...Object} geometries - the geometries to scale
-     * @return {Object|Array} the scaled geometry, or a list of scaled geometries
+     * Scale the given objects about the Y axis using the given options.
+     * @param {Number} factor - Y factor by which to scale the objects
+     * @param {...Object} objects - the objects to scale
+     * @return {Object|Array} the scaled object, or a list of scaled objects
      * @alias module:modeling/transforms.scaleY
      */
-    const scaleY = (offset, ...objects) => scale$2([1, offset, 1], objects);
+    const scaleY = (factor, ...objects) => scale$2([1, factor, 1], objects);
 
     /**
-     * Scale the given geometries about the Z axis using the given options.
-     * @param {Number} factor - Z factor by which to scale the geometries
-     * @param {...Object} geometries - the geometries to scale
-     * @return {Object|Array} the scaled geometry, or a list of scaled geometries
+     * Scale the given objects about the Z axis using the given options.
+     * @param {Number} factor - Z factor by which to scale the objects
+     * @param {...Object} objects - the objects to scale
+     * @return {Object|Array} the scaled object, or a list of scaled objects
      * @alias module:modeling/transforms.scaleZ
      */
-    const scaleZ = (offset, ...objects) => scale$2([1, 1, offset], objects);
+    const scaleZ = (factor, ...objects) => scale$2([1, 1, factor], objects);
 
     var scale_1$1 = {
       scale: scale$2,
@@ -15717,10 +16922,10 @@
     };
 
     /**
-     * Transform the given geometries using the given matrix.
+     * Transform the given objects using the given matrix.
      * @param {mat4} matrix - a transformation matrix
-     * @param {...Object} geometries - the geometries to transform
-     * @return {Object|Array} the transformed geometry, or a list of transformed geometries
+     * @param {...Object} objects - the objects to transform
+     * @return {Object|Array} the transformed object, or a list of transformed objects
      * @alias module:modeling/transforms.transform
      *
      * @example
