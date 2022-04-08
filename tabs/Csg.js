@@ -17,442 +17,12 @@
         globalThis.process = { env:env };
     })();
 
-    /*! *****************************************************************************
-    Copyright (c) Microsoft Corporation.
-
-    Permission to use, copy, modify, and/or distribute this software for any
-    purpose with or without fee is hereby granted.
-
-    THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
-    REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
-    AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-    INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
-    LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
-    OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-    PERFORMANCE OF THIS SOFTWARE.
-    ***************************************************************************** */
-    /* global Reflect, Promise */
-
-    var extendStatics = function(d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-
-    function __extends(d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    }
-
-    var __assign = function() {
-        __assign = Object.assign || function __assign(t) {
-            for (var s, i = 1, n = arguments.length; i < n; i++) {
-                s = arguments[i];
-                for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
-            }
-            return t;
-        };
-        return __assign.apply(this, arguments);
-    };
-
-    function __rest(s, e) {
-        var t = {};
-        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-            t[p] = s[p];
-        if (s != null && typeof Object.getOwnPropertySymbols === "function")
-            for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-                if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                    t[p[i]] = s[p[i]];
-            }
-        return t;
-    }
-
-    function __decorate(decorators, target, key, desc) {
-        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-        return c > 3 && r && Object.defineProperty(target, key, r), r;
-    }
-
-    function __spreadArray(to, from, pack) {
-        if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-            if (ar || !(i in from)) {
-                if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-                ar[i] = from[i];
-            }
-        }
-        return to.concat(ar || Array.prototype.slice.call(from));
-    }
-
-    /*
-     * Copyright 2015 Palantir Technologies, Inc. All rights reserved.
-     *
-     * Licensed under the Apache License, Version 2.0 (the "License");
-     * you may not use this file except in compliance with the License.
-     * You may obtain a copy of the License at
-     *
-     *     http://www.apache.org/licenses/LICENSE-2.0
-     *
-     * Unless required by applicable law or agreed to in writing, software
-     * distributed under the License is distributed on an "AS IS" BASIS,
-     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-     * See the License for the specific language governing permissions and
-     * limitations under the License.
-     */
-    // tslint:disable:object-literal-sort-keys
-    /**
-     * The four basic intents.
-     */
-    var Intent = {
-        NONE: "none",
-        PRIMARY: "primary",
-        SUCCESS: "success",
-        WARNING: "warning",
-        DANGER: "danger",
-    };
-
-    var NS = process.env.BLUEPRINT_NAMESPACE || process.env.REACT_APP_BLUEPRINT_NAMESPACE || "bp3";
-    intentClass(Intent.PRIMARY);
-    intentClass(Intent.SUCCESS);
-    intentClass(Intent.WARNING);
-    intentClass(Intent.DANGER);
-    var ICON = NS + "-icon";
-    function iconClass(iconName) {
-        if (iconName == null) {
-            return undefined;
-        }
-        return iconName.indexOf(NS + "-icon-") === 0 ? iconName : NS + "-icon-" + iconName;
-    }
-    function intentClass(intent) {
-        if (intent == null || intent === Intent.NONE) {
-            return undefined;
-        }
-        return NS + "-intent-" + intent.toLowerCase();
-    }
-
-    /** Returns whether `process.env.NODE_ENV` exists and equals `env`. */
-    function isNodeEnv(env) {
-        return typeof process !== "undefined" && process.env && process.env.NODE_ENV === env;
-    }
-
-    /**
-     * An abstract component that Blueprint components can extend
-     * in order to add some common functionality like runtime props validation.
-     */
-    // eslint-disable-next-line @typescript-eslint/ban-types
-    var AbstractPureComponent2 = /** @class */ (function (_super) {
-        __extends(AbstractPureComponent2, _super);
-        function AbstractPureComponent2(props, context) {
-            var _this = _super.call(this, props, context) || this;
-            // Not bothering to remove entries when their timeouts finish because clearing invalid ID is a no-op
-            _this.timeoutIds = [];
-            _this.requestIds = [];
-            /**
-             * Clear all known timeouts.
-             */
-            _this.clearTimeouts = function () {
-                if (_this.timeoutIds.length > 0) {
-                    for (var _i = 0, _a = _this.timeoutIds; _i < _a.length; _i++) {
-                        var timeoutId = _a[_i];
-                        window.clearTimeout(timeoutId);
-                    }
-                    _this.timeoutIds = [];
-                }
-            };
-            /**
-             * Clear all known animation frame requests.
-             */
-            _this.cancelAnimationFrames = function () {
-                if (_this.requestIds.length > 0) {
-                    for (var _i = 0, _a = _this.requestIds; _i < _a.length; _i++) {
-                        var requestId = _a[_i];
-                        window.cancelAnimationFrame(requestId);
-                    }
-                    _this.requestIds = [];
-                }
-            };
-            if (!isNodeEnv("production")) {
-                _this.validateProps(_this.props);
-            }
-            return _this;
-        }
-        AbstractPureComponent2.prototype.componentDidUpdate = function (_prevProps, _prevState, _snapshot) {
-            if (!isNodeEnv("production")) {
-                this.validateProps(this.props);
-            }
-        };
-        AbstractPureComponent2.prototype.componentWillUnmount = function () {
-            this.clearTimeouts();
-            this.cancelAnimationFrames();
-        };
-        /**
-         * Request an animation frame and remember its ID.
-         * All pending requests will be canceled when component unmounts.
-         *
-         * @returns a "cancel" function that will cancel the request when invoked.
-         */
-        AbstractPureComponent2.prototype.requestAnimationFrame = function (callback) {
-            var handle = window.requestAnimationFrame(callback);
-            this.requestIds.push(handle);
-            return function () { return window.cancelAnimationFrame(handle); };
-        };
-        /**
-         * Set a timeout and remember its ID.
-         * All pending timeouts will be cleared when component unmounts.
-         *
-         * @returns a "cancel" function that will clear timeout when invoked.
-         */
-        AbstractPureComponent2.prototype.setTimeout = function (callback, timeout) {
-            var handle = window.setTimeout(callback, timeout);
-            this.timeoutIds.push(handle);
-            return function () { return window.clearTimeout(handle); };
-        };
-        /**
-         * Ensures that the props specified for a component are valid.
-         * Implementations should check that props are valid and usually throw an Error if they are not.
-         * Implementations should not duplicate checks that the type system already guarantees.
-         *
-         * This method should be used instead of React's
-         * [propTypes](https://facebook.github.io/react/docs/reusable-components.html#prop-validation) feature.
-         * Like propTypes, these runtime checks run only in development mode.
-         */
-        AbstractPureComponent2.prototype.validateProps = function (_props) {
-            // implement in subclass
-        };
-        return AbstractPureComponent2;
-    }(React.PureComponent));
-
-    var DISPLAYNAME_PREFIX = "Blueprint3";
-
-    var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
-
-    function unwrapExports (x) {
-    	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
-    }
-
-    function createCommonjsModule(fn, module) {
-    	return module = { exports: {} }, fn(module, module.exports), module.exports;
-    }
-
-    var classnames = createCommonjsModule(function (module) {
-    /*!
-      Copyright (c) 2017 Jed Watson.
-      Licensed under the MIT License (MIT), see
-      http://jedwatson.github.io/classnames
-    */
-    /* global define */
-
-    (function () {
-
-    	var hasOwn = {}.hasOwnProperty;
-
-    	function classNames () {
-    		var classes = [];
-
-    		for (var i = 0; i < arguments.length; i++) {
-    			var arg = arguments[i];
-    			if (!arg) continue;
-
-    			var argType = typeof arg;
-
-    			if (argType === 'string' || argType === 'number') {
-    				classes.push(arg);
-    			} else if (Array.isArray(arg) && arg.length) {
-    				var inner = classNames.apply(null, arg);
-    				if (inner) {
-    					classes.push(inner);
-    				}
-    			} else if (argType === 'object') {
-    				for (var key in arg) {
-    					if (hasOwn.call(arg, key) && arg[key]) {
-    						classes.push(key);
-    					}
-    				}
-    			}
-    		}
-
-    		return classes.join(' ');
-    	}
-
-    	if (module.exports) {
-    		classNames.default = classNames;
-    		module.exports = classNames;
-    	} else {
-    		window.classNames = classNames;
-    	}
-    }());
-    });
-
-    var reactLifecyclesCompat_cjs = createCommonjsModule(function (module, exports) {
-
-    Object.defineProperty(exports, '__esModule', { value: true });
-
-    /**
-     * Copyright (c) 2013-present, Facebook, Inc.
-     *
-     * This source code is licensed under the MIT license found in the
-     * LICENSE file in the root directory of this source tree.
-     */
-
-    function componentWillMount() {
-      // Call this.constructor.gDSFP to support sub-classes.
-      var state = this.constructor.getDerivedStateFromProps(this.props, this.state);
-      if (state !== null && state !== undefined) {
-        this.setState(state);
-      }
-    }
-
-    function componentWillReceiveProps(nextProps) {
-      // Call this.constructor.gDSFP to support sub-classes.
-      // Use the setState() updater to ensure state isn't stale in certain edge cases.
-      function updater(prevState) {
-        var state = this.constructor.getDerivedStateFromProps(nextProps, prevState);
-        return state !== null && state !== undefined ? state : null;
-      }
-      // Binding "this" is important for shallow renderer support.
-      this.setState(updater.bind(this));
-    }
-
-    function componentWillUpdate(nextProps, nextState) {
-      try {
-        var prevProps = this.props;
-        var prevState = this.state;
-        this.props = nextProps;
-        this.state = nextState;
-        this.__reactInternalSnapshotFlag = true;
-        this.__reactInternalSnapshot = this.getSnapshotBeforeUpdate(
-          prevProps,
-          prevState
-        );
-      } finally {
-        this.props = prevProps;
-        this.state = prevState;
-      }
-    }
-
-    // React may warn about cWM/cWRP/cWU methods being deprecated.
-    // Add a flag to suppress these warnings for this special case.
-    componentWillMount.__suppressDeprecationWarning = true;
-    componentWillReceiveProps.__suppressDeprecationWarning = true;
-    componentWillUpdate.__suppressDeprecationWarning = true;
-
-    function polyfill(Component) {
-      var prototype = Component.prototype;
-
-      if (!prototype || !prototype.isReactComponent) {
-        throw new Error('Can only polyfill class components');
-      }
-
-      if (
-        typeof Component.getDerivedStateFromProps !== 'function' &&
-        typeof prototype.getSnapshotBeforeUpdate !== 'function'
-      ) {
-        return Component;
-      }
-
-      // If new component APIs are defined, "unsafe" lifecycles won't be called.
-      // Error if any of these lifecycles are present,
-      // Because they would work differently between older and newer (16.3+) versions of React.
-      var foundWillMountName = null;
-      var foundWillReceivePropsName = null;
-      var foundWillUpdateName = null;
-      if (typeof prototype.componentWillMount === 'function') {
-        foundWillMountName = 'componentWillMount';
-      } else if (typeof prototype.UNSAFE_componentWillMount === 'function') {
-        foundWillMountName = 'UNSAFE_componentWillMount';
-      }
-      if (typeof prototype.componentWillReceiveProps === 'function') {
-        foundWillReceivePropsName = 'componentWillReceiveProps';
-      } else if (typeof prototype.UNSAFE_componentWillReceiveProps === 'function') {
-        foundWillReceivePropsName = 'UNSAFE_componentWillReceiveProps';
-      }
-      if (typeof prototype.componentWillUpdate === 'function') {
-        foundWillUpdateName = 'componentWillUpdate';
-      } else if (typeof prototype.UNSAFE_componentWillUpdate === 'function') {
-        foundWillUpdateName = 'UNSAFE_componentWillUpdate';
-      }
-      if (
-        foundWillMountName !== null ||
-        foundWillReceivePropsName !== null ||
-        foundWillUpdateName !== null
-      ) {
-        var componentName = Component.displayName || Component.name;
-        var newApiName =
-          typeof Component.getDerivedStateFromProps === 'function'
-            ? 'getDerivedStateFromProps()'
-            : 'getSnapshotBeforeUpdate()';
-
-        throw Error(
-          'Unsafe legacy lifecycles will not be called for components using new component APIs.\n\n' +
-            componentName +
-            ' uses ' +
-            newApiName +
-            ' but also contains the following legacy lifecycles:' +
-            (foundWillMountName !== null ? '\n  ' + foundWillMountName : '') +
-            (foundWillReceivePropsName !== null
-              ? '\n  ' + foundWillReceivePropsName
-              : '') +
-            (foundWillUpdateName !== null ? '\n  ' + foundWillUpdateName : '') +
-            '\n\nThe above lifecycles should be removed. Learn more about this warning here:\n' +
-            'https://fb.me/react-async-component-lifecycle-hooks'
-        );
-      }
-
-      // React <= 16.2 does not support static getDerivedStateFromProps.
-      // As a workaround, use cWM and cWRP to invoke the new static lifecycle.
-      // Newer versions of React will ignore these lifecycles if gDSFP exists.
-      if (typeof Component.getDerivedStateFromProps === 'function') {
-        prototype.componentWillMount = componentWillMount;
-        prototype.componentWillReceiveProps = componentWillReceiveProps;
-      }
-
-      // React <= 16.2 does not support getSnapshotBeforeUpdate.
-      // As a workaround, use cWU to invoke the new lifecycle.
-      // Newer versions of React will ignore that lifecycle if gSBU exists.
-      if (typeof prototype.getSnapshotBeforeUpdate === 'function') {
-        if (typeof prototype.componentDidUpdate !== 'function') {
-          throw new Error(
-            'Cannot polyfill getSnapshotBeforeUpdate() for components that do not define componentDidUpdate() on the prototype'
-          );
-        }
-
-        prototype.componentWillUpdate = componentWillUpdate;
-
-        var componentDidUpdate = prototype.componentDidUpdate;
-
-        prototype.componentDidUpdate = function componentDidUpdatePolyfill(
-          prevProps,
-          prevState,
-          maybeSnapshot
-        ) {
-          // 16.3+ will not execute our will-update method;
-          // It will pass a snapshot value to did-update though.
-          // Older versions will require our polyfilled will-update value.
-          // We need to handle both cases, but can't just check for the presence of "maybeSnapshot",
-          // Because for <= 15.x versions this might be a "prevContext" object.
-          // We also can't just check "__reactInternalSnapshot",
-          // Because get-snapshot might return a falsy value.
-          // So check for the explicit __reactInternalSnapshotFlag flag to determine behavior.
-          var snapshot = this.__reactInternalSnapshotFlag
-            ? this.__reactInternalSnapshot
-            : maybeSnapshot;
-
-          componentDidUpdate.call(this, prevProps, prevState, snapshot);
-        };
-      }
-
-      return Component;
-    }
-
-    exports.polyfill = polyfill;
-    });
-
-    unwrapExports(reactLifecyclesCompat_cjs);
-    var reactLifecyclesCompat_cjs_1 = reactLifecyclesCompat_cjs.polyfill;
+    var MOVE = "move";
+    var REPEAT = "repeat";
+    var SHAPES = "shapes";
+    var ZOOM_IN = "zoom-in";
+    var ZOOM_OUT = "zoom-out";
+    var ZOOM_TO_FIT = "zoom-to-fit";
 
     /*
      * Copyright 2017 Palantir Technologies, Inc. All rights reserved.
@@ -1556,714 +1126,6 @@
         "zoom-to-fit": ["M1 7c.55 0 1-.45 1-1V2h4c.55 0 1-.45 1-1s-.45-1-1-1H1C.45 0 0 .45 0 1v5c0 .55.45 1 1 1zm5 1a1.003 1.003 0 00-1.71-.71l-2 2c-.18.18-.29.43-.29.71 0 .28.11.53.29.71l2 2a1.003 1.003 0 001.42-1.42L4.41 10 5.7 8.71c.19-.18.3-.43.3-.71zm2-2c.28 0 .53-.11.71-.29L10 4.41l1.29 1.29c.18.19.43.3.71.3a1.003 1.003 0 00.71-1.71l-2-2C10.53 2.11 10.28 2 10 2s-.53.11-.71.29l-2 2A1.003 1.003 0 008 6zM6 18H2v-4c0-.55-.45-1-1-1s-1 .45-1 1v5c0 .55.45 1 1 1h5c.55 0 1-.45 1-1s-.45-1-1-1zm8-6a1.003 1.003 0 001.71.71l2-2c.18-.18.29-.43.29-.71 0-.28-.11-.53-.29-.71l-2-2a1.003 1.003 0 00-1.42 1.42l1.3 1.29-1.29 1.29c-.19.18-.3.43-.3.71zm5-12h-5c-.55 0-1 .45-1 1s.45 1 1 1h4v4c0 .55.45 1 1 1s1-.45 1-1V1c0-.55-.45-1-1-1zm-7 14c-.28 0-.53.11-.71.29L10 15.59 8.71 14.3A.965.965 0 008 14a1.003 1.003 0 00-.71 1.71l2 2c.18.18.43.29.71.29s.53-.11.71-.29l2-2A1.003 1.003 0 0012 14zm7-1c-.55 0-1 .45-1 1v4h-4c-.55 0-1 .45-1 1s.45 1 1 1h5c.55 0 1-.45 1-1v-5c0-.55-.45-1-1-1z"],
     };
 
-    var IconSize;
-    (function (IconSize) {
-        IconSize[IconSize["STANDARD"] = 16] = "STANDARD";
-        IconSize[IconSize["LARGE"] = 20] = "LARGE";
-    })(IconSize || (IconSize = {}));
-    var Icon = /** @class */ (function (_super) {
-        __extends(Icon, _super);
-        function Icon() {
-            return _super !== null && _super.apply(this, arguments) || this;
-        }
-        Icon.prototype.render = function () {
-            var icon = this.props.icon;
-            if (icon == null || typeof icon === "boolean") {
-                return null;
-            }
-            else if (typeof icon !== "string") {
-                return icon;
-            }
-            var _a = this.props, className = _a.className, color = _a.color, htmlTitle = _a.htmlTitle, 
-            // eslint-disable-next-line deprecation/deprecation
-            iconSize = _a.iconSize, intent = _a.intent, _b = _a.size, size = _b === void 0 ? iconSize !== null && iconSize !== void 0 ? iconSize : IconSize.STANDARD : _b, title = _a.title, _c = _a.tagName, tagName = _c === void 0 ? "span" : _c, htmlprops = __rest(_a, ["className", "color", "htmlTitle", "iconSize", "intent", "size", "title", "tagName"]);
-            // choose which pixel grid is most appropriate for given icon size
-            var pixelGridSize = size >= IconSize.LARGE ? IconSize.LARGE : IconSize.STANDARD;
-            // render path elements, or nothing if icon name is unknown.
-            var paths = this.renderSvgPaths(pixelGridSize, icon);
-            // eslint-disable-next-line deprecation/deprecation
-            var classes = classnames(ICON, iconClass(icon), intentClass(intent), className);
-            var viewBox = "0 0 " + pixelGridSize + " " + pixelGridSize;
-            return React.createElement(tagName, __assign(__assign({}, htmlprops), { "aria-hidden": title ? undefined : true, className: classes, title: htmlTitle }), React.createElement("svg", { fill: color, "data-icon": icon, width: size, height: size, viewBox: viewBox },
-                title && React.createElement("desc", null, title),
-                paths));
-        };
-        /** Render `<path>` elements for the given icon name. Returns `null` if name is unknown. */
-        Icon.prototype.renderSvgPaths = function (pathsSize, iconName) {
-            var svgPathsRecord = pathsSize === IconSize.STANDARD ? IconSvgPaths16 : IconSvgPaths20;
-            var pathStrings = svgPathsRecord[iconName];
-            if (pathStrings == null) {
-                return null;
-            }
-            return pathStrings.map(function (d, i) { return React.createElement("path", { key: i, d: d, fillRule: "evenodd" }); });
-        };
-        Icon.displayName = DISPLAYNAME_PREFIX + ".Icon";
-        /** @deprecated use IconSize.STANDARD */
-        Icon.SIZE_STANDARD = IconSize.STANDARD;
-        /** @deprecated use IconSize.LARGE */
-        Icon.SIZE_LARGE = IconSize.LARGE;
-        Icon = __decorate([
-            reactLifecyclesCompat_cjs_1
-        ], Icon);
-        return Icon;
-    }(AbstractPureComponent2));
-
-    /**
-     * Calculates the absolute coordinates of the give vector.
-     *
-     * @param {vec3} out - receiving vector
-     * @param {vec3} vector - vector of reference
-     * @returns {vec3} out
-     * @alias module:modeling/maths/vec3.abs
-     */
-    const abs$1 = (out, vector) => {
-      out[0] = Math.abs(vector[0]);
-      out[1] = Math.abs(vector[1]);
-      out[2] = Math.abs(vector[2]);
-      return out
-    };
-
-    var abs_1$1 = abs$1;
-
-    /**
-     * Adds the coordinates of two vectors (A+B).
-     *
-     * @param {vec3} out - receiving vector
-     * @param {vec3} a - first operand
-     * @param {vec3} b - second operand
-     * @returns {vec3} out
-     * @alias module:modeling/maths/vec3.add
-     */
-    const add$3 = (out, a, b) => {
-      out[0] = a[0] + b[0];
-      out[1] = a[1] + b[1];
-      out[2] = a[2] + b[2];
-      return out
-    };
-
-    var add_1$3 = add$3;
-
-    /**
-     * Calculates the dot product of two vectors.
-     *
-     * @param {vec3} a - first operand
-     * @param {vec3} b - second operand
-     * @returns {Number} dot product
-     * @alias module:modeling/maths/vec3.dot
-     */
-    const dot$2 = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
-
-    var dot_1$2 = dot$2;
-
-    /**
-     * Calculate the angle between two vectors.
-     *
-     * @param {vec3} a - first operand
-     * @param {vec3} b - second operand
-     * @returns {Number} angle (radians)
-     * @alias module:modeling/maths/vec3.angle
-     */
-    const angle$2 = (a, b) => {
-      const ax = a[0];
-      const ay = a[1];
-      const az = a[2];
-      const bx = b[0];
-      const by = b[1];
-      const bz = b[2];
-      const mag1 = Math.hypot(ax, ay, az);
-      const mag2 = Math.hypot(bx, by, bz);
-      const mag = mag1 * mag2;
-      const cosine = mag && dot_1$2(a, b) / mag;
-      return Math.acos(Math.min(Math.max(cosine, -1), 1))
-    };
-
-    var angle_1$1 = angle$2;
-
-    /**
-     * Represents a three dimensional vector.
-     * See fromValues().
-     * @typedef {Array} vec3
-     */
-
-    /**
-     * Creates a new vector initialized to [0,0,0].
-     *
-     * @returns {vec3} a new vector
-     * @alias module:modeling/maths/vec3.create
-     */
-    const create$a = () => [0, 0, 0];
-
-    var create_1$a = create$a;
-
-    /**
-     * Create a clone of the given vector.
-     *
-     * @param {vec3} vector - vector to clone
-     * @returns {vec3} a new vector
-     * @alias module:modeling/maths/vec3.clone
-     */
-    const clone$9 = (vector) => {
-      const out = create_1$a();
-      out[0] = vector[0];
-      out[1] = vector[1];
-      out[2] = vector[2];
-      return out
-    };
-
-    var clone_1$9 = clone$9;
-
-    /**
-     * Create a copy of the given vector.
-     *
-     * @param {vec3} out - receiving vector
-     * @param {vec3} vector - vector to copy
-     * @returns {vec3} out
-     * @alias module:modeling/maths/vec3.copy
-     */
-    const copy$5 = (out, vector) => {
-      out[0] = vector[0];
-      out[1] = vector[1];
-      out[2] = vector[2];
-      return out
-    };
-
-    var copy_1$5 = copy$5;
-
-    /**
-     * Computes the cross product of the given vectors (AxB).
-     *
-     * @param {vec3} out - receiving vector
-     * @param {vec3} a - first operand
-     * @param {vec3} b - second operand
-     * @returns {vec3} out
-     * @alias module:modeling/maths/vec3.cross
-     */
-    const cross$2 = (out, a, b) => {
-      const ax = a[0];
-      const ay = a[1];
-      const az = a[2];
-      const bx = b[0];
-      const by = b[1];
-      const bz = b[2];
-
-      out[0] = ay * bz - az * by;
-      out[1] = az * bx - ax * bz;
-      out[2] = ax * by - ay * bx;
-      return out
-    };
-
-    var cross_1$2 = cross$2;
-
-    /**
-     * Calculates the Euclidian distance between the given vectors.
-     *
-     * @param {vec3} a - first operand
-     * @param {vec3} b - second operand
-     * @returns {Number} distance
-     * @alias module:modeling/maths/vec3.distance
-     */
-    const distance$2 = (a, b) => {
-      const x = b[0] - a[0];
-      const y = b[1] - a[1];
-      const z = b[2] - a[2];
-      return Math.hypot(x, y, z)
-    };
-
-    var distance_1$2 = distance$2;
-
-    /**
-     * Divides the coordinates of two vectors (A/B).
-     *
-     * @param {vec3} out - receiving vector
-     * @param {vec3} a - dividend vector
-     * @param {vec3} b - divisor vector
-     * @returns {vec3} out
-     * @alias module:modeling/maths/vec3.divide
-     */
-    const divide$2 = (out, a, b) => {
-      out[0] = a[0] / b[0];
-      out[1] = a[1] / b[1];
-      out[2] = a[2] / b[2];
-      return out
-    };
-
-    var divide_1$2 = divide$2;
-
-    /**
-     * Compare the given vectors for equality.
-     *
-     * @param {vec3} a - first operand
-     * @param {vec3} b - second operand
-     * @returns {Boolean} true if a and b are equal
-     * @alias module:modeling/maths/vec3.equals
-     */
-    const equals$6 = (a, b) => (a[0] === b[0]) && (a[1] === b[1]) && (a[2] === b[2]);
-
-    var equals_1$5 = equals$6;
-
-    /**
-     * Creates a vector from a single scalar value.
-     * All components of the resulting vector have the given value.
-     *
-     * @param {vec3} out - receiving vector
-     * @param {Number} scalar
-     * @returns {vec3} out
-     * @alias module:modeling/maths/vec3.fromScalar
-     */
-    const fromScalar$1 = (out, scalar) => {
-      out[0] = scalar;
-      out[1] = scalar;
-      out[2] = scalar;
-      return out
-    };
-
-    var fromScalar_1$1 = fromScalar$1;
-
-    /**
-     * Creates a new vector initialized with the given values.
-     *
-     * @param {Number} x - X component
-     * @param {Number} y - Y component
-     * @param {Number} z - Z component
-     * @returns {vec3} a new vector
-     * @alias module:modeling/maths/vec3.fromValues
-     */
-    const fromValues$4 = (x, y, z) => {
-      const out = create_1$a();
-      out[0] = x;
-      out[1] = y;
-      out[2] = z;
-      return out
-    };
-
-    var fromValues_1$4 = fromValues$4;
-
-    /**
-     * Create a new vector by extending a 2D vector with a Z value.
-     *
-     * @param {vec3} out - receiving vector
-     * @param {Array} vector - 2D vector of values
-     * @param {Number} [z=0] - Z value
-     * @returns {vec3} out
-     * @alias module:modeling/maths/vec3.fromVec2
-     */
-    const fromVector2 = (out, vector, z = 0) => {
-      out[0] = vector[0];
-      out[1] = vector[1];
-      out[2] = z;
-      return out
-    };
-
-    var fromVec2 = fromVector2;
-
-    /**
-     * Calculates the length of a vector.
-     *
-     * @param {vec3} vector - vector to calculate length of
-     * @returns {Number} length
-     * @alias module:modeling/maths/vec3.length
-     */
-    const length$2 = (vector) => {
-      const x = vector[0];
-      const y = vector[1];
-      const z = vector[2];
-      return Math.hypot(x, y, z)
-    };
-
-    var length_1$2 = length$2;
-
-    /**
-     * Performs a linear interpolation between two vectors.
-     *
-     * @param {vec3} out - receiving vector
-     * @param {vec3} a - first operand
-     * @param {vec3} b - second operand
-     * @param {Number} t - interpolant (0.0 to 1.0) applied between the two inputs
-     * @returns {vec3} out
-     * @alias module:modeling/maths/vec3.lerp
-     */
-    const lerp$2 = (out, a, b, t) => {
-      out[0] = a[0] + t * (b[0] - a[0]);
-      out[1] = a[1] + t * (b[1] - a[1]);
-      out[2] = a[2] + t * (b[2] - a[2]);
-      return out
-    };
-
-    var lerp_1$2 = lerp$2;
-
-    /**
-     * Returns the maximum coordinates of the given vectors.
-     *
-     * @param {vec3} out - receiving vector
-     * @param {vec3} a - first operand
-     * @param {vec3} b - second operand
-     * @returns {vec3} out
-     * @alias module:modeling/maths/vec3.max
-     */
-    const max$3 = (out, a, b) => {
-      out[0] = Math.max(a[0], b[0]);
-      out[1] = Math.max(a[1], b[1]);
-      out[2] = Math.max(a[2], b[2]);
-      return out
-    };
-
-    var max_1$2 = max$3;
-
-    /**
-     * Returns the minimum coordinates of the given vectors.
-     *
-     * @param {vec3} out - receiving vector
-     * @param {vec3} a - first operand
-     * @param {vec3} b - second operand
-     * @returns {vec3} out
-     * @alias module:modeling/maths/vec3.min
-     */
-    const min$3 = (out, a, b) => {
-      out[0] = Math.min(a[0], b[0]);
-      out[1] = Math.min(a[1], b[1]);
-      out[2] = Math.min(a[2], b[2]);
-      return out
-    };
-
-    var min_1$2 = min$3;
-
-    /**
-     * Multiply the coordinates of the given vectors (A*B).
-     *
-     * @param {vec3} out - receiving vector
-     * @param {vec3} a - first operand
-     * @param {vec3} b - second operand
-     * @returns {vec3} out
-     * @alias module:modeling/maths/vec3.multiply
-     */
-    const multiply$4 = (out, a, b) => {
-      out[0] = a[0] * b[0];
-      out[1] = a[1] * b[1];
-      out[2] = a[2] * b[2];
-      return out
-    };
-
-    var multiply_1$4 = multiply$4;
-
-    /**
-     * Negates the coordinates of the given vector.
-     *
-     * @param {vec3} out - receiving vector
-     * @param {vec3} vector - vector to negate
-     * @returns {vec3} out
-     * @alias module:modeling/maths/vec3.negate
-     */
-    const negate$2 = (out, vector) => {
-      out[0] = -vector[0];
-      out[1] = -vector[1];
-      out[2] = -vector[2];
-      return out
-    };
-
-    var negate_1$2 = negate$2;
-
-    /**
-     * Normalize the given vector.
-     *
-     * @param {vec3} out - receiving vector
-     * @param {vec3} vector - vector to normalize
-     * @returns {vec3} out
-     * @alias module:modeling/maths/vec3.normalize
-     */
-    const normalize$2 = (out, vector) => {
-      const x = vector[0];
-      const y = vector[1];
-      const z = vector[2];
-      let len = x * x + y * y + z * z;
-      if (len > 0) {
-        len = 1 / Math.sqrt(len);
-      }
-      out[0] = x * len;
-      out[1] = y * len;
-      out[2] = z * len;
-      return out
-    };
-
-    var normalize_1$2 = normalize$2;
-
-    /**
-     * Create a new vector that is orthogonal to the given vector.
-     *
-     * @param {vec3} out - receiving vector
-     * @param {vec3} vector - vector of reference
-     * @returns {vec3} out
-     * @alias module:modeling/maths/vec3.orthogonal
-     */
-    const orthogonal = (out, vector) => {
-      const bV = abs_1$1(create_1$a(), vector);
-      const b0 = 0 + ((bV[0] < bV[1]) && (bV[0] < bV[2]));
-      const b1 = 0 + ((bV[1] <= bV[0]) && (bV[1] < bV[2]));
-      const b2 = 0 + ((bV[2] <= bV[0]) && (bV[2] <= bV[1]));
-
-      return cross_1$2(out, vector, [b0, b1, b2])
-    };
-
-    var orthogonal_1 = orthogonal;
-
-    /**
-     * Rotate the given vector around the given origin, X axis only.
-     *
-     * @param {vec3} out - receiving vector
-     * @param {vec3} vector - vector to rotate
-     * @param {vec3} origin - origin of the rotation
-     * @param {Number} radians - angle of rotation
-     * @returns {vec3} out
-     * @alias module:modeling/maths/vec3.rotateX
-     */
-    const rotateX$3 = (out, vector, origin, radians) => {
-      const p = [];
-      const r = [];
-
-      // translate point to the origin
-      p[0] = vector[0] - origin[0];
-      p[1] = vector[1] - origin[1];
-      p[2] = vector[2] - origin[2];
-
-      // perform rotation
-      r[0] = p[0];
-      r[1] = p[1] * Math.cos(radians) - p[2] * Math.sin(radians);
-      r[2] = p[1] * Math.sin(radians) + p[2] * Math.cos(radians);
-
-      // translate to correct position
-      out[0] = r[0] + origin[0];
-      out[1] = r[1] + origin[1];
-      out[2] = r[2] + origin[2];
-
-      return out
-    };
-
-    var rotateX_1$3 = rotateX$3;
-
-    /**
-     * Rotate the given vector around the given origin, Y axis only.
-     *
-     * @param {vec3} out - receiving vector
-     * @param {vec3} vector - vector to rotate
-     * @param {vec3} origin - origin of the rotation
-     * @param {Number} radians - angle of rotation
-     * @returns {vec3} out
-     * @alias module:modeling/maths/vec3.rotateY
-     */
-    const rotateY$3 = (out, vector, origin, radians) => {
-      const p = [];
-      const r = [];
-
-      // translate point to the origin
-      p[0] = vector[0] - origin[0];
-      p[1] = vector[1] - origin[1];
-      p[2] = vector[2] - origin[2];
-
-      // perform rotation
-      r[0] = p[2] * Math.sin(radians) + p[0] * Math.cos(radians);
-      r[1] = p[1];
-      r[2] = p[2] * Math.cos(radians) - p[0] * Math.sin(radians);
-
-      // translate to correct position
-      out[0] = r[0] + origin[0];
-      out[1] = r[1] + origin[1];
-      out[2] = r[2] + origin[2];
-
-      return out
-    };
-
-    var rotateY_1$3 = rotateY$3;
-
-    /**
-     * Rotate the given vector around the given origin, Z axis only.
-     *
-     * @param {vec3} out - receiving vector
-     * @param {vec3} vector - vector to rotate
-     * @param {vec3} origin - origin of the rotation
-     * @param {Number} radians - angle of rotation in radians
-     * @returns {vec3} out
-     * @alias module:modeling/maths/vec3.rotateZ
-     */
-    const rotateZ$3 = (out, vector, origin, radians) => {
-      const p = [];
-      const r = [];
-      // Translate point to the origin
-      p[0] = vector[0] - origin[0];
-      p[1] = vector[1] - origin[1];
-
-      // perform rotation
-      r[0] = (p[0] * Math.cos(radians)) - (p[1] * Math.sin(radians));
-      r[1] = (p[0] * Math.sin(radians)) + (p[1] * Math.cos(radians));
-
-      // translate to correct position
-      out[0] = r[0] + origin[0];
-      out[1] = r[1] + origin[1];
-      out[2] = vector[2];
-
-      return out
-    };
-
-    var rotateZ_1$3 = rotateZ$3;
-
-    /**
-     * Scales the coordinates of the given vector by a scalar number.
-     *
-     * @param {vec3} out - receiving vector
-     * @param {vec3} vector - vector to scale
-     * @param {Number} amount - amount to scale the vector by
-     * @returns {vec3} out
-     * @alias module:modeling/maths/vec3.scale
-     */
-    const scale$4 = (out, vector, amount) => {
-      out[0] = vector[0] * amount;
-      out[1] = vector[1] * amount;
-      out[2] = vector[2] * amount;
-      return out
-    };
-
-    var scale_1$4 = scale$4;
-
-    /**
-     * Snaps the coordinates of the given vector to the given epsilon.
-     *
-     * @param {vec3} out - receiving vector
-     * @param {vec3} vector - vector to snap
-     * @param {Number} epsilon - epsilon of precision, less than 0
-     * @returns {vec3} out
-     * @alias module:modeling/maths/vec3.snap
-     */
-    const snap$1 = (out, vector, epsilon) => {
-      out[0] = Math.round(vector[0] / epsilon) * epsilon + 0;
-      out[1] = Math.round(vector[1] / epsilon) * epsilon + 0;
-      out[2] = Math.round(vector[2] / epsilon) * epsilon + 0;
-      return out
-    };
-
-    var snap_1$1 = snap$1;
-
-    /**
-     * Calculates the squared distance between two vectors.
-     *
-     * @param {vec3} a - first operand
-     * @param {vec3} b - second operand
-     * @returns {Number} squared distance
-     * @alias module:modeling/maths/vec3.squaredDistance
-     */
-    const squaredDistance$2 = (a, b) => {
-      const x = b[0] - a[0];
-      const y = b[1] - a[1];
-      const z = b[2] - a[2];
-      return x * x + y * y + z * z
-    };
-
-    var squaredDistance_1$2 = squaredDistance$2;
-
-    /**
-     * Calculates the squared length of the given vector.
-     *
-     * @param {vec3} vector - vector to calculate squared length of
-     * @returns {Number} squared length
-     * @alias module:modeling/maths/vec3.squaredLength
-     */
-    const squaredLength$2 = (vector) => {
-      const x = vector[0];
-      const y = vector[1];
-      const z = vector[2];
-      return x * x + y * y + z * z
-    };
-
-    var squaredLength_1$2 = squaredLength$2;
-
-    /**
-     * Subtracts the coordinates of two vectors (A-B).
-     *
-     * @param {vec3} out - receiving vector
-     * @param {vec3} a - minuend vector
-     * @param {vec3} b - subtrahend vector
-     * @returns {vec3} out
-     * @alias module:modeling/maths/vec3.subtract
-     */
-    const subtract$3 = (out, a, b) => {
-      out[0] = a[0] - b[0];
-      out[1] = a[1] - b[1];
-      out[2] = a[2] - b[2];
-      return out
-    };
-
-    var subtract_1$3 = subtract$3;
-
-    /**
-     * Convert the given vector to a representative string.
-     * @param {vec3} vec - vector of reference
-     * @returns {String} string representation
-     * @alias module:modeling/maths/vec3.toString
-     */
-    const toString$7 = (vec) => `[${vec[0].toFixed(7)}, ${vec[1].toFixed(7)}, ${vec[2].toFixed(7)}]`;
-
-    var toString_1$7 = toString$7;
-
-    /**
-     * Transforms the given vector using the given matrix.
-     *
-     * @param {vec3} out - receiving vector
-     * @param {vec3} vector - vector to transform
-     * @param {mat4} matrix - transform matrix
-     * @returns {vec3} out
-     * @alias module:modeling/maths/vec3.transform
-     */
-    const transform$6 = (out, vector, matrix) => {
-      const x = vector[0];
-      const y = vector[1];
-      const z = vector[2];
-      let w = matrix[3] * x + matrix[7] * y + matrix[11] * z + matrix[15];
-      w = w || 1.0;
-      out[0] = (matrix[0] * x + matrix[4] * y + matrix[8] * z + matrix[12]) / w;
-      out[1] = (matrix[1] * x + matrix[5] * y + matrix[9] * z + matrix[13]) / w;
-      out[2] = (matrix[2] * x + matrix[6] * y + matrix[10] * z + matrix[14]) / w;
-      return out
-    };
-
-    var transform_1$6 = transform$6;
-
-    /**
-     * Represents a three dimensional vector.
-     * @see {@link vec3} for data structure information.
-     * @module modeling/maths/vec3
-     */
-    var vec3$1 = {
-      abs: abs_1$1,
-      add: add_1$3,
-      angle: angle_1$1,
-      clone: clone_1$9,
-      copy: copy_1$5,
-      create: create_1$a,
-      cross: cross_1$2,
-      distance: distance_1$2,
-      divide: divide_1$2,
-      dot: dot_1$2,
-      equals: equals_1$5,
-      fromScalar: fromScalar_1$1,
-      fromValues: fromValues_1$4,
-      fromVec2: fromVec2,
-      length: length_1$2,
-      lerp: lerp_1$2,
-      max: max_1$2,
-      min: min_1$2,
-      multiply: multiply_1$4,
-      negate: negate_1$2,
-      normalize: normalize_1$2,
-      orthogonal: orthogonal_1,
-      rotateX: rotateX_1$3,
-      rotateY: rotateY_1$3,
-      rotateZ: rotateZ_1$3,
-      scale: scale_1$4,
-      snap: snap_1$1,
-      squaredDistance: squaredDistance_1$2,
-      squaredLength: squaredLength_1$2,
-      subtract: subtract_1$3,
-      toString: toString_1$7,
-      transform: transform_1$6
-    };
-
     /**
      * Flatten the given list of arguments into a single flat array.
      * The arguments can be composed of multiple depths of objects and arrays.
@@ -2281,9 +1143,9 @@
      * @returns {geom2} new geometry
      * @alias module:modeling/geometries/geom2.clone
      */
-    const clone$8 = (geometry) => Object.assign({}, geometry);
+    const clone$9 = (geometry) => Object.assign({}, geometry);
 
-    var clone_1$8 = clone$8;
+    var clone_1$9 = clone$9;
 
     /**
      * Adds the two matrices (A+B).
@@ -2294,7 +1156,7 @@
      * @returns {mat4} out
      * @alias module:modeling/maths/mat4.add
      */
-    const add$2 = (out, a, b) => {
+    const add$3 = (out, a, b) => {
       out[0] = a[0] + b[0];
       out[1] = a[1] + b[1];
       out[2] = a[2] + b[2];
@@ -2314,7 +1176,7 @@
       return out
     };
 
-    var add_1$2 = add$2;
+    var add_1$3 = add$3;
 
     /**
      * Represents a 4x4 matrix which is column-major (when typed out it looks row-major).
@@ -2328,14 +1190,14 @@
      * @returns {mat4} a new matrix
      * @alias module:modeling/maths/mat4.create
      */
-    const create$9 = () => [
+    const create$a = () => [
       1, 0, 0, 0,
       0, 1, 0, 0,
       0, 0, 1, 0,
       0, 0, 0, 1
     ];
 
-    var create_1$9 = create$9;
+    var create_1$a = create$a;
 
     /**
      * Creates a clone of the given matrix.
@@ -2344,8 +1206,8 @@
      * @returns {mat4} a new matrix
      * @alias module:modeling/maths/mat4.clone
      */
-    const clone$7 = (matrix) => {
-      const out = create_1$9();
+    const clone$8 = (matrix) => {
+      const out = create_1$a();
       out[0] = matrix[0];
       out[1] = matrix[1];
       out[2] = matrix[2];
@@ -2365,7 +1227,7 @@
       return out
     };
 
-    var clone_1$7 = clone$7;
+    var clone_1$8 = clone$8;
 
     /**
      * Creates a copy of the given matrix.
@@ -2375,7 +1237,7 @@
      * @returns {mat4} out
      * @alias module:modeling/maths/mat4.copy
      */
-    const copy$4 = (out, matrix) => {
+    const copy$5 = (out, matrix) => {
       out[0] = matrix[0];
       out[1] = matrix[1];
       out[2] = matrix[2];
@@ -2395,7 +1257,7 @@
       return out
     };
 
-    var copy_1$4 = copy$4;
+    var copy_1$5 = copy$5;
 
     /**
      * Creates a invert copy of the given matrix.
@@ -2477,14 +1339,14 @@
      * @returns {Boolean} true if the matrices are equal
      * @alias module:modeling/maths/mat4.equals
      */
-    const equals$5 = (a, b) => (
+    const equals$6 = (a, b) => (
       a[0] === b[0] && a[1] === b[1] && a[2] === b[2] && a[3] === b[3] &&
       a[4] === b[4] && a[5] === b[5] && a[6] === b[6] && a[7] === b[7] &&
       a[8] === b[8] && a[9] === b[9] && a[10] === b[10] && a[11] === b[11] &&
       a[12] === b[12] && a[13] === b[13] && a[14] === b[14] && a[15] === b[15]
     );
 
-    var equals_1$4 = equals$5;
+    var equals_1$5 = equals$6;
 
     /**
      * Set a matrix to the identity transform.
@@ -2733,8 +1595,8 @@
      *   0, 0, 0, 1
      * )
      */
-    const fromValues$3 = (m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33) => {
-      const out = create_1$9();
+    const fromValues$4 = (m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33) => {
+      const out = create_1$a();
       out[0] = m00;
       out[1] = m01;
       out[2] = m02;
@@ -2754,7 +1616,663 @@
       return out
     };
 
+    var fromValues_1$4 = fromValues$4;
+
+    /**
+     * Calculates the absolute coordinates of the give vector.
+     *
+     * @param {vec3} out - receiving vector
+     * @param {vec3} vector - vector of reference
+     * @returns {vec3} out
+     * @alias module:modeling/maths/vec3.abs
+     */
+    const abs$1 = (out, vector) => {
+      out[0] = Math.abs(vector[0]);
+      out[1] = Math.abs(vector[1]);
+      out[2] = Math.abs(vector[2]);
+      return out
+    };
+
+    var abs_1$1 = abs$1;
+
+    /**
+     * Adds the coordinates of two vectors (A+B).
+     *
+     * @param {vec3} out - receiving vector
+     * @param {vec3} a - first operand
+     * @param {vec3} b - second operand
+     * @returns {vec3} out
+     * @alias module:modeling/maths/vec3.add
+     */
+    const add$2 = (out, a, b) => {
+      out[0] = a[0] + b[0];
+      out[1] = a[1] + b[1];
+      out[2] = a[2] + b[2];
+      return out
+    };
+
+    var add_1$2 = add$2;
+
+    /**
+     * Calculates the dot product of two vectors.
+     *
+     * @param {vec3} a - first operand
+     * @param {vec3} b - second operand
+     * @returns {Number} dot product
+     * @alias module:modeling/maths/vec3.dot
+     */
+    const dot$2 = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+
+    var dot_1$2 = dot$2;
+
+    /**
+     * Calculate the angle between two vectors.
+     *
+     * @param {vec3} a - first operand
+     * @param {vec3} b - second operand
+     * @returns {Number} angle (radians)
+     * @alias module:modeling/maths/vec3.angle
+     */
+    const angle$2 = (a, b) => {
+      const ax = a[0];
+      const ay = a[1];
+      const az = a[2];
+      const bx = b[0];
+      const by = b[1];
+      const bz = b[2];
+      const mag1 = Math.hypot(ax, ay, az);
+      const mag2 = Math.hypot(bx, by, bz);
+      const mag = mag1 * mag2;
+      const cosine = mag && dot_1$2(a, b) / mag;
+      return Math.acos(Math.min(Math.max(cosine, -1), 1))
+    };
+
+    var angle_1$1 = angle$2;
+
+    /**
+     * Represents a three dimensional vector.
+     * See fromValues().
+     * @typedef {Array} vec3
+     */
+
+    /**
+     * Creates a new vector initialized to [0,0,0].
+     *
+     * @returns {vec3} a new vector
+     * @alias module:modeling/maths/vec3.create
+     */
+    const create$9 = () => [0, 0, 0];
+
+    var create_1$9 = create$9;
+
+    /**
+     * Create a clone of the given vector.
+     *
+     * @param {vec3} vector - vector to clone
+     * @returns {vec3} a new vector
+     * @alias module:modeling/maths/vec3.clone
+     */
+    const clone$7 = (vector) => {
+      const out = create_1$9();
+      out[0] = vector[0];
+      out[1] = vector[1];
+      out[2] = vector[2];
+      return out
+    };
+
+    var clone_1$7 = clone$7;
+
+    /**
+     * Create a copy of the given vector.
+     *
+     * @param {vec3} out - receiving vector
+     * @param {vec3} vector - vector to copy
+     * @returns {vec3} out
+     * @alias module:modeling/maths/vec3.copy
+     */
+    const copy$4 = (out, vector) => {
+      out[0] = vector[0];
+      out[1] = vector[1];
+      out[2] = vector[2];
+      return out
+    };
+
+    var copy_1$4 = copy$4;
+
+    /**
+     * Computes the cross product of the given vectors (AxB).
+     *
+     * @param {vec3} out - receiving vector
+     * @param {vec3} a - first operand
+     * @param {vec3} b - second operand
+     * @returns {vec3} out
+     * @alias module:modeling/maths/vec3.cross
+     */
+    const cross$2 = (out, a, b) => {
+      const ax = a[0];
+      const ay = a[1];
+      const az = a[2];
+      const bx = b[0];
+      const by = b[1];
+      const bz = b[2];
+
+      out[0] = ay * bz - az * by;
+      out[1] = az * bx - ax * bz;
+      out[2] = ax * by - ay * bx;
+      return out
+    };
+
+    var cross_1$2 = cross$2;
+
+    /**
+     * Calculates the Euclidian distance between the given vectors.
+     *
+     * @param {vec3} a - first operand
+     * @param {vec3} b - second operand
+     * @returns {Number} distance
+     * @alias module:modeling/maths/vec3.distance
+     */
+    const distance$2 = (a, b) => {
+      const x = b[0] - a[0];
+      const y = b[1] - a[1];
+      const z = b[2] - a[2];
+      return Math.hypot(x, y, z)
+    };
+
+    var distance_1$2 = distance$2;
+
+    /**
+     * Divides the coordinates of two vectors (A/B).
+     *
+     * @param {vec3} out - receiving vector
+     * @param {vec3} a - dividend vector
+     * @param {vec3} b - divisor vector
+     * @returns {vec3} out
+     * @alias module:modeling/maths/vec3.divide
+     */
+    const divide$2 = (out, a, b) => {
+      out[0] = a[0] / b[0];
+      out[1] = a[1] / b[1];
+      out[2] = a[2] / b[2];
+      return out
+    };
+
+    var divide_1$2 = divide$2;
+
+    /**
+     * Compare the given vectors for equality.
+     *
+     * @param {vec3} a - first operand
+     * @param {vec3} b - second operand
+     * @returns {Boolean} true if a and b are equal
+     * @alias module:modeling/maths/vec3.equals
+     */
+    const equals$5 = (a, b) => (a[0] === b[0]) && (a[1] === b[1]) && (a[2] === b[2]);
+
+    var equals_1$4 = equals$5;
+
+    /**
+     * Creates a vector from a single scalar value.
+     * All components of the resulting vector have the given value.
+     *
+     * @param {vec3} out - receiving vector
+     * @param {Number} scalar
+     * @returns {vec3} out
+     * @alias module:modeling/maths/vec3.fromScalar
+     */
+    const fromScalar$1 = (out, scalar) => {
+      out[0] = scalar;
+      out[1] = scalar;
+      out[2] = scalar;
+      return out
+    };
+
+    var fromScalar_1$1 = fromScalar$1;
+
+    /**
+     * Creates a new vector initialized with the given values.
+     *
+     * @param {Number} x - X component
+     * @param {Number} y - Y component
+     * @param {Number} z - Z component
+     * @returns {vec3} a new vector
+     * @alias module:modeling/maths/vec3.fromValues
+     */
+    const fromValues$3 = (x, y, z) => {
+      const out = create_1$9();
+      out[0] = x;
+      out[1] = y;
+      out[2] = z;
+      return out
+    };
+
     var fromValues_1$3 = fromValues$3;
+
+    /**
+     * Create a new vector by extending a 2D vector with a Z value.
+     *
+     * @param {vec3} out - receiving vector
+     * @param {Array} vector - 2D vector of values
+     * @param {Number} [z=0] - Z value
+     * @returns {vec3} out
+     * @alias module:modeling/maths/vec3.fromVec2
+     */
+    const fromVector2 = (out, vector, z = 0) => {
+      out[0] = vector[0];
+      out[1] = vector[1];
+      out[2] = z;
+      return out
+    };
+
+    var fromVec2 = fromVector2;
+
+    /**
+     * Calculates the length of a vector.
+     *
+     * @param {vec3} vector - vector to calculate length of
+     * @returns {Number} length
+     * @alias module:modeling/maths/vec3.length
+     */
+    const length$2 = (vector) => {
+      const x = vector[0];
+      const y = vector[1];
+      const z = vector[2];
+      return Math.hypot(x, y, z)
+    };
+
+    var length_1$2 = length$2;
+
+    /**
+     * Performs a linear interpolation between two vectors.
+     *
+     * @param {vec3} out - receiving vector
+     * @param {vec3} a - first operand
+     * @param {vec3} b - second operand
+     * @param {Number} t - interpolant (0.0 to 1.0) applied between the two inputs
+     * @returns {vec3} out
+     * @alias module:modeling/maths/vec3.lerp
+     */
+    const lerp$2 = (out, a, b, t) => {
+      out[0] = a[0] + t * (b[0] - a[0]);
+      out[1] = a[1] + t * (b[1] - a[1]);
+      out[2] = a[2] + t * (b[2] - a[2]);
+      return out
+    };
+
+    var lerp_1$2 = lerp$2;
+
+    /**
+     * Returns the maximum coordinates of the given vectors.
+     *
+     * @param {vec3} out - receiving vector
+     * @param {vec3} a - first operand
+     * @param {vec3} b - second operand
+     * @returns {vec3} out
+     * @alias module:modeling/maths/vec3.max
+     */
+    const max$3 = (out, a, b) => {
+      out[0] = Math.max(a[0], b[0]);
+      out[1] = Math.max(a[1], b[1]);
+      out[2] = Math.max(a[2], b[2]);
+      return out
+    };
+
+    var max_1$2 = max$3;
+
+    /**
+     * Returns the minimum coordinates of the given vectors.
+     *
+     * @param {vec3} out - receiving vector
+     * @param {vec3} a - first operand
+     * @param {vec3} b - second operand
+     * @returns {vec3} out
+     * @alias module:modeling/maths/vec3.min
+     */
+    const min$3 = (out, a, b) => {
+      out[0] = Math.min(a[0], b[0]);
+      out[1] = Math.min(a[1], b[1]);
+      out[2] = Math.min(a[2], b[2]);
+      return out
+    };
+
+    var min_1$2 = min$3;
+
+    /**
+     * Multiply the coordinates of the given vectors (A*B).
+     *
+     * @param {vec3} out - receiving vector
+     * @param {vec3} a - first operand
+     * @param {vec3} b - second operand
+     * @returns {vec3} out
+     * @alias module:modeling/maths/vec3.multiply
+     */
+    const multiply$4 = (out, a, b) => {
+      out[0] = a[0] * b[0];
+      out[1] = a[1] * b[1];
+      out[2] = a[2] * b[2];
+      return out
+    };
+
+    var multiply_1$4 = multiply$4;
+
+    /**
+     * Negates the coordinates of the given vector.
+     *
+     * @param {vec3} out - receiving vector
+     * @param {vec3} vector - vector to negate
+     * @returns {vec3} out
+     * @alias module:modeling/maths/vec3.negate
+     */
+    const negate$2 = (out, vector) => {
+      out[0] = -vector[0];
+      out[1] = -vector[1];
+      out[2] = -vector[2];
+      return out
+    };
+
+    var negate_1$2 = negate$2;
+
+    /**
+     * Normalize the given vector.
+     *
+     * @param {vec3} out - receiving vector
+     * @param {vec3} vector - vector to normalize
+     * @returns {vec3} out
+     * @alias module:modeling/maths/vec3.normalize
+     */
+    const normalize$2 = (out, vector) => {
+      const x = vector[0];
+      const y = vector[1];
+      const z = vector[2];
+      let len = x * x + y * y + z * z;
+      if (len > 0) {
+        len = 1 / Math.sqrt(len);
+      }
+      out[0] = x * len;
+      out[1] = y * len;
+      out[2] = z * len;
+      return out
+    };
+
+    var normalize_1$2 = normalize$2;
+
+    /**
+     * Create a new vector that is orthogonal to the given vector.
+     *
+     * @param {vec3} out - receiving vector
+     * @param {vec3} vector - vector of reference
+     * @returns {vec3} out
+     * @alias module:modeling/maths/vec3.orthogonal
+     */
+    const orthogonal = (out, vector) => {
+      const bV = abs_1$1(create_1$9(), vector);
+      const b0 = 0 + ((bV[0] < bV[1]) && (bV[0] < bV[2]));
+      const b1 = 0 + ((bV[1] <= bV[0]) && (bV[1] < bV[2]));
+      const b2 = 0 + ((bV[2] <= bV[0]) && (bV[2] <= bV[1]));
+
+      return cross_1$2(out, vector, [b0, b1, b2])
+    };
+
+    var orthogonal_1 = orthogonal;
+
+    /**
+     * Rotate the given vector around the given origin, X axis only.
+     *
+     * @param {vec3} out - receiving vector
+     * @param {vec3} vector - vector to rotate
+     * @param {vec3} origin - origin of the rotation
+     * @param {Number} radians - angle of rotation
+     * @returns {vec3} out
+     * @alias module:modeling/maths/vec3.rotateX
+     */
+    const rotateX$3 = (out, vector, origin, radians) => {
+      const p = [];
+      const r = [];
+
+      // translate point to the origin
+      p[0] = vector[0] - origin[0];
+      p[1] = vector[1] - origin[1];
+      p[2] = vector[2] - origin[2];
+
+      // perform rotation
+      r[0] = p[0];
+      r[1] = p[1] * Math.cos(radians) - p[2] * Math.sin(radians);
+      r[2] = p[1] * Math.sin(radians) + p[2] * Math.cos(radians);
+
+      // translate to correct position
+      out[0] = r[0] + origin[0];
+      out[1] = r[1] + origin[1];
+      out[2] = r[2] + origin[2];
+
+      return out
+    };
+
+    var rotateX_1$3 = rotateX$3;
+
+    /**
+     * Rotate the given vector around the given origin, Y axis only.
+     *
+     * @param {vec3} out - receiving vector
+     * @param {vec3} vector - vector to rotate
+     * @param {vec3} origin - origin of the rotation
+     * @param {Number} radians - angle of rotation
+     * @returns {vec3} out
+     * @alias module:modeling/maths/vec3.rotateY
+     */
+    const rotateY$3 = (out, vector, origin, radians) => {
+      const p = [];
+      const r = [];
+
+      // translate point to the origin
+      p[0] = vector[0] - origin[0];
+      p[1] = vector[1] - origin[1];
+      p[2] = vector[2] - origin[2];
+
+      // perform rotation
+      r[0] = p[2] * Math.sin(radians) + p[0] * Math.cos(radians);
+      r[1] = p[1];
+      r[2] = p[2] * Math.cos(radians) - p[0] * Math.sin(radians);
+
+      // translate to correct position
+      out[0] = r[0] + origin[0];
+      out[1] = r[1] + origin[1];
+      out[2] = r[2] + origin[2];
+
+      return out
+    };
+
+    var rotateY_1$3 = rotateY$3;
+
+    /**
+     * Rotate the given vector around the given origin, Z axis only.
+     *
+     * @param {vec3} out - receiving vector
+     * @param {vec3} vector - vector to rotate
+     * @param {vec3} origin - origin of the rotation
+     * @param {Number} radians - angle of rotation in radians
+     * @returns {vec3} out
+     * @alias module:modeling/maths/vec3.rotateZ
+     */
+    const rotateZ$3 = (out, vector, origin, radians) => {
+      const p = [];
+      const r = [];
+      // Translate point to the origin
+      p[0] = vector[0] - origin[0];
+      p[1] = vector[1] - origin[1];
+
+      // perform rotation
+      r[0] = (p[0] * Math.cos(radians)) - (p[1] * Math.sin(radians));
+      r[1] = (p[0] * Math.sin(radians)) + (p[1] * Math.cos(radians));
+
+      // translate to correct position
+      out[0] = r[0] + origin[0];
+      out[1] = r[1] + origin[1];
+      out[2] = vector[2];
+
+      return out
+    };
+
+    var rotateZ_1$3 = rotateZ$3;
+
+    /**
+     * Scales the coordinates of the given vector by a scalar number.
+     *
+     * @param {vec3} out - receiving vector
+     * @param {vec3} vector - vector to scale
+     * @param {Number} amount - amount to scale the vector by
+     * @returns {vec3} out
+     * @alias module:modeling/maths/vec3.scale
+     */
+    const scale$4 = (out, vector, amount) => {
+      out[0] = vector[0] * amount;
+      out[1] = vector[1] * amount;
+      out[2] = vector[2] * amount;
+      return out
+    };
+
+    var scale_1$4 = scale$4;
+
+    /**
+     * Snaps the coordinates of the given vector to the given epsilon.
+     *
+     * @param {vec3} out - receiving vector
+     * @param {vec3} vector - vector to snap
+     * @param {Number} epsilon - epsilon of precision, less than 0
+     * @returns {vec3} out
+     * @alias module:modeling/maths/vec3.snap
+     */
+    const snap$1 = (out, vector, epsilon) => {
+      out[0] = Math.round(vector[0] / epsilon) * epsilon + 0;
+      out[1] = Math.round(vector[1] / epsilon) * epsilon + 0;
+      out[2] = Math.round(vector[2] / epsilon) * epsilon + 0;
+      return out
+    };
+
+    var snap_1$1 = snap$1;
+
+    /**
+     * Calculates the squared distance between two vectors.
+     *
+     * @param {vec3} a - first operand
+     * @param {vec3} b - second operand
+     * @returns {Number} squared distance
+     * @alias module:modeling/maths/vec3.squaredDistance
+     */
+    const squaredDistance$2 = (a, b) => {
+      const x = b[0] - a[0];
+      const y = b[1] - a[1];
+      const z = b[2] - a[2];
+      return x * x + y * y + z * z
+    };
+
+    var squaredDistance_1$2 = squaredDistance$2;
+
+    /**
+     * Calculates the squared length of the given vector.
+     *
+     * @param {vec3} vector - vector to calculate squared length of
+     * @returns {Number} squared length
+     * @alias module:modeling/maths/vec3.squaredLength
+     */
+    const squaredLength$2 = (vector) => {
+      const x = vector[0];
+      const y = vector[1];
+      const z = vector[2];
+      return x * x + y * y + z * z
+    };
+
+    var squaredLength_1$2 = squaredLength$2;
+
+    /**
+     * Subtracts the coordinates of two vectors (A-B).
+     *
+     * @param {vec3} out - receiving vector
+     * @param {vec3} a - minuend vector
+     * @param {vec3} b - subtrahend vector
+     * @returns {vec3} out
+     * @alias module:modeling/maths/vec3.subtract
+     */
+    const subtract$3 = (out, a, b) => {
+      out[0] = a[0] - b[0];
+      out[1] = a[1] - b[1];
+      out[2] = a[2] - b[2];
+      return out
+    };
+
+    var subtract_1$3 = subtract$3;
+
+    /**
+     * Convert the given vector to a representative string.
+     * @param {vec3} vec - vector of reference
+     * @returns {String} string representation
+     * @alias module:modeling/maths/vec3.toString
+     */
+    const toString$7 = (vec) => `[${vec[0].toFixed(7)}, ${vec[1].toFixed(7)}, ${vec[2].toFixed(7)}]`;
+
+    var toString_1$7 = toString$7;
+
+    /**
+     * Transforms the given vector using the given matrix.
+     *
+     * @param {vec3} out - receiving vector
+     * @param {vec3} vector - vector to transform
+     * @param {mat4} matrix - transform matrix
+     * @returns {vec3} out
+     * @alias module:modeling/maths/vec3.transform
+     */
+    const transform$6 = (out, vector, matrix) => {
+      const x = vector[0];
+      const y = vector[1];
+      const z = vector[2];
+      let w = matrix[3] * x + matrix[7] * y + matrix[11] * z + matrix[15];
+      w = w || 1.0;
+      out[0] = (matrix[0] * x + matrix[4] * y + matrix[8] * z + matrix[12]) / w;
+      out[1] = (matrix[1] * x + matrix[5] * y + matrix[9] * z + matrix[13]) / w;
+      out[2] = (matrix[2] * x + matrix[6] * y + matrix[10] * z + matrix[14]) / w;
+      return out
+    };
+
+    var transform_1$6 = transform$6;
+
+    /**
+     * Represents a three dimensional vector.
+     * @see {@link vec3} for data structure information.
+     * @module modeling/maths/vec3
+     */
+    var vec3$1 = {
+      abs: abs_1$1,
+      add: add_1$2,
+      angle: angle_1$1,
+      clone: clone_1$7,
+      copy: copy_1$4,
+      create: create_1$9,
+      cross: cross_1$2,
+      distance: distance_1$2,
+      divide: divide_1$2,
+      dot: dot_1$2,
+      equals: equals_1$4,
+      fromScalar: fromScalar_1$1,
+      fromValues: fromValues_1$3,
+      fromVec2: fromVec2,
+      length: length_1$2,
+      lerp: lerp_1$2,
+      max: max_1$2,
+      min: min_1$2,
+      multiply: multiply_1$4,
+      negate: negate_1$2,
+      normalize: normalize_1$2,
+      orthogonal: orthogonal_1,
+      rotateX: rotateX_1$3,
+      rotateY: rotateY_1$3,
+      rotateZ: rotateZ_1$3,
+      scale: scale_1$4,
+      snap: snap_1$1,
+      squaredDistance: squaredDistance_1$2,
+      squaredLength: squaredLength_1$2,
+      subtract: subtract_1$3,
+      toString: toString_1$7,
+      transform: transform_1$6
+    };
 
     /**
      * Create a matrix that rotates the given source to the given target vector.
@@ -2973,9 +2491,9 @@
      * @alias module:modeling/maths/mat4.isMirroring
      */
     const isMirroring = (matrix) => {
-      const u = fromValues_1$4(matrix[0], matrix[4], matrix[8]);
-      const v = fromValues_1$4(matrix[1], matrix[5], matrix[9]);
-      const w = fromValues_1$4(matrix[2], matrix[6], matrix[10]);
+      const u = fromValues_1$3(matrix[0], matrix[4], matrix[8]);
+      const v = fromValues_1$3(matrix[1], matrix[5], matrix[9]);
+      const w = fromValues_1$3(matrix[2], matrix[6], matrix[10]);
 
       // for a true orthogonal, non-mirrored base, u.cross(v) == w
       // If they have an opposite direction then we are mirroring
@@ -3103,7 +2621,7 @@
 
       if (Math.abs(len) < 0.000001) {
         // axis is 0,0,0 or almost
-        return copy_1$4(out, matrix)
+        return copy_1$5(out, matrix)
       }
 
       len = 1 / len;
@@ -3437,17 +2955,17 @@
      * @module modeling/maths/mat4
      */
     var mat4 = {
-      add: add_1$2,
-      clone: clone_1$7,
-      copy: copy_1$4,
-      create: create_1$9,
+      add: add_1$3,
+      clone: clone_1$8,
+      copy: copy_1$5,
+      create: create_1$a,
       invert: invert_1$3,
-      equals: equals_1$4,
+      equals: equals_1$5,
       fromRotation: fromRotation_1$1,
       fromScaling: fromScaling_1$1,
       fromTaitBryanRotation: fromTaitBryanRotation_1,
       fromTranslation: fromTranslation_1$1,
-      fromValues: fromValues_1$3,
+      fromValues: fromValues_1$4,
       fromVectorRotation: fromVectorRotation_1,
       fromXRotation: fromXRotation_1$1,
       fromYRotation: fromYRotation_1$1,
@@ -4452,7 +3970,7 @@
      * }
      */
     var geom2$2 = {
-      clone: clone_1$8,
+      clone: clone_1$9,
       create: create_1$8,
       fromPoints: fromPoints_1$4,
       fromCompactBinary: fromCompactBinary_1$2,
@@ -6450,933 +5968,14 @@
       validate: validate_1
     };
 
-    const cache$2 = new WeakMap();
-
-    /*
-     * Measure the area of the given geometry.
-     * NOTE: paths are infinitely narrow and do not have an area
-     *
-     * @param {path2} geometry - geometry to measure
-     * @returns {Number} area of the geometry
-     */
-    const measureAreaOfPath2 = () => 0;
-
-    /*
-     * Measure the area of the given geometry.
-     * For a counter clockwise rotating geometry (about Z) the area is positive, otherwise negative.
-     *
-     * @see http://paulbourke.net/geometry/polygonmesh/
-     * @param {geom2} geometry - 2D geometry to measure
-     * @returns {Number} area of the geometry
-     */
-    const measureAreaOfGeom2 = (geometry) => {
-      let area = cache$2.get(geometry);
-      if (area) return area
-
-      const sides = geom2$2.toSides(geometry);
-      area = sides.reduce((area, side) => area + (side[0][0] * side[1][1] - side[0][1] * side[1][0]), 0);
-      area *= 0.5;
-
-      cache$2.set(geometry, area);
-
-      return area
-    };
-
-    /*
-     * Measure the area of the given geometry.
-     *
-     * @param {geom3} geometry - 3D geometry to measure
-     * @returns {Number} area of the geometry
-     */
-    const measureAreaOfGeom3 = (geometry) => {
-      let area = cache$2.get(geometry);
-      if (area) return area
-
-      const polygons = geom3$2.toPolygons(geometry);
-      area = polygons.reduce((area, polygon) => area + poly3.measureArea(polygon), 0);
-
-      cache$2.set(geometry, area);
-
-      return area
-    };
-
-    /**
-     * Measure the area of the given geometries.
-     * @param {...Objects} geometries - the geometries to measure
-     * @return {Number|Array} the area, or a list of areas for each geometry
-     * @alias module:modeling/measurements.measureArea
-     *
-     * @example
-     * let area = measureArea(sphere())
-     */
-    const measureArea$1 = (...geometries) => {
-      geometries = flatten_1$1(geometries);
-      if (geometries.length === 0) throw new Error('wrong number of arguments')
-
-      const results = geometries.map((geometry) => {
-        if (path2$2.isA(geometry)) return measureAreaOfPath2()
-        if (geom2$2.isA(geometry)) return measureAreaOfGeom2(geometry)
-        if (geom3$2.isA(geometry)) return measureAreaOfGeom3(geometry)
-        return 0
-      });
-      return results.length === 1 ? results[0] : results
-    };
-
-    var measureArea_1$1 = measureArea$1;
-
-    /**
-     * Measure the total (aggregate) area for the given geometries.
-     * Note: This measurement will not account for overlapping geometry
-     * @param {...Object} geometries - the geometries to measure.
-     * @return {Number} the total surface area for the group of geometry.
-     * @alias module:modeling/measurements.measureAggregateArea
-     *
-     * @example
-     * let totalArea = measureAggregateArea(sphere(),cube())
-     */
-    const measureAggregateArea = (...geometries) => {
-      geometries = flatten_1$1(geometries);
-      if (geometries.length === 0) throw new Error('measureAggregateArea: no geometries supplied')
-      const areas = measureArea_1$1(geometries);
-      if (geometries.length === 1) {
-        return areas
-      }
-      const result = 0;
-      return areas.reduce((result, area) => result + area, result)
-    };
-
-    var measureAggregateArea_1 = measureAggregateArea;
-
-    const cache$1 = new WeakMap();
-
-    /*
-     * Measure the min and max bounds of the given (path2) geometry.
-     * @return {Array[]} the min and max bounds for the geometry
-     */
-    const measureBoundingBoxOfPath2 = (geometry) => {
-      let boundingBox = cache$1.get(geometry);
-      if (boundingBox) return boundingBox
-
-      const points = path2$2.toPoints(geometry);
-
-      let minpoint;
-      if (points.length === 0) {
-        minpoint = vec2.create();
-      } else {
-        minpoint = vec2.clone(points[0]);
-      }
-      let maxpoint = vec2.clone(minpoint);
-
-      points.forEach((point) => {
-        vec2.min(minpoint, minpoint, point);
-        vec2.max(maxpoint, maxpoint, point);
-      });
-      minpoint = [minpoint[0], minpoint[1], 0];
-      maxpoint = [maxpoint[0], maxpoint[1], 0];
-
-      boundingBox = [minpoint, maxpoint];
-
-      cache$1.set(geometry, boundingBox);
-
-      return boundingBox
-    };
-
-    /*
-     * Measure the min and max bounds of the given (geom2) geometry.
-     * @return {Array[]} the min and max bounds for the geometry
-     */
-    const measureBoundingBoxOfGeom2 = (geometry) => {
-      let boundingBox = cache$1.get(geometry);
-      if (boundingBox) return boundingBox
-
-      const points = geom2$2.toPoints(geometry);
-
-      let minpoint;
-      if (points.length === 0) {
-        minpoint = vec2.create();
-      } else {
-        minpoint = vec2.clone(points[0]);
-      }
-      let maxpoint = vec2.clone(minpoint);
-
-      points.forEach((point) => {
-        vec2.min(minpoint, minpoint, point);
-        vec2.max(maxpoint, maxpoint, point);
-      });
-
-      minpoint = [minpoint[0], minpoint[1], 0];
-      maxpoint = [maxpoint[0], maxpoint[1], 0];
-
-      boundingBox = [minpoint, maxpoint];
-
-      cache$1.set(geometry, boundingBox);
-
-      return boundingBox
-    };
-
-    /*
-     * Measure the min and max bounds of the given (geom3) geometry.
-     * @return {Array[]} the min and max bounds for the geometry
-     */
-    const measureBoundingBoxOfGeom3 = (geometry) => {
-      let boundingBox = cache$1.get(geometry);
-      if (boundingBox) return boundingBox
-
-      const polygons = geom3$2.toPolygons(geometry);
-
-      let minpoint = vec3$1.create();
-      if (polygons.length > 0) {
-        const points = poly3.toPoints(polygons[0]);
-        vec3$1.copy(minpoint, points[0]);
-      }
-      let maxpoint = vec3$1.clone(minpoint);
-
-      polygons.forEach((polygon) => {
-        poly3.toPoints(polygon).forEach((point) => {
-          vec3$1.min(minpoint, minpoint, point);
-          vec3$1.max(maxpoint, maxpoint, point);
-        });
-      });
-
-      minpoint = [minpoint[0], minpoint[1], minpoint[2]];
-      maxpoint = [maxpoint[0], maxpoint[1], maxpoint[2]];
-
-      boundingBox = [minpoint, maxpoint];
-
-      cache$1.set(geometry, boundingBox);
-
-      return boundingBox
-    };
-
-    /**
-     * Measure the min and max bounds of the given geometries.
-     * @param {...Object} geometries - the geometries to measure
-     * @return {Array} the min and max bounds, or a list of bounds for each geometry
-     * @alias module:modeling/measurements.measureBoundingBox
-     *
-     * @example
-     * let bounds = measureBoundingBox(sphere())
-     */
-    const measureBoundingBox = (...geometries) => {
-      geometries = flatten_1$1(geometries);
-      if (geometries.length === 0) throw new Error('wrong number of arguments')
-
-      const results = geometries.map((geometry) => {
-        if (path2$2.isA(geometry)) return measureBoundingBoxOfPath2(geometry)
-        if (geom2$2.isA(geometry)) return measureBoundingBoxOfGeom2(geometry)
-        if (geom3$2.isA(geometry)) return measureBoundingBoxOfGeom3(geometry)
-        return [[0, 0, 0], [0, 0, 0]]
-      });
-      return results.length === 1 ? results[0] : results
-    };
-
-    var measureBoundingBox_1 = measureBoundingBox;
-
-    /**
-     * Measure the aggregated minimum and maximum bounds for the given geometries.
-     * @param {...Object} geometries - the geometries to measure
-     * @return {Array} the min and max bounds for the group of geometry, i.e. [[x,y,z],[X,Y,Z]]
-     * @alias module:modeling/measurements.measureAggregateBoundingBox
-     *
-     * @example
-     * let bounds = measureAggregateBoundingBox(sphere(),cube())
-     */
-    const measureAggregateBoundingBox = (...geometries) => {
-      geometries = flatten_1$1(geometries);
-      if (geometries.length === 0) throw new Error('measureAggregateBoundingBox: no geometries supplied')
-      const bounds = measureBoundingBox_1(geometries);
-      if (geometries.length === 1) {
-        return bounds
-      }
-      const result = [[Number.MAX_VALUE, Number.MAX_VALUE, Number.MAX_VALUE], [-Number.MAX_VALUE, -Number.MAX_VALUE, -Number.MAX_VALUE]];
-      return bounds.reduce((result, item) => {
-        result = [min_1$2(result[0], result[0], item[0]), max_1$2(result[1], result[1], item[1])];
-        return result
-      }, result)
-    };
-
-    var measureAggregateBoundingBox_1 = measureAggregateBoundingBox;
-
-    const { EPS } = constants;
-
-    const calculateEpsilonFromBounds = (bounds, dimensions) => {
-      let total = 0;
-      for (let i = 0; i < dimensions; i++) {
-        total += bounds[1][i] - bounds[0][i];
-      }
-      return EPS * total / dimensions
-    };
-
-    var calculateEpsilonFromBounds_1 = calculateEpsilonFromBounds;
-
-    /**
-     * Calculate the area under the given points.
-     * @param {Array} points - list of 2D points
-     * @return {Number} area under the given points
-     * @alias module:modeling/maths/utils.area
-     */
-    const area = (points) => {
-      let area = 0;
-      for (let i = 0; i < points.length; i++) {
-        const j = (i + 1) % points.length;
-        area += points[i][0] * points[j][1];
-        area -= points[j][0] * points[i][1];
-      }
-      return (area / 2.0)
-    };
-
-    var area_1 = area;
-
-    /**
-     * Measure the area under the given polygon.
-     *
-     * @param {poly2} polygon - the polygon to measure
-     * @return {Number} the area of the polygon
-     * @alias module:modeling/geometries/poly2.measureArea
-     */
-
-
-    const measureArea = (polygon) => area_1(polygon.vertices);
-
-    var measureArea_1 = measureArea;
-
-    /**
-     * Represents a convex 2D polygon consisting of a list of ordered vertices.
-     * @typedef {Object} poly2
-     * @property {Array} vertices - list of ordered vertices (2D)
-     */
-
-    /**
-     * Creates a new polygon with initial values.
-     *
-     * @param {Array} [vertices] - list of vertices (2D)
-     * @returns {poly2} a new polygon
-     * @alias module:modeling/geometries/poly2.create
-     *
-     * @example
-     * let polygon = create()
-     */
-    const create$2 = (vertices) => {
-      if (vertices === undefined || vertices.length < 3) {
-        vertices = []; // empty contents
-      }
-      return { vertices: vertices }
-    };
-
     var create_1$2 = create$2;
-
-    /**
-     * Flip the give polygon, rotating the opposite direction.
-     *
-     * @param {poly2} polygon - the polygon to flip
-     * @returns {poly2} a new polygon
-     * @alias module:modeling/geometries/poly2.flip
-     */
-    const flip = (polygon) => {
-      const vertices = polygon.vertices.slice().reverse();
-      return create_1$2(vertices)
-    };
-
-    var flip_1 = flip;
-
-    /**
-     * Determine if the given points are inside the given polygon.
-     *
-     * @param {Array} points - a list of points, where each point is an array with X and Y values
-     * @param {poly2} polygon - a 2D polygon
-     * @return {Integer} 1 if all points are inside, 0 if some or none are inside
-     * @alias module:modeling/geometries/poly2.arePointsInside
-     */
-    const arePointsInside = (points, polygon) => {
-      if (points.length === 0) return 0 // nothing to check
-
-      const vertices = polygon.vertices;
-      if (vertices.length < 3) return 0 // nothing can be inside an empty polygon
-
-      if (measureArea_1(polygon) < 0) {
-        polygon = flip_1(polygon); // CCW is required
-      }
-
-      const sum = points.reduce((acc, point) => acc + isPointInside(point, vertices), 0);
-      return sum === points.length ? 1 : 0
-    };
-
-    /*
-     * Determine if the given point is inside the polygon.
-     *
-     * @see http://erich.realtimerendering.com/ptinpoly/ (Crossings Test)
-     * @param {Array} point - an array with X and Y values
-     * @param {Array} polygon - a list of points, where each point is an array with X and Y values
-     * @return {Integer} 1 if the point is inside, 0 if outside
-     */
-    const isPointInside = (point, polygon) => {
-      const numverts = polygon.length;
-
-      const tx = point[0];
-      const ty = point[1];
-
-      let vtx0 = polygon[numverts - 1];
-      let vtx1 = polygon[0];
-
-      let yflag0 = (vtx0[1] > ty);
-
-      let insideFlag = 0;
-
-      let i = 0;
-      for (let j = (numverts + 1); --j;) {
-        /*
-         * check if Y endpoints straddle (are on opposite sides) of point's Y
-         * if so, +X ray could intersect this edge.
-         */
-        const yflag1 = (vtx1[1] > ty);
-        if (yflag0 !== yflag1) {
-          /*
-           * check if X endpoints are on same side of the point's X
-           * if so, it's easy to test if edge hits or misses.
-           */
-          const xflag0 = (vtx0[0] > tx);
-          const xflag1 = (vtx1[0] > tx);
-          if (xflag0 && xflag1) {
-            /* if edge's X values are both right of the point, then the point must be inside */
-            insideFlag = !insideFlag;
-          } else {
-            /*
-             * if X endpoints straddle the point, then
-             * the compute intersection of polygon edge with +X ray
-             * if intersection >= point's X then the +X ray hits it.
-             */
-            if ((vtx1[0] - (vtx1[1] - ty) * (vtx0[0] - vtx1[0]) / (vtx0[1] - vtx1[1])) >= tx) {
-              insideFlag = !insideFlag;
-            }
-          }
-        }
-        /* move to next pair of vertices, retaining info as possible */
-        yflag0 = yflag1;
-        vtx0 = vtx1;
-        vtx1 = polygon[++i];
-      }
-      return insideFlag
-    };
-
-    var arePointsInside_1 = arePointsInside;
-
-    /**
-     * Represents a 2D polygon consisting of a list of ordered vertices.
-     * @see {@link poly2} for data structure information.
-     * @module modeling/geometries/poly2
-     *
-     * @example
-     * poly2.create([[0,0], [4,0], [4,3]])
-     *
-     * @example
-     * {"vertices": [[0,0], [4,0], [4,3]]}
-     */
-    var poly2 = {
-      arePointsInside: arePointsInside_1,
-      create: create_1$2,
-      flip: flip_1,
-      measureArea: measureArea_1
-    };
-
-    /**
-     * Geometries are objects that represent the contents of primitives or the results of operations.
-     * Note: Geometries are considered immutable, so never change the contents directly.
-     *
-     * @see {@link geom2} - 2D geometry consisting of sides
-     * @see {@link geom3} - 3D geometry consisting of polygons
-     * @see {@link path2} - 2D geometry consisting of ordered points
-     * @see {@link poly2} - 2D polygon consisting of ordered vertices
-     * @see {@link poly3} - 3D polygon consisting of ordered vertices
-     *
-     * @module modeling/geometries
-     * @example
-     * const { geom2, geom3, path2, poly2, poly3 } = require('@jscad/modeling').geometries
-     */
-    var geometries = {
-      geom2: geom2$2,
-      geom3: geom3$2,
-      path2: path2$2,
-      poly2: poly2,
-      poly3: poly3
-    };
-
-    const { geom2: geom2$1, geom3: geom3$1, path2: path2$1 } = geometries;
-
-    /**
-     * Measure the aggregated Epsilon for the given geometries.
-     * @param {...Object} geometries - the geometries to measure
-     * @return {Number} the aggregated Epsilon for the whole group of geometries
-     * @alias module:modeling/measurements.measureAggregateEpsilon
-     *
-     * @example
-     * let groupEpsilon = measureAggregateEpsilon(sphere(),cube())
-     */
-    const measureAggregateEpsilon = (...geometries) => {
-      geometries = flatten_1$1(geometries);
-      if (geometries.length === 0) throw new Error('measureAggregateEpsilon: no geometries supplied')
-      const bounds = measureAggregateBoundingBox_1(geometries);
-
-      let dimensions = 0;
-      dimensions = geometries.reduce((dimensions, geometry) => {
-        if (path2$1.isA(geometry) || geom2$1.isA(geometry)) return Math.max(dimensions, 2)
-        if (geom3$1.isA(geometry)) return Math.max(dimensions, 3)
-        return 0
-      }, dimensions);
-      return calculateEpsilonFromBounds_1(bounds, dimensions)
-    };
-
-    var measureAggregateEpsilon_1 = measureAggregateEpsilon;
-
-    const cache = new WeakMap();
-
-    /*
-     * Measure the volume of the given geometry.
-     * NOTE: paths are infinitely narrow and do not have an volume
-     *
-     * @param {Path2} geometry - geometry to measure
-     * @returns {Number} volume of the geometry
-     */
-    const measureVolumeOfPath2 = () => 0;
-
-    /*
-     * Measure the volume of the given geometry.
-     * NOTE: 2D geometry are infinitely thin and do not have an volume
-     *
-     * @param {Geom2} geometry - 2D geometry to measure
-     * @returns {Number} volume of the geometry
-     */
-    const measureVolumeOfGeom2 = () => 0;
-
-    /*
-     * Measure the volume of the given geometry.
-     *
-     * @param {Geom3} geometry - 3D geometry to measure
-     * @returns {Number} volume of the geometry
-     */
-    const measureVolumeOfGeom3 = (geometry) => {
-      let volume = cache.get(geometry);
-      if (volume) return volume
-
-      const polygons = geom3$2.toPolygons(geometry);
-      volume = polygons.reduce((volume, polygon) => volume + poly3.measureSignedVolume(polygon), 0);
-
-      cache.set(geometry, volume);
-
-      return volume
-    };
-
-    /**
-     * Measure the volume of the given geometries.
-     * @param {...Object} geometries - the geometries to measure
-     * @return {Number|Array} the volume, or a list of volumes for each geometry
-     * @alias module:modeling/measurements.measureVolume
-     *
-     * @example
-     * let volume = measureVolume(sphere())
-     */
-    const measureVolume = (...geometries) => {
-      geometries = flatten_1$1(geometries);
-      if (geometries.length === 0) throw new Error('wrong number of arguments')
-
-      const results = geometries.map((geometry) => {
-        if (path2$2.isA(geometry)) return measureVolumeOfPath2()
-        if (geom2$2.isA(geometry)) return measureVolumeOfGeom2()
-        if (geom3$2.isA(geometry)) return measureVolumeOfGeom3(geometry)
-        return 0
-      });
-      return results.length === 1 ? results[0] : results
-    };
-
-    var measureVolume_1 = measureVolume;
-
-    /**
-     * Measure the total (aggregate) volume for the given geometries.
-     * Note: This measurement will not account for overlapping geometry
-     * @param {...Object} geometries - the geometries to measure.
-     * @return {Number} the volume for the group of geometry.
-     * @alias module:modeling/measurements.measureAggregateVolume
-     *
-     * @example
-     * let totalVolume = measureAggregateVolume(sphere(),cube())
-     */
-    const measureAggregateVolume = (...geometries) => {
-      geometries = flatten_1$1(geometries);
-      if (geometries.length === 0) throw new Error('measureAggregateVolume: no geometries supplied')
-      const volumes = measureVolume_1(geometries);
-      if (geometries.length === 1) {
-        return volumes
-      }
-      const result = 0;
-      return volumes.reduce((result, volume) => result + volume, result)
-    };
-
-    var measureAggregateVolume_1 = measureAggregateVolume;
-
-    const cacheOfBoundingSpheres = new WeakMap();
-
-    /*
-     * Measure the bounding sphere of the given (path2) geometry.
-     * @return {[[x, y, z], radius]} the bounding sphere for the geometry
-     */
-    const measureBoundingSphereOfPath2 = (geometry) => {
-      let boundingSphere = cacheOfBoundingSpheres.get(geometry);
-      if (boundingSphere !== undefined) return boundingSphere
-
-      const centroid = vec3$1.create();
-      let radius = 0;
-
-      const points = path2$2.toPoints(geometry);
-
-      if (points.length > 0) {
-        // calculate the centroid of the geometry
-        let numPoints = 0;
-        const temp = vec3$1.create();
-        points.forEach((point) => {
-          vec3$1.add(centroid, centroid, vec3$1.fromVec2(temp, point, 0));
-          numPoints++;
-        });
-        vec3$1.scale(centroid, centroid, 1 / numPoints);
-
-        // find the farthest point from the centroid
-        points.forEach((point) => {
-          radius = Math.max(radius, vec2.squaredDistance(centroid, point));
-        });
-        radius = Math.sqrt(radius);
-      }
-
-      boundingSphere = [centroid, radius];
-      cacheOfBoundingSpheres.set(geometry, boundingSphere);
-
-      return boundingSphere
-    };
-
-    /*
-     * Measure the bounding sphere of the given (geom2) geometry.
-     * @return {[[x, y, z], radius]} the bounding sphere for the geometry
-     */
-    const measureBoundingSphereOfGeom2 = (geometry) => {
-      let boundingSphere = cacheOfBoundingSpheres.get(geometry);
-      if (boundingSphere !== undefined) return boundingSphere
-
-      const centroid = vec3$1.create();
-      let radius = 0;
-
-      const sides = geom2$2.toSides(geometry);
-
-      if (sides.length > 0) {
-        // calculate the centroid of the geometry
-        let numPoints = 0;
-        const temp = vec3$1.create();
-        sides.forEach((side) => {
-          vec3$1.add(centroid, centroid, vec3$1.fromVec2(temp, side[0], 0));
-          numPoints++;
-        });
-        vec3$1.scale(centroid, centroid, 1 / numPoints);
-
-        // find the farthest point from the centroid
-        sides.forEach((side) => {
-          radius = Math.max(radius, vec2.squaredDistance(centroid, side[0]));
-        });
-        radius = Math.sqrt(radius);
-      }
-
-      boundingSphere = [centroid, radius];
-      cacheOfBoundingSpheres.set(geometry, boundingSphere);
-
-      return boundingSphere
-    };
-
-    /*
-     * Measure the bounding sphere of the given (geom3) geometry.
-     * @return {[[x, y, z], radius]} the bounding sphere for the geometry
-     */
-    const measureBoundingSphereOfGeom3 = (geometry) => {
-      let boundingSphere = cacheOfBoundingSpheres.get(geometry);
-      if (boundingSphere !== undefined) return boundingSphere
-
-      const centroid = vec3$1.create();
-      let radius = 0;
-
-      const polygons = geom3$2.toPolygons(geometry);
-
-      if (polygons.length > 0) {
-        // calculate the centroid of the geometry
-        let numPoints = 0;
-        polygons.forEach((polygon) => {
-          poly3.toPoints(polygon).forEach((point) => {
-            vec3$1.add(centroid, centroid, point);
-            numPoints++;
-          });
-        });
-        vec3$1.scale(centroid, centroid, 1 / numPoints);
-
-        // find the farthest point from the centroid
-        polygons.forEach((polygon) => {
-          poly3.toPoints(polygon).forEach((point) => {
-            radius = Math.max(radius, vec3$1.squaredDistance(centroid, point));
-          });
-        });
-        radius = Math.sqrt(radius);
-      }
-
-      boundingSphere = [centroid, radius];
-      cacheOfBoundingSpheres.set(geometry, boundingSphere);
-
-      return boundingSphere
-    };
-
-    /**
-     * Measure the (approximate) bounding sphere of the given geometries.
-     * @see https://en.wikipedia.org/wiki/Bounding_sphere
-     * @param {...Object} geometries - the geometries to measure
-     * @return {Array} the bounding sphere for each geometry, i.e. [centroid, radius]
-     * @alias module:modeling/measurements.measureBoundingSphere
-     *
-     * @example
-     * let bounds = measureBoundingSphere(cube())
-     */
-    const measureBoundingSphere = (...geometries) => {
-      geometries = flatten_1$1(geometries);
-
-      const results = geometries.map((geometry) => {
-        if (path2$2.isA(geometry)) return measureBoundingSphereOfPath2(geometry)
-        if (geom2$2.isA(geometry)) return measureBoundingSphereOfGeom2(geometry)
-        if (geom3$2.isA(geometry)) return measureBoundingSphereOfGeom3(geometry)
-        return [[0, 0, 0], 0]
-      });
-      return results.length === 1 ? results[0] : results
-    };
-
-    var measureBoundingSphere_1 = measureBoundingSphere;
-
-    /**
-     * Measure the center of the given geometries.
-     * @param {...Object} geometries - the geometries to measure
-     * @return {Array} the center point for each geometry, i.e. [X, Y, Z]
-     * @alias module:modeling/measurements.measureCenter
-     *
-     * @example
-     * let center = measureCenter(sphere())
-     */
-    const measureCenter = (...geometries) => {
-      geometries = flatten_1$1(geometries);
-
-      const results = geometries.map((geometry) => {
-        const bounds = measureBoundingBox_1(geometry);
-        return [
-          (bounds[0][0] + ((bounds[1][0] - bounds[0][0]) / 2)),
-          (bounds[0][1] + ((bounds[1][1] - bounds[0][1]) / 2)),
-          (bounds[0][2] + ((bounds[1][2] - bounds[0][2]) / 2))
-        ]
-      });
-      return results.length === 1 ? results[0] : results
-    };
-
-    var measureCenter_1 = measureCenter;
-
-    const cacheOfCenterOfMass = new WeakMap();
-
-    /*
-     * Measure the center of mass for the given geometry.
-     *
-     * @see http://paulbourke.net/geometry/polygonmesh/
-     * @return {Array} the center of mass for the geometry
-     */
-    const measureCenterOfMassGeom2 = (geometry) => {
-      let centerOfMass = cacheOfCenterOfMass.get(geometry);
-      if (centerOfMass !== undefined) return centerOfMass
-
-      const sides = geom2$2.toSides(geometry);
-
-      let area = 0;
-      let x = 0;
-      let y = 0;
-      if (sides.length > 0) {
-        for (let i = 0; i < sides.length; i++) {
-          const p1 = sides[i][0];
-          const p2 = sides[i][1];
-
-          const a = p1[0] * p2[1] - p1[1] * p2[0];
-          area += a;
-          x += (p1[0] + p2[0]) * a;
-          y += (p1[1] + p2[1]) * a;
-        }
-        area /= 2;
-
-        const f = 1 / (area * 6);
-        x *= f;
-        y *= f;
-      }
-
-      centerOfMass = vec3$1.fromValues(x, y, 0);
-
-      cacheOfCenterOfMass.set(geometry, centerOfMass);
-      return centerOfMass
-    };
-
-    /*
-     * Measure the center of mass for the given geometry.
-     * @return {Array} the center of mass for the geometry
-     */
-    const measureCenterOfMassGeom3 = (geometry) => {
-      let centerOfMass = cacheOfCenterOfMass.get(geometry);
-      if (centerOfMass !== undefined) return centerOfMass
-
-      centerOfMass = vec3$1.create(); // 0, 0, 0
-
-      const polygons = geom3$2.toPolygons(geometry);
-      if (polygons.length === 0) return centerOfMass
-
-      let totalVolume = 0;
-      const vector = vec3$1.create(); // for speed
-      polygons.forEach((polygon) => {
-        // calculate volume and center of each tetrahedron
-        const vertices = polygon.vertices;
-        for (let i = 0; i < vertices.length - 2; i++) {
-          vec3$1.cross(vector, vertices[i + 1], vertices[i + 2]);
-          const volume = vec3$1.dot(vertices[0], vector) / 6;
-
-          totalVolume += volume;
-
-          vec3$1.add(vector, vertices[0], vertices[i + 1]);
-          vec3$1.add(vector, vector, vertices[i + 2]);
-          const weightedCenter = vec3$1.scale(vector, vector, 1 / 4 * volume);
-
-          vec3$1.add(centerOfMass, centerOfMass, weightedCenter);
-        }
-      });
-      vec3$1.scale(centerOfMass, centerOfMass, 1 / totalVolume);
-
-      cacheOfCenterOfMass.set(geometry, centerOfMass);
-      return centerOfMass
-    };
-
-    /**
-     * Measure the center of mass for the given geometries.
-     * @param {...Object} geometries - the geometries to measure
-     * @return {Array} the center of mass for each geometry, i.e. [X, Y, Z]
-     * @alias module:modeling/measurements.measureCenterOfMass
-     *
-     * @example
-     * let center = measureCenterOfMass(sphere())
-     */
-    const measureCenterOfMass = (...geometries) => {
-      geometries = flatten_1$1(geometries);
-
-      const results = geometries.map((geometry) => {
-        // NOTE: center of mass for geometry path2 is not possible
-        if (geom2$2.isA(geometry)) return measureCenterOfMassGeom2(geometry)
-        if (geom3$2.isA(geometry)) return measureCenterOfMassGeom3(geometry)
-        return [0, 0, 0]
-      });
-      return results.length === 1 ? results[0] : results
-    };
-
-    var measureCenterOfMass_1 = measureCenterOfMass;
-
-    /**
-     * Measure the dimensions of the given geometries.
-     * @param {...Object} geometries - the geometries to measure
-     * @return {Array} the dimensions for each geometry, i.e. [width, depth, height]
-     * @alias module:modeling/measurements.measureDimensions
-     *
-     * @example
-     * let dimensions = measureDimensions(sphere())
-     */
-    const measureDimensions = (...geometries) => {
-      geometries = flatten_1$1(geometries);
-
-      const results = geometries.map((geometry) => {
-        const boundingBox = measureBoundingBox_1(geometry);
-        return [
-          boundingBox[1][0] - boundingBox[0][0],
-          boundingBox[1][1] - boundingBox[0][1],
-          boundingBox[1][2] - boundingBox[0][2]
-        ]
-      });
-      return results.length === 1 ? results[0] : results
-    };
-
-    var measureDimensions_1 = measureDimensions;
-
-    const { geom2, geom3, path2 } = geometries;
-
-
-
-
-    /*
-     * Measure the epsilon of the given (path2) geometry.
-     * @return {Number} the epsilon (precision) of the geometry
-     */
-    const measureEpsilonOfPath2 = (geometry) => calculateEpsilonFromBounds_1(measureBoundingBox_1(geometry), 2);
-
-    /*
-     * Measure the epsilon of the given (geom2) geometry.
-     * @return {Number} the epsilon (precision) of the geometry
-     */
-    const measureEpsilonOfGeom2 = (geometry) => calculateEpsilonFromBounds_1(measureBoundingBox_1(geometry), 2);
-
-    /*
-     * Measure the epsilon of the given (geom3) geometry.
-     * @return {Float} the epsilon (precision) of the geometry
-     */
-    const measureEpsilonOfGeom3 = (geometry) => calculateEpsilonFromBounds_1(measureBoundingBox_1(geometry), 3);
-
-    /**
-     * Measure the epsilon of the given geometries.
-     * Epsilon values are used in various functions to determine minimum distances between points, planes, etc.
-     * @param {...Object} geometries - the geometries to measure
-     * @return {Number|Array} the epsilon, or a list of epsilons for each geometry
-     * @alias module:modeling/measurements.measureEpsilon
-     *
-     * @example
-     * let epsilon = measureEpsilon(sphere())
-     */
-    const measureEpsilon = (...geometries) => {
-      geometries = flatten_1$1(geometries);
-      if (geometries.length === 0) throw new Error('wrong number of arguments')
-
-      const results = geometries.map((geometry) => {
-        if (path2.isA(geometry)) return measureEpsilonOfPath2(geometry)
-        if (geom2.isA(geometry)) return measureEpsilonOfGeom2(geometry)
-        if (geom3.isA(geometry)) return measureEpsilonOfGeom3(geometry)
-        return 0
-      });
-      return results.length === 1 ? results[0] : results
-    };
-
-    var measureEpsilon_1 = measureEpsilon;
-
-    /**
-     * All shapes (primitives or the results of operations) can be measured, e.g. calculate volume, etc.
-     * @module modeling/measurements
-     * @example
-     * const { measureArea, measureBoundingBox, measureVolume } = require('@jscad/modeling').measurements
-     */
-    var measurements = {
-      measureAggregateArea: measureAggregateArea_1,
-      measureAggregateBoundingBox: measureAggregateBoundingBox_1,
-      measureAggregateEpsilon: measureAggregateEpsilon_1,
-      measureAggregateVolume: measureAggregateVolume_1,
-      measureArea: measureArea_1$1,
-      measureBoundingBox: measureBoundingBox_1,
-      measureBoundingSphere: measureBoundingSphere_1,
-      measureCenter: measureCenter_1,
-      measureCenterOfMass: measureCenterOfMass_1,
-      measureDimensions: measureDimensions_1,
-      measureEpsilon: measureEpsilon_1,
-      measureVolume: measureVolume_1
-    };
-    var measurements_6 = measurements.measureBoundingBox;
-
-    var create_1$1 = create$1;
 
     /**
      * Creates a new identity mat4
      *
      * @returns {mat4} a new 4x4 matrix
      */
-    function create$1() {
+    function create$2() {
         var out = new Float32Array(16);
         out[0] = 1;
         out[1] = 0;
@@ -8554,7 +7153,7 @@
     }
 
     var glMat4 = {
-      create: create_1$1
+      create: create_1$2
       , clone: clone_1$1
       , copy: copy_1$1
       , identity: identity_1
@@ -8643,6 +7242,16 @@
       specularLightAmount: 0.16,
       materialShininess: 8.0
     };
+
+    var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
+
+    function unwrapExports (x) {
+    	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
+    }
+
+    function createCommonjsModule(fn, module) {
+    	return module = { exports: {} }, fn(module, module.exports), module.exports;
+    }
 
     var regl = createCommonjsModule(function (module, exports) {
     (function (global, factory) {
@@ -19789,14 +18398,14 @@ void main () {
 
     var epsilon = 0.000001;
 
-    var create_1 = create;
+    var create_1$1 = create$1;
 
     /**
      * Creates a new, empty vec3
      *
      * @returns {vec3} a new 3D vector
      */
-    function create() {
+    function create$1() {
         var out = new Float32Array(3);
         out[0] = 0;
         out[1] = 0;
@@ -20486,7 +19095,7 @@ void main () {
 
     var forEach_1 = forEach;
 
-    var vec = create_1();
+    var vec = create_1$1();
 
     /**
      * Perform some operation over an array of vec3s.
@@ -20531,7 +19140,7 @@ void main () {
 
     var glVec3 = {
       EPSILON: epsilon
-      , create: create_1
+      , create: create_1$1
       , clone: clone_1
       , angle: angle_1
       , fromValues: fromValues_1
@@ -21698,11 +20307,1413 @@ void main () {
     var src_4 = src.controls;
     var src_5 = src.entitiesFromSolids;
 
-    var perspectiveCamera=src_3.perspective;var perspectiveCameraStateDefaults=perspectiveCamera.defaults;var controls=src_4.orbit;var controlsStateDefaults=controls.defaults;var prepareRender=src_1;var entitiesFromSolids=src_5;var prepareDrawCommands=src_2;var AxisEntity;(function(AxisEntity){var Class=function(){function Class(){this.visuals={drawCmd:"drawAxis",show:true};this.alwaysVisible=false;}return Class}();AxisEntity.Class=Class;})(AxisEntity||(AxisEntity={}));var MultiGridEntity;(function(MultiGridEntity){var Class=function(){function Class(){this.visuals={drawCmd:"drawGrid",show:true,color:[0,0,0,1],subColor:[0.5,0.5,0.5,1]};this.size=[0,0];this.ticks=[10,1];}return Class}();MultiGridEntity.Class=Class;})(MultiGridEntity||(MultiGridEntity={}));var Shape=function(){function Shape(getSolid,spawnsTab,addAxis,addMultiGrid){if(spawnsTab===void 0){spawnsTab=false;}if(addAxis===void 0){addAxis=false;}if(addMultiGrid===void 0){addMultiGrid=false;}this.getSolid=getSolid;this.spawnsTab=spawnsTab;this.addAxis=addAxis;this.addMultiGrid=addMultiGrid;}Shape.prototype.toReplString=function(){return "<Shape>"};return Shape}();var MousePointer;(function(MousePointer){MousePointer[MousePointer["NONE"]=-1]="NONE";MousePointer[MousePointer["LEFT"]=0]="LEFT";MousePointer[MousePointer["RIGHT"]=2]="RIGHT";MousePointer[MousePointer["MIDDLE"]=1]="MIDDLE";MousePointer[MousePointer["OTHER"]=7050]="OTHER";})(MousePointer||(MousePointer={}));var FrameTracker=function(){function FrameTracker(){this.zoomTicks=0;this.zoomToFitOnce=true;this.heldPointer=MousePointer.NONE;this.lastX=-1;this.lastY=-1;this.rotateX=0;this.rotateY=0;this.panX=0;this.panY=0;}FrameTracker.prototype.getZoomTicks=function(){return this.zoomTicks};FrameTracker.prototype.changeZoomTicks=function(wheelDelta){this.zoomTicks+=Math.sign(wheelDelta);};FrameTracker.prototype.setZoomToFit=function(){this.zoomToFitOnce=true;};FrameTracker.prototype.unsetLastCoordinates=function(){this.lastX=-1;this.lastY=-1;};FrameTracker.prototype.setHeldPointer=function(mouseEventButton){switch(mouseEventButton){case MousePointer.LEFT:case MousePointer.RIGHT:case MousePointer.MIDDLE:this.heldPointer=mouseEventButton;break;default:this.heldPointer=MousePointer.OTHER;break;}};FrameTracker.prototype.unsetHeldPointer=function(){this.heldPointer=MousePointer.NONE;};FrameTracker.prototype.shouldZoom=function(){return this.zoomTicks!==0};FrameTracker.prototype.didZoom=function(){this.zoomTicks=0;};FrameTracker.prototype.shouldZoomToFit=function(){return this.zoomToFitOnce};FrameTracker.prototype.didZoomToFit=function(){this.zoomToFitOnce=false;};FrameTracker.prototype.shouldRotate=function(){return this.rotateX!==0||this.rotateY!==0};FrameTracker.prototype.didRotate=function(){this.rotateX=0;this.rotateY=0;};FrameTracker.prototype.shouldPan=function(){return this.panX!==0||this.panY!==0};FrameTracker.prototype.didPan=function(){this.panX=0;this.panY=0;};FrameTracker.prototype.isPointerHeld=function(){return this.heldPointer!==MousePointer.NONE&&this.heldPointer!==MousePointer.RIGHT};FrameTracker.prototype.isPointerPan=function(){return [MousePointer.MIDDLE].includes(this.heldPointer)};return FrameTracker}();var CameraViewportDimensions=function(){function CameraViewportDimensions(width,height){this.width=width;this.height=height;}return CameraViewportDimensions}();function looseInstanceOf(object,c){var _a;var objectName=(_a=object===null||object===void 0?void 0:object.constructor)===null||_a===void 0?void 0:_a.name;var className=c===null||c===void 0?void 0:c.name;return objectName!==undefined&&className!==undefined&&objectName===className}var toolTipText={visibility:"hidden",backgroundColor:"#ffffff",color:"#7b7b7b",borderRadius:"6px",position:"absolute",whiteSpace:"nowrap",padding:"5px",top:"-1px",zIndex:"1"};
+    var perspectiveCamera=src_3.perspective;var perspectiveCameraStateDefaults=perspectiveCamera.defaults;var controls=src_4.orbit;var controlsStateDefaults=controls.defaults;var prepareRender=src_1;var entitiesFromSolids=src_5;var prepareDrawCommands=src_2;var AxisEntity;(function(AxisEntity){var Class=function(){function Class(){this.visuals={drawCmd:"drawAxis",show:true};this.alwaysVisible=false;}return Class}();AxisEntity.Class=Class;})(AxisEntity||(AxisEntity={}));var MultiGridEntity;(function(MultiGridEntity){var Class=function(){function Class(){this.visuals={drawCmd:"drawGrid",show:true,color:[0,0,0,1],subColor:[0.5,0.5,0.5,1]};this.size=[0,0];this.ticks=[10,1];}return Class}();MultiGridEntity.Class=Class;})(MultiGridEntity||(MultiGridEntity={}));var Shape=function(){function Shape(getSolid,spawnsTab,addAxis,addMultiGrid){if(spawnsTab===void 0){spawnsTab=false;}if(addAxis===void 0){addAxis=false;}if(addMultiGrid===void 0){addMultiGrid=false;}this.getSolid=getSolid;this.spawnsTab=spawnsTab;this.addAxis=addAxis;this.addMultiGrid=addMultiGrid;}Shape.prototype.toReplString=function(){return "<Shape>"};return Shape}();var MousePointer;(function(MousePointer){MousePointer[MousePointer["NONE"]=-1]="NONE";MousePointer[MousePointer["LEFT"]=0]="LEFT";MousePointer[MousePointer["RIGHT"]=2]="RIGHT";MousePointer[MousePointer["MIDDLE"]=1]="MIDDLE";MousePointer[MousePointer["OTHER"]=7050]="OTHER";})(MousePointer||(MousePointer={}));var FrameTracker=function(){function FrameTracker(){this.zoomTicks=0;this.zoomToFitOnce=true;this.heldPointer=MousePointer.NONE;this.lastX=-1;this.lastY=-1;this.rotateX=0;this.rotateY=0;this.panX=0;this.panY=0;}FrameTracker.prototype.getZoomTicks=function(){return this.zoomTicks};FrameTracker.prototype.changeZoomTicks=function(wheelDelta){this.zoomTicks+=Math.sign(wheelDelta);};FrameTracker.prototype.setZoomToFit=function(){this.zoomToFitOnce=true;};FrameTracker.prototype.unsetLastCoordinates=function(){this.lastX=-1;this.lastY=-1;};FrameTracker.prototype.setHeldPointer=function(mouseEventButton){switch(mouseEventButton){case MousePointer.LEFT:case MousePointer.RIGHT:case MousePointer.MIDDLE:this.heldPointer=mouseEventButton;break;default:this.heldPointer=MousePointer.OTHER;break;}};FrameTracker.prototype.unsetHeldPointer=function(){this.heldPointer=MousePointer.NONE;};FrameTracker.prototype.shouldZoom=function(){return this.zoomTicks!==0};FrameTracker.prototype.didZoom=function(){this.zoomTicks=0;};FrameTracker.prototype.shouldZoomToFit=function(){return this.zoomToFitOnce};FrameTracker.prototype.didZoomToFit=function(){this.zoomToFitOnce=false;};FrameTracker.prototype.shouldRotate=function(){return this.rotateX!==0||this.rotateY!==0};FrameTracker.prototype.didRotate=function(){this.rotateX=0;this.rotateY=0;};FrameTracker.prototype.shouldPan=function(){return this.panX!==0||this.panY!==0};FrameTracker.prototype.didPan=function(){this.panX=0;this.panY=0;};FrameTracker.prototype.isPointerHeld=function(){return this.heldPointer!==MousePointer.NONE&&this.heldPointer!==MousePointer.RIGHT};FrameTracker.prototype.isPointerPan=function(){return [MousePointer.MIDDLE].includes(this.heldPointer)};return FrameTracker}();var CameraViewportDimensions=function(){function CameraViewportDimensions(width,height){this.width=width;this.height=height;}return CameraViewportDimensions}();function looseInstanceOf(object,c){var _a;var objectName=(_a=object===null||object===void 0?void 0:object.constructor)===null||_a===void 0?void 0:_a.name;var className=c===null||c===void 0?void 0:c.name;return objectName!==undefined&&className!==undefined&&objectName===className}
 
-    function makeWrappedRenderer(canvas){var prepareRenderOptions={glOptions:{canvas:canvas}};return prepareRender(prepareRenderOptions)}function getSize(shape){var shapeBoundingBox=measurements_6(shape.getSolid());var scalingFactor=1.2;return Math.ceil(scalingFactor*Math.max(Math.abs(shapeBoundingBox[0][0]),Math.abs(shapeBoundingBox[0][1]),Math.abs(shapeBoundingBox[0][2]),Math.abs(shapeBoundingBox[1][0]),Math.abs(shapeBoundingBox[1][1]),Math.abs(shapeBoundingBox[1][2])))}function addEntities(shape,geometryEntities){var allEntities=__spreadArray([],geometryEntities);var size=getSize(shape);if(shape.addAxis){var axis=__assign(__assign({},new AxisEntity.Class),{size:size});allEntities.push(axis);}if(shape.addMultiGrid){var grid=__assign(__assign({},new MultiGridEntity.Class),{size:[size*2,size*2]});allEntities.push(grid);}return allEntities}function adjustCameraAngle(perspectiveCameraState,controlsState){if(controlsState===void 0){controlsState=null;}if(controlsState===null){perspectiveCamera.update(perspectiveCameraState);return}var output=controls.update({controls:controlsState,camera:perspectiveCameraState});controlsState.thetaDelta=output.controls.thetaDelta;controlsState.phiDelta=output.controls.phiDelta;controlsState.scale=output.controls.scale;perspectiveCameraState.position=output.camera.position;perspectiveCameraState.view=output.camera.view;}function doDynamicResize(canvas,perspectiveCameraState){var canvasBounds=canvas.getBoundingClientRect();var devicePixelRatio=window.devicePixelRatio;var width=canvasBounds.width*devicePixelRatio;var height=canvasBounds.height*devicePixelRatio;canvas.width=width;canvas.height=height;perspectiveCamera.setProjection(perspectiveCameraState,perspectiveCameraState,new CameraViewportDimensions(width,height));}function doZoom(zoomTicks,perspectiveCameraState,controlsState){while(zoomTicks!==0){var currentTick=Math.sign(zoomTicks);zoomTicks-=currentTick;var scaleChange=currentTick*0.1;var potentialNewScale=controlsState.scale+scaleChange;var potentialNewDistance=vec3$1.distance(perspectiveCameraState.position,perspectiveCameraState.target)*potentialNewScale;if(potentialNewDistance>controlsState.limits.minDistance&&potentialNewDistance<controlsState.limits.maxDistance){controlsState.scale=potentialNewScale;}else break}adjustCameraAngle(perspectiveCameraState,controlsState);}function doZoomToFit(geometryEntities,perspectiveCameraState,controlsState){var options={controls:controlsState,camera:perspectiveCameraState,entities:geometryEntities};var output=controls.zoomToFit(options);perspectiveCameraState.target=output.camera.target;controlsState.scale=output.controls.scale;adjustCameraAngle(perspectiveCameraState,controlsState);}function doRotate(rotateX,rotateY,perspectiveCameraState,controlsState){var output=controls.rotate({controls:controlsState,camera:perspectiveCameraState,speed:0.0015},[rotateX,rotateY]);var newControlsState=output.controls;controlsState.thetaDelta=newControlsState.thetaDelta;controlsState.phiDelta=newControlsState.phiDelta;adjustCameraAngle(perspectiveCameraState,controlsState);}function doPan(panX,panY,perspectiveCameraState,controlsState){var output=controls.pan({controls:controlsState,camera:perspectiveCameraState},[panX,panY*0.75]);var newCameraState=output.camera;perspectiveCameraState.position=newCameraState.position;perspectiveCameraState.target=newCameraState.target;adjustCameraAngle(perspectiveCameraState,controlsState);}function registerEvents(canvas,frameTracker){canvas.addEventListener("wheel",function(wheelEvent){wheelEvent.preventDefault();frameTracker.changeZoomTicks(wheelEvent.deltaY);},{passive:false});canvas.addEventListener("dblclick",function(_mouseEvent){frameTracker.setZoomToFit();});canvas.addEventListener("pointerdown",function(pointerEvent){frameTracker.setHeldPointer(pointerEvent.button);frameTracker.lastX=pointerEvent.pageX;frameTracker.lastY=pointerEvent.pageY;canvas.setPointerCapture(pointerEvent.pointerId);});canvas.addEventListener("pointerup",function(pointerEvent){frameTracker.unsetHeldPointer();frameTracker.unsetLastCoordinates();canvas.releasePointerCapture(pointerEvent.pointerId);});canvas.addEventListener("pointermove",function(pointerEvent){if(!frameTracker.isPointerHeld())return;var currentX=pointerEvent.pageX;var currentY=pointerEvent.pageY;var differenceX=frameTracker.lastX-currentX;var differenceY=frameTracker.lastY-currentY;if(!(frameTracker.isPointerPan()||pointerEvent.shiftKey)){frameTracker.rotateX-=differenceX;frameTracker.rotateY+=differenceY;}else {frameTracker.panX+=differenceX;frameTracker.panY-=differenceY;}frameTracker.lastX=currentX;frameTracker.lastY=currentY;});}function render(canvas,shape){var wrappedRenderer=makeWrappedRenderer(canvas);var perspectiveCameraState=__assign(__assign({},perspectiveCameraStateDefaults),{position:[1000,1000,1500]});var controlsState=__assign({},controlsStateDefaults);var geometryEntities=entitiesFromSolids(undefined,shape.getSolid());var wrappedRendererData={entities:addEntities(shape,geometryEntities),drawCommands:prepareDrawCommands,camera:perspectiveCameraState};var frameTracker=new FrameTracker;var requestId=0;function animationCallback(_timestamp){doDynamicResize(canvas,perspectiveCameraState);var shouldZoom=frameTracker.shouldZoom();var shouldZoomToFit=frameTracker.shouldZoomToFit();var shouldRotate=frameTracker.shouldRotate();var shouldPan=frameTracker.shouldPan();if(shouldZoom){doZoom(frameTracker.getZoomTicks(),perspectiveCameraState,controlsState);frameTracker.didZoom();}if(shouldZoomToFit){doZoomToFit(geometryEntities,perspectiveCameraState,controlsState);frameTracker.didZoomToFit();}if(shouldRotate){doRotate(frameTracker.rotateX,frameTracker.rotateY,perspectiveCameraState,controlsState);frameTracker.didRotate();}if(shouldPan){doPan(frameTracker.panX,frameTracker.panY,perspectiveCameraState,controlsState);frameTracker.didPan();}if(shouldZoom||shouldZoomToFit||shouldRotate||shouldPan){wrappedRenderer(wrappedRendererData);}requestId=window.requestAnimationFrame(animationCallback);}requestId=window.requestAnimationFrame(animationCallback);registerEvents(canvas,frameTracker);return function(){return requestId}}
+    /*! *****************************************************************************
+    Copyright (c) Microsoft Corporation.
 
-    var CsgCanvasHolder=function(_super){__extends(CsgCanvasHolder,_super);function CsgCanvasHolder(props){var _this=_super.call(this,props)||this;_this.canvasReference=React__default['default'].createRef();_this.state={zoomTooltip:"hidden",angleTooltip:"hidden",perspectiveTooltip:"hidden",fitTooltip:"hidden"};return _this}CsgCanvasHolder.prototype.componentDidMount=function(){var _a,_b;var canvas=this.canvasReference.current;if(canvas===null){return}var potentialShape=(_b=(_a=this.props.debuggerContext)===null||_a===void 0?void 0:_a.result)===null||_b===void 0?void 0:_b.value;if(!looseInstanceOf(potentialShape,Shape)){return}var shape;try{shape=potentialShape;}catch(_error){console.error(_error);return}var requestId=render(canvas,shape);window.addEventListener("beforeunload",function(){return window.cancelAnimationFrame(requestId())});};CsgCanvasHolder.prototype.render=function(){var _this=this;var _a=this.state,zoomTooltip=_a.zoomTooltip,angleTooltip=_a.angleTooltip,perspectiveTooltip=_a.perspectiveTooltip,fitTooltip=_a.fitTooltip;var zoomStyle=__assign(__assign({},toolTipText),{visibility:zoomTooltip});var angleStyle=__assign(__assign({},toolTipText),{visibility:angleTooltip});var perspectiveStyle=__assign(__assign({},toolTipText),{visibility:perspectiveTooltip});var fitStyle=__assign(__assign({},toolTipText),{visibility:fitTooltip});var stack={display:"flex",flexDirection:"column",flexWrap:"wrap",alignItems:"center",justifyContent:"center",width:"64px"};var centerStyle={marginLeft:"-100%",marginRight:"-100%",textAlign:"center",wordBreak:"break-word",inlineSize:"80px",color:"#7b7b7b"};var containerStyle={padding:"10px",position:"relative"};return React__default['default'].createElement("div",{style:{display:"flex",justifyContent:"center",flexDirection:"column"}},React__default['default'].createElement("div",{style:{display:"flex",flexDirection:"row",justifyContent:"center",width:"100%",marginBottom:"10px"}},React__default['default'].createElement("div",{style:containerStyle,onMouseEnter:function(){return _this.setState({zoomTooltip:"visible"})},onMouseLeave:function(){return _this.setState({zoomTooltip:"hidden"})}},React__default['default'].createElement("span",{style:zoomStyle},"Scroll Up and Down"),React__default['default'].createElement("div",{style:stack},React__default['default'].createElement(Icon,{icon:"zoom-in",size:20,color:"#7b7b7b"}),React__default['default'].createElement("span",{style:centerStyle}," Zoom "))),React__default['default'].createElement("div",{style:containerStyle,onMouseEnter:function(){return _this.setState({angleTooltip:"visible"})},onMouseLeave:function(){return _this.setState({angleTooltip:"hidden"})}},React__default['default'].createElement("span",{style:angleStyle},"Left Click Drag"),React__default['default'].createElement("div",{style:stack},React__default['default'].createElement(Icon,{icon:"repeat",size:20,color:"#7b7b7b"}),React__default['default'].createElement("span",{style:centerStyle}," Camera Angle "))),React__default['default'].createElement("div",{style:containerStyle,onMouseEnter:function(){return _this.setState({perspectiveTooltip:"visible"})},onMouseLeave:function(){return _this.setState({perspectiveTooltip:"hidden"})}},React__default['default'].createElement("span",{style:perspectiveStyle},"Shift + Left Click Drag"),React__default['default'].createElement("div",{style:stack},React__default['default'].createElement(Icon,{icon:"layer-outline",size:20,color:"#7b7b7b"}),React__default['default'].createElement("span",{style:centerStyle}," Camera Perspective "))),React__default['default'].createElement("div",{style:containerStyle,onMouseEnter:function(){return _this.setState({fitTooltip:"visible"})},onMouseLeave:function(){return _this.setState({fitTooltip:"hidden"})}},React__default['default'].createElement("span",{style:fitStyle}," Double Left Click "),React__default['default'].createElement("div",{style:stack},React__default['default'].createElement(Icon,{icon:"zoom-to-fit",size:20,color:"#7b7b7b"}),React__default['default'].createElement("span",{style:centerStyle}," Zoom to Fit")))),React__default['default'].createElement("canvas",{ref:this.canvasReference,style:{width:"100%",minWidth:"0px",maxWidth:"50vw",aspectRatio:"1"},width:0,height:0}))};return CsgCanvasHolder}(React__default['default'].Component);var index = {toSpawn:function(debuggerContext){var _a;var potentialShape=(_a=debuggerContext===null||debuggerContext===void 0?void 0:debuggerContext.result)===null||_a===void 0?void 0:_a.value;if(!looseInstanceOf(potentialShape,Shape)){return false}var shape;try{shape=potentialShape;}catch(_error){console.error(_error);return false}return shape.spawnsTab},body:function(debuggerContext){return React__default['default'].createElement(CsgCanvasHolder,{debuggerContext:debuggerContext})},iconName:"shapes",label:"CSG Tab"};
+    Permission to use, copy, modify, and/or distribute this software for any
+    purpose with or without fee is hereby granted.
+
+    THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+    REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+    AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+    INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+    LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+    OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+    PERFORMANCE OF THIS SOFTWARE.
+    ***************************************************************************** */
+    /* global Reflect, Promise */
+
+    var extendStatics = function(d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+
+    function __extends(d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    }
+
+    var __assign = function() {
+        __assign = Object.assign || function __assign(t) {
+            for (var s, i = 1, n = arguments.length; i < n; i++) {
+                s = arguments[i];
+                for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+            }
+            return t;
+        };
+        return __assign.apply(this, arguments);
+    };
+
+    function __rest(s, e) {
+        var t = {};
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+            t[p] = s[p];
+        if (s != null && typeof Object.getOwnPropertySymbols === "function")
+            for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+                if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                    t[p[i]] = s[p[i]];
+            }
+        return t;
+    }
+
+    function __decorate(decorators, target, key, desc) {
+        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
+    }
+
+    function __spreadArray(to, from, pack) {
+        if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+            if (ar || !(i in from)) {
+                if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+                ar[i] = from[i];
+            }
+        }
+        return to.concat(ar || Array.prototype.slice.call(from));
+    }
+
+    const cache$2 = new WeakMap();
+
+    /*
+     * Measure the area of the given geometry.
+     * NOTE: paths are infinitely narrow and do not have an area
+     *
+     * @param {path2} geometry - geometry to measure
+     * @returns {Number} area of the geometry
+     */
+    const measureAreaOfPath2 = () => 0;
+
+    /*
+     * Measure the area of the given geometry.
+     * For a counter clockwise rotating geometry (about Z) the area is positive, otherwise negative.
+     *
+     * @see http://paulbourke.net/geometry/polygonmesh/
+     * @param {geom2} geometry - 2D geometry to measure
+     * @returns {Number} area of the geometry
+     */
+    const measureAreaOfGeom2 = (geometry) => {
+      let area = cache$2.get(geometry);
+      if (area) return area
+
+      const sides = geom2$2.toSides(geometry);
+      area = sides.reduce((area, side) => area + (side[0][0] * side[1][1] - side[0][1] * side[1][0]), 0);
+      area *= 0.5;
+
+      cache$2.set(geometry, area);
+
+      return area
+    };
+
+    /*
+     * Measure the area of the given geometry.
+     *
+     * @param {geom3} geometry - 3D geometry to measure
+     * @returns {Number} area of the geometry
+     */
+    const measureAreaOfGeom3 = (geometry) => {
+      let area = cache$2.get(geometry);
+      if (area) return area
+
+      const polygons = geom3$2.toPolygons(geometry);
+      area = polygons.reduce((area, polygon) => area + poly3.measureArea(polygon), 0);
+
+      cache$2.set(geometry, area);
+
+      return area
+    };
+
+    /**
+     * Measure the area of the given geometries.
+     * @param {...Objects} geometries - the geometries to measure
+     * @return {Number|Array} the area, or a list of areas for each geometry
+     * @alias module:modeling/measurements.measureArea
+     *
+     * @example
+     * let area = measureArea(sphere())
+     */
+    const measureArea$1 = (...geometries) => {
+      geometries = flatten_1$1(geometries);
+      if (geometries.length === 0) throw new Error('wrong number of arguments')
+
+      const results = geometries.map((geometry) => {
+        if (path2$2.isA(geometry)) return measureAreaOfPath2()
+        if (geom2$2.isA(geometry)) return measureAreaOfGeom2(geometry)
+        if (geom3$2.isA(geometry)) return measureAreaOfGeom3(geometry)
+        return 0
+      });
+      return results.length === 1 ? results[0] : results
+    };
+
+    var measureArea_1$1 = measureArea$1;
+
+    /**
+     * Measure the total (aggregate) area for the given geometries.
+     * Note: This measurement will not account for overlapping geometry
+     * @param {...Object} geometries - the geometries to measure.
+     * @return {Number} the total surface area for the group of geometry.
+     * @alias module:modeling/measurements.measureAggregateArea
+     *
+     * @example
+     * let totalArea = measureAggregateArea(sphere(),cube())
+     */
+    const measureAggregateArea = (...geometries) => {
+      geometries = flatten_1$1(geometries);
+      if (geometries.length === 0) throw new Error('measureAggregateArea: no geometries supplied')
+      const areas = measureArea_1$1(geometries);
+      if (geometries.length === 1) {
+        return areas
+      }
+      const result = 0;
+      return areas.reduce((result, area) => result + area, result)
+    };
+
+    var measureAggregateArea_1 = measureAggregateArea;
+
+    const cache$1 = new WeakMap();
+
+    /*
+     * Measure the min and max bounds of the given (path2) geometry.
+     * @return {Array[]} the min and max bounds for the geometry
+     */
+    const measureBoundingBoxOfPath2 = (geometry) => {
+      let boundingBox = cache$1.get(geometry);
+      if (boundingBox) return boundingBox
+
+      const points = path2$2.toPoints(geometry);
+
+      let minpoint;
+      if (points.length === 0) {
+        minpoint = vec2.create();
+      } else {
+        minpoint = vec2.clone(points[0]);
+      }
+      let maxpoint = vec2.clone(minpoint);
+
+      points.forEach((point) => {
+        vec2.min(minpoint, minpoint, point);
+        vec2.max(maxpoint, maxpoint, point);
+      });
+      minpoint = [minpoint[0], minpoint[1], 0];
+      maxpoint = [maxpoint[0], maxpoint[1], 0];
+
+      boundingBox = [minpoint, maxpoint];
+
+      cache$1.set(geometry, boundingBox);
+
+      return boundingBox
+    };
+
+    /*
+     * Measure the min and max bounds of the given (geom2) geometry.
+     * @return {Array[]} the min and max bounds for the geometry
+     */
+    const measureBoundingBoxOfGeom2 = (geometry) => {
+      let boundingBox = cache$1.get(geometry);
+      if (boundingBox) return boundingBox
+
+      const points = geom2$2.toPoints(geometry);
+
+      let minpoint;
+      if (points.length === 0) {
+        minpoint = vec2.create();
+      } else {
+        minpoint = vec2.clone(points[0]);
+      }
+      let maxpoint = vec2.clone(minpoint);
+
+      points.forEach((point) => {
+        vec2.min(minpoint, minpoint, point);
+        vec2.max(maxpoint, maxpoint, point);
+      });
+
+      minpoint = [minpoint[0], minpoint[1], 0];
+      maxpoint = [maxpoint[0], maxpoint[1], 0];
+
+      boundingBox = [minpoint, maxpoint];
+
+      cache$1.set(geometry, boundingBox);
+
+      return boundingBox
+    };
+
+    /*
+     * Measure the min and max bounds of the given (geom3) geometry.
+     * @return {Array[]} the min and max bounds for the geometry
+     */
+    const measureBoundingBoxOfGeom3 = (geometry) => {
+      let boundingBox = cache$1.get(geometry);
+      if (boundingBox) return boundingBox
+
+      const polygons = geom3$2.toPolygons(geometry);
+
+      let minpoint = vec3$1.create();
+      if (polygons.length > 0) {
+        const points = poly3.toPoints(polygons[0]);
+        vec3$1.copy(minpoint, points[0]);
+      }
+      let maxpoint = vec3$1.clone(minpoint);
+
+      polygons.forEach((polygon) => {
+        poly3.toPoints(polygon).forEach((point) => {
+          vec3$1.min(minpoint, minpoint, point);
+          vec3$1.max(maxpoint, maxpoint, point);
+        });
+      });
+
+      minpoint = [minpoint[0], minpoint[1], minpoint[2]];
+      maxpoint = [maxpoint[0], maxpoint[1], maxpoint[2]];
+
+      boundingBox = [minpoint, maxpoint];
+
+      cache$1.set(geometry, boundingBox);
+
+      return boundingBox
+    };
+
+    /**
+     * Measure the min and max bounds of the given geometries.
+     * @param {...Object} geometries - the geometries to measure
+     * @return {Array} the min and max bounds, or a list of bounds for each geometry
+     * @alias module:modeling/measurements.measureBoundingBox
+     *
+     * @example
+     * let bounds = measureBoundingBox(sphere())
+     */
+    const measureBoundingBox = (...geometries) => {
+      geometries = flatten_1$1(geometries);
+      if (geometries.length === 0) throw new Error('wrong number of arguments')
+
+      const results = geometries.map((geometry) => {
+        if (path2$2.isA(geometry)) return measureBoundingBoxOfPath2(geometry)
+        if (geom2$2.isA(geometry)) return measureBoundingBoxOfGeom2(geometry)
+        if (geom3$2.isA(geometry)) return measureBoundingBoxOfGeom3(geometry)
+        return [[0, 0, 0], [0, 0, 0]]
+      });
+      return results.length === 1 ? results[0] : results
+    };
+
+    var measureBoundingBox_1 = measureBoundingBox;
+
+    /**
+     * Measure the aggregated minimum and maximum bounds for the given geometries.
+     * @param {...Object} geometries - the geometries to measure
+     * @return {Array} the min and max bounds for the group of geometry, i.e. [[x,y,z],[X,Y,Z]]
+     * @alias module:modeling/measurements.measureAggregateBoundingBox
+     *
+     * @example
+     * let bounds = measureAggregateBoundingBox(sphere(),cube())
+     */
+    const measureAggregateBoundingBox = (...geometries) => {
+      geometries = flatten_1$1(geometries);
+      if (geometries.length === 0) throw new Error('measureAggregateBoundingBox: no geometries supplied')
+      const bounds = measureBoundingBox_1(geometries);
+      if (geometries.length === 1) {
+        return bounds
+      }
+      const result = [[Number.MAX_VALUE, Number.MAX_VALUE, Number.MAX_VALUE], [-Number.MAX_VALUE, -Number.MAX_VALUE, -Number.MAX_VALUE]];
+      return bounds.reduce((result, item) => {
+        result = [min_1$2(result[0], result[0], item[0]), max_1$2(result[1], result[1], item[1])];
+        return result
+      }, result)
+    };
+
+    var measureAggregateBoundingBox_1 = measureAggregateBoundingBox;
+
+    const { EPS } = constants;
+
+    const calculateEpsilonFromBounds = (bounds, dimensions) => {
+      let total = 0;
+      for (let i = 0; i < dimensions; i++) {
+        total += bounds[1][i] - bounds[0][i];
+      }
+      return EPS * total / dimensions
+    };
+
+    var calculateEpsilonFromBounds_1 = calculateEpsilonFromBounds;
+
+    /**
+     * Calculate the area under the given points.
+     * @param {Array} points - list of 2D points
+     * @return {Number} area under the given points
+     * @alias module:modeling/maths/utils.area
+     */
+    const area = (points) => {
+      let area = 0;
+      for (let i = 0; i < points.length; i++) {
+        const j = (i + 1) % points.length;
+        area += points[i][0] * points[j][1];
+        area -= points[j][0] * points[i][1];
+      }
+      return (area / 2.0)
+    };
+
+    var area_1 = area;
+
+    /**
+     * Measure the area under the given polygon.
+     *
+     * @param {poly2} polygon - the polygon to measure
+     * @return {Number} the area of the polygon
+     * @alias module:modeling/geometries/poly2.measureArea
+     */
+
+
+    const measureArea = (polygon) => area_1(polygon.vertices);
+
+    var measureArea_1 = measureArea;
+
+    /**
+     * Represents a convex 2D polygon consisting of a list of ordered vertices.
+     * @typedef {Object} poly2
+     * @property {Array} vertices - list of ordered vertices (2D)
+     */
+
+    /**
+     * Creates a new polygon with initial values.
+     *
+     * @param {Array} [vertices] - list of vertices (2D)
+     * @returns {poly2} a new polygon
+     * @alias module:modeling/geometries/poly2.create
+     *
+     * @example
+     * let polygon = create()
+     */
+    const create = (vertices) => {
+      if (vertices === undefined || vertices.length < 3) {
+        vertices = []; // empty contents
+      }
+      return { vertices: vertices }
+    };
+
+    var create_1 = create;
+
+    /**
+     * Flip the give polygon, rotating the opposite direction.
+     *
+     * @param {poly2} polygon - the polygon to flip
+     * @returns {poly2} a new polygon
+     * @alias module:modeling/geometries/poly2.flip
+     */
+    const flip = (polygon) => {
+      const vertices = polygon.vertices.slice().reverse();
+      return create_1(vertices)
+    };
+
+    var flip_1 = flip;
+
+    /**
+     * Determine if the given points are inside the given polygon.
+     *
+     * @param {Array} points - a list of points, where each point is an array with X and Y values
+     * @param {poly2} polygon - a 2D polygon
+     * @return {Integer} 1 if all points are inside, 0 if some or none are inside
+     * @alias module:modeling/geometries/poly2.arePointsInside
+     */
+    const arePointsInside = (points, polygon) => {
+      if (points.length === 0) return 0 // nothing to check
+
+      const vertices = polygon.vertices;
+      if (vertices.length < 3) return 0 // nothing can be inside an empty polygon
+
+      if (measureArea_1(polygon) < 0) {
+        polygon = flip_1(polygon); // CCW is required
+      }
+
+      const sum = points.reduce((acc, point) => acc + isPointInside(point, vertices), 0);
+      return sum === points.length ? 1 : 0
+    };
+
+    /*
+     * Determine if the given point is inside the polygon.
+     *
+     * @see http://erich.realtimerendering.com/ptinpoly/ (Crossings Test)
+     * @param {Array} point - an array with X and Y values
+     * @param {Array} polygon - a list of points, where each point is an array with X and Y values
+     * @return {Integer} 1 if the point is inside, 0 if outside
+     */
+    const isPointInside = (point, polygon) => {
+      const numverts = polygon.length;
+
+      const tx = point[0];
+      const ty = point[1];
+
+      let vtx0 = polygon[numverts - 1];
+      let vtx1 = polygon[0];
+
+      let yflag0 = (vtx0[1] > ty);
+
+      let insideFlag = 0;
+
+      let i = 0;
+      for (let j = (numverts + 1); --j;) {
+        /*
+         * check if Y endpoints straddle (are on opposite sides) of point's Y
+         * if so, +X ray could intersect this edge.
+         */
+        const yflag1 = (vtx1[1] > ty);
+        if (yflag0 !== yflag1) {
+          /*
+           * check if X endpoints are on same side of the point's X
+           * if so, it's easy to test if edge hits or misses.
+           */
+          const xflag0 = (vtx0[0] > tx);
+          const xflag1 = (vtx1[0] > tx);
+          if (xflag0 && xflag1) {
+            /* if edge's X values are both right of the point, then the point must be inside */
+            insideFlag = !insideFlag;
+          } else {
+            /*
+             * if X endpoints straddle the point, then
+             * the compute intersection of polygon edge with +X ray
+             * if intersection >= point's X then the +X ray hits it.
+             */
+            if ((vtx1[0] - (vtx1[1] - ty) * (vtx0[0] - vtx1[0]) / (vtx0[1] - vtx1[1])) >= tx) {
+              insideFlag = !insideFlag;
+            }
+          }
+        }
+        /* move to next pair of vertices, retaining info as possible */
+        yflag0 = yflag1;
+        vtx0 = vtx1;
+        vtx1 = polygon[++i];
+      }
+      return insideFlag
+    };
+
+    var arePointsInside_1 = arePointsInside;
+
+    /**
+     * Represents a 2D polygon consisting of a list of ordered vertices.
+     * @see {@link poly2} for data structure information.
+     * @module modeling/geometries/poly2
+     *
+     * @example
+     * poly2.create([[0,0], [4,0], [4,3]])
+     *
+     * @example
+     * {"vertices": [[0,0], [4,0], [4,3]]}
+     */
+    var poly2 = {
+      arePointsInside: arePointsInside_1,
+      create: create_1,
+      flip: flip_1,
+      measureArea: measureArea_1
+    };
+
+    /**
+     * Geometries are objects that represent the contents of primitives or the results of operations.
+     * Note: Geometries are considered immutable, so never change the contents directly.
+     *
+     * @see {@link geom2} - 2D geometry consisting of sides
+     * @see {@link geom3} - 3D geometry consisting of polygons
+     * @see {@link path2} - 2D geometry consisting of ordered points
+     * @see {@link poly2} - 2D polygon consisting of ordered vertices
+     * @see {@link poly3} - 3D polygon consisting of ordered vertices
+     *
+     * @module modeling/geometries
+     * @example
+     * const { geom2, geom3, path2, poly2, poly3 } = require('@jscad/modeling').geometries
+     */
+    var geometries = {
+      geom2: geom2$2,
+      geom3: geom3$2,
+      path2: path2$2,
+      poly2: poly2,
+      poly3: poly3
+    };
+
+    const { geom2: geom2$1, geom3: geom3$1, path2: path2$1 } = geometries;
+
+    /**
+     * Measure the aggregated Epsilon for the given geometries.
+     * @param {...Object} geometries - the geometries to measure
+     * @return {Number} the aggregated Epsilon for the whole group of geometries
+     * @alias module:modeling/measurements.measureAggregateEpsilon
+     *
+     * @example
+     * let groupEpsilon = measureAggregateEpsilon(sphere(),cube())
+     */
+    const measureAggregateEpsilon = (...geometries) => {
+      geometries = flatten_1$1(geometries);
+      if (geometries.length === 0) throw new Error('measureAggregateEpsilon: no geometries supplied')
+      const bounds = measureAggregateBoundingBox_1(geometries);
+
+      let dimensions = 0;
+      dimensions = geometries.reduce((dimensions, geometry) => {
+        if (path2$1.isA(geometry) || geom2$1.isA(geometry)) return Math.max(dimensions, 2)
+        if (geom3$1.isA(geometry)) return Math.max(dimensions, 3)
+        return 0
+      }, dimensions);
+      return calculateEpsilonFromBounds_1(bounds, dimensions)
+    };
+
+    var measureAggregateEpsilon_1 = measureAggregateEpsilon;
+
+    const cache = new WeakMap();
+
+    /*
+     * Measure the volume of the given geometry.
+     * NOTE: paths are infinitely narrow and do not have an volume
+     *
+     * @param {Path2} geometry - geometry to measure
+     * @returns {Number} volume of the geometry
+     */
+    const measureVolumeOfPath2 = () => 0;
+
+    /*
+     * Measure the volume of the given geometry.
+     * NOTE: 2D geometry are infinitely thin and do not have an volume
+     *
+     * @param {Geom2} geometry - 2D geometry to measure
+     * @returns {Number} volume of the geometry
+     */
+    const measureVolumeOfGeom2 = () => 0;
+
+    /*
+     * Measure the volume of the given geometry.
+     *
+     * @param {Geom3} geometry - 3D geometry to measure
+     * @returns {Number} volume of the geometry
+     */
+    const measureVolumeOfGeom3 = (geometry) => {
+      let volume = cache.get(geometry);
+      if (volume) return volume
+
+      const polygons = geom3$2.toPolygons(geometry);
+      volume = polygons.reduce((volume, polygon) => volume + poly3.measureSignedVolume(polygon), 0);
+
+      cache.set(geometry, volume);
+
+      return volume
+    };
+
+    /**
+     * Measure the volume of the given geometries.
+     * @param {...Object} geometries - the geometries to measure
+     * @return {Number|Array} the volume, or a list of volumes for each geometry
+     * @alias module:modeling/measurements.measureVolume
+     *
+     * @example
+     * let volume = measureVolume(sphere())
+     */
+    const measureVolume = (...geometries) => {
+      geometries = flatten_1$1(geometries);
+      if (geometries.length === 0) throw new Error('wrong number of arguments')
+
+      const results = geometries.map((geometry) => {
+        if (path2$2.isA(geometry)) return measureVolumeOfPath2()
+        if (geom2$2.isA(geometry)) return measureVolumeOfGeom2()
+        if (geom3$2.isA(geometry)) return measureVolumeOfGeom3(geometry)
+        return 0
+      });
+      return results.length === 1 ? results[0] : results
+    };
+
+    var measureVolume_1 = measureVolume;
+
+    /**
+     * Measure the total (aggregate) volume for the given geometries.
+     * Note: This measurement will not account for overlapping geometry
+     * @param {...Object} geometries - the geometries to measure.
+     * @return {Number} the volume for the group of geometry.
+     * @alias module:modeling/measurements.measureAggregateVolume
+     *
+     * @example
+     * let totalVolume = measureAggregateVolume(sphere(),cube())
+     */
+    const measureAggregateVolume = (...geometries) => {
+      geometries = flatten_1$1(geometries);
+      if (geometries.length === 0) throw new Error('measureAggregateVolume: no geometries supplied')
+      const volumes = measureVolume_1(geometries);
+      if (geometries.length === 1) {
+        return volumes
+      }
+      const result = 0;
+      return volumes.reduce((result, volume) => result + volume, result)
+    };
+
+    var measureAggregateVolume_1 = measureAggregateVolume;
+
+    const cacheOfBoundingSpheres = new WeakMap();
+
+    /*
+     * Measure the bounding sphere of the given (path2) geometry.
+     * @return {[[x, y, z], radius]} the bounding sphere for the geometry
+     */
+    const measureBoundingSphereOfPath2 = (geometry) => {
+      let boundingSphere = cacheOfBoundingSpheres.get(geometry);
+      if (boundingSphere !== undefined) return boundingSphere
+
+      const centroid = vec3$1.create();
+      let radius = 0;
+
+      const points = path2$2.toPoints(geometry);
+
+      if (points.length > 0) {
+        // calculate the centroid of the geometry
+        let numPoints = 0;
+        const temp = vec3$1.create();
+        points.forEach((point) => {
+          vec3$1.add(centroid, centroid, vec3$1.fromVec2(temp, point, 0));
+          numPoints++;
+        });
+        vec3$1.scale(centroid, centroid, 1 / numPoints);
+
+        // find the farthest point from the centroid
+        points.forEach((point) => {
+          radius = Math.max(radius, vec2.squaredDistance(centroid, point));
+        });
+        radius = Math.sqrt(radius);
+      }
+
+      boundingSphere = [centroid, radius];
+      cacheOfBoundingSpheres.set(geometry, boundingSphere);
+
+      return boundingSphere
+    };
+
+    /*
+     * Measure the bounding sphere of the given (geom2) geometry.
+     * @return {[[x, y, z], radius]} the bounding sphere for the geometry
+     */
+    const measureBoundingSphereOfGeom2 = (geometry) => {
+      let boundingSphere = cacheOfBoundingSpheres.get(geometry);
+      if (boundingSphere !== undefined) return boundingSphere
+
+      const centroid = vec3$1.create();
+      let radius = 0;
+
+      const sides = geom2$2.toSides(geometry);
+
+      if (sides.length > 0) {
+        // calculate the centroid of the geometry
+        let numPoints = 0;
+        const temp = vec3$1.create();
+        sides.forEach((side) => {
+          vec3$1.add(centroid, centroid, vec3$1.fromVec2(temp, side[0], 0));
+          numPoints++;
+        });
+        vec3$1.scale(centroid, centroid, 1 / numPoints);
+
+        // find the farthest point from the centroid
+        sides.forEach((side) => {
+          radius = Math.max(radius, vec2.squaredDistance(centroid, side[0]));
+        });
+        radius = Math.sqrt(radius);
+      }
+
+      boundingSphere = [centroid, radius];
+      cacheOfBoundingSpheres.set(geometry, boundingSphere);
+
+      return boundingSphere
+    };
+
+    /*
+     * Measure the bounding sphere of the given (geom3) geometry.
+     * @return {[[x, y, z], radius]} the bounding sphere for the geometry
+     */
+    const measureBoundingSphereOfGeom3 = (geometry) => {
+      let boundingSphere = cacheOfBoundingSpheres.get(geometry);
+      if (boundingSphere !== undefined) return boundingSphere
+
+      const centroid = vec3$1.create();
+      let radius = 0;
+
+      const polygons = geom3$2.toPolygons(geometry);
+
+      if (polygons.length > 0) {
+        // calculate the centroid of the geometry
+        let numPoints = 0;
+        polygons.forEach((polygon) => {
+          poly3.toPoints(polygon).forEach((point) => {
+            vec3$1.add(centroid, centroid, point);
+            numPoints++;
+          });
+        });
+        vec3$1.scale(centroid, centroid, 1 / numPoints);
+
+        // find the farthest point from the centroid
+        polygons.forEach((polygon) => {
+          poly3.toPoints(polygon).forEach((point) => {
+            radius = Math.max(radius, vec3$1.squaredDistance(centroid, point));
+          });
+        });
+        radius = Math.sqrt(radius);
+      }
+
+      boundingSphere = [centroid, radius];
+      cacheOfBoundingSpheres.set(geometry, boundingSphere);
+
+      return boundingSphere
+    };
+
+    /**
+     * Measure the (approximate) bounding sphere of the given geometries.
+     * @see https://en.wikipedia.org/wiki/Bounding_sphere
+     * @param {...Object} geometries - the geometries to measure
+     * @return {Array} the bounding sphere for each geometry, i.e. [centroid, radius]
+     * @alias module:modeling/measurements.measureBoundingSphere
+     *
+     * @example
+     * let bounds = measureBoundingSphere(cube())
+     */
+    const measureBoundingSphere = (...geometries) => {
+      geometries = flatten_1$1(geometries);
+
+      const results = geometries.map((geometry) => {
+        if (path2$2.isA(geometry)) return measureBoundingSphereOfPath2(geometry)
+        if (geom2$2.isA(geometry)) return measureBoundingSphereOfGeom2(geometry)
+        if (geom3$2.isA(geometry)) return measureBoundingSphereOfGeom3(geometry)
+        return [[0, 0, 0], 0]
+      });
+      return results.length === 1 ? results[0] : results
+    };
+
+    var measureBoundingSphere_1 = measureBoundingSphere;
+
+    /**
+     * Measure the center of the given geometries.
+     * @param {...Object} geometries - the geometries to measure
+     * @return {Array} the center point for each geometry, i.e. [X, Y, Z]
+     * @alias module:modeling/measurements.measureCenter
+     *
+     * @example
+     * let center = measureCenter(sphere())
+     */
+    const measureCenter = (...geometries) => {
+      geometries = flatten_1$1(geometries);
+
+      const results = geometries.map((geometry) => {
+        const bounds = measureBoundingBox_1(geometry);
+        return [
+          (bounds[0][0] + ((bounds[1][0] - bounds[0][0]) / 2)),
+          (bounds[0][1] + ((bounds[1][1] - bounds[0][1]) / 2)),
+          (bounds[0][2] + ((bounds[1][2] - bounds[0][2]) / 2))
+        ]
+      });
+      return results.length === 1 ? results[0] : results
+    };
+
+    var measureCenter_1 = measureCenter;
+
+    const cacheOfCenterOfMass = new WeakMap();
+
+    /*
+     * Measure the center of mass for the given geometry.
+     *
+     * @see http://paulbourke.net/geometry/polygonmesh/
+     * @return {Array} the center of mass for the geometry
+     */
+    const measureCenterOfMassGeom2 = (geometry) => {
+      let centerOfMass = cacheOfCenterOfMass.get(geometry);
+      if (centerOfMass !== undefined) return centerOfMass
+
+      const sides = geom2$2.toSides(geometry);
+
+      let area = 0;
+      let x = 0;
+      let y = 0;
+      if (sides.length > 0) {
+        for (let i = 0; i < sides.length; i++) {
+          const p1 = sides[i][0];
+          const p2 = sides[i][1];
+
+          const a = p1[0] * p2[1] - p1[1] * p2[0];
+          area += a;
+          x += (p1[0] + p2[0]) * a;
+          y += (p1[1] + p2[1]) * a;
+        }
+        area /= 2;
+
+        const f = 1 / (area * 6);
+        x *= f;
+        y *= f;
+      }
+
+      centerOfMass = vec3$1.fromValues(x, y, 0);
+
+      cacheOfCenterOfMass.set(geometry, centerOfMass);
+      return centerOfMass
+    };
+
+    /*
+     * Measure the center of mass for the given geometry.
+     * @return {Array} the center of mass for the geometry
+     */
+    const measureCenterOfMassGeom3 = (geometry) => {
+      let centerOfMass = cacheOfCenterOfMass.get(geometry);
+      if (centerOfMass !== undefined) return centerOfMass
+
+      centerOfMass = vec3$1.create(); // 0, 0, 0
+
+      const polygons = geom3$2.toPolygons(geometry);
+      if (polygons.length === 0) return centerOfMass
+
+      let totalVolume = 0;
+      const vector = vec3$1.create(); // for speed
+      polygons.forEach((polygon) => {
+        // calculate volume and center of each tetrahedron
+        const vertices = polygon.vertices;
+        for (let i = 0; i < vertices.length - 2; i++) {
+          vec3$1.cross(vector, vertices[i + 1], vertices[i + 2]);
+          const volume = vec3$1.dot(vertices[0], vector) / 6;
+
+          totalVolume += volume;
+
+          vec3$1.add(vector, vertices[0], vertices[i + 1]);
+          vec3$1.add(vector, vector, vertices[i + 2]);
+          const weightedCenter = vec3$1.scale(vector, vector, 1 / 4 * volume);
+
+          vec3$1.add(centerOfMass, centerOfMass, weightedCenter);
+        }
+      });
+      vec3$1.scale(centerOfMass, centerOfMass, 1 / totalVolume);
+
+      cacheOfCenterOfMass.set(geometry, centerOfMass);
+      return centerOfMass
+    };
+
+    /**
+     * Measure the center of mass for the given geometries.
+     * @param {...Object} geometries - the geometries to measure
+     * @return {Array} the center of mass for each geometry, i.e. [X, Y, Z]
+     * @alias module:modeling/measurements.measureCenterOfMass
+     *
+     * @example
+     * let center = measureCenterOfMass(sphere())
+     */
+    const measureCenterOfMass = (...geometries) => {
+      geometries = flatten_1$1(geometries);
+
+      const results = geometries.map((geometry) => {
+        // NOTE: center of mass for geometry path2 is not possible
+        if (geom2$2.isA(geometry)) return measureCenterOfMassGeom2(geometry)
+        if (geom3$2.isA(geometry)) return measureCenterOfMassGeom3(geometry)
+        return [0, 0, 0]
+      });
+      return results.length === 1 ? results[0] : results
+    };
+
+    var measureCenterOfMass_1 = measureCenterOfMass;
+
+    /**
+     * Measure the dimensions of the given geometries.
+     * @param {...Object} geometries - the geometries to measure
+     * @return {Array} the dimensions for each geometry, i.e. [width, depth, height]
+     * @alias module:modeling/measurements.measureDimensions
+     *
+     * @example
+     * let dimensions = measureDimensions(sphere())
+     */
+    const measureDimensions = (...geometries) => {
+      geometries = flatten_1$1(geometries);
+
+      const results = geometries.map((geometry) => {
+        const boundingBox = measureBoundingBox_1(geometry);
+        return [
+          boundingBox[1][0] - boundingBox[0][0],
+          boundingBox[1][1] - boundingBox[0][1],
+          boundingBox[1][2] - boundingBox[0][2]
+        ]
+      });
+      return results.length === 1 ? results[0] : results
+    };
+
+    var measureDimensions_1 = measureDimensions;
+
+    const { geom2, geom3, path2 } = geometries;
+
+
+
+
+    /*
+     * Measure the epsilon of the given (path2) geometry.
+     * @return {Number} the epsilon (precision) of the geometry
+     */
+    const measureEpsilonOfPath2 = (geometry) => calculateEpsilonFromBounds_1(measureBoundingBox_1(geometry), 2);
+
+    /*
+     * Measure the epsilon of the given (geom2) geometry.
+     * @return {Number} the epsilon (precision) of the geometry
+     */
+    const measureEpsilonOfGeom2 = (geometry) => calculateEpsilonFromBounds_1(measureBoundingBox_1(geometry), 2);
+
+    /*
+     * Measure the epsilon of the given (geom3) geometry.
+     * @return {Float} the epsilon (precision) of the geometry
+     */
+    const measureEpsilonOfGeom3 = (geometry) => calculateEpsilonFromBounds_1(measureBoundingBox_1(geometry), 3);
+
+    /**
+     * Measure the epsilon of the given geometries.
+     * Epsilon values are used in various functions to determine minimum distances between points, planes, etc.
+     * @param {...Object} geometries - the geometries to measure
+     * @return {Number|Array} the epsilon, or a list of epsilons for each geometry
+     * @alias module:modeling/measurements.measureEpsilon
+     *
+     * @example
+     * let epsilon = measureEpsilon(sphere())
+     */
+    const measureEpsilon = (...geometries) => {
+      geometries = flatten_1$1(geometries);
+      if (geometries.length === 0) throw new Error('wrong number of arguments')
+
+      const results = geometries.map((geometry) => {
+        if (path2.isA(geometry)) return measureEpsilonOfPath2(geometry)
+        if (geom2.isA(geometry)) return measureEpsilonOfGeom2(geometry)
+        if (geom3.isA(geometry)) return measureEpsilonOfGeom3(geometry)
+        return 0
+      });
+      return results.length === 1 ? results[0] : results
+    };
+
+    var measureEpsilon_1 = measureEpsilon;
+
+    /**
+     * All shapes (primitives or the results of operations) can be measured, e.g. calculate volume, etc.
+     * @module modeling/measurements
+     * @example
+     * const { measureArea, measureBoundingBox, measureVolume } = require('@jscad/modeling').measurements
+     */
+    var measurements = {
+      measureAggregateArea: measureAggregateArea_1,
+      measureAggregateBoundingBox: measureAggregateBoundingBox_1,
+      measureAggregateEpsilon: measureAggregateEpsilon_1,
+      measureAggregateVolume: measureAggregateVolume_1,
+      measureArea: measureArea_1$1,
+      measureBoundingBox: measureBoundingBox_1,
+      measureBoundingSphere: measureBoundingSphere_1,
+      measureCenter: measureCenter_1,
+      measureCenterOfMass: measureCenterOfMass_1,
+      measureDimensions: measureDimensions_1,
+      measureEpsilon: measureEpsilon_1,
+      measureVolume: measureVolume_1
+    };
+    var measurements_6 = measurements.measureBoundingBox;
+
+    function makeWrappedRenderer(canvas){var prepareRenderOptions={glOptions:{canvas:canvas}};return prepareRender(prepareRenderOptions)}function getSize(shape){var shapeBoundingBox=measurements_6(shape.getSolid());var scalingFactor=1.2;return Math.ceil(scalingFactor*Math.max(Math.abs(shapeBoundingBox[0][0]),Math.abs(shapeBoundingBox[0][1]),Math.abs(shapeBoundingBox[0][2]),Math.abs(shapeBoundingBox[1][0]),Math.abs(shapeBoundingBox[1][1]),Math.abs(shapeBoundingBox[1][2])))}function addEntities(shape,geometryEntities){var allEntities=__spreadArray([],geometryEntities);var size=getSize(shape);if(shape.addAxis){var axis=__assign(__assign({},new AxisEntity.Class),{size:size});allEntities.push(axis);}if(shape.addMultiGrid){var grid=__assign(__assign({},new MultiGridEntity.Class),{size:[size*2,size*2]});allEntities.push(grid);}return allEntities}function adjustCameraAngle(perspectiveCameraState,controlsState){if(controlsState===void 0){controlsState=null;}if(controlsState===null){perspectiveCamera.update(perspectiveCameraState);return}var output=controls.update({controls:controlsState,camera:perspectiveCameraState});controlsState.thetaDelta=output.controls.thetaDelta;controlsState.phiDelta=output.controls.phiDelta;controlsState.scale=output.controls.scale;perspectiveCameraState.position=output.camera.position;perspectiveCameraState.view=output.camera.view;}function doDynamicResize(canvas,perspectiveCameraState){var canvasBounds=canvas.getBoundingClientRect();var devicePixelRatio=window.devicePixelRatio;var width=canvasBounds.width*devicePixelRatio;var height=canvasBounds.height*devicePixelRatio;canvas.width=width;canvas.height=height;perspectiveCamera.setProjection(perspectiveCameraState,perspectiveCameraState,new CameraViewportDimensions(width,height));}function doZoom(zoomTicks,perspectiveCameraState,controlsState){while(zoomTicks!==0){var currentTick=Math.sign(zoomTicks);zoomTicks-=currentTick;var scaleChange=currentTick*0.1;var potentialNewScale=controlsState.scale+scaleChange;var potentialNewDistance=vec3$1.distance(perspectiveCameraState.position,perspectiveCameraState.target)*potentialNewScale;if(potentialNewDistance>controlsState.limits.minDistance&&potentialNewDistance<controlsState.limits.maxDistance){controlsState.scale=potentialNewScale;}else break}adjustCameraAngle(perspectiveCameraState,controlsState);}function doZoomToFit(geometryEntities,perspectiveCameraState,controlsState){var options={controls:controlsState,camera:perspectiveCameraState,entities:geometryEntities};var output=controls.zoomToFit(options);perspectiveCameraState.target=output.camera.target;controlsState.scale=output.controls.scale;adjustCameraAngle(perspectiveCameraState,controlsState);}function doRotate(rotateX,rotateY,perspectiveCameraState,controlsState){var output=controls.rotate({controls:controlsState,camera:perspectiveCameraState,speed:0.0015},[rotateX,rotateY]);var newControlsState=output.controls;controlsState.thetaDelta=newControlsState.thetaDelta;controlsState.phiDelta=newControlsState.phiDelta;adjustCameraAngle(perspectiveCameraState,controlsState);}function doPan(panX,panY,perspectiveCameraState,controlsState){var output=controls.pan({controls:controlsState,camera:perspectiveCameraState},[panX,panY*0.75]);var newCameraState=output.camera;perspectiveCameraState.position=newCameraState.position;perspectiveCameraState.target=newCameraState.target;adjustCameraAngle(perspectiveCameraState,controlsState);}function registerEvents(canvas,frameTracker){canvas.addEventListener("wheel",function(wheelEvent){wheelEvent.preventDefault();frameTracker.changeZoomTicks(wheelEvent.deltaY);},{passive:false});canvas.addEventListener("dblclick",function(_mouseEvent){frameTracker.setZoomToFit();});canvas.addEventListener("pointerdown",function(pointerEvent){frameTracker.setHeldPointer(pointerEvent.button);frameTracker.lastX=pointerEvent.pageX;frameTracker.lastY=pointerEvent.pageY;canvas.setPointerCapture(pointerEvent.pointerId);});canvas.addEventListener("pointerup",function(pointerEvent){frameTracker.unsetHeldPointer();frameTracker.unsetLastCoordinates();canvas.releasePointerCapture(pointerEvent.pointerId);});canvas.addEventListener("pointermove",function(pointerEvent){if(!frameTracker.isPointerHeld())return;var currentX=pointerEvent.pageX;var currentY=pointerEvent.pageY;var differenceX=frameTracker.lastX-currentX;var differenceY=frameTracker.lastY-currentY;if(!(frameTracker.isPointerPan()||pointerEvent.shiftKey)){frameTracker.rotateX-=differenceX;frameTracker.rotateY+=differenceY;}else {frameTracker.panX+=differenceX;frameTracker.panY-=differenceY;}frameTracker.lastX=currentX;frameTracker.lastY=currentY;});}function render(canvas,shape){var wrappedRenderer=makeWrappedRenderer(canvas);var perspectiveCameraState=__assign(__assign({},perspectiveCameraStateDefaults),{position:[1000,1000,1500]});var controlsState=__assign({},controlsStateDefaults);var geometryEntities=entitiesFromSolids(undefined,shape.getSolid());var wrappedRendererData={entities:addEntities(shape,geometryEntities),drawCommands:prepareDrawCommands,camera:perspectiveCameraState};var frameTracker=new FrameTracker;var requestId=0;function animationCallback(_timestamp){doDynamicResize(canvas,perspectiveCameraState);var shouldZoom=frameTracker.shouldZoom();var shouldZoomToFit=frameTracker.shouldZoomToFit();var shouldRotate=frameTracker.shouldRotate();var shouldPan=frameTracker.shouldPan();if(shouldZoom){doZoom(frameTracker.getZoomTicks(),perspectiveCameraState,controlsState);frameTracker.didZoom();}if(shouldZoomToFit){doZoomToFit(geometryEntities,perspectiveCameraState,controlsState);frameTracker.didZoomToFit();}if(shouldRotate){doRotate(frameTracker.rotateX,frameTracker.rotateY,perspectiveCameraState,controlsState);frameTracker.didRotate();}if(shouldPan){doPan(frameTracker.panX,frameTracker.panY,perspectiveCameraState,controlsState);frameTracker.didPan();}wrappedRenderer(wrappedRendererData);requestId=window.requestAnimationFrame(animationCallback);}requestId=window.requestAnimationFrame(animationCallback);registerEvents(canvas,frameTracker);return function(){return requestId}}
+
+    /*
+     * Copyright 2015 Palantir Technologies, Inc. All rights reserved.
+     *
+     * Licensed under the Apache License, Version 2.0 (the "License");
+     * you may not use this file except in compliance with the License.
+     * You may obtain a copy of the License at
+     *
+     *     http://www.apache.org/licenses/LICENSE-2.0
+     *
+     * Unless required by applicable law or agreed to in writing, software
+     * distributed under the License is distributed on an "AS IS" BASIS,
+     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     * See the License for the specific language governing permissions and
+     * limitations under the License.
+     */
+    // tslint:disable:object-literal-sort-keys
+    /**
+     * The four basic intents.
+     */
+    var Intent = {
+        NONE: "none",
+        PRIMARY: "primary",
+        SUCCESS: "success",
+        WARNING: "warning",
+        DANGER: "danger",
+    };
+
+    var NS = process.env.BLUEPRINT_NAMESPACE || process.env.REACT_APP_BLUEPRINT_NAMESPACE || "bp3";
+    intentClass(Intent.PRIMARY);
+    intentClass(Intent.SUCCESS);
+    intentClass(Intent.WARNING);
+    intentClass(Intent.DANGER);
+    var ICON = NS + "-icon";
+    function iconClass(iconName) {
+        if (iconName == null) {
+            return undefined;
+        }
+        return iconName.indexOf(NS + "-icon-") === 0 ? iconName : NS + "-icon-" + iconName;
+    }
+    function intentClass(intent) {
+        if (intent == null || intent === Intent.NONE) {
+            return undefined;
+        }
+        return NS + "-intent-" + intent.toLowerCase();
+    }
+
+    /** Returns whether `process.env.NODE_ENV` exists and equals `env`. */
+    function isNodeEnv(env) {
+        return typeof process !== "undefined" && process.env && process.env.NODE_ENV === env;
+    }
+
+    /**
+     * An abstract component that Blueprint components can extend
+     * in order to add some common functionality like runtime props validation.
+     */
+    // eslint-disable-next-line @typescript-eslint/ban-types
+    var AbstractPureComponent2 = /** @class */ (function (_super) {
+        __extends(AbstractPureComponent2, _super);
+        function AbstractPureComponent2(props, context) {
+            var _this = _super.call(this, props, context) || this;
+            // Not bothering to remove entries when their timeouts finish because clearing invalid ID is a no-op
+            _this.timeoutIds = [];
+            _this.requestIds = [];
+            /**
+             * Clear all known timeouts.
+             */
+            _this.clearTimeouts = function () {
+                if (_this.timeoutIds.length > 0) {
+                    for (var _i = 0, _a = _this.timeoutIds; _i < _a.length; _i++) {
+                        var timeoutId = _a[_i];
+                        window.clearTimeout(timeoutId);
+                    }
+                    _this.timeoutIds = [];
+                }
+            };
+            /**
+             * Clear all known animation frame requests.
+             */
+            _this.cancelAnimationFrames = function () {
+                if (_this.requestIds.length > 0) {
+                    for (var _i = 0, _a = _this.requestIds; _i < _a.length; _i++) {
+                        var requestId = _a[_i];
+                        window.cancelAnimationFrame(requestId);
+                    }
+                    _this.requestIds = [];
+                }
+            };
+            if (!isNodeEnv("production")) {
+                _this.validateProps(_this.props);
+            }
+            return _this;
+        }
+        AbstractPureComponent2.prototype.componentDidUpdate = function (_prevProps, _prevState, _snapshot) {
+            if (!isNodeEnv("production")) {
+                this.validateProps(this.props);
+            }
+        };
+        AbstractPureComponent2.prototype.componentWillUnmount = function () {
+            this.clearTimeouts();
+            this.cancelAnimationFrames();
+        };
+        /**
+         * Request an animation frame and remember its ID.
+         * All pending requests will be canceled when component unmounts.
+         *
+         * @returns a "cancel" function that will cancel the request when invoked.
+         */
+        AbstractPureComponent2.prototype.requestAnimationFrame = function (callback) {
+            var handle = window.requestAnimationFrame(callback);
+            this.requestIds.push(handle);
+            return function () { return window.cancelAnimationFrame(handle); };
+        };
+        /**
+         * Set a timeout and remember its ID.
+         * All pending timeouts will be cleared when component unmounts.
+         *
+         * @returns a "cancel" function that will clear timeout when invoked.
+         */
+        AbstractPureComponent2.prototype.setTimeout = function (callback, timeout) {
+            var handle = window.setTimeout(callback, timeout);
+            this.timeoutIds.push(handle);
+            return function () { return window.clearTimeout(handle); };
+        };
+        /**
+         * Ensures that the props specified for a component are valid.
+         * Implementations should check that props are valid and usually throw an Error if they are not.
+         * Implementations should not duplicate checks that the type system already guarantees.
+         *
+         * This method should be used instead of React's
+         * [propTypes](https://facebook.github.io/react/docs/reusable-components.html#prop-validation) feature.
+         * Like propTypes, these runtime checks run only in development mode.
+         */
+        AbstractPureComponent2.prototype.validateProps = function (_props) {
+            // implement in subclass
+        };
+        return AbstractPureComponent2;
+    }(React.PureComponent));
+
+    var DISPLAYNAME_PREFIX = "Blueprint3";
+
+    var classnames = createCommonjsModule(function (module) {
+    /*!
+      Copyright (c) 2017 Jed Watson.
+      Licensed under the MIT License (MIT), see
+      http://jedwatson.github.io/classnames
+    */
+    /* global define */
+
+    (function () {
+
+    	var hasOwn = {}.hasOwnProperty;
+
+    	function classNames () {
+    		var classes = [];
+
+    		for (var i = 0; i < arguments.length; i++) {
+    			var arg = arguments[i];
+    			if (!arg) continue;
+
+    			var argType = typeof arg;
+
+    			if (argType === 'string' || argType === 'number') {
+    				classes.push(arg);
+    			} else if (Array.isArray(arg) && arg.length) {
+    				var inner = classNames.apply(null, arg);
+    				if (inner) {
+    					classes.push(inner);
+    				}
+    			} else if (argType === 'object') {
+    				for (var key in arg) {
+    					if (hasOwn.call(arg, key) && arg[key]) {
+    						classes.push(key);
+    					}
+    				}
+    			}
+    		}
+
+    		return classes.join(' ');
+    	}
+
+    	if (module.exports) {
+    		classNames.default = classNames;
+    		module.exports = classNames;
+    	} else {
+    		window.classNames = classNames;
+    	}
+    }());
+    });
+
+    var reactLifecyclesCompat_cjs = createCommonjsModule(function (module, exports) {
+
+    Object.defineProperty(exports, '__esModule', { value: true });
+
+    /**
+     * Copyright (c) 2013-present, Facebook, Inc.
+     *
+     * This source code is licensed under the MIT license found in the
+     * LICENSE file in the root directory of this source tree.
+     */
+
+    function componentWillMount() {
+      // Call this.constructor.gDSFP to support sub-classes.
+      var state = this.constructor.getDerivedStateFromProps(this.props, this.state);
+      if (state !== null && state !== undefined) {
+        this.setState(state);
+      }
+    }
+
+    function componentWillReceiveProps(nextProps) {
+      // Call this.constructor.gDSFP to support sub-classes.
+      // Use the setState() updater to ensure state isn't stale in certain edge cases.
+      function updater(prevState) {
+        var state = this.constructor.getDerivedStateFromProps(nextProps, prevState);
+        return state !== null && state !== undefined ? state : null;
+      }
+      // Binding "this" is important for shallow renderer support.
+      this.setState(updater.bind(this));
+    }
+
+    function componentWillUpdate(nextProps, nextState) {
+      try {
+        var prevProps = this.props;
+        var prevState = this.state;
+        this.props = nextProps;
+        this.state = nextState;
+        this.__reactInternalSnapshotFlag = true;
+        this.__reactInternalSnapshot = this.getSnapshotBeforeUpdate(
+          prevProps,
+          prevState
+        );
+      } finally {
+        this.props = prevProps;
+        this.state = prevState;
+      }
+    }
+
+    // React may warn about cWM/cWRP/cWU methods being deprecated.
+    // Add a flag to suppress these warnings for this special case.
+    componentWillMount.__suppressDeprecationWarning = true;
+    componentWillReceiveProps.__suppressDeprecationWarning = true;
+    componentWillUpdate.__suppressDeprecationWarning = true;
+
+    function polyfill(Component) {
+      var prototype = Component.prototype;
+
+      if (!prototype || !prototype.isReactComponent) {
+        throw new Error('Can only polyfill class components');
+      }
+
+      if (
+        typeof Component.getDerivedStateFromProps !== 'function' &&
+        typeof prototype.getSnapshotBeforeUpdate !== 'function'
+      ) {
+        return Component;
+      }
+
+      // If new component APIs are defined, "unsafe" lifecycles won't be called.
+      // Error if any of these lifecycles are present,
+      // Because they would work differently between older and newer (16.3+) versions of React.
+      var foundWillMountName = null;
+      var foundWillReceivePropsName = null;
+      var foundWillUpdateName = null;
+      if (typeof prototype.componentWillMount === 'function') {
+        foundWillMountName = 'componentWillMount';
+      } else if (typeof prototype.UNSAFE_componentWillMount === 'function') {
+        foundWillMountName = 'UNSAFE_componentWillMount';
+      }
+      if (typeof prototype.componentWillReceiveProps === 'function') {
+        foundWillReceivePropsName = 'componentWillReceiveProps';
+      } else if (typeof prototype.UNSAFE_componentWillReceiveProps === 'function') {
+        foundWillReceivePropsName = 'UNSAFE_componentWillReceiveProps';
+      }
+      if (typeof prototype.componentWillUpdate === 'function') {
+        foundWillUpdateName = 'componentWillUpdate';
+      } else if (typeof prototype.UNSAFE_componentWillUpdate === 'function') {
+        foundWillUpdateName = 'UNSAFE_componentWillUpdate';
+      }
+      if (
+        foundWillMountName !== null ||
+        foundWillReceivePropsName !== null ||
+        foundWillUpdateName !== null
+      ) {
+        var componentName = Component.displayName || Component.name;
+        var newApiName =
+          typeof Component.getDerivedStateFromProps === 'function'
+            ? 'getDerivedStateFromProps()'
+            : 'getSnapshotBeforeUpdate()';
+
+        throw Error(
+          'Unsafe legacy lifecycles will not be called for components using new component APIs.\n\n' +
+            componentName +
+            ' uses ' +
+            newApiName +
+            ' but also contains the following legacy lifecycles:' +
+            (foundWillMountName !== null ? '\n  ' + foundWillMountName : '') +
+            (foundWillReceivePropsName !== null
+              ? '\n  ' + foundWillReceivePropsName
+              : '') +
+            (foundWillUpdateName !== null ? '\n  ' + foundWillUpdateName : '') +
+            '\n\nThe above lifecycles should be removed. Learn more about this warning here:\n' +
+            'https://fb.me/react-async-component-lifecycle-hooks'
+        );
+      }
+
+      // React <= 16.2 does not support static getDerivedStateFromProps.
+      // As a workaround, use cWM and cWRP to invoke the new static lifecycle.
+      // Newer versions of React will ignore these lifecycles if gDSFP exists.
+      if (typeof Component.getDerivedStateFromProps === 'function') {
+        prototype.componentWillMount = componentWillMount;
+        prototype.componentWillReceiveProps = componentWillReceiveProps;
+      }
+
+      // React <= 16.2 does not support getSnapshotBeforeUpdate.
+      // As a workaround, use cWU to invoke the new lifecycle.
+      // Newer versions of React will ignore that lifecycle if gSBU exists.
+      if (typeof prototype.getSnapshotBeforeUpdate === 'function') {
+        if (typeof prototype.componentDidUpdate !== 'function') {
+          throw new Error(
+            'Cannot polyfill getSnapshotBeforeUpdate() for components that do not define componentDidUpdate() on the prototype'
+          );
+        }
+
+        prototype.componentWillUpdate = componentWillUpdate;
+
+        var componentDidUpdate = prototype.componentDidUpdate;
+
+        prototype.componentDidUpdate = function componentDidUpdatePolyfill(
+          prevProps,
+          prevState,
+          maybeSnapshot
+        ) {
+          // 16.3+ will not execute our will-update method;
+          // It will pass a snapshot value to did-update though.
+          // Older versions will require our polyfilled will-update value.
+          // We need to handle both cases, but can't just check for the presence of "maybeSnapshot",
+          // Because for <= 15.x versions this might be a "prevContext" object.
+          // We also can't just check "__reactInternalSnapshot",
+          // Because get-snapshot might return a falsy value.
+          // So check for the explicit __reactInternalSnapshotFlag flag to determine behavior.
+          var snapshot = this.__reactInternalSnapshotFlag
+            ? this.__reactInternalSnapshot
+            : maybeSnapshot;
+
+          componentDidUpdate.call(this, prevProps, prevState, snapshot);
+        };
+      }
+
+      return Component;
+    }
+
+    exports.polyfill = polyfill;
+    });
+
+    unwrapExports(reactLifecyclesCompat_cjs);
+    var reactLifecyclesCompat_cjs_1 = reactLifecyclesCompat_cjs.polyfill;
+
+    var IconSize;
+    (function (IconSize) {
+        IconSize[IconSize["STANDARD"] = 16] = "STANDARD";
+        IconSize[IconSize["LARGE"] = 20] = "LARGE";
+    })(IconSize || (IconSize = {}));
+    var Icon = /** @class */ (function (_super) {
+        __extends(Icon, _super);
+        function Icon() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        Icon.prototype.render = function () {
+            var icon = this.props.icon;
+            if (icon == null || typeof icon === "boolean") {
+                return null;
+            }
+            else if (typeof icon !== "string") {
+                return icon;
+            }
+            var _a = this.props, className = _a.className, color = _a.color, htmlTitle = _a.htmlTitle, 
+            // eslint-disable-next-line deprecation/deprecation
+            iconSize = _a.iconSize, intent = _a.intent, _b = _a.size, size = _b === void 0 ? iconSize !== null && iconSize !== void 0 ? iconSize : IconSize.STANDARD : _b, title = _a.title, _c = _a.tagName, tagName = _c === void 0 ? "span" : _c, htmlprops = __rest(_a, ["className", "color", "htmlTitle", "iconSize", "intent", "size", "title", "tagName"]);
+            // choose which pixel grid is most appropriate for given icon size
+            var pixelGridSize = size >= IconSize.LARGE ? IconSize.LARGE : IconSize.STANDARD;
+            // render path elements, or nothing if icon name is unknown.
+            var paths = this.renderSvgPaths(pixelGridSize, icon);
+            // eslint-disable-next-line deprecation/deprecation
+            var classes = classnames(ICON, iconClass(icon), intentClass(intent), className);
+            var viewBox = "0 0 " + pixelGridSize + " " + pixelGridSize;
+            return React.createElement(tagName, __assign(__assign({}, htmlprops), { "aria-hidden": title ? undefined : true, className: classes, title: htmlTitle }), React.createElement("svg", { fill: color, "data-icon": icon, width: size, height: size, viewBox: viewBox },
+                title && React.createElement("desc", null, title),
+                paths));
+        };
+        /** Render `<path>` elements for the given icon name. Returns `null` if name is unknown. */
+        Icon.prototype.renderSvgPaths = function (pathsSize, iconName) {
+            var svgPathsRecord = pathsSize === IconSize.STANDARD ? IconSvgPaths16 : IconSvgPaths20;
+            var pathStrings = svgPathsRecord[iconName];
+            if (pathStrings == null) {
+                return null;
+            }
+            return pathStrings.map(function (d, i) { return React.createElement("path", { key: i, d: d, fillRule: "evenodd" }); });
+        };
+        Icon.displayName = DISPLAYNAME_PREFIX + ".Icon";
+        /** @deprecated use IconSize.STANDARD */
+        Icon.SIZE_STANDARD = IconSize.STANDARD;
+        /** @deprecated use IconSize.LARGE */
+        Icon.SIZE_LARGE = IconSize.LARGE;
+        Icon = __decorate([
+            reactLifecyclesCompat_cjs_1
+        ], Icon);
+        return Icon;
+    }(AbstractPureComponent2));
+
+    var sideContentMarginBottom="0.4rem";var defaultIconSize=20;var iconGrey="#a7b6c2";var tooltipPadding="10px 12px";var tooltipBorderRadius="3px";var tooltipTextDarkGrey="#394b59";var tooltipBackgroundLightGrey="#e1e8ed";var HoverControlHint=function(_super){__extends(HoverControlHint,_super);function HoverControlHint(props){var _this=_super.call(this,props)||this;_this.state={showTooltip:false};return _this}HoverControlHint.prototype.render=function(){var _this=this;return React__default['default'].createElement("div",{style:{margin:"calc("+sideContentMarginBottom+" * 1.5)"}},React__default['default'].createElement(Icon,{icon:this.props.iconName,size:defaultIconSize*1.5,color:iconGrey,onMouseEnter:function(){return _this.setState({showTooltip:true})},onMouseLeave:function(){return _this.setState({showTooltip:false})}}),React__default['default'].createElement("span",{style:{display:this.state.showTooltip?"inline":"none",position:"absolute",zIndex:1,padding:tooltipPadding,borderRadius:tooltipBorderRadius,color:tooltipTextDarkGrey,backgroundColor:tooltipBackgroundLightGrey}},this.props.tooltipText))};return HoverControlHint}(React__default['default'].Component);
+
+    var CanvasHolder=function(_super){__extends(CanvasHolder,_super);function CanvasHolder(){var _this=_super!==null&&_super.apply(this,arguments)||this;_this.canvasReference=React__default['default'].createRef();return _this}CanvasHolder.prototype.componentDidMount=function(){var _a,_b;var canvas=this.canvasReference.current;if(canvas===null){return}var potentialShape=(_b=(_a=this.props.debuggerContext)===null||_a===void 0?void 0:_a.result)===null||_b===void 0?void 0:_b.value;if(!looseInstanceOf(potentialShape,Shape)){return}var shape;try{shape=potentialShape;}catch(error){console.error(error);return}var getCurrentRequestId=render(canvas,shape);window.addEventListener("beforeunload",function(){return window.cancelAnimationFrame(getCurrentRequestId())});};CanvasHolder.prototype.render=function(){return React__default['default'].createElement("div",{style:{display:"flex",justifyContent:"center"}},React__default['default'].createElement("div",{style:{flexDirection:"column"}},React__default['default'].createElement(HoverControlHint,{tooltipText:"Zoom in \u2022 Scroll up",iconName:ZOOM_IN}),React__default['default'].createElement(HoverControlHint,{tooltipText:"Zoom out \u2022 Scroll down",iconName:ZOOM_OUT}),React__default['default'].createElement(HoverControlHint,{tooltipText:"Zoom to fit \u2022 Double left-click",iconName:ZOOM_TO_FIT}),React__default['default'].createElement(HoverControlHint,{tooltipText:"Rotate \u2022 Left-click",iconName:REPEAT}),React__default['default'].createElement(HoverControlHint,{tooltipText:"Pan \u2022 Middle-click OR shift + left-click",iconName:MOVE})),React__default['default'].createElement("canvas",{ref:this.canvasReference,style:{width:"100%",minWidth:"0px",maxWidth:"max(70vh, 30vw)",aspectRatio:"1"},width:"0",height:"0"}))};return CanvasHolder}(React__default['default'].Component);
+
+    var index = {toSpawn:function(debuggerContext){var _a;var potentialShape=(_a=debuggerContext===null||debuggerContext===void 0?void 0:debuggerContext.result)===null||_a===void 0?void 0:_a.value;if(!looseInstanceOf(potentialShape,Shape)){return false}var shape;try{shape=potentialShape;}catch(error){console.error(error);return false}return shape.spawnsTab},body:function(debuggerContext){return React__default['default'].createElement(CanvasHolder,{debuggerContext:debuggerContext})},iconName:SHAPES,label:"CSG Tab"};
 
     return index;
 
