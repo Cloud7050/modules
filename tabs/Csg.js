@@ -1616,14 +1616,14 @@
      * @returns {vec3} out
      * @alias module:modeling/maths/vec3.abs
      */
-    const abs = (out, vector) => {
+    const abs$1 = (out, vector) => {
       out[0] = Math.abs(vector[0]);
       out[1] = Math.abs(vector[1]);
       out[2] = Math.abs(vector[2]);
       return out
     };
 
-    var abs_1 = abs;
+    var abs_1$1 = abs$1;
 
     /**
      * Adds the coordinates of two vectors (A+B).
@@ -1634,14 +1634,14 @@
      * @returns {vec3} out
      * @alias module:modeling/maths/vec3.add
      */
-    const add$1 = (out, a, b) => {
+    const add$3 = (out, a, b) => {
       out[0] = a[0] + b[0];
       out[1] = a[1] + b[1];
       out[2] = a[2] + b[2];
       return out
     };
 
-    var add_1$1 = add$1;
+    var add_1$3 = add$3;
 
     /**
      * Calculates the dot product of two vectors.
@@ -1651,9 +1651,9 @@
      * @returns {Number} dot product
      * @alias module:modeling/maths/vec3.dot
      */
-    const dot$1 = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+    const dot$2 = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
 
-    var dot_1$1 = dot$1;
+    var dot_1$2 = dot$2;
 
     /**
      * Calculate the angle between two vectors.
@@ -1663,7 +1663,7 @@
      * @returns {Number} angle (radians)
      * @alias module:modeling/maths/vec3.angle
      */
-    const angle$1 = (a, b) => {
+    const angle$2 = (a, b) => {
       const ax = a[0];
       const ay = a[1];
       const az = a[2];
@@ -1673,11 +1673,11 @@
       const mag1 = Math.hypot(ax, ay, az);
       const mag2 = Math.hypot(bx, by, bz);
       const mag = mag1 * mag2;
-      const cosine = mag && dot_1$1(a, b) / mag;
+      const cosine = mag && dot_1$2(a, b) / mag;
       return Math.acos(Math.min(Math.max(cosine, -1), 1))
     };
 
-    var angle_1$1 = angle$1;
+    var angle_1$1 = angle$2;
 
     /**
      * Represents a three dimensional vector.
@@ -1691,9 +1691,9 @@
      * @returns {vec3} a new vector
      * @alias module:modeling/maths/vec3.create
      */
-    const create$2 = () => [0, 0, 0];
+    const create$a = () => [0, 0, 0];
 
-    var create_1$2 = create$2;
+    var create_1$a = create$a;
 
     /**
      * Create a clone of the given vector.
@@ -1702,15 +1702,15 @@
      * @returns {vec3} a new vector
      * @alias module:modeling/maths/vec3.clone
      */
-    const clone$2 = (vector) => {
-      const out = create_1$2();
+    const clone$9 = (vector) => {
+      const out = create_1$a();
       out[0] = vector[0];
       out[1] = vector[1];
       out[2] = vector[2];
       return out
     };
 
-    var clone_1$2 = clone$2;
+    var clone_1$9 = clone$9;
 
     /**
      * Create a copy of the given vector.
@@ -1720,14 +1720,14 @@
      * @returns {vec3} out
      * @alias module:modeling/maths/vec3.copy
      */
-    const copy$2 = (out, vector) => {
+    const copy$5 = (out, vector) => {
       out[0] = vector[0];
       out[1] = vector[1];
       out[2] = vector[2];
       return out
     };
 
-    var copy_1$2 = copy$2;
+    var copy_1$5 = copy$5;
 
     /**
      * Computes the cross product of the given vectors (AxB).
@@ -1738,7 +1738,7 @@
      * @returns {vec3} out
      * @alias module:modeling/maths/vec3.cross
      */
-    const cross$1 = (out, a, b) => {
+    const cross$2 = (out, a, b) => {
       const ax = a[0];
       const ay = a[1];
       const az = a[2];
@@ -1752,7 +1752,7 @@
       return out
     };
 
-    var cross_1$1 = cross$1;
+    var cross_1$2 = cross$2;
 
     /**
      * Calculates the Euclidian distance between the given vectors.
@@ -1762,14 +1762,14 @@
      * @returns {Number} distance
      * @alias module:modeling/maths/vec3.distance
      */
-    const distance$1 = (a, b) => {
+    const distance$2 = (a, b) => {
       const x = b[0] - a[0];
       const y = b[1] - a[1];
       const z = b[2] - a[2];
       return Math.hypot(x, y, z)
     };
 
-    var distance_1$1 = distance$1;
+    var distance_1$2 = distance$2;
 
     /**
      * Divides the coordinates of two vectors (A/B).
@@ -1780,14 +1780,14 @@
      * @returns {vec3} out
      * @alias module:modeling/maths/vec3.divide
      */
-    const divide$1 = (out, a, b) => {
+    const divide$2 = (out, a, b) => {
       out[0] = a[0] / b[0];
       out[1] = a[1] / b[1];
       out[2] = a[2] / b[2];
       return out
     };
 
-    var divide_1$1 = divide$1;
+    var divide_1$2 = divide$2;
 
     /**
      * Compare the given vectors for equality.
@@ -1797,9 +1797,9 @@
      * @returns {Boolean} true if a and b are equal
      * @alias module:modeling/maths/vec3.equals
      */
-    const equals$1 = (a, b) => (a[0] === b[0]) && (a[1] === b[1]) && (a[2] === b[2]);
+    const equals$6 = (a, b) => (a[0] === b[0]) && (a[1] === b[1]) && (a[2] === b[2]);
 
-    var equals_1$1 = equals$1;
+    var equals_1$5 = equals$6;
 
     /**
      * Creates a vector from a single scalar value.
@@ -1810,14 +1810,14 @@
      * @returns {vec3} out
      * @alias module:modeling/maths/vec3.fromScalar
      */
-    const fromScalar = (out, scalar) => {
+    const fromScalar$1 = (out, scalar) => {
       out[0] = scalar;
       out[1] = scalar;
       out[2] = scalar;
       return out
     };
 
-    var fromScalar_1 = fromScalar;
+    var fromScalar_1$1 = fromScalar$1;
 
     /**
      * Creates a new vector initialized with the given values.
@@ -1828,15 +1828,15 @@
      * @returns {vec3} a new vector
      * @alias module:modeling/maths/vec3.fromValues
      */
-    const fromValues$1 = (x, y, z) => {
-      const out = create_1$2();
+    const fromValues$4 = (x, y, z) => {
+      const out = create_1$a();
       out[0] = x;
       out[1] = y;
       out[2] = z;
       return out
     };
 
-    var fromValues_1$1 = fromValues$1;
+    var fromValues_1$4 = fromValues$4;
 
     /**
      * Create a new vector by extending a 2D vector with a Z value.
@@ -1863,14 +1863,14 @@
      * @returns {Number} length
      * @alias module:modeling/maths/vec3.length
      */
-    const length$1 = (vector) => {
+    const length$2 = (vector) => {
       const x = vector[0];
       const y = vector[1];
       const z = vector[2];
       return Math.hypot(x, y, z)
     };
 
-    var length_1$1 = length$1;
+    var length_1$2 = length$2;
 
     /**
      * Performs a linear interpolation between two vectors.
@@ -1882,14 +1882,14 @@
      * @returns {vec3} out
      * @alias module:modeling/maths/vec3.lerp
      */
-    const lerp$1 = (out, a, b, t) => {
+    const lerp$2 = (out, a, b, t) => {
       out[0] = a[0] + t * (b[0] - a[0]);
       out[1] = a[1] + t * (b[1] - a[1]);
       out[2] = a[2] + t * (b[2] - a[2]);
       return out
     };
 
-    var lerp_1$1 = lerp$1;
+    var lerp_1$2 = lerp$2;
 
     /**
      * Returns the maximum coordinates of the given vectors.
@@ -1900,14 +1900,14 @@
      * @returns {vec3} out
      * @alias module:modeling/maths/vec3.max
      */
-    const max$2 = (out, a, b) => {
+    const max$3 = (out, a, b) => {
       out[0] = Math.max(a[0], b[0]);
       out[1] = Math.max(a[1], b[1]);
       out[2] = Math.max(a[2], b[2]);
       return out
     };
 
-    var max_1$1 = max$2;
+    var max_1$2 = max$3;
 
     /**
      * Returns the minimum coordinates of the given vectors.
@@ -1918,14 +1918,14 @@
      * @returns {vec3} out
      * @alias module:modeling/maths/vec3.min
      */
-    const min$2 = (out, a, b) => {
+    const min$3 = (out, a, b) => {
       out[0] = Math.min(a[0], b[0]);
       out[1] = Math.min(a[1], b[1]);
       out[2] = Math.min(a[2], b[2]);
       return out
     };
 
-    var min_1$1 = min$2;
+    var min_1$2 = min$3;
 
     /**
      * Multiply the coordinates of the given vectors (A*B).
@@ -1936,14 +1936,14 @@
      * @returns {vec3} out
      * @alias module:modeling/maths/vec3.multiply
      */
-    const multiply$2 = (out, a, b) => {
+    const multiply$4 = (out, a, b) => {
       out[0] = a[0] * b[0];
       out[1] = a[1] * b[1];
       out[2] = a[2] * b[2];
       return out
     };
 
-    var multiply_1$2 = multiply$2;
+    var multiply_1$4 = multiply$4;
 
     /**
      * Negates the coordinates of the given vector.
@@ -1953,14 +1953,14 @@
      * @returns {vec3} out
      * @alias module:modeling/maths/vec3.negate
      */
-    const negate$1 = (out, vector) => {
+    const negate$2 = (out, vector) => {
       out[0] = -vector[0];
       out[1] = -vector[1];
       out[2] = -vector[2];
       return out
     };
 
-    var negate_1$1 = negate$1;
+    var negate_1$2 = negate$2;
 
     /**
      * Normalize the given vector.
@@ -1970,7 +1970,7 @@
      * @returns {vec3} out
      * @alias module:modeling/maths/vec3.normalize
      */
-    const normalize$1 = (out, vector) => {
+    const normalize$2 = (out, vector) => {
       const x = vector[0];
       const y = vector[1];
       const z = vector[2];
@@ -1984,7 +1984,7 @@
       return out
     };
 
-    var normalize_1$1 = normalize$1;
+    var normalize_1$2 = normalize$2;
 
     /**
      * Create a new vector that is orthogonal to the given vector.
@@ -1995,12 +1995,12 @@
      * @alias module:modeling/maths/vec3.orthogonal
      */
     const orthogonal = (out, vector) => {
-      const bV = abs_1(create_1$2(), vector);
+      const bV = abs_1$1(create_1$a(), vector);
       const b0 = 0 + ((bV[0] < bV[1]) && (bV[0] < bV[2]));
       const b1 = 0 + ((bV[1] <= bV[0]) && (bV[1] < bV[2]));
       const b2 = 0 + ((bV[2] <= bV[0]) && (bV[2] <= bV[1]));
 
-      return cross_1$1(out, vector, [b0, b1, b2])
+      return cross_1$2(out, vector, [b0, b1, b2])
     };
 
     var orthogonal_1 = orthogonal;
@@ -2015,7 +2015,7 @@
      * @returns {vec3} out
      * @alias module:modeling/maths/vec3.rotateX
      */
-    const rotateX$2 = (out, vector, origin, radians) => {
+    const rotateX$3 = (out, vector, origin, radians) => {
       const p = [];
       const r = [];
 
@@ -2037,7 +2037,7 @@
       return out
     };
 
-    var rotateX_1$2 = rotateX$2;
+    var rotateX_1$3 = rotateX$3;
 
     /**
      * Rotate the given vector around the given origin, Y axis only.
@@ -2049,7 +2049,7 @@
      * @returns {vec3} out
      * @alias module:modeling/maths/vec3.rotateY
      */
-    const rotateY$2 = (out, vector, origin, radians) => {
+    const rotateY$3 = (out, vector, origin, radians) => {
       const p = [];
       const r = [];
 
@@ -2071,7 +2071,7 @@
       return out
     };
 
-    var rotateY_1$2 = rotateY$2;
+    var rotateY_1$3 = rotateY$3;
 
     /**
      * Rotate the given vector around the given origin, Z axis only.
@@ -2083,7 +2083,7 @@
      * @returns {vec3} out
      * @alias module:modeling/maths/vec3.rotateZ
      */
-    const rotateZ$2 = (out, vector, origin, radians) => {
+    const rotateZ$3 = (out, vector, origin, radians) => {
       const p = [];
       const r = [];
       // Translate point to the origin
@@ -2102,7 +2102,7 @@
       return out
     };
 
-    var rotateZ_1$2 = rotateZ$2;
+    var rotateZ_1$3 = rotateZ$3;
 
     /**
      * Scales the coordinates of the given vector by a scalar number.
@@ -2113,14 +2113,14 @@
      * @returns {vec3} out
      * @alias module:modeling/maths/vec3.scale
      */
-    const scale$2 = (out, vector, amount) => {
+    const scale$4 = (out, vector, amount) => {
       out[0] = vector[0] * amount;
       out[1] = vector[1] * amount;
       out[2] = vector[2] * amount;
       return out
     };
 
-    var scale_1$2 = scale$2;
+    var scale_1$4 = scale$4;
 
     /**
      * Snaps the coordinates of the given vector to the given epsilon.
@@ -2131,14 +2131,14 @@
      * @returns {vec3} out
      * @alias module:modeling/maths/vec3.snap
      */
-    const snap = (out, vector, epsilon) => {
+    const snap$1 = (out, vector, epsilon) => {
       out[0] = Math.round(vector[0] / epsilon) * epsilon + 0;
       out[1] = Math.round(vector[1] / epsilon) * epsilon + 0;
       out[2] = Math.round(vector[2] / epsilon) * epsilon + 0;
       return out
     };
 
-    var snap_1 = snap;
+    var snap_1$1 = snap$1;
 
     /**
      * Calculates the squared distance between two vectors.
@@ -2148,14 +2148,14 @@
      * @returns {Number} squared distance
      * @alias module:modeling/maths/vec3.squaredDistance
      */
-    const squaredDistance$1 = (a, b) => {
+    const squaredDistance$2 = (a, b) => {
       const x = b[0] - a[0];
       const y = b[1] - a[1];
       const z = b[2] - a[2];
       return x * x + y * y + z * z
     };
 
-    var squaredDistance_1$1 = squaredDistance$1;
+    var squaredDistance_1$2 = squaredDistance$2;
 
     /**
      * Calculates the squared length of the given vector.
@@ -2164,14 +2164,14 @@
      * @returns {Number} squared length
      * @alias module:modeling/maths/vec3.squaredLength
      */
-    const squaredLength$1 = (vector) => {
+    const squaredLength$2 = (vector) => {
       const x = vector[0];
       const y = vector[1];
       const z = vector[2];
       return x * x + y * y + z * z
     };
 
-    var squaredLength_1$1 = squaredLength$1;
+    var squaredLength_1$2 = squaredLength$2;
 
     /**
      * Subtracts the coordinates of two vectors (A-B).
@@ -2182,14 +2182,14 @@
      * @returns {vec3} out
      * @alias module:modeling/maths/vec3.subtract
      */
-    const subtract$1 = (out, a, b) => {
+    const subtract$3 = (out, a, b) => {
       out[0] = a[0] - b[0];
       out[1] = a[1] - b[1];
       out[2] = a[2] - b[2];
       return out
     };
 
-    var subtract_1$1 = subtract$1;
+    var subtract_1$3 = subtract$3;
 
     /**
      * Convert the given vector to a representative string.
@@ -2197,9 +2197,9 @@
      * @returns {String} string representation
      * @alias module:modeling/maths/vec3.toString
      */
-    const toString = (vec) => `[${vec[0].toFixed(7)}, ${vec[1].toFixed(7)}, ${vec[2].toFixed(7)}]`;
+    const toString$7 = (vec) => `[${vec[0].toFixed(7)}, ${vec[1].toFixed(7)}, ${vec[2].toFixed(7)}]`;
 
-    var toString_1 = toString;
+    var toString_1$7 = toString$7;
 
     /**
      * Transforms the given vector using the given matrix.
@@ -2210,7 +2210,7 @@
      * @returns {vec3} out
      * @alias module:modeling/maths/vec3.transform
      */
-    const transform = (out, vector, matrix) => {
+    const transform$6 = (out, vector, matrix) => {
       const x = vector[0];
       const y = vector[1];
       const z = vector[2];
@@ -2222,47 +2222,5152 @@
       return out
     };
 
-    var transform_1 = transform;
+    var transform_1$6 = transform$6;
 
     /**
      * Represents a three dimensional vector.
      * @see {@link vec3} for data structure information.
      * @module modeling/maths/vec3
      */
-    var vec3 = {
+    var vec3$1 = {
+      abs: abs_1$1,
+      add: add_1$3,
+      angle: angle_1$1,
+      clone: clone_1$9,
+      copy: copy_1$5,
+      create: create_1$a,
+      cross: cross_1$2,
+      distance: distance_1$2,
+      divide: divide_1$2,
+      dot: dot_1$2,
+      equals: equals_1$5,
+      fromScalar: fromScalar_1$1,
+      fromValues: fromValues_1$4,
+      fromVec2: fromVec2,
+      length: length_1$2,
+      lerp: lerp_1$2,
+      max: max_1$2,
+      min: min_1$2,
+      multiply: multiply_1$4,
+      negate: negate_1$2,
+      normalize: normalize_1$2,
+      orthogonal: orthogonal_1,
+      rotateX: rotateX_1$3,
+      rotateY: rotateY_1$3,
+      rotateZ: rotateZ_1$3,
+      scale: scale_1$4,
+      snap: snap_1$1,
+      squaredDistance: squaredDistance_1$2,
+      squaredLength: squaredLength_1$2,
+      subtract: subtract_1$3,
+      toString: toString_1$7,
+      transform: transform_1$6
+    };
+
+    /**
+     * Flatten the given list of arguments into a single flat array.
+     * The arguments can be composed of multiple depths of objects and arrays.
+     * @param {Array} arr - list of arguments
+     * @returns {Array} a flat list of arguments
+     * @alias module:modeling/utils.flatten
+     */
+    const flatten$3 = (arr) => arr.reduce((acc, val) => Array.isArray(val) ? acc.concat(flatten$3(val)) : acc.concat(val), []);
+
+    var flatten_1$1 = flatten$3;
+
+    /**
+     * Performs a shallow clone of the given geometry.
+     * @param {geom2} geometry - the geometry to clone
+     * @returns {geom2} new geometry
+     * @alias module:modeling/geometries/geom2.clone
+     */
+    const clone$8 = (geometry) => Object.assign({}, geometry);
+
+    var clone_1$8 = clone$8;
+
+    /**
+     * Adds the two matrices (A+B).
+     *
+     * @param {mat4} out - receiving matrix
+     * @param {mat4} a - first operand
+     * @param {mat4} b - second operand
+     * @returns {mat4} out
+     * @alias module:modeling/maths/mat4.add
+     */
+    const add$2 = (out, a, b) => {
+      out[0] = a[0] + b[0];
+      out[1] = a[1] + b[1];
+      out[2] = a[2] + b[2];
+      out[3] = a[3] + b[3];
+      out[4] = a[4] + b[4];
+      out[5] = a[5] + b[5];
+      out[6] = a[6] + b[6];
+      out[7] = a[7] + b[7];
+      out[8] = a[8] + b[8];
+      out[9] = a[9] + b[9];
+      out[10] = a[10] + b[10];
+      out[11] = a[11] + b[11];
+      out[12] = a[12] + b[12];
+      out[13] = a[13] + b[13];
+      out[14] = a[14] + b[14];
+      out[15] = a[15] + b[15];
+      return out
+    };
+
+    var add_1$2 = add$2;
+
+    /**
+     * Represents a 4x4 matrix which is column-major (when typed out it looks row-major).
+     * See fromValues().
+     * @typedef {Array} mat4
+     */
+
+    /**
+     * Creates a new identity matrix.
+     *
+     * @returns {mat4} a new matrix
+     * @alias module:modeling/maths/mat4.create
+     */
+    const create$9 = () => [
+      1, 0, 0, 0,
+      0, 1, 0, 0,
+      0, 0, 1, 0,
+      0, 0, 0, 1
+    ];
+
+    var create_1$9 = create$9;
+
+    /**
+     * Creates a clone of the given matrix.
+     *
+     * @param {mat4} matrix - matrix to clone
+     * @returns {mat4} a new matrix
+     * @alias module:modeling/maths/mat4.clone
+     */
+    const clone$7 = (matrix) => {
+      const out = create_1$9();
+      out[0] = matrix[0];
+      out[1] = matrix[1];
+      out[2] = matrix[2];
+      out[3] = matrix[3];
+      out[4] = matrix[4];
+      out[5] = matrix[5];
+      out[6] = matrix[6];
+      out[7] = matrix[7];
+      out[8] = matrix[8];
+      out[9] = matrix[9];
+      out[10] = matrix[10];
+      out[11] = matrix[11];
+      out[12] = matrix[12];
+      out[13] = matrix[13];
+      out[14] = matrix[14];
+      out[15] = matrix[15];
+      return out
+    };
+
+    var clone_1$7 = clone$7;
+
+    /**
+     * Creates a copy of the given matrix.
+     *
+     * @param {mat4} out - receiving matrix
+     * @param {mat4} matrix - matrix to copy
+     * @returns {mat4} out
+     * @alias module:modeling/maths/mat4.copy
+     */
+    const copy$4 = (out, matrix) => {
+      out[0] = matrix[0];
+      out[1] = matrix[1];
+      out[2] = matrix[2];
+      out[3] = matrix[3];
+      out[4] = matrix[4];
+      out[5] = matrix[5];
+      out[6] = matrix[6];
+      out[7] = matrix[7];
+      out[8] = matrix[8];
+      out[9] = matrix[9];
+      out[10] = matrix[10];
+      out[11] = matrix[11];
+      out[12] = matrix[12];
+      out[13] = matrix[13];
+      out[14] = matrix[14];
+      out[15] = matrix[15];
+      return out
+    };
+
+    var copy_1$4 = copy$4;
+
+    /**
+     * Creates a invert copy of the given matrix.
+     * @author Julian Lloyd
+     * code from https://github.com/jlmakes/rematrix/blob/master/src/index.js
+     *
+     * @param {mat4} out - receiving matrix
+     * @param {mat4} matrix - matrix to invert
+     * @returns {mat4} out
+     * @alias module:modeling/maths/mat4.invert
+     */
+    const invert$3 = (out, matrix) => {
+      const a00 = matrix[0];
+      const a01 = matrix[1];
+      const a02 = matrix[2];
+      const a03 = matrix[3];
+      const a10 = matrix[4];
+      const a11 = matrix[5];
+      const a12 = matrix[6];
+      const a13 = matrix[7];
+      const a20 = matrix[8];
+      const a21 = matrix[9];
+      const a22 = matrix[10];
+      const a23 = matrix[11];
+      const a30 = matrix[12];
+      const a31 = matrix[13];
+      const a32 = matrix[14];
+      const a33 = matrix[15];
+
+      const b00 = a00 * a11 - a01 * a10;
+      const b01 = a00 * a12 - a02 * a10;
+      const b02 = a00 * a13 - a03 * a10;
+      const b03 = a01 * a12 - a02 * a11;
+      const b04 = a01 * a13 - a03 * a11;
+      const b05 = a02 * a13 - a03 * a12;
+      const b06 = a20 * a31 - a21 * a30;
+      const b07 = a20 * a32 - a22 * a30;
+      const b08 = a20 * a33 - a23 * a30;
+      const b09 = a21 * a32 - a22 * a31;
+      const b10 = a21 * a33 - a23 * a31;
+      const b11 = a22 * a33 - a23 * a32;
+
+      // Calculate the determinant
+      let det =
+        b00 * b11 - b01 * b10 + b02 * b09 + b03 * b08 - b04 * b07 + b05 * b06;
+
+      if (!det) {
+        return null
+      }
+      det = 1.0 / det;
+
+      out[0] = (a11 * b11 - a12 * b10 + a13 * b09) * det;
+      out[1] = (a02 * b10 - a01 * b11 - a03 * b09) * det;
+      out[2] = (a31 * b05 - a32 * b04 + a33 * b03) * det;
+      out[3] = (a22 * b04 - a21 * b05 - a23 * b03) * det;
+      out[4] = (a12 * b08 - a10 * b11 - a13 * b07) * det;
+      out[5] = (a00 * b11 - a02 * b08 + a03 * b07) * det;
+      out[6] = (a32 * b02 - a30 * b05 - a33 * b01) * det;
+      out[7] = (a20 * b05 - a22 * b02 + a23 * b01) * det;
+      out[8] = (a10 * b10 - a11 * b08 + a13 * b06) * det;
+      out[9] = (a01 * b08 - a00 * b10 - a03 * b06) * det;
+      out[10] = (a30 * b04 - a31 * b02 + a33 * b00) * det;
+      out[11] = (a21 * b02 - a20 * b04 - a23 * b00) * det;
+      out[12] = (a11 * b07 - a10 * b09 - a12 * b06) * det;
+      out[13] = (a00 * b09 - a01 * b07 + a02 * b06) * det;
+      out[14] = (a31 * b01 - a30 * b03 - a32 * b00) * det;
+      out[15] = (a20 * b03 - a21 * b01 + a22 * b00) * det;
+
+      return out
+    };
+
+    var invert_1$3 = invert$3;
+
+    /**
+     * Returns whether or not the matrices have exactly the same elements in the same position.
+     *
+     * @param {mat4} a - first matrix
+     * @param {mat4} b - second matrix
+     * @returns {Boolean} true if the matrices are equal
+     * @alias module:modeling/maths/mat4.equals
+     */
+    const equals$5 = (a, b) => (
+      a[0] === b[0] && a[1] === b[1] && a[2] === b[2] && a[3] === b[3] &&
+      a[4] === b[4] && a[5] === b[5] && a[6] === b[6] && a[7] === b[7] &&
+      a[8] === b[8] && a[9] === b[9] && a[10] === b[10] && a[11] === b[11] &&
+      a[12] === b[12] && a[13] === b[13] && a[14] === b[14] && a[15] === b[15]
+    );
+
+    var equals_1$4 = equals$5;
+
+    /**
+     * Set a matrix to the identity transform.
+     *
+     * @param {mat4} out - receiving matrix
+     * @returns {mat4} out
+     * @alias module:modeling/maths/mat4.identity
+     */
+    const identity$1 = (out) => {
+      out[0] = 1;
+      out[1] = 0;
+      out[2] = 0;
+      out[3] = 0;
+      out[4] = 0;
+      out[5] = 1;
+      out[6] = 0;
+      out[7] = 0;
+      out[8] = 0;
+      out[9] = 0;
+      out[10] = 1;
+      out[11] = 0;
+      out[12] = 0;
+      out[13] = 0;
+      out[14] = 0;
+      out[15] = 1;
+      return out
+    };
+
+    var identity_1$1 = identity$1;
+
+    const EPSILON$1 = 0.000001;
+
+    var constants$1 = {
+      EPSILON: EPSILON$1
+    };
+
+    const { EPSILON } = constants$1;
+
+    /**
+     * Creates a matrix from a given angle around a given axis
+     * This is equivalent to (but much faster than):
+     *
+     *     mat4.identity(dest)
+     *     mat4.rotate(dest, dest, rad, axis)
+     *
+     * @param {mat4} out - receiving matrix
+     * @param {Number} rad - angle to rotate the matrix by
+     * @param {vec3} axis - axis of which to rotate around
+     * @returns {mat4} out
+     * @alias module:modeling/maths/mat4.fromRotation
+     * @example
+     * let matrix = fromRotation(create(), Math.PI / 2, [0, 0, 3])
+     */
+    const fromRotation$1 = (out, rad, axis) => {
+      let [x, y, z] = axis;
+      let len = Math.hypot(x, y, z);
+
+      if (Math.abs(len) < EPSILON) {
+        // axis is 0,0,0 or almost
+        return identity_1$1(out)
+      }
+
+      len = 1 / len;
+      x *= len;
+      y *= len;
+      z *= len;
+
+      const s = Math.sin(rad);
+      const c = Math.cos(rad);
+      const t = 1 - c;
+
+      // Perform rotation-specific matrix multiplication
+      out[0] = x * x * t + c;
+      out[1] = y * x * t + z * s;
+      out[2] = z * x * t - y * s;
+      out[3] = 0;
+      out[4] = x * y * t - z * s;
+      out[5] = y * y * t + c;
+      out[6] = z * y * t + x * s;
+      out[7] = 0;
+      out[8] = x * z * t + y * s;
+      out[9] = y * z * t - x * s;
+      out[10] = z * z * t + c;
+      out[11] = 0;
+      out[12] = 0;
+      out[13] = 0;
+      out[14] = 0;
+      out[15] = 1;
+      return out
+    };
+
+    var fromRotation_1$1 = fromRotation$1;
+
+    /**
+     * Creates a matrix from a vector scaling.
+     * This is equivalent to (but much faster than):
+     *
+     *     mat4.identity(dest)
+     *     mat4.scale(dest, dest, vec)
+     *
+     * @param {mat4} out - receiving matrix
+     * @param {vec3} vector - X, Y, Z factors by which to scale
+     * @returns {mat4} out
+     * @alias module:modeling/maths/mat4.fromScaling
+     * @example
+     * let matrix = fromScaling([1, 2, 0.5])
+     */
+    const fromScaling$1 = (out, vector) => {
+      out[0] = vector[0];
+      out[1] = 0;
+      out[2] = 0;
+      out[3] = 0;
+      out[4] = 0;
+      out[5] = vector[1];
+      out[6] = 0;
+      out[7] = 0;
+      out[8] = 0;
+      out[9] = 0;
+      out[10] = vector[2];
+      out[11] = 0;
+      out[12] = 0;
+      out[13] = 0;
+      out[14] = 0;
+      out[15] = 1;
+      return out
+    };
+
+    var fromScaling_1$1 = fromScaling$1;
+
+    /**
+     * Creates a matrix from the given Tait–Bryan angles.
+     *
+     * Tait-Bryan Euler angle convention using active, intrinsic rotations around the axes in the order z-y-x.
+     * @see https://en.wikipedia.org/wiki/Euler_angles
+     *
+     * @param {mat4} out - receiving matrix
+     * @param {Number} yaw - Z rotation in radians
+     * @param {Number} pitch - Y rotation in radians
+     * @param {Number} roll - X rotation in radians
+     * @returns {mat4} out
+     * @alias module:modeling/maths/mat4.fromTaitBryanRotation
+     * @example
+     * let matrix = fromTaitBryanRotation(create(), Math.PI / 2, 0, Math.PI)
+     */
+    const fromTaitBryanRotation = (out, yaw, pitch, roll) => {
+      // precompute sines and cosines of Euler angles
+      const sy = Math.sin(yaw);
+      const cy = Math.cos(yaw);
+      const sp = Math.sin(pitch);
+      const cp = Math.cos(pitch);
+      const sr = Math.sin(roll);
+      const cr = Math.cos(roll);
+
+      // create and populate rotation matrix
+      // left-hand-rule rotation
+      // const els = [
+      //  cp*cy, sr*sp*cy - cr*sy, sr*sy + cr*sp*cy, 0,
+      //  cp*sy, cr*cy + sr*sp*sy, cr*sp*sy - sr*cy, 0,
+      //  -sp, sr*cp, cr*cp, 0,
+      //  0, 0, 0, 1
+      // ]
+      // right-hand-rule rotation
+      out[0] = cp * cy;
+      out[1] = cp * sy;
+      out[2] = -sp;
+      out[3] = 0;
+      out[4] = sr * sp * cy - cr * sy;
+      out[5] = cr * cy + sr * sp * sy;
+      out[6] = sr * cp;
+      out[7] = 0;
+      out[8] = sr * sy + cr * sp * cy;
+      out[9] = cr * sp * sy - sr * cy;
+      out[10] = cr * cp;
+      out[11] = 0;
+      out[12] = 0;
+      out[13] = 0;
+      out[14] = 0;
+      out[15] = 1;
+      return out
+    };
+
+    var fromTaitBryanRotation_1 = fromTaitBryanRotation;
+
+    /**
+     * Creates a matrix from a vector translation.
+     * This is equivalent to (but much faster than):
+     *
+     *     mat4.identity(dest)
+     *     mat4.translate(dest, dest, vec)
+     *
+     * @param {mat4} out - receiving matrix
+     * @param {vec3} vector - offset (vector) of translation
+     * @returns {mat4} out
+     * @alias module:modeling/maths/mat4.fromTranslation
+     * @example
+     * let matrix = fromTranslation(create(), [1, 2, 3])
+     */
+    const fromTranslation$1 = (out, vector) => {
+      out[0] = 1;
+      out[1] = 0;
+      out[2] = 0;
+      out[3] = 0;
+      out[4] = 0;
+      out[5] = 1;
+      out[6] = 0;
+      out[7] = 0;
+      out[8] = 0;
+      out[9] = 0;
+      out[10] = 1;
+      out[11] = 0;
+      out[12] = vector[0];
+      out[13] = vector[1];
+      out[14] = vector[2];
+      out[15] = 1;
+      return out
+    };
+
+    var fromTranslation_1$1 = fromTranslation$1;
+
+    /**
+     * Create a matrix with the given values.
+     *
+     * @param {Number} m00 Component in column 0, row 0 position (index 0)
+     * @param {Number} m01 Component in column 0, row 1 position (index 1)
+     * @param {Number} m02 Component in column 0, row 2 position (index 2)
+     * @param {Number} m03 Component in column 0, row 3 position (index 3)
+     * @param {Number} m10 Component in column 1, row 0 position (index 4)
+     * @param {Number} m11 Component in column 1, row 1 position (index 5)
+     * @param {Number} m12 Component in column 1, row 2 position (index 6)
+     * @param {Number} m13 Component in column 1, row 3 position (index 7)
+     * @param {Number} m20 Component in column 2, row 0 position (index 8)
+     * @param {Number} m21 Component in column 2, row 1 position (index 9)
+     * @param {Number} m22 Component in column 2, row 2 position (index 10)
+     * @param {Number} m23 Component in column 2, row 3 position (index 11)
+     * @param {Number} m30 Component in column 3, row 0 position (index 12)
+     * @param {Number} m31 Component in column 3, row 1 position (index 13)
+     * @param {Number} m32 Component in column 3, row 2 position (index 14)
+     * @param {Number} m33 Component in column 3, row 3 position (index 15)
+     * @returns {mat4} a new matrix
+     * @alias module:modeling/maths/mat4.fromValues
+     * @example
+     * let matrix = fromValues(
+     *   1, 0, 0, 1,
+     *   0, 1, 0, 0,
+     *   0, 0, 1, 0,
+     *   0, 0, 0, 1
+     * )
+     */
+    const fromValues$3 = (m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33) => {
+      const out = create_1$9();
+      out[0] = m00;
+      out[1] = m01;
+      out[2] = m02;
+      out[3] = m03;
+      out[4] = m10;
+      out[5] = m11;
+      out[6] = m12;
+      out[7] = m13;
+      out[8] = m20;
+      out[9] = m21;
+      out[10] = m22;
+      out[11] = m23;
+      out[12] = m30;
+      out[13] = m31;
+      out[14] = m32;
+      out[15] = m33;
+      return out
+    };
+
+    var fromValues_1$3 = fromValues$3;
+
+    /**
+     * Create a matrix that rotates the given source to the given target vector.
+     *
+     * Each vector must be a directional vector with a length greater than zero.
+     * @see https://gist.github.com/kevinmoran/b45980723e53edeb8a5a43c49f134724
+     * @param {mat4} out - receiving matrix
+     * @param {vec3} source - source vector
+     * @param {vec3} target - target vector
+     * @returns {mat4} a new matrix
+     * @alias module:modeling/maths/mat4.fromVectorRotation
+     * @example
+     * let matrix = fromVectorRotation(mat4.create(), [1, 2, 2], [-3, 3, 12])
+     */
+    const fromVectorRotation = (out, source, target) => {
+      const sourceNormal = vec3$1.normalize(vec3$1.create(), source);
+      const targetNormal = vec3$1.normalize(vec3$1.create(), target);
+
+      const axis = vec3$1.cross(vec3$1.create(), targetNormal, sourceNormal);
+      const cosA = vec3$1.dot(targetNormal, sourceNormal);
+      if (cosA === -1.0) return fromRotation_1$1(out, Math.PI, vec3$1.orthogonal(axis, sourceNormal))
+
+      const k = 1 / (1 + cosA);
+      out[0] = (axis[0] * axis[0] * k) + cosA;
+      out[1] = (axis[1] * axis[0] * k) - axis[2];
+      out[2] = (axis[2] * axis[0] * k) + axis[1];
+      out[3] = 0;
+
+      out[4] = (axis[0] * axis[1] * k) + axis[2];
+      out[5] = (axis[1] * axis[1] * k) + cosA;
+      out[6] = (axis[2] * axis[1] * k) - axis[0];
+      out[7] = 0;
+
+      out[8] = (axis[0] * axis[2] * k) - axis[1];
+      out[9] = (axis[1] * axis[2] * k) + axis[0];
+      out[10] = (axis[2] * axis[2] * k) + cosA;
+      out[11] = 0;
+
+      out[12] = 0;
+      out[13] = 0;
+      out[14] = 0;
+      out[15] = 1;
+      return out
+    };
+
+    var fromVectorRotation_1 = fromVectorRotation;
+
+    /**
+     * Creates a matrix from the given angle around the X axis.
+     * This is equivalent to (but much faster than):
+     *
+     *     mat4.identity(dest)
+     *     mat4.rotateX(dest, dest, radians)
+     *
+     * @param {mat4} out - receiving matrix
+     * @param {Number} radians - angle to rotate the matrix by
+     * @returns {mat4} out
+     * @alias module:modeling/maths/mat4.fromXRotation
+     * @example
+     * let matrix = fromXRotation(create(), Math.PI / 2)
+     */
+    const fromXRotation$1 = (out, radians) => {
+      const s = Math.sin(radians);
+      const c = Math.cos(radians);
+
+      // Perform axis-specific matrix multiplication
+      out[0] = 1;
+      out[1] = 0;
+      out[2] = 0;
+      out[3] = 0;
+      out[4] = 0;
+      out[5] = c;
+      out[6] = s;
+      out[7] = 0;
+      out[8] = 0;
+      out[9] = -s;
+      out[10] = c;
+      out[11] = 0;
+      out[12] = 0;
+      out[13] = 0;
+      out[14] = 0;
+      out[15] = 1;
+      return out
+    };
+
+    var fromXRotation_1$1 = fromXRotation$1;
+
+    /**
+     * Creates a matrix from the given angle around the Y axis.
+     * This is equivalent to (but much faster than):
+     *
+     *     mat4.identity(dest)
+     *     mat4.rotateY(dest, dest, radians)
+     *
+     * @param {mat4} out - receiving matrix
+     * @param {Number} radians - angle to rotate the matrix by
+     * @returns {mat4} out
+     * @alias module:modeling/maths/mat4.fromYRotation
+     * @example
+     * let matrix = fromYRotation(create(), Math.PI / 2)
+     */
+    const fromYRotation$1 = (out, radians) => {
+      const s = Math.sin(radians);
+      const c = Math.cos(radians);
+
+      // Perform axis-specific matrix multiplication
+      out[0] = c;
+      out[1] = 0;
+      out[2] = -s;
+      out[3] = 0;
+      out[4] = 0;
+      out[5] = 1;
+      out[6] = 0;
+      out[7] = 0;
+      out[8] = s;
+      out[9] = 0;
+      out[10] = c;
+      out[11] = 0;
+      out[12] = 0;
+      out[13] = 0;
+      out[14] = 0;
+      out[15] = 1;
+      return out
+    };
+
+    var fromYRotation_1$1 = fromYRotation$1;
+
+    /**
+     * Creates a matrix from the given angle around the Z axis.
+     * This is equivalent to (but much faster than):
+     *
+     *     mat4.identity(dest)
+     *     mat4.rotateZ(dest, dest, radians)
+     *
+     * @param {mat4} out - receiving matrix
+     * @param {Number} radians - angle to rotate the matrix by
+     * @returns {mat4} out
+     * @alias module:modeling/maths/mat4.fromZRotation
+     * @example
+     * let matrix = fromZRotation(create(), Math.PI / 2)
+     */
+    const fromZRotation$1 = (out, radians) => {
+      const s = Math.sin(radians);
+      const c = Math.cos(radians);
+
+      // Perform axis-specific matrix multiplication
+      out[0] = c;
+      out[1] = s;
+      out[2] = 0;
+      out[3] = 0;
+      out[4] = -s;
+      out[5] = c;
+      out[6] = 0;
+      out[7] = 0;
+      out[8] = 0;
+      out[9] = 0;
+      out[10] = 1;
+      out[11] = 0;
+      out[12] = 0;
+      out[13] = 0;
+      out[14] = 0;
+      out[15] = 1;
+      return out
+    };
+
+    var fromZRotation_1$1 = fromZRotation$1;
+
+    /**
+     * Determine whether the given matrix is the identity transform.
+     * This is equivalent to (but much faster than):
+     *
+     *     mat4.equals(mat4.create(), matrix)
+     *
+     * @param {mat4} matrix - the matrix
+     * @returns {Boolean} true if matrix is the identity transform
+     * @alias module:modeling/maths/mat4.isIdentity
+     * @example
+     * if (mat4.isIdentity(mymatrix)) ...
+     */
+    const isIdentity = (matrix) => (
+      matrix[0] === 1 && matrix[1] === 0 && matrix[2] === 0 && matrix[3] === 0 &&
+      matrix[4] === 0 && matrix[5] === 1 && matrix[6] === 0 && matrix[7] === 0 &&
+      matrix[8] === 0 && matrix[9] === 0 && matrix[10] === 1 && matrix[11] === 0 &&
+      matrix[12] === 0 && matrix[13] === 0 && matrix[14] === 0 && matrix[15] === 1
+    );
+
+    var isIdentity_1 = isIdentity;
+
+    /**
+     * Determine whether the given matrix is only translate and/or scale.
+     * This code returns true for PI rotation as it can be interpreted as scale.
+     *
+     * @param {mat4} matrix - the matrix
+     * @returns {Boolean} true if matrix is for translate and/or scale
+     * @alias module:modeling/maths/mat4.isOnlyTransformScale
+     */
+    const isOnlyTransformScale = (matrix) => (
+
+      // TODO check if it is worth the effort to add recognition of 90 deg rotations
+
+      isZero(matrix[1]) && isZero(matrix[2]) && isZero(matrix[3]) &&
+      isZero(matrix[4]) && isZero(matrix[6]) && isZero(matrix[7]) &&
+      isZero(matrix[8]) && isZero(matrix[9]) && isZero(matrix[11]) &&
+      matrix[15] === 1
+    );
+
+    const isZero = (num) => Math.abs(num) < Number.EPSILON;
+
+    var isOnlyTransformScale_1 = isOnlyTransformScale;
+
+    /**
+     * Determine whether the given matrix is a mirroring transformation.
+     *
+     * @param {mat4} matrix - matrix of reference
+     * @returns {Boolean} true if matrix is a mirroring transformation
+     * @alias module:modeling/maths/mat4.isMirroring
+     */
+    const isMirroring = (matrix) => {
+      const u = fromValues_1$4(matrix[0], matrix[4], matrix[8]);
+      const v = fromValues_1$4(matrix[1], matrix[5], matrix[9]);
+      const w = fromValues_1$4(matrix[2], matrix[6], matrix[10]);
+
+      // for a true orthogonal, non-mirrored base, u.cross(v) == w
+      // If they have an opposite direction then we are mirroring
+      const mirrorvalue = dot_1$2(cross_1$2(u, u, v), w);
+      const ismirror = (mirrorvalue < 0);
+      return ismirror
+    };
+
+    var isMirroring_1 = isMirroring;
+
+    /**
+     * Create a matrix for mirroring about the given plane.
+     *
+     * @param {mat4} out - receiving matrix
+     * @param {vec4} plane - plane of which to mirror the matrix
+     * @returns {mat4} out
+     * @alias module:modeling/maths/mat4.mirrorByPlane
+     */
+    const mirrorByPlane = (out, plane) => {
+      const [nx, ny, nz, w] = plane;
+
+      out[0] = (1.0 - 2.0 * nx * nx);
+      out[1] = (-2.0 * ny * nx);
+      out[2] = (-2.0 * nz * nx);
+      out[3] = 0;
+      out[4] = (-2.0 * nx * ny);
+      out[5] = (1.0 - 2.0 * ny * ny);
+      out[6] = (-2.0 * nz * ny);
+      out[7] = 0;
+      out[8] = (-2.0 * nx * nz);
+      out[9] = (-2.0 * ny * nz);
+      out[10] = (1.0 - 2.0 * nz * nz);
+      out[11] = 0;
+      out[12] = (2.0 * nx * w);
+      out[13] = (2.0 * ny * w);
+      out[14] = (2.0 * nz * w);
+      out[15] = 1;
+
+      return out
+    };
+
+    var mirrorByPlane_1 = mirrorByPlane;
+
+    /**
+     * Multiplies the two matrices.
+     *
+     * @param {mat4} out - receiving matrix
+     * @param {mat4} a - first operand
+     * @param {mat4} b - second operand
+     * @returns {mat4} out
+     * @alias module:modeling/maths/mat4.multiply
+     */
+    const multiply$3 = (out, a, b) => {
+      const a00 = a[0];
+      const a01 = a[1];
+      const a02 = a[2];
+      const a03 = a[3];
+      const a10 = a[4];
+      const a11 = a[5];
+      const a12 = a[6];
+      const a13 = a[7];
+      const a20 = a[8];
+      const a21 = a[9];
+      const a22 = a[10];
+      const a23 = a[11];
+      const a30 = a[12];
+      const a31 = a[13];
+      const a32 = a[14];
+      const a33 = a[15];
+
+      // Cache only the current line of the second matrix
+      let b0 = b[0];
+      let b1 = b[1];
+      let b2 = b[2];
+      let b3 = b[3];
+      out[0] = b0 * a00 + b1 * a10 + b2 * a20 + b3 * a30;
+      out[1] = b0 * a01 + b1 * a11 + b2 * a21 + b3 * a31;
+      out[2] = b0 * a02 + b1 * a12 + b2 * a22 + b3 * a32;
+      out[3] = b0 * a03 + b1 * a13 + b2 * a23 + b3 * a33;
+
+      b0 = b[4];
+      b1 = b[5];
+      b2 = b[6];
+      b3 = b[7];
+      out[4] = b0 * a00 + b1 * a10 + b2 * a20 + b3 * a30;
+      out[5] = b0 * a01 + b1 * a11 + b2 * a21 + b3 * a31;
+      out[6] = b0 * a02 + b1 * a12 + b2 * a22 + b3 * a32;
+      out[7] = b0 * a03 + b1 * a13 + b2 * a23 + b3 * a33;
+
+      b0 = b[8];
+      b1 = b[9];
+      b2 = b[10];
+      b3 = b[11];
+      out[8] = b0 * a00 + b1 * a10 + b2 * a20 + b3 * a30;
+      out[9] = b0 * a01 + b1 * a11 + b2 * a21 + b3 * a31;
+      out[10] = b0 * a02 + b1 * a12 + b2 * a22 + b3 * a32;
+      out[11] = b0 * a03 + b1 * a13 + b2 * a23 + b3 * a33;
+
+      b0 = b[12];
+      b1 = b[13];
+      b2 = b[14];
+      b3 = b[15];
+      out[12] = b0 * a00 + b1 * a10 + b2 * a20 + b3 * a30;
+      out[13] = b0 * a01 + b1 * a11 + b2 * a21 + b3 * a31;
+      out[14] = b0 * a02 + b1 * a12 + b2 * a22 + b3 * a32;
+      out[15] = b0 * a03 + b1 * a13 + b2 * a23 + b3 * a33;
+      return out
+    };
+
+    var multiply_1$3 = multiply$3;
+
+    /**
+     * Rotates a matrix by the given angle about the given axis.
+     *
+     * @param {mat4} out - receiving matrix
+     * @param {mat4} matrix - matrix to rotate
+     * @param {Number} radians - angle to rotate the matrix by
+     * @param {vec3} axis - axis to rotate around
+     * @returns {mat4} out
+     * @alias module:modeling/maths/mat4.rotate
+     */
+    const rotate$3 = (out, matrix, radians, axis) => {
+      let [x, y, z] = axis;
+      let len = Math.hypot(x, y, z);
+
+      if (Math.abs(len) < 0.000001) {
+        // axis is 0,0,0 or almost
+        return copy_1$4(out, matrix)
+      }
+
+      len = 1 / len;
+      x *= len;
+      y *= len;
+      z *= len;
+
+      const s = Math.sin(radians);
+      const c = Math.cos(radians);
+      const t = 1 - c;
+
+      const a00 = matrix[0];
+      const a01 = matrix[1];
+      const a02 = matrix[2];
+      const a03 = matrix[3];
+      const a10 = matrix[4];
+      const a11 = matrix[5];
+      const a12 = matrix[6];
+      const a13 = matrix[7];
+      const a20 = matrix[8];
+      const a21 = matrix[9];
+      const a22 = matrix[10];
+      const a23 = matrix[11];
+
+      // Construct the elements of the rotation matrix
+      const b00 = x * x * t + c;
+      const b01 = y * x * t + z * s;
+      const b02 = z * x * t - y * s;
+      const b10 = x * y * t - z * s;
+      const b11 = y * y * t + c;
+      const b12 = z * y * t + x * s;
+      const b20 = x * z * t + y * s;
+      const b21 = y * z * t - x * s;
+      const b22 = z * z * t + c;
+
+      // Perform rotation-specific matrix multiplication
+      out[0] = a00 * b00 + a10 * b01 + a20 * b02;
+      out[1] = a01 * b00 + a11 * b01 + a21 * b02;
+      out[2] = a02 * b00 + a12 * b01 + a22 * b02;
+      out[3] = a03 * b00 + a13 * b01 + a23 * b02;
+      out[4] = a00 * b10 + a10 * b11 + a20 * b12;
+      out[5] = a01 * b10 + a11 * b11 + a21 * b12;
+      out[6] = a02 * b10 + a12 * b11 + a22 * b12;
+      out[7] = a03 * b10 + a13 * b11 + a23 * b12;
+      out[8] = a00 * b20 + a10 * b21 + a20 * b22;
+      out[9] = a01 * b20 + a11 * b21 + a21 * b22;
+      out[10] = a02 * b20 + a12 * b21 + a22 * b22;
+      out[11] = a03 * b20 + a13 * b21 + a23 * b22;
+
+      if (matrix !== out) { // If the source and destination differ, copy the unchanged last row
+        out[12] = matrix[12];
+        out[13] = matrix[13];
+        out[14] = matrix[14];
+        out[15] = matrix[15];
+      }
+      return out
+    };
+
+    var rotate_1$2 = rotate$3;
+
+    /**
+     * Rotates a matrix by the given angle around the X axis.
+     *
+     * @param {mat4} out - receiving matrix
+     * @param {mat4} matrix - matrix to rotate
+     * @param {Number} radians - angle to rotate the matrix by
+     * @returns {mat4} out
+     * @alias module:modeling/maths/mat4.rotateX
+     */
+    const rotateX$2 = (out, matrix, radians) => {
+      const s = Math.sin(radians);
+      const c = Math.cos(radians);
+      const a10 = matrix[4];
+      const a11 = matrix[5];
+      const a12 = matrix[6];
+      const a13 = matrix[7];
+      const a20 = matrix[8];
+      const a21 = matrix[9];
+      const a22 = matrix[10];
+      const a23 = matrix[11];
+
+      if (matrix !== out) { // If the source and destination differ, copy the unchanged rows
+        out[0] = matrix[0];
+        out[1] = matrix[1];
+        out[2] = matrix[2];
+        out[3] = matrix[3];
+        out[12] = matrix[12];
+        out[13] = matrix[13];
+        out[14] = matrix[14];
+        out[15] = matrix[15];
+      }
+
+      // Perform axis-specific matrix multiplication
+      out[4] = a10 * c + a20 * s;
+      out[5] = a11 * c + a21 * s;
+      out[6] = a12 * c + a22 * s;
+      out[7] = a13 * c + a23 * s;
+      out[8] = a20 * c - a10 * s;
+      out[9] = a21 * c - a11 * s;
+      out[10] = a22 * c - a12 * s;
+      out[11] = a23 * c - a13 * s;
+      return out
+    };
+
+    var rotateX_1$2 = rotateX$2;
+
+    /**
+     * Rotates a matrix by the given angle around the Y axis.
+     *
+     * @param {mat4} out - receiving matrix
+     * @param {mat4} matrix - matrix to rotate
+     * @param {Number} radians - angle to rotate the matrix by
+     * @returns {mat4} out
+     * @alias module:modeling/maths/mat4.rotateY
+     */
+    const rotateY$2 = (out, matrix, radians) => {
+      const s = Math.sin(radians);
+      const c = Math.cos(radians);
+      const a00 = matrix[0];
+      const a01 = matrix[1];
+      const a02 = matrix[2];
+      const a03 = matrix[3];
+      const a20 = matrix[8];
+      const a21 = matrix[9];
+      const a22 = matrix[10];
+      const a23 = matrix[11];
+
+      if (matrix !== out) { // If the source and destination differ, copy the unchanged rows
+        out[4] = matrix[4];
+        out[5] = matrix[5];
+        out[6] = matrix[6];
+        out[7] = matrix[7];
+        out[12] = matrix[12];
+        out[13] = matrix[13];
+        out[14] = matrix[14];
+        out[15] = matrix[15];
+      }
+
+      // Perform axis-specific matrix multiplication
+      out[0] = a00 * c - a20 * s;
+      out[1] = a01 * c - a21 * s;
+      out[2] = a02 * c - a22 * s;
+      out[3] = a03 * c - a23 * s;
+      out[8] = a00 * s + a20 * c;
+      out[9] = a01 * s + a21 * c;
+      out[10] = a02 * s + a22 * c;
+      out[11] = a03 * s + a23 * c;
+      return out
+    };
+
+    var rotateY_1$2 = rotateY$2;
+
+    /**
+     * Rotates a matrix by the given angle around the Z axis.
+     *
+     * @param {mat4} out - receiving matrix
+     * @param {mat4} matrix - matrix to rotate
+     * @param {Number} radians - angle to rotate the matrix by
+     * @returns {mat4} out
+     * @alias module:modeling/maths/mat4.rotateZ
+     */
+    const rotateZ$2 = (out, matrix, radians) => {
+      const s = Math.sin(radians);
+      const c = Math.cos(radians);
+      const a00 = matrix[0];
+      const a01 = matrix[1];
+      const a02 = matrix[2];
+      const a03 = matrix[3];
+      const a10 = matrix[4];
+      const a11 = matrix[5];
+      const a12 = matrix[6];
+      const a13 = matrix[7];
+
+      if (matrix !== out) { // If the source and destination differ, copy the unchanged last row
+        out[8] = matrix[8];
+        out[9] = matrix[9];
+        out[10] = matrix[10];
+        out[11] = matrix[11];
+        out[12] = matrix[12];
+        out[13] = matrix[13];
+        out[14] = matrix[14];
+        out[15] = matrix[15];
+      }
+
+      // Perform axis-specific matrix multiplication
+      out[0] = a00 * c + a10 * s;
+      out[1] = a01 * c + a11 * s;
+      out[2] = a02 * c + a12 * s;
+      out[3] = a03 * c + a13 * s;
+      out[4] = a10 * c - a00 * s;
+      out[5] = a11 * c - a01 * s;
+      out[6] = a12 * c - a02 * s;
+      out[7] = a13 * c - a03 * s;
+      return out
+    };
+
+    var rotateZ_1$2 = rotateZ$2;
+
+    /**
+     * Scales the matrix by the given dimensions.
+     *
+     * @param {mat4} out - receiving matrix
+     * @param {mat4} matrix - matrix to scale
+     * @param {vec3} dimensions - dimensions to scale the matrix by
+     * @returns {mat4} out
+     * @alias module:modeling/maths/mat4.scale
+     */
+    const scale$3 = (out, matrix, dimensions) => {
+      const x = dimensions[0];
+      const y = dimensions[1];
+      const z = dimensions[2];
+
+      out[0] = matrix[0] * x;
+      out[1] = matrix[1] * x;
+      out[2] = matrix[2] * x;
+      out[3] = matrix[3] * x;
+      out[4] = matrix[4] * y;
+      out[5] = matrix[5] * y;
+      out[6] = matrix[6] * y;
+      out[7] = matrix[7] * y;
+      out[8] = matrix[8] * z;
+      out[9] = matrix[9] * z;
+      out[10] = matrix[10] * z;
+      out[11] = matrix[11] * z;
+      out[12] = matrix[12];
+      out[13] = matrix[13];
+      out[14] = matrix[14];
+      out[15] = matrix[15];
+      return out
+    };
+
+    var scale_1$3 = scale$3;
+
+    /**
+     * Subtracts matrix b from matrix a. (A-B)
+     *
+     * @param {mat4} out - receiving matrix
+     * @param {mat4} a - first operand
+     * @param {mat4} b - second operand
+     * @returns {mat4} out
+     * @alias module:modeling/maths/mat4.subtract
+     */
+    const subtract$2 = (out, a, b) => {
+      out[0] = a[0] - b[0];
+      out[1] = a[1] - b[1];
+      out[2] = a[2] - b[2];
+      out[3] = a[3] - b[3];
+      out[4] = a[4] - b[4];
+      out[5] = a[5] - b[5];
+      out[6] = a[6] - b[6];
+      out[7] = a[7] - b[7];
+      out[8] = a[8] - b[8];
+      out[9] = a[9] - b[9];
+      out[10] = a[10] - b[10];
+      out[11] = a[11] - b[11];
+      out[12] = a[12] - b[12];
+      out[13] = a[13] - b[13];
+      out[14] = a[14] - b[14];
+      out[15] = a[15] - b[15];
+      return out
+    };
+
+    var subtract_1$2 = subtract$2;
+
+    /**
+     * Return a string representing the given matrix.
+     *
+     * @param {mat4} mat - matrix of reference
+     * @returns {String} string representation
+     * @alias module:modeling/maths/mat4.toString
+     */
+    const toString$6 = (mat) => mat.map((n) => n.toFixed(7)).toString();
+
+    var toString_1$6 = toString$6;
+
+    /**
+     * Translate the matrix by the given offset vector.
+     *
+     * @param {mat4} out - receiving matrix
+     * @param {mat4} matrix - matrix to translate
+     * @param {vec3} offsets - offset vector to translate by
+     * @returns {mat4} out
+     * @alias module:modeling/maths/mat4.translate
+     */
+    const translate$1 = (out, matrix, offsets) => {
+      const x = offsets[0];
+      const y = offsets[1];
+      const z = offsets[2];
+      let a00;
+      let a01;
+      let a02;
+      let a03;
+      let a10;
+      let a11;
+      let a12;
+      let a13;
+      let a20;
+      let a21;
+      let a22;
+      let a23;
+
+      if (matrix === out) {
+      // 0-11 assignments are unnecessary
+        out[12] = matrix[0] * x + matrix[4] * y + matrix[8] * z + matrix[12];
+        out[13] = matrix[1] * x + matrix[5] * y + matrix[9] * z + matrix[13];
+        out[14] = matrix[2] * x + matrix[6] * y + matrix[10] * z + matrix[14];
+        out[15] = matrix[3] * x + matrix[7] * y + matrix[11] * z + matrix[15];
+      } else {
+        a00 = matrix[0]; a01 = matrix[1]; a02 = matrix[2]; a03 = matrix[3];
+        a10 = matrix[4]; a11 = matrix[5]; a12 = matrix[6]; a13 = matrix[7];
+        a20 = matrix[8]; a21 = matrix[9]; a22 = matrix[10]; a23 = matrix[11];
+
+        out[0] = a00; out[1] = a01; out[2] = a02; out[3] = a03;
+        out[4] = a10; out[5] = a11; out[6] = a12; out[7] = a13;
+        out[8] = a20; out[9] = a21; out[10] = a22; out[11] = a23;
+
+        out[12] = a00 * x + a10 * y + a20 * z + matrix[12];
+        out[13] = a01 * x + a11 * y + a21 * z + matrix[13];
+        out[14] = a02 * x + a12 * y + a22 * z + matrix[14];
+        out[15] = a03 * x + a13 * y + a23 * z + matrix[15];
+      }
+
+      return out
+    };
+
+    var translate_1$1 = translate$1;
+
+    /**
+     * Represents a 4x4 matrix which is column-major (when typed out it looks row-major).
+     * @see {@link mat4} for data structure information.
+     * @module modeling/maths/mat4
+     */
+    var mat4 = {
+      add: add_1$2,
+      clone: clone_1$7,
+      copy: copy_1$4,
+      create: create_1$9,
+      invert: invert_1$3,
+      equals: equals_1$4,
+      fromRotation: fromRotation_1$1,
+      fromScaling: fromScaling_1$1,
+      fromTaitBryanRotation: fromTaitBryanRotation_1,
+      fromTranslation: fromTranslation_1$1,
+      fromValues: fromValues_1$3,
+      fromVectorRotation: fromVectorRotation_1,
+      fromXRotation: fromXRotation_1$1,
+      fromYRotation: fromYRotation_1$1,
+      fromZRotation: fromZRotation_1$1,
+      identity: identity_1$1,
+      isIdentity: isIdentity_1,
+      isOnlyTransformScale: isOnlyTransformScale_1,
+      isMirroring: isMirroring_1,
+      mirrorByPlane: mirrorByPlane_1,
+      multiply: multiply_1$3,
+      rotate: rotate_1$2,
+      rotateX: rotateX_1$2,
+      rotateY: rotateY_1$2,
+      rotateZ: rotateZ_1$2,
+      scale: scale_1$3,
+      subtract: subtract_1$2,
+      toString: toString_1$6,
+      translate: translate_1$1
+    };
+
+    /**
+     * Represents a 2D geometry consisting of a list of sides.
+     * @typedef {Object} geom2
+     * @property {Array} sides - list of sides, each side containing two points
+     * @property {mat4} transforms - transforms to apply to the sides, see transform()
+     */
+
+    /**
+     * Create a new 2D geometry composed of unordered sides (two connected points).
+     * @param {Array} [sides] - list of sides where each side is an array of two points
+     * @returns {geom2} a new geometry
+     * @alias module:modeling/geometries/geom2.create
+     */
+    const create$8 = (sides) => {
+      if (sides === undefined) {
+        sides = []; // empty contents
+      }
+      return {
+        sides: sides,
+        transforms: mat4.create()
+      }
+    };
+
+    var create_1$8 = create$8;
+
+    /**
+     * Calculates the absolute coordinates of the given vector.
+     *
+     * @param {vec2} out - receiving vector
+     * @param {vec2} vector - vector of reference
+     * @returns {vec2} out
+     * @alias module:modeling/maths/vec2.abs
+     */
+    const abs = (out, vector) => {
+      out[0] = Math.abs(vector[0]);
+      out[1] = Math.abs(vector[1]);
+      return out
+    };
+
+    var abs_1 = abs;
+
+    /**
+     * Adds the coordinates of two vectors (A+B).
+     *
+     * @param {vec2} out - receiving vector
+     * @param {vec2} a - first operand
+     * @param {vec2} b - second operand
+     * @returns {vec2} out
+     * @alias module:modeling/maths/vec2.add
+     */
+    const add$1 = (out, a, b) => {
+      out[0] = a[0] + b[0];
+      out[1] = a[1] + b[1];
+      return out
+    };
+
+    var add_1$1 = add$1;
+
+    /**
+     * Calculate the angle of the given vector.
+     *
+     * @param {vec2} vector - vector of reference
+     * @returns {Number} angle in radians
+     * @alias module:modeling/maths/vec2.angleRadians
+     */
+    const angleRadians = (vector) => Math.atan2(vector[1], vector[0]); // y=sin, x=cos
+
+    var angleRadians_1 = angleRadians;
+
+    var angle$1 = angleRadians_1;
+
+    /**
+     * Calculate the angle of the given vector.
+     *
+     * @param {vec2} vector - vector of reference
+     * @returns {Number} angle in degrees
+     * @alias module:modeling/maths/vec2.angleDegrees
+     */
+    const angleDegrees = (vector) => angleRadians_1(vector) * 57.29577951308232;
+
+    var angleDegrees_1 = angleDegrees;
+
+    /**
+     * Represents a two dimensional vector.
+     * See fromValues().
+     * @typedef {Array} vec2
+     */
+
+    /**
+     * Creates a new vector, initialized to [0,0].
+     *
+     * @returns {vec2} a new vector
+     * @alias module:modeling/maths/vec2.create
+     */
+    const create$7 = () => [0, 0];
+
+    var create_1$7 = create$7;
+
+    /**
+     * Create a clone of the given vector.
+     *
+     * @param {vec2} vector - vector to clone
+     * @returns {vec2} a new vector
+     * @alias module:modeling/maths/vec2.clone
+     */
+    const clone$6 = (vector) => {
+      const out = create_1$7();
+      out[0] = vector[0];
+      out[1] = vector[1];
+      return out
+    };
+
+    var clone_1$6 = clone$6;
+
+    /**
+     * Create a copy of the given vector.
+     *
+     * @param {vec2} out - receiving vector
+     * @param {vec2} vector - source vector
+     * @returns {vec2} out
+     * @alias module:modeling/maths/vec2.copy
+     */
+    const copy$3 = (out, vector) => {
+      out[0] = vector[0];
+      out[1] = vector[1];
+      return out
+    };
+
+    var copy_1$3 = copy$3;
+
+    /**
+     * Computes the cross product (3D) of two vectors.
+     *
+     * @param {vec3} out - receiving vector (3D)
+     * @param {vec2} a - first operand
+     * @param {vec2} b - second operand
+     * @returns {vec3} out
+     * @alias module:modeling/maths/vec2.cross
+     */
+    const cross$1 = (out, a, b) => {
+      out[0] = 0;
+      out[1] = 0;
+      out[2] = a[0] * b[1] - a[1] * b[0];
+      return out
+    };
+
+    var cross_1$1 = cross$1;
+
+    /**
+     * Calculates the distance between two vectors.
+     *
+     * @param {vec2} a - first operand
+     * @param {vec2} b - second operand
+     * @returns {Number} distance
+     * @alias module:modeling/maths/vec2.distance
+     */
+    const distance$1 = (a, b) => {
+      const x = b[0] - a[0];
+      const y = b[1] - a[1];
+      return Math.hypot(x, y)
+    };
+
+    var distance_1$1 = distance$1;
+
+    /**
+     * Divides the coordinates of two vectors (A/B).
+     *
+     * @param {vec2} out - receiving vector
+     * @param {vec2} a - first operand
+     * @param {vec2} b - second operand
+     * @returns {vec2} out
+     * @alias module:modeling/maths/vec2.divide
+     */
+    const divide$1 = (out, a, b) => {
+      out[0] = a[0] / b[0];
+      out[1] = a[1] / b[1];
+      return out
+    };
+
+    var divide_1$1 = divide$1;
+
+    /**
+     * Calculates the dot product of two vectors.
+     *
+     * @param {vec2} a - first operand
+     * @param {vec2} b - second operand
+     * @returns {Number} dot product
+     * @alias module:modeling/maths/vec2.dot
+     */
+    const dot$1 = (a, b) => a[0] * b[0] + a[1] * b[1];
+
+    var dot_1$1 = dot$1;
+
+    /**
+     * Compare the given vectors for equality.
+     *
+     * @param {vec2} a - first operand
+     * @param {vec2} b - second operand
+     * @returns {Boolean} true if a and b are equal
+     * @alias module:modeling/maths/vec2.equals
+     */
+    const equals$4 = (a, b) => (a[0] === b[0]) && (a[1] === b[1]);
+
+    var equals_1$3 = equals$4;
+
+    /**
+     * Create a new vector in the direction of the given angle.
+     *
+     * @param {vec2} out - receiving vector
+     * @param {Number} radians - angle in radians
+     * @returns {vec2} out
+     * @alias module:modeling/maths/vec2.fromAngleRadians
+     */
+    const fromAngleRadians = (out, radians) => {
+      out[0] = Math.cos(radians);
+      out[1] = Math.sin(radians);
+      return out
+    };
+
+    var fromAngleRadians_1 = fromAngleRadians;
+
+    /**
+     * Create a new vector in the direction of the given angle.
+     *
+     * @param {vec2} out - receiving vector
+     * @param {Number} degrees - angle in degrees
+     * @returns {vec2} out
+     * @alias module:modeling/maths/vec2.fromAngleDegrees
+     */
+    const fromAngleDegrees = (out, degrees) => fromAngleRadians_1(out, Math.PI * degrees / 180);
+
+    var fromAngleDegrees_1 = fromAngleDegrees;
+
+    /**
+     * Create a vector from a single scalar value.
+     *
+     * @param {vec2} out - receiving vector
+     * @param {Number} scalar - the scalar value
+     * @returns {vec2} out
+     * @alias module:modeling/maths/vec2.fromScalar
+     */
+    const fromScalar = (out, scalar) => {
+      out[0] = scalar;
+      out[1] = scalar;
+      return out
+    };
+
+    var fromScalar_1 = fromScalar;
+
+    /**
+     * Creates a new vector initialized with the given values.
+     *
+     * @param {Number} x - X coordinate
+     * @param {Number} y - Y coordinate
+     * @returns {vec2} a new vector
+     * @alias module:modeling/maths/vec2.fromValues
+     */
+    const fromValues$2 = (x, y) => {
+      const out = create_1$7();
+      out[0] = x;
+      out[1] = y;
+      return out
+    };
+
+    var fromValues_1$2 = fromValues$2;
+
+    /**
+     * Calculates the length of the given vector.
+     *
+     * @param {vec2} vector - vector of reference
+     * @returns {Number} length
+     * @alias module:modeling/maths/vec2.length
+     */
+    const length$1 = (vector) => Math.hypot(vector[0], vector[1]);
+
+    var length_1$1 = length$1;
+
+    /**
+     * Performs a linear interpolation between two vectors.
+     *
+     * @param {vec2} out - receiving vector
+     * @param {vec2} a - first operand
+     * @param {vec2} b - second operand
+     * @param {Number} t - interpolation amount between the two vectors
+     * @returns {vec2} out
+     * @alias module:modeling/maths/vec2.lerp
+     */
+    const lerp$1 = (out, a, b, t) => {
+      const ax = a[0];
+      const ay = a[1];
+      out[0] = ax + t * (b[0] - ax);
+      out[1] = ay + t * (b[1] - ay);
+      return out
+    };
+
+    var lerp_1$1 = lerp$1;
+
+    /**
+     * Returns the maximum coordinates of two vectors.
+     *
+     * @param {vec2} out - receiving vector
+     * @param {vec2} a - first operand
+     * @param {vec2} b - second operand
+     * @returns {vec2} out
+     * @alias module:modeling/maths/vec2.max
+     */
+    const max$2 = (out, a, b) => {
+      out[0] = Math.max(a[0], b[0]);
+      out[1] = Math.max(a[1], b[1]);
+      return out
+    };
+
+    var max_1$1 = max$2;
+
+    /**
+     * Returns the minimum coordinates of two vectors.
+     *
+     * @param {vec2} out - receiving vector
+     * @param {vec2} a - first operand
+     * @param {vec2} b - second operand
+     * @returns {vec2} out
+     * @alias module:modeling/maths/vec2.min
+     */
+    const min$2 = (out, a, b) => {
+      out[0] = Math.min(a[0], b[0]);
+      out[1] = Math.min(a[1], b[1]);
+      return out
+    };
+
+    var min_1$1 = min$2;
+
+    /**
+     * Multiplies the coordinates of two vectors (A*B).
+     *
+     * @param {vec2} out - receiving vector
+     * @param {vec2} a - first operand
+     * @param {vec2} b - second operand
+     * @returns {vec2} out
+     * @alias module:modeling/maths/vec2.multiply
+     */
+    const multiply$2 = (out, a, b) => {
+      out[0] = a[0] * b[0];
+      out[1] = a[1] * b[1];
+      return out
+    };
+
+    var multiply_1$2 = multiply$2;
+
+    /**
+     * Negates the coordinates of the given vector.
+     *
+     * @param {vec2} out - receiving vector
+     * @param {vec2} vector - vector to negate
+     * @returns {vec2} out
+     * @alias module:modeling/maths/vec2.negate
+     */
+    const negate$1 = (out, vector) => {
+      out[0] = -vector[0];
+      out[1] = -vector[1];
+      return out
+    };
+
+    var negate_1$1 = negate$1;
+
+    /**
+     * Rotates the given vector by the given angle.
+     *
+     * @param {vec2} out - receiving vector
+     * @param {vec2} vector - vector to rotate
+     * @param {vec2} origin - origin of the rotation
+     * @param {Number} radians - angle of rotation (radians)
+     * @returns {vec2} out
+     * @alias module:modeling/maths/vec2.rotate
+     */
+    const rotate$2 = (out, vector, origin, radians) => {
+      const x = vector[0] - origin[0];
+      const y = vector[1] - origin[1];
+      const c = Math.cos(radians);
+      const s = Math.sin(radians);
+
+      out[0] = x * c - y * s + origin[0];
+      out[1] = x * s + y * c + origin[1];
+
+      return out
+    };
+
+    var rotate_1$1 = rotate$2;
+
+    /**
+     * Calculates the normal of the given vector.
+     * The normal value is the given vector rotated 90 degrees.
+     *
+     * @param {vec2} out - receiving vector
+     * @param {vec2} vector - given value
+     * @returns {vec2} out
+     * @alias module:modeling/maths/vec2.normal
+     */
+    const normal = (out, vector) => rotate_1$1(out, vector, create_1$7(), (Math.PI / 2));
+
+    var normal_1 = normal;
+
+    /**
+     * Normalize the given vector.
+     *
+     * @param {vec2} out - receiving vector
+     * @param {vec2} vector - vector to normalize
+     * @returns {vec2} out
+     * @alias module:modeling/maths/vec2.normalize
+     */
+    const normalize$1 = (out, vector) => {
+      const x = vector[0];
+      const y = vector[1];
+      let len = x * x + y * y;
+      if (len > 0) {
+        len = 1 / Math.sqrt(len);
+      }
+      out[0] = x * len;
+      out[1] = y * len;
+      return out
+    };
+
+    // old this.dividedBy(this.length())
+
+    var normalize_1$1 = normalize$1;
+
+    /**
+     * Scales the coordinates of the given vector.
+     *
+     * @param {vec2} out - receiving vector
+     * @param {vec2} vector - vector to scale
+     * @param {Number} amount - amount to scale
+     * @returns {vec2} out
+     * @alias module:modeling/maths/vec2.scale
+     */
+    const scale$2 = (out, vector, amount) => {
+      out[0] = vector[0] * amount;
+      out[1] = vector[1] * amount;
+      return out
+    };
+
+    var scale_1$2 = scale$2;
+
+    /**
+     * Snaps the coordinates of the given vector to the given epsilon.
+     *
+     * @param {vec2} out - receiving vector
+     * @param {vec2} vector - vector to snap
+     * @param {Number} epsilon - epsilon of precision, less than 0
+     * @returns {vec2} out
+     * @alias module:modeling/maths/vec2.snap
+     */
+    const snap = (out, vector, epsilon) => {
+      out[0] = Math.round(vector[0] / epsilon) * epsilon + 0;
+      out[1] = Math.round(vector[1] / epsilon) * epsilon + 0;
+      return out
+    };
+
+    var snap_1 = snap;
+
+    /**
+     * Calculates the squared distance between the given vectors.
+     *
+     * @param {vec2} a - first operand
+     * @param {vec2} b - second operand
+     * @returns {Number} squared distance
+     * @alias module:modeling/maths/vec2.squaredDistance
+     */
+    const squaredDistance$1 = (a, b) => {
+      const x = b[0] - a[0];
+      const y = b[1] - a[1];
+      return x * x + y * y
+    };
+
+    var squaredDistance_1$1 = squaredDistance$1;
+
+    /**
+     * Calculates the squared length of the given vector.
+     *
+     * @param {vec2} vector - vector of reference
+     * @returns {Number} squared length
+     * @alias module:modeling/maths/vec2.squaredLength
+     */
+    const squaredLength$1 = (vector) => {
+      const x = vector[0];
+      const y = vector[1];
+      return x * x + y * y
+    };
+
+    var squaredLength_1$1 = squaredLength$1;
+
+    /**
+     * Subtracts the coordinates of two vectors (A-B).
+     *
+     * @param {vec2} out - receiving vector
+     * @param {vec2} a - first operand
+     * @param {vec2} b - second operand
+     * @returns {vec2} out
+     * @alias module:modeling/maths/vec2.subtract
+     */
+    const subtract$1 = (out, a, b) => {
+      out[0] = a[0] - b[0];
+      out[1] = a[1] - b[1];
+      return out
+    };
+
+    var subtract_1$1 = subtract$1;
+
+    /**
+     * Convert the given vector to a representative string.
+     *
+     * @param {vec2} vector - vector of reference
+     * @returns {String} string representation
+     * @alias module:modeling/maths/vec2.toString
+     */
+    const toString$5 = (vector) => `[${vector[0].toFixed(7)}, ${vector[1].toFixed(7)}]`;
+
+    var toString_1$5 = toString$5;
+
+    /**
+     * Transforms the given vector using the given matrix.
+     *
+     * @param {vec2} out - receiving vector
+     * @param {vec2} vector - vector to transform
+     * @param {mat4} matrix - matrix to transform with
+     * @returns {vec2} out
+     * @alias module:modeling/maths/vec2.transform
+     */
+    const transform$5 = (out, vector, matrix) => {
+      const x = vector[0];
+      const y = vector[1];
+      out[0] = matrix[0] * x + matrix[4] * y + matrix[12];
+      out[1] = matrix[1] * x + matrix[5] * y + matrix[13];
+      return out
+    };
+
+    var transform_1$5 = transform$5;
+
+    /**
+     * Represents a two dimensional vector.
+     * @module modeling/maths/vec2
+     */
+    var vec2 = {
       abs: abs_1,
       add: add_1$1,
-      angle: angle_1$1,
-      clone: clone_1$2,
-      copy: copy_1$2,
-      create: create_1$2,
+      angle: angle$1,
+      angleDegrees: angleDegrees_1,
+      angleRadians: angleRadians_1,
+      clone: clone_1$6,
+      copy: copy_1$3,
+      create: create_1$7,
       cross: cross_1$1,
       distance: distance_1$1,
       divide: divide_1$1,
       dot: dot_1$1,
-      equals: equals_1$1,
+      equals: equals_1$3,
+      fromAngleDegrees: fromAngleDegrees_1,
+      fromAngleRadians: fromAngleRadians_1,
       fromScalar: fromScalar_1,
-      fromValues: fromValues_1$1,
-      fromVec2: fromVec2,
+      fromValues: fromValues_1$2,
       length: length_1$1,
       lerp: lerp_1$1,
       max: max_1$1,
       min: min_1$1,
       multiply: multiply_1$2,
       negate: negate_1$1,
+      normal: normal_1,
       normalize: normalize_1$1,
-      orthogonal: orthogonal_1,
-      rotateX: rotateX_1$2,
-      rotateY: rotateY_1$2,
-      rotateZ: rotateZ_1$2,
+      rotate: rotate_1$1,
       scale: scale_1$2,
       snap: snap_1,
       squaredDistance: squaredDistance_1$1,
       squaredLength: squaredLength_1$1,
       subtract: subtract_1$1,
-      toString: toString_1,
-      transform: transform_1
+      toString: toString_1$5,
+      transform: transform_1$5
     };
+
+    /**
+     * Create a new 2D geometry from the given points.
+     * The direction (rotation) of the points is not relevant,
+     * as the points can define a convex or a concave polygon.
+     * The geometry must not self intersect, i.e. the sides cannot cross.
+     * @param {Array} points - list of points in 2D space
+     * @returns {geom2} a new geometry
+     * @alias module:modeling/geometries/geom2.fromPoints
+     */
+    const fromPoints$4 = (points) => {
+      if (!Array.isArray(points)) {
+        throw new Error('the given points must be an array')
+      }
+      let length = points.length;
+      if (length < 3) {
+        throw new Error('the given points must define a closed geometry with three or more points')
+      }
+      // adjust length if the given points are closed by the same point
+      if (vec2.equals(points[0], points[length - 1])) --length;
+
+      const sides = [];
+      let prevpoint = points[length - 1];
+      for (let i = 0; i < length; i++) {
+        const point = points[i];
+        sides.push([vec2.clone(prevpoint), vec2.clone(point)]);
+        prevpoint = point;
+      }
+      return create_1$8(sides)
+    };
+
+    var fromPoints_1$4 = fromPoints$4;
+
+    /**
+     * Create a new 2D geometry from the given compact binary data.
+     * @param {Array} data - compact binary data
+     * @returns {geom2} a new geometry
+     * @alias module:modeling/geometries/geom2.fromCompactBinary
+     */
+    const fromCompactBinary$2 = (data) => {
+      if (data[0] !== 0) throw new Error('invalid compact binary data')
+
+      const created = create_1$8();
+
+      created.transforms = mat4.clone(data.slice(1, 17));
+
+      for (let i = 21; i < data.length; i += 4) {
+        const point0 = vec2.fromValues(data[i + 0], data[i + 1]);
+        const point1 = vec2.fromValues(data[i + 2], data[i + 3]);
+        created.sides.push([point0, point1]);
+      }
+      // transfer known properties, i.e. color
+      if (data[17] >= 0) {
+        created.color = [data[17], data[18], data[19], data[20]];
+      }
+      // TODO: how about custom properties or fields ?
+      return created
+    };
+
+    var fromCompactBinary_1$2 = fromCompactBinary$2;
+
+    /**
+     * Determine if the given object is a 2D geometry.
+     * @param {Object} object - the object to interrogate
+     * @returns {Boolean} true, if the object matches a geom2 based object
+     * @alias module:modeling/geometries/geom2.isA
+     */
+    const isA$3 = (object) => {
+      if (object && typeof object === 'object') {
+        if ('sides' in object && 'transforms' in object) {
+          if (Array.isArray(object.sides) && 'length' in object.transforms) {
+            return true
+          }
+        }
+      }
+      return false
+    };
+
+    var isA_1$3 = isA$3;
+
+    /*
+     * Apply the transforms of the given geometry.
+     * NOTE: This function must be called BEFORE exposing any data. See toSides().
+     * @param {geom2} geometry - the geometry to transform
+     * @returns {geom2} the given geometry
+     *
+     * @example
+     * geometry = applyTransforms(geometry)
+     */
+    const applyTransforms$2 = (geometry) => {
+      if (mat4.isIdentity(geometry.transforms)) return geometry
+
+      // apply transforms to each side
+      geometry.sides = geometry.sides.map((side) => {
+        const p0 = vec2.transform(vec2.create(), side[0], geometry.transforms);
+        const p1 = vec2.transform(vec2.create(), side[1], geometry.transforms);
+        return [p0, p1]
+      });
+      geometry.transforms = mat4.create();
+      return geometry
+    };
+
+    var applyTransforms_1$2 = applyTransforms$2;
+
+    /**
+     * Produces an array of sides from the given geometry.
+     * The returned array should not be modified as the data is shared with the geometry.
+     * NOTE: The sides returned do NOT define an order. Use toOutlines() for ordered points.
+     * @param {geom2} geometry - the geometry
+     * @returns {Array} an array of sides
+     * @alias module:modeling/geometries/geom2.toSides
+     *
+     * @example
+     * let sharedsides = toSides(geometry)
+     */
+    const toSides = (geometry) => applyTransforms_1$2(geometry).sides;
+
+    var toSides_1 = toSides;
+
+    /**
+     * Reverses the given geometry so that the sides are flipped in the opposite order.
+     * This swaps the left (interior) and right (exterior) edges.
+     * @param {geom2} geometry - the geometry to reverse
+     * @returns {geom2} the new reversed geometry
+     * @alias module:modeling/geometries/geom2.reverse
+     *
+     * @example
+     * let newgeometry = reverse(geometry)
+     */
+    const reverse$1 = (geometry) => {
+      const oldsides = toSides_1(geometry);
+
+      const newsides = oldsides.map((side) => [side[1], side[0]]);
+      newsides.reverse(); // is this required?
+      return create_1$8(newsides)
+    };
+
+    var reverse_1$1 = reverse$1;
+
+    /*
+     * Create a list of edges which SHARE vertices.
+     * This allows the edges to be traversed in order.
+     */
+    const toEdges = (sides) => {
+      const vertices = {};
+      const getUniqueVertex = (vertex) => {
+        const key = vertex.toString();
+        if (!vertices[key]) {
+          vertices[key] = vertex;
+        }
+        return vertices[key]
+      };
+
+      return sides.map((side) => side.map(getUniqueVertex))
+    };
+
+    /**
+     * Create the outline(s) of the given geometry.
+     * @param  {geom2} geometry
+     * @returns {Array} an array of outlines, where each outline is an array of ordered points
+     * @alias module:modeling/geometries/geom2.toOutlines
+     *
+     * @example
+     * let geometry = subtract(rectangle({size: [5, 5]}), rectangle({size: [3, 3]}))
+     * let outlines = toOutlines(geometry) // returns two outlines
+     */
+    const toOutlines = (geometry) => {
+      const vertexMap = new Map();
+      const edges = toEdges(toSides_1(geometry));
+      edges.forEach((edge) => {
+        if (!(vertexMap.has(edge[0]))) {
+          vertexMap.set(edge[0], []);
+        }
+        const sideslist = vertexMap.get(edge[0]);
+        sideslist.push(edge);
+      });
+
+      const outlines = [];
+      while (true) {
+        let startside;
+        for (const [vertex, edges] of vertexMap) {
+          startside = edges.shift();
+          if (!startside) {
+            vertexMap.delete(vertex);
+            continue
+          }
+          break
+        }
+        if (startside === undefined) break // all starting sides have been visited
+
+        const connectedVertexPoints = [];
+        const startvertex = startside[0];
+        const v0 = vec2.create();
+        while (true) {
+          connectedVertexPoints.push(startside[0]);
+          const nextvertex = startside[1];
+          if (nextvertex === startvertex) break // the outline has been closed
+          const nextpossiblesides = vertexMap.get(nextvertex);
+          if (!nextpossiblesides) {
+            throw new Error('the given geometry is not closed. verify proper construction')
+          }
+          let nextsideindex = -1;
+          if (nextpossiblesides.length === 1) {
+            nextsideindex = 0;
+          } else {
+            // more than one side starting at the same vertex
+            let bestangle;
+            const startangle = vec2.angleDegrees(vec2.subtract(v0, startside[1], startside[0]));
+            for (let sideindex = 0; sideindex < nextpossiblesides.length; sideindex++) {
+              const nextpossibleside = nextpossiblesides[sideindex];
+              const nextangle = vec2.angleDegrees(vec2.subtract(v0, nextpossibleside[1], nextpossibleside[0]));
+              let angledif = nextangle - startangle;
+              if (angledif < -180) angledif += 360;
+              if (angledif >= 180) angledif -= 360;
+              if ((nextsideindex < 0) || (angledif > bestangle)) {
+                nextsideindex = sideindex;
+                bestangle = angledif;
+              }
+            }
+          }
+          const nextside = nextpossiblesides[nextsideindex];
+          nextpossiblesides.splice(nextsideindex, 1); // remove side from list
+          if (nextpossiblesides.length === 0) {
+            vertexMap.delete(nextvertex);
+          }
+          startside = nextside;
+        } // inner loop
+
+        // due to the logic of fromPoints()
+        // move the first point to the last
+        if (connectedVertexPoints.length > 0) {
+          connectedVertexPoints.push(connectedVertexPoints.shift());
+        }
+        outlines.push(connectedVertexPoints);
+      } // outer loop
+      vertexMap.clear();
+      return outlines
+    };
+
+    var toOutlines_1 = toOutlines;
+
+    /**
+     * Produces an array of points from the given geometry.
+     * The returned array should not be modified as the points are shared with the geometry.
+     * NOTE: The points returned do NOT define an order. Use toOutlines() for ordered points.
+     * @param {geom2} geometry - the geometry
+     * @returns {Array} an array of points
+     * @alias module:modeling/geometries/geom2.toPoints
+     *
+     * @example
+     * let sharedpoints = toPoints(geometry)
+     */
+    const toPoints$3 = (geometry) => {
+      const sides = toSides_1(geometry);
+      const points = sides.map((side) => side[0]);
+      // due to the logic of fromPoints()
+      // move the first point to the last
+      if (points.length > 0) {
+        points.push(points.shift());
+      }
+      return points
+    };
+
+    var toPoints_1$3 = toPoints$3;
+
+    /**
+     * Create a string representing the contents of the given geometry.
+     * @param {geom2} geometry - the geometry
+     * @returns {String} a representative string
+     * @alias module:modeling/geometries/geom2.toString
+     *
+     * @example
+     * console.out(toString(geometry))
+     */
+    const toString$4 = (geometry) => {
+      const sides = toSides_1(geometry);
+      let result = 'geom2 (' + sides.length + ' sides):\n[\n';
+      sides.forEach((side) => {
+        result += '  [' + vec2.toString(side[0]) + ', ' + vec2.toString(side[1]) + ']\n';
+      });
+      result += ']\n';
+      return result
+    };
+
+    var toString_1$4 = toString$4;
+
+    /**
+     * Produces a compact binary representation from the given geometry.
+     * @param {geom2} geometry - the geometry
+     * @returns {TypedArray} compact binary representation
+     * @alias module:modeling/geometries/geom2.toCompactBinary
+     */
+    const toCompactBinary$2 = (geometry) => {
+      const sides = geometry.sides;
+      const transforms = geometry.transforms;
+      let color = [-1, -1, -1, -1];
+      if (geometry.color) color = geometry.color;
+
+      // FIXME why Float32Array?
+      const compacted = new Float32Array(1 + 16 + 4 + (sides.length * 4)); // type + transforms + color + sides data
+
+      compacted[0] = 0; // type code: 0 => geom2, 1 => geom3 , 2 => path2
+
+      compacted[1] = transforms[0];
+      compacted[2] = transforms[1];
+      compacted[3] = transforms[2];
+      compacted[4] = transforms[3];
+      compacted[5] = transforms[4];
+      compacted[6] = transforms[5];
+      compacted[7] = transforms[6];
+      compacted[8] = transforms[7];
+      compacted[9] = transforms[8];
+      compacted[10] = transforms[9];
+      compacted[11] = transforms[10];
+      compacted[12] = transforms[11];
+      compacted[13] = transforms[12];
+      compacted[14] = transforms[13];
+      compacted[15] = transforms[14];
+      compacted[16] = transforms[15];
+
+      compacted[17] = color[0];
+      compacted[18] = color[1];
+      compacted[19] = color[2];
+      compacted[20] = color[3];
+
+      for (let i = 0; i < sides.length; i++) {
+        const ci = i * 4 + 21;
+        const point0 = sides[i][0];
+        const point1 = sides[i][1];
+        compacted[ci + 0] = point0[0];
+        compacted[ci + 1] = point0[1];
+        compacted[ci + 2] = point1[0];
+        compacted[ci + 3] = point1[1];
+      }
+      // TODO: how about custom properties or fields ?
+      return compacted
+    };
+
+    var toCompactBinary_1$2 = toCompactBinary$2;
+
+    /**
+     * Transform the given geometry using the given matrix.
+     * This is a lazy transform of the sides, as this function only adjusts the transforms.
+     * The transforms are applied when accessing the sides via toSides().
+     * @param {mat4} matrix - the matrix to transform with
+     * @param {geom2} geometry - the geometry to transform
+     * @returns {geom2} a new geometry
+     * @alias module:modeling/geometries/geom2.transform
+     *
+     * @example
+     * let newgeometry = transform(fromZRotation(degToRad(90)), geometry)
+     */
+    const transform$4 = (matrix, geometry) => {
+      const transforms = mat4.multiply(mat4.create(), matrix, geometry.transforms);
+      return Object.assign({}, geometry, { transforms })
+    };
+
+    var transform_1$4 = transform$4;
+
+    /**
+     * Determine if the given object is a valid geom2.
+     * Checks for closedness, self-edges, and valid data points.
+     *
+     * **If the geometry is not valid, an exception will be thrown with details of the geometry error.**
+     *
+     * @param {Object} object - the object to interrogate
+     * @throws {Error} error if the geometry is not valid
+     * @alias module:modeling/geometries/geom2.validate
+     */
+    const validate$3 = (object) => {
+      if (!isA_1$3(object)) {
+        throw new Error('invalid geom2 structure')
+      }
+
+      // check for closedness
+      toOutlines_1(object);
+
+      // check for self-edges
+      object.sides.forEach((side) => {
+        if (vec2.equals(side[0], side[1])) {
+          throw new Error(`geom2 self-edge ${side[0]}`)
+        }
+      });
+
+      // check transforms
+      if (!object.transforms.every(Number.isFinite)) {
+        throw new Error(`geom2 invalid transforms ${object.transforms}`)
+      }
+    };
+
+    var validate_1$3 = validate$3;
+
+    /**
+     * Represents a 2D geometry consisting of a list of sides.
+     * @see {@link geom2} for data structure information.
+     * @module modeling/geometries/geom2
+     *
+     * @example
+     * colorize([0.5,0,1,1], square()) // purple square
+     *
+     * @example
+     * {
+     *   "sides": [[[-1,1],[-1,-1]],[[-1,-1],[1,-1]],[[1,-1],[1,1]],[[1,1],[-1,1]]],
+     *   "transforms": [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],
+     *   "color": [0.5,0,1,1]
+     * }
+     */
+    var geom2$2 = {
+      clone: clone_1$8,
+      create: create_1$8,
+      fromPoints: fromPoints_1$4,
+      fromCompactBinary: fromCompactBinary_1$2,
+      isA: isA_1$3,
+      reverse: reverse_1$1,
+      toOutlines: toOutlines_1,
+      toPoints: toPoints_1$3,
+      toSides: toSides_1,
+      toString: toString_1$4,
+      toCompactBinary: toCompactBinary_1$2,
+      transform: transform_1$4,
+      validate: validate_1$3
+    };
+
+    /**
+     * Performs a shallow clone of the given geometry.
+     * @param {geom3} geometry - the geometry to clone
+     * @returns {geom3} a new geometry
+     * @alias module:modeling/geometries/geom3.clone
+     */
+    const clone$5 = (geometry) => Object.assign({}, geometry);
+
+    var clone_1$5 = clone$5;
+
+    /**
+     * Represents a 3D geometry consisting of a list of polygons.
+     * @typedef {Object} geom3
+     * @property {Array} polygons - list of polygons, each polygon containing three or more points
+     * @property {mat4} transforms - transforms to apply to the polygons, see transform()
+     */
+
+    /**
+     * Create a new 3D geometry composed of the given polygons.
+     * @param {Array} [polygons] - list of polygons, or undefined
+     * @returns {geom3} a new geometry
+     * @alias module:modeling/geometries/geom3.create
+     */
+    const create$6 = (polygons) => {
+      if (polygons === undefined) {
+        polygons = []; // empty contents
+      }
+      return {
+        polygons: polygons,
+        transforms: mat4.create()
+      }
+    };
+
+    var create_1$6 = create$6;
+
+    /**
+     * Represents a convex 3D polygon. The vertices used to initialize a polygon must
+     * be coplanar and form a convex shape. The vertices do not have to be `vec3`
+     * instances but they must behave similarly.
+     * @typedef {Object} poly3
+     * @property {Array} vertices - list of ordered vertices (3D)
+     */
+
+    /**
+     * Creates a new 3D polygon with initial values.
+     *
+     * @param {Array} [vertices] - a list of vertices (3D)
+     * @returns {poly3} a new polygon
+     * @alias module:modeling/geometries/poly3.create
+     */
+    const create$5 = (vertices) => {
+      if (vertices === undefined || vertices.length < 3) {
+        vertices = []; // empty contents
+      }
+      return { vertices: vertices }
+    };
+
+    var create_1$5 = create$5;
+
+    /**
+     * Create a deep clone of the given polygon
+     *
+     * @param {poly3} [out] - receiving polygon
+     * @param {poly3} polygon - polygon to clone
+     * @returns {poly3} a new polygon
+     * @alias module:modeling/geometries/poly3.clone
+     */
+    const clone$4 = (...params) => {
+      let out;
+      let poly3;
+      if (params.length === 1) {
+        out = create_1$5();
+        poly3 = params[0];
+      } else {
+        out = params[0];
+        poly3 = params[1];
+      }
+      // deep clone of vertices
+      out.vertices = poly3.vertices.map((vec) => vec3$1.clone(vec));
+      return out
+    };
+
+    var clone_1$4 = clone$4;
+
+    /**
+     * Create a polygon from the given points.
+     *
+     * @param {Array} points - list of points (3D)
+     * @returns {poly3} a new polygon
+     * @alias module:modeling/geometries/poly3.fromPoints
+     *
+     * @example
+     * const points = [
+     *   [0,  0, 0],
+     *   [0, 10, 0],
+     *   [0, 10, 10]
+     * ]
+     * const polygon = fromPoints(points)
+     */
+    const fromPoints$3 = (points) => {
+      const vertices = points.map((point) => vec3$1.clone(point));
+      return create_1$5(vertices)
+    };
+
+    var fromPoints_1$3 = fromPoints$3;
+
+    /**
+     * Create a polygon from the given vertices and plane.
+     * NOTE: No checks are performed on the parameters.
+     * @param {Array} vertices - list of vertices (3D)
+     * @param {plane} plane - plane of the polygon
+     * @returns {poly3} a new polygon
+     * @alias module:modeling/geometries/poly3.fromPointsAndPlane
+     */
+    const fromPointsAndPlane = (vertices, plane) => {
+      const poly = create_1$5(vertices);
+      poly.plane = plane; // retain the plane for later use
+      return poly
+    };
+
+    var fromPointsAndPlane_1 = fromPointsAndPlane;
+
+    /**
+     * Represents a four dimensional vector.
+     * See fromValues().
+     * @typedef {Array} vec4
+     */
+
+    /**
+     * Creates a new vector initialized to [0,0,0,0].
+     *
+     * @returns {vec4} a new vector
+     * @alias module:modeling/maths/vec4.create
+     */
+    const create$4 = () => [0, 0, 0, 0];
+
+    var create_1$4 = create$4;
+
+    /**
+     * Create a clone of the given vector.
+     *
+     * @param {vec4} vector - source vector
+     * @returns {vec4} a new vector
+     * @alias module:modeling/maths/vec4.clone
+     */
+    const clone$3 = (vector) => {
+      const out = create_1$4();
+      out[0] = vector[0];
+      out[1] = vector[1];
+      out[2] = vector[2];
+      out[3] = vector[3];
+      return out
+    };
+
+    var clone_1$3 = clone$3;
+
+    /**
+     * Create a copy of the given vector.
+     *
+     * @param {vec4} out - receiving vector
+     * @param {vec4} vector - source vector
+     * @returns {vec4} out
+     * @alias module:modeling/maths/vec4.copy
+     */
+    const copy$2 = (out, vector) => {
+      out[0] = vector[0];
+      out[1] = vector[1];
+      out[2] = vector[2];
+      out[3] = vector[3];
+      return out
+    };
+
+    var copy_1$2 = copy$2;
+
+    /**
+     * Compare the given vectors for equality.
+     *
+     * @param {vec4} a - first vector
+     * @param {vec4} b - second vector
+     * @return {Boolean} true if vectors are equal
+     * @alias module:modeling/maths/vec4.equals
+     */
+    const equals$3 = (a, b) => ((a[0] === b[0]) && (a[1] === b[1]) && (a[2] === b[2]) && (a[3] === b[3]));
+
+    var equals_1$2 = equals$3;
+
+    /**
+     * Flip the given plane.
+     *
+     * @param {plane} out - receiving plane
+     * @param {plane} plane - plane to flip
+     * @return {plane} out
+     * @alias module:modeling/maths/plane.flip
+     */
+    const flip$1 = (out, plane) => {
+      out[0] = -plane[0];
+      out[1] = -plane[1];
+      out[2] = -plane[2];
+      out[3] = -plane[3];
+      return out
+    };
+
+    var flip_1$1 = flip$1;
+
+    /**
+     * Represents a plane in 3D coordinate space as determined by a normal (perpendicular to the plane)
+     * and distance from 0,0,0.
+     *
+     * The contents of the array are a normal [0,1,2] and a distance [3].
+     * @see https://en.wikipedia.org/wiki/Hesse_normal_form
+     * @typedef {Array} plane
+     */
+
+    /**
+     * Create a new plane from the given normal and point values.
+     *
+     * @param {plane} out - receiving plane
+     * @param {vec3} normal - directional vector
+     * @param {vec3} point - origin of plane
+     * @returns {plane} out
+     * @alias module:modeling/maths/plane.fromNormalAndPoint
+     */
+    const fromNormalAndPoint = (out, normal, point) => {
+      const u = vec3$1.normalize(vec3$1.create(), normal);
+      const w = vec3$1.dot(point, u);
+
+      out[0] = u[0];
+      out[1] = u[1];
+      out[2] = u[2];
+      out[3] = w;
+      return out
+    };
+
+    var fromNormalAndPoint_1 = fromNormalAndPoint;
+
+    /**
+     * Creates a new vector with the given values.
+     *
+     * @param {Number} x - X component
+     * @param {Number} y - Y component
+     * @param {Number} z - Z component
+     * @param {Number} w - W component
+     * @returns {vec4} a new vector
+     * @alias module:modeling/maths/vec4.fromValues
+     */
+    const fromValues$1 = (x, y, z, w) => {
+      const out = create_1$4();
+      out[0] = x;
+      out[1] = y;
+      out[2] = z;
+      out[3] = w;
+      return out
+    };
+
+    var fromValues_1$1 = fromValues$1;
+
+    /**
+     * Create a plane from the given points.
+     *
+     * @param {plane} out - receiving plane
+     * @param {Array} vertices - points on the plane
+     * @returns {plane} out
+     * @alias module:modeling/maths/plane.fromPoints
+     */
+    const fromPoints$2 = (out, ...vertices) => {
+      const len = vertices.length;
+
+      // Calculate normal vector for a single vertex
+      // Inline to avoid allocations
+      const ba = vec3$1.create();
+      const ca = vec3$1.create();
+      const vertexNormal = (index) => {
+        const a = vertices[index];
+        const b = vertices[(index + 1) % len];
+        const c = vertices[(index + 2) % len];
+        vec3$1.subtract(ba, b, a); // ba = b - a
+        vec3$1.subtract(ca, c, a); // ca = c - a
+        vec3$1.cross(ba, ba, ca); // ba = ba x ca
+        vec3$1.normalize(ba, ba);
+        return ba
+      };
+
+      out[0] = 0;
+      out[1] = 0;
+      out[2] = 0;
+      if (len === 3) {
+        // optimization for triangles, which are always coplanar
+        vec3$1.copy(out, vertexNormal(0));
+      } else {
+        // sum of vertex normals
+        vertices.forEach((v, i) => {
+          vec3$1.add(out, out, vertexNormal(i));
+        });
+        // renormalize normal vector
+        vec3$1.normalize(out, out);
+      }
+      out[3] = vec3$1.dot(out, vertices[0]);
+      return out
+    };
+
+    var fromPoints_1$2 = fromPoints$2;
+
+    /**
+     * The resolution of space, currently one hundred nanometers.
+     * This should be 1 / EPS.
+     * @alias module:modeling/maths.spatialResolution
+     * @default
+     */
+    const spatialResolution = 1e5;
+
+    /**
+     * Epsilon used during determination of near zero distances.
+     * This should be 1 / spacialResolution.
+     * @default
+     * @alias module:modeling/maths.EPS
+     */
+    const EPS$4 = 1e-5;
+
+    var constants = {
+      EPS: EPS$4,
+      spatialResolution
+    };
+
+    const { EPS: EPS$3 } = constants;
+
+
+
+    /**
+     * Create a new plane from the given points like fromPoints,
+     * but allow the vectors to be on one point or one line.
+     * In such a case, a random plane through the given points is constructed.
+     *
+     * @param {plane} out - receiving plane
+     * @param {vec3} a - 3D point
+     * @param {vec3} b - 3D point
+     * @param {vec3} c - 3D point
+     * @returns {plane} out
+     * @alias module:modeling/maths/plane.fromPointsRandom
+     */
+    const fromPointsRandom = (out, a, b, c) => {
+      let ba = vec3$1.subtract(vec3$1.create(), b, a);
+      let ca = vec3$1.subtract(vec3$1.create(), c, a);
+      if (vec3$1.length(ba) < EPS$3) {
+        ba = vec3$1.orthogonal(ba, ca);
+      }
+      if (vec3$1.length(ca) < EPS$3) {
+        ca = vec3$1.orthogonal(ca, ba);
+      }
+      let normal = vec3$1.cross(vec3$1.create(), ba, ca);
+      if (vec3$1.length(normal) < EPS$3) {
+        // this would mean that ba == ca.negated()
+        ca = vec3$1.orthogonal(ca, ba);
+        normal = vec3$1.cross(normal, ba, ca);
+      }
+      normal = vec3$1.normalize(normal, normal);
+      const w = vec3$1.dot(normal, a);
+
+      out[0] = normal[0];
+      out[1] = normal[1];
+      out[2] = normal[2];
+      out[3] = w;
+      return out
+    };
+
+    var fromPointsRandom_1 = fromPointsRandom;
+
+    /**
+     * Project the given point on to the given plane.
+     *
+     * @param {plane} plane - plane of reference
+     * @param {vec3} point - point of reference
+     * @return {vec3} projected point on plane
+     * @alias module:modeling/maths/plane.projectionOfPoint
+     */
+    const projectionOfPoint = (plane, point) => {
+      const a = point[0] * plane[0] + point[1] * plane[1] + point[2] * plane[2] - plane[3];
+      const x = point[0] - a * plane[0];
+      const y = point[1] - a * plane[1];
+      const z = point[2] - a * plane[2];
+      return vec3$1.fromValues(x, y, z)
+    };
+
+    var projectionOfPoint_1 = projectionOfPoint;
+
+    /**
+     * Calculate the distance to the given point.
+     *
+     * @param {plane} plane - plane of reference
+     * @param {vec3} point - point of reference
+     * @return {Number} signed distance to point
+     * @alias module:modeling/maths/plane.signedDistanceToPoint
+     */
+    const signedDistanceToPoint = (plane, point) => vec3$1.dot(plane, point) - plane[3];
+
+    var signedDistanceToPoint_1 = signedDistanceToPoint;
+
+    /**
+     * Convert the given vector to a representative string.
+     *
+     * @param {vec4} vec - vector to convert
+     * @returns {String} representative string
+     * @alias module:modeling/maths/vec4.toString
+     */
+    const toString$3 = (vec) => `(${vec[0].toFixed(9)}, ${vec[1].toFixed(9)}, ${vec[2].toFixed(9)}, ${vec[3].toFixed(9)})`;
+
+    var toString_1$3 = toString$3;
+
+    /**
+     * Transform the given plane using the given matrix
+     *
+     * @param {plane} out - receiving plane
+     * @param {plane} plane - plane to transform
+     * @param {mat4} matrix - matrix to transform with
+     * @return {plane} out
+     * @alias module:modeling/maths/plane.transform
+     */
+    const transform$3 = (out, plane, matrix) => {
+      const ismirror = mat4.isMirroring(matrix);
+      // get two vectors in the plane:
+      const r = vec3$1.orthogonal(vec3$1.create(), plane);
+      const u = vec3$1.cross(r, plane, r);
+      const v = vec3$1.cross(vec3$1.create(), plane, u);
+      // get 3 points in the plane:
+      let point1 = vec3$1.fromScalar(vec3$1.create(), plane[3]);
+      vec3$1.multiply(point1, point1, plane);
+      let point2 = vec3$1.add(vec3$1.create(), point1, u);
+      let point3 = vec3$1.add(vec3$1.create(), point1, v);
+      // transform the points:
+      point1 = vec3$1.transform(point1, point1, matrix);
+      point2 = vec3$1.transform(point2, point2, matrix);
+      point3 = vec3$1.transform(point3, point3, matrix);
+      // and create a new plane from the transformed points:
+      fromPoints_1$2(out, point1, point2, point3);
+      if (ismirror) {
+        // the transform is mirroring so flip the plane
+        flip_1$1(out, out);
+      }
+      return out
+    };
+
+    var transform_1$3 = transform$3;
+
+    /**
+     * Represents a plane in 3D coordinate space as determined by a normal (perpendicular to the plane)
+     * and distance from 0,0,0.
+     * @see {@link plane} for data structure information.
+     * @module modeling/maths/plane
+     */
+    var plane$1 = {
+      /**
+       * @see [vec4.clone()]{@link module:modeling/maths/vec4.clone}
+       * @function clone
+       */
+      clone: clone_1$3,
+      /**
+       * @see [vec4.copy()]{@link module:modeling/maths/vec4.copy}
+       * @function copy
+       */
+      copy: copy_1$2,
+      /**
+       * @see [vec4.create()]{@link module:modeling/maths/vec4.create}
+       * @function create
+       */
+      create: create_1$4,
+      /**
+       * @see [vec4.equals()]{@link module:modeling/maths/vec4.equals}
+       * @function equals
+       */
+      equals: equals_1$2,
+      flip: flip_1$1,
+      fromNormalAndPoint: fromNormalAndPoint_1,
+      /**
+       * @see [vec4.fromValues()]{@link module:modeling/maths/vec4.fromValues}
+       * @function fromValues
+       */
+      fromValues: fromValues_1$1,
+      fromPoints: fromPoints_1$2,
+      fromPointsRandom: fromPointsRandom_1,
+      projectionOfPoint: projectionOfPoint_1,
+      signedDistanceToPoint: signedDistanceToPoint_1,
+      /**
+       * @see [vec4.toString()]{@link module:modeling/maths/vec4.toString}
+       * @function toString
+       */
+      toString: toString_1$3,
+      transform: transform_1$3
+    };
+
+    /**
+     * Invert the give polygon to face the opposite direction.
+     *
+     * @param {poly3} polygon - the polygon to invert
+     * @returns {poly3} a new poly3
+     * @alias module:modeling/geometries/poly3.invert
+     */
+    const invert$2 = (polygon) => {
+      const vertices = polygon.vertices.slice().reverse();
+      const inverted = create_1$5(vertices);
+      if (polygon.plane) {
+        // Flip existing plane to save recompute
+        inverted.plane = plane$1.flip(plane$1.create(), polygon.plane);
+      }
+      return inverted
+    };
+
+    var invert_1$2 = invert$2;
+
+    /**
+     * Determine if the given object is a polygon.
+     * @param {Object} object - the object to interrogate
+     * @returns {Boolean} true if the object matches a poly3
+     * @alias module:modeling/geometries/poly3.isA
+     */
+    const isA$2 = (object) => {
+      if (object && typeof object === 'object') {
+        if ('vertices' in object) {
+          if (Array.isArray(object.vertices)) {
+            return true
+          }
+        }
+      }
+      return false
+    };
+
+    var isA_1$2 = isA$2;
+
+    /**
+     * Check whether the given polygon is convex.
+     * @param {poly3} polygon - the polygon to interrogate
+     * @returns {Boolean} true if convex
+     * @alias module:modeling/geometries/poly3.isConvex
+     */
+    const isConvex = (polygon) => areVerticesConvex(polygon.vertices);
+
+    const areVerticesConvex = (vertices) => {
+      const numvertices = vertices.length;
+      if (numvertices > 2) {
+        // note: plane ~= normal point
+        const normal = plane$1.fromPoints(plane$1.create(), ...vertices);
+        let prevprevpos = vertices[numvertices - 2];
+        let prevpos = vertices[numvertices - 1];
+        for (let i = 0; i < numvertices; i++) {
+          const pos = vertices[i];
+          if (!isConvexPoint(prevprevpos, prevpos, pos, normal)) {
+            return false
+          }
+          prevprevpos = prevpos;
+          prevpos = pos;
+        }
+      }
+      return true
+    };
+
+    // calculate whether three points form a convex corner
+    //  prevpoint, point, nextpoint: the 3 coordinates (Vector3D instances)
+    //  normal: the normal vector of the plane
+    const isConvexPoint = (prevpoint, point, nextpoint, normal) => {
+      const crossproduct = vec3$1.cross(
+        vec3$1.create(),
+        vec3$1.subtract(vec3$1.create(), point, prevpoint),
+        vec3$1.subtract(vec3$1.create(), nextpoint, point)
+      );
+      const crossdotnormal = vec3$1.dot(crossproduct, normal);
+      return crossdotnormal >= 0
+    };
+
+    var isConvex_1 = isConvex;
+
+    const plane = (polygon) => {
+      if (!polygon.plane) {
+        polygon.plane = plane$1.fromPoints(plane$1.create(), ...polygon.vertices);
+      }
+      return polygon.plane
+    };
+
+    var plane_1 = plane;
+
+    /**
+     * Measure the area of the given polygon.
+     * @see 2000 softSurfer http://geomalgorithms.com
+     * @param {poly3} polygon - the polygon to measure
+     * @return {Number} area of the polygon
+     * @alias module:modeling/geometries/poly3.measureArea
+     */
+    const measureArea$2 = (polygon) => {
+      const n = polygon.vertices.length;
+      if (n < 3) {
+        return 0 // degenerate polygon
+      }
+      const vertices = polygon.vertices;
+
+      // calculate a normal vector
+      const normal = plane_1(polygon);
+
+      // determine direction of projection
+      const ax = Math.abs(normal[0]);
+      const ay = Math.abs(normal[1]);
+      const az = Math.abs(normal[2]);
+
+      if (ax + ay + az === 0) {
+        // normal does not exist
+        return 0
+      }
+
+      let coord = 3; // ignore Z coordinates
+      if ((ax > ay) && (ax > az)) {
+        coord = 1; // ignore X coordinates
+      } else
+      if (ay > az) {
+        coord = 2; // ignore Y coordinates
+      }
+
+      let area = 0;
+      let h = 0;
+      let i = 1;
+      let j = 2;
+      switch (coord) {
+        case 1: // ignore X coordinates
+          // compute area of 2D projection
+          for (i = 1; i < n; i++) {
+            h = i - 1;
+            j = (i + 1) % n;
+            area += (vertices[i][1] * (vertices[j][2] - vertices[h][2]));
+          }
+          area += (vertices[0][1] * (vertices[1][2] - vertices[n - 1][2]));
+          // scale to get area
+          area /= (2 * normal[0]);
+          break
+
+        case 2: // ignore Y coordinates
+          // compute area of 2D projection
+          for (i = 1; i < n; i++) {
+            h = i - 1;
+            j = (i + 1) % n;
+            area += (vertices[i][2] * (vertices[j][0] - vertices[h][0]));
+          }
+          area += (vertices[0][2] * (vertices[1][0] - vertices[n - 1][0]));
+          // scale to get area
+          area /= (2 * normal[1]);
+          break
+
+        case 3: // ignore Z coordinates
+        default:
+          // compute area of 2D projection
+          for (i = 1; i < n; i++) {
+            h = i - 1;
+            j = (i + 1) % n;
+            area += (vertices[i][0] * (vertices[j][1] - vertices[h][1]));
+          }
+          area += (vertices[0][0] * (vertices[1][1] - vertices[n - 1][1]));
+          // scale to get area
+          area /= (2 * normal[2]);
+          break
+      }
+      return area
+    };
+
+    var measureArea_1$2 = measureArea$2;
+
+    /**
+     * @param {poly3} polygon - the polygon to measure
+     * @returns {Array} an array of two vectors (3D);  minimum and maximum coordinates
+     * @alias module:modeling/geometries/poly3.measureBoundingBox
+     */
+    const measureBoundingBox$1 = (polygon) => {
+      const vertices = polygon.vertices;
+      const numvertices = vertices.length;
+      const min = numvertices === 0 ? vec3$1.create() : vec3$1.clone(vertices[0]);
+      const max = vec3$1.clone(min);
+      for (let i = 1; i < numvertices; i++) {
+        vec3$1.min(min, min, vertices[i]);
+        vec3$1.max(max, max, vertices[i]);
+      }
+      return [min, max]
+    };
+
+    var measureBoundingBox_1$1 = measureBoundingBox$1;
+
+    /**
+     * Measure the bounding sphere of the given polygon.
+     * @param {poly3} polygon - the polygon to measure
+     * @returns {Array} the computed bounding sphere; center point (3D) and radius
+     * @alias module:modeling/geometries/poly3.measureBoundingSphere
+     */
+    const measureBoundingSphere$1 = (polygon) => {
+      const box = measureBoundingBox_1$1(polygon);
+      const center = box[0];
+      vec3$1.add(center, box[0], box[1]);
+      vec3$1.scale(center, center, 0.5);
+      const radius = vec3$1.distance(center, box[1]);
+      return [center, radius]
+    };
+
+    var measureBoundingSphere_1$1 = measureBoundingSphere$1;
+
+    /**
+     * Measure the signed volume of the given polygon, which must be convex.
+     * The volume is that formed by the tetrahedron connected to the axis [0,0,0],
+     * and will be positive or negative based on the rotation of the vertices.
+     * @see http://chenlab.ece.cornell.edu/Publication/Cha/icip01_Cha.pdf
+     * @param {poly3} polygon - the polygon to measure
+     * @return {Number} volume of the polygon
+     * @alias module:modeling/geometries/poly3.measureSignedVolume
+     */
+    const measureSignedVolume = (polygon) => {
+      let signedVolume = 0;
+      const vertices = polygon.vertices;
+      // calculate based on triangular polygons
+      const cross = vec3$1.create();
+      for (let i = 0; i < vertices.length - 2; i++) {
+        vec3$1.cross(cross, vertices[i + 1], vertices[i + 2]);
+        signedVolume += vec3$1.dot(vertices[0], cross);
+      }
+      signedVolume /= 6;
+      return signedVolume
+    };
+
+    var measureSignedVolume_1 = measureSignedVolume;
+
+    /**
+     * Return the given polygon as a list of points.
+     * NOTE: The returned array should not be modified as the points are shared with the geometry.
+     * @param {poly3} polygon - the polygon
+     * @return {Array} list of points (3D)
+     * @alias module:modeling/geometries/poly3.toPoints
+     */
+    const toPoints$2 = (polygon) => polygon.vertices;
+
+    var toPoints_1$2 = toPoints$2;
+
+    /**
+     * @param {poly3} polygon - the polygon to measure
+     * @return {String} the string representation
+     * @alias module:modeling/geometries/poly3.toString
+     */
+    const toString$2 = (polygon) => {
+      let result = 'poly3: vertices: [';
+      polygon.vertices.forEach((vertex) => {
+        result += `${vec3$1.toString(vertex)}, `;
+      });
+      result += ']';
+      return result
+    };
+
+    var toString_1$2 = toString$2;
+
+    /**
+     * Transform the given polygon using the given matrix.
+     * @param {mat4} matrix - the matrix to transform with
+     * @param {poly3} polygon - the polygon to transform
+     * @returns {poly3} a new polygon
+     * @alias module:modeling/geometries/poly3.transform
+     */
+    const transform$2 = (matrix, polygon) => {
+      const vertices = polygon.vertices.map((vertex) => vec3$1.transform(vec3$1.create(), vertex, matrix));
+      if (mat4.isMirroring(matrix)) {
+        // reverse the order to preserve the orientation
+        vertices.reverse();
+      }
+      return create_1$5(vertices)
+    };
+
+    var transform_1$2 = transform$2;
+
+    /**
+     * Determine if the given object is a valid polygon.
+     * Checks for valid data structure, convex polygons, and duplicate points.
+     *
+     * **If the geometry is not valid, an exception will be thrown with details of the geometry error.**
+     *
+     * @param {Object} object - the object to interrogate
+     * @throws {Error} error if the geometry is not valid
+     * @alias module:modeling/geometries/poly3.validate
+     */
+    const validate$2 = (object) => {
+      if (!isA_1$2(object)) {
+        throw new Error('invalid poly3 structure')
+      }
+
+      // check for empty polygon
+      if (object.vertices.length < 3) {
+        throw new Error(`poly3 not enough vertices ${object.vertices.length}`)
+      }
+      // check area
+      if (measureArea_1$2(object) <= 0) {
+        throw new Error('poly3 area must be greater than zero')
+      }
+
+      // check for duplicate points
+      for (let i = 0; i < object.vertices.length; i++) {
+        if (vec3$1.equals(object.vertices[i], object.vertices[(i + 1) % object.vertices.length])) {
+          throw new Error(`poly3 duplicate vertex ${object.vertices[i]}`)
+        }
+      }
+
+      // check convexity
+      if (!isConvex_1(object)) {
+        throw new Error('poly3 must be convex')
+      }
+
+      // check for infinity, nan
+      object.vertices.forEach((vertex) => {
+        if (!vertex.every(Number.isFinite)) {
+          throw new Error(`poly3 invalid vertex ${vertex}`)
+        }
+      });
+    };
+
+    var validate_1$2 = validate$2;
+
+    /**
+     * Represents a convex 3D polygon consisting of a list of ordered vertices.
+     * @see {@link poly3} for data structure information.
+     * @module modeling/geometries/poly3
+     *
+     * @example
+     * poly3.create([[0,0,0], [4,0,0], [4,3,12]])
+     *
+     * @example
+     * {"vertices": [[0,0,0], [4,0,0], [4,3,12]]}
+     */
+    var poly3 = {
+      clone: clone_1$4,
+      create: create_1$5,
+      fromPoints: fromPoints_1$3,
+      fromPointsAndPlane: fromPointsAndPlane_1,
+      invert: invert_1$2,
+      isA: isA_1$2,
+      isConvex: isConvex_1,
+      measureArea: measureArea_1$2,
+      measureBoundingBox: measureBoundingBox_1$1,
+      measureBoundingSphere: measureBoundingSphere_1$1,
+      measureSignedVolume: measureSignedVolume_1,
+      plane: plane_1,
+      toPoints: toPoints_1$2,
+      toString: toString_1$2,
+      transform: transform_1$2,
+      validate: validate_1$2
+    };
+
+    /**
+     * Construct a new 3D geometry from a list of points.
+     * The list of points should contain sub-arrays, each defining a single polygon of points.
+     * In addition, the points should follow the right-hand rule for rotation in order to
+     * define an external facing polygon.
+     * @param {Array} listofpoints - list of lists, where each list is a set of points to construct a polygon
+     * @returns {geom3} a new geometry
+     * @alias module:modeling/geometries/geom3.fromPoints
+     */
+    const fromPoints$1 = (listofpoints) => {
+      if (!Array.isArray(listofpoints)) {
+        throw new Error('the given points must be an array')
+      }
+
+      const polygons = listofpoints.map((points, index) => {
+        // TODO catch the error, and rethrow with index
+        const polygon = poly3.fromPoints(points);
+        return polygon
+      });
+      const result = create_1$6(polygons);
+      return result
+    };
+
+    var fromPoints_1$1 = fromPoints$1;
+
+    /**
+     * Construct a new 3D geometry from the given compact binary data.
+     * @param {TypedArray} data - compact binary data
+     * @returns {geom3} a new geometry
+     * @alias module:modeling/geometries/geom3.fromCompactBinary
+     */
+    const fromCompactBinary$1 = (data) => {
+      if (data[0] !== 1) throw new Error('invalid compact binary data')
+
+      const created = create_1$6();
+
+      created.transforms = mat4.clone(data.slice(1, 17));
+
+      const numberOfVertices = data[21];
+      let ci = 22;
+      let vi = data.length - (numberOfVertices * 3);
+      while (vi < data.length) {
+        const verticesPerPolygon = data[ci];
+        ci++;
+
+        const vertices = [];
+        for (let i = 0; i < verticesPerPolygon; i++) {
+          vertices.push(vec3$1.fromValues(data[vi], data[vi + 1], data[vi + 2]));
+          vi += 3;
+        }
+        created.polygons.push(poly3.create(vertices));
+      }
+
+      // transfer known properties, i.e. color
+      if (data[17] >= 0) {
+        created.color = [data[17], data[18], data[19], data[20]];
+      }
+      // TODO: how about custom properties or fields ?
+      return created
+    };
+
+    var fromCompactBinary_1$1 = fromCompactBinary$1;
+
+    /*
+     * Apply the transforms of the given geometry.
+     * NOTE: This function must be called BEFORE exposing any data. See toPolygons.
+     * @param {geom3} geometry - the geometry to transform
+     * @returns {geom3} the given geometry
+     * @example
+     * geometry = applyTransforms(geometry)
+     */
+    const applyTransforms$1 = (geometry) => {
+      if (mat4.isIdentity(geometry.transforms)) return geometry
+
+      // apply transforms to each polygon
+      // const isMirror = mat4.isMirroring(geometry.transforms)
+      // TBD if (isMirror) newvertices.reverse()
+      geometry.polygons = geometry.polygons.map((polygon) => poly3.transform(geometry.transforms, polygon));
+      geometry.transforms = mat4.create();
+      return geometry
+    };
+
+    var applyTransforms_1$1 = applyTransforms$1;
+
+    /**
+     * Produces an array of polygons from the given geometry, after applying transforms.
+     * The returned array should not be modified as the polygons are shared with the geometry.
+     * @param {geom3} geometry - the geometry
+     * @returns {Array} an array of polygons
+     * @alias module:modeling/geometries/geom3.toPolygons
+     *
+     * @example
+     * let sharedpolygons = toPolygons(geometry)
+     */
+    const toPolygons = (geometry) => applyTransforms_1$1(geometry).polygons;
+
+    var toPolygons_1 = toPolygons;
+
+    /**
+     * Invert the given geometry, transposing solid and empty space.
+     * @param {geom3} geometry - the geometry to invert
+     * @return {geom3} a new geometry
+     * @alias module:modeling/geometries/geom3.invert
+     */
+    const invert$1 = (geometry) => {
+      const polygons = toPolygons_1(geometry);
+      const newpolygons = polygons.map((polygon) => poly3.invert(polygon));
+      return create_1$6(newpolygons)
+    };
+
+    var invert_1$1 = invert$1;
+
+    /**
+     * Determine if the given object is a 3D geometry.
+     * @param {Object} object - the object to interrogate
+     * @returns {Boolean} true if the object matches a geom3
+     * @alias module:modeling/geometries/geom3.isA
+     */
+    const isA$1 = (object) => {
+      if (object && typeof object === 'object') {
+        if ('polygons' in object && 'transforms' in object) {
+          if (Array.isArray(object.polygons) && 'length' in object.transforms) {
+            return true
+          }
+        }
+      }
+      return false
+    };
+
+    var isA_1$1 = isA$1;
+
+    /**
+     * Return the given geometry as a list of points, after applying transforms.
+     * The returned array should not be modified as the points are shared with the geometry.
+     * @param {geom3} geometry - the geometry
+     * @return {Array} list of points, where each sub-array represents a polygon
+     * @alias module:modeling/geometries/geom3.toPoints
+     */
+    const toPoints$1 = (geometry) => {
+      const polygons = toPolygons_1(geometry);
+      const listofpoints = polygons.map((polygon) => poly3.toPoints(polygon));
+      return listofpoints
+    };
+
+    var toPoints_1$1 = toPoints$1;
+
+    /**
+     * Create a string representing the contents of the given geometry.
+     * @param {geom3} geometry - the geometry
+     * @returns {String} a representative string
+     * @alias module:modeling/geometries/geom3.toString
+     *
+     * @example
+     * console.out(toString(geometry))
+     */
+    const toString$1 = (geometry) => {
+      const polygons = toPolygons_1(geometry);
+      let result = 'geom3 (' + polygons.length + ' polygons):\n';
+      polygons.forEach((polygon) => {
+        result += '  ' + poly3.toString(polygon) + '\n';
+      });
+      return result
+    };
+
+    var toString_1$1 = toString$1;
+
+    /**
+     * Return the given geometry in compact binary representation.
+     * @param {geom3} geometry - the geometry
+     * @return {TypedArray} compact binary representation
+     * @alias module:modeling/geometries/geom3.toCompactBinary
+     */
+    const toCompactBinary$1 = (geometry) => {
+      const polygons = geometry.polygons;
+      const transforms = geometry.transforms;
+
+      const numberOfPolygons = polygons.length;
+      const numberOfVertices = polygons.reduce((count, polygon) => count + polygon.vertices.length, 0);
+      let color = [-1, -1, -1, -1];
+      if (geometry.color) color = geometry.color;
+
+      // FIXME why Float32Array?
+      const compacted = new Float32Array(1 + 16 + 4 + 1 + numberOfPolygons + (numberOfVertices * 3));
+      // type + transforms + color + numberOfPolygons + numberOfVerticesPerPolygon[] + vertices data[]
+
+      compacted[0] = 1; // type code: 0 => geom2, 1 => geom3 , 2 => path2
+
+      compacted[1] = transforms[0];
+      compacted[2] = transforms[1];
+      compacted[3] = transforms[2];
+      compacted[4] = transforms[3];
+      compacted[5] = transforms[4];
+      compacted[6] = transforms[5];
+      compacted[7] = transforms[6];
+      compacted[8] = transforms[7];
+      compacted[9] = transforms[8];
+      compacted[10] = transforms[9];
+      compacted[11] = transforms[10];
+      compacted[12] = transforms[11];
+      compacted[13] = transforms[12];
+      compacted[14] = transforms[13];
+      compacted[15] = transforms[14];
+      compacted[16] = transforms[15];
+
+      compacted[17] = color[0];
+      compacted[18] = color[1];
+      compacted[19] = color[2];
+      compacted[20] = color[3];
+
+      compacted[21] = numberOfVertices;
+
+      let ci = 22;
+      let vi = ci + numberOfPolygons;
+      polygons.forEach((polygon) => {
+        const points = poly3.toPoints(polygon);
+        // record the number of vertices per polygon
+        compacted[ci] = points.length;
+        ci++;
+        // convert the vertices
+        for (let i = 0; i < points.length; i++) {
+          const point = points[i];
+          compacted[vi + 0] = point[0];
+          compacted[vi + 1] = point[1];
+          compacted[vi + 2] = point[2];
+          vi += 3;
+        }
+      });
+      // TODO: how about custom properties or fields ?
+      return compacted
+    };
+
+    var toCompactBinary_1$1 = toCompactBinary$1;
+
+    /**
+     * Transform the given geometry using the given matrix.
+     * This is a lazy transform of the polygons, as this function only adjusts the transforms.
+     * See applyTransforms() for the actual application of the transforms to the polygons.
+     * @param {mat4} matrix - the matrix to transform with
+     * @param {geom3} geometry - the geometry to transform
+     * @returns {geom3} a new geometry
+     * @alias module:modeling/geometries/geom3.transform
+     *
+     * @example
+     * let newgeometry = transform(fromXRotation(degToRad(90)), geometry)
+     */
+    const transform$1 = (matrix, geometry) => {
+      const transforms = mat4.multiply(mat4.create(), matrix, geometry.transforms);
+      return Object.assign({}, geometry, { transforms })
+    };
+
+    var transform_1$1 = transform$1;
+
+    /**
+     * Determine if the given object is a valid 3D geometry.
+     * Checks for valid data structure, convex polygon faces, and manifold edges.
+     *
+     * **If the geometry is not valid, an exception will be thrown with details of the geometry error.**
+     *
+     * @param {Object} object - the object to interrogate
+     * @throws {Error} error if the geometry is not valid
+     * @alias module:modeling/geometries/geom3.validate
+     */
+    const validate$1 = (object) => {
+      if (!isA_1$1(object)) {
+        throw new Error('invalid geom3 structure')
+      }
+
+      // check polygons
+      object.polygons.forEach(poly3.validate);
+      validateManifold(object);
+
+      // check transforms
+      if (!object.transforms.every(Number.isFinite)) {
+        throw new Error(`geom3 invalid transforms ${object.transforms}`)
+      }
+
+      // TODO: check for self-intersecting
+    };
+
+    /*
+     * Check manifold edge condition: Every edge is in exactly 2 faces
+     */
+    const validateManifold = (object) => {
+      // count of each edge
+      const edgeCount = new Map();
+      object.polygons.forEach(({ vertices }) => {
+        vertices.forEach((v, i) => {
+          const v1 = `${v}`;
+          const v2 = `${vertices[(i + 1) % vertices.length]}`;
+          // sort for undirected edge
+          const edge = `${v1}/${v2}`;
+          const count = edgeCount.has(edge) ? edgeCount.get(edge) : 0;
+          edgeCount.set(edge, count + 1);
+        });
+      });
+
+      // check that edges are always matched
+      const nonManifold = [];
+      edgeCount.forEach((count, edge) => {
+        const complementEdge = edge.split('/').reverse().join('/');
+        const complementCount = edgeCount.get(complementEdge);
+        if (count !== complementCount) {
+          nonManifold.push(edge.replace('/', ' -> '));
+        }
+      });
+      if (nonManifold.length > 0) {
+        throw new Error(`non-manifold edges ${nonManifold.length}\n${nonManifold.join('\n')}`)
+      }
+    };
+
+    var validate_1$1 = validate$1;
+
+    /**
+     * Represents a 3D geometry consisting of a list of polygons.
+     * @see {@link geom3} for data structure information.
+     * @module modeling/geometries/geom3
+     *
+     * @example
+     * colorize([0,0.5,1,0.6], cube()) // transparent ice cube
+     *
+     * @example
+     * {
+     *   "polygons": [
+     *     {"vertices": [[-1,-1,-1], [-1,-1,1], [-1,1,1], [-1,1,-1]]},
+     *     {"vertices": [[1,-1,-1], [1,1,-1], [1,1,1], [1,-1,1]]},
+     *     {"vertices": [[-1,-1,-1], [1,-1,-1], [1,-1,1], [-1,-1,1]]},
+     *     {"vertices": [[-1,1,-1], [-1,1,1], [1,1,1], [1,1,-1]]},
+     *     {"vertices": [[-1,-1,-1], [-1,1,-1], [1,1,-1], [1,-1,-1]]},
+     *     {"vertices": [[-1,-1,1], [1,-1,1], [1,1,1], [-1,1,1]]}
+     *   ],
+     *   "transforms": [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],
+     *   "color": [0,0.5,1,0.6]
+     * }
+     */
+    var geom3$2 = {
+      clone: clone_1$5,
+      create: create_1$6,
+      fromPoints: fromPoints_1$1,
+      fromCompactBinary: fromCompactBinary_1$1,
+      invert: invert_1$1,
+      isA: isA_1$1,
+      toPoints: toPoints_1$1,
+      toPolygons: toPolygons_1,
+      toString: toString_1$1,
+      toCompactBinary: toCompactBinary_1$1,
+      transform: transform_1$1,
+      validate: validate_1$1
+    };
+
+    /**
+     * Performs a shallow clone of the give geometry.
+     * @param {path2} geometry - the geometry to clone
+     * @returns {path2} a new path
+     * @alias module:modeling/geometries/path2.clone
+     */
+    const clone$2 = (geometry) => Object.assign({}, geometry);
+
+    var clone_1$2 = clone$2;
+
+    const { EPS: EPS$2 } = constants;
+
+
+
+
+
+    /**
+     * Close the given geometry.
+     * @param {path2} geometry - the path to close
+     * @returns {path2} a new path
+     * @alias module:modeling/geometries/path2.close
+     */
+    const close = (geometry) => {
+      if (geometry.isClosed) return geometry
+
+      const cloned = clone_1$2(geometry);
+      cloned.isClosed = true;
+
+      if (cloned.points.length > 1) {
+        // make sure the paths are formed properly
+        const points = cloned.points;
+        const p0 = points[0];
+        let pn = points[points.length - 1];
+        while (vec2.distance(p0, pn) < (EPS$2 * EPS$2)) {
+          points.pop();
+          if (points.length === 1) break
+          pn = points[points.length - 1];
+        }
+      }
+      return cloned
+    };
+
+    var close_1 = close;
+
+    /**
+     * Represents a 2D geometry consisting of a list of ordered points.
+     * @typedef {Object} path2
+     * @property {Array} points - list of ordered points
+     * @property {Boolean} isClosed - true if the path is closed where start and end points are the same
+     * @property {mat4} transforms - transforms to apply to the points, see transform()
+     */
+
+    /**
+     * Create an empty, open path.
+     * @returns {path2} a new path
+     * @alias module:modeling/geometries/path2.create
+     *
+     * @example
+     * let newpath = create()
+     */
+    const create$3 = (points) => {
+      if (points === undefined) {
+        points = [];
+      }
+      return {
+        points: points,
+        isClosed: false,
+        transforms: mat4.create()
+      }
+    };
+
+    var create_1$3 = create$3;
+
+    const { EPS: EPS$1 } = constants;
+
+
+
+
+
+
+    /**
+     * Create a new path from the given points.
+     * The points must be provided an array of points,
+     * where each point is an array of two numbers.
+     * @param {Object} options - options for construction
+     * @param {Boolean} [options.closed=false] - if the path should be open or closed
+     * @param {Array} points - array of points (2D) from which to create the path
+     * @returns {path2} a new path
+     * @alias module:modeling/geometries/path2.fromPoints
+     *
+     * @example:
+     * my newpath = fromPoints({closed: true}, [[10, 10], [-10, 10]])
+     */
+    const fromPoints = (options, points) => {
+      const defaults = { closed: false };
+      let { closed } = Object.assign({}, defaults, options);
+
+      let created = create_1$3();
+      created.points = points.map((point) => vec2.clone(point));
+
+      // check if first and last points are equal
+      if (created.points.length > 1) {
+        const p0 = created.points[0];
+        const pn = created.points[created.points.length - 1];
+        if (vec2.distance(p0, pn) < (EPS$1 * EPS$1)) {
+          // and close automatically
+          closed = true;
+        }
+      }
+      if (closed === true) created = close_1(created);
+
+      return created
+    };
+
+    var fromPoints_1 = fromPoints;
+
+    /*
+     * Apply the transforms of the given geometry.
+     * NOTE: This function must be called BEFORE exposing any data. See toPoints.
+     * @param {path} geometry - the geometry to transform
+     * @returns {path} the given geometry
+     * @example
+     * geometry = applyTransforms(geometry)
+     */
+    const applyTransforms = (geometry) => {
+      if (mat4.isIdentity(geometry.transforms)) return geometry
+
+      geometry.points = geometry.points.map((point) => vec2.transform(vec2.create(), point, geometry.transforms));
+      geometry.transforms = mat4.create();
+      return geometry
+    };
+
+    var applyTransforms_1 = applyTransforms;
+
+    /**
+     * Produces an array of points from the given geometry.
+     * The returned array should not be modified as the data is shared with the geometry.
+     * @param {path2} geometry - the geometry
+     * @returns {Array} an array of points
+     * @alias module:modeling/geometries/path2.toPoints
+     *
+     * @example
+     * let sharedpoints = toPoints(geometry)
+     */
+    const toPoints = (geometry) => applyTransforms_1(geometry).points;
+
+    var toPoints_1 = toPoints;
+
+    /**
+     * Append a series of points to the given geometry that represent an arc.
+     * This implementation follows the SVG specifications.
+     * @see http://www.w3.org/TR/SVG/paths.html#PathDataEllipticalArcCommands
+     * @param {Object} options - options for construction
+     * @param {vec2} options.endpoint - end point of arc (REQUIRED)
+     * @param {vec2} [options.radius=[0,0]] - radius of arc (X and Y)
+     * @param {Number} [options.xaxisrotation=0] - rotation (RADIANS) of the X axis of the arc with respect to the X axis of the coordinate system
+     * @param {Boolean} [options.clockwise=false] - draw an arc clockwise with respect to the center point
+     * @param {Boolean} [options.large=false] - draw an arc longer than PI radians
+     * @param {Number} [options.segments=16] - number of segments per full rotation
+     * @param {path2} geometry - the path of which to append the arc
+     * @returns {path2} a new path with the appended points
+     * @alias module:modeling/geometries/path2.appendArc
+     *
+     * @example
+     * let p1 = path2.fromPoints({}, [[27.5,-22.96875]]);
+     * p1 = path2.appendPoints([[27.5,-3.28125]], p1);
+     * p1 = path2.appendArc({endpoint: [12.5, -22.96875], radius: [15, -19.6875]}, p1);
+     */
+    const appendArc = (options, geometry) => {
+      const defaults = {
+        radius: [0, 0], // X and Y radius
+        xaxisrotation: 0,
+        clockwise: false,
+        large: false,
+        segments: 16
+      };
+      let { endpoint, radius, xaxisrotation, clockwise, large, segments } = Object.assign({}, defaults, options);
+
+      // validate the given options
+      if (!Array.isArray(endpoint)) throw new Error('endpoint must be an array of X and Y values')
+      if (endpoint.length < 2) throw new Error('endpoint must contain X and Y values')
+      endpoint = vec2.clone(endpoint);
+
+      if (!Array.isArray(radius)) throw new Error('radius must be an array of X and Y values')
+      if (radius.length < 2) throw new Error('radius must contain X and Y values')
+
+      if (segments < 4) throw new Error('segments must be four or more')
+
+      const decimals = 100000;
+
+      // validate the given geometry
+      if (geometry.isClosed) {
+        throw new Error('the given path cannot be closed')
+      }
+
+      const points = toPoints_1(geometry);
+      if (points.length < 1) {
+        throw new Error('the given path must contain one or more points (as the starting point for the arc)')
+      }
+
+      let xradius = radius[0];
+      let yradius = radius[1];
+      const startpoint = points[points.length - 1];
+
+      // round to precision in order to have determinate calculations
+      xradius = Math.round(xradius * decimals) / decimals;
+      yradius = Math.round(yradius * decimals) / decimals;
+      endpoint = vec2.fromValues(Math.round(endpoint[0] * decimals) / decimals, Math.round(endpoint[1] * decimals) / decimals);
+
+      const sweepFlag = !clockwise;
+      let newpoints = [];
+      if ((xradius === 0) || (yradius === 0)) {
+        // http://www.w3.org/TR/SVG/implnote.html#ArcImplementationNotes:
+        // If rx = 0 or ry = 0, then treat this as a straight line from (x1, y1) to (x2, y2) and stop
+        newpoints.push(endpoint);
+      } else {
+        xradius = Math.abs(xradius);
+        yradius = Math.abs(yradius);
+
+        // see http://www.w3.org/TR/SVG/implnote.html#ArcImplementationNotes :
+        const phi = xaxisrotation;
+        const cosphi = Math.cos(phi);
+        const sinphi = Math.sin(phi);
+        const minushalfdistance = vec2.subtract(vec2.create(), startpoint, endpoint);
+        vec2.scale(minushalfdistance, minushalfdistance, 0.5);
+        // F.6.5.1:
+        // round to precision in order to have determinate calculations
+        const x = Math.round((cosphi * minushalfdistance[0] + sinphi * minushalfdistance[1]) * decimals) / decimals;
+        const y = Math.round((-sinphi * minushalfdistance[0] + cosphi * minushalfdistance[1]) * decimals) / decimals;
+        const startTranslated = vec2.fromValues(x, y);
+        // F.6.6.2:
+        const biglambda = (startTranslated[0] * startTranslated[0]) / (xradius * xradius) + (startTranslated[1] * startTranslated[1]) / (yradius * yradius);
+        if (biglambda > 1.0) {
+          // F.6.6.3:
+          const sqrtbiglambda = Math.sqrt(biglambda);
+          xradius *= sqrtbiglambda;
+          yradius *= sqrtbiglambda;
+          // round to precision in order to have determinate calculations
+          xradius = Math.round(xradius * decimals) / decimals;
+          yradius = Math.round(yradius * decimals) / decimals;
+        }
+        // F.6.5.2:
+        let multiplier1 = Math.sqrt((xradius * xradius * yradius * yradius - xradius * xradius * startTranslated[1] * startTranslated[1] - yradius * yradius * startTranslated[0] * startTranslated[0]) / (xradius * xradius * startTranslated[1] * startTranslated[1] + yradius * yradius * startTranslated[0] * startTranslated[0]));
+        if (sweepFlag === large) multiplier1 = -multiplier1;
+        const centerTranslated = vec2.fromValues(xradius * startTranslated[1] / yradius, -yradius * startTranslated[0] / xradius);
+        vec2.scale(centerTranslated, centerTranslated, multiplier1);
+        // F.6.5.3:
+        let center = vec2.fromValues(cosphi * centerTranslated[0] - sinphi * centerTranslated[1], sinphi * centerTranslated[0] + cosphi * centerTranslated[1]);
+        center = vec2.add(center, center, vec2.scale(vec2.create(), vec2.add(vec2.create(), startpoint, endpoint), 0.5));
+
+        // F.6.5.5:
+        const vector1 = vec2.fromValues((startTranslated[0] - centerTranslated[0]) / xradius, (startTranslated[1] - centerTranslated[1]) / yradius);
+        const vector2 = vec2.fromValues((-startTranslated[0] - centerTranslated[0]) / xradius, (-startTranslated[1] - centerTranslated[1]) / yradius);
+        const theta1 = vec2.angleRadians(vector1);
+        const theta2 = vec2.angleRadians(vector2);
+        let deltatheta = theta2 - theta1;
+        deltatheta = deltatheta % (2 * Math.PI);
+        if ((!sweepFlag) && (deltatheta > 0)) {
+          deltatheta -= 2 * Math.PI;
+        } else if ((sweepFlag) && (deltatheta < 0)) {
+          deltatheta += 2 * Math.PI;
+        }
+
+        // Ok, we have the center point and angle range (from theta1, deltatheta radians) so we can create the ellipse
+        let numsteps = Math.ceil(Math.abs(deltatheta) / (2 * Math.PI) * segments) + 1;
+        if (numsteps < 1) numsteps = 1;
+        for (let step = 1; step < numsteps; step++) {
+          const theta = theta1 + step / numsteps * deltatheta;
+          const costheta = Math.cos(theta);
+          const sintheta = Math.sin(theta);
+          // F.6.3.1:
+          const point = vec2.fromValues(cosphi * xradius * costheta - sinphi * yradius * sintheta, sinphi * xradius * costheta + cosphi * yradius * sintheta);
+          vec2.add(point, point, center);
+          newpoints.push(point);
+        }
+        // ensure end point is precisely what user gave as parameter
+        if (numsteps) newpoints.push(options.endpoint);
+      }
+      newpoints = points.concat(newpoints);
+      const result = fromPoints_1({}, newpoints);
+      return result
+    };
+
+    var appendArc_1 = appendArc;
+
+    /**
+     * Append the given list of points to the end of the given geometry.
+     * @param {Array} points - the points (2D) to append to the given path
+     * @param {path2} geometry - the given path
+     * @returns {path2} a new path with the appended points
+     * @alias module:modeling/geometries/path2.appendPoints
+     * @example
+     * let newpath = appendPoints([[3, 4], [4, 5]], oldpath)
+     */
+    const appendPoints = (points, geometry) => {
+      if (geometry.isClosed) {
+        throw new Error('cannot append points to a closed path')
+      }
+
+      let newpoints = toPoints_1(geometry);
+      newpoints = newpoints.concat(points);
+
+      return fromPoints_1({}, newpoints)
+    };
+
+    var appendPoints_1 = appendPoints;
+
+    const vec3 = vec2;
+
+
+
+
+    /**
+     * Append a series of points to the given geometry that represent a Bezier curve.
+     * The Bézier curve starts at the last point in the given geometry, and ends at the last control point.
+     * The other control points are intermediate control points to transition the curve from start to end points.
+     * The first control point may be null to ensure a smooth transition occurs. In this case,
+     * the second to last point of the given geometry is mirrored into the control points of the Bezier curve.
+     * In other words, the trailing gradient of the geometry matches the new gradient of the curve.
+     * @param {Object} options - options for construction
+     * @param {Array} options.controlPoints - list of control points (2D) for the bezier curve
+     * @param {Number} [options.segment=16] - number of segments per 360 rotation
+     * @param {path2} geometry - the path of which to appended points
+     * @returns {path2} a new path with the appended points
+     * @alias module:modeling/geometries/path2.appendBezier
+     *
+     * @example
+     * let p5 = path2.create({}, [[10,-20]])
+     * p5 = path2.appendBezier({controlPoints: [[10,-10],[25,-10],[25,-20]]}, p5);
+     * p5 = path2.appendBezier({controlPoints: [null, [25,-30],[40,-30],[40,-20]]}, p5)
+     */
+    const appendBezier = (options, geometry) => {
+      const defaults = {
+        segments: 16
+      };
+      let { controlPoints, segments } = Object.assign({}, defaults, options);
+
+      // validate the given options
+      if (!Array.isArray(controlPoints)) throw new Error('controlPoints must be an array of one or more points')
+      if (controlPoints.length < 1) throw new Error('controlPoints must be an array of one or more points')
+
+      if (segments < 4) throw new Error('segments must be four or more')
+
+      // validate the given geometry
+      if (geometry.isClosed) {
+        throw new Error('the given geometry cannot be closed')
+      }
+
+      const points = toPoints_1(geometry);
+      if (points.length < 1) {
+        throw new Error('the given path must contain one or more points (as the starting point for the bezier curve)')
+      }
+
+      // make a copy of the control points
+      controlPoints = controlPoints.slice();
+
+      // special handling of null control point (only first is allowed)
+      const firstControlPoint = controlPoints[0];
+      if (firstControlPoint === null) {
+        if (controlPoints.length < 2) {
+          throw new Error('a null control point must be passed with one more control points')
+        }
+        // special handling of a previous bezier curve
+        let lastBezierControlPoint = points[points.length - 2];
+        if ('lastBezierControlPoint' in geometry) {
+          lastBezierControlPoint = geometry.lastBezierControlPoint;
+        }
+        if (!Array.isArray(lastBezierControlPoint)) {
+          throw new Error('the given path must contain TWO or more points if given a null control point')
+        }
+        // replace the first control point with the mirror of the last bezier control point
+        const controlpoint = vec2.scale(vec2.create(), points[points.length - 1], 2);
+        vec2.subtract(controlpoint, controlpoint, lastBezierControlPoint);
+
+        controlPoints[0] = controlpoint;
+      }
+
+      // add a control point for the previous end point
+      controlPoints.unshift(points[points.length - 1]);
+
+      const bezierOrder = controlPoints.length - 1;
+      const factorials = [];
+      let fact = 1;
+      for (let i = 0; i <= bezierOrder; ++i) {
+        if (i > 0) fact *= i;
+        factorials.push(fact);
+      }
+
+      const binomials = [];
+      for (let i = 0; i <= bezierOrder; ++i) {
+        const binomial = factorials[bezierOrder] / (factorials[i] * factorials[bezierOrder - i]);
+        binomials.push(binomial);
+      }
+
+      const v0 = vec2.create();
+      const v1 = vec2.create();
+      const v3 = vec3.create();
+      const getPointForT = (t) => {
+        let tk = 1; // = pow(t,k)
+        let oneMinusTNMinusK = Math.pow(1 - t, bezierOrder); // = pow( 1-t, bezierOrder - k)
+        const invOneMinusT = (t !== 1) ? (1 / (1 - t)) : 1;
+        const point = vec2.create(); // 0, 0, 0
+        for (let k = 0; k <= bezierOrder; ++k) {
+          if (k === bezierOrder) oneMinusTNMinusK = 1;
+          const bernsteinCoefficient = binomials[k] * tk * oneMinusTNMinusK;
+          const derivativePoint = vec2.scale(v0, controlPoints[k], bernsteinCoefficient);
+          vec2.add(point, point, derivativePoint);
+          tk *= t;
+          oneMinusTNMinusK *= invOneMinusT;
+        }
+        return point
+      };
+
+      const newpoints = [];
+      const newpointsT = [];
+      const numsteps = bezierOrder + 1;
+      for (let i = 0; i < numsteps; ++i) {
+        const t = i / (numsteps - 1);
+        const point = getPointForT(t);
+        newpoints.push(point);
+        newpointsT.push(t);
+      }
+
+      // subdivide each segment until the angle at each vertex becomes small enough:
+      let subdivideBase = 1;
+      const maxangle = Math.PI * 2 / segments;
+      const maxsinangle = Math.sin(maxangle);
+      while (subdivideBase < newpoints.length - 1) {
+        const dir1 = vec2.subtract(v0, newpoints[subdivideBase], newpoints[subdivideBase - 1]);
+        vec2.normalize(dir1, dir1);
+        const dir2 = vec2.subtract(v1, newpoints[subdivideBase + 1], newpoints[subdivideBase]);
+        vec2.normalize(dir2, dir2);
+        const sinangle = vec2.cross(v3, dir1, dir2); // the sine of the angle
+        if (Math.abs(sinangle[2]) > maxsinangle) {
+          // angle is too big, we need to subdivide
+          const t0 = newpointsT[subdivideBase - 1];
+          const t1 = newpointsT[subdivideBase + 1];
+          const newt0 = t0 + (t1 - t0) * 1 / 3;
+          const newt1 = t0 + (t1 - t0) * 2 / 3;
+          const point0 = getPointForT(newt0);
+          const point1 = getPointForT(newt1);
+          // remove the point at subdivideBase and replace with 2 new points:
+          newpoints.splice(subdivideBase, 1, point0, point1);
+          newpointsT.splice(subdivideBase, 1, newt0, newt1);
+          // re - evaluate the angles, starting at the previous junction since it has changed:
+          subdivideBase--;
+          if (subdivideBase < 1) subdivideBase = 1;
+        } else {
+          ++subdivideBase;
+        }
+      }
+
+      // append to the new points to the given path
+      // but skip the first new point because it is identical to the last point in the given path
+      newpoints.shift();
+      const result = appendPoints_1(newpoints, geometry);
+      result.lastBezierControlPoint = controlPoints[controlPoints.length - 2];
+      return result
+    };
+
+    var appendBezier_1 = appendBezier;
+
+    const { equals: equals$2 } = vec2;
+    /**
+     * Concatenate the given paths.
+     * If both contain the same point at the junction, merge it into one.
+     * A concatenation of zero paths is an empty, open path.
+     * A concatenation of one closed path to a series of open paths produces a closed path.
+     * A concatenation of a path to a closed path is an error.
+     * @param {...path2} paths - the paths to concatenate
+     * @returns {path2} a new path
+     * @alias module:modeling/geometries/path2.concat
+     *
+     * @example
+     * let newpath = concat(fromPoints({}, [[1, 2]]), fromPoints({}, [[3, 4]]))
+     */
+    const concat = (...paths) => {
+      // Only the last path can be closed, producing a closed path.
+      let isClosed = false;
+      for (const path of paths) {
+        if (isClosed) {
+          throw new Error('Cannot concatenate to a closed path')
+        }
+        isClosed = path.isClosed;
+      }
+      let newpoints = [];
+      paths.forEach((path) => {
+        const tmp = toPoints_1(path);
+        if (newpoints.length > 0 && tmp.length > 0 && equals$2(tmp[0], newpoints[newpoints.length - 1])) tmp.shift();
+        newpoints = newpoints.concat(tmp);
+      });
+      return fromPoints_1({ closed: isClosed }, newpoints)
+    };
+
+    var concat_1 = concat;
+
+    /**
+     * Calls a function for each point in the path.
+     * @param {Object} options - options
+     * @param {Function} thunk - the function to call
+     * @param {path2} path - the path to traverse
+     * @alias module:modeling/geometries/path2.eachPoint
+     *
+     * @example
+     * eachPoint({}, accumulate, path)
+     */
+    const eachPoint = (options, thunk, path) => {
+      toPoints_1(path).forEach(thunk);
+    };
+
+    var eachPoint_1 = eachPoint;
+
+    /**
+      * Determine if the given paths are equal.
+      * For closed paths, this includes equality under point order rotation.
+      * @param {path2} a - the first path to compare
+      * @param {path2} b - the second path to compare
+      * @returns {Boolean}
+      * @alias module:modeling/geometries/path2.equals
+      */
+    const equals$1 = (a, b) => {
+      if (a.isClosed !== b.isClosed) {
+        return false
+      }
+      if (a.points.length !== b.points.length) {
+        return false
+      }
+
+      const apoints = toPoints_1(a);
+      const bpoints = toPoints_1(b);
+
+      // closed paths might be equal under graph rotation
+      // so try comparison by rotating across all points
+      const length = apoints.length;
+      let offset = 0;
+      do {
+        let unequal = false;
+        for (let i = 0; i < length; i++) {
+          if (!vec2.equals(apoints[i], bpoints[(i + offset) % length])) {
+            unequal = true;
+            break
+          }
+        }
+        if (unequal === false) {
+          return true
+        }
+        // unequal open paths should only be compared once, never rotated
+        if (!a.isClosed) {
+          return false
+        }
+      } while (++offset < length)
+      return false
+    };
+
+    var equals_1$1 = equals$1;
+
+    /**
+     * Create a new path from the given compact binary data.
+     * @param {TypedArray} data - compact binary data
+     * @returns {path2} a new path
+     * @alias module:modeling/geometries/path2.fromCompactBinary
+     */
+    const fromCompactBinary = (data) => {
+      if (data[0] !== 2) throw new Error('invalid compact binary data')
+
+      const created = create_1$3();
+
+      created.transforms = mat4.clone(data.slice(1, 17));
+
+      created.isClosed = !!data[17];
+
+      for (let i = 22; i < data.length; i += 2) {
+        const point = vec2.fromValues(data[i], data[i + 1]);
+        created.points.push(point);
+      }
+      // transfer known properties, i.e. color
+      if (data[18] >= 0) {
+        created.color = [data[18], data[19], data[20], data[21]];
+      }
+      // TODO: how about custom properties or fields ?
+      return created
+    };
+
+    var fromCompactBinary_1 = fromCompactBinary;
+
+    /**
+     * Determine if the given object is a path2 geometry.
+     * @param {Object} object - the object to interrogate
+     * @returns {Boolean} true if the object matches a path2
+     * @alias module:modeling/geometries/path2.isA
+     */
+    const isA = (object) => {
+      if (object && typeof object === 'object') {
+        // see create for the required attributes and types
+        if ('points' in object && 'transforms' in object && 'isClosed' in object) {
+          // NOTE: transforms should be a TypedArray, which has a read-only length
+          if (Array.isArray(object.points) && 'length' in object.transforms) {
+            return true
+          }
+        }
+      }
+      return false
+    };
+
+    var isA_1 = isA;
+
+    /**
+     * Reverses the path so that the points are in the opposite order.
+     * This swaps the left (interior) and right (exterior) edges.
+     * @param {path2} geometry - the path to reverse
+     * @returns {path2} a new path
+     * @alias module:modeling/geometries/path2.reverse
+     *
+     * @example
+     * let newpath = reverse(mypath)
+     */
+    const reverse = (geometry) => {
+      // NOTE: this only updates the order of the points
+      const cloned = clone_1$2(geometry);
+      cloned.points = geometry.points.slice().reverse();
+      return cloned
+    };
+
+    var reverse_1 = reverse;
+
+    /**
+     * Create a string representing the contents of the given path.
+     * @param {path2} geometry - the path
+     * @returns {String} a representative string
+     * @alias module:modeling/geometries/path2.toString
+     *
+     * @example
+     * console.out(toString(path))
+     */
+    const toString = (geometry) => {
+      const points = toPoints_1(geometry);
+      let result = 'path (' + points.length + ' points, ' + geometry.isClosed + '):\n[\n';
+      points.forEach((point) => {
+        result += '  ' + vec2.toString(point) + ',\n';
+      });
+      result += ']\n';
+      return result
+    };
+
+    var toString_1 = toString;
+
+    /**
+     * Produce a compact binary representation from the given path.
+     * @param {path2} geometry - the path geometry
+     * @returns {TypedArray} compact binary representation
+     * @alias module:modeling/geometries/path2.toCompactBinary
+     */
+    const toCompactBinary = (geometry) => {
+      const points = geometry.points;
+      const transforms = geometry.transforms;
+      let color = [-1, -1, -1, -1];
+      if (geometry.color) color = geometry.color;
+
+      // FIXME why Float32Array?
+      const compacted = new Float32Array(1 + 16 + 1 + 4 + (points.length * 2)); // type + transforms + isClosed + color + points data
+
+      compacted[0] = 2; // type code: 0 => geom2, 1 => geom3 , 2 => path2
+
+      compacted[1] = transforms[0];
+      compacted[2] = transforms[1];
+      compacted[3] = transforms[2];
+      compacted[4] = transforms[3];
+      compacted[5] = transforms[4];
+      compacted[6] = transforms[5];
+      compacted[7] = transforms[6];
+      compacted[8] = transforms[7];
+      compacted[9] = transforms[8];
+      compacted[10] = transforms[9];
+      compacted[11] = transforms[10];
+      compacted[12] = transforms[11];
+      compacted[13] = transforms[12];
+      compacted[14] = transforms[13];
+      compacted[15] = transforms[14];
+      compacted[16] = transforms[15];
+
+      compacted[17] = geometry.isClosed ? 1 : 0;
+
+      compacted[18] = color[0];
+      compacted[19] = color[1];
+      compacted[20] = color[2];
+      compacted[21] = color[3];
+
+      for (let j = 0; j < points.length; j++) {
+        const ci = j * 2 + 22;
+        const point = points[j];
+        compacted[ci] = point[0];
+        compacted[ci + 1] = point[1];
+      }
+      // TODO: how about custom properties or fields ?
+      return compacted
+    };
+
+    var toCompactBinary_1 = toCompactBinary;
+
+    /**
+     * Transform the given geometry using the given matrix.
+     * This is a lazy transform of the points, as this function only adjusts the transforms.
+     * The transforms are applied when accessing the points via toPoints().
+     * @param {mat4} matrix - the matrix to transform with
+     * @param {path2} geometry - the geometry to transform
+     * @returns {path2} a new path
+     * @alias module:modeling/geometries/path2.transform
+     *
+     * @example
+     * let newpath = transform(fromZRotation(Math.PI / 4), path)
+     */
+    const transform = (matrix, geometry) => {
+      const transforms = mat4.multiply(mat4.create(), matrix, geometry.transforms);
+      return Object.assign({}, geometry, { transforms })
+    };
+
+    var transform_1 = transform;
+
+    /**
+     * Determine if the given object is a valid path2.
+     * Checks for valid data points, and duplicate points.
+     *
+     * **If the geometry is not valid, an exception will be thrown with details of the geometry error.**
+     *
+     * @param {Object} object - the object to interrogate
+     * @throws {Error} error if the geometry is not valid
+     * @alias module:modeling/geometries/path2.validate
+     */
+    const validate = (object) => {
+      if (!isA_1(object)) {
+        throw new Error('invalid path2 structure')
+      }
+
+      // check for duplicate points
+      if (object.points.length > 1) {
+        for (let i = 0; i < object.points.length; i++) {
+          if (vec2.equals(object.points[i], object.points[(i + 1) % object.points.length])) {
+            throw new Error(`path2 duplicate points ${object.points[i]}`)
+          }
+        }
+      }
+
+      // check for infinity, nan
+      object.points.forEach((point) => {
+        if (!point.every(Number.isFinite)) {
+          throw new Error(`path2 invalid point ${point}`)
+        }
+      });
+
+      // check transforms
+      if (!object.transforms.every(Number.isFinite)) {
+        throw new Error(`path2 invalid transforms ${object.transforms}`)
+      }
+    };
+
+    var validate_1 = validate;
+
+    /**
+     * Represents a 2D geometry consisting of a list of ordered points.
+     * @see {@link path2} for data structure information.
+     * @module modeling/geometries/path2
+     *
+     * @example
+     * colorize([0,0,0,1], path2.fromPoints({ closed: true }, [[0,0], [4,0], [4,3]]))
+     *
+     * @example
+     * {
+     *   "points": [[0,0], [4,0], [4,3]],
+     *   "isClosed": true,
+     *   "transforms": [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],
+     *   "color": [0,0,0,1]
+     * }
+     */
+    var path2$2 = {
+      appendArc: appendArc_1,
+      appendBezier: appendBezier_1,
+      appendPoints: appendPoints_1,
+      clone: clone_1$2,
+      close: close_1,
+      concat: concat_1,
+      create: create_1$3,
+      eachPoint: eachPoint_1,
+      equals: equals_1$1,
+      fromPoints: fromPoints_1,
+      fromCompactBinary: fromCompactBinary_1,
+      isA: isA_1,
+      reverse: reverse_1,
+      toPoints: toPoints_1,
+      toString: toString_1,
+      toCompactBinary: toCompactBinary_1,
+      transform: transform_1,
+      validate: validate_1
+    };
+
+    const cache$2 = new WeakMap();
+
+    /*
+     * Measure the area of the given geometry.
+     * NOTE: paths are infinitely narrow and do not have an area
+     *
+     * @param {path2} geometry - geometry to measure
+     * @returns {Number} area of the geometry
+     */
+    const measureAreaOfPath2 = () => 0;
+
+    /*
+     * Measure the area of the given geometry.
+     * For a counter clockwise rotating geometry (about Z) the area is positive, otherwise negative.
+     *
+     * @see http://paulbourke.net/geometry/polygonmesh/
+     * @param {geom2} geometry - 2D geometry to measure
+     * @returns {Number} area of the geometry
+     */
+    const measureAreaOfGeom2 = (geometry) => {
+      let area = cache$2.get(geometry);
+      if (area) return area
+
+      const sides = geom2$2.toSides(geometry);
+      area = sides.reduce((area, side) => area + (side[0][0] * side[1][1] - side[0][1] * side[1][0]), 0);
+      area *= 0.5;
+
+      cache$2.set(geometry, area);
+
+      return area
+    };
+
+    /*
+     * Measure the area of the given geometry.
+     *
+     * @param {geom3} geometry - 3D geometry to measure
+     * @returns {Number} area of the geometry
+     */
+    const measureAreaOfGeom3 = (geometry) => {
+      let area = cache$2.get(geometry);
+      if (area) return area
+
+      const polygons = geom3$2.toPolygons(geometry);
+      area = polygons.reduce((area, polygon) => area + poly3.measureArea(polygon), 0);
+
+      cache$2.set(geometry, area);
+
+      return area
+    };
+
+    /**
+     * Measure the area of the given geometries.
+     * @param {...Objects} geometries - the geometries to measure
+     * @return {Number|Array} the area, or a list of areas for each geometry
+     * @alias module:modeling/measurements.measureArea
+     *
+     * @example
+     * let area = measureArea(sphere())
+     */
+    const measureArea$1 = (...geometries) => {
+      geometries = flatten_1$1(geometries);
+      if (geometries.length === 0) throw new Error('wrong number of arguments')
+
+      const results = geometries.map((geometry) => {
+        if (path2$2.isA(geometry)) return measureAreaOfPath2()
+        if (geom2$2.isA(geometry)) return measureAreaOfGeom2(geometry)
+        if (geom3$2.isA(geometry)) return measureAreaOfGeom3(geometry)
+        return 0
+      });
+      return results.length === 1 ? results[0] : results
+    };
+
+    var measureArea_1$1 = measureArea$1;
+
+    /**
+     * Measure the total (aggregate) area for the given geometries.
+     * Note: This measurement will not account for overlapping geometry
+     * @param {...Object} geometries - the geometries to measure.
+     * @return {Number} the total surface area for the group of geometry.
+     * @alias module:modeling/measurements.measureAggregateArea
+     *
+     * @example
+     * let totalArea = measureAggregateArea(sphere(),cube())
+     */
+    const measureAggregateArea = (...geometries) => {
+      geometries = flatten_1$1(geometries);
+      if (geometries.length === 0) throw new Error('measureAggregateArea: no geometries supplied')
+      const areas = measureArea_1$1(geometries);
+      if (geometries.length === 1) {
+        return areas
+      }
+      const result = 0;
+      return areas.reduce((result, area) => result + area, result)
+    };
+
+    var measureAggregateArea_1 = measureAggregateArea;
+
+    const cache$1 = new WeakMap();
+
+    /*
+     * Measure the min and max bounds of the given (path2) geometry.
+     * @return {Array[]} the min and max bounds for the geometry
+     */
+    const measureBoundingBoxOfPath2 = (geometry) => {
+      let boundingBox = cache$1.get(geometry);
+      if (boundingBox) return boundingBox
+
+      const points = path2$2.toPoints(geometry);
+
+      let minpoint;
+      if (points.length === 0) {
+        minpoint = vec2.create();
+      } else {
+        minpoint = vec2.clone(points[0]);
+      }
+      let maxpoint = vec2.clone(minpoint);
+
+      points.forEach((point) => {
+        vec2.min(minpoint, minpoint, point);
+        vec2.max(maxpoint, maxpoint, point);
+      });
+      minpoint = [minpoint[0], minpoint[1], 0];
+      maxpoint = [maxpoint[0], maxpoint[1], 0];
+
+      boundingBox = [minpoint, maxpoint];
+
+      cache$1.set(geometry, boundingBox);
+
+      return boundingBox
+    };
+
+    /*
+     * Measure the min and max bounds of the given (geom2) geometry.
+     * @return {Array[]} the min and max bounds for the geometry
+     */
+    const measureBoundingBoxOfGeom2 = (geometry) => {
+      let boundingBox = cache$1.get(geometry);
+      if (boundingBox) return boundingBox
+
+      const points = geom2$2.toPoints(geometry);
+
+      let minpoint;
+      if (points.length === 0) {
+        minpoint = vec2.create();
+      } else {
+        minpoint = vec2.clone(points[0]);
+      }
+      let maxpoint = vec2.clone(minpoint);
+
+      points.forEach((point) => {
+        vec2.min(minpoint, minpoint, point);
+        vec2.max(maxpoint, maxpoint, point);
+      });
+
+      minpoint = [minpoint[0], minpoint[1], 0];
+      maxpoint = [maxpoint[0], maxpoint[1], 0];
+
+      boundingBox = [minpoint, maxpoint];
+
+      cache$1.set(geometry, boundingBox);
+
+      return boundingBox
+    };
+
+    /*
+     * Measure the min and max bounds of the given (geom3) geometry.
+     * @return {Array[]} the min and max bounds for the geometry
+     */
+    const measureBoundingBoxOfGeom3 = (geometry) => {
+      let boundingBox = cache$1.get(geometry);
+      if (boundingBox) return boundingBox
+
+      const polygons = geom3$2.toPolygons(geometry);
+
+      let minpoint = vec3$1.create();
+      if (polygons.length > 0) {
+        const points = poly3.toPoints(polygons[0]);
+        vec3$1.copy(minpoint, points[0]);
+      }
+      let maxpoint = vec3$1.clone(minpoint);
+
+      polygons.forEach((polygon) => {
+        poly3.toPoints(polygon).forEach((point) => {
+          vec3$1.min(minpoint, minpoint, point);
+          vec3$1.max(maxpoint, maxpoint, point);
+        });
+      });
+
+      minpoint = [minpoint[0], minpoint[1], minpoint[2]];
+      maxpoint = [maxpoint[0], maxpoint[1], maxpoint[2]];
+
+      boundingBox = [minpoint, maxpoint];
+
+      cache$1.set(geometry, boundingBox);
+
+      return boundingBox
+    };
+
+    /**
+     * Measure the min and max bounds of the given geometries.
+     * @param {...Object} geometries - the geometries to measure
+     * @return {Array} the min and max bounds, or a list of bounds for each geometry
+     * @alias module:modeling/measurements.measureBoundingBox
+     *
+     * @example
+     * let bounds = measureBoundingBox(sphere())
+     */
+    const measureBoundingBox = (...geometries) => {
+      geometries = flatten_1$1(geometries);
+      if (geometries.length === 0) throw new Error('wrong number of arguments')
+
+      const results = geometries.map((geometry) => {
+        if (path2$2.isA(geometry)) return measureBoundingBoxOfPath2(geometry)
+        if (geom2$2.isA(geometry)) return measureBoundingBoxOfGeom2(geometry)
+        if (geom3$2.isA(geometry)) return measureBoundingBoxOfGeom3(geometry)
+        return [[0, 0, 0], [0, 0, 0]]
+      });
+      return results.length === 1 ? results[0] : results
+    };
+
+    var measureBoundingBox_1 = measureBoundingBox;
+
+    /**
+     * Measure the aggregated minimum and maximum bounds for the given geometries.
+     * @param {...Object} geometries - the geometries to measure
+     * @return {Array} the min and max bounds for the group of geometry, i.e. [[x,y,z],[X,Y,Z]]
+     * @alias module:modeling/measurements.measureAggregateBoundingBox
+     *
+     * @example
+     * let bounds = measureAggregateBoundingBox(sphere(),cube())
+     */
+    const measureAggregateBoundingBox = (...geometries) => {
+      geometries = flatten_1$1(geometries);
+      if (geometries.length === 0) throw new Error('measureAggregateBoundingBox: no geometries supplied')
+      const bounds = measureBoundingBox_1(geometries);
+      if (geometries.length === 1) {
+        return bounds
+      }
+      const result = [[Number.MAX_VALUE, Number.MAX_VALUE, Number.MAX_VALUE], [-Number.MAX_VALUE, -Number.MAX_VALUE, -Number.MAX_VALUE]];
+      return bounds.reduce((result, item) => {
+        result = [min_1$2(result[0], result[0], item[0]), max_1$2(result[1], result[1], item[1])];
+        return result
+      }, result)
+    };
+
+    var measureAggregateBoundingBox_1 = measureAggregateBoundingBox;
+
+    const { EPS } = constants;
+
+    const calculateEpsilonFromBounds = (bounds, dimensions) => {
+      let total = 0;
+      for (let i = 0; i < dimensions; i++) {
+        total += bounds[1][i] - bounds[0][i];
+      }
+      return EPS * total / dimensions
+    };
+
+    var calculateEpsilonFromBounds_1 = calculateEpsilonFromBounds;
+
+    /**
+     * Calculate the area under the given points.
+     * @param {Array} points - list of 2D points
+     * @return {Number} area under the given points
+     * @alias module:modeling/maths/utils.area
+     */
+    const area = (points) => {
+      let area = 0;
+      for (let i = 0; i < points.length; i++) {
+        const j = (i + 1) % points.length;
+        area += points[i][0] * points[j][1];
+        area -= points[j][0] * points[i][1];
+      }
+      return (area / 2.0)
+    };
+
+    var area_1 = area;
+
+    /**
+     * Measure the area under the given polygon.
+     *
+     * @param {poly2} polygon - the polygon to measure
+     * @return {Number} the area of the polygon
+     * @alias module:modeling/geometries/poly2.measureArea
+     */
+
+
+    const measureArea = (polygon) => area_1(polygon.vertices);
+
+    var measureArea_1 = measureArea;
+
+    /**
+     * Represents a convex 2D polygon consisting of a list of ordered vertices.
+     * @typedef {Object} poly2
+     * @property {Array} vertices - list of ordered vertices (2D)
+     */
+
+    /**
+     * Creates a new polygon with initial values.
+     *
+     * @param {Array} [vertices] - list of vertices (2D)
+     * @returns {poly2} a new polygon
+     * @alias module:modeling/geometries/poly2.create
+     *
+     * @example
+     * let polygon = create()
+     */
+    const create$2 = (vertices) => {
+      if (vertices === undefined || vertices.length < 3) {
+        vertices = []; // empty contents
+      }
+      return { vertices: vertices }
+    };
+
+    var create_1$2 = create$2;
+
+    /**
+     * Flip the give polygon, rotating the opposite direction.
+     *
+     * @param {poly2} polygon - the polygon to flip
+     * @returns {poly2} a new polygon
+     * @alias module:modeling/geometries/poly2.flip
+     */
+    const flip = (polygon) => {
+      const vertices = polygon.vertices.slice().reverse();
+      return create_1$2(vertices)
+    };
+
+    var flip_1 = flip;
+
+    /**
+     * Determine if the given points are inside the given polygon.
+     *
+     * @param {Array} points - a list of points, where each point is an array with X and Y values
+     * @param {poly2} polygon - a 2D polygon
+     * @return {Integer} 1 if all points are inside, 0 if some or none are inside
+     * @alias module:modeling/geometries/poly2.arePointsInside
+     */
+    const arePointsInside = (points, polygon) => {
+      if (points.length === 0) return 0 // nothing to check
+
+      const vertices = polygon.vertices;
+      if (vertices.length < 3) return 0 // nothing can be inside an empty polygon
+
+      if (measureArea_1(polygon) < 0) {
+        polygon = flip_1(polygon); // CCW is required
+      }
+
+      const sum = points.reduce((acc, point) => acc + isPointInside(point, vertices), 0);
+      return sum === points.length ? 1 : 0
+    };
+
+    /*
+     * Determine if the given point is inside the polygon.
+     *
+     * @see http://erich.realtimerendering.com/ptinpoly/ (Crossings Test)
+     * @param {Array} point - an array with X and Y values
+     * @param {Array} polygon - a list of points, where each point is an array with X and Y values
+     * @return {Integer} 1 if the point is inside, 0 if outside
+     */
+    const isPointInside = (point, polygon) => {
+      const numverts = polygon.length;
+
+      const tx = point[0];
+      const ty = point[1];
+
+      let vtx0 = polygon[numverts - 1];
+      let vtx1 = polygon[0];
+
+      let yflag0 = (vtx0[1] > ty);
+
+      let insideFlag = 0;
+
+      let i = 0;
+      for (let j = (numverts + 1); --j;) {
+        /*
+         * check if Y endpoints straddle (are on opposite sides) of point's Y
+         * if so, +X ray could intersect this edge.
+         */
+        const yflag1 = (vtx1[1] > ty);
+        if (yflag0 !== yflag1) {
+          /*
+           * check if X endpoints are on same side of the point's X
+           * if so, it's easy to test if edge hits or misses.
+           */
+          const xflag0 = (vtx0[0] > tx);
+          const xflag1 = (vtx1[0] > tx);
+          if (xflag0 && xflag1) {
+            /* if edge's X values are both right of the point, then the point must be inside */
+            insideFlag = !insideFlag;
+          } else {
+            /*
+             * if X endpoints straddle the point, then
+             * the compute intersection of polygon edge with +X ray
+             * if intersection >= point's X then the +X ray hits it.
+             */
+            if ((vtx1[0] - (vtx1[1] - ty) * (vtx0[0] - vtx1[0]) / (vtx0[1] - vtx1[1])) >= tx) {
+              insideFlag = !insideFlag;
+            }
+          }
+        }
+        /* move to next pair of vertices, retaining info as possible */
+        yflag0 = yflag1;
+        vtx0 = vtx1;
+        vtx1 = polygon[++i];
+      }
+      return insideFlag
+    };
+
+    var arePointsInside_1 = arePointsInside;
+
+    /**
+     * Represents a 2D polygon consisting of a list of ordered vertices.
+     * @see {@link poly2} for data structure information.
+     * @module modeling/geometries/poly2
+     *
+     * @example
+     * poly2.create([[0,0], [4,0], [4,3]])
+     *
+     * @example
+     * {"vertices": [[0,0], [4,0], [4,3]]}
+     */
+    var poly2 = {
+      arePointsInside: arePointsInside_1,
+      create: create_1$2,
+      flip: flip_1,
+      measureArea: measureArea_1
+    };
+
+    /**
+     * Geometries are objects that represent the contents of primitives or the results of operations.
+     * Note: Geometries are considered immutable, so never change the contents directly.
+     *
+     * @see {@link geom2} - 2D geometry consisting of sides
+     * @see {@link geom3} - 3D geometry consisting of polygons
+     * @see {@link path2} - 2D geometry consisting of ordered points
+     * @see {@link poly2} - 2D polygon consisting of ordered vertices
+     * @see {@link poly3} - 3D polygon consisting of ordered vertices
+     *
+     * @module modeling/geometries
+     * @example
+     * const { geom2, geom3, path2, poly2, poly3 } = require('@jscad/modeling').geometries
+     */
+    var geometries = {
+      geom2: geom2$2,
+      geom3: geom3$2,
+      path2: path2$2,
+      poly2: poly2,
+      poly3: poly3
+    };
+
+    const { geom2: geom2$1, geom3: geom3$1, path2: path2$1 } = geometries;
+
+    /**
+     * Measure the aggregated Epsilon for the given geometries.
+     * @param {...Object} geometries - the geometries to measure
+     * @return {Number} the aggregated Epsilon for the whole group of geometries
+     * @alias module:modeling/measurements.measureAggregateEpsilon
+     *
+     * @example
+     * let groupEpsilon = measureAggregateEpsilon(sphere(),cube())
+     */
+    const measureAggregateEpsilon = (...geometries) => {
+      geometries = flatten_1$1(geometries);
+      if (geometries.length === 0) throw new Error('measureAggregateEpsilon: no geometries supplied')
+      const bounds = measureAggregateBoundingBox_1(geometries);
+
+      let dimensions = 0;
+      dimensions = geometries.reduce((dimensions, geometry) => {
+        if (path2$1.isA(geometry) || geom2$1.isA(geometry)) return Math.max(dimensions, 2)
+        if (geom3$1.isA(geometry)) return Math.max(dimensions, 3)
+        return 0
+      }, dimensions);
+      return calculateEpsilonFromBounds_1(bounds, dimensions)
+    };
+
+    var measureAggregateEpsilon_1 = measureAggregateEpsilon;
+
+    const cache = new WeakMap();
+
+    /*
+     * Measure the volume of the given geometry.
+     * NOTE: paths are infinitely narrow and do not have an volume
+     *
+     * @param {Path2} geometry - geometry to measure
+     * @returns {Number} volume of the geometry
+     */
+    const measureVolumeOfPath2 = () => 0;
+
+    /*
+     * Measure the volume of the given geometry.
+     * NOTE: 2D geometry are infinitely thin and do not have an volume
+     *
+     * @param {Geom2} geometry - 2D geometry to measure
+     * @returns {Number} volume of the geometry
+     */
+    const measureVolumeOfGeom2 = () => 0;
+
+    /*
+     * Measure the volume of the given geometry.
+     *
+     * @param {Geom3} geometry - 3D geometry to measure
+     * @returns {Number} volume of the geometry
+     */
+    const measureVolumeOfGeom3 = (geometry) => {
+      let volume = cache.get(geometry);
+      if (volume) return volume
+
+      const polygons = geom3$2.toPolygons(geometry);
+      volume = polygons.reduce((volume, polygon) => volume + poly3.measureSignedVolume(polygon), 0);
+
+      cache.set(geometry, volume);
+
+      return volume
+    };
+
+    /**
+     * Measure the volume of the given geometries.
+     * @param {...Object} geometries - the geometries to measure
+     * @return {Number|Array} the volume, or a list of volumes for each geometry
+     * @alias module:modeling/measurements.measureVolume
+     *
+     * @example
+     * let volume = measureVolume(sphere())
+     */
+    const measureVolume = (...geometries) => {
+      geometries = flatten_1$1(geometries);
+      if (geometries.length === 0) throw new Error('wrong number of arguments')
+
+      const results = geometries.map((geometry) => {
+        if (path2$2.isA(geometry)) return measureVolumeOfPath2()
+        if (geom2$2.isA(geometry)) return measureVolumeOfGeom2()
+        if (geom3$2.isA(geometry)) return measureVolumeOfGeom3(geometry)
+        return 0
+      });
+      return results.length === 1 ? results[0] : results
+    };
+
+    var measureVolume_1 = measureVolume;
+
+    /**
+     * Measure the total (aggregate) volume for the given geometries.
+     * Note: This measurement will not account for overlapping geometry
+     * @param {...Object} geometries - the geometries to measure.
+     * @return {Number} the volume for the group of geometry.
+     * @alias module:modeling/measurements.measureAggregateVolume
+     *
+     * @example
+     * let totalVolume = measureAggregateVolume(sphere(),cube())
+     */
+    const measureAggregateVolume = (...geometries) => {
+      geometries = flatten_1$1(geometries);
+      if (geometries.length === 0) throw new Error('measureAggregateVolume: no geometries supplied')
+      const volumes = measureVolume_1(geometries);
+      if (geometries.length === 1) {
+        return volumes
+      }
+      const result = 0;
+      return volumes.reduce((result, volume) => result + volume, result)
+    };
+
+    var measureAggregateVolume_1 = measureAggregateVolume;
+
+    const cacheOfBoundingSpheres = new WeakMap();
+
+    /*
+     * Measure the bounding sphere of the given (path2) geometry.
+     * @return {[[x, y, z], radius]} the bounding sphere for the geometry
+     */
+    const measureBoundingSphereOfPath2 = (geometry) => {
+      let boundingSphere = cacheOfBoundingSpheres.get(geometry);
+      if (boundingSphere !== undefined) return boundingSphere
+
+      const centroid = vec3$1.create();
+      let radius = 0;
+
+      const points = path2$2.toPoints(geometry);
+
+      if (points.length > 0) {
+        // calculate the centroid of the geometry
+        let numPoints = 0;
+        const temp = vec3$1.create();
+        points.forEach((point) => {
+          vec3$1.add(centroid, centroid, vec3$1.fromVec2(temp, point, 0));
+          numPoints++;
+        });
+        vec3$1.scale(centroid, centroid, 1 / numPoints);
+
+        // find the farthest point from the centroid
+        points.forEach((point) => {
+          radius = Math.max(radius, vec2.squaredDistance(centroid, point));
+        });
+        radius = Math.sqrt(radius);
+      }
+
+      boundingSphere = [centroid, radius];
+      cacheOfBoundingSpheres.set(geometry, boundingSphere);
+
+      return boundingSphere
+    };
+
+    /*
+     * Measure the bounding sphere of the given (geom2) geometry.
+     * @return {[[x, y, z], radius]} the bounding sphere for the geometry
+     */
+    const measureBoundingSphereOfGeom2 = (geometry) => {
+      let boundingSphere = cacheOfBoundingSpheres.get(geometry);
+      if (boundingSphere !== undefined) return boundingSphere
+
+      const centroid = vec3$1.create();
+      let radius = 0;
+
+      const sides = geom2$2.toSides(geometry);
+
+      if (sides.length > 0) {
+        // calculate the centroid of the geometry
+        let numPoints = 0;
+        const temp = vec3$1.create();
+        sides.forEach((side) => {
+          vec3$1.add(centroid, centroid, vec3$1.fromVec2(temp, side[0], 0));
+          numPoints++;
+        });
+        vec3$1.scale(centroid, centroid, 1 / numPoints);
+
+        // find the farthest point from the centroid
+        sides.forEach((side) => {
+          radius = Math.max(radius, vec2.squaredDistance(centroid, side[0]));
+        });
+        radius = Math.sqrt(radius);
+      }
+
+      boundingSphere = [centroid, radius];
+      cacheOfBoundingSpheres.set(geometry, boundingSphere);
+
+      return boundingSphere
+    };
+
+    /*
+     * Measure the bounding sphere of the given (geom3) geometry.
+     * @return {[[x, y, z], radius]} the bounding sphere for the geometry
+     */
+    const measureBoundingSphereOfGeom3 = (geometry) => {
+      let boundingSphere = cacheOfBoundingSpheres.get(geometry);
+      if (boundingSphere !== undefined) return boundingSphere
+
+      const centroid = vec3$1.create();
+      let radius = 0;
+
+      const polygons = geom3$2.toPolygons(geometry);
+
+      if (polygons.length > 0) {
+        // calculate the centroid of the geometry
+        let numPoints = 0;
+        polygons.forEach((polygon) => {
+          poly3.toPoints(polygon).forEach((point) => {
+            vec3$1.add(centroid, centroid, point);
+            numPoints++;
+          });
+        });
+        vec3$1.scale(centroid, centroid, 1 / numPoints);
+
+        // find the farthest point from the centroid
+        polygons.forEach((polygon) => {
+          poly3.toPoints(polygon).forEach((point) => {
+            radius = Math.max(radius, vec3$1.squaredDistance(centroid, point));
+          });
+        });
+        radius = Math.sqrt(radius);
+      }
+
+      boundingSphere = [centroid, radius];
+      cacheOfBoundingSpheres.set(geometry, boundingSphere);
+
+      return boundingSphere
+    };
+
+    /**
+     * Measure the (approximate) bounding sphere of the given geometries.
+     * @see https://en.wikipedia.org/wiki/Bounding_sphere
+     * @param {...Object} geometries - the geometries to measure
+     * @return {Array} the bounding sphere for each geometry, i.e. [centroid, radius]
+     * @alias module:modeling/measurements.measureBoundingSphere
+     *
+     * @example
+     * let bounds = measureBoundingSphere(cube())
+     */
+    const measureBoundingSphere = (...geometries) => {
+      geometries = flatten_1$1(geometries);
+
+      const results = geometries.map((geometry) => {
+        if (path2$2.isA(geometry)) return measureBoundingSphereOfPath2(geometry)
+        if (geom2$2.isA(geometry)) return measureBoundingSphereOfGeom2(geometry)
+        if (geom3$2.isA(geometry)) return measureBoundingSphereOfGeom3(geometry)
+        return [[0, 0, 0], 0]
+      });
+      return results.length === 1 ? results[0] : results
+    };
+
+    var measureBoundingSphere_1 = measureBoundingSphere;
+
+    /**
+     * Measure the center of the given geometries.
+     * @param {...Object} geometries - the geometries to measure
+     * @return {Array} the center point for each geometry, i.e. [X, Y, Z]
+     * @alias module:modeling/measurements.measureCenter
+     *
+     * @example
+     * let center = measureCenter(sphere())
+     */
+    const measureCenter = (...geometries) => {
+      geometries = flatten_1$1(geometries);
+
+      const results = geometries.map((geometry) => {
+        const bounds = measureBoundingBox_1(geometry);
+        return [
+          (bounds[0][0] + ((bounds[1][0] - bounds[0][0]) / 2)),
+          (bounds[0][1] + ((bounds[1][1] - bounds[0][1]) / 2)),
+          (bounds[0][2] + ((bounds[1][2] - bounds[0][2]) / 2))
+        ]
+      });
+      return results.length === 1 ? results[0] : results
+    };
+
+    var measureCenter_1 = measureCenter;
+
+    const cacheOfCenterOfMass = new WeakMap();
+
+    /*
+     * Measure the center of mass for the given geometry.
+     *
+     * @see http://paulbourke.net/geometry/polygonmesh/
+     * @return {Array} the center of mass for the geometry
+     */
+    const measureCenterOfMassGeom2 = (geometry) => {
+      let centerOfMass = cacheOfCenterOfMass.get(geometry);
+      if (centerOfMass !== undefined) return centerOfMass
+
+      const sides = geom2$2.toSides(geometry);
+
+      let area = 0;
+      let x = 0;
+      let y = 0;
+      if (sides.length > 0) {
+        for (let i = 0; i < sides.length; i++) {
+          const p1 = sides[i][0];
+          const p2 = sides[i][1];
+
+          const a = p1[0] * p2[1] - p1[1] * p2[0];
+          area += a;
+          x += (p1[0] + p2[0]) * a;
+          y += (p1[1] + p2[1]) * a;
+        }
+        area /= 2;
+
+        const f = 1 / (area * 6);
+        x *= f;
+        y *= f;
+      }
+
+      centerOfMass = vec3$1.fromValues(x, y, 0);
+
+      cacheOfCenterOfMass.set(geometry, centerOfMass);
+      return centerOfMass
+    };
+
+    /*
+     * Measure the center of mass for the given geometry.
+     * @return {Array} the center of mass for the geometry
+     */
+    const measureCenterOfMassGeom3 = (geometry) => {
+      let centerOfMass = cacheOfCenterOfMass.get(geometry);
+      if (centerOfMass !== undefined) return centerOfMass
+
+      centerOfMass = vec3$1.create(); // 0, 0, 0
+
+      const polygons = geom3$2.toPolygons(geometry);
+      if (polygons.length === 0) return centerOfMass
+
+      let totalVolume = 0;
+      const vector = vec3$1.create(); // for speed
+      polygons.forEach((polygon) => {
+        // calculate volume and center of each tetrahedron
+        const vertices = polygon.vertices;
+        for (let i = 0; i < vertices.length - 2; i++) {
+          vec3$1.cross(vector, vertices[i + 1], vertices[i + 2]);
+          const volume = vec3$1.dot(vertices[0], vector) / 6;
+
+          totalVolume += volume;
+
+          vec3$1.add(vector, vertices[0], vertices[i + 1]);
+          vec3$1.add(vector, vector, vertices[i + 2]);
+          const weightedCenter = vec3$1.scale(vector, vector, 1 / 4 * volume);
+
+          vec3$1.add(centerOfMass, centerOfMass, weightedCenter);
+        }
+      });
+      vec3$1.scale(centerOfMass, centerOfMass, 1 / totalVolume);
+
+      cacheOfCenterOfMass.set(geometry, centerOfMass);
+      return centerOfMass
+    };
+
+    /**
+     * Measure the center of mass for the given geometries.
+     * @param {...Object} geometries - the geometries to measure
+     * @return {Array} the center of mass for each geometry, i.e. [X, Y, Z]
+     * @alias module:modeling/measurements.measureCenterOfMass
+     *
+     * @example
+     * let center = measureCenterOfMass(sphere())
+     */
+    const measureCenterOfMass = (...geometries) => {
+      geometries = flatten_1$1(geometries);
+
+      const results = geometries.map((geometry) => {
+        // NOTE: center of mass for geometry path2 is not possible
+        if (geom2$2.isA(geometry)) return measureCenterOfMassGeom2(geometry)
+        if (geom3$2.isA(geometry)) return measureCenterOfMassGeom3(geometry)
+        return [0, 0, 0]
+      });
+      return results.length === 1 ? results[0] : results
+    };
+
+    var measureCenterOfMass_1 = measureCenterOfMass;
+
+    /**
+     * Measure the dimensions of the given geometries.
+     * @param {...Object} geometries - the geometries to measure
+     * @return {Array} the dimensions for each geometry, i.e. [width, depth, height]
+     * @alias module:modeling/measurements.measureDimensions
+     *
+     * @example
+     * let dimensions = measureDimensions(sphere())
+     */
+    const measureDimensions = (...geometries) => {
+      geometries = flatten_1$1(geometries);
+
+      const results = geometries.map((geometry) => {
+        const boundingBox = measureBoundingBox_1(geometry);
+        return [
+          boundingBox[1][0] - boundingBox[0][0],
+          boundingBox[1][1] - boundingBox[0][1],
+          boundingBox[1][2] - boundingBox[0][2]
+        ]
+      });
+      return results.length === 1 ? results[0] : results
+    };
+
+    var measureDimensions_1 = measureDimensions;
+
+    const { geom2, geom3, path2 } = geometries;
+
+
+
+
+    /*
+     * Measure the epsilon of the given (path2) geometry.
+     * @return {Number} the epsilon (precision) of the geometry
+     */
+    const measureEpsilonOfPath2 = (geometry) => calculateEpsilonFromBounds_1(measureBoundingBox_1(geometry), 2);
+
+    /*
+     * Measure the epsilon of the given (geom2) geometry.
+     * @return {Number} the epsilon (precision) of the geometry
+     */
+    const measureEpsilonOfGeom2 = (geometry) => calculateEpsilonFromBounds_1(measureBoundingBox_1(geometry), 2);
+
+    /*
+     * Measure the epsilon of the given (geom3) geometry.
+     * @return {Float} the epsilon (precision) of the geometry
+     */
+    const measureEpsilonOfGeom3 = (geometry) => calculateEpsilonFromBounds_1(measureBoundingBox_1(geometry), 3);
+
+    /**
+     * Measure the epsilon of the given geometries.
+     * Epsilon values are used in various functions to determine minimum distances between points, planes, etc.
+     * @param {...Object} geometries - the geometries to measure
+     * @return {Number|Array} the epsilon, or a list of epsilons for each geometry
+     * @alias module:modeling/measurements.measureEpsilon
+     *
+     * @example
+     * let epsilon = measureEpsilon(sphere())
+     */
+    const measureEpsilon = (...geometries) => {
+      geometries = flatten_1$1(geometries);
+      if (geometries.length === 0) throw new Error('wrong number of arguments')
+
+      const results = geometries.map((geometry) => {
+        if (path2.isA(geometry)) return measureEpsilonOfPath2(geometry)
+        if (geom2.isA(geometry)) return measureEpsilonOfGeom2(geometry)
+        if (geom3.isA(geometry)) return measureEpsilonOfGeom3(geometry)
+        return 0
+      });
+      return results.length === 1 ? results[0] : results
+    };
+
+    var measureEpsilon_1 = measureEpsilon;
+
+    /**
+     * All shapes (primitives or the results of operations) can be measured, e.g. calculate volume, etc.
+     * @module modeling/measurements
+     * @example
+     * const { measureArea, measureBoundingBox, measureVolume } = require('@jscad/modeling').measurements
+     */
+    var measurements = {
+      measureAggregateArea: measureAggregateArea_1,
+      measureAggregateBoundingBox: measureAggregateBoundingBox_1,
+      measureAggregateEpsilon: measureAggregateEpsilon_1,
+      measureAggregateVolume: measureAggregateVolume_1,
+      measureArea: measureArea_1$1,
+      measureBoundingBox: measureBoundingBox_1,
+      measureBoundingSphere: measureBoundingSphere_1,
+      measureCenter: measureCenter_1,
+      measureCenterOfMass: measureCenterOfMass_1,
+      measureDimensions: measureDimensions_1,
+      measureEpsilon: measureEpsilon_1,
+      measureVolume: measureVolume_1
+    };
+    var measurements_6 = measurements.measureBoundingBox;
 
     var create_1$1 = create$1;
 
@@ -16593,9 +21698,9 @@ void main () {
     var src_4 = src.controls;
     var src_5 = src.entitiesFromSolids;
 
-    var perspectiveCamera=src_3.perspective;var perspectiveCameraStateDefaults=perspectiveCamera.defaults;var controls=src_4.orbit;var controlsStateDefaults=controls.defaults;var prepareRender=src_1;var entitiesFromSolids=src_5;var prepareDrawCommands=src_2;var AxisEntity;(function(AxisEntity){var Class=function(){function Class(){this.visuals={drawCmd:"drawAxis",show:true};this.alwaysVisible=false;}return Class}();AxisEntity.Class=Class;})(AxisEntity||(AxisEntity={}));var MultiGridEntity;(function(MultiGridEntity){var Class=function(){function Class(){this.visuals={drawCmd:"drawGrid",show:true,color:[0,0,0,1],subColor:[0.5,0.5,0.5,1]};this.size=[1000,1000];this.ticks=[10,1];}return Class}();MultiGridEntity.Class=Class;})(MultiGridEntity||(MultiGridEntity={}));var Shape=function(){function Shape(getSolid,spawnsTab,addAxis,addMultiGrid){if(spawnsTab===void 0){spawnsTab=false;}if(addAxis===void 0){addAxis=false;}if(addMultiGrid===void 0){addMultiGrid=false;}this.getSolid=getSolid;this.spawnsTab=spawnsTab;this.addAxis=addAxis;this.addMultiGrid=addMultiGrid;}Shape.prototype.toReplString=function(){return "<Shape>"};return Shape}();var MousePointer;(function(MousePointer){MousePointer[MousePointer["NONE"]=-1]="NONE";MousePointer[MousePointer["LEFT"]=0]="LEFT";MousePointer[MousePointer["RIGHT"]=2]="RIGHT";MousePointer[MousePointer["MIDDLE"]=1]="MIDDLE";MousePointer[MousePointer["OTHER"]=7050]="OTHER";})(MousePointer||(MousePointer={}));var FrameTracker=function(){function FrameTracker(){this.zoomTicks=0;this.zoomToFitOnce=true;this.heldPointer=MousePointer.NONE;this.lastX=-1;this.lastY=-1;this.rotateX=0;this.rotateY=0;this.panX=0;this.panY=0;}FrameTracker.prototype.getZoomTicks=function(){return this.zoomTicks};FrameTracker.prototype.changeZoomTicks=function(wheelDelta){this.zoomTicks+=Math.sign(wheelDelta);};FrameTracker.prototype.setZoomToFit=function(){this.zoomToFitOnce=true;};FrameTracker.prototype.unsetLastCoordinates=function(){this.lastX=-1;this.lastY=-1;};FrameTracker.prototype.setHeldPointer=function(mouseEventButton){switch(mouseEventButton){case MousePointer.LEFT:case MousePointer.RIGHT:case MousePointer.MIDDLE:this.heldPointer=mouseEventButton;break;default:this.heldPointer=MousePointer.OTHER;break;}};FrameTracker.prototype.unsetHeldPointer=function(){this.heldPointer=MousePointer.NONE;};FrameTracker.prototype.shouldZoom=function(){return this.zoomTicks!==0};FrameTracker.prototype.didZoom=function(){this.zoomTicks=0;};FrameTracker.prototype.shouldZoomToFit=function(){return this.zoomToFitOnce};FrameTracker.prototype.didZoomToFit=function(){this.zoomToFitOnce=false;};FrameTracker.prototype.shouldRotate=function(){return this.rotateX!==0||this.rotateY!==0};FrameTracker.prototype.didRotate=function(){this.rotateX=0;this.rotateY=0;};FrameTracker.prototype.shouldPan=function(){return this.panX!==0||this.panY!==0};FrameTracker.prototype.didPan=function(){this.panX=0;this.panY=0;};FrameTracker.prototype.isPointerHeld=function(){return this.heldPointer!==MousePointer.NONE&&this.heldPointer!==MousePointer.RIGHT};FrameTracker.prototype.isPointerPan=function(){return [MousePointer.MIDDLE].includes(this.heldPointer)};return FrameTracker}();var CameraViewportDimensions=function(){function CameraViewportDimensions(width,height){this.width=width;this.height=height;}return CameraViewportDimensions}();function looseInstanceOf(object,c){var _a;var objectName=(_a=object===null||object===void 0?void 0:object.constructor)===null||_a===void 0?void 0:_a.name;var className=c===null||c===void 0?void 0:c.name;return objectName!==undefined&&className!==undefined&&objectName===className}var toolTipText={visibility:"hidden",backgroundColor:"#ffffff",color:"#7b7b7b",borderRadius:"6px",position:"absolute",whiteSpace:"nowrap",padding:"5px",top:"-1px",zIndex:"1"};
+    var perspectiveCamera=src_3.perspective;var perspectiveCameraStateDefaults=perspectiveCamera.defaults;var controls=src_4.orbit;var controlsStateDefaults=controls.defaults;var prepareRender=src_1;var entitiesFromSolids=src_5;var prepareDrawCommands=src_2;var AxisEntity;(function(AxisEntity){var Class=function(){function Class(){this.visuals={drawCmd:"drawAxis",show:true};this.alwaysVisible=false;}return Class}();AxisEntity.Class=Class;})(AxisEntity||(AxisEntity={}));var MultiGridEntity;(function(MultiGridEntity){var Class=function(){function Class(){this.visuals={drawCmd:"drawGrid",show:true,color:[0,0,0,1],subColor:[0.5,0.5,0.5,1]};this.size=[0,0];this.ticks=[10,1];}return Class}();MultiGridEntity.Class=Class;})(MultiGridEntity||(MultiGridEntity={}));var Shape=function(){function Shape(getSolid,spawnsTab,addAxis,addMultiGrid){if(spawnsTab===void 0){spawnsTab=false;}if(addAxis===void 0){addAxis=false;}if(addMultiGrid===void 0){addMultiGrid=false;}this.getSolid=getSolid;this.spawnsTab=spawnsTab;this.addAxis=addAxis;this.addMultiGrid=addMultiGrid;}Shape.prototype.toReplString=function(){return "<Shape>"};return Shape}();var MousePointer;(function(MousePointer){MousePointer[MousePointer["NONE"]=-1]="NONE";MousePointer[MousePointer["LEFT"]=0]="LEFT";MousePointer[MousePointer["RIGHT"]=2]="RIGHT";MousePointer[MousePointer["MIDDLE"]=1]="MIDDLE";MousePointer[MousePointer["OTHER"]=7050]="OTHER";})(MousePointer||(MousePointer={}));var FrameTracker=function(){function FrameTracker(){this.zoomTicks=0;this.zoomToFitOnce=true;this.heldPointer=MousePointer.NONE;this.lastX=-1;this.lastY=-1;this.rotateX=0;this.rotateY=0;this.panX=0;this.panY=0;}FrameTracker.prototype.getZoomTicks=function(){return this.zoomTicks};FrameTracker.prototype.changeZoomTicks=function(wheelDelta){this.zoomTicks+=Math.sign(wheelDelta);};FrameTracker.prototype.setZoomToFit=function(){this.zoomToFitOnce=true;};FrameTracker.prototype.unsetLastCoordinates=function(){this.lastX=-1;this.lastY=-1;};FrameTracker.prototype.setHeldPointer=function(mouseEventButton){switch(mouseEventButton){case MousePointer.LEFT:case MousePointer.RIGHT:case MousePointer.MIDDLE:this.heldPointer=mouseEventButton;break;default:this.heldPointer=MousePointer.OTHER;break;}};FrameTracker.prototype.unsetHeldPointer=function(){this.heldPointer=MousePointer.NONE;};FrameTracker.prototype.shouldZoom=function(){return this.zoomTicks!==0};FrameTracker.prototype.didZoom=function(){this.zoomTicks=0;};FrameTracker.prototype.shouldZoomToFit=function(){return this.zoomToFitOnce};FrameTracker.prototype.didZoomToFit=function(){this.zoomToFitOnce=false;};FrameTracker.prototype.shouldRotate=function(){return this.rotateX!==0||this.rotateY!==0};FrameTracker.prototype.didRotate=function(){this.rotateX=0;this.rotateY=0;};FrameTracker.prototype.shouldPan=function(){return this.panX!==0||this.panY!==0};FrameTracker.prototype.didPan=function(){this.panX=0;this.panY=0;};FrameTracker.prototype.isPointerHeld=function(){return this.heldPointer!==MousePointer.NONE&&this.heldPointer!==MousePointer.RIGHT};FrameTracker.prototype.isPointerPan=function(){return [MousePointer.MIDDLE].includes(this.heldPointer)};return FrameTracker}();var CameraViewportDimensions=function(){function CameraViewportDimensions(width,height){this.width=width;this.height=height;}return CameraViewportDimensions}();function looseInstanceOf(object,c){var _a;var objectName=(_a=object===null||object===void 0?void 0:object.constructor)===null||_a===void 0?void 0:_a.name;var className=c===null||c===void 0?void 0:c.name;return objectName!==undefined&&className!==undefined&&objectName===className}var toolTipText={visibility:"hidden",backgroundColor:"#ffffff",color:"#7b7b7b",borderRadius:"6px",position:"absolute",whiteSpace:"nowrap",padding:"5px",top:"-1px",zIndex:"1"};
 
-    function makeWrappedRenderer(canvas){var prepareRenderOptions={glOptions:{canvas:canvas}};return prepareRender(prepareRenderOptions)}function addEntities(shape,geometryEntities){var allEntities=__spreadArray([],geometryEntities);if(shape.addAxis)allEntities.push(new AxisEntity.Class);if(shape.addMultiGrid)allEntities.push(new MultiGridEntity.Class);return allEntities}function adjustCameraAngle(perspectiveCameraState,controlsState){if(controlsState===void 0){controlsState=null;}if(controlsState===null){perspectiveCamera.update(perspectiveCameraState);return}var output=controls.update({controls:controlsState,camera:perspectiveCameraState});controlsState.thetaDelta=output.controls.thetaDelta;controlsState.phiDelta=output.controls.phiDelta;controlsState.scale=output.controls.scale;perspectiveCameraState.position=output.camera.position;perspectiveCameraState.view=output.camera.view;}function doDynamicResize(canvas,perspectiveCameraState){var canvasBounds=canvas.getBoundingClientRect();var devicePixelRatio=window.devicePixelRatio;var width=canvasBounds.width*devicePixelRatio;var height=canvasBounds.height*devicePixelRatio;canvas.width=width;canvas.height=height;perspectiveCamera.setProjection(perspectiveCameraState,perspectiveCameraState,new CameraViewportDimensions(width,height));}function doZoom(zoomTicks,perspectiveCameraState,controlsState){while(zoomTicks!==0){var currentTick=Math.sign(zoomTicks);zoomTicks-=currentTick;var scaleChange=currentTick*0.1;var potentialNewScale=controlsState.scale+scaleChange;var potentialNewDistance=vec3.distance(perspectiveCameraState.position,perspectiveCameraState.target)*potentialNewScale;if(potentialNewDistance>controlsState.limits.minDistance&&potentialNewDistance<controlsState.limits.maxDistance){controlsState.scale=potentialNewScale;}else break}adjustCameraAngle(perspectiveCameraState,controlsState);}function doZoomToFit(geometryEntities,perspectiveCameraState,controlsState){var options={controls:controlsState,camera:perspectiveCameraState,entities:geometryEntities};var output=controls.zoomToFit(options);perspectiveCameraState.target=output.camera.target;controlsState.scale=output.controls.scale;adjustCameraAngle(perspectiveCameraState,controlsState);}function doRotate(rotateX,rotateY,perspectiveCameraState,controlsState){var output=controls.rotate({controls:controlsState,camera:perspectiveCameraState,speed:0.0015},[rotateX,rotateY]);var newControlsState=output.controls;controlsState.thetaDelta=newControlsState.thetaDelta;controlsState.phiDelta=newControlsState.phiDelta;adjustCameraAngle(perspectiveCameraState,controlsState);}function doPan(panX,panY,perspectiveCameraState,controlsState){var output=controls.pan({controls:controlsState,camera:perspectiveCameraState},[panX,panY*0.75]);var newCameraState=output.camera;perspectiveCameraState.position=newCameraState.position;perspectiveCameraState.target=newCameraState.target;adjustCameraAngle(perspectiveCameraState,controlsState);}function registerEvents(canvas,frameTracker){canvas.addEventListener("wheel",function(wheelEvent){wheelEvent.preventDefault();frameTracker.changeZoomTicks(wheelEvent.deltaY);},{passive:false});canvas.addEventListener("dblclick",function(_mouseEvent){frameTracker.setZoomToFit();});canvas.addEventListener("pointerdown",function(pointerEvent){frameTracker.setHeldPointer(pointerEvent.button);frameTracker.lastX=pointerEvent.pageX;frameTracker.lastY=pointerEvent.pageY;canvas.setPointerCapture(pointerEvent.pointerId);});canvas.addEventListener("pointerup",function(pointerEvent){frameTracker.unsetHeldPointer();frameTracker.unsetLastCoordinates();canvas.releasePointerCapture(pointerEvent.pointerId);});canvas.addEventListener("pointermove",function(pointerEvent){if(!frameTracker.isPointerHeld())return;var currentX=pointerEvent.pageX;var currentY=pointerEvent.pageY;var differenceX=frameTracker.lastX-currentX;var differenceY=frameTracker.lastY-currentY;if(!(frameTracker.isPointerPan()||pointerEvent.shiftKey)){frameTracker.rotateX-=differenceX;frameTracker.rotateY+=differenceY;}else {frameTracker.panX+=differenceX;frameTracker.panY-=differenceY;}frameTracker.lastX=currentX;frameTracker.lastY=currentY;});}function render(canvas,shape){var wrappedRenderer=makeWrappedRenderer(canvas);var perspectiveCameraState=__assign(__assign({},perspectiveCameraStateDefaults),{position:[1000,1000,1500]});var controlsState=__assign({},controlsStateDefaults);var geometryEntities=entitiesFromSolids(undefined,shape.getSolid());var wrappedRendererData={entities:addEntities(shape,geometryEntities),drawCommands:prepareDrawCommands,camera:perspectiveCameraState};var frameTracker=new FrameTracker;var requestId=0;function animationCallback(_timestamp){doDynamicResize(canvas,perspectiveCameraState);var shouldZoom=frameTracker.shouldZoom();var shouldZoomToFit=frameTracker.shouldZoomToFit();var shouldRotate=frameTracker.shouldRotate();var shouldPan=frameTracker.shouldPan();if(shouldZoom){doZoom(frameTracker.getZoomTicks(),perspectiveCameraState,controlsState);frameTracker.didZoom();}if(shouldZoomToFit){doZoomToFit(geometryEntities,perspectiveCameraState,controlsState);frameTracker.didZoomToFit();}if(shouldRotate){doRotate(frameTracker.rotateX,frameTracker.rotateY,perspectiveCameraState,controlsState);frameTracker.didRotate();}if(shouldPan){doPan(frameTracker.panX,frameTracker.panY,perspectiveCameraState,controlsState);frameTracker.didPan();}if(shouldZoom||shouldZoomToFit||shouldRotate||shouldPan){wrappedRenderer(wrappedRendererData);}requestId=window.requestAnimationFrame(animationCallback);}requestId=window.requestAnimationFrame(animationCallback);registerEvents(canvas,frameTracker);return function(){return requestId}}
+    function makeWrappedRenderer(canvas){var prepareRenderOptions={glOptions:{canvas:canvas}};return prepareRender(prepareRenderOptions)}function getSize(shape){var shapeBoundingBox=measurements_6(shape.getSolid());var scalingFactor=1.2;return Math.ceil(scalingFactor*Math.max(Math.abs(shapeBoundingBox[0][0]),Math.abs(shapeBoundingBox[0][1]),Math.abs(shapeBoundingBox[0][2]),Math.abs(shapeBoundingBox[1][0]),Math.abs(shapeBoundingBox[1][1]),Math.abs(shapeBoundingBox[1][2])))}function addEntities(shape,geometryEntities){var allEntities=__spreadArray([],geometryEntities);var size=getSize(shape);if(shape.addAxis){var axis=__assign(__assign({},new AxisEntity.Class),{size:size});allEntities.push(axis);}if(shape.addMultiGrid){var grid=__assign(__assign({},new MultiGridEntity.Class),{size:[size*2,size*2]});allEntities.push(grid);}return allEntities}function adjustCameraAngle(perspectiveCameraState,controlsState){if(controlsState===void 0){controlsState=null;}if(controlsState===null){perspectiveCamera.update(perspectiveCameraState);return}var output=controls.update({controls:controlsState,camera:perspectiveCameraState});controlsState.thetaDelta=output.controls.thetaDelta;controlsState.phiDelta=output.controls.phiDelta;controlsState.scale=output.controls.scale;perspectiveCameraState.position=output.camera.position;perspectiveCameraState.view=output.camera.view;}function doDynamicResize(canvas,perspectiveCameraState){var canvasBounds=canvas.getBoundingClientRect();var devicePixelRatio=window.devicePixelRatio;var width=canvasBounds.width*devicePixelRatio;var height=canvasBounds.height*devicePixelRatio;canvas.width=width;canvas.height=height;perspectiveCamera.setProjection(perspectiveCameraState,perspectiveCameraState,new CameraViewportDimensions(width,height));}function doZoom(zoomTicks,perspectiveCameraState,controlsState){while(zoomTicks!==0){var currentTick=Math.sign(zoomTicks);zoomTicks-=currentTick;var scaleChange=currentTick*0.1;var potentialNewScale=controlsState.scale+scaleChange;var potentialNewDistance=vec3$1.distance(perspectiveCameraState.position,perspectiveCameraState.target)*potentialNewScale;if(potentialNewDistance>controlsState.limits.minDistance&&potentialNewDistance<controlsState.limits.maxDistance){controlsState.scale=potentialNewScale;}else break}adjustCameraAngle(perspectiveCameraState,controlsState);}function doZoomToFit(geometryEntities,perspectiveCameraState,controlsState){var options={controls:controlsState,camera:perspectiveCameraState,entities:geometryEntities};var output=controls.zoomToFit(options);perspectiveCameraState.target=output.camera.target;controlsState.scale=output.controls.scale;adjustCameraAngle(perspectiveCameraState,controlsState);}function doRotate(rotateX,rotateY,perspectiveCameraState,controlsState){var output=controls.rotate({controls:controlsState,camera:perspectiveCameraState,speed:0.0015},[rotateX,rotateY]);var newControlsState=output.controls;controlsState.thetaDelta=newControlsState.thetaDelta;controlsState.phiDelta=newControlsState.phiDelta;adjustCameraAngle(perspectiveCameraState,controlsState);}function doPan(panX,panY,perspectiveCameraState,controlsState){var output=controls.pan({controls:controlsState,camera:perspectiveCameraState},[panX,panY*0.75]);var newCameraState=output.camera;perspectiveCameraState.position=newCameraState.position;perspectiveCameraState.target=newCameraState.target;adjustCameraAngle(perspectiveCameraState,controlsState);}function registerEvents(canvas,frameTracker){canvas.addEventListener("wheel",function(wheelEvent){wheelEvent.preventDefault();frameTracker.changeZoomTicks(wheelEvent.deltaY);},{passive:false});canvas.addEventListener("dblclick",function(_mouseEvent){frameTracker.setZoomToFit();});canvas.addEventListener("pointerdown",function(pointerEvent){frameTracker.setHeldPointer(pointerEvent.button);frameTracker.lastX=pointerEvent.pageX;frameTracker.lastY=pointerEvent.pageY;canvas.setPointerCapture(pointerEvent.pointerId);});canvas.addEventListener("pointerup",function(pointerEvent){frameTracker.unsetHeldPointer();frameTracker.unsetLastCoordinates();canvas.releasePointerCapture(pointerEvent.pointerId);});canvas.addEventListener("pointermove",function(pointerEvent){if(!frameTracker.isPointerHeld())return;var currentX=pointerEvent.pageX;var currentY=pointerEvent.pageY;var differenceX=frameTracker.lastX-currentX;var differenceY=frameTracker.lastY-currentY;if(!(frameTracker.isPointerPan()||pointerEvent.shiftKey)){frameTracker.rotateX-=differenceX;frameTracker.rotateY+=differenceY;}else {frameTracker.panX+=differenceX;frameTracker.panY-=differenceY;}frameTracker.lastX=currentX;frameTracker.lastY=currentY;});}function render(canvas,shape){var wrappedRenderer=makeWrappedRenderer(canvas);var perspectiveCameraState=__assign(__assign({},perspectiveCameraStateDefaults),{position:[1000,1000,1500]});var controlsState=__assign({},controlsStateDefaults);var geometryEntities=entitiesFromSolids(undefined,shape.getSolid());var wrappedRendererData={entities:addEntities(shape,geometryEntities),drawCommands:prepareDrawCommands,camera:perspectiveCameraState};var frameTracker=new FrameTracker;var requestId=0;function animationCallback(_timestamp){doDynamicResize(canvas,perspectiveCameraState);var shouldZoom=frameTracker.shouldZoom();var shouldZoomToFit=frameTracker.shouldZoomToFit();var shouldRotate=frameTracker.shouldRotate();var shouldPan=frameTracker.shouldPan();if(shouldZoom){doZoom(frameTracker.getZoomTicks(),perspectiveCameraState,controlsState);frameTracker.didZoom();}if(shouldZoomToFit){doZoomToFit(geometryEntities,perspectiveCameraState,controlsState);frameTracker.didZoomToFit();}if(shouldRotate){doRotate(frameTracker.rotateX,frameTracker.rotateY,perspectiveCameraState,controlsState);frameTracker.didRotate();}if(shouldPan){doPan(frameTracker.panX,frameTracker.panY,perspectiveCameraState,controlsState);frameTracker.didPan();}if(shouldZoom||shouldZoomToFit||shouldRotate||shouldPan){wrappedRenderer(wrappedRendererData);}requestId=window.requestAnimationFrame(animationCallback);}requestId=window.requestAnimationFrame(animationCallback);registerEvents(canvas,frameTracker);return function(){return requestId}}
 
     var CsgCanvasHolder=function(_super){__extends(CsgCanvasHolder,_super);function CsgCanvasHolder(props){var _this=_super.call(this,props)||this;_this.canvasReference=React__default['default'].createRef();_this.state={zoomTooltip:"hidden",angleTooltip:"hidden",perspectiveTooltip:"hidden",fitTooltip:"hidden"};return _this}CsgCanvasHolder.prototype.componentDidMount=function(){var _a,_b;var canvas=this.canvasReference.current;if(canvas===null){return}var potentialShape=(_b=(_a=this.props.debuggerContext)===null||_a===void 0?void 0:_a.result)===null||_b===void 0?void 0:_b.value;if(!looseInstanceOf(potentialShape,Shape)){return}var shape;try{shape=potentialShape;}catch(_error){console.error(_error);return}var requestId=render(canvas,shape);window.addEventListener("beforeunload",function(){return window.cancelAnimationFrame(requestId())});};CsgCanvasHolder.prototype.render=function(){var _this=this;var _a=this.state,zoomTooltip=_a.zoomTooltip,angleTooltip=_a.angleTooltip,perspectiveTooltip=_a.perspectiveTooltip,fitTooltip=_a.fitTooltip;var zoomStyle=__assign(__assign({},toolTipText),{visibility:zoomTooltip});var angleStyle=__assign(__assign({},toolTipText),{visibility:angleTooltip});var perspectiveStyle=__assign(__assign({},toolTipText),{visibility:perspectiveTooltip});var fitStyle=__assign(__assign({},toolTipText),{visibility:fitTooltip});var stack={display:"flex",flexDirection:"column",flexWrap:"wrap",alignItems:"center",justifyContent:"center",width:"64px"};var centerStyle={marginLeft:"-100%",marginRight:"-100%",textAlign:"center",wordBreak:"break-word",inlineSize:"80px",color:"#7b7b7b"};var containerStyle={padding:"10px",position:"relative"};return React__default['default'].createElement("div",{style:{display:"flex",justifyContent:"center",flexDirection:"column"}},React__default['default'].createElement("div",{style:{display:"flex",flexDirection:"row",justifyContent:"center",width:"100%",marginBottom:"10px"}},React__default['default'].createElement("div",{style:containerStyle,onMouseEnter:function(){return _this.setState({zoomTooltip:"visible"})},onMouseLeave:function(){return _this.setState({zoomTooltip:"hidden"})}},React__default['default'].createElement("span",{style:zoomStyle},"Scroll Up and Down"),React__default['default'].createElement("div",{style:stack},React__default['default'].createElement(Icon,{icon:"zoom-in",size:20,color:"#7b7b7b"}),React__default['default'].createElement("span",{style:centerStyle}," Zoom "))),React__default['default'].createElement("div",{style:containerStyle,onMouseEnter:function(){return _this.setState({angleTooltip:"visible"})},onMouseLeave:function(){return _this.setState({angleTooltip:"hidden"})}},React__default['default'].createElement("span",{style:angleStyle},"Left Click Drag"),React__default['default'].createElement("div",{style:stack},React__default['default'].createElement(Icon,{icon:"repeat",size:20,color:"#7b7b7b"}),React__default['default'].createElement("span",{style:centerStyle}," Camera Angle "))),React__default['default'].createElement("div",{style:containerStyle,onMouseEnter:function(){return _this.setState({perspectiveTooltip:"visible"})},onMouseLeave:function(){return _this.setState({perspectiveTooltip:"hidden"})}},React__default['default'].createElement("span",{style:perspectiveStyle},"Shift + Left Click Drag"),React__default['default'].createElement("div",{style:stack},React__default['default'].createElement(Icon,{icon:"layer-outline",size:20,color:"#7b7b7b"}),React__default['default'].createElement("span",{style:centerStyle}," Camera Perspective "))),React__default['default'].createElement("div",{style:containerStyle,onMouseEnter:function(){return _this.setState({fitTooltip:"visible"})},onMouseLeave:function(){return _this.setState({fitTooltip:"hidden"})}},React__default['default'].createElement("span",{style:fitStyle}," Double Left Click "),React__default['default'].createElement("div",{style:stack},React__default['default'].createElement(Icon,{icon:"zoom-to-fit",size:20,color:"#7b7b7b"}),React__default['default'].createElement("span",{style:centerStyle}," Zoom to Fit")))),React__default['default'].createElement("canvas",{ref:this.canvasReference,style:{width:"100%",minWidth:"0px",maxWidth:"50vw",aspectRatio:"1"},width:0,height:0}))};return CsgCanvasHolder}(React__default['default'].Component);var index = {toSpawn:function(debuggerContext){var _a;var potentialShape=(_a=debuggerContext===null||debuggerContext===void 0?void 0:debuggerContext.result)===null||_a===void 0?void 0:_a.value;if(!looseInstanceOf(potentialShape,Shape)){return false}var shape;try{shape=potentialShape;}catch(_error){console.error(_error);return false}return shape.spawnsTab},body:function(debuggerContext){return React__default['default'].createElement(CsgCanvasHolder,{debuggerContext:debuggerContext})},iconName:"shapes",label:"CSG Tab"};
 
