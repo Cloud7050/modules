@@ -11,6 +11,9 @@ export default {
   // If the Source program results in a Shape, we use its spawnsTab property to
   // decide
   toSpawn(debuggerContext: DebuggerContext) {
+    console.log((debuggerContext.context.moduleContexts.get("csg") as any).state)
+    console.log("^^ tab onSpawn")
+
     const potentialShape: any = debuggerContext?.result?.value;
     if (!looseInstanceOf(potentialShape, Shape)) {
       return false;
