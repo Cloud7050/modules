@@ -175,7 +175,7 @@
 			"originalName": "csg/functions",
 			"children": [
 				{
-					"id": 986,
+					"id": 982,
 					"name": "black",
 					"kind": 32,
 					"kindString": "Variable",
@@ -183,23 +183,23 @@
 						"isConst": true
 					},
 					"comment": {
-						"shortText": "A Color representing black (#000000)."
+						"shortText": "A hex colour code for black (#000000)."
 					},
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 165,
+							"line": 164,
 							"character": 18
 						}
 					],
 					"type": {
-						"type": "reference",
-						"name": "Color"
+						"type": "intrinsic",
+						"name": "string"
 					},
-					"defaultValue": "..."
+					"defaultValue": "'#000000'"
 				},
 				{
-					"id": 995,
+					"id": 991,
 					"name": "blue",
 					"kind": 32,
 					"kindString": "Variable",
@@ -207,23 +207,23 @@
 						"isConst": true
 					},
 					"comment": {
-						"shortText": "A Color representing blue (#5555FF)."
+						"shortText": "A hex colour code for blue (#5555FF)."
 					},
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 228,
+							"line": 227,
 							"character": 17
 						}
 					],
 					"type": {
-						"type": "reference",
-						"name": "Color"
+						"type": "intrinsic",
+						"name": "string"
 					},
-					"defaultValue": "..."
+					"defaultValue": "'#5555FF'"
 				},
 				{
-					"id": 981,
+					"id": 977,
 					"name": "cone",
 					"kind": 32,
 					"kindString": "Variable",
@@ -236,7 +236,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 112,
+							"line": 111,
 							"character": 17
 						}
 					],
@@ -247,7 +247,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 990,
+					"id": 986,
 					"name": "crimson",
 					"kind": 32,
 					"kindString": "Variable",
@@ -255,23 +255,23 @@
 						"isConst": true
 					},
 					"comment": {
-						"shortText": "A Color representing dark red (#AA0000)."
+						"shortText": "A hex colour code for dark red (#AA0000)."
 					},
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 193,
+							"line": 192,
 							"character": 20
 						}
 					],
 					"type": {
-						"type": "reference",
-						"name": "Color"
+						"type": "intrinsic",
+						"name": "string"
 					},
-					"defaultValue": "..."
+					"defaultValue": "'#AA0000'"
 				},
 				{
-					"id": 975,
+					"id": 971,
 					"name": "cube",
 					"kind": 32,
 					"kindString": "Variable",
@@ -284,7 +284,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 48,
+							"line": 47,
 							"character": 17
 						}
 					],
@@ -295,7 +295,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 997,
+					"id": 993,
 					"name": "cyan",
 					"kind": 32,
 					"kindString": "Variable",
@@ -303,23 +303,23 @@
 						"isConst": true
 					},
 					"comment": {
-						"shortText": "A Color representing cyan (#55FFFF)."
+						"shortText": "A hex colour code for cyan (#55FFFF)."
 					},
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 242,
+							"line": 241,
 							"character": 17
 						}
 					],
 					"type": {
-						"type": "reference",
-						"name": "Color"
+						"type": "intrinsic",
+						"name": "string"
 					},
-					"defaultValue": "..."
+					"defaultValue": "'#55FFFF'"
 				},
 				{
-					"id": 977,
+					"id": 973,
 					"name": "cylinder",
 					"kind": 32,
 					"kindString": "Variable",
@@ -332,7 +332,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 66,
+							"line": 65,
 							"character": 21
 						}
 					],
@@ -343,7 +343,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 985,
+					"id": 981,
 					"name": "geodesicSphere",
 					"kind": 32,
 					"kindString": "Variable",
@@ -356,7 +356,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 154,
+							"line": 153,
 							"character": 27
 						}
 					],
@@ -367,7 +367,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 994,
+					"id": 990,
 					"name": "gray",
 					"kind": 32,
 					"kindString": "Variable",
@@ -375,23 +375,23 @@
 						"isConst": true
 					},
 					"comment": {
-						"shortText": "A Color representing dark grey (#555555)."
+						"shortText": "A hex colour code for dark grey (#555555)."
 					},
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 221,
+							"line": 220,
 							"character": 17
 						}
 					],
 					"type": {
-						"type": "reference",
-						"name": "Color"
+						"type": "intrinsic",
+						"name": "string"
 					},
-					"defaultValue": "..."
+					"defaultValue": "'#555555'"
 				},
 				{
-					"id": 988,
+					"id": 984,
 					"name": "green",
 					"kind": 32,
 					"kindString": "Variable",
@@ -399,23 +399,23 @@
 						"isConst": true
 					},
 					"comment": {
-						"shortText": "A Color representing green (#00AA00)."
+						"shortText": "A hex colour code for green (#00AA00)."
 					},
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 179,
+							"line": 178,
 							"character": 18
 						}
 					],
 					"type": {
-						"type": "reference",
-						"name": "Color"
+						"type": "intrinsic",
+						"name": "string"
 					},
-					"defaultValue": "..."
+					"defaultValue": "'#00AA00'"
 				},
 				{
-					"id": 996,
+					"id": 992,
 					"name": "lime",
 					"kind": 32,
 					"kindString": "Variable",
@@ -423,23 +423,23 @@
 						"isConst": true
 					},
 					"comment": {
-						"shortText": "A Color representing light green (#55FF55)."
+						"shortText": "A hex colour code for light green (#55FF55)."
 					},
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 235,
+							"line": 234,
 							"character": 17
 						}
 					],
 					"type": {
-						"type": "reference",
-						"name": "Color"
+						"type": "intrinsic",
+						"name": "string"
 					},
-					"defaultValue": "..."
+					"defaultValue": "'#55FF55'"
 				},
 				{
-					"id": 987,
+					"id": 983,
 					"name": "navy",
 					"kind": 32,
 					"kindString": "Variable",
@@ -447,23 +447,23 @@
 						"isConst": true
 					},
 					"comment": {
-						"shortText": "A Color representing dark blue (#0000AA)."
+						"shortText": "A hex colour code for dark blue (#0000AA)."
 					},
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 172,
+							"line": 171,
 							"character": 17
 						}
 					],
 					"type": {
-						"type": "reference",
-						"name": "Color"
+						"type": "intrinsic",
+						"name": "string"
 					},
-					"defaultValue": "..."
+					"defaultValue": "'#0000AA'"
 				},
 				{
-					"id": 992,
+					"id": 988,
 					"name": "orange",
 					"kind": 32,
 					"kindString": "Variable",
@@ -471,23 +471,23 @@
 						"isConst": true
 					},
 					"comment": {
-						"shortText": "A Color representing orange (#FFAA00)."
+						"shortText": "A hex colour code for orange (#FFAA00)."
 					},
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 207,
+							"line": 206,
 							"character": 19
 						}
 					],
 					"type": {
-						"type": "reference",
-						"name": "Color"
+						"type": "intrinsic",
+						"name": "string"
 					},
-					"defaultValue": "..."
+					"defaultValue": "'#FFAA00'"
 				},
 				{
-					"id": 999,
+					"id": 995,
 					"name": "pink",
 					"kind": 32,
 					"kindString": "Variable",
@@ -495,23 +495,23 @@
 						"isConst": true
 					},
 					"comment": {
-						"shortText": "A Color representing pink (#FF55FF)."
+						"shortText": "A hex colour code for pink (#FF55FF)."
 					},
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 256,
+							"line": 255,
 							"character": 17
 						}
 					],
 					"type": {
-						"type": "reference",
-						"name": "Color"
+						"type": "intrinsic",
+						"name": "string"
 					},
-					"defaultValue": "..."
+					"defaultValue": "'#FF55FF'"
 				},
 				{
-					"id": 978,
+					"id": 974,
 					"name": "prism",
 					"kind": 32,
 					"kindString": "Variable",
@@ -524,7 +524,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 75,
+							"line": 74,
 							"character": 18
 						}
 					],
@@ -535,7 +535,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 991,
+					"id": 987,
 					"name": "purple",
 					"kind": 32,
 					"kindString": "Variable",
@@ -543,23 +543,23 @@
 						"isConst": true
 					},
 					"comment": {
-						"shortText": "A Color representing purple (#AA00AA)."
+						"shortText": "A hex colour code for purple (#AA00AA)."
 					},
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 200,
+							"line": 199,
 							"character": 19
 						}
 					],
 					"type": {
-						"type": "reference",
-						"name": "Color"
+						"type": "intrinsic",
+						"name": "string"
 					},
-					"defaultValue": "..."
+					"defaultValue": "'#AA00AA'"
 				},
 				{
-					"id": 980,
+					"id": 976,
 					"name": "pyramid",
 					"kind": 32,
 					"kindString": "Variable",
@@ -572,7 +572,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 96,
+							"line": 95,
 							"character": 20
 						}
 					],
@@ -583,7 +583,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 998,
+					"id": 994,
 					"name": "rose",
 					"kind": 32,
 					"kindString": "Variable",
@@ -591,23 +591,23 @@
 						"isConst": true
 					},
 					"comment": {
-						"shortText": "A Color representing light red (#FF5555)."
+						"shortText": "A hex colour code for light red (#FF5555)."
 					},
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 249,
+							"line": 248,
 							"character": 17
 						}
 					],
 					"type": {
-						"type": "reference",
-						"name": "Color"
+						"type": "intrinsic",
+						"name": "string"
 					},
-					"defaultValue": "..."
+					"defaultValue": "'#FF5555'"
 				},
 				{
-					"id": 983,
+					"id": 979,
 					"name": "roundedCube",
 					"kind": 32,
 					"kindString": "Variable",
@@ -620,7 +620,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 136,
+							"line": 135,
 							"character": 24
 						}
 					],
@@ -631,7 +631,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 984,
+					"id": 980,
 					"name": "roundedCylinder",
 					"kind": 32,
 					"kindString": "Variable",
@@ -644,7 +644,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 145,
+							"line": 144,
 							"character": 28
 						}
 					],
@@ -655,7 +655,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 993,
+					"id": 989,
 					"name": "silver",
 					"kind": 32,
 					"kindString": "Variable",
@@ -663,23 +663,23 @@
 						"isConst": true
 					},
 					"comment": {
-						"shortText": "A Color representing light grey (#AAAAAA)."
+						"shortText": "A hex colour code for light grey (#AAAAAA)."
 					},
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 214,
+							"line": 213,
 							"character": 19
 						}
 					],
 					"type": {
-						"type": "reference",
-						"name": "Color"
+						"type": "intrinsic",
+						"name": "string"
 					},
-					"defaultValue": "..."
+					"defaultValue": "'#AAAAAA'"
 				},
 				{
-					"id": 976,
+					"id": 972,
 					"name": "sphere",
 					"kind": 32,
 					"kindString": "Variable",
@@ -692,7 +692,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 57,
+							"line": 56,
 							"character": 19
 						}
 					],
@@ -703,7 +703,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 979,
+					"id": 975,
 					"name": "star",
 					"kind": 32,
 					"kindString": "Variable",
@@ -716,7 +716,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 84,
+							"line": 83,
 							"character": 17
 						}
 					],
@@ -727,7 +727,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 989,
+					"id": 985,
 					"name": "teal",
 					"kind": 32,
 					"kindString": "Variable",
@@ -735,23 +735,23 @@
 						"isConst": true
 					},
 					"comment": {
-						"shortText": "A Color representing dark cyan (#00AAAA)."
+						"shortText": "A hex colour code for dark cyan (#00AAAA)."
 					},
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 186,
+							"line": 185,
 							"character": 17
 						}
 					],
 					"type": {
-						"type": "reference",
-						"name": "Color"
+						"type": "intrinsic",
+						"name": "string"
 					},
-					"defaultValue": "..."
+					"defaultValue": "'#00AAAA'"
 				},
 				{
-					"id": 982,
+					"id": 978,
 					"name": "torus",
 					"kind": 32,
 					"kindString": "Variable",
@@ -764,7 +764,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 127,
+							"line": 126,
 							"character": 18
 						}
 					],
@@ -775,7 +775,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 1001,
+					"id": 997,
 					"name": "white",
 					"kind": 32,
 					"kindString": "Variable",
@@ -783,23 +783,23 @@
 						"isConst": true
 					},
 					"comment": {
-						"shortText": "A Color representing white (#FFFFFF)."
+						"shortText": "A hex colour code for white (#FFFFFF)."
 					},
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 270,
+							"line": 269,
 							"character": 18
 						}
 					],
 					"type": {
-						"type": "reference",
-						"name": "Color"
+						"type": "intrinsic",
+						"name": "string"
 					},
-					"defaultValue": "..."
+					"defaultValue": "'#FFFFFF'"
 				},
 				{
-					"id": 1000,
+					"id": 996,
 					"name": "yellow",
 					"kind": 32,
 					"kindString": "Variable",
@@ -807,20 +807,20 @@
 						"isConst": true
 					},
 					"comment": {
-						"shortText": "A Color representing yellow (#FFFF55)."
+						"shortText": "A hex colour code for yellow (#FFFF55)."
 					},
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 263,
+							"line": 262,
 							"character": 19
 						}
 					],
 					"type": {
-						"type": "reference",
-						"name": "Color"
+						"type": "intrinsic",
+						"name": "string"
 					},
-					"defaultValue": "..."
+					"defaultValue": "'#FFFF55'"
 				},
 				{
 					"id": 874,
@@ -831,7 +831,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 426,
+							"line": 425,
 							"character": 20
 						}
 					],
@@ -878,7 +878,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 550,
+							"line": 549,
 							"character": 24
 						}
 					],
@@ -939,7 +939,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 576,
+							"line": 575,
 							"character": 24
 						}
 					],
@@ -1000,7 +1000,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 602,
+							"line": 601,
 							"character": 24
 						}
 					],
@@ -1061,7 +1061,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 636,
+							"line": 635,
 							"character": 28
 						}
 					],
@@ -1104,7 +1104,7 @@
 									"sources": [
 										{
 											"fileName": "csg/functions.ts",
-											"line": 638,
+											"line": 637,
 											"character": 2
 										}
 									],
@@ -1159,7 +1159,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 733,
+							"line": 732,
 							"character": 21
 						}
 					],
@@ -1206,7 +1206,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 462,
+							"line": 461,
 							"character": 22
 						}
 					],
@@ -1253,7 +1253,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 472,
+							"line": 471,
 							"character": 22
 						}
 					],
@@ -1300,7 +1300,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 482,
+							"line": 481,
 							"character": 22
 						}
 					],
@@ -1347,7 +1347,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 305,
+							"line": 304,
 							"character": 25
 						}
 					],
@@ -1408,7 +1408,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 723,
+							"line": 722,
 							"character": 24
 						}
 					],
@@ -1447,7 +1447,7 @@
 					]
 				},
 				{
-					"id": 973,
+					"id": 969,
 					"name": "render",
 					"kind": 64,
 					"kindString": "Function",
@@ -1455,13 +1455,13 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 836,
+							"line": 822,
 							"character": 22
 						}
 					],
 					"signatures": [
 						{
-							"id": 974,
+							"id": 970,
 							"name": "render",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1477,7 +1477,7 @@
 					]
 				},
 				{
-					"id": 971,
+					"id": 967,
 					"name": "render_axis",
 					"kind": 64,
 					"kindString": "Function",
@@ -1485,13 +1485,13 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 828,
+							"line": 814,
 							"character": 27
 						}
 					],
 					"signatures": [
 						{
-							"id": 972,
+							"id": 968,
 							"name": "render_axis",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1507,7 +1507,7 @@
 					]
 				},
 				{
-					"id": 969,
+					"id": 965,
 					"name": "render_grid",
 					"kind": 64,
 					"kindString": "Function",
@@ -1515,13 +1515,13 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 820,
+							"line": 806,
 							"character": 27
 						}
 					],
 					"signatures": [
 						{
-							"id": 970,
+							"id": 966,
 							"name": "render_grid",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1537,7 +1537,7 @@
 					]
 				},
 				{
-					"id": 967,
+					"id": 963,
 					"name": "render_grid_axis",
 					"kind": 64,
 					"kindString": "Function",
@@ -1545,13 +1545,13 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 811,
+							"line": 797,
 							"character": 32
 						}
 					],
 					"signatures": [
 						{
-							"id": 968,
+							"id": 964,
 							"name": "render_grid_axis",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1575,7 +1575,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 664,
+							"line": 663,
 							"character": 22
 						}
 					],
@@ -1664,7 +1664,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 677,
+							"line": 676,
 							"character": 24
 						}
 					],
@@ -1725,7 +1725,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 689,
+							"line": 688,
 							"character": 24
 						}
 					],
@@ -1786,7 +1786,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 701,
+							"line": 700,
 							"character": 24
 						}
 					],
@@ -1847,7 +1847,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 322,
+							"line": 321,
 							"character": 21
 						}
 					],
@@ -1936,7 +1936,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 337,
+							"line": 336,
 							"character": 23
 						}
 					],
@@ -1997,7 +1997,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 351,
+							"line": 350,
 							"character": 23
 						}
 					],
@@ -2058,7 +2058,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 365,
+							"line": 364,
 							"character": 23
 						}
 					],
@@ -2119,7 +2119,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 384,
+							"line": 383,
 							"character": 28
 						}
 					],
@@ -2162,7 +2162,7 @@
 									"sources": [
 										{
 											"fileName": "csg/functions.ts",
-											"line": 384,
+											"line": 383,
 											"character": 43
 										}
 									],
@@ -2206,7 +2206,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 410,
+							"line": 409,
 							"character": 32
 						}
 					],
@@ -2295,7 +2295,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 742,
+							"line": 741,
 							"character": 21
 						}
 					],
@@ -2341,7 +2341,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 754,
+							"line": 759,
 							"character": 30
 						}
 					],
@@ -2353,7 +2353,8 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Colours a clone of the specified Shape using the specified Color, then stores\nit for later rendering."
+								"shortText": "Colours a clone of the specified Shape using the specified hex colour code,\nthen stores it for later rendering. You may use one of the default colour\nvariables provided by the module, or you may specify your own custom colour\ncode.",
+								"text": "Colour codes must be of the form \"#XXXXXX\" or \"XXXXXX\", where each X\nrepresents a non-case sensitive hexadecimal number. Invalid colour codes\ndefault to black.\n"
 							},
 							"parameters": [
 								{
@@ -2372,73 +2373,12 @@
 								},
 								{
 									"id": 956,
-									"name": "color",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "The Color to use.\n"
-									},
-									"type": {
-										"type": "reference",
-										"name": "Color"
-									}
-								}
-							],
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
-							}
-						}
-					]
-				},
-				{
-					"id": 963,
-					"name": "store_as_hex",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "csg/functions.ts",
-							"line": 801,
-							"character": 28
-						}
-					],
-					"signatures": [
-						{
-							"id": 964,
-							"name": "store_as_hex",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "Colours a clone of the specified Shape using the specified hex colour code,\nthen stores it for later rendering.",
-								"text": "Colour codes must be of the form \"#XXXXXX\" or \"XXXXXX\", where each X\nrepresents a hexadecimal number. Invalid colour codes default to black.\n"
-							},
-							"parameters": [
-								{
-									"id": 965,
-									"name": "shape",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "The Shape to be coloured and stored."
-									},
-									"type": {
-										"type": "reference",
-										"name": "Shape"
-									}
-								},
-								{
-									"id": 966,
 									"name": "hex",
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"text": "The hexadecimal colour code.\n"
+										"text": "The colour code to use.\n"
 									},
 									"type": {
 										"type": "intrinsic",
@@ -2462,7 +2402,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 774,
+							"line": 776,
 							"character": 28
 						}
 					],
@@ -2551,7 +2491,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 293,
+							"line": 292,
 							"character": 24
 						}
 					],
@@ -2612,7 +2552,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 496,
+							"line": 495,
 							"character": 25
 						}
 					],
@@ -2699,7 +2639,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 514,
+							"line": 513,
 							"character": 27
 						}
 					],
@@ -2758,7 +2698,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 526,
+							"line": 525,
 							"character": 27
 						}
 					],
@@ -2817,7 +2757,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 538,
+							"line": 537,
 							"character": 27
 						}
 					],
@@ -2876,7 +2816,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 281,
+							"line": 280,
 							"character": 21
 						}
 					],
@@ -2937,7 +2877,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 436,
+							"line": 435,
 							"character": 22
 						}
 					],
@@ -2981,70 +2921,70 @@
 					"title": "Variables",
 					"kind": 32,
 					"children": [
+						982,
+						991,
+						977,
 						986,
-						995,
+						971,
+						993,
+						973,
 						981,
 						990,
-						975,
-						997,
-						977,
-						985,
-						994,
-						988,
-						996,
-						987,
-						992,
-						999,
-						978,
-						991,
-						980,
-						998,
-						983,
 						984,
-						993,
+						992,
+						983,
+						988,
+						995,
+						974,
+						987,
 						976,
+						994,
 						979,
+						980,
 						989,
-						982,
-						1001,
-						1000
+						972,
+						975,
+						985,
+						978,
+						997,
+						996
 					],
 					"categories": [
 						{
 							"title": "Colour",
 							"children": [
-								986,
-								995,
-								990,
-								997,
-								994,
-								988,
-								996,
-								987,
-								992,
-								999,
+								982,
 								991,
-								998,
+								986,
 								993,
+								990,
+								984,
+								992,
+								983,
+								988,
+								995,
+								987,
+								994,
 								989,
-								1001,
-								1000
+								985,
+								997,
+								996
 							]
 						},
 						{
 							"title": "Primitive",
 							"children": [
-								981,
-								975,
 								977,
-								985,
-								978,
-								980,
-								983,
-								984,
+								971,
+								973,
+								981,
+								974,
 								976,
 								979,
-								982
+								980,
+								972,
+								975,
+								978
 							]
 						}
 					]
@@ -3064,10 +3004,10 @@
 						886,
 						840,
 						944,
-						973,
-						971,
 						969,
 						967,
+						965,
+						963,
 						926,
 						932,
 						936,
@@ -3080,7 +3020,6 @@
 						868,
 						950,
 						953,
-						963,
 						957,
 						836,
 						889,
