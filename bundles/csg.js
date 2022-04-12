@@ -13,6 +13,8 @@
         globalThis.process = { env:env };
     })();
 
+    var moduleState=null;function initialize(csgModuleState){moduleState=csgModuleState;}function getModuleState(){return moduleState}
+
     /**
      * Flatten the given list of arguments into a single flat array.
      * The arguments can be composed of multiple depths of objects and arrays.
@@ -30,9 +32,9 @@
      * @returns {geom2} new geometry
      * @alias module:modeling/geometries/geom2.clone
      */
-    const clone$b = (geometry) => Object.assign({}, geometry);
+    const clone$c = (geometry) => Object.assign({}, geometry);
 
-    var clone_1$b = clone$b;
+    var clone_1$b = clone$c;
 
     /**
      * Adds the two matrices (A+B).
@@ -93,7 +95,7 @@
      * @returns {mat4} a new matrix
      * @alias module:modeling/maths/mat4.clone
      */
-    const clone$a = (matrix) => {
+    const clone$b = (matrix) => {
       const out = create_1$e();
       out[0] = matrix[0];
       out[1] = matrix[1];
@@ -114,7 +116,7 @@
       return out
     };
 
-    var clone_1$a = clone$a;
+    var clone_1$a = clone$b;
 
     /**
      * Creates a copy of the given matrix.
@@ -599,7 +601,7 @@
      * @returns {vec3} a new vector
      * @alias module:modeling/maths/vec3.clone
      */
-    const clone$9 = (vector) => {
+    const clone$a = (vector) => {
       const out = create_1$d();
       out[0] = vector[0];
       out[1] = vector[1];
@@ -607,7 +609,7 @@
       return out
     };
 
-    var clone_1$9 = clone$9;
+    var clone_1$9 = clone$a;
 
     /**
      * Create a copy of the given vector.
@@ -1978,14 +1980,14 @@
      * @returns {vec2} a new vector
      * @alias module:modeling/maths/vec2.clone
      */
-    const clone$8 = (vector) => {
+    const clone$9 = (vector) => {
       const out = create_1$b();
       out[0] = vector[0];
       out[1] = vector[1];
       return out
     };
 
-    var clone_1$8 = clone$8;
+    var clone_1$8 = clone$9;
 
     /**
      * Create a copy of the given vector.
@@ -2878,9 +2880,9 @@
      * @returns {geom3} a new geometry
      * @alias module:modeling/geometries/geom3.clone
      */
-    const clone$7 = (geometry) => Object.assign({}, geometry);
+    const clone$8 = (geometry) => Object.assign({}, geometry);
 
-    var clone_1$7 = clone$7;
+    var clone_1$7 = clone$8;
 
     /**
      * Represents a 3D geometry consisting of a list of polygons.
@@ -2939,7 +2941,7 @@
      * @returns {poly3} a new polygon
      * @alias module:modeling/geometries/poly3.clone
      */
-    const clone$6 = (...params) => {
+    const clone$7 = (...params) => {
       let out;
       let poly3;
       if (params.length === 1) {
@@ -2954,7 +2956,7 @@
       return out
     };
 
-    var clone_1$6 = clone$6;
+    var clone_1$6 = clone$7;
 
     /**
      * Create a polygon from the given points.
@@ -3017,7 +3019,7 @@
      * @returns {vec4} a new vector
      * @alias module:modeling/maths/vec4.clone
      */
-    const clone$5 = (vector) => {
+    const clone$6 = (vector) => {
       const out = create_1$8();
       out[0] = vector[0];
       out[1] = vector[1];
@@ -3026,7 +3028,7 @@
       return out
     };
 
-    var clone_1$5 = clone$5;
+    var clone_1$5 = clone$6;
 
     /**
      * Create a copy of the given vector.
@@ -4060,6 +4062,7 @@
       transform: transform_1$6,
       validate: validate_1$1
     };
+    var geom3_1 = geom3$2.clone;
 
     /**
      * Performs a shallow clone of the give geometry.
@@ -4067,9 +4070,9 @@
      * @returns {path2} a new path
      * @alias module:modeling/geometries/path2.clone
      */
-    const clone$4 = (geometry) => Object.assign({}, geometry);
+    const clone$5 = (geometry) => Object.assign({}, geometry);
 
-    var clone_1$4 = clone$4;
+    var clone_1$4 = clone$5;
 
     const { EPS: EPS$g } = constants;
 
@@ -4892,7 +4895,7 @@
      * let blueArc = colorize([0,0,1], arc()) // blue
      * let wildcylinder = colorize(colorNameToRgb('fuchsia'), cylinder()) // CSS color
      */
-    const colorize$1 = (color, ...objects) => {
+    const colorize = (color, ...objects) => {
       if (!Array.isArray(color)) throw new Error('color must be an array')
       if (color.length < 3) throw new Error('color must contain R, G and B values')
       if (color.length === 3) color = [color[0], color[1], color[2], 1.0]; // add alpha
@@ -4912,7 +4915,7 @@
       return results.length === 1 ? results[0] : results
     };
 
-    var colorize_1 = colorize$1;
+    var colorize_1 = colorize;
 
     /**
      * @alias module:modeling/colors.cssColors
@@ -5412,8 +5415,6 @@
       rgbToHsv: rgbToHsv_1
     };
     var colors_1 = colors.colorize;
-    var colors_3 = colors.cssColors;
-    var colors_4 = colors.hexToRgb;
 
     /**
      * Represents a bezier easing function.
@@ -5829,7 +5830,7 @@
      * @returns {line2} a new unbounded line
      * @alias module:modeling/maths/line2.clone
      */
-    const clone$3 = (line) => {
+    const clone$4 = (line) => {
       const out = create_1$4();
       out[0] = line[0];
       out[1] = line[1];
@@ -5837,7 +5838,7 @@
       return out
     };
 
-    var clone_1$3 = clone$3;
+    var clone_1$3 = clone$4;
 
     /**
      * Return the direction of the given line.
@@ -6239,14 +6240,14 @@
      * @returns {line3} a new unbounded line
      * @alias module:modeling/maths/line3.clone
      */
-    const clone$2 = (line) => {
+    const clone$3 = (line) => {
       const out = create_1$3();
       vec3$1.copy(out[0], line[0]);
       vec3$1.copy(out[1], line[1]);
       return out
     };
 
-    var clone_1$2 = clone$2;
+    var clone_1$2 = clone$3;
 
     /**
      * Determine the closest point on the given line to the given point.
@@ -8959,7 +8960,7 @@
      * @returns {slice} a new slice
      * @alias module:modeling/extrusions/slice.clone
      */
-    const clone$1 = (...params) => {
+    const clone$2 = (...params) => {
       let out;
       let slice;
       if (params.length === 1) {
@@ -8974,7 +8975,7 @@
       return out
     };
 
-    var clone_1$1 = clone$1;
+    var clone_1$1 = clone$2;
 
     /**
      * Determine if the given slices have the same edges.
@@ -17009,8 +17010,9 @@
       modifiers: modifiers,
       transforms: transforms
     };
-    var src_3 = src.geometries;
     var src_6 = src.primitives;
+
+    function hexToColor$1(hex){var result=/^#?([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i.exec(hex);if(result===null||result.length<4){return [0,0,0]}return [parseInt(result[1],16)/255,parseInt(result[2],16)/255,parseInt(result[3],16)/255,1]}
 
     var create_1$1 = create$1;
 
@@ -17040,7 +17042,7 @@
         return out;
     }
 
-    var clone_1 = clone;
+    var clone_1 = clone$1;
 
     /**
      * Creates a new mat4 initialized with values from an existing matrix
@@ -17048,7 +17050,7 @@
      * @param {mat4} a matrix to clone
      * @returns {mat4} a new 4x4 matrix
      */
-    function clone(a) {
+    function clone$1(a) {
         var out = new Float32Array(16);
         out[0] = a[0];
         out[1] = a[1];
@@ -28864,11 +28866,11 @@
 
     Object.assign({}, controlsState, controlsProps);
 
-    var AxisEntity;(function(AxisEntity){var Class=function(){function Class(){this.visuals={drawCmd:"drawAxis",show:true};this.alwaysVisible=false;}return Class}();AxisEntity.Class=Class;})(AxisEntity||(AxisEntity={}));var MultiGridEntity;(function(MultiGridEntity){var Class=function(){function Class(){this.visuals={drawCmd:"drawGrid",show:true,color:[0,0,0,1],subColor:[0.5,0.5,0.5,1]};this.size=[0,0];this.ticks=[10,1];}return Class}();MultiGridEntity.Class=Class;})(MultiGridEntity||(MultiGridEntity={}));var Shape=function(){function Shape(getSolid,spawnsTab,addAxis,addMultiGrid){if(spawnsTab===void 0){spawnsTab=false;}if(addAxis===void 0){addAxis=false;}if(addMultiGrid===void 0){addMultiGrid=false;}this.getSolid=getSolid;this.spawnsTab=spawnsTab;this.addAxis=addAxis;this.addMultiGrid=addMultiGrid;}Shape.prototype.toReplString=function(){return "<Shape>"};return Shape}();var MousePointer;(function(MousePointer){MousePointer[MousePointer["NONE"]=-1]="NONE";MousePointer[MousePointer["LEFT"]=0]="LEFT";MousePointer[MousePointer["RIGHT"]=2]="RIGHT";MousePointer[MousePointer["MIDDLE"]=1]="MIDDLE";MousePointer[MousePointer["OTHER"]=7050]="OTHER";})(MousePointer||(MousePointer={}));function looseInstanceOf(object,c){var _a;var objectName=(_a=object===null||object===void 0?void 0:object.constructor)===null||_a===void 0?void 0:_a.name;var className=c===null||c===void 0?void 0:c.name;return objectName!==undefined&&className!==undefined&&objectName===className}
+    var Shape=function(){function Shape(solid){this.solid=solid;}Shape.prototype.clone=function(){return new Shape(geom3_1(this.solid))};Shape.prototype.toReplString=function(){return "<Shape>"};return Shape}();var RenderGroup=function(){function RenderGroup(canvasNumber){this.canvasNumber=canvasNumber;this.render=false;this.hasAxis=true;this.hasGrid=true;this.shapes=[];}RenderGroup.prototype.toReplString=function(){return "<Render #"+this.canvasNumber+">"};return RenderGroup}();var RenderGroupManager=function(){function RenderGroupManager(){this.canvasTracker=1;this.renderGroups=[];}RenderGroupManager.prototype.nextRenderGroup=function(currentAxis,currentGrid){if(currentAxis===void 0){currentAxis=true;}if(currentGrid===void 0){currentGrid=true;}if(this.renderGroups.length>=1){var currentRenderGroup=this.renderGroups.at(-1);currentRenderGroup.render=true;currentRenderGroup.hasAxis=currentAxis;currentRenderGroup.hasGrid=currentGrid;}this.renderGroups.push(new RenderGroup(this.canvasTracker++));};RenderGroupManager.prototype.storeShape=function(shape){if(this.renderGroups.length<=0)this.nextRenderGroup();var currentRenderGroup=this.renderGroups.at(-1);currentRenderGroup.shapes.push(shape);};RenderGroupManager.prototype.render=function(){return this.getGroupsToRender().length>0};RenderGroupManager.prototype.getGroupsToRender=function(){return this.renderGroups.filter(function(renderGroup){return renderGroup.render})};return RenderGroupManager}();var CsgModuleState=function(){function CsgModuleState(){this.renderGroupManager=new RenderGroupManager;}return CsgModuleState}();var MousePointer;(function(MousePointer){MousePointer[MousePointer["NONE"]=-1]="NONE";MousePointer[MousePointer["LEFT"]=0]="LEFT";MousePointer[MousePointer["RIGHT"]=2]="RIGHT";MousePointer[MousePointer["MIDDLE"]=1]="MIDDLE";MousePointer[MousePointer["OTHER"]=7050]="OTHER";})(MousePointer||(MousePointer={}));function getModuleContext(moduleContexts){var potentialModuleContext=moduleContexts.get("csg");return potentialModuleContext!==null&&potentialModuleContext!==void 0?potentialModuleContext:null}function hexToColor(hex){var red=(hex&16711680)>>>16;var green=(hex&65280)>>>8;var blue=hex&255;return [red/255,green/255,blue/255]}function clamp(value,lowest,highest){value=Math.max(value,lowest);value=Math.min(value,highest);return value}
 
-    var black=colors_3.black;var navy=colors_3.navy;var green=colors_3.green;var teal=colors_3.teal;var purple=colors_3.purple;var orange=colors_3.orange;var silver=colors_3.silver;var gray=colors_3.gray;var blue=colors_3.blue;var lime=colors_3.lime;var cyan=colors_3.cyan;var pink=colors_3.pink;var yellow=colors_3.yellow;var white=colors_3.white;function generate_shape(geom){return new Shape(function(){return geom})}function union(a,b){var newShape=booleans_4(a.getSolid(),b.getSolid());return generate_shape(newShape)}function subtract(a,b){var newShape=booleans_3(a.getSolid(),b.getSolid());return generate_shape(newShape)}function intersect(a,b){var newShape=booleans_1(a.getSolid(),b.getSolid());return generate_shape(newShape)}function colorize(shape,color){try{var newShape=colors_1(color,shape.getSolid());return generate_shape(newShape)}catch(_a){throw Error("colorize expects a shape color")}}function colorize_rgb(shape,r,g,b){if(r>1||r<0){throw Error("colorize_rgb expects red value to be between 0 and 1.0")}if(g>1||g<0){throw Error("colorize_rgb expects green value to be between 0 and 1.0")}if(b>1||b<0){throw Error("colorize_rgb expects blue value to be between 0 and 1.0")}var newShape=colors_1([r,g,b],shape.getSolid());return generate_shape(newShape)}function colorize_hex(shape,hex){if(hex.replace("#","").length===6){var newShape=colors_1(colors_4(hex),shape.getSolid());return generate_shape(newShape)}throw Error("colorize_hex expects a hex value of the form \"#000000\" or \"000000\"")}function scale(shape,x,y,z){var newShape=transforms_14([x,y,z],shape.getSolid());return generate_shape(newShape)}function scale_x(shape,x){return scale(shape,x,1,1)}function scale_y(shape,y){return scale(shape,1,y,1)}function scale_z(shape,z){return scale(shape,1,1,z)}function shape_center(shape){var bounds=measurements_6(shape.getSolid());var centerCoords=[bounds[0][0]+(bounds[1][0]-bounds[0][0])/2,bounds[0][1]+(bounds[1][1]-bounds[0][1])/2,bounds[0][2]+(bounds[1][2]-bounds[0][2])/2];return function(axis){var i=axis==="x"?0:axis==="y"?1:axis==="z"?2:-1;if(i===-1){throw Error("shape_center's returned function expects a proper axis.")}else {return centerCoords[i]}}}function shape_set_center(shape,x,y,z){var newShape=transforms_2({relativeTo:[x,y,z]},shape.getSolid());return generate_shape(newShape)}function area(shape){return measurements_5(shape.getSolid())}function volume(shape){return measurements_12(shape.getSolid())}function shape_mirror(shape,x,y,z){var newShape=transforms_6({normal:[x,y,z]},shape.getSolid());return generate_shape(newShape)}function flip_x(shape){return shape_mirror(shape,1,0,0)}function flip_y(shape){return shape_mirror(shape,0,1,0)}function flip_z(shape){return shape_mirror(shape,0,0,1)}function translate(shape,x,y,z){var newShape=transforms_19([x,y,z],shape.getSolid());return generate_shape(newShape)}function translate_x(shape,x){return translate(shape,x,0,0)}function translate_y(shape,y){return translate(shape,0,y,0)}function translate_z(shape,z){return translate(shape,0,0,z)}function beside_x(a,b){var aBounds=measurements_6(a.getSolid());var newX=aBounds[1][0];var newY=aBounds[0][1]+(aBounds[1][1]-aBounds[0][1])/2;var newZ=aBounds[0][2]+(aBounds[1][2]-aBounds[0][2])/2;var newShape=booleans_4(a.getSolid(),transforms_1({modes:["min","center","center"],relativeTo:[newX,newY,newZ]},b.getSolid()));return generate_shape(newShape)}function beside_y(a,b){var aBounds=measurements_6(a.getSolid());var newX=aBounds[0][0]+(aBounds[1][0]-aBounds[0][0])/2;var newY=aBounds[1][1];var newZ=aBounds[0][2]+(aBounds[1][2]-aBounds[0][2])/2;var newShape=booleans_4(a.getSolid(),transforms_1({modes:["center","min","center"],relativeTo:[newX,newY,newZ]},b.getSolid()));return generate_shape(newShape)}function beside_z(a,b){var aBounds=measurements_6(a.getSolid());var newX=aBounds[0][0]+(aBounds[1][0]-aBounds[0][0])/2;var newY=aBounds[0][1]+(aBounds[1][1]-aBounds[0][1])/2;var newZ=aBounds[1][2];var newShape=booleans_4(a.getSolid(),transforms_1({modes:["center","center","min"],relativeTo:[newX,newY,newZ]},b.getSolid()));return generate_shape(newShape)}function bounding_box(shape){var bounds=measurements_6(shape.getSolid());return function(axis,min){var i=axis==="x"?0:axis==="y"?1:axis==="z"?2:-1;var j=min==="min"?0:min==="max"?1:-1;if(i===-1||j===-1){throw Error("bounding_box returned function expects a proper axis and min String.")}else {return bounds[j][i]}}}function rotate(shape,x,y,z){var newShape=transforms_10([x,y,z],shape.getSolid());return generate_shape(newShape)}function rotate_x(shape,x){return rotate(shape,x,0,0)}function rotate_y(shape,y){return rotate(shape,0,y,0)}function rotate_z(shape,z){return rotate(shape,0,0,z)}function shapeSetOrigin(shape){var newShape=transforms_1({modes:["min","min","min"]},shape.getSolid());return generate_shape(newShape)}function is_shape(shape){if(looseInstanceOf(shape,Shape)){if(!src_3.geom3.isA(shape.getSolid())){return false}return true}return false}function shape_clone(shape,axis,grid){return new Shape(function(){return src_3.geom3.clone(shape.getSolid())},true,axis,grid)}function render(shape){if(!is_shape(shape)){throw Error("render expects a Shape as argument.")}return shape_clone(shape,false,false)}function render_axis(shape){if(!is_shape(shape)){throw Error("render_axis expects a Shape as argument.")}return shape_clone(shape,true,false)}function render_grid(shape){if(!is_shape(shape)){throw Error("render_grid expects a Shape as argument.")}return shape_clone(shape,false,true)}function render_axis_grid(shape){if(!is_shape(shape)){throw Error("render_axis_grid expects a Shape as argument.")}return shape_clone(shape,true,true)}var cube=shapeSetOrigin(generate_shape(src_6.cube({size:1})));var sphere=shapeSetOrigin(generate_shape(src_6.sphere({radius:0.5})));var cylinder=shapeSetOrigin(generate_shape(src_6.cylinder({radius:0.5,height:1})));var prism=shapeSetOrigin(generate_shape(extrusions_2({height:1},src_6.triangle())));var star=shapeSetOrigin(generate_shape(extrusions_2({height:1},src_6.star({outerRadius:0.5}))));var small=Math.pow(10,-30);var pyramid=shapeSetOrigin(generate_shape(src_6.cylinderElliptic({height:1,startRadius:[0.5,0.5],endRadius:[small,small],segments:4})));var cone=shapeSetOrigin(generate_shape(src_6.cylinderElliptic({height:1,startRadius:[0.5,0.5],endRadius:[small,small]})));var torus=shapeSetOrigin(generate_shape(src_6.torus({innerRadius:0.125,outerRadius:0.375})));var roundedCube=shapeSetOrigin(generate_shape(src_6.roundedCuboid({size:[1,1,1]})));var roundedCylinder=shapeSetOrigin(generate_shape(src_6.roundedCylinder({height:1,radius:0.5})));var geodesicSphere=shapeSetOrigin(generate_shape(src_6.geodesicSphere({radius:0.5})));
+    var cube=shapeSetOrigin(new Shape(src_6.cube({size:1})));var sphere=shapeSetOrigin(new Shape(src_6.sphere({radius:0.5})));var cylinder=shapeSetOrigin(new Shape(src_6.cylinder({radius:0.5,height:1})));var prism=shapeSetOrigin(new Shape(extrusions_2({height:1},src_6.triangle())));var star=shapeSetOrigin(new Shape(extrusions_2({height:1},src_6.star({outerRadius:0.5}))));var small=Math.pow(10,-30);var pyramid=shapeSetOrigin(new Shape(src_6.cylinderElliptic({height:1,startRadius:[0.5,0.5],endRadius:[small,small],segments:4})));var cone=shapeSetOrigin(new Shape(src_6.cylinderElliptic({height:1,startRadius:[0.5,0.5],endRadius:[small,small]})));var torus=shapeSetOrigin(new Shape(src_6.torus({innerRadius:0.125,outerRadius:0.375})));var roundedCube=shapeSetOrigin(new Shape(src_6.roundedCuboid({size:[1,1,1]})));var roundedCylinder=shapeSetOrigin(new Shape(src_6.roundedCylinder({height:1,radius:0.5})));var geodesicSphere=shapeSetOrigin(new Shape(src_6.geodesicSphere({radius:0.5})));var black=hexToColor(0);var navy=hexToColor(170);var green=hexToColor(43520);var teal=hexToColor(43690);var crimson=hexToColor(11141120);var purple=hexToColor(11141290);var orange=hexToColor(16755200);var silver=hexToColor(11184810);var gray=hexToColor(5592405);var blue=hexToColor(5592575);var lime=hexToColor(5635925);var cyan=hexToColor(5636095);var rose=hexToColor(16733525);var pink=hexToColor(16733695);var yellow=hexToColor(16777045);var white=hexToColor(16777215);function union(a,b){var newSolid=booleans_4(a.solid,b.solid);return new Shape(newSolid)}function subtract(a,b){var newSolid=booleans_3(a.solid,b.solid);return new Shape(newSolid)}function intersect(a,b){var newSolid=booleans_1(a.solid,b.solid);return new Shape(newSolid)}function scale(shape,x,y,z){var newSolid=transforms_14([x,y,z],shape.solid);return new Shape(newSolid)}function scale_x(shape,x){return scale(shape,x,1,1)}function scale_y(shape,y){return scale(shape,1,y,1)}function scale_z(shape,z){return scale(shape,1,1,z)}function shape_center(shape){var bounds=measurements_6(shape.solid);var centerCoords=[bounds[0][0]+(bounds[1][0]-bounds[0][0])/2,bounds[0][1]+(bounds[1][1]-bounds[0][1])/2,bounds[0][2]+(bounds[1][2]-bounds[0][2])/2];return function(axis){var i=axis==="x"?0:axis==="y"?1:axis==="z"?2:-1;if(i===-1){throw Error("shape_center's returned function expects a proper axis.")}else {return centerCoords[i]}}}function shape_set_center(shape,x,y,z){var newSolid=transforms_2({relativeTo:[x,y,z]},shape.solid);return new Shape(newSolid)}function area(shape){return measurements_5(shape.solid)}function volume(shape){return measurements_12(shape.solid)}function shape_mirror(shape,x,y,z){var newSolid=transforms_6({normal:[x,y,z]},shape.solid);return new Shape(newSolid)}function flip_x(shape){return shape_mirror(shape,1,0,0)}function flip_y(shape){return shape_mirror(shape,0,1,0)}function flip_z(shape){return shape_mirror(shape,0,0,1)}function translate(shape,x,y,z){var newSolid=transforms_19([x,y,z],shape.solid);return new Shape(newSolid)}function translate_x(shape,x){return translate(shape,x,0,0)}function translate_y(shape,y){return translate(shape,0,y,0)}function translate_z(shape,z){return translate(shape,0,0,z)}function beside_x(a,b){var aBounds=measurements_6(a.solid);var newX=aBounds[1][0];var newY=aBounds[0][1]+(aBounds[1][1]-aBounds[0][1])/2;var newZ=aBounds[0][2]+(aBounds[1][2]-aBounds[0][2])/2;var newSolid=booleans_4(a.solid,transforms_1({modes:["min","center","center"],relativeTo:[newX,newY,newZ]},b.solid));return new Shape(newSolid)}function beside_y(a,b){var aBounds=measurements_6(a.solid);var newX=aBounds[0][0]+(aBounds[1][0]-aBounds[0][0])/2;var newY=aBounds[1][1];var newZ=aBounds[0][2]+(aBounds[1][2]-aBounds[0][2])/2;var newSolid=booleans_4(a.solid,transforms_1({modes:["center","min","center"],relativeTo:[newX,newY,newZ]},b.solid));return new Shape(newSolid)}function beside_z(a,b){var aBounds=measurements_6(a.solid);var newX=aBounds[0][0]+(aBounds[1][0]-aBounds[0][0])/2;var newY=aBounds[0][1]+(aBounds[1][1]-aBounds[0][1])/2;var newZ=aBounds[1][2];var newSolid=booleans_4(a.solid,transforms_1({modes:["center","center","min"],relativeTo:[newX,newY,newZ]},b.solid));return new Shape(newSolid)}function bounding_box(shape){var bounds=measurements_6(shape.solid);return function(axis,min){var i=axis==="x"?0:axis==="y"?1:axis==="z"?2:-1;var j=min==="min"?0:min==="max"?1:-1;if(i===-1||j===-1){throw Error("bounding_box returned function expects a proper axis and min String.")}else {return bounds[j][i]}}}function rotate(shape,x,y,z){var newSolid=transforms_10([x,y,z],shape.solid);return new Shape(newSolid)}function rotate_x(shape,x){return rotate(shape,x,0,0)}function rotate_y(shape,y){return rotate(shape,0,y,0)}function rotate_z(shape,z){return rotate(shape,0,0,z)}function shapeSetOrigin(shape){var newSolid=transforms_1({modes:["min","min","min"]},shape.solid);return new Shape(newSolid)}function is_shape(argument){return argument instanceof Shape}function clone(shape){return shape.clone()}function store(shape){getModuleState().renderGroupManager.storeShape(shape.clone());}function store_as_color(shape,color){try{var coloredSolid=colors_1(color,shape.solid);getModuleState().renderGroupManager.storeShape(new Shape(coloredSolid));}catch(_a){throw new Error("store_as_color() expects a Shape and a Color.")}}function store_as_rgb(shape,redComponent,greenComponent,blueComponent){redComponent=clamp(redComponent,0,1);greenComponent=clamp(greenComponent,0,1);blueComponent=clamp(blueComponent,0,1);var coloredSolid=colors_1([redComponent,greenComponent,blueComponent],shape.solid);getModuleState().renderGroupManager.storeShape(new Shape(coloredSolid));}function store_as_hex(shape,hex){var color=hexToColor$1(hex).slice(0,3);var coloredSolid=colors_1(color,shape.solid);getModuleState().renderGroupManager.storeShape(new Shape(coloredSolid));}function render_grid_axis(){getModuleState().renderGroupManager.nextRenderGroup();}function render_grid(){getModuleState().renderGroupManager.nextRenderGroup(false);}function render_axis(){getModuleState().renderGroupManager.nextRenderGroup(undefined,false);}function render(){getModuleState().renderGroupManager.nextRenderGroup(false,false);}
 
-    var index = (function(){return {cube:cube,sphere:sphere,cylinder:cylinder,prism:prism,star:star,pyramid:pyramid,cone:cone,torus:torus,roundedCube:roundedCube,roundedCylinder:roundedCylinder,geodesicSphere:geodesicSphere,black:black,navy:navy,green:green,teal:teal,purple:purple,orange:orange,silver:silver,gray:gray,blue:blue,lime:lime,cyan:cyan,pink:pink,yellow:yellow,white:white,union:union,subtract:subtract,intersect:intersect,colorize:colorize,colorize_hex:colorize_hex,colorize_rgb:colorize_rgb,scale:scale,scale_x:scale_x,scale_y:scale_y,scale_z:scale_z,shape_center:shape_center,shape_set_center:shape_set_center,area:area,volume:volume,flip_x:flip_x,flip_y:flip_y,flip_z:flip_z,translate:translate,translate_x:translate_x,translate_y:translate_y,translate_z:translate_z,beside_x:beside_x,beside_y:beside_y,beside_z:beside_z,bounding_box:bounding_box,rotate:rotate,rotate_x:rotate_x,rotate_y:rotate_y,rotate_z:rotate_z,is_shape:is_shape,render:render,render_axis:render_axis,render_axis_grid:render_axis_grid,render_grid:render_grid}});
+    var index = (function(moduleParams,moduleContexts){var potentialModuleContext=getModuleContext(moduleContexts);if(potentialModuleContext!==null){var moduleContext=potentialModuleContext;var moduleState=new CsgModuleState;moduleContext.state=moduleState;initialize(moduleState);}return {cube:cube,sphere:sphere,cylinder:cylinder,prism:prism,star:star,pyramid:pyramid,cone:cone,torus:torus,roundedCube:roundedCube,roundedCylinder:roundedCylinder,geodesicSphere:geodesicSphere,black:black,navy:navy,green:green,teal:teal,crimson:crimson,purple:purple,orange:orange,silver:silver,gray:gray,blue:blue,lime:lime,cyan:cyan,rose:rose,pink:pink,yellow:yellow,white:white,union:union,subtract:subtract,intersect:intersect,scale:scale,scale_x:scale_x,scale_y:scale_y,scale_z:scale_z,shape_center:shape_center,shape_set_center:shape_set_center,area:area,volume:volume,flip_x:flip_x,flip_y:flip_y,flip_z:flip_z,translate:translate,translate_x:translate_x,translate_y:translate_y,translate_z:translate_z,beside_x:beside_x,beside_y:beside_y,beside_z:beside_z,bounding_box:bounding_box,rotate:rotate,rotate_x:rotate_x,rotate_y:rotate_y,rotate_z:rotate_z,is_shape:is_shape,clone:clone,store:store,store_as_color:store_as_color,store_as_rgb:store_as_rgb,store_as_hex:store_as_hex,render_grid_axis:render_grid_axis,render_grid:render_grid,render_axis:render_axis,render:render}});
 
     return index;
 

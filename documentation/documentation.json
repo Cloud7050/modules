@@ -175,7 +175,7 @@
 			"originalName": "csg/functions",
 			"children": [
 				{
-					"id": 973,
+					"id": 986,
 					"name": "black",
 					"kind": 32,
 					"kindString": "Variable",
@@ -183,23 +183,23 @@
 						"isConst": true
 					},
 					"comment": {
-						"shortText": "Black attribute for colorize function"
+						"shortText": "A Color representing black (#000000)."
 					},
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 50,
+							"line": 165,
 							"character": 18
 						}
 					],
 					"type": {
 						"type": "reference",
-						"name": "RGB"
+						"name": "Color"
 					},
 					"defaultValue": "..."
 				},
 				{
-					"id": 981,
+					"id": 995,
 					"name": "blue",
 					"kind": 32,
 					"kindString": "Variable",
@@ -207,23 +207,23 @@
 						"isConst": true
 					},
 					"comment": {
-						"shortText": "Blue attribute for colorize function"
+						"shortText": "A Color representing blue (#5555FF)."
 					},
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 106,
+							"line": 228,
 							"character": 17
 						}
 					],
 					"type": {
 						"type": "reference",
-						"name": "RGB"
+						"name": "Color"
 					},
 					"defaultValue": "..."
 				},
 				{
-					"id": 993,
+					"id": 981,
 					"name": "cone",
 					"kind": 32,
 					"kindString": "Variable",
@@ -236,7 +236,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 841,
+							"line": 112,
 							"character": 17
 						}
 					],
@@ -247,7 +247,31 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 987,
+					"id": 990,
+					"name": "crimson",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"comment": {
+						"shortText": "A Color representing dark red (#AA0000)."
+					},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 193,
+							"character": 20
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "Color"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 975,
 					"name": "cube",
 					"kind": 32,
 					"kindString": "Variable",
@@ -260,7 +284,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 776,
+							"line": 48,
 							"character": 17
 						}
 					],
@@ -271,7 +295,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 983,
+					"id": 997,
 					"name": "cyan",
 					"kind": 32,
 					"kindString": "Variable",
@@ -279,23 +303,23 @@
 						"isConst": true
 					},
 					"comment": {
-						"shortText": "Cyan attribute for colorize function"
+						"shortText": "A Color representing cyan (#55FFFF)."
 					},
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 120,
+							"line": 242,
 							"character": 17
 						}
 					],
 					"type": {
 						"type": "reference",
-						"name": "RGB"
+						"name": "Color"
 					},
 					"defaultValue": "..."
 				},
 				{
-					"id": 989,
+					"id": 977,
 					"name": "cylinder",
 					"kind": 32,
 					"kindString": "Variable",
@@ -308,7 +332,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 794,
+							"line": 66,
 							"character": 21
 						}
 					],
@@ -319,7 +343,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 997,
+					"id": 985,
 					"name": "geodesicSphere",
 					"kind": 32,
 					"kindString": "Variable",
@@ -332,7 +356,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 883,
+							"line": 154,
 							"character": 27
 						}
 					],
@@ -343,7 +367,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 980,
+					"id": 994,
 					"name": "gray",
 					"kind": 32,
 					"kindString": "Variable",
@@ -351,23 +375,23 @@
 						"isConst": true
 					},
 					"comment": {
-						"shortText": "Grey attribute for colorize function"
+						"shortText": "A Color representing dark grey (#555555)."
 					},
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 99,
+							"line": 221,
 							"character": 17
 						}
 					],
 					"type": {
 						"type": "reference",
-						"name": "RGB"
+						"name": "Color"
 					},
 					"defaultValue": "..."
 				},
 				{
-					"id": 975,
+					"id": 988,
 					"name": "green",
 					"kind": 32,
 					"kindString": "Variable",
@@ -375,23 +399,23 @@
 						"isConst": true
 					},
 					"comment": {
-						"shortText": "Green attribute for colorize function"
+						"shortText": "A Color representing green (#00AA00)."
 					},
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 64,
+							"line": 179,
 							"character": 18
 						}
 					],
 					"type": {
 						"type": "reference",
-						"name": "RGB"
+						"name": "Color"
 					},
 					"defaultValue": "..."
 				},
 				{
-					"id": 982,
+					"id": 996,
 					"name": "lime",
 					"kind": 32,
 					"kindString": "Variable",
@@ -399,23 +423,23 @@
 						"isConst": true
 					},
 					"comment": {
-						"shortText": "Lime attribute for colorize function"
+						"shortText": "A Color representing light green (#55FF55)."
 					},
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 113,
+							"line": 235,
 							"character": 17
 						}
 					],
 					"type": {
 						"type": "reference",
-						"name": "RGB"
+						"name": "Color"
 					},
 					"defaultValue": "..."
 				},
 				{
-					"id": 974,
+					"id": 987,
 					"name": "navy",
 					"kind": 32,
 					"kindString": "Variable",
@@ -423,23 +447,23 @@
 						"isConst": true
 					},
 					"comment": {
-						"shortText": "Navy attribute for colorize function"
+						"shortText": "A Color representing dark blue (#0000AA)."
 					},
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 57,
+							"line": 172,
 							"character": 17
 						}
 					],
 					"type": {
 						"type": "reference",
-						"name": "RGB"
+						"name": "Color"
 					},
 					"defaultValue": "..."
 				},
 				{
-					"id": 978,
+					"id": 992,
 					"name": "orange",
 					"kind": 32,
 					"kindString": "Variable",
@@ -447,23 +471,23 @@
 						"isConst": true
 					},
 					"comment": {
-						"shortText": "Orange attribute for colorize function"
+						"shortText": "A Color representing orange (#FFAA00)."
 					},
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 85,
+							"line": 207,
 							"character": 19
 						}
 					],
 					"type": {
 						"type": "reference",
-						"name": "RGB"
+						"name": "Color"
 					},
 					"defaultValue": "..."
 				},
 				{
-					"id": 984,
+					"id": 999,
 					"name": "pink",
 					"kind": 32,
 					"kindString": "Variable",
@@ -471,23 +495,23 @@
 						"isConst": true
 					},
 					"comment": {
-						"shortText": "Pink attribute for colorize function"
+						"shortText": "A Color representing pink (#FF55FF)."
 					},
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 127,
+							"line": 256,
 							"character": 17
 						}
 					],
 					"type": {
 						"type": "reference",
-						"name": "RGB"
+						"name": "Color"
 					},
 					"defaultValue": "..."
 				},
 				{
-					"id": 990,
+					"id": 978,
 					"name": "prism",
 					"kind": 32,
 					"kindString": "Variable",
@@ -500,7 +524,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 803,
+							"line": 75,
 							"character": 18
 						}
 					],
@@ -511,7 +535,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 977,
+					"id": 991,
 					"name": "purple",
 					"kind": 32,
 					"kindString": "Variable",
@@ -519,23 +543,23 @@
 						"isConst": true
 					},
 					"comment": {
-						"shortText": "Purple attribute for colorize function"
+						"shortText": "A Color representing purple (#AA00AA)."
 					},
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 78,
+							"line": 200,
 							"character": 19
 						}
 					],
 					"type": {
 						"type": "reference",
-						"name": "RGB"
+						"name": "Color"
 					},
 					"defaultValue": "..."
 				},
 				{
-					"id": 992,
+					"id": 980,
 					"name": "pyramid",
 					"kind": 32,
 					"kindString": "Variable",
@@ -548,7 +572,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 825,
+							"line": 96,
 							"character": 20
 						}
 					],
@@ -559,7 +583,31 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 995,
+					"id": 998,
+					"name": "rose",
+					"kind": 32,
+					"kindString": "Variable",
+					"flags": {
+						"isConst": true
+					},
+					"comment": {
+						"shortText": "A Color representing light red (#FF5555)."
+					},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 249,
+							"character": 17
+						}
+					],
+					"type": {
+						"type": "reference",
+						"name": "Color"
+					},
+					"defaultValue": "..."
+				},
+				{
+					"id": 983,
 					"name": "roundedCube",
 					"kind": 32,
 					"kindString": "Variable",
@@ -572,7 +620,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 865,
+							"line": 136,
 							"character": 24
 						}
 					],
@@ -583,7 +631,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 996,
+					"id": 984,
 					"name": "roundedCylinder",
 					"kind": 32,
 					"kindString": "Variable",
@@ -596,7 +644,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 874,
+							"line": 145,
 							"character": 28
 						}
 					],
@@ -607,7 +655,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 979,
+					"id": 993,
 					"name": "silver",
 					"kind": 32,
 					"kindString": "Variable",
@@ -615,23 +663,23 @@
 						"isConst": true
 					},
 					"comment": {
-						"shortText": "Silver attribute for colorize function"
+						"shortText": "A Color representing light grey (#AAAAAA)."
 					},
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 92,
+							"line": 214,
 							"character": 19
 						}
 					],
 					"type": {
 						"type": "reference",
-						"name": "RGB"
+						"name": "Color"
 					},
 					"defaultValue": "..."
 				},
 				{
-					"id": 988,
+					"id": 976,
 					"name": "sphere",
 					"kind": 32,
 					"kindString": "Variable",
@@ -644,7 +692,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 785,
+							"line": 57,
 							"character": 19
 						}
 					],
@@ -655,7 +703,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 991,
+					"id": 979,
 					"name": "star",
 					"kind": 32,
 					"kindString": "Variable",
@@ -668,7 +716,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 812,
+							"line": 84,
 							"character": 17
 						}
 					],
@@ -679,7 +727,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 976,
+					"id": 989,
 					"name": "teal",
 					"kind": 32,
 					"kindString": "Variable",
@@ -687,23 +735,23 @@
 						"isConst": true
 					},
 					"comment": {
-						"shortText": "Teal attribute for colorize function"
+						"shortText": "A Color representing dark cyan (#00AAAA)."
 					},
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 71,
+							"line": 186,
 							"character": 17
 						}
 					],
 					"type": {
 						"type": "reference",
-						"name": "RGB"
+						"name": "Color"
 					},
 					"defaultValue": "..."
 				},
 				{
-					"id": 994,
+					"id": 982,
 					"name": "torus",
 					"kind": 32,
 					"kindString": "Variable",
@@ -716,7 +764,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 856,
+							"line": 127,
 							"character": 18
 						}
 					],
@@ -727,7 +775,7 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 986,
+					"id": 1001,
 					"name": "white",
 					"kind": 32,
 					"kindString": "Variable",
@@ -735,23 +783,23 @@
 						"isConst": true
 					},
 					"comment": {
-						"shortText": "White attribute for colorize function"
+						"shortText": "A Color representing white (#FFFFFF)."
 					},
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 141,
+							"line": 270,
 							"character": 18
 						}
 					],
 					"type": {
 						"type": "reference",
-						"name": "RGB"
+						"name": "Color"
 					},
 					"defaultValue": "..."
 				},
 				{
-					"id": 985,
+					"id": 1000,
 					"name": "yellow",
 					"kind": 32,
 					"kindString": "Variable",
@@ -759,23 +807,23 @@
 						"isConst": true
 					},
 					"comment": {
-						"shortText": "Yellow attribute for colorize function"
+						"shortText": "A Color representing yellow (#FFFF55)."
 					},
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 134,
+							"line": 263,
 							"character": 19
 						}
 					],
 					"type": {
 						"type": "reference",
-						"name": "RGB"
+						"name": "Color"
 					},
 					"defaultValue": "..."
 				},
 				{
-					"id": 888,
+					"id": 874,
 					"name": "area",
 					"kind": 64,
 					"kindString": "Function",
@@ -783,13 +831,13 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 377,
+							"line": 426,
 							"character": 20
 						}
 					],
 					"signatures": [
 						{
-							"id": 889,
+							"id": 875,
 							"name": "area",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -800,7 +848,7 @@
 							},
 							"parameters": [
 								{
-									"id": 890,
+									"id": 876,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -822,7 +870,7 @@
 					]
 				},
 				{
-					"id": 921,
+					"id": 907,
 					"name": "beside_x",
 					"kind": 64,
 					"kindString": "Function",
@@ -830,13 +878,13 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 500,
+							"line": 550,
 							"character": 24
 						}
 					],
 					"signatures": [
 						{
-							"id": 922,
+							"id": 908,
 							"name": "beside_x",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -847,7 +895,7 @@
 							},
 							"parameters": [
 								{
-									"id": 923,
+									"id": 909,
 									"name": "a",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -861,7 +909,7 @@
 									}
 								},
 								{
-									"id": 924,
+									"id": 910,
 									"name": "b",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -883,7 +931,7 @@
 					]
 				},
 				{
-					"id": 925,
+					"id": 911,
 					"name": "beside_y",
 					"kind": 64,
 					"kindString": "Function",
@@ -891,13 +939,13 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 526,
+							"line": 576,
 							"character": 24
 						}
 					],
 					"signatures": [
 						{
-							"id": 926,
+							"id": 912,
 							"name": "beside_y",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -908,7 +956,7 @@
 							},
 							"parameters": [
 								{
-									"id": 927,
+									"id": 913,
 									"name": "a",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -922,7 +970,7 @@
 									}
 								},
 								{
-									"id": 928,
+									"id": 914,
 									"name": "b",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -944,7 +992,7 @@
 					]
 				},
 				{
-					"id": 929,
+					"id": 915,
 					"name": "beside_z",
 					"kind": 64,
 					"kindString": "Function",
@@ -952,13 +1000,13 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 552,
+							"line": 602,
 							"character": 24
 						}
 					],
 					"signatures": [
 						{
-							"id": 930,
+							"id": 916,
 							"name": "beside_z",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -969,7 +1017,7 @@
 							},
 							"parameters": [
 								{
-									"id": 931,
+									"id": 917,
 									"name": "a",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -983,7 +1031,7 @@
 									}
 								},
 								{
-									"id": 932,
+									"id": 918,
 									"name": "b",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1005,7 +1053,7 @@
 					]
 				},
 				{
-					"id": 933,
+					"id": 919,
 					"name": "bounding_box",
 					"kind": 64,
 					"kindString": "Function",
@@ -1013,13 +1061,13 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 586,
+							"line": 636,
 							"character": 28
 						}
 					],
 					"signatures": [
 						{
-							"id": 934,
+							"id": 920,
 							"name": "bounding_box",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1031,7 +1079,7 @@
 							},
 							"parameters": [
 								{
-									"id": 935,
+									"id": 921,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1048,7 +1096,7 @@
 							"type": {
 								"type": "reflection",
 								"declaration": {
-									"id": 936,
+									"id": 922,
 									"name": "__type",
 									"kind": 65536,
 									"kindString": "Type literal",
@@ -1056,20 +1104,20 @@
 									"sources": [
 										{
 											"fileName": "csg/functions.ts",
-											"line": 588,
+											"line": 638,
 											"character": 2
 										}
 									],
 									"signatures": [
 										{
-											"id": 937,
+											"id": 923,
 											"name": "__type",
 											"kind": 4096,
 											"kindString": "Call signature",
 											"flags": {},
 											"parameters": [
 												{
-													"id": 938,
+													"id": 924,
 													"name": "axis",
 													"kind": 32768,
 													"kindString": "Parameter",
@@ -1080,7 +1128,7 @@
 													}
 												},
 												{
-													"id": 939,
+													"id": 925,
 													"name": "min",
 													"kind": 32768,
 													"kindString": "Parameter",
@@ -1103,56 +1151,42 @@
 					]
 				},
 				{
-					"id": 844,
-					"name": "colorize",
+					"id": 947,
+					"name": "clone",
 					"kind": 64,
 					"kindString": "Function",
 					"flags": {},
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 200,
-							"character": 24
+							"line": 733,
+							"character": 21
 						}
 					],
 					"signatures": [
 						{
-							"id": 845,
-							"name": "colorize",
+							"id": 948,
+							"name": "clone",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Colours the given shape with the colour provided.",
-								"returns": "Resulting Shape\n"
+								"shortText": "Creates a clone of the specified Shape.",
+								"returns": "The cloned Shape.\n"
 							},
 							"parameters": [
 								{
-									"id": 846,
+									"id": 949,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"text": "The shape to be coloured"
+										"text": "The Shape to be cloned."
 									},
 									"type": {
 										"type": "reference",
 										"name": "Shape"
-									}
-								},
-								{
-									"id": 847,
-									"name": "color",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "The colour to colour the shape with"
-									},
-									"type": {
-										"type": "reference",
-										"name": "RGB"
 									}
 								}
 							],
@@ -1164,157 +1198,7 @@
 					]
 				},
 				{
-					"id": 854,
-					"name": "colorize_hex",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "csg/functions.ts",
-							"line": 250,
-							"character": 28
-						}
-					],
-					"signatures": [
-						{
-							"id": 855,
-							"name": "colorize_hex",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "Colours the given shape by specifying the hex, in the form of #xxxxxx or\nxxxxxx.\nFor example hex value of #FFFFFF is white while the hex value of #000000\nis black.",
-								"returns": "Resulting Shape\n"
-							},
-							"parameters": [
-								{
-									"id": 856,
-									"name": "shape",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "The shape to be coloured"
-									},
-									"type": {
-										"type": "reference",
-										"name": "Shape"
-									}
-								},
-								{
-									"id": 857,
-									"name": "hex",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "The hex value to colour the shape with"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "string"
-									}
-								}
-							],
-							"type": {
-								"type": "reference",
-								"name": "Shape"
-							}
-						}
-					]
-				},
-				{
-					"id": 848,
-					"name": "colorize_rgb",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "csg/functions.ts",
-							"line": 221,
-							"character": 28
-						}
-					],
-					"signatures": [
-						{
-							"id": 849,
-							"name": "colorize_rgb",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "Colours the given shape by specifying the red, green, blue (RGB) value,\nranging from 0.0 to 1.0.\nFor example RGB value of (1.0, 1.0, 1.0) is white while the RGB value of\n(0.0, 0.0, 0.0) is black.",
-								"returns": "Resulting Shape\n"
-							},
-							"parameters": [
-								{
-									"id": 850,
-									"name": "shape",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "The shape to be coloured"
-									},
-									"type": {
-										"type": "reference",
-										"name": "Shape"
-									}
-								},
-								{
-									"id": 851,
-									"name": "r",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "Red value [0.0 - 1.0]"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								},
-								{
-									"id": 852,
-									"name": "g",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "Green value [0.0 - 1.0]"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								},
-								{
-									"id": 853,
-									"name": "b",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "Blue value [0.0 - 1.0]"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								}
-							],
-							"type": {
-								"type": "reference",
-								"name": "Shape"
-							}
-						}
-					]
-				},
-				{
-					"id": 894,
+					"id": 880,
 					"name": "flip_x",
 					"kind": 64,
 					"kindString": "Function",
@@ -1322,13 +1206,13 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 412,
+							"line": 462,
 							"character": 22
 						}
 					],
 					"signatures": [
 						{
-							"id": 895,
+							"id": 881,
 							"name": "flip_x",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1339,7 +1223,7 @@
 							},
 							"parameters": [
 								{
-									"id": 896,
+									"id": 882,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1361,7 +1245,7 @@
 					]
 				},
 				{
-					"id": 897,
+					"id": 883,
 					"name": "flip_y",
 					"kind": 64,
 					"kindString": "Function",
@@ -1369,13 +1253,13 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 422,
+							"line": 472,
 							"character": 22
 						}
 					],
 					"signatures": [
 						{
-							"id": 898,
+							"id": 884,
 							"name": "flip_y",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1386,7 +1270,7 @@
 							},
 							"parameters": [
 								{
-									"id": 899,
+									"id": 885,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1408,7 +1292,7 @@
 					]
 				},
 				{
-					"id": 900,
+					"id": 886,
 					"name": "flip_z",
 					"kind": 64,
 					"kindString": "Function",
@@ -1416,13 +1300,13 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 432,
+							"line": 482,
 							"character": 22
 						}
 					],
 					"signatures": [
 						{
-							"id": 901,
+							"id": 887,
 							"name": "flip_z",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1433,7 +1317,7 @@
 							},
 							"parameters": [
 								{
-									"id": 902,
+									"id": 888,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1463,7 +1347,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 188,
+							"line": 305,
 							"character": 25
 						}
 					],
@@ -1516,7 +1400,7 @@
 					]
 				},
 				{
-					"id": 958,
+					"id": 944,
 					"name": "is_shape",
 					"kind": 64,
 					"kindString": "Function",
@@ -1524,34 +1408,34 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 676,
+							"line": 723,
 							"character": 24
 						}
 					],
 					"signatures": [
 						{
-							"id": 959,
+							"id": 945,
 							"name": "is_shape",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Checks whether the given shape is a Shape.",
-								"returns": "Boolean on whether shape provided is a Shape\n"
+								"shortText": "Checks if the specified argument is a Shape.",
+								"returns": "Whether the argument is a Shape.\n"
 							},
 							"parameters": [
 								{
-									"id": 960,
-									"name": "shape",
+									"id": 946,
+									"name": "argument",
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"text": "The shape to be checked"
+										"text": "The value to check."
 									},
 									"type": {
-										"type": "reference",
-										"name": "Shape"
+										"type": "intrinsic",
+										"name": "unknown"
 									}
 								}
 							],
@@ -1563,7 +1447,7 @@
 					]
 				},
 				{
-					"id": 961,
+					"id": 973,
 					"name": "render",
 					"kind": 64,
 					"kindString": "Function",
@@ -1571,46 +1455,29 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 712,
+							"line": 836,
 							"character": 22
 						}
 					],
 					"signatures": [
 						{
-							"id": 962,
+							"id": 974,
 							"name": "render",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Returns a copy of the specified Shape that will get rendered in a tab,\nif your Source program results in that Shape.\nI.e., use this function as the last statement in your program to render the\nspecified shape.",
-								"returns": "A copy of the specified Shape, marked for rendering.\n"
+								"shortText": "Renders using any Shapes stored thus far. The Shapes will then not be\nincluded in any subsequent renders."
 							},
-							"parameters": [
-								{
-									"id": 963,
-									"name": "shape",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "The Shape to render."
-									},
-									"type": {
-										"type": "reference",
-										"name": "Shape"
-									}
-								}
-							],
 							"type": {
-								"type": "reference",
-								"name": "Shape"
+								"type": "intrinsic",
+								"name": "void"
 							}
 						}
 					]
 				},
 				{
-					"id": 964,
+					"id": 971,
 					"name": "render_axis",
 					"kind": 64,
 					"kindString": "Function",
@@ -1618,93 +1485,29 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 728,
+							"line": 828,
 							"character": 27
 						}
 					],
 					"signatures": [
 						{
-							"id": 965,
+							"id": 972,
 							"name": "render_axis",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Returns a copy of the specified Shape that will get rendered in a tab with axis,\nif your Source program results in that Shape.\nI.e., use this function as the last statement in your program to render the\nspecified shape.",
-								"returns": "A copy of the specified Shape, marked for rendering.\n"
+								"shortText": "Renders using any Shapes stored thus far, along with an axis. The Shapes will\nthen not be included in any subsequent renders."
 							},
-							"parameters": [
-								{
-									"id": 966,
-									"name": "shape",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "The Shape to render."
-									},
-									"type": {
-										"type": "reference",
-										"name": "Shape"
-									}
-								}
-							],
 							"type": {
-								"type": "reference",
-								"name": "Shape"
+								"type": "intrinsic",
+								"name": "void"
 							}
 						}
 					]
 				},
 				{
-					"id": 970,
-					"name": "render_axis_grid",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "csg/functions.ts",
-							"line": 760,
-							"character": 32
-						}
-					],
-					"signatures": [
-						{
-							"id": 971,
-							"name": "render_axis_grid",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "Returns a copy of the specified Shape that will get rendered in a tab with axis and\ngrid, if your Source program results in that Shape.\nI.e., use this function as the last statement in your program to render the\nspecified shape.",
-								"returns": "A copy of the specified Shape, marked for rendering.\n"
-							},
-							"parameters": [
-								{
-									"id": 972,
-									"name": "shape",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "The Shape to render."
-									},
-									"type": {
-										"type": "reference",
-										"name": "Shape"
-									}
-								}
-							],
-							"type": {
-								"type": "reference",
-								"name": "Shape"
-							}
-						}
-					]
-				},
-				{
-					"id": 967,
+					"id": 969,
 					"name": "render_grid",
 					"kind": 64,
 					"kindString": "Function",
@@ -1712,34 +1515,258 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 744,
+							"line": 820,
 							"character": 27
 						}
 					],
 					"signatures": [
 						{
-							"id": 968,
+							"id": 970,
 							"name": "render_grid",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Returns a copy of the specified Shape that will get rendered in a tab with grid,\nif your Source program results in that Shape.\nI.e., use this function as the last statement in your program to render the\nspecified shape.",
-								"returns": "A copy of the specified Shape, marked for rendering.\n"
+								"shortText": "Renders using any Shapes stored thus far, along with a grid. The Shapes will\nthen not be included in any subsequent renders."
+							},
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							}
+						}
+					]
+				},
+				{
+					"id": 967,
+					"name": "render_grid_axis",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 811,
+							"character": 32
+						}
+					],
+					"signatures": [
+						{
+							"id": 968,
+							"name": "render_grid_axis",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Renders using any Shapes stored thus far, along with a grid and axis. The\nShapes will then not be included in any subsequent renders."
+							},
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							}
+						}
+					]
+				},
+				{
+					"id": 926,
+					"name": "rotate",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 664,
+							"character": 22
+						}
+					],
+					"signatures": [
+						{
+							"id": 927,
+							"name": "rotate",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Rotate the shape by the provided angles in the x, y and z direction.\nAngles provided are in the form of radians (i.e. 2π represent 360\ndegrees)",
+								"returns": "The rotated shape\n"
 							},
 							"parameters": [
 								{
-									"id": 969,
+									"id": 928,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"text": "The Shape to render."
+										"text": "The shape to be rotated"
 									},
 									"type": {
 										"type": "reference",
 										"name": "Shape"
+									}
+								},
+								{
+									"id": 929,
+									"name": "x",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Angle of rotation in the x direction"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 930,
+									"name": "y",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Angle of rotation in the y direction"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 931,
+									"name": "z",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Angle of rotation in the z direction"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Shape"
+							}
+						}
+					]
+				},
+				{
+					"id": 932,
+					"name": "rotate_x",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 677,
+							"character": 24
+						}
+					],
+					"signatures": [
+						{
+							"id": 933,
+							"name": "rotate_x",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Rotate the shape by the provided angles in the x direction. Angles\nprovided are in the form of radians (i.e. 2π represent 360 degrees)",
+								"returns": "The rotated shape\n"
+							},
+							"parameters": [
+								{
+									"id": 934,
+									"name": "shape",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The shape to be rotated"
+									},
+									"type": {
+										"type": "reference",
+										"name": "Shape"
+									}
+								},
+								{
+									"id": 935,
+									"name": "x",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Angle of rotation in the x direction"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Shape"
+							}
+						}
+					]
+				},
+				{
+					"id": 936,
+					"name": "rotate_y",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 689,
+							"character": 24
+						}
+					],
+					"signatures": [
+						{
+							"id": 937,
+							"name": "rotate_y",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Rotate the shape by the provided angles in the y direction. Angles\nprovided are in the form of radians (i.e. 2π represent 360 degrees)",
+								"returns": "The rotated shape\n"
+							},
+							"parameters": [
+								{
+									"id": 938,
+									"name": "shape",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The shape to be rotated"
+									},
+									"type": {
+										"type": "reference",
+										"name": "Shape"
+									}
+								},
+								{
+									"id": 939,
+									"name": "y",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Angle of rotation in the y direction"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
 									}
 								}
 							],
@@ -1752,26 +1779,26 @@
 				},
 				{
 					"id": 940,
-					"name": "rotate",
+					"name": "rotate_z",
 					"kind": 64,
 					"kindString": "Function",
 					"flags": {},
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 615,
-							"character": 22
+							"line": 701,
+							"character": 24
 						}
 					],
 					"signatures": [
 						{
 							"id": 941,
-							"name": "rotate",
+							"name": "rotate_z",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Rotate the shape by the provided angles in the x, y and z direction.\nAngles provided are in the form of radians (i.e. 2π represent 360\ndegrees)",
+								"shortText": "Rotate the shape by the provided angles in the z direction. Angles\nprovided are in the form of radians (i.e. 2π represent 360 degrees)",
 								"returns": "The rotated shape\n"
 							},
 							"parameters": [
@@ -1791,34 +1818,6 @@
 								},
 								{
 									"id": 943,
-									"name": "x",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "Angle of rotation in the x direction"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								},
-								{
-									"id": 944,
-									"name": "y",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "Angle of rotation in the y direction"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								},
-								{
-									"id": 945,
 									"name": "z",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1840,38 +1839,38 @@
 					]
 				},
 				{
-					"id": 946,
-					"name": "rotate_x",
+					"id": 844,
+					"name": "scale",
 					"kind": 64,
 					"kindString": "Function",
 					"flags": {},
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 628,
-							"character": 24
+							"line": 322,
+							"character": 21
 						}
 					],
 					"signatures": [
 						{
-							"id": 947,
-							"name": "rotate_x",
+							"id": 845,
+							"name": "scale",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Rotate the shape by the provided angles in the x direction. Angles\nprovided are in the form of radians (i.e. 2π represent 360 degrees)",
-								"returns": "The rotated shape\n"
+								"shortText": "Scales the shape in the x, y and z direction with the specified factor,\nranging from 0 to infinity.\nFor example scaling the shape by 1 in x, y and z direction results in\nthe original shape.",
+								"returns": "Resulting Shape\n"
 							},
 							"parameters": [
 								{
-									"id": 948,
+									"id": 846,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"text": "The shape to be rotated"
+										"text": "The shape to be scaled"
 									},
 									"type": {
 										"type": "reference",
@@ -1879,74 +1878,41 @@
 									}
 								},
 								{
-									"id": 949,
+									"id": 847,
 									"name": "x",
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"text": "Angle of rotation in the x direction"
+										"text": "Scaling in the x direction"
 									},
 									"type": {
 										"type": "intrinsic",
 										"name": "number"
 									}
-								}
-							],
-							"type": {
-								"type": "reference",
-								"name": "Shape"
-							}
-						}
-					]
-				},
-				{
-					"id": 950,
-					"name": "rotate_y",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "csg/functions.ts",
-							"line": 640,
-							"character": 24
-						}
-					],
-					"signatures": [
-						{
-							"id": 951,
-							"name": "rotate_y",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "Rotate the shape by the provided angles in the y direction. Angles\nprovided are in the form of radians (i.e. 2π represent 360 degrees)",
-								"returns": "The rotated shape\n"
-							},
-							"parameters": [
-								{
-									"id": 952,
-									"name": "shape",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "The shape to be rotated"
-									},
-									"type": {
-										"type": "reference",
-										"name": "Shape"
-									}
 								},
 								{
-									"id": 953,
+									"id": 848,
 									"name": "y",
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"text": "Angle of rotation in the y direction"
+										"text": "Scaling in the y direction"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 849,
+									"name": "z",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Scaling in the z direction"
 									},
 									"type": {
 										"type": "intrinsic",
@@ -1962,38 +1928,38 @@
 					]
 				},
 				{
-					"id": 954,
-					"name": "rotate_z",
+					"id": 850,
+					"name": "scale_x",
 					"kind": 64,
 					"kindString": "Function",
 					"flags": {},
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 652,
-							"character": 24
+							"line": 337,
+							"character": 23
 						}
 					],
 					"signatures": [
 						{
-							"id": 955,
-							"name": "rotate_z",
+							"id": 851,
+							"name": "scale_x",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Rotate the shape by the provided angles in the z direction. Angles\nprovided are in the form of radians (i.e. 2π represent 360 degrees)",
-								"returns": "The rotated shape\n"
+								"shortText": "Scales the shape in the x direction with the specified factor,\nranging from 0 to infinity.\nFor example scaling the shape by 1 in x direction results in the\noriginal shape.",
+								"returns": "Resulting Shape\n"
 							},
 							"parameters": [
 								{
-									"id": 956,
+									"id": 852,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"text": "The shape to be rotated"
+										"text": "The shape to be scaled"
 									},
 									"type": {
 										"type": "reference",
@@ -2001,13 +1967,74 @@
 									}
 								},
 								{
-									"id": 957,
-									"name": "z",
+									"id": 853,
+									"name": "x",
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"text": "Angle of rotation in the z direction"
+										"text": "Scaling in the x direction"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Shape"
+							}
+						}
+					]
+				},
+				{
+					"id": 854,
+					"name": "scale_y",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 351,
+							"character": 23
+						}
+					],
+					"signatures": [
+						{
+							"id": 855,
+							"name": "scale_y",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Scales the shape in the y direction with the specified factor,\nranging from 0 to infinity.\nFor example scaling the shape by 1 in y direction results in the\noriginal shape.",
+								"returns": "Resulting Shape\n"
+							},
+							"parameters": [
+								{
+									"id": 856,
+									"name": "shape",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The shape to be scaled"
+									},
+									"type": {
+										"type": "reference",
+										"name": "Shape"
+									}
+								},
+								{
+									"id": 857,
+									"name": "y",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "Scaling in the y direction"
 									},
 									"type": {
 										"type": "intrinsic",
@@ -2024,26 +2051,26 @@
 				},
 				{
 					"id": 858,
-					"name": "scale",
+					"name": "scale_z",
 					"kind": 64,
 					"kindString": "Function",
 					"flags": {},
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 272,
-							"character": 21
+							"line": 365,
+							"character": 23
 						}
 					],
 					"signatures": [
 						{
 							"id": 859,
-							"name": "scale",
+							"name": "scale_z",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Scales the shape in the x, y and z direction with the specified factor,\nranging from 0 to infinity.\nFor example scaling the shape by 1 in x, y and z direction results in\nthe original shape.",
+								"shortText": "Scales the shape in the z direction with the specified factor,\nranging from 0 to infinity.\nFor example scaling the shape by 1 in z direction results in the\noriginal shape.",
 								"returns": "Resulting Shape\n"
 							},
 							"parameters": [
@@ -2063,34 +2090,6 @@
 								},
 								{
 									"id": 861,
-									"name": "x",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "Scaling in the x direction"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								},
-								{
-									"id": 862,
-									"name": "y",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "Scaling in the y direction"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								},
-								{
-									"id": 863,
 									"name": "z",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2112,190 +2111,7 @@
 					]
 				},
 				{
-					"id": 864,
-					"name": "scale_x",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "csg/functions.ts",
-							"line": 287,
-							"character": 23
-						}
-					],
-					"signatures": [
-						{
-							"id": 865,
-							"name": "scale_x",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "Scales the shape in the x direction with the specified factor,\nranging from 0 to infinity.\nFor example scaling the shape by 1 in x direction results in the\noriginal shape.",
-								"returns": "Resulting Shape\n"
-							},
-							"parameters": [
-								{
-									"id": 866,
-									"name": "shape",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "The shape to be scaled"
-									},
-									"type": {
-										"type": "reference",
-										"name": "Shape"
-									}
-								},
-								{
-									"id": 867,
-									"name": "x",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "Scaling in the x direction"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								}
-							],
-							"type": {
-								"type": "reference",
-								"name": "Shape"
-							}
-						}
-					]
-				},
-				{
-					"id": 868,
-					"name": "scale_y",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "csg/functions.ts",
-							"line": 301,
-							"character": 23
-						}
-					],
-					"signatures": [
-						{
-							"id": 869,
-							"name": "scale_y",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "Scales the shape in the y direction with the specified factor,\nranging from 0 to infinity.\nFor example scaling the shape by 1 in y direction results in the\noriginal shape.",
-								"returns": "Resulting Shape\n"
-							},
-							"parameters": [
-								{
-									"id": 870,
-									"name": "shape",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "The shape to be scaled"
-									},
-									"type": {
-										"type": "reference",
-										"name": "Shape"
-									}
-								},
-								{
-									"id": 871,
-									"name": "y",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "Scaling in the y direction"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								}
-							],
-							"type": {
-								"type": "reference",
-								"name": "Shape"
-							}
-						}
-					]
-				},
-				{
-					"id": 872,
-					"name": "scale_z",
-					"kind": 64,
-					"kindString": "Function",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "csg/functions.ts",
-							"line": 315,
-							"character": 23
-						}
-					],
-					"signatures": [
-						{
-							"id": 873,
-							"name": "scale_z",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "Scales the shape in the z direction with the specified factor,\nranging from 0 to infinity.\nFor example scaling the shape by 1 in z direction results in the\noriginal shape.",
-								"returns": "Resulting Shape\n"
-							},
-							"parameters": [
-								{
-									"id": 874,
-									"name": "shape",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "The shape to be scaled"
-									},
-									"type": {
-										"type": "reference",
-										"name": "Shape"
-									}
-								},
-								{
-									"id": 875,
-									"name": "z",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"text": "Scaling in the z direction"
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "number"
-									}
-								}
-							],
-							"type": {
-								"type": "reference",
-								"name": "Shape"
-							}
-						}
-					]
-				},
-				{
-					"id": 876,
+					"id": 862,
 					"name": "shape_center",
 					"kind": 64,
 					"kindString": "Function",
@@ -2303,13 +2119,13 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 334,
+							"line": 384,
 							"character": 28
 						}
 					],
 					"signatures": [
 						{
-							"id": 877,
+							"id": 863,
 							"name": "shape_center",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -2321,7 +2137,7 @@
 							},
 							"parameters": [
 								{
-									"id": 878,
+									"id": 864,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2338,7 +2154,7 @@
 							"type": {
 								"type": "reflection",
 								"declaration": {
-									"id": 879,
+									"id": 865,
 									"name": "__type",
 									"kind": 65536,
 									"kindString": "Type literal",
@@ -2346,20 +2162,20 @@
 									"sources": [
 										{
 											"fileName": "csg/functions.ts",
-											"line": 334,
+											"line": 384,
 											"character": 43
 										}
 									],
 									"signatures": [
 										{
-											"id": 880,
+											"id": 866,
 											"name": "__type",
 											"kind": 4096,
 											"kindString": "Call signature",
 											"flags": {},
 											"parameters": [
 												{
-													"id": 881,
+													"id": 867,
 													"name": "axis",
 													"kind": 32768,
 													"kindString": "Parameter",
@@ -2382,7 +2198,7 @@
 					]
 				},
 				{
-					"id": 882,
+					"id": 868,
 					"name": "shape_set_center",
 					"kind": 64,
 					"kindString": "Function",
@@ -2390,13 +2206,13 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 361,
+							"line": 410,
 							"character": 32
 						}
 					],
 					"signatures": [
 						{
-							"id": 883,
+							"id": 869,
 							"name": "shape_set_center",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -2407,7 +2223,7 @@
 							},
 							"parameters": [
 								{
-									"id": 884,
+									"id": 870,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2421,7 +2237,7 @@
 									}
 								},
 								{
-									"id": 885,
+									"id": 871,
 									"name": "x",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2435,7 +2251,7 @@
 									}
 								},
 								{
-									"id": 886,
+									"id": 872,
 									"name": "y",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2449,7 +2265,7 @@
 									}
 								},
 								{
-									"id": 887,
+									"id": 873,
 									"name": "z",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2471,6 +2287,262 @@
 					]
 				},
 				{
+					"id": 950,
+					"name": "store",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 742,
+							"character": 21
+						}
+					],
+					"signatures": [
+						{
+							"id": 951,
+							"name": "store",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Stores a clone of the specified Shape for later rendering."
+							},
+							"parameters": [
+								{
+									"id": 952,
+									"name": "shape",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The Shape to be stored.\n"
+									},
+									"type": {
+										"type": "reference",
+										"name": "Shape"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							}
+						}
+					]
+				},
+				{
+					"id": 953,
+					"name": "store_as_color",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 754,
+							"character": 30
+						}
+					],
+					"signatures": [
+						{
+							"id": 954,
+							"name": "store_as_color",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Colours a clone of the specified Shape using the specified Color, then stores\nit for later rendering."
+							},
+							"parameters": [
+								{
+									"id": 955,
+									"name": "shape",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The Shape to be coloured and stored."
+									},
+									"type": {
+										"type": "reference",
+										"name": "Shape"
+									}
+								},
+								{
+									"id": 956,
+									"name": "color",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The Color to use.\n"
+									},
+									"type": {
+										"type": "reference",
+										"name": "Color"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							}
+						}
+					]
+				},
+				{
+					"id": 963,
+					"name": "store_as_hex",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 801,
+							"character": 28
+						}
+					],
+					"signatures": [
+						{
+							"id": 964,
+							"name": "store_as_hex",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Colours a clone of the specified Shape using the specified hex colour code,\nthen stores it for later rendering.",
+								"text": "Colour codes must be of the form \"#XXXXXX\" or \"XXXXXX\", where each X\nrepresents a hexadecimal number. Invalid colour codes default to black.\n"
+							},
+							"parameters": [
+								{
+									"id": 965,
+									"name": "shape",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The Shape to be coloured and stored."
+									},
+									"type": {
+										"type": "reference",
+										"name": "Shape"
+									}
+								},
+								{
+									"id": 966,
+									"name": "hex",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The hexadecimal colour code.\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							}
+						}
+					]
+				},
+				{
+					"id": 957,
+					"name": "store_as_rgb",
+					"kind": 64,
+					"kindString": "Function",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "csg/functions.ts",
+							"line": 774,
+							"character": 28
+						}
+					],
+					"signatures": [
+						{
+							"id": 958,
+							"name": "store_as_rgb",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Colours a clone of the specified Shape using the specified RGB values, then\nstores it for later rendering.",
+								"text": "RGB values are clamped between 0 and 1.\n"
+							},
+							"parameters": [
+								{
+									"id": 959,
+									"name": "shape",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The Shape to be coloured and stored."
+									},
+									"type": {
+										"type": "reference",
+										"name": "Shape"
+									}
+								},
+								{
+									"id": 960,
+									"name": "redComponent",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The colour's red component."
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 961,
+									"name": "greenComponent",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The colour's green component."
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								},
+								{
+									"id": 962,
+									"name": "blueComponent",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"text": "The colour's blue component.\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							}
+						}
+					]
+				},
+				{
 					"id": 836,
 					"name": "subtract",
 					"kind": 64,
@@ -2479,7 +2551,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 176,
+							"line": 293,
 							"character": 24
 						}
 					],
@@ -2532,7 +2604,7 @@
 					]
 				},
 				{
-					"id": 903,
+					"id": 889,
 					"name": "translate",
 					"kind": 64,
 					"kindString": "Function",
@@ -2540,13 +2612,13 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 446,
+							"line": 496,
 							"character": 25
 						}
 					],
 					"signatures": [
 						{
-							"id": 904,
+							"id": 890,
 							"name": "translate",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -2557,7 +2629,7 @@
 							},
 							"parameters": [
 								{
-									"id": 905,
+									"id": 891,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2569,7 +2641,7 @@
 									}
 								},
 								{
-									"id": 906,
+									"id": 892,
 									"name": "x",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2583,7 +2655,7 @@
 									}
 								},
 								{
-									"id": 907,
+									"id": 893,
 									"name": "y",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2597,7 +2669,7 @@
 									}
 								},
 								{
-									"id": 908,
+									"id": 894,
 									"name": "z",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2619,7 +2691,7 @@
 					]
 				},
 				{
-					"id": 909,
+					"id": 895,
 					"name": "translate_x",
 					"kind": 64,
 					"kindString": "Function",
@@ -2627,13 +2699,13 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 464,
+							"line": 514,
 							"character": 27
 						}
 					],
 					"signatures": [
 						{
-							"id": 910,
+							"id": 896,
 							"name": "translate_x",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -2644,7 +2716,7 @@
 							},
 							"parameters": [
 								{
-									"id": 911,
+									"id": 897,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2656,7 +2728,7 @@
 									}
 								},
 								{
-									"id": 912,
+									"id": 898,
 									"name": "x",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2678,7 +2750,7 @@
 					]
 				},
 				{
-					"id": 913,
+					"id": 899,
 					"name": "translate_y",
 					"kind": 64,
 					"kindString": "Function",
@@ -2686,13 +2758,13 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 476,
+							"line": 526,
 							"character": 27
 						}
 					],
 					"signatures": [
 						{
-							"id": 914,
+							"id": 900,
 							"name": "translate_y",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -2703,7 +2775,7 @@
 							},
 							"parameters": [
 								{
-									"id": 915,
+									"id": 901,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2715,7 +2787,7 @@
 									}
 								},
 								{
-									"id": 916,
+									"id": 902,
 									"name": "y",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2737,7 +2809,7 @@
 					]
 				},
 				{
-					"id": 917,
+					"id": 903,
 					"name": "translate_z",
 					"kind": 64,
 					"kindString": "Function",
@@ -2745,13 +2817,13 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 488,
+							"line": 538,
 							"character": 27
 						}
 					],
 					"signatures": [
 						{
-							"id": 918,
+							"id": 904,
 							"name": "translate_z",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -2762,7 +2834,7 @@
 							},
 							"parameters": [
 								{
-									"id": 919,
+									"id": 905,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2774,7 +2846,7 @@
 									}
 								},
 								{
-									"id": 920,
+									"id": 906,
 									"name": "z",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2804,7 +2876,7 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 164,
+							"line": 281,
 							"character": 21
 						}
 					],
@@ -2857,7 +2929,7 @@
 					]
 				},
 				{
-					"id": 891,
+					"id": 877,
 					"name": "volume",
 					"kind": 64,
 					"kindString": "Function",
@@ -2865,13 +2937,13 @@
 					"sources": [
 						{
 							"fileName": "csg/functions.ts",
-							"line": 387,
+							"line": 436,
 							"character": 22
 						}
 					],
 					"signatures": [
 						{
-							"id": 892,
+							"id": 878,
 							"name": "volume",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -2882,7 +2954,7 @@
 							},
 							"parameters": [
 								{
-									"id": 893,
+									"id": 879,
 									"name": "shape",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -2909,66 +2981,70 @@
 					"title": "Variables",
 					"kind": 32,
 					"children": [
-						973,
-						981,
-						993,
-						987,
-						983,
-						989,
-						997,
-						980,
-						975,
-						982,
-						974,
-						978,
-						984,
-						990,
-						977,
-						992,
-						995,
-						996,
-						979,
-						988,
-						991,
-						976,
-						994,
 						986,
-						985
+						995,
+						981,
+						990,
+						975,
+						997,
+						977,
+						985,
+						994,
+						988,
+						996,
+						987,
+						992,
+						999,
+						978,
+						991,
+						980,
+						998,
+						983,
+						984,
+						993,
+						976,
+						979,
+						989,
+						982,
+						1001,
+						1000
 					],
 					"categories": [
 						{
 							"title": "Colour",
 							"children": [
-								973,
-								981,
-								983,
-								980,
-								975,
-								982,
-								974,
-								978,
-								984,
-								977,
-								979,
-								976,
 								986,
-								985
+								995,
+								990,
+								997,
+								994,
+								988,
+								996,
+								987,
+								992,
+								999,
+								991,
+								998,
+								993,
+								989,
+								1001,
+								1000
 							]
 						},
 						{
 							"title": "Primitive",
 							"children": [
-								993,
-								987,
-								989,
-								997,
-								990,
-								992,
-								995,
-								996,
-								988,
-								991,
-								994
+								981,
+								975,
+								977,
+								985,
+								978,
+								980,
+								983,
+								984,
+								976,
+								979,
+								982
 							]
 						}
 					]
@@ -2977,40 +3053,42 @@
 					"title": "Functions",
 					"kind": 64,
 					"children": [
-						888,
-						921,
-						925,
-						929,
-						933,
-						844,
-						854,
-						848,
-						894,
-						897,
-						900,
+						874,
+						907,
+						911,
+						915,
+						919,
+						947,
+						880,
+						883,
+						886,
 						840,
-						958,
-						961,
-						964,
-						970,
+						944,
+						973,
+						971,
+						969,
 						967,
+						926,
+						932,
+						936,
 						940,
-						946,
-						950,
-						954,
+						844,
+						850,
+						854,
 						858,
-						864,
+						862,
 						868,
-						872,
-						876,
-						882,
+						950,
+						953,
+						963,
+						957,
 						836,
+						889,
+						895,
+						899,
 						903,
-						909,
-						913,
-						917,
 						832,
-						891
+						877
 					]
 				}
 			],
@@ -11934,7 +12012,7 @@
 					"sources": [
 						{
 							"fileName": "sound/functions.ts",
-							"line": 663,
+							"line": 664,
 							"character": 20
 						}
 					],
@@ -12029,7 +12107,7 @@
 					"sources": [
 						{
 							"fileName": "sound/functions.ts",
-							"line": 861,
+							"line": 862,
 							"character": 20
 						}
 					],
@@ -12096,7 +12174,7 @@
 					"sources": [
 						{
 							"fileName": "sound/functions.ts",
-							"line": 883,
+							"line": 884,
 							"character": 21
 						}
 					],
@@ -12163,7 +12241,7 @@
 					"sources": [
 						{
 							"fileName": "sound/functions.ts",
-							"line": 608,
+							"line": 609,
 							"character": 29
 						}
 					],
@@ -12216,7 +12294,7 @@
 					"sources": [
 						{
 							"fileName": "sound/functions.ts",
-							"line": 298,
+							"line": 299,
 							"character": 28
 						}
 					],
@@ -12269,7 +12347,7 @@
 					"sources": [
 						{
 							"fileName": "sound/functions.ts",
-							"line": 287,
+							"line": 288,
 							"character": 24
 						}
 					],
@@ -12322,7 +12400,7 @@
 					"sources": [
 						{
 							"fileName": "sound/functions.ts",
-							"line": 168,
+							"line": 169,
 							"character": 27
 						}
 					],
@@ -12353,7 +12431,7 @@
 					"sources": [
 						{
 							"fileName": "sound/functions.ts",
-							"line": 309,
+							"line": 310,
 							"character": 24
 						}
 					],
@@ -12406,7 +12484,7 @@
 					"sources": [
 						{
 							"fileName": "sound/functions.ts",
-							"line": 847,
+							"line": 848,
 							"character": 40
 						}
 					],
@@ -12456,7 +12534,7 @@
 					"sources": [
 						{
 							"fileName": "sound/functions.ts",
-							"line": 776,
+							"line": 777,
 							"character": 40
 						}
 					],
@@ -12506,7 +12584,7 @@
 					"sources": [
 						{
 							"fileName": "sound/functions.ts",
-							"line": 276,
+							"line": 277,
 							"character": 26
 						}
 					],
@@ -12573,7 +12651,7 @@
 					"sources": [
 						{
 							"fileName": "sound/functions.ts",
-							"line": 835,
+							"line": 836,
 							"character": 38
 						}
 					],
@@ -12626,7 +12704,7 @@
 					"sources": [
 						{
 							"fileName": "sound/functions.ts",
-							"line": 501,
+							"line": 502,
 							"character": 27
 						}
 					],
@@ -12679,7 +12757,7 @@
 					"sources": [
 						{
 							"fileName": "sound/functions.ts",
-							"line": 751,
+							"line": 752,
 							"character": 25
 						}
 					],
@@ -12760,7 +12838,7 @@
 					"sources": [
 						{
 							"fileName": "sound/functions.ts",
-							"line": 900,
+							"line": 901,
 							"character": 21
 						}
 					],
@@ -12827,7 +12905,7 @@
 					"sources": [
 						{
 							"fileName": "sound/functions.ts",
-							"line": 338,
+							"line": 339,
 							"character": 20
 						}
 					],
@@ -12880,7 +12958,7 @@
 					"sources": [
 						{
 							"fileName": "sound/functions.ts",
-							"line": 426,
+							"line": 427,
 							"character": 33
 						}
 					],
@@ -12932,7 +13010,7 @@
 					"sources": [
 						{
 							"fileName": "sound/functions.ts",
-							"line": 326,
+							"line": 327,
 							"character": 25
 						}
 					],
@@ -12996,7 +13074,7 @@
 					"sources": [
 						{
 							"fileName": "sound/functions.ts",
-							"line": 191,
+							"line": 192,
 							"character": 22
 						}
 					],
@@ -13038,7 +13116,7 @@
 									"sources": [
 										{
 											"fileName": "sound/functions.ts",
-											"line": 191,
+											"line": 192,
 											"character": 39
 										}
 									],
@@ -13060,7 +13138,7 @@
 													"sources": [
 														{
 															"fileName": "sound/functions.ts",
-															"line": 191,
+															"line": 192,
 															"character": 45
 														}
 													],
@@ -13095,7 +13173,7 @@
 					"sources": [
 						{
 							"fileName": "sound/functions.ts",
-							"line": 224,
+							"line": 225,
 							"character": 26
 						}
 					],
@@ -13151,7 +13229,7 @@
 									"sources": [
 										{
 											"fileName": "sound/functions.ts",
-											"line": 224,
+											"line": 225,
 											"character": 61
 										}
 									],
@@ -13182,7 +13260,7 @@
 					"sources": [
 						{
 							"fileName": "sound/functions.ts",
-							"line": 582,
+							"line": 583,
 							"character": 30
 						}
 					],
@@ -13249,7 +13327,7 @@
 					"sources": [
 						{
 							"fileName": "sound/functions.ts",
-							"line": 512,
+							"line": 513,
 							"character": 29
 						}
 					],
@@ -13302,7 +13380,7 @@
 					"sources": [
 						{
 							"fileName": "sound/functions.ts",
-							"line": 628,
+							"line": 629,
 							"character": 30
 						}
 					],
@@ -13355,7 +13433,7 @@
 					"sources": [
 						{
 							"fileName": "sound/functions.ts",
-							"line": 524,
+							"line": 525,
 							"character": 26
 						}
 					],
@@ -13422,7 +13500,7 @@
 					"sources": [
 						{
 							"fileName": "sound/functions.ts",
-							"line": 536,
+							"line": 537,
 							"character": 28
 						}
 					],
@@ -13486,7 +13564,7 @@
 					"sources": [
 						{
 							"fileName": "sound/functions.ts",
-							"line": 714,
+							"line": 715,
 							"character": 29
 						}
 					],
@@ -13581,7 +13659,7 @@
 					"sources": [
 						{
 							"fileName": "sound/functions.ts",
-							"line": 487,
+							"line": 488,
 							"character": 20
 						}
 					],
@@ -13611,7 +13689,7 @@
 					"sources": [
 						{
 							"fileName": "sound/functions.ts",
-							"line": 558,
+							"line": 559,
 							"character": 30
 						}
 					],
@@ -13678,7 +13756,7 @@
 					"sources": [
 						{
 							"fileName": "sound/functions.ts",
-							"line": 917,
+							"line": 918,
 							"character": 24
 						}
 					],
@@ -13745,7 +13823,7 @@
 					"sources": [
 						{
 							"fileName": "sound/functions.ts",
-							"line": 934,
+							"line": 935,
 							"character": 22
 						}
 					],
@@ -14222,7 +14300,7 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 830,
+							"line": 831,
 							"character": 20
 						}
 					],
@@ -14317,7 +14395,7 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 1038,
+							"line": 1039,
 							"character": 20
 						}
 					],
@@ -14384,7 +14462,7 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 1060,
+							"line": 1061,
 							"character": 21
 						}
 					],
@@ -14451,7 +14529,7 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 764,
+							"line": 765,
 							"character": 29
 						}
 					],
@@ -14504,7 +14582,7 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 310,
+							"line": 311,
 							"character": 28
 						}
 					],
@@ -14557,7 +14635,7 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 288,
+							"line": 289,
 							"character": 29
 						}
 					],
@@ -14610,7 +14688,7 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 299,
+							"line": 300,
 							"character": 30
 						}
 					],
@@ -14663,7 +14741,7 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 152,
+							"line": 153,
 							"character": 27
 						}
 					],
@@ -14694,7 +14772,7 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 321,
+							"line": 322,
 							"character": 24
 						}
 					],
@@ -14747,7 +14825,7 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 1024,
+							"line": 1025,
 							"character": 40
 						}
 					],
@@ -14797,7 +14875,7 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 953,
+							"line": 954,
 							"character": 40
 						}
 					],
@@ -14847,7 +14925,7 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 277,
+							"line": 278,
 							"character": 26
 						}
 					],
@@ -14914,7 +14992,7 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 252,
+							"line": 253,
 							"character": 33
 						}
 					],
@@ -14995,7 +15073,7 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 1012,
+							"line": 1013,
 							"character": 38
 						}
 					],
@@ -15048,7 +15126,7 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 657,
+							"line": 658,
 							"character": 27
 						}
 					],
@@ -15101,7 +15179,7 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 597,
+							"line": 598,
 							"character": 19
 						}
 					],
@@ -15148,7 +15226,7 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 626,
+							"line": 627,
 							"character": 23
 						}
 					],
@@ -15195,7 +15273,7 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 923,
+							"line": 924,
 							"character": 25
 						}
 					],
@@ -15276,7 +15354,7 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 1077,
+							"line": 1078,
 							"character": 21
 						}
 					],
@@ -15343,7 +15421,7 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 370,
+							"line": 371,
 							"character": 20
 						}
 					],
@@ -15396,7 +15474,7 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 480,
+							"line": 481,
 							"character": 33
 						}
 					],
@@ -15448,7 +15526,7 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 339,
+							"line": 340,
 							"character": 25
 						}
 					],
@@ -15512,7 +15590,7 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 354,
+							"line": 355,
 							"character": 26
 						}
 					],
@@ -15590,7 +15668,7 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 175,
+							"line": 176,
 							"character": 22
 						}
 					],
@@ -15632,7 +15710,7 @@
 									"sources": [
 										{
 											"fileName": "stereo_sound/functions.ts",
-											"line": 175,
+											"line": 176,
 											"character": 39
 										}
 									],
@@ -15654,7 +15732,7 @@
 													"sources": [
 														{
 															"fileName": "stereo_sound/functions.ts",
-															"line": 175,
+															"line": 176,
 															"character": 45
 														}
 													],
@@ -15689,7 +15767,7 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 208,
+							"line": 209,
 							"character": 26
 						}
 					],
@@ -15745,7 +15823,7 @@
 									"sources": [
 										{
 											"fileName": "stereo_sound/functions.ts",
-											"line": 208,
+											"line": 209,
 											"character": 61
 										}
 									],
@@ -15776,7 +15854,7 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 738,
+							"line": 739,
 							"character": 30
 						}
 					],
@@ -15843,7 +15921,7 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 668,
+							"line": 669,
 							"character": 29
 						}
 					],
@@ -15896,7 +15974,7 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 787,
+							"line": 788,
 							"character": 30
 						}
 					],
@@ -15949,7 +16027,7 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 680,
+							"line": 681,
 							"character": 26
 						}
 					],
@@ -16016,7 +16094,7 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 692,
+							"line": 693,
 							"character": 28
 						}
 					],
@@ -16080,7 +16158,7 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 583,
+							"line": 584,
 							"character": 22
 						}
 					],
@@ -16127,7 +16205,7 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 886,
+							"line": 887,
 							"character": 29
 						}
 					],
@@ -16222,7 +16300,7 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 569,
+							"line": 570,
 							"character": 20
 						}
 					],
@@ -16252,7 +16330,7 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 714,
+							"line": 715,
 							"character": 30
 						}
 					],
@@ -16319,7 +16397,7 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 1094,
+							"line": 1095,
 							"character": 24
 						}
 					],
@@ -16386,7 +16464,7 @@
 					"sources": [
 						{
 							"fileName": "stereo_sound/functions.ts",
-							"line": 1111,
+							"line": 1112,
 							"character": 22
 						}
 					],
