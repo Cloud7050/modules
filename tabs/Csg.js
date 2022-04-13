@@ -1128,6 +1128,241 @@
 
     var Core=function(){function Core(){}Core.initialize=function(csgModuleState){Core.moduleState=csgModuleState;};Core.getRenderGroupManager=function(){var moduleState=Core.moduleState;return moduleState.renderGroupManager};Core.moduleState=null;return Core}();
 
+    function _inherits(subClass, superClass) {
+      if (typeof superClass !== "function" && superClass !== null) {
+        throw new TypeError("Super expression must either be null or a function");
+      }
+
+      subClass.prototype = Object.create(superClass && superClass.prototype, {
+        constructor: {
+          value: subClass,
+          writable: true,
+          configurable: true
+        }
+      });
+      if (superClass) _setPrototypeOf(subClass, superClass);
+    }
+
+    function _getPrototypeOf(o) {
+      _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+        return o.__proto__ || Object.getPrototypeOf(o);
+      };
+      return _getPrototypeOf(o);
+    }
+
+    function _setPrototypeOf(o, p) {
+      _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+        o.__proto__ = p;
+        return o;
+      };
+
+      return _setPrototypeOf(o, p);
+    }
+
+    function _isNativeReflectConstruct() {
+      if (typeof Reflect === "undefined" || !Reflect.construct) return false;
+      if (Reflect.construct.sham) return false;
+      if (typeof Proxy === "function") return true;
+
+      try {
+        Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
+
+    function _construct(Parent, args, Class) {
+      if (_isNativeReflectConstruct()) {
+        _construct = Reflect.construct;
+      } else {
+        _construct = function _construct(Parent, args, Class) {
+          var a = [null];
+          a.push.apply(a, args);
+          var Constructor = Function.bind.apply(Parent, a);
+          var instance = new Constructor();
+          if (Class) _setPrototypeOf(instance, Class.prototype);
+          return instance;
+        };
+      }
+
+      return _construct.apply(null, arguments);
+    }
+
+    function _isNativeFunction(fn) {
+      return Function.toString.call(fn).indexOf("[native code]") !== -1;
+    }
+
+    function _wrapNativeSuper(Class) {
+      var _cache = typeof Map === "function" ? new Map() : undefined;
+
+      _wrapNativeSuper = function _wrapNativeSuper(Class) {
+        if (Class === null || !_isNativeFunction(Class)) return Class;
+
+        if (typeof Class !== "function") {
+          throw new TypeError("Super expression must either be null or a function");
+        }
+
+        if (typeof _cache !== "undefined") {
+          if (_cache.has(Class)) return _cache.get(Class);
+
+          _cache.set(Class, Wrapper);
+        }
+
+        function Wrapper() {
+          return _construct(Class, arguments, _getPrototypeOf(this).constructor);
+        }
+
+        Wrapper.prototype = Object.create(Class.prototype, {
+          constructor: {
+            value: Wrapper,
+            enumerable: false,
+            writable: true,
+            configurable: true
+          }
+        });
+        return _setPrototypeOf(Wrapper, Class);
+      };
+
+      return _wrapNativeSuper(Class);
+    }
+
+    function _wrapRegExp(re, groups) {
+      _wrapRegExp = function (re, groups) {
+        return new BabelRegExp(re, undefined, groups);
+      };
+
+      var _RegExp = _wrapNativeSuper(RegExp);
+
+      var _super = RegExp.prototype;
+
+      var _groups = new WeakMap();
+
+      function BabelRegExp(re, flags, groups) {
+        var _this = _RegExp.call(this, re, flags);
+
+        _groups.set(_this, groups || _groups.get(re));
+
+        return _this;
+      }
+
+      _inherits(BabelRegExp, _RegExp);
+
+      BabelRegExp.prototype.exec = function (str) {
+        var result = _super.exec.call(this, str);
+
+        if (result) result.groups = buildGroups(result, this);
+        return result;
+      };
+
+      BabelRegExp.prototype[Symbol.replace] = function (str, substitution) {
+        if (typeof substitution === "string") {
+          var groups = _groups.get(this);
+
+          return _super[Symbol.replace].call(this, str, substitution.replace(/\$<([^>]+)>/g, function (_, name) {
+            return "$" + groups[name];
+          }));
+        } else if (typeof substitution === "function") {
+          var _this = this;
+
+          return _super[Symbol.replace].call(this, str, function () {
+            var args = [];
+            args.push.apply(args, arguments);
+
+            if (typeof args[args.length - 1] !== "object") {
+              args.push(buildGroups(args, _this));
+            }
+
+            return substitution.apply(this, args);
+          });
+        } else {
+          return _super[Symbol.replace].call(this, str, substitution);
+        }
+      };
+
+      function buildGroups(result, re) {
+        var g = _groups.get(re);
+
+        return Object.keys(g).reduce(function (groups, name) {
+          groups[name] = result[g[name]];
+          return groups;
+        }, Object.create(null));
+      }
+
+      return _wrapRegExp.apply(this, arguments);
+    }
+
+    /*! *****************************************************************************
+    Copyright (c) Microsoft Corporation.
+
+    Permission to use, copy, modify, and/or distribute this software for any
+    purpose with or without fee is hereby granted.
+
+    THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+    REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+    AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+    INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+    LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+    OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+    PERFORMANCE OF THIS SOFTWARE.
+    ***************************************************************************** */
+    /* global Reflect, Promise */
+
+    var extendStatics = function(d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+
+    function __extends(d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    }
+
+    var __assign = function() {
+        __assign = Object.assign || function __assign(t) {
+            for (var s, i = 1, n = arguments.length; i < n; i++) {
+                s = arguments[i];
+                for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+            }
+            return t;
+        };
+        return __assign.apply(this, arguments);
+    };
+
+    function __rest(s, e) {
+        var t = {};
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+            t[p] = s[p];
+        if (s != null && typeof Object.getOwnPropertySymbols === "function")
+            for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+                if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                    t[p[i]] = s[p[i]];
+            }
+        return t;
+    }
+
+    function __decorate(decorators, target, key, desc) {
+        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
+    }
+
+    function __spreadArray(to, from, pack) {
+        if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+            if (ar || !(i in from)) {
+                if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+                ar[i] = from[i];
+            }
+        }
+        return to.concat(ar || Array.prototype.slice.call(from));
+    }
+
     /**
      * Performs a shallow clone of the given geometry.
      * @param {geom3} geometry - the geometry to clone
@@ -18495,78 +18730,7 @@ void main () {
     var src_4 = src.controls;
     var src_5 = src.entitiesFromSolids;
 
-    var perspectiveCamera=src_3.perspective;var perspectiveCameraStateDefaults=perspectiveCamera.defaults;var controls=src_4.orbit;var controlsStateDefaults=controls.defaults;var prepareRender=src_1;var entitiesFromSolids=src_5;var prepareDrawCommands=src_2;var AxisEntity=function(){function AxisEntity(size){this.size=size;this.visuals={drawCmd:"drawAxis",show:true};this.alwaysVisible=false;}return AxisEntity}();var MultiGridEntity=function(){function MultiGridEntity(size){this.visuals={drawCmd:"drawGrid",show:true,color:[0,0,0,1],subColor:[0.5,0.5,0.5,1]};this.ticks=[10,1];this.size=[size,size];}return MultiGridEntity}();var RenderGroup=function(){function RenderGroup(canvasNumber){this.canvasNumber=canvasNumber;this.render=false;this.hasAxis=true;this.hasGrid=true;this.shapes=[];}RenderGroup.prototype.toReplString=function(){return "<Render #"+this.canvasNumber+">"};return RenderGroup}();var RenderGroupManager=function(){function RenderGroupManager(){this.canvasTracker=1;this.renderGroups=[];this.addRenderGroup();}RenderGroupManager.prototype.addRenderGroup=function(){this.renderGroups.push(new RenderGroup(this.canvasTracker++));};RenderGroupManager.prototype.getCurrentRenderGroup=function(){return this.renderGroups.at(-1)};RenderGroupManager.prototype.nextRenderGroup=function(currentAxis,currentGrid){if(currentAxis===void 0){currentAxis=true;}if(currentGrid===void 0){currentGrid=true;}var previousRenderGroup=this.getCurrentRenderGroup();previousRenderGroup.render=true;previousRenderGroup.hasAxis=currentAxis;previousRenderGroup.hasGrid=currentGrid;this.addRenderGroup();return previousRenderGroup};RenderGroupManager.prototype.storeShape=function(shape){this.getCurrentRenderGroup().shapes.push(shape);};RenderGroupManager.prototype.shouldRender=function(){return this.getGroupsToRender().length>0};RenderGroupManager.prototype.getGroupsToRender=function(){return this.renderGroups.filter(function(renderGroup){return renderGroup.render})};return RenderGroupManager}();var CsgModuleState=function(){function CsgModuleState(){this.renderGroupManager=new RenderGroupManager;}return CsgModuleState}();var MousePointer;(function(MousePointer){MousePointer[MousePointer["NONE"]=-1]="NONE";MousePointer[MousePointer["LEFT"]=0]="LEFT";MousePointer[MousePointer["RIGHT"]=2]="RIGHT";MousePointer[MousePointer["MIDDLE"]=1]="MIDDLE";MousePointer[MousePointer["OTHER"]=7050]="OTHER";})(MousePointer||(MousePointer={}));var FrameTracker=function(){function FrameTracker(){this.zoomTicks=0;this.zoomToFitOnce=true;this.heldPointer=MousePointer.NONE;this.lastX=-1;this.lastY=-1;this.rotateX=0;this.rotateY=0;this.panX=0;this.panY=0;}FrameTracker.prototype.getZoomTicks=function(){return this.zoomTicks};FrameTracker.prototype.changeZoomTicks=function(wheelDelta){this.zoomTicks+=Math.sign(wheelDelta);};FrameTracker.prototype.setZoomToFit=function(){this.zoomToFitOnce=true;};FrameTracker.prototype.unsetLastCoordinates=function(){this.lastX=-1;this.lastY=-1;};FrameTracker.prototype.setHeldPointer=function(mouseEventButton){switch(mouseEventButton){case MousePointer.LEFT:case MousePointer.RIGHT:case MousePointer.MIDDLE:this.heldPointer=mouseEventButton;break;default:this.heldPointer=MousePointer.OTHER;break;}};FrameTracker.prototype.unsetHeldPointer=function(){this.heldPointer=MousePointer.NONE;};FrameTracker.prototype.shouldZoom=function(){return this.zoomTicks!==0};FrameTracker.prototype.didZoom=function(){this.zoomTicks=0;};FrameTracker.prototype.shouldZoomToFit=function(){return this.zoomToFitOnce};FrameTracker.prototype.didZoomToFit=function(){this.zoomToFitOnce=false;};FrameTracker.prototype.shouldRotate=function(){return this.rotateX!==0||this.rotateY!==0};FrameTracker.prototype.didRotate=function(){this.rotateX=0;this.rotateY=0;};FrameTracker.prototype.shouldPan=function(){return this.panX!==0||this.panY!==0};FrameTracker.prototype.didPan=function(){this.panX=0;this.panY=0;};FrameTracker.prototype.shouldIgnorePointerMove=function(){return [MousePointer.NONE,MousePointer.RIGHT].includes(this.heldPointer)};FrameTracker.prototype.isPointerPan=function(isShiftKey){return this.heldPointer===MousePointer.MIDDLE||this.heldPointer===MousePointer.LEFT&&isShiftKey};return FrameTracker}();var CameraViewportDimensions=function(){function CameraViewportDimensions(width,height){this.width=width;this.height=height;}return CameraViewportDimensions}();function getModuleContext(moduleContexts){var potentialModuleContext=moduleContexts.get("csg");return potentialModuleContext!==null&&potentialModuleContext!==void 0?potentialModuleContext:null}function looseInstanceof(object,c){var _a;var objectName=(_a=object===null||object===void 0?void 0:object.constructor)===null||_a===void 0?void 0:_a.name;var className=c===null||c===void 0?void 0:c.name;return objectName!==undefined&&className!==undefined&&objectName===className}
-
-    /*! *****************************************************************************
-    Copyright (c) Microsoft Corporation.
-
-    Permission to use, copy, modify, and/or distribute this software for any
-    purpose with or without fee is hereby granted.
-
-    THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
-    REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
-    AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-    INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
-    LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
-    OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-    PERFORMANCE OF THIS SOFTWARE.
-    ***************************************************************************** */
-    /* global Reflect, Promise */
-
-    var extendStatics = function(d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-
-    function __extends(d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    }
-
-    var __assign = function() {
-        __assign = Object.assign || function __assign(t) {
-            for (var s, i = 1, n = arguments.length; i < n; i++) {
-                s = arguments[i];
-                for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
-            }
-            return t;
-        };
-        return __assign.apply(this, arguments);
-    };
-
-    function __rest(s, e) {
-        var t = {};
-        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-            t[p] = s[p];
-        if (s != null && typeof Object.getOwnPropertySymbols === "function")
-            for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-                if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                    t[p[i]] = s[p[i]];
-            }
-        return t;
-    }
-
-    function __decorate(decorators, target, key, desc) {
-        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-        return c > 3 && r && Object.defineProperty(target, key, r), r;
-    }
-
-    function __spreadArray(to, from, pack) {
-        if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-            if (ar || !(i in from)) {
-                if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-                ar[i] = from[i];
-            }
-        }
-        return to.concat(ar || Array.prototype.slice.call(from));
-    }
+    var perspectiveCamera=src_3.perspective;var perspectiveCameraStateDefaults=perspectiveCamera.defaults;var controls=src_4.orbit;var controlsStateDefaults=controls.defaults;var prepareRender=src_1;var entitiesFromSolids=src_5;var prepareDrawCommands=src_2;var AxisEntity=function(){function AxisEntity(size){this.size=size;this.visuals={drawCmd:"drawAxis",show:true};this.alwaysVisible=false;}return AxisEntity}();var MultiGridEntity=function(){function MultiGridEntity(size){this.visuals={drawCmd:"drawGrid",show:true,color:colorToRgba(hexToColor("#F5F8FA")),subColor:colorToRgba(hexToColor("#8091A0"))};this.ticks=[10,1];this.size=[size,size];}return MultiGridEntity}();var RenderGroup=function(){function RenderGroup(canvasNumber){this.canvasNumber=canvasNumber;this.render=false;this.hasAxis=true;this.hasGrid=true;this.shapes=[];}RenderGroup.prototype.toReplString=function(){return "<Render #"+this.canvasNumber+">"};return RenderGroup}();var RenderGroupManager=function(){function RenderGroupManager(){this.canvasTracker=1;this.renderGroups=[];this.addRenderGroup();}RenderGroupManager.prototype.addRenderGroup=function(){this.renderGroups.push(new RenderGroup(this.canvasTracker++));};RenderGroupManager.prototype.getCurrentRenderGroup=function(){return this.renderGroups.at(-1)};RenderGroupManager.prototype.nextRenderGroup=function(currentAxis,currentGrid){if(currentAxis===void 0){currentAxis=true;}if(currentGrid===void 0){currentGrid=true;}var previousRenderGroup=this.getCurrentRenderGroup();previousRenderGroup.render=true;previousRenderGroup.hasAxis=currentAxis;previousRenderGroup.hasGrid=currentGrid;this.addRenderGroup();return previousRenderGroup};RenderGroupManager.prototype.storeShape=function(shape){this.getCurrentRenderGroup().shapes.push(shape);};RenderGroupManager.prototype.shouldRender=function(){return this.getGroupsToRender().length>0};RenderGroupManager.prototype.getGroupsToRender=function(){return this.renderGroups.filter(function(renderGroup){return renderGroup.render})};return RenderGroupManager}();var CsgModuleState=function(){function CsgModuleState(){this.renderGroupManager=new RenderGroupManager;}return CsgModuleState}();var MousePointer;(function(MousePointer){MousePointer[MousePointer["NONE"]=-1]="NONE";MousePointer[MousePointer["LEFT"]=0]="LEFT";MousePointer[MousePointer["RIGHT"]=2]="RIGHT";MousePointer[MousePointer["MIDDLE"]=1]="MIDDLE";MousePointer[MousePointer["OTHER"]=7050]="OTHER";})(MousePointer||(MousePointer={}));var FrameTracker=function(){function FrameTracker(){this.zoomTicks=0;this.zoomToFitOnce=true;this.heldPointer=MousePointer.NONE;this.lastX=-1;this.lastY=-1;this.rotateX=0;this.rotateY=0;this.panX=0;this.panY=0;}FrameTracker.prototype.getZoomTicks=function(){return this.zoomTicks};FrameTracker.prototype.changeZoomTicks=function(wheelDelta){this.zoomTicks+=Math.sign(wheelDelta);};FrameTracker.prototype.setZoomToFit=function(){this.zoomToFitOnce=true;};FrameTracker.prototype.unsetLastCoordinates=function(){this.lastX=-1;this.lastY=-1;};FrameTracker.prototype.setHeldPointer=function(mouseEventButton){switch(mouseEventButton){case MousePointer.LEFT:case MousePointer.RIGHT:case MousePointer.MIDDLE:this.heldPointer=mouseEventButton;break;default:this.heldPointer=MousePointer.OTHER;break;}};FrameTracker.prototype.unsetHeldPointer=function(){this.heldPointer=MousePointer.NONE;};FrameTracker.prototype.shouldZoom=function(){return this.zoomTicks!==0};FrameTracker.prototype.didZoom=function(){this.zoomTicks=0;};FrameTracker.prototype.shouldZoomToFit=function(){return this.zoomToFitOnce};FrameTracker.prototype.didZoomToFit=function(){this.zoomToFitOnce=false;};FrameTracker.prototype.shouldRotate=function(){return this.rotateX!==0||this.rotateY!==0};FrameTracker.prototype.didRotate=function(){this.rotateX=0;this.rotateY=0;};FrameTracker.prototype.shouldPan=function(){return this.panX!==0||this.panY!==0};FrameTracker.prototype.didPan=function(){this.panX=0;this.panY=0;};FrameTracker.prototype.shouldIgnorePointerMove=function(){return [MousePointer.NONE,MousePointer.RIGHT].includes(this.heldPointer)};FrameTracker.prototype.isPointerPan=function(isShiftKey){return this.heldPointer===MousePointer.MIDDLE||this.heldPointer===MousePointer.LEFT&&isShiftKey};return FrameTracker}();var CameraViewportDimensions=function(){function CameraViewportDimensions(width,height){this.width=width;this.height=height;}return CameraViewportDimensions}();function getModuleContext(moduleContexts){var potentialModuleContext=moduleContexts.get("csg");return potentialModuleContext!==null&&potentialModuleContext!==void 0?potentialModuleContext:null}function hexToColor(hex){var _a;var regex=_wrapRegExp(/^#?([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i,{red:1,green:2,blue:3});var potentialGroups=(_a=hex.match(regex))===null||_a===void 0?void 0:_a.groups;if(potentialGroups===undefined)return [0,0,0];var groups=potentialGroups;return [parseInt(groups.red,16)/255,parseInt(groups.green,16)/255,parseInt(groups.blue,16)/255]}function colorToRgba(color,opacity){if(opacity===void 0){opacity=1;}return __spreadArray(__spreadArray([],color),[opacity])}function looseInstanceof(object,c){var _a;var objectName=(_a=object===null||object===void 0?void 0:object.constructor)===null||_a===void 0?void 0:_a.name;var className=c===null||c===void 0?void 0:c.name;return objectName!==undefined&&className!==undefined&&objectName===className}
 
     /**
      * Flatten the given list of arguments into a single flat array.
@@ -21301,7 +21465,7 @@ void main () {
     };
     var measurements_6 = measurements.measureBoundingBox;
 
-    function makeWrappedRenderer(canvas){var prepareRenderOptions={glOptions:{canvas:canvas}};return prepareRender(prepareRenderOptions)}function addEntities(renderGroup,solids,geometryEntities){var allEntities=__spreadArray([],geometryEntities);var boundingBoxes=solids.map(function(solid){return measurements_6(solid)});var minMaxXys=boundingBoxes.map(function(boundingBox){var minX=boundingBox[0][0];var minY=boundingBox[0][1];var maxX=boundingBox[1][0];var maxY=boundingBox[1][1];return [minX,minY,maxX,maxY]});var xys=minMaxXys.flat(1);var distancesFromOrigin=xys.map(Math.abs);var furthestDistance=Math.max.apply(Math,distancesFromOrigin);var size=Math.ceil(furthestDistance)+5;size=Math.ceil(size/10)*10;if(renderGroup.hasAxis)allEntities.push(new AxisEntity(size));if(renderGroup.hasGrid)allEntities.push(new MultiGridEntity(size*2));return allEntities}function adjustCameraAngle(perspectiveCameraState,controlsState){if(controlsState===void 0){controlsState=null;}if(controlsState===null){perspectiveCamera.update(perspectiveCameraState);return}var output=controls.update({controls:controlsState,camera:perspectiveCameraState});controlsState.thetaDelta=output.controls.thetaDelta;controlsState.phiDelta=output.controls.phiDelta;controlsState.scale=output.controls.scale;perspectiveCameraState.position=output.camera.position;perspectiveCameraState.view=output.camera.view;}function doDynamicResize(canvas,perspectiveCameraState){var canvasBounds=canvas.getBoundingClientRect();var devicePixelRatio=window.devicePixelRatio;var width=canvasBounds.width*devicePixelRatio;var height=canvasBounds.height*devicePixelRatio;canvas.width=width;canvas.height=height;perspectiveCamera.setProjection(perspectiveCameraState,perspectiveCameraState,new CameraViewportDimensions(width,height));}function doZoom(zoomTicks,perspectiveCameraState,controlsState){while(zoomTicks!==0){var currentTick=Math.sign(zoomTicks);zoomTicks-=currentTick;var scaleChange=currentTick*0.1;var potentialNewScale=controlsState.scale+scaleChange;var potentialNewDistance=vec3$1.distance(perspectiveCameraState.position,perspectiveCameraState.target)*potentialNewScale;if(potentialNewDistance>controlsState.limits.minDistance&&potentialNewDistance<controlsState.limits.maxDistance){controlsState.scale=potentialNewScale;}else break}adjustCameraAngle(perspectiveCameraState,controlsState);}function doZoomToFit(geometryEntities,perspectiveCameraState,controlsState){var options={controls:controlsState,camera:perspectiveCameraState,entities:geometryEntities};var output=controls.zoomToFit(options);perspectiveCameraState.target=output.camera.target;controlsState.scale=output.controls.scale;adjustCameraAngle(perspectiveCameraState,controlsState);}function doRotate(rotateX,rotateY,perspectiveCameraState,controlsState){var output=controls.rotate({controls:controlsState,camera:perspectiveCameraState,speed:0.0015},[rotateX,rotateY]);var newControlsState=output.controls;controlsState.thetaDelta=newControlsState.thetaDelta;controlsState.phiDelta=newControlsState.phiDelta;adjustCameraAngle(perspectiveCameraState,controlsState);}function doPan(panX,panY,perspectiveCameraState,controlsState){var output=controls.pan({controls:controlsState,camera:perspectiveCameraState},[panX,panY*0.75]);var newCameraState=output.camera;perspectiveCameraState.position=newCameraState.position;perspectiveCameraState.target=newCameraState.target;adjustCameraAngle(perspectiveCameraState,controlsState);}function registerEvents(canvas,frameTracker){canvas.addEventListener("wheel",function(wheelEvent){frameTracker.changeZoomTicks(wheelEvent.deltaY);wheelEvent.preventDefault();},{passive:false});canvas.addEventListener("dblclick",function(_mouseEvent){frameTracker.setZoomToFit();});canvas.addEventListener("pointerdown",function(pointerEvent){frameTracker.setHeldPointer(pointerEvent.button);frameTracker.lastX=pointerEvent.pageX;frameTracker.lastY=pointerEvent.pageY;canvas.setPointerCapture(pointerEvent.pointerId);pointerEvent.preventDefault();},{passive:false});canvas.addEventListener("pointerup",function(pointerEvent){frameTracker.unsetHeldPointer();frameTracker.unsetLastCoordinates();canvas.releasePointerCapture(pointerEvent.pointerId);});canvas.addEventListener("pointermove",function(pointerEvent){var currentX=pointerEvent.pageX;var currentY=pointerEvent.pageY;if(frameTracker.lastX<0||frameTracker.lastY<0){frameTracker.lastX=currentX;frameTracker.lastY=currentY;}if(!frameTracker.shouldIgnorePointerMove()){var differenceX=frameTracker.lastX-currentX;var differenceY=frameTracker.lastY-currentY;if(frameTracker.isPointerPan(pointerEvent.shiftKey)){frameTracker.panX+=differenceX;frameTracker.panY-=differenceY;}else {frameTracker.rotateX-=differenceX;frameTracker.rotateY+=differenceY;}}frameTracker.lastX=currentX;frameTracker.lastY=currentY;});}function render(canvas,moduleState){var wrappedRenderer=makeWrappedRenderer(canvas);var perspectiveCameraState=__assign(__assign({},perspectiveCameraStateDefaults),{position:[1000,1000,1500]});var controlsState=__assign({},controlsStateDefaults);var renderGroups=moduleState.renderGroupManager.getGroupsToRender();var lastRenderGroup=renderGroups.at(-1);var solids=lastRenderGroup.shapes.map(function(shape){return shape.solid});var geometryEntities=entitiesFromSolids.apply(void 0,__spreadArray([undefined],solids));var wrappedRendererData={entities:addEntities(lastRenderGroup,solids,geometryEntities),drawCommands:prepareDrawCommands,camera:perspectiveCameraState};var frameTracker=new FrameTracker;var requestId=0;function animationCallback(_timestamp){doDynamicResize(canvas,perspectiveCameraState);if(frameTracker.shouldZoom()){doZoom(frameTracker.getZoomTicks(),perspectiveCameraState,controlsState);frameTracker.didZoom();}if(frameTracker.shouldZoomToFit()){doZoomToFit(geometryEntities,perspectiveCameraState,controlsState);frameTracker.didZoomToFit();}if(frameTracker.shouldRotate()){doRotate(frameTracker.rotateX,frameTracker.rotateY,perspectiveCameraState,controlsState);frameTracker.didRotate();}if(frameTracker.shouldPan()){doPan(frameTracker.panX,frameTracker.panY,perspectiveCameraState,controlsState);frameTracker.didPan();}wrappedRenderer(wrappedRendererData);requestId=window.requestAnimationFrame(animationCallback);}requestId=window.requestAnimationFrame(animationCallback);registerEvents(canvas,frameTracker);return function(){return requestId}}
+    function makeWrappedRenderer(canvas){var prepareRenderOptions={glOptions:{canvas:canvas}};return prepareRender(prepareRenderOptions)}function addEntities(renderGroup,solids,geometryEntities){var allEntities=__spreadArray([],geometryEntities);var boundingBoxes=solids.map(function(solid){return measurements_6(solid)});var minMaxXys=boundingBoxes.map(function(boundingBox){var minX=boundingBox[0][0];var minY=boundingBox[0][1];var maxX=boundingBox[1][0];var maxY=boundingBox[1][1];return [minX,minY,maxX,maxY]});var xys=minMaxXys.flat(1);var distancesFromOrigin=xys.map(Math.abs);var furthestDistance=Math.max.apply(Math,distancesFromOrigin);var size=Math.ceil(furthestDistance)+5;size=Math.ceil(size/10)*10;if(renderGroup.hasAxis)allEntities.push(new AxisEntity(size));if(renderGroup.hasGrid)allEntities.push(new MultiGridEntity(size*2));return allEntities}function adjustCameraAngle(perspectiveCameraState,controlsState){if(controlsState===void 0){controlsState=null;}if(controlsState===null){perspectiveCamera.update(perspectiveCameraState);return}var output=controls.update({controls:controlsState,camera:perspectiveCameraState});controlsState.thetaDelta=output.controls.thetaDelta;controlsState.phiDelta=output.controls.phiDelta;controlsState.scale=output.controls.scale;perspectiveCameraState.position=output.camera.position;perspectiveCameraState.view=output.camera.view;}function doDynamicResize(canvas,perspectiveCameraState){var canvasBounds=canvas.getBoundingClientRect();var devicePixelRatio=window.devicePixelRatio;var width=canvasBounds.width*devicePixelRatio;var height=canvasBounds.height*devicePixelRatio;canvas.width=width;canvas.height=height;perspectiveCamera.setProjection(perspectiveCameraState,perspectiveCameraState,new CameraViewportDimensions(width,height));}function doZoom(zoomTicks,perspectiveCameraState,controlsState){while(zoomTicks!==0){var currentTick=Math.sign(zoomTicks);zoomTicks-=currentTick;var scaleChange=currentTick*0.1;var potentialNewScale=controlsState.scale+scaleChange;var potentialNewDistance=vec3$1.distance(perspectiveCameraState.position,perspectiveCameraState.target)*potentialNewScale;if(potentialNewDistance>controlsState.limits.minDistance&&potentialNewDistance<controlsState.limits.maxDistance){controlsState.scale=potentialNewScale;}else break}adjustCameraAngle(perspectiveCameraState,controlsState);}function doZoomToFit(geometryEntities,perspectiveCameraState,controlsState){var options={controls:controlsState,camera:perspectiveCameraState,entities:geometryEntities};var output=controls.zoomToFit(options);perspectiveCameraState.target=output.camera.target;controlsState.scale=output.controls.scale;adjustCameraAngle(perspectiveCameraState,controlsState);}function doRotate(rotateX,rotateY,perspectiveCameraState,controlsState){var output=controls.rotate({controls:controlsState,camera:perspectiveCameraState,speed:0.0015},[rotateX,rotateY]);var newControlsState=output.controls;controlsState.thetaDelta=newControlsState.thetaDelta;controlsState.phiDelta=newControlsState.phiDelta;adjustCameraAngle(perspectiveCameraState,controlsState);}function doPan(panX,panY,perspectiveCameraState,controlsState){var output=controls.pan({controls:controlsState,camera:perspectiveCameraState},[panX,panY*0.75]);var newCameraState=output.camera;perspectiveCameraState.position=newCameraState.position;perspectiveCameraState.target=newCameraState.target;adjustCameraAngle(perspectiveCameraState,controlsState);}function registerEvents(canvas,frameTracker){canvas.addEventListener("wheel",function(wheelEvent){frameTracker.changeZoomTicks(wheelEvent.deltaY);wheelEvent.preventDefault();},{passive:false});canvas.addEventListener("dblclick",function(_mouseEvent){frameTracker.setZoomToFit();});canvas.addEventListener("pointerdown",function(pointerEvent){frameTracker.setHeldPointer(pointerEvent.button);frameTracker.lastX=pointerEvent.pageX;frameTracker.lastY=pointerEvent.pageY;canvas.setPointerCapture(pointerEvent.pointerId);pointerEvent.preventDefault();},{passive:false});canvas.addEventListener("pointerup",function(pointerEvent){frameTracker.unsetHeldPointer();frameTracker.unsetLastCoordinates();canvas.releasePointerCapture(pointerEvent.pointerId);});canvas.addEventListener("pointermove",function(pointerEvent){var currentX=pointerEvent.pageX;var currentY=pointerEvent.pageY;if(frameTracker.lastX<0||frameTracker.lastY<0){frameTracker.lastX=currentX;frameTracker.lastY=currentY;}if(!frameTracker.shouldIgnorePointerMove()){var differenceX=frameTracker.lastX-currentX;var differenceY=frameTracker.lastY-currentY;if(frameTracker.isPointerPan(pointerEvent.shiftKey)){frameTracker.panX+=differenceX;frameTracker.panY-=differenceY;}else {frameTracker.rotateX-=differenceX;frameTracker.rotateY+=differenceY;}}frameTracker.lastX=currentX;frameTracker.lastY=currentY;});}function render(canvas,moduleState){var wrappedRenderer=makeWrappedRenderer(canvas);var perspectiveCameraState=__assign(__assign({},perspectiveCameraStateDefaults),{position:[1000,1000,1500]});var controlsState=__assign({},controlsStateDefaults);var renderGroups=moduleState.renderGroupManager.getGroupsToRender();var lastRenderGroup=renderGroups.at(-1);var solids=lastRenderGroup.shapes.map(function(shape){return shape.solid});var geometryEntities=entitiesFromSolids.apply(void 0,__spreadArray([undefined],solids));var wrappedRendererData={rendering:{background:colorToRgba(hexToColor("#34495E"))},entities:addEntities(lastRenderGroup,solids,geometryEntities),drawCommands:prepareDrawCommands,camera:perspectiveCameraState};var frameTracker=new FrameTracker;var requestId=0;function animationCallback(_timestamp){doDynamicResize(canvas,perspectiveCameraState);if(frameTracker.shouldZoom()){doZoom(frameTracker.getZoomTicks(),perspectiveCameraState,controlsState);frameTracker.didZoom();}if(frameTracker.shouldZoomToFit()){doZoomToFit(geometryEntities,perspectiveCameraState,controlsState);frameTracker.didZoomToFit();}if(frameTracker.shouldRotate()){doRotate(frameTracker.rotateX,frameTracker.rotateY,perspectiveCameraState,controlsState);frameTracker.didRotate();}if(frameTracker.shouldPan()){doPan(frameTracker.panX,frameTracker.panY,perspectiveCameraState,controlsState);frameTracker.didPan();}wrappedRenderer(wrappedRendererData);requestId=window.requestAnimationFrame(animationCallback);}requestId=window.requestAnimationFrame(animationCallback);registerEvents(canvas,frameTracker);return function(){return requestId}}
 
     /*
      * Copyright 2015 Palantir Technologies, Inc. All rights reserved.
@@ -21713,7 +21877,7 @@ void main () {
 
     var sideContentMarginBottom="0.4rem";var defaultIconSize=20;var iconGrey="#a7b6c2";var tabButtonWidth="40px";var tabButtonMargin="20px";var tooltipPadding="10px 12px";var tooltipBorderRadius="3px";var tooltipTextDarkGrey="#394b59";var tooltipBackgroundLightGrey="#e1e8ed";var HoverControlHint=function(_super){__extends(HoverControlHint,_super);function HoverControlHint(props){var _this=_super.call(this,props)||this;_this.state={showTooltip:false};return _this}HoverControlHint.prototype.render=function(){var _this=this;return React__default['default'].createElement("div",{style:{display:"flex",flexDirection:"column",justifyContent:"center",height:tabButtonWidth,margin:tabButtonMargin+" calc("+sideContentMarginBottom+" * 2)"}},React__default['default'].createElement(Icon,{icon:this.props.iconName,size:defaultIconSize,color:iconGrey,onMouseEnter:function(){return _this.setState({showTooltip:true})},onMouseLeave:function(){return _this.setState({showTooltip:false})}}),React__default['default'].createElement("span",{style:{display:this.state.showTooltip?"inline":"none",position:"absolute",left:defaultIconSize*3+"px",zIndex:1,padding:tooltipPadding,borderRadius:tooltipBorderRadius,color:tooltipTextDarkGrey,backgroundColor:tooltipBackgroundLightGrey}},this.props.tooltipText))};return HoverControlHint}(React__default['default'].Component);
 
-    var CanvasHolder=function(_super){__extends(CanvasHolder,_super);function CanvasHolder(){var _this=_super!==null&&_super.apply(this,arguments)||this;_this.canvasReference=React__default['default'].createRef();return _this}CanvasHolder.prototype.componentDidMount=function(){var canvas=this.canvasReference.current;if(canvas===null)return;var getCurrentRequestId=render(canvas,this.props.moduleState);canvas.addEventListener("webglcontextlost",function(){return window.cancelAnimationFrame(getCurrentRequestId())});};CanvasHolder.prototype.render=function(){return React__default['default'].createElement("div",{style:{display:"flex",justifyContent:"center"}},React__default['default'].createElement("div",{style:{flexDirection:"column"}},React__default['default'].createElement(HoverControlHint,{tooltipText:"Zoom in \u2022 Scroll up",iconName:ZOOM_IN}),React__default['default'].createElement(HoverControlHint,{tooltipText:"Zoom out \u2022 Scroll down",iconName:ZOOM_OUT}),React__default['default'].createElement(HoverControlHint,{tooltipText:"Zoom to fit \u2022 Double left-click",iconName:ZOOM_TO_FIT}),React__default['default'].createElement(HoverControlHint,{tooltipText:"Rotate \u2022 Left-click",iconName:REPEAT}),React__default['default'].createElement(HoverControlHint,{tooltipText:"Pan \u2022 Middle-click OR shift + left-click",iconName:MOVE})),React__default['default'].createElement("canvas",{ref:this.canvasReference,style:{width:"100%",minWidth:"0px",maxWidth:"max(70vh, 30vw)",aspectRatio:"1"},width:"0",height:"0"}))};return CanvasHolder}(React__default['default'].Component);
+    var CanvasHolder=function(_super){__extends(CanvasHolder,_super);function CanvasHolder(){var _this=_super!==null&&_super.apply(this,arguments)||this;_this.canvasReference=React__default['default'].createRef();return _this}CanvasHolder.prototype.componentDidMount=function(){var canvas=this.canvasReference.current;if(canvas===null)return;var getCurrentRequestId=render(canvas,this.props.moduleState);canvas.addEventListener("webglcontextlost",function(){return window.cancelAnimationFrame(getCurrentRequestId())});};CanvasHolder.prototype.render=function(){return React__default['default'].createElement("div",{style:{display:"flex",justifyContent:"center"}},React__default['default'].createElement("div",{style:{flexDirection:"column"}},React__default['default'].createElement(HoverControlHint,{tooltipText:"Zoom in \u2022 Scroll up",iconName:ZOOM_IN}),React__default['default'].createElement(HoverControlHint,{tooltipText:"Zoom out \u2022 Scroll down",iconName:ZOOM_OUT}),React__default['default'].createElement(HoverControlHint,{tooltipText:"Zoom to fit \u2022 Double left-click",iconName:ZOOM_TO_FIT}),React__default['default'].createElement(HoverControlHint,{tooltipText:"Rotate \u2022 Left-click",iconName:REPEAT}),React__default['default'].createElement(HoverControlHint,{tooltipText:"Pan \u2022 Middle-click OR shift + left-click",iconName:MOVE})),React__default['default'].createElement("div",{style:{width:"100%",minWidth:"0px",maxWidth:"max(70vh, 30vw)",aspectRatio:"1",borderRadius:"3px",overflow:"hidden"}},React__default['default'].createElement("canvas",{ref:this.canvasReference,style:{height:"100%",width:"100%"},width:"0",height:"0"})))};return CanvasHolder}(React__default['default'].Component);
 
     var index = {toSpawn:function(_debuggerContext){return Core.getRenderGroupManager().shouldRender()},body:function(debuggerContext){var moduleContexts=debuggerContext.context.moduleContexts;var potentialModuleContext=getModuleContext(moduleContexts);if(potentialModuleContext===null)return React__default['default'].createElement("div",null);var moduleContext=potentialModuleContext;var potentialModuleState=moduleContext.state;if(!looseInstanceof(potentialModuleState,CsgModuleState))return React__default['default'].createElement("div",null);var moduleState=potentialModuleState;Core.initialize(moduleState);return React__default['default'].createElement(CanvasHolder,{moduleState:moduleState})},iconName:SHAPES,label:"CSG Tab"};
 
