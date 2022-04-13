@@ -344,7 +344,7 @@
 				},
 				{
 					"id": 981,
-					"name": "geodesicSphere",
+					"name": "geodesic_sphere",
 					"kind": 32,
 					"kindString": "Variable",
 					"flags": {
@@ -357,7 +357,7 @@
 						{
 							"fileName": "csg/functions.ts",
 							"line": 153,
-							"character": 27
+							"character": 28
 						}
 					],
 					"type": {
@@ -608,7 +608,7 @@
 				},
 				{
 					"id": 979,
-					"name": "roundedCube",
+					"name": "rounded_cube",
 					"kind": 32,
 					"kindString": "Variable",
 					"flags": {
@@ -621,7 +621,7 @@
 						{
 							"fileName": "csg/functions.ts",
 							"line": 135,
-							"character": 24
+							"character": 25
 						}
 					],
 					"type": {
@@ -632,7 +632,7 @@
 				},
 				{
 					"id": 980,
-					"name": "roundedCylinder",
+					"name": "rounded_cylinder",
 					"kind": 32,
 					"kindString": "Variable",
 					"flags": {
@@ -645,7 +645,7 @@
 						{
 							"fileName": "csg/functions.ts",
 							"line": 144,
-							"character": 28
+							"character": 29
 						}
 					],
 					"type": {
