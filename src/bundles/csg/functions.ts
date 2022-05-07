@@ -308,7 +308,7 @@ export function intersect(a: Shape, b: Shape): Shape {
 
 /**
  * Scales the shape in the x, y and z direction with the specified factor,
- * ranging from 0 to infinity.
+ * ranging from 0 to infinity in the positive direction.
  * For example scaling the shape by 1 in x, y and z direction results in
  * the original shape.
  *
@@ -320,12 +320,19 @@ export function intersect(a: Shape, b: Shape): Shape {
  */
 export function scale(shape: Shape, x: number, y: number, z: number): Shape {
   let newSolid: Solid = _scale([x, y, z], shape.solid);
+  newSolid = align(
+    {
+      modes: ['min', 'min', 'min'],
+      relativeTo: measureBoundingBox(shape.solid)[0],
+    },
+    newSolid
+  );
   return new Shape(newSolid);
 }
 
 /**
  * Scales the shape in the x direction with the specified factor,
- * ranging from 0 to infinity.
+ * ranging from 0 to infinity in the positive direction.
  * For example scaling the shape by 1 in x direction results in the
  * original shape.
  *
@@ -339,7 +346,7 @@ export function scale_x(shape: Shape, x: number): Shape {
 
 /**
  * Scales the shape in the y direction with the specified factor,
- * ranging from 0 to infinity.
+ * ranging from 0 to infinity in the positive direction.
  * For example scaling the shape by 1 in y direction results in the
  * original shape.
  *
@@ -353,7 +360,7 @@ export function scale_y(shape: Shape, y: number): Shape {
 
 /**
  * Scales the shape in the z direction with the specified factor,
- * ranging from 0 to infinity.
+ * ranging from 0 to infinity in the positive direction.
  * For example scaling the shape by 1 in z direction results in the
  * original shape.
  *
