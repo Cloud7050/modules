@@ -701,7 +701,6 @@ export function rotate_z(shape: Shape, z: number): Shape {
   return rotate(shape, 0, 0, z);
 }
 
-//TODO
 /**
  * Center the provided shape with the middle base of the shape at (0, 0, 0).
  *
@@ -709,7 +708,7 @@ export function rotate_z(shape: Shape, z: number): Shape {
  * @returns {Shape} The shape that is centered
  */
 function shapeSetOrigin(shape: Shape) {
-  let newSolid: Solid = align({ modes: ['min', 'min', 'min'] }, shape.solid);
+  let newSolid: Solid = center({ relativeTo: [0.5, 0.5, 0.5] }, shape.solid);
   return new Shape(newSolid);
 }
 
