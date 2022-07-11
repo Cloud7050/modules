@@ -238,6 +238,73 @@
     var equals_1$7 = equals$9;
 
     /**
+     * The resolution of space, currently one hundred nanometers.
+     * This should be 1 / EPS.
+     * @alias module:modeling/maths.spatialResolution
+     * @default
+     */
+    const spatialResolution = 1e5;
+
+    /**
+     * Epsilon used during determination of near zero distances.
+     * This should be 1 / spacialResolution.
+     * @default
+     * @alias module:modeling/maths.EPS
+     */
+    const EPS$k = 1e-5;
+
+    /**
+     * Smaller epsilon used for measuring near zero distances.
+     * @default
+     * @alias module:modeling/maths.NEPS
+     */
+    const NEPS$4 = 1e-13;
+    // NEPS is derived from a series of tests to determine the optimal precision
+    // for comparing coplanar polygons, as provided by the sphere primitive at high
+    // segmentation. NEPS is for 64 bit Number values.
+
+    var constants = {
+      EPS: EPS$k,
+      NEPS: NEPS$4,
+      spatialResolution
+    };
+
+    const { NEPS: NEPS$3 } = constants;
+
+    /*
+     * Returns zero if n is within epsilon of zero, otherwise return n
+     */
+    const rezero = (n) => Math.abs(n) < NEPS$3 ? 0 : n;
+
+    /**
+     * Return Math.sin but accurate for 90 degree rotations.
+     * Fixes rounding errors when sin should be 0.
+     *
+     * @param {Number} radians - angle in radians
+     * @returns {Number} sine of the given angle
+     * @alias module:modeling/utils.sin
+     * @example
+     * sin(Math.PI) == 0
+     * sin(2 * Math.PI) == 0
+     */
+    const sin$f = (radians) => rezero(Math.sin(radians));
+
+    /**
+     * Return Math.cos but accurate for 90 degree rotations.
+     * Fixes rounding errors when cos should be 0.
+     *
+     * @param {Number} radians - angle in radians
+     * @returns {Number} cosine of the given angle
+     * @alias module:modeling/utils.cos
+     * @example
+     * cos(0.5 * Math.PI) == 0
+     * cos(1.5 * Math.PI) == 0
+     */
+    const cos$f = (radians) => rezero(Math.cos(radians));
+
+    var trigonometry = { sin: sin$f, cos: cos$f };
+
+    /**
      * Set a matrix to the identity transform.
      *
      * @param {mat4} out - receiving matrix
@@ -266,13 +333,11 @@
 
     var identity_1 = identity;
 
-    const EPSILON$1 = 0.000001;
+    const { EPS: EPS$j } = constants;
 
-    var constants$1 = {
-      EPSILON: EPSILON$1
-    };
+    const { sin: sin$e, cos: cos$e } = trigonometry;
 
-    const { EPSILON } = constants$1;
+
 
     /**
      * Creates a matrix from a given angle around a given axis
@@ -291,20 +356,20 @@
      */
     const fromRotation = (out, rad, axis) => {
       let [x, y, z] = axis;
-      let len = Math.hypot(x, y, z);
+      const lengthSquared = x * x + y * y + z * z;
 
-      if (Math.abs(len) < EPSILON) {
+      if (Math.abs(lengthSquared) < EPS$j) {
         // axis is 0,0,0 or almost
         return identity_1(out)
       }
 
-      len = 1 / len;
+      const len = 1 / Math.sqrt(lengthSquared);
       x *= len;
       y *= len;
       z *= len;
 
-      const s = Math.sin(rad);
-      const c = Math.cos(rad);
+      const s = sin$e(rad);
+      const c = cos$e(rad);
       const t = 1 - c;
 
       // Perform rotation-specific matrix multiplication
@@ -365,6 +430,8 @@
 
     var fromScaling_1 = fromScaling;
 
+    const { sin: sin$d, cos: cos$d } = trigonometry;
+
     /**
      * Creates a matrix from the given Tait–Bryan angles.
      *
@@ -382,12 +449,12 @@
      */
     const fromTaitBryanRotation = (out, yaw, pitch, roll) => {
       // precompute sines and cosines of Euler angles
-      const sy = Math.sin(yaw);
-      const cy = Math.cos(yaw);
-      const sp = Math.sin(pitch);
-      const cp = Math.cos(pitch);
-      const sr = Math.sin(roll);
-      const cr = Math.cos(roll);
+      const sy = sin$d(yaw);
+      const cy = cos$d(yaw);
+      const sp = sin$d(pitch);
+      const cp = cos$d(pitch);
+      const sr = sin$d(roll);
+      const cr = cos$d(roll);
 
       // create and populate rotation matrix
       // left-hand-rule rotation
@@ -569,8 +636,8 @@
       const bx = b[0];
       const by = b[1];
       const bz = b[2];
-      const mag1 = Math.hypot(ax, ay, az);
-      const mag2 = Math.hypot(bx, by, bz);
+      const mag1 = Math.sqrt(ax * ax + ay * ay + az * az);
+      const mag2 = Math.sqrt(bx * bx + by * by + bz * bz);
       const mag = mag1 * mag2;
       const cosine = mag && dot_1$2(a, b) / mag;
       return Math.acos(Math.min(Math.max(cosine, -1), 1))
@@ -665,7 +732,7 @@
       const x = b[0] - a[0];
       const y = b[1] - a[1];
       const z = b[2] - a[2];
-      return Math.hypot(x, y, z)
+      return Math.sqrt(x * x + y * y + z * z)
     };
 
     var distance_1$1 = distance$1;
@@ -766,7 +833,7 @@
       const x = vector[0];
       const y = vector[1];
       const z = vector[2];
-      return Math.hypot(x, y, z)
+      return Math.sqrt(x * x + y * y + z * z)
     };
 
     var length_1$1 = length$1;
@@ -1209,6 +1276,8 @@
 
     var fromVectorRotation_1 = fromVectorRotation;
 
+    const { sin: sin$c, cos: cos$c } = trigonometry;
+
     /**
      * Creates a matrix from the given angle around the X axis.
      * This is equivalent to (but much faster than):
@@ -1224,8 +1293,8 @@
      * let matrix = fromXRotation(create(), Math.PI / 2)
      */
     const fromXRotation = (out, radians) => {
-      const s = Math.sin(radians);
-      const c = Math.cos(radians);
+      const s = sin$c(radians);
+      const c = cos$c(radians);
 
       // Perform axis-specific matrix multiplication
       out[0] = 1;
@@ -1249,6 +1318,8 @@
 
     var fromXRotation_1 = fromXRotation;
 
+    const { sin: sin$b, cos: cos$b } = trigonometry;
+
     /**
      * Creates a matrix from the given angle around the Y axis.
      * This is equivalent to (but much faster than):
@@ -1264,8 +1335,8 @@
      * let matrix = fromYRotation(create(), Math.PI / 2)
      */
     const fromYRotation = (out, radians) => {
-      const s = Math.sin(radians);
-      const c = Math.cos(radians);
+      const s = sin$b(radians);
+      const c = cos$b(radians);
 
       // Perform axis-specific matrix multiplication
       out[0] = c;
@@ -1289,6 +1360,8 @@
 
     var fromYRotation_1 = fromYRotation;
 
+    const { sin: sin$a, cos: cos$a } = trigonometry;
+
     /**
      * Creates a matrix from the given angle around the Z axis.
      * This is equivalent to (but much faster than):
@@ -1304,8 +1377,8 @@
      * let matrix = fromZRotation(create(), Math.PI / 2)
      */
     const fromZRotation = (out, radians) => {
-      const s = Math.sin(radians);
-      const c = Math.cos(radians);
+      const s = sin$a(radians);
+      const c = cos$a(radians);
 
       // Perform axis-specific matrix multiplication
       out[0] = c;
@@ -1380,15 +1453,19 @@
      * @alias module:modeling/maths/mat4.isMirroring
      */
     const isMirroring = (matrix) => {
-      const u = fromValues_1$3(matrix[0], matrix[4], matrix[8]);
-      const v = fromValues_1$3(matrix[1], matrix[5], matrix[9]);
-      const w = fromValues_1$3(matrix[2], matrix[6], matrix[10]);
+      // const xVector = [matrix[0], matrix[4], matrix[8]]
+      // const yVector = [matrix[1], matrix[5], matrix[9]]
+      // const zVector = [matrix[2], matrix[6], matrix[10]]
 
-      // for a true orthogonal, non-mirrored base, u.cross(v) == w
+      // for a true orthogonal, non-mirrored base, xVector.cross(yVector) == zVector
       // If they have an opposite direction then we are mirroring
-      const mirrorvalue = dot_1$2(cross_1$1(u, u, v), w);
-      const ismirror = (mirrorvalue < 0);
-      return ismirror
+      // calcuate xVector.cross(yVector)
+      const x = matrix[4] * matrix[9] - matrix[8] * matrix[5];
+      const y = matrix[8] * matrix[1] - matrix[0] * matrix[9];
+      const z = matrix[0] * matrix[5] - matrix[4] * matrix[1];
+      // calcualte dot(cross, zVector)
+      const d = x * matrix[2] + y * matrix[6] + z * matrix[10];
+      return (d < 0)
     };
 
     var isMirroring_1 = isMirroring;
@@ -1494,6 +1571,12 @@
 
     var multiply_1$1 = multiply$1;
 
+    const { EPS: EPS$i } = constants;
+
+    const { sin: sin$9, cos: cos$9 } = trigonometry;
+
+
+
     /**
      * Rotates a matrix by the given angle about the given axis.
      *
@@ -1506,20 +1589,20 @@
      */
     const rotate$4 = (out, matrix, radians, axis) => {
       let [x, y, z] = axis;
-      let len = Math.hypot(x, y, z);
+      const lengthSquared = x * x + y * y + z * z;
 
-      if (Math.abs(len) < 0.000001) {
+      if (Math.abs(lengthSquared) < EPS$i) {
         // axis is 0,0,0 or almost
         return copy_1$5(out, matrix)
       }
 
-      len = 1 / len;
+      const len = 1 / Math.sqrt(lengthSquared);
       x *= len;
       y *= len;
       z *= len;
 
-      const s = Math.sin(radians);
-      const c = Math.cos(radians);
+      const s = sin$9(radians);
+      const c = cos$9(radians);
       const t = 1 - c;
 
       const a00 = matrix[0];
@@ -1571,6 +1654,8 @@
 
     var rotate_1$2 = rotate$4;
 
+    const { sin: sin$8, cos: cos$8 } = trigonometry;
+
     /**
      * Rotates a matrix by the given angle around the X axis.
      *
@@ -1581,8 +1666,8 @@
      * @alias module:modeling/maths/mat4.rotateX
      */
     const rotateX$1 = (out, matrix, radians) => {
-      const s = Math.sin(radians);
-      const c = Math.cos(radians);
+      const s = sin$8(radians);
+      const c = cos$8(radians);
       const a10 = matrix[4];
       const a11 = matrix[5];
       const a12 = matrix[6];
@@ -1617,6 +1702,8 @@
 
     var rotateX_1 = rotateX$1;
 
+    const { sin: sin$7, cos: cos$7 } = trigonometry;
+
     /**
      * Rotates a matrix by the given angle around the Y axis.
      *
@@ -1627,8 +1714,8 @@
      * @alias module:modeling/maths/mat4.rotateY
      */
     const rotateY$1 = (out, matrix, radians) => {
-      const s = Math.sin(radians);
-      const c = Math.cos(radians);
+      const s = sin$7(radians);
+      const c = cos$7(radians);
       const a00 = matrix[0];
       const a01 = matrix[1];
       const a02 = matrix[2];
@@ -1663,6 +1750,8 @@
 
     var rotateY_1 = rotateY$1;
 
+    const { sin: sin$6, cos: cos$6 } = trigonometry;
+
     /**
      * Rotates a matrix by the given angle around the Z axis.
      *
@@ -1673,8 +1762,8 @@
      * @alias module:modeling/maths/mat4.rotateZ
      */
     const rotateZ$1 = (out, matrix, radians) => {
-      const s = Math.sin(radians);
-      const c = Math.cos(radians);
+      const s = sin$6(radians);
+      const c = cos$6(radians);
       const a00 = matrix[0];
       const a01 = matrix[1];
       const a02 = matrix[2];
@@ -2034,7 +2123,7 @@
     const distance = (a, b) => {
       const x = b[0] - a[0];
       const y = b[1] - a[1];
-      return Math.hypot(x, y)
+      return Math.sqrt(x * x + y * y)
     };
 
     var distance_1 = distance;
@@ -2080,6 +2169,8 @@
 
     var equals_1$5 = equals$7;
 
+    const { sin: sin$5, cos: cos$5 } = trigonometry;
+
     /**
      * Create a new vector in the direction of the given angle.
      *
@@ -2089,8 +2180,8 @@
      * @alias module:modeling/maths/vec2.fromAngleRadians
      */
     const fromAngleRadians = (out, radians) => {
-      out[0] = Math.cos(radians);
-      out[1] = Math.sin(radians);
+      out[0] = cos$5(radians);
+      out[1] = sin$5(radians);
       return out
     };
 
@@ -2148,7 +2239,7 @@
      * @returns {Number} length
      * @alias module:modeling/maths/vec2.length
      */
-    const length = (vector) => Math.hypot(vector[0], vector[1]);
+    const length = (vector) => Math.sqrt(vector[0] * vector[0] + vector[1] * vector[1]);
 
     var length_1 = length;
 
@@ -2594,22 +2685,42 @@
      * Create a list of edges which SHARE vertices.
      * This allows the edges to be traversed in order.
      */
-    const toEdges$1 = (sides) => {
-      const vertices = {};
+    const toSharedVertices = (sides) => {
+      const unique = new Map(); // {key: vertex}
       const getUniqueVertex = (vertex) => {
         const key = vertex.toString();
-        if (!vertices[key]) {
-          vertices[key] = vertex;
+        if (unique.has(key)) {
+          return unique.get(key)
+        } else {
+          unique.set(key, vertex);
+          return vertex
         }
-        return vertices[key]
       };
 
       return sides.map((side) => side.map(getUniqueVertex))
     };
 
+    /*
+     * Convert a list of sides into a map from vertex to edges.
+     */
+    const toVertexMap = (sides) => {
+      const vertexMap = new Map();
+      // first map to edges with shared vertices
+      const edges = toSharedVertices(sides);
+      // construct adjacent edges map
+      edges.forEach((edge) => {
+        if (vertexMap.has(edge[0])) {
+          vertexMap.get(edge[0]).push(edge);
+        } else {
+          vertexMap.set(edge[0], [edge]);
+        }
+      });
+      return vertexMap
+    };
+
     /**
      * Create the outline(s) of the given geometry.
-     * @param  {geom2} geometry
+     * @param {geom2} geometry - geometry to create outlines from
      * @returns {Array} an array of outlines, where each outline is an array of ordered points
      * @alias module:modeling/geometries/geom2.toOutlines
      *
@@ -2618,65 +2729,35 @@
      * let outlines = toOutlines(geometry) // returns two outlines
      */
     const toOutlines$1 = (geometry) => {
-      const vertexMap = new Map();
-      const edges = toEdges$1(toSides_1(geometry));
-      edges.forEach((edge) => {
-        if (!(vertexMap.has(edge[0]))) {
-          vertexMap.set(edge[0], []);
-        }
-        const sideslist = vertexMap.get(edge[0]);
-        sideslist.push(edge);
-      });
-
+      const vertexMap = toVertexMap(toSides_1(geometry)); // {vertex: [edges]}
       const outlines = [];
       while (true) {
-        let startside;
+        let startSide;
         for (const [vertex, edges] of vertexMap) {
-          startside = edges.shift();
-          if (!startside) {
+          startSide = edges.shift();
+          if (!startSide) {
             vertexMap.delete(vertex);
             continue
           }
           break
         }
-        if (startside === undefined) break // all starting sides have been visited
+        if (startSide === undefined) break // all starting sides have been visited
 
         const connectedVertexPoints = [];
-        const startvertex = startside[0];
-        const v0 = vec2.create();
+        const startVertex = startSide[0];
         while (true) {
-          connectedVertexPoints.push(startside[0]);
-          const nextvertex = startside[1];
-          if (nextvertex === startvertex) break // the outline has been closed
-          const nextpossiblesides = vertexMap.get(nextvertex);
-          if (!nextpossiblesides) {
-            throw new Error('the given geometry is not closed. verify proper construction')
+          connectedVertexPoints.push(startSide[0]);
+          const nextVertex = startSide[1];
+          if (nextVertex === startVertex) break // the outline has been closed
+          const nextPossibleSides = vertexMap.get(nextVertex);
+          if (!nextPossibleSides) {
+            throw new Error(`geometry is not closed at vertex ${nextVertex}`)
           }
-          let nextsideindex = -1;
-          if (nextpossiblesides.length === 1) {
-            nextsideindex = 0;
-          } else {
-            // more than one side starting at the same vertex
-            let bestangle;
-            const startangle = vec2.angleDegrees(vec2.subtract(v0, startside[1], startside[0]));
-            for (let sideindex = 0; sideindex < nextpossiblesides.length; sideindex++) {
-              const nextpossibleside = nextpossiblesides[sideindex];
-              const nextangle = vec2.angleDegrees(vec2.subtract(v0, nextpossibleside[1], nextpossibleside[0]));
-              let angledif = nextangle - startangle;
-              if (angledif < -180) angledif += 360;
-              if (angledif >= 180) angledif -= 360;
-              if ((nextsideindex < 0) || (angledif > bestangle)) {
-                nextsideindex = sideindex;
-                bestangle = angledif;
-              }
-            }
+          const nextSide = popNextSide(startSide, nextPossibleSides);
+          if (nextPossibleSides.length === 0) {
+            vertexMap.delete(nextVertex);
           }
-          const nextside = nextpossiblesides[nextsideindex];
-          nextpossiblesides.splice(nextsideindex, 1); // remove side from list
-          if (nextpossiblesides.length === 0) {
-            vertexMap.delete(nextvertex);
-          }
-          startside = nextside;
+          startSide = nextSide;
         } // inner loop
 
         // due to the logic of fromPoints()
@@ -2688,6 +2769,30 @@
       } // outer loop
       vertexMap.clear();
       return outlines
+    };
+
+    // find the first counter-clockwise edge from startSide and pop from nextSides
+    const popNextSide = (startSide, nextSides) => {
+      if (nextSides.length === 1) {
+        return nextSides.pop()
+      }
+      const v0 = vec2.create();
+      const startAngle = vec2.angleDegrees(vec2.subtract(v0, startSide[1], startSide[0]));
+      let bestAngle;
+      let bestIndex;
+      nextSides.forEach((nextSide, index) => {
+        const nextAngle = vec2.angleDegrees(vec2.subtract(v0, nextSide[1], nextSide[0]));
+        let angle = nextAngle - startAngle;
+        if (angle < -180) angle += 360;
+        if (angle >= 180) angle -= 360;
+        if (bestIndex === undefined || angle > bestAngle) {
+          bestIndex = index;
+          bestAngle = angle;
+        }
+      });
+      const nextSide = nextSides[bestIndex];
+      nextSides.splice(bestIndex, 1); // remove side from list
+      return nextSide
     };
 
     var toOutlines_1 = toOutlines$1;
@@ -2902,7 +3007,7 @@
         polygons = []; // empty contents
       }
       return {
-        polygons: polygons,
+        polygons,
         transforms: mat4.create()
       }
     };
@@ -2928,7 +3033,7 @@
       if (vertices === undefined || vertices.length < 3) {
         vertices = []; // empty contents
       }
-      return { vertices: vertices }
+      return { vertices }
     };
 
     var create_1$7 = create$7;
@@ -3175,27 +3280,6 @@
     };
 
     var fromPoints_1$5 = fromPoints$5;
-
-    /**
-     * The resolution of space, currently one hundred nanometers.
-     * This should be 1 / EPS.
-     * @alias module:modeling/maths.spatialResolution
-     * @default
-     */
-    const spatialResolution = 1e5;
-
-    /**
-     * Epsilon used during determination of near zero distances.
-     * This should be 1 / spacialResolution.
-     * @default
-     * @alias module:modeling/maths.EPS
-     */
-    const EPS$i = 1e-5;
-
-    var constants = {
-      EPS: EPS$i,
-      spatialResolution
-    };
 
     const { EPS: EPS$h } = constants;
 
@@ -3553,18 +3637,124 @@
     var measureBoundingBox_1$1 = measureBoundingBox$1;
 
     /**
+     * Calculates the dot product of the given vectors.
+     *
+     * @param {vec4} a - first vector
+     * @param {vec4} b - second vector
+     * @returns {Number} dot product
+     * @alias module:modeling/maths/vec4.dot
+     */
+    const dot = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2] + a[3] * b[3];
+
+    var dot_1 = dot;
+
+    /**
+     * Create a new vector from the given scalar value.
+     *
+     * @param {vec4} out - receiving vector
+     * @param  {Number} scalar
+     * @returns {vec4} out
+     * @alias module:modeling/maths/vec4.fromScalar
+     */
+    const fromScalar = (out, scalar) => {
+      out[0] = scalar;
+      out[1] = scalar;
+      out[2] = scalar;
+      out[3] = scalar;
+      return out
+    };
+
+    var fromScalar_1 = fromScalar;
+
+    /**
+     * Transform the given vector using the given matrix.
+     *
+     * @param {vec4} out - receiving vector
+     * @param {vec4} vector - vector to transform
+     * @param {mat4} matrix - matrix to transform with
+     * @returns {vec4} out
+     * @alias module:modeling/maths/vec4.transform
+     */
+    const transform$7 = (out, vector, matrix) => {
+      const [x, y, z, w] = vector;
+
+      out[0] = matrix[0] * x + matrix[4] * y + matrix[8] * z + matrix[12] * w;
+      out[1] = matrix[1] * x + matrix[5] * y + matrix[9] * z + matrix[13] * w;
+      out[2] = matrix[2] * x + matrix[6] * y + matrix[10] * z + matrix[14] * w;
+      out[3] = matrix[3] * x + matrix[7] * y + matrix[11] * z + matrix[15] * w;
+      return out
+    };
+
+    var transform_1$7 = transform$7;
+
+    /**
+     * Represents a four dimensional vector.
+     * @see {@link vec4} for data structure information.
+     * @module modeling/maths/vec4
+     */
+    var vec4 = {
+      clone: clone_1$4,
+      copy: copy_1$2,
+      create: create_1$6,
+      dot: dot_1,
+      equals: equals_1$4,
+      fromScalar: fromScalar_1,
+      fromValues: fromValues_1$1,
+      toString: toString_1$6,
+      transform: transform_1$7
+    };
+
+    const cache$3 = new WeakMap();
+
+    /**
      * Measure the bounding sphere of the given polygon.
      * @param {poly3} polygon - the polygon to measure
-     * @returns {Array} the computed bounding sphere; center point (3D) and radius
+     * @returns {vec4} the computed bounding sphere; center point (3D) and radius
      * @alias module:modeling/geometries/poly3.measureBoundingSphere
      */
     const measureBoundingSphere$1 = (polygon) => {
-      const box = measureBoundingBox_1$1(polygon);
-      const center = box[0];
-      vec3$1.add(center, box[0], box[1]);
-      vec3$1.scale(center, center, 0.5);
-      const radius = vec3$1.distance(center, box[1]);
-      return [center, radius]
+      let boundingSphere = cache$3.get(polygon);
+      if (boundingSphere) return boundingSphere
+
+      const vertices = polygon.vertices;
+      const out = vec4.create();
+
+      if (vertices.length === 0) {
+        out[0] = 0;
+        out[1] = 0;
+        out[2] = 0;
+        out[3] = 0;
+        return out
+      }
+
+      // keep a list of min/max vertices by axis
+      let minx = vertices[0];
+      let miny = minx;
+      let minz = minx;
+      let maxx = minx;
+      let maxy = minx;
+      let maxz = minx;
+
+      vertices.forEach((v) => {
+        if (minx[0] > v[0]) minx = v;
+        if (miny[1] > v[1]) miny = v;
+        if (minz[2] > v[2]) minz = v;
+        if (maxx[0] < v[0]) maxx = v;
+        if (maxy[1] < v[1]) maxy = v;
+        if (maxz[2] < v[2]) maxz = v;
+      });
+
+      out[0] = (minx[0] + maxx[0]) * 0.5; // center of sphere
+      out[1] = (miny[1] + maxy[1]) * 0.5;
+      out[2] = (minz[2] + maxz[2]) * 0.5;
+      const x = out[0] - maxx[0];
+      const y = out[1] - maxy[1];
+      const z = out[2] - maxz[2];
+      out[3] = Math.sqrt(x * x + y * y + z * z); // radius of sphere
+
+      cache$3.set(polygon, out);
+
+      return out
     };
 
     var measureBoundingSphere_1$1 = measureBoundingSphere$1;
@@ -3627,7 +3817,7 @@
      * @returns {poly3} a new polygon
      * @alias module:modeling/geometries/poly3.transform
      */
-    const transform$7 = (matrix, polygon) => {
+    const transform$6 = (matrix, polygon) => {
       const vertices = polygon.vertices.map((vertex) => vec3$1.transform(vec3$1.create(), vertex, matrix));
       if (mat4.isMirroring(matrix)) {
         // reverse the order to preserve the orientation
@@ -3636,7 +3826,14 @@
       return create_1$7(vertices)
     };
 
-    var transform_1$7 = transform$7;
+    var transform_1$6 = transform$6;
+
+    const { NEPS: NEPS$2 } = constants;
+
+
+
+
+
 
     /**
      * Determine if the given object is a valid polygon.
@@ -3680,6 +3877,17 @@
           throw new Error(`poly3 invalid vertex ${vertex}`)
         }
       });
+
+      // check that points are co-planar
+      if (object.vertices.length > 3) {
+        const normal = plane_1(object);
+        object.vertices.forEach((vertex) => {
+          const dist = Math.abs(signedDistanceToPoint_1(normal, vertex));
+          if (dist > NEPS$2) {
+            throw new Error(`poly3 must be coplanar: vertex ${vertex} distance ${dist}`)
+          }
+        });
+      }
     };
 
     var validate_1$2 = validate$2;
@@ -3710,7 +3918,7 @@
       plane: plane_1,
       toPoints: toPoints_1$2,
       toString: toString_1$5,
-      transform: transform_1$7,
+      transform: transform_1$6,
       validate: validate_1$2
     };
 
@@ -3730,7 +3938,7 @@
 
       const polygons = listofpoints.map((points, index) => {
         // TODO catch the error, and rethrow with index
-        const polygon = poly3.fromPoints(points);
+        const polygon = poly3.create(points);
         return polygon
       });
       const result = create_1$8(polygons);
@@ -3789,9 +3997,8 @@
       if (mat4.isIdentity(geometry.transforms)) return geometry
 
       // apply transforms to each polygon
-      // const isMirror = mat4.isMirroring(geometry.transforms)
-      // TBD if (isMirror) newvertices.reverse()
       geometry.polygons = geometry.polygons.map((polygon) => poly3.transform(geometry.transforms, polygon));
+      // reset transforms
       geometry.transforms = mat4.create();
       return geometry
     };
@@ -3959,12 +4166,12 @@
      * @example
      * let newgeometry = transform(fromXRotation(degToRad(90)), geometry)
      */
-    const transform$6 = (matrix, geometry) => {
+    const transform$5 = (matrix, geometry) => {
       const transforms = mat4.multiply(mat4.create(), matrix, geometry.transforms);
       return Object.assign({}, geometry, { transforms })
     };
 
-    var transform_1$6 = transform$6;
+    var transform_1$5 = transform$5;
 
     /**
      * Determine if the given object is a valid 3D geometry.
@@ -4059,7 +4266,7 @@
       toPolygons: toPolygons_1$1,
       toString: toString_1$4,
       toCompactBinary: toCompactBinary_1$1,
-      transform: transform_1$6,
+      transform: transform_1$5,
       validate: validate_1$1
     };
     var geom3_1 = geom3$2.clone;
@@ -4561,22 +4768,6 @@
     var concat_1 = concat;
 
     /**
-     * Calls a function for each point in the path.
-     * @param {Object} options - options
-     * @param {Function} thunk - the function to call
-     * @param {path2} path - the path to traverse
-     * @alias module:modeling/geometries/path2.eachPoint
-     *
-     * @example
-     * eachPoint({}, accumulate, path)
-     */
-    const eachPoint = (options, thunk, path) => {
-      toPoints_1(path).forEach(thunk);
-    };
-
-    var eachPoint_1 = eachPoint;
-
-    /**
       * Determine if the given paths are equal.
       * For closed paths, this includes equality under point order rotation.
       * @param {path2} a - the first path to compare
@@ -4775,12 +4966,12 @@
      * @example
      * let newpath = transform(fromZRotation(Math.PI / 4), path)
      */
-    const transform$5 = (matrix, geometry) => {
+    const transform$4 = (matrix, geometry) => {
       const transforms = mat4.multiply(mat4.create(), matrix, geometry.transforms);
       return Object.assign({}, geometry, { transforms })
     };
 
-    var transform_1$5 = transform$5;
+    var transform_1$4 = transform$4;
 
     /**
      * Determine if the given object is a valid path2.
@@ -4845,7 +5036,6 @@
       close: close_1,
       concat: concat_1,
       create: create_1$5,
-      eachPoint: eachPoint_1,
       equals: equals_1$3,
       fromPoints: fromPoints_1$3,
       fromCompactBinary: fromCompactBinary_1,
@@ -4854,7 +5044,7 @@
       toPoints: toPoints_1,
       toString: toString_1$3,
       toCompactBinary: toCompactBinary_1,
-      transform: transform_1$5,
+      transform: transform_1$4,
       validate: validate_1
     };
 
@@ -5982,11 +6172,7 @@
 
     var fromValues_1 = fromValues;
 
-    // Normals are directional vectors with component values from 0 to 1.0, requiring specialized comparison
-    // This EPS is derived from a series of tests to determine the optimal precision for comparing coplanar polygons,
-    // as provided by the sphere primitive at high segmentation
-    // This EPS is for 64 bit Number values
-    const NEPS$4 = 1e-13;
+    const { NEPS: NEPS$1 } = constants;
 
     /**
      * Compare two normals (unit vectors) for near equality.
@@ -5995,9 +6181,9 @@
      * @returns {Boolean} true if a and b are nearly equal
      * @alias module:modeling/maths/utils.aboutEqualNormals
      */
-    const aboutEqualNormals$2 = (a, b) => (Math.abs(a[0] - b[0]) <= NEPS$4 && Math.abs(a[1] - b[1]) <= NEPS$4 && Math.abs(a[2] - b[2]) <= NEPS$4);
+    const aboutEqualNormals = (a, b) => (Math.abs(a[0] - b[0]) <= NEPS$1 && Math.abs(a[1] - b[1]) <= NEPS$1 && Math.abs(a[2] - b[2]) <= NEPS$1);
 
-    var aboutEqualNormals_1 = aboutEqualNormals$2;
+    var aboutEqualNormals_1 = aboutEqualNormals;
 
     /**
      * Get the X coordinate of a point with a certain Y coordinate, interpolated between two points.
@@ -6093,8 +6279,10 @@
     var utils$1 = {
       aboutEqualNormals: aboutEqualNormals_1,
       area: area_1,
+      cos: trigonometry.cos,
       interpolateBetween2DPointsForY: interpolateBetween2DPointsForY_1,
       intersect: intersect_1$1,
+      sin: trigonometry.sin,
       solve2Linear: solve2Linear_1
     };
 
@@ -6155,7 +6343,7 @@
      * @returns {line2} out
      * @alias module:modeling/maths/line2.transform
      */
-    const transform$4 = (out, line, matrix) => {
+    const transform$3 = (out, line, matrix) => {
       const org = origin_1$1(line);
       const dir = direction_1$1(line);
 
@@ -6165,7 +6353,7 @@
       return fromPoints_1$2(out, org, dir)
     };
 
-    var transform_1$4 = transform$4;
+    var transform_1$3 = transform$3;
 
     /**
      * Determine the X coordinate of the given line at the Y coordinate.
@@ -6207,7 +6395,7 @@
       origin: origin_1$1,
       reverse: reverse_1$2,
       toString: toString_1$2,
-      transform: transform_1$4,
+      transform: transform_1$3,
       xAtY: xAtY_1
     };
 
@@ -6505,7 +6693,7 @@
      * @returns {line3} a new unbounded line
      * @alias module:modeling/maths/line3.transform
      */
-    const transform$3 = (out, line, matrix) => {
+    const transform$2 = (out, line, matrix) => {
       const point = line[0];
       const direction = line[1];
       const pointPlusDirection = vec3$1.add(vec3$1.create(), point, direction);
@@ -6517,7 +6705,7 @@
       return fromPointAndDirection_1(out, newpoint, newdirection)
     };
 
-    var transform_1$3 = transform$3;
+    var transform_1$2 = transform$2;
 
     /**
      * Represents a unbounded line in 3D space, positioned at a point of origin.
@@ -6539,74 +6727,6 @@
       origin: origin_1,
       reverse: reverse_1$1,
       toString: toString_1$1,
-      transform: transform_1$3
-    };
-
-    /**
-     * Calculates the dot product of the given vectors.
-     *
-     * @param {vec4} a - first vector
-     * @param {vec4} b - second vector
-     * @returns {Number} dot product
-     * @alias module:modeling/maths/vec4.dot
-     */
-    const dot = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2] + a[3] * b[3];
-
-    var dot_1 = dot;
-
-    /**
-     * Create a new vector from the given scalar value.
-     *
-     * @param {vec4} out - receiving vector
-     * @param  {Number} scalar
-     * @returns {vec4} out
-     * @alias module:modeling/maths/vec4.fromScalar
-     */
-    const fromScalar = (out, scalar) => {
-      out[0] = scalar;
-      out[1] = scalar;
-      out[2] = scalar;
-      out[3] = scalar;
-      return out
-    };
-
-    var fromScalar_1 = fromScalar;
-
-    /**
-     * Transform the given vector using the given matrix.
-     *
-     * @param {vec4} out - receiving vector
-     * @param {vec4} vector - vector to transform
-     * @param {mat4} matrix - matrix to transform with
-     * @returns {vec4} out
-     * @alias module:modeling/maths/vec4.transform
-     */
-    const transform$2 = (out, vector, matrix) => {
-      const [x, y, z, w] = vector;
-
-      out[0] = matrix[0] * x + matrix[4] * y + matrix[8] * z + matrix[12] * w;
-      out[1] = matrix[1] * x + matrix[5] * y + matrix[9] * z + matrix[13] * w;
-      out[2] = matrix[2] * x + matrix[6] * y + matrix[10] * z + matrix[14] * w;
-      out[3] = matrix[3] * x + matrix[7] * y + matrix[11] * z + matrix[15] * w;
-      return out
-    };
-
-    var transform_1$2 = transform$2;
-
-    /**
-     * Represents a four dimensional vector.
-     * @see {@link vec4} for data structure information.
-     * @module modeling/maths/vec4
-     */
-    var vec4 = {
-      clone: clone_1$4,
-      copy: copy_1$2,
-      create: create_1$6,
-      dot: dot_1,
-      equals: equals_1$4,
-      fromScalar: fromScalar_1,
-      fromValues: fromValues_1$1,
-      toString: toString_1$6,
       transform: transform_1$2
     };
 
@@ -7466,48 +7586,13 @@
 
     var arc_1 = arc;
 
-    const NEPS$3 = 1e-13;
-
-    /*
-     * Returns zero if n is within epsilon of zero, otherwise return n
-     */
-    const rezero = (n) => Math.abs(n) < NEPS$3 ? 0 : n;
-
-    /**
-     * Return Math.sin but accurate for 90 degree rotations.
-     * Fixes rounding errors when sin should be 0.
-     *
-     * @param {Number} radians - angle in radians
-     * @returns {Number} sine of the given angle
-     * @alias module:modeling/utils.sin
-     * @example
-     * sin(Math.PI) == 0
-     * sin(2 * Math.PI) == 0
-     */
-    const sin$4 = (radians) => rezero(Math.sin(radians));
-
-    /**
-     * Return Math.cos but accurate for 90 degree rotations.
-     * Fixes rounding errors when cos should be 0.
-     *
-     * @param {Number} radians - angle in radians
-     * @returns {Number} cosine of the given angle
-     * @alias module:modeling/utils.cos
-     * @example
-     * cos(0.5 * Math.PI) == 0
-     * cos(1.5 * Math.PI) == 0
-     */
-    const cos$4 = (radians) => rezero(Math.cos(radians));
-
-    var trigonometry = { sin: sin$4, cos: cos$4 };
-
     const { EPS: EPS$b } = constants;
 
 
 
 
 
-    const { sin: sin$3, cos: cos$3 } = trigonometry;
+    const { sin: sin$4, cos: cos$4 } = trigonometry;
 
     const { isGTE: isGTE$8, isNumberArray: isNumberArray$a } = commonChecks;
 
@@ -7567,7 +7652,7 @@
       segments = (rotation < Math.PI * 2) ? segments + 1 : segments;
       for (let i = 0; i < segments; i++) {
         const angle = (step * i) + startAngle;
-        const point = vec2.fromValues(radius[0] * cos$3(angle), radius[1] * sin$3(angle));
+        const point = vec2.fromValues(radius[0] * cos$4(angle), radius[1] * sin$4(angle));
         vec2.add(point, centerv, point);
         points.push(point);
       }
@@ -7654,7 +7739,7 @@
             ];
             return pos
           });
-          return poly3.fromPoints(points)
+          return poly3.create(points)
         })
       );
       return result
@@ -7698,7 +7783,7 @@
 
 
 
-    const { sin: sin$2, cos: cos$2 } = trigonometry;
+    const { sin: sin$3, cos: cos$3 } = trigonometry;
 
     const { isGT: isGT$9, isGTE: isGTE$7, isNumberArray: isNumberArray$8 } = commonChecks;
 
@@ -7771,8 +7856,8 @@
       const v3 = vec3$1.create();
       const point = (stack, slice, radius) => {
         const angle = slice * rotation + startAngle;
-        vec3$1.scale(v1, axisX, radius[0] * cos$2(angle));
-        vec3$1.scale(v2, axisY, radius[1] * sin$2(angle));
+        vec3$1.scale(v1, axisX, radius[0] * cos$3(angle));
+        vec3$1.scale(v2, axisY, radius[1] * sin$3(angle));
         vec3$1.add(v1, v1, v2);
 
         vec3$1.scale(v3, ray, stack);
@@ -7783,13 +7868,15 @@
       // adjust the points to center
       const fromPoints = (...points) => {
         const newpoints = points.map((point) => vec3$1.add(vec3$1.create(), point, center));
-        return poly3.fromPoints(newpoints)
+        return poly3.create(newpoints)
       };
 
       const polygons = [];
       for (let i = 0; i < slices; i++) {
         const t0 = i / slices;
-        const t1 = (i + 1) / slices;
+        let t1 = (i + 1) / slices;
+        // fix rounding error when rotating 2 * PI radians
+        if (rotation === 2 * Math.PI && i === slices - 1) t1 = 0;
 
         if (endRadius[0] === startRadius[0] && endRadius[1] === startRadius[1]) {
           polygons.push(fromPoints(start, point(0, t1, endRadius), point(0, t0, endRadius)));
@@ -7862,7 +7949,7 @@
 
     var cylinder_1 = cylinder$1;
 
-    const { sin: sin$1, cos: cos$1 } = trigonometry;
+    const { sin: sin$2, cos: cos$2 } = trigonometry;
 
     const { isGTE: isGTE$6, isNumberArray: isNumberArray$7 } = commonChecks;
 
@@ -7904,13 +7991,13 @@
       const p2 = vec3$1.create();
       for (let slice1 = 0; slice1 <= segments; slice1++) {
         const angle = 2 * Math.PI * slice1 / segments;
-        const cylinderpoint = vec3$1.add(vec3$1.create(), vec3$1.scale(p1, xvector, cos$1(angle)), vec3$1.scale(p2, yvector, sin$1(angle)));
+        const cylinderpoint = vec3$1.add(vec3$1.create(), vec3$1.scale(p1, xvector, cos$2(angle)), vec3$1.scale(p2, yvector, sin$2(angle)));
         if (slice1 > 0) {
           let prevcospitch, prevsinpitch;
           for (let slice2 = 0; slice2 <= qsegments; slice2++) {
             const pitch = 0.5 * Math.PI * slice2 / qsegments;
-            const cospitch = cos$1(pitch);
-            const sinpitch = sin$1(pitch);
+            const cospitch = cos$2(pitch);
+            const sinpitch = sin$2(pitch);
             if (slice2 > 0) {
               let points = [];
               let point;
@@ -7925,7 +8012,7 @@
               point = vec3$1.subtract(vec3$1.create(), vec3$1.scale(p1, prevcylinderpoint, cospitch), vec3$1.scale(p2, zvector, sinpitch));
               points.push(vec3$1.add(point, point, center));
 
-              polygons.push(poly3.fromPoints(points));
+              polygons.push(poly3.create(points));
 
               points = [];
               point = vec3$1.add(vec3$1.create(), vec3$1.scale(p1, prevcylinderpoint, prevcospitch), vec3$1.scale(p2, zvector, prevsinpitch));
@@ -7940,7 +8027,7 @@
               points.push(vec3$1.add(vec3$1.create(), center, point));
               points.reverse();
 
-              polygons.push(poly3.fromPoints(points));
+              polygons.push(poly3.create(points));
             }
             prevcospitch = cospitch;
             prevsinpitch = sinpitch;
@@ -8012,7 +8099,7 @@
       }
 
       const polygons = faces.map((face, findex) => {
-        const polygon = poly3.fromPoints(face.map((pindex) => points[pindex]));
+        const polygon = poly3.create(face.map((pindex) => points[pindex]));
         if (colors && colors[findex]) polygon.color = colors[findex];
         return polygon
       });
@@ -8097,7 +8184,7 @@
 
             // -- normalize
             for (let k = 0; k < 3; k++) {
-              const r = Math.hypot(q[k][0], q[k][1], q[k][2]);
+              const r = vec3$1.length(q[k]);
               for (let l = 0; l < 3; l++) {
                 q[k][l] /= r;
               }
@@ -8113,7 +8200,7 @@
 
               // -- normalize
               for (let k = 0; k < 3; k++) {
-                const r = Math.hypot(q[k][0], q[k][1], q[k][2]);
+                const r = vec3$1.length(q[k]);
                 for (let l = 0; l < 3; l++) {
                   q[k][l] /= r;
                 }
@@ -8286,12 +8373,14 @@
 
 
 
+    const { sin: sin$1, cos: cos$1 } = trigonometry;
+
     const { isGT: isGT$6, isGTE: isGTE$4, isNumberArray: isNumberArray$4 } = commonChecks;
 
     const createCorners = (center, size, radius, segments, slice, positive) => {
       const pitch = (Math.PI / 2) * slice / segments;
-      const cospitch = Math.cos(pitch);
-      const sinpitch = Math.sin(pitch);
+      const cospitch = cos$1(pitch);
+      const sinpitch = sin$1(pitch);
 
       const layersegments = segments - slice;
       let layerradius = radius * cospitch;
@@ -8337,10 +8426,10 @@
         const previous = previousCorners[i];
         const current = currentCorners[i];
         for (let j = 0; j < (previous.length - 1); j++) {
-          polygons.push(poly3.fromPoints([previous[j], previous[j + 1], current[j]]));
+          polygons.push(poly3.create([previous[j], previous[j + 1], current[j]]));
 
           if (j < (current.length - 1)) {
-            polygons.push(poly3.fromPoints([current[j], previous[j + 1], current[j + 1]]));
+            polygons.push(poly3.create([current[j], previous[j + 1], current[j + 1]]));
           }
         }
       }
@@ -8361,7 +8450,7 @@
         const p1 = previous[0];
         const c1 = current[0];
 
-        polygons.push(poly3.fromPoints([p0, p1, c1, c0]));
+        polygons.push(poly3.create([p0, p1, c1, c0]));
       }
       return polygons
     };
@@ -8384,7 +8473,7 @@
       const polygons = [];
       for (let i = 0; i < topPoints.length; i++) {
         const j = (i + 1) % topPoints.length;
-        polygons.push(poly3.fromPoints([bottomPoints[i], bottomPoints[j], topPoints[j], topPoints[i]]));
+        polygons.push(poly3.create([bottomPoints[i], bottomPoints[j], topPoints[j], topPoints[i]]));
       }
       return polygons
     };
@@ -8448,10 +8537,10 @@
         if (slice === segments) {
           // add the top
           let points = cornersPos.map((corner) => corner[0]);
-          polygons.push(poly3.fromPoints(points));
+          polygons.push(poly3.create(points));
           // add the bottom
           points = cornersNeg.map((corner) => corner[0]);
-          polygons.push(poly3.fromPoints(points));
+          polygons.push(poly3.create(points));
         }
 
         prevCornersPos = cornersPos;
@@ -8531,7 +8620,7 @@
       const fromPoints = (points) => {
         // adjust the points to center
         const newpoints = points.map((point) => vec3$1.add(point, point, center));
-        return poly3.fromPoints(newpoints)
+        return poly3.create(newpoints)
       };
 
       const polygons = [];
@@ -9365,7 +9454,7 @@
      * link two polygon vertices with a bridge; if the vertices belong to the same ring, it splits polygon into two
      * if one belongs to the outer ring and another to a hole, it merges it into a single ring
      */
-    const splitPolygon$3 = (a, b) => {
+    const splitPolygon$2 = (a, b) => {
       const a2 = new Node$1(a.i, a.x, a.y);
       const b2 = new Node$1(b.i, b.x, b.y);
       const an = a.next;
@@ -9440,9 +9529,9 @@
      */
     const equals = (p1, p2) => p1.x === p2.x && p1.y === p2.y;
 
-    var linkedPolygon_1 = { cureLocalIntersections: cureLocalIntersections$1, filterPoints: filterPoints$2, isValidDiagonal: isValidDiagonal$1, linkedPolygon: linkedPolygon$2, locallyInside: locallyInside$1, splitPolygon: splitPolygon$3 };
+    var linkedPolygon_1 = { cureLocalIntersections: cureLocalIntersections$1, filterPoints: filterPoints$2, isValidDiagonal: isValidDiagonal$1, linkedPolygon: linkedPolygon$2, locallyInside: locallyInside$1, splitPolygon: splitPolygon$2 };
 
-    const { filterPoints: filterPoints$1, linkedPolygon: linkedPolygon$1, locallyInside, splitPolygon: splitPolygon$2 } = linkedPolygon_1;
+    const { filterPoints: filterPoints$1, linkedPolygon: linkedPolygon$1, locallyInside, splitPolygon: splitPolygon$1 } = linkedPolygon_1;
     const { area: area$4, pointInTriangle: pointInTriangle$1 } = triangle$1;
 
     /*
@@ -9482,7 +9571,7 @@
         return outerNode
       }
 
-      const bridgeReverse = splitPolygon$2(bridge, hole);
+      const bridgeReverse = splitPolygon$1(bridge, hole);
 
       // filter colinear points around the cuts
       const filteredBridge = filterPoints$1(bridge, bridge.next);
@@ -9575,7 +9664,7 @@
     var eliminateHoles_1 = eliminateHoles;
 
     const { removeNode, sortLinked } = linkedList;
-    const { cureLocalIntersections, filterPoints, isValidDiagonal, linkedPolygon, splitPolygon: splitPolygon$1 } = linkedPolygon_1;
+    const { cureLocalIntersections, filterPoints, isValidDiagonal, linkedPolygon, splitPolygon } = linkedPolygon_1;
     const { area: area$3, pointInTriangle } = triangle$1;
 
     /*
@@ -9766,7 +9855,7 @@
         while (b !== a.prev) {
           if (a.i !== b.i && isValidDiagonal(a, b)) {
             // split the polygon in two by the diagonal
-            let c = splitPolygon$1(a, b);
+            let c = splitPolygon(a, b);
 
             // filter colinear points around the cuts
             a = filterPoints(a, a.next);
@@ -10066,48 +10155,62 @@
     /*
      * Mend gaps in a 2D slice to make it a closed polygon
      */
-    const repairSlice = (slice) => {
+    const repair = (slice) => {
       if (!slice.edges) return slice
-      const vertexMap = {}; // string key to vertex map
-      const edgeCount = {}; // count of (in - out) edges
-      slice.edges.forEach((edge) => {
+      let edges = slice.edges;
+      const vertexMap = new Map(); // string key to vertex map
+      const edgeCount = new Map(); // count of (in - out) edges
+
+      // Remove self-edges
+      edges = edges.filter((e) => !vec3$1.equals(e[0], e[1]));
+
+      // build vertex and edge count maps
+      edges.forEach((edge) => {
         const inKey = edge[0].toString();
         const outKey = edge[1].toString();
-        vertexMap[inKey] = edge[0];
-        vertexMap[outKey] = edge[1];
-        edgeCount[inKey] = (edgeCount[inKey] || 0) + 1; // in
-        edgeCount[outKey] = (edgeCount[outKey] || 0) - 1; // out
+        vertexMap.set(inKey, edge[0]);
+        vertexMap.set(outKey, edge[1]);
+        edgeCount.set(inKey, (edgeCount.get(inKey) || 0) + 1); // in
+        edgeCount.set(outKey, (edgeCount.get(outKey) || 0) - 1); // out
       });
+
       // find vertices which are missing in or out edges
-      const missingIn = Object.keys(edgeCount).filter((e) => edgeCount[e] < 0);
-      const missingOut = Object.keys(edgeCount).filter((e) => edgeCount[e] > 0);
+      const missingIn = [];
+      const missingOut = [];
+      edgeCount.forEach((count, vertex) => {
+        if (count < 0) missingIn.push(vertex);
+        if (count > 0) missingOut.push(vertex);
+      });
+
       // pairwise distance of bad vertices
       missingIn.forEach((key1) => {
-        const v1 = vertexMap[key1];
+        const v1 = vertexMap.get(key1);
+
         // find the closest vertex that is missing an out edge
         let bestDistance = Infinity;
         let bestReplacement;
         missingOut.forEach((key2) => {
-          const v2 = vertexMap[key2];
-          const distance = Math.hypot(v1[0] - v2[0], v1[1] - v2[1]);
+          const v2 = vertexMap.get(key2);
+          const distance = vec3$1.distance(v1, v2);
           if (distance < bestDistance) {
             bestDistance = distance;
             bestReplacement = v2;
           }
         });
-        console.warn(`repairSlice: repairing vertex gap ${v1} to ${bestReplacement} distance ${bestDistance}`);
+        console.warn(`slice.repair: repairing vertex gap ${v1} to ${bestReplacement} distance ${bestDistance}`);
+
         // merge broken vertices
-        slice.edges.forEach((edge) => {
-          if (edge[0].toString() === key1) edge[0] = bestReplacement;
-          if (edge[1].toString() === key1) edge[1] = bestReplacement;
+        edges = edges.map((edge) => {
+          if (edge[0].toString() === key1) return [bestReplacement, edge[1]]
+          if (edge[1].toString() === key1) return [edge[0], bestReplacement]
+          return edge
         });
       });
-      // Remove self-edges
-      slice.edges = slice.edges.filter((e) => !vec3$1.equals(e[0], e[1]));
-      return slice
+
+      return create_1(edges)
     };
 
-    var repairSlice_1 = repairSlice;
+    var repair_1 = repair;
 
     const { EPS: EPS$6 } = constants;
 
@@ -10175,11 +10278,11 @@
       edges0.forEach((edge0, i) => {
         const edge1 = edges1[i];
 
-        const poly0 = poly3.fromPoints([edge0[0], edge0[1], edge1[1]]);
+        const poly0 = poly3.create([edge0[0], edge0[1], edge1[1]]);
         const poly0area = poly3.measureArea(poly0);
         if (Number.isFinite(poly0area) && poly0area > EPSAREA) walls.push(poly0);
 
-        const poly1 = poly3.fromPoints([edge0[0], edge1[1], edge1[0]]);
+        const poly1 = poly3.create([edge0[0], edge1[1], edge1[0]]);
         const poly1area = poly3.measureArea(poly1);
         if (Number.isFinite(poly1area) && poly1area > EPSAREA) walls.push(poly1);
       });
@@ -10238,7 +10341,8 @@
 
       // Repair gaps in the base slice
       if (repair) {
-        repairSlice_1(base);
+        // note: base must be a slice, if base is geom2 this doesn't repair
+        base = repair_1(base);
       }
 
       const sMax = numberOfSlices - 1;
@@ -10405,7 +10509,11 @@
 
       const matrix = mat4.create();
       const createSlice = (progress, index, base) => {
-        const Zrotation = rotationPerSlice * index + startAngle;
+        let Zrotation = rotationPerSlice * index + startAngle;
+        // fix rounding error when rotating 2 * PI radians
+        if (totalRotation === Math.PI * 2 && index === segments) {
+          Zrotation = startAngle;
+        }
         mat4.multiply(matrix, mat4.fromZRotation(matrix, Zrotation), mat4.fromXRotation(mat4.create(), Math.PI / 2));
 
         return slice.transform(matrix, base)
@@ -10619,16 +10727,19 @@
 
     var torus_1 = torus$1;
 
-    const { isNumberArray } = commonChecks;
+    const { NEPS } = constants;
 
-    const NEPS$2 = 1e-13;
+
+
+
+    const { isNumberArray } = commonChecks;
 
     // returns angle C
     const solveAngleFromSSS = (a, b, c) => Math.acos(((a * a) + (b * b) - (c * c)) / (2 * a * b));
 
     // returns side c
     const solveSideFromSAS = (a, C, b) => {
-      if (C > NEPS$2) {
+      if (C > NEPS) {
         return Math.sqrt(a * a + b * b - 2 * a * b * Math.cos(C))
       }
 
@@ -10639,7 +10750,7 @@
     // AAA is when three angles of a triangle, but no sides
     const solveAAA = (angles) => {
       const eps = Math.abs(angles[0] + angles[1] + angles[2] - Math.PI);
-      if (eps > NEPS$2) throw new Error('AAA triangles require angles that sum to PI')
+      if (eps > NEPS) throw new Error('AAA triangles require angles that sum to PI')
 
       const A = angles[0];
       const B = angles[1];
@@ -10658,9 +10769,9 @@
     const solveAAS = (values) => {
       const A = values[0];
       const B = values[1];
-      const C = Math.PI + NEPS$2 - A - B;
+      const C = Math.PI + NEPS - A - B;
 
-      if (C < NEPS$2) throw new Error('AAS triangles require angles that sum to PI')
+      if (C < NEPS) throw new Error('AAS triangles require angles that sum to PI')
 
       const a = values[2];
       const b = (a / Math.sin(A)) * Math.sin(B);
@@ -10672,9 +10783,9 @@
     const solveASA = (values) => {
       const A = values[0];
       const B = values[2];
-      const C = Math.PI + NEPS$2 - A - B;
+      const C = Math.PI + NEPS - A - B;
 
-      if (C < NEPS$2) throw new Error('ASA triangles require angles that sum to PI')
+      if (C < NEPS) throw new Error('ASA triangles require angles that sum to PI')
 
       const c = values[1];
       const a = (c / Math.sin(C)) * Math.sin(A);
@@ -11207,14 +11318,12 @@
      */
     var utils = {
       areAllShapesTheSameType: areAllShapesTheSameType_1,
-      cos: trigonometry.cos,
       degToRad: degToRad_1,
       flatten: flatten_1,
       fnNumberSort: fnNumberSort_1,
       insertSorted: insertSorted_1,
       radiusToSegments: radiusToSegments_1,
-      radToDeg: radToDeg_1,
-      sin: trigonometry.sin
+      radToDeg: radToDeg_1
     };
 
     const fromFakePolygon = (epsilon, polygon) => {
@@ -11276,7 +11385,7 @@
         vec3$1.fromVec2(vec3$1.create(), side[1], z1),
         vec3$1.fromVec2(vec3$1.create(), side[0], z1)
       ];
-      return poly3.fromPoints(points)
+      return poly3.create(points)
     };
 
     /*
@@ -11525,15 +11634,14 @@
       const orthobasis = new OrthoNormalBasis_1(plane);
       const polygonvertices2d = []; // array of array of Vector2D
       const polygontopvertexindexes = []; // array of indexes of topmost vertex per polygon
-      const topy2polygonindexes = {};
-      const ycoordinatetopolygonindexes = {};
-
-      const ycoordinatebins = {};
+      const topy2polygonindexes = new Map();
+      const ycoordinatetopolygonindexes = new Map();
 
       // convert all polygon vertices to 2D
       // Make a list of all encountered y coordinates
       // And build a map of all polygons that have a vertex at a certain y coordinate:
-      const ycoordinateBinningFactor = 1.0 / EPS$5 * 10;
+      const ycoordinatebins = new Map();
+      const ycoordinateBinningFactor = 10 / EPS$5;
       for (let polygonindex = 0; polygonindex < numpolygons; polygonindex++) {
         const poly3d = sourcepolygons[polygonindex];
         let vertices2d = [];
@@ -11548,15 +11656,15 @@
             // close to each other, give them the same y coordinate:
             const ycoordinatebin = Math.floor(pos2d[1] * ycoordinateBinningFactor);
             let newy;
-            if (ycoordinatebin in ycoordinatebins) {
-              newy = ycoordinatebins[ycoordinatebin];
-            } else if (ycoordinatebin + 1 in ycoordinatebins) {
-              newy = ycoordinatebins[ycoordinatebin + 1];
-            } else if (ycoordinatebin - 1 in ycoordinatebins) {
-              newy = ycoordinatebins[ycoordinatebin - 1];
+            if (ycoordinatebins.has(ycoordinatebin)) {
+              newy = ycoordinatebins.get(ycoordinatebin);
+            } else if (ycoordinatebins.has(ycoordinatebin + 1)) {
+              newy = ycoordinatebins.get(ycoordinatebin + 1);
+            } else if (ycoordinatebins.has(ycoordinatebin - 1)) {
+              newy = ycoordinatebins.get(ycoordinatebin - 1);
             } else {
               newy = pos2d[1];
-              ycoordinatebins[ycoordinatebin] = pos2d[1];
+              ycoordinatebins.set(ycoordinatebin, pos2d[1]);
             }
             pos2d = vec2.fromValues(pos2d[0], newy);
             vertices2d.push(pos2d);
@@ -11568,10 +11676,12 @@
             if ((i === 0) || (y > maxy)) {
               maxy = y;
             }
-            if (!(y in ycoordinatetopolygonindexes)) {
-              ycoordinatetopolygonindexes[y] = {};
+            let polygonindexes = ycoordinatetopolygonindexes.get(y);
+            if (!polygonindexes) {
+              polygonindexes = {}; // PERF
+              ycoordinatetopolygonindexes.set(y, polygonindexes);
             }
-            ycoordinatetopolygonindexes[y][polygonindex] = true;
+            polygonindexes[polygonindex] = true;
           }
           if (miny >= maxy) {
             // degenerate polygon, all vertices have same y coordinate. Just ignore it from now:
@@ -11579,10 +11689,12 @@
             numvertices = 0;
             minindex = -1;
           } else {
-            if (!(miny in topy2polygonindexes)) {
-              topy2polygonindexes[miny] = [];
+            let polygonindexes = topy2polygonindexes.get(miny);
+            if (!polygonindexes) {
+              polygonindexes = [];
+              topy2polygonindexes.set(miny, polygonindexes);
             }
-            topy2polygonindexes[miny].push(polygonindex);
+            polygonindexes.push(polygonindex);
           }
         } // if(numvertices > 0)
         // reverse the vertex order:
@@ -11591,8 +11703,9 @@
         polygonvertices2d.push(vertices2d);
         polygontopvertexindexes.push(minindex);
       }
+
       const ycoordinates = [];
-      for (const ycoordinate in ycoordinatetopolygonindexes) ycoordinates.push(ycoordinate);
+      ycoordinatetopolygonindexes.forEach((polylist, y) => ycoordinates.push(y));
       ycoordinates.sort(fnNumberSort);
 
       // Now we will iterate over all y coordinates, from lowest to highest y coordinate
@@ -11610,15 +11723,14 @@
       let prevoutpolygonrow = [];
       for (let yindex = 0; yindex < ycoordinates.length; yindex++) {
         const newoutpolygonrow = [];
-        const ycoordinateasstring = ycoordinates[yindex];
-        const ycoordinate = Number(ycoordinateasstring);
+        const ycoordinate = ycoordinates[yindex];
 
         // update activepolygons for this y coordinate:
         // - Remove any polygons that end at this y coordinate
         // - update leftvertexindex and rightvertexindex (which point to the current vertex index
         //   at the the left and right side of the polygon
         // Iterate over all polygons that have a corner at this y coordinate:
-        const polygonindexeswithcorner = ycoordinatetopolygonindexes[ycoordinateasstring];
+        const polygonindexeswithcorner = ycoordinatetopolygonindexes.get(ycoordinate);
         for (let activepolygonindex = 0; activepolygonindex < activepolygons.length; ++activepolygonindex) {
           const activepolygon = activepolygons[activepolygonindex];
           const polygonindex = activepolygon.polygonindex;
@@ -11668,7 +11780,7 @@
           nextycoordinate = Number(ycoordinates[yindex + 1]);
           const middleycoordinate = 0.5 * (ycoordinate + nextycoordinate);
           // update activepolygons by adding any polygons that start here:
-          const startingpolygonindexes = topy2polygonindexes[ycoordinateasstring];
+          const startingpolygonindexes = topy2polygonindexes.get(ycoordinate);
           for (const polygonindexKey in startingpolygonindexes) {
             const polygonindex = startingpolygonindexes[polygonindexKey];
             const vertices2d = polygonvertices2d[polygonindex];
@@ -11714,8 +11826,6 @@
             });
           } // for(let polygonindex in startingpolygonindexes)
         } //  yindex < ycoordinates.length-1
-        // if( (yindex === ycoordinates.length-1) || (nextycoordinate - ycoordinate > EPS) )
-        // FIXME : what ???
 
         // Now activepolygons is up to date
         // Build the output polygons for the next row in newoutpolygonrow:
@@ -11754,19 +11864,19 @@
         } // for(activepolygon in activepolygons)
         if (yindex > 0) {
           // try to match the new polygons against the previous row:
-          const prevcontinuedindexes = {};
-          const matchedindexes = {};
+          const prevcontinuedindexes = new Set();
+          const matchedindexes = new Set();
           for (let i = 0; i < newoutpolygonrow.length; i++) {
             const thispolygon = newoutpolygonrow[i];
             for (let ii = 0; ii < prevoutpolygonrow.length; ii++) {
-              if (!matchedindexes[ii]) { // not already processed?
+              if (!matchedindexes.has(ii)) { // not already processed?
                 // We have a match if the sidelines are equal or if the top coordinates
                 // are on the sidelines of the previous polygon
                 const prevpolygon = prevoutpolygonrow[ii];
                 if (vec2.distance(prevpolygon.bottomleft, thispolygon.topleft) < EPS$5) {
                   if (vec2.distance(prevpolygon.bottomright, thispolygon.topright) < EPS$5) {
                     // Yes, the top of this polygon matches the bottom of the previous:
-                    matchedindexes[ii] = true;
+                    matchedindexes.add(ii);
                     // Now check if the joined polygon would remain convex:
                     const v1 = line2.direction(thispolygon.leftline);
                     const v2 = line2.direction(prevpolygon.leftline);
@@ -11786,16 +11896,16 @@
                       thispolygon.outpolygon = prevpolygon.outpolygon;
                       thispolygon.leftlinecontinues = leftlinecontinues;
                       thispolygon.rightlinecontinues = rightlinecontinues;
-                      prevcontinuedindexes[ii] = true;
+                      prevcontinuedindexes.add(ii);
                     }
                     break
                   }
                 }
-              } // if(!prevcontinuedindexes[ii])
+              } // if(!prevcontinuedindexes.has(ii))
             } // for ii
           } // for i
           for (let ii = 0; ii < prevoutpolygonrow.length; ii++) {
-            if (!prevcontinuedindexes[ii]) {
+            if (!prevcontinuedindexes.has(ii)) {
               // polygon ends here
               // Finish the polygon with the last point(s):
               const prevpolygon = prevoutpolygonrow[ii];
@@ -11845,19 +11955,10 @@
 
     var reTesselateCoplanarPolygons_1 = reTesselateCoplanarPolygons;
 
-    // Normals are directional vectors with component values from 0 to 1.0, requiring specialized comparison
-    // This EPS is derived from a series of tests to determine the optimal precision for comparing coplanar polygons,
-    // as provided by the sphere primitive at high segmentation
-    // This EPS is for 64 bit Number values
-    const NEPS$1 = 1e-13;
-
-    // Compare two normals (unit vectors) for equality.
-    const aboutEqualNormals$1 = (a, b) => (Math.abs(a[0] - b[0]) <= NEPS$1 && Math.abs(a[1] - b[1]) <= NEPS$1 && Math.abs(a[2] - b[2]) <= NEPS$1);
-
     const coplanar$1 = (plane1, plane2) => {
       // expect the same distance from the origin, within tolerance
       if (Math.abs(plane1[3] - plane2[3]) < 0.00000015) {
-        return aboutEqualNormals$1(plane1, plane2)
+        return aboutEqualNormals_1(plane1, plane2)
       }
       return false
     };
@@ -12350,8 +12451,8 @@
         const polygon = this.polygon;
         if (polygon) {
           const bound = poly3.measureBoundingSphere(polygon);
-          const sphereradius = bound[1] + EPS$2; // ensure radius is LARGER then polygon
-          const spherecenter = bound[0];
+          const sphereradius = bound[3] + EPS$2; // ensure radius is LARGER then polygon
+          const spherecenter = bound;
           const d = vec3$1.dot(splane, spherecenter) - splane[3];
           if (d > sphereradius) {
             frontnodes.push(this);
@@ -13230,14 +13331,14 @@
       const polygon2 = poly3.transform(mat4.fromTranslation(mat4.create(), offsetvector), polygon1);
       const numvertices = polygon1.vertices.length;
       for (let i = 0; i < numvertices; i++) {
-        const sidefacepoints = [];
         const nexti = (i < (numvertices - 1)) ? i + 1 : 0;
-        sidefacepoints.push(polygon1.vertices[i]);
-        sidefacepoints.push(polygon2.vertices[i]);
-        sidefacepoints.push(polygon2.vertices[nexti]);
-        sidefacepoints.push(polygon1.vertices[nexti]);
-        const sidefacepolygon = poly3.fromPoints(sidefacepoints);
-        newpolygons.push(sidefacepolygon);
+        const sideFacePolygon = poly3.create([
+          polygon1.vertices[i],
+          polygon2.vertices[i],
+          polygon2.vertices[nexti],
+          polygon1.vertices[nexti]
+        ]);
+        newpolygons.push(sideFacePolygon);
       }
       newpolygons.push(poly3.invert(polygon2));
 
@@ -13247,6 +13348,7 @@
     var extrudePolygon_1 = extrudePolygon;
 
     const { EPS } = constants;
+
 
 
 
@@ -13414,7 +13516,7 @@
               startfacevertices.push(p1);
               endfacevertices.push(p2);
               const points = [prevp2, p2, p1, prevp1];
-              const polygon = poly3.fromPoints(points);
+              const polygon = poly3.create(points);
               polygons.push(polygon);
             }
             prevp1 = p1;
@@ -13422,8 +13524,8 @@
           }
         }
         endfacevertices.reverse();
-        polygons.push(poly3.fromPoints(startfacevertices));
-        polygons.push(poly3.fromPoints(endfacevertices));
+        polygons.push(poly3.create(startfacevertices));
+        polygons.push(poly3.create(endfacevertices));
 
         const cylinder = geom3$2.create(polygons);
         result = unionGeom3Sub(result, cylinder);
@@ -13981,32 +14083,30 @@
 
       // project the polygons to the plane
       const polygons = geom3$2.toPolygons(geometry);
-      const projpolys = [];
+      let projpolys = [];
       for (let i = 0; i < polygons.length; i++) {
         const newpoints = polygons[i].vertices.map((v) => plane$1.projectionOfPoint(projplane, v));
         const newpoly = poly3.create(newpoints);
-        // only keep projections that have a measurable area
-        if (poly3.measureArea(newpoly) < epsilonArea) continue
         // only keep projections that face the same direction as the plane
         const newplane = poly3.plane(newpoly);
         if (!aboutEqualNormals_1(projplane, newplane)) continue
+        // only keep projections that have a measurable area
+        if (poly3.measureArea(newpoly) < epsilonArea) continue
         projpolys.push(newpoly);
       }
-      // union the projected polygons to eliminate overlaying polygons
-      let projection = geom3$2.create(projpolys);
-      projection = unionGeom3(projection, projection);
-      // rotate the projection to lay on X/Y axes if necessary
+
+      // rotate the polygons to lay on X/Y axes if necessary
       if (!aboutEqualNormals_1(projplane, [0, 0, 1])) {
         const rotation = mat4.fromVectorRotation(mat4.create(), projplane, [0, 0, 1]);
-        projection = geom3$2.transform(rotation, projection);
+        projpolys = projpolys.map((p) => poly3.transform(rotation, p));
       }
 
-      // convert the projection (polygons) into a series of 2D geometry
-      const projections2D = geom3$2.toPolygons(projection).map((p) => geom2$2.fromPoints(poly3.toPoints(p)));
-      // union the 2D geometries to obtain the outline of the projection
-      projection = unionGeom2(projections2D);
+      // sort the polygons to allow the union to ignore small pieces efficiently
+      projpolys = projpolys.sort((a, b) => poly3.measureArea(b) - poly3.measureArea(a));
 
-      return projection
+      // convert polygons to geometry, and union all pieces into a single geometry
+      const projgeoms = projpolys.map((p) => geom2$2.fromPoints(p.vertices));
+      return unionGeom2(projgeoms)
     };
 
     /**
@@ -14061,112 +14161,94 @@
     };
     var extrusions_2 = extrusions.extrudeLinear;
 
-    const angleBetweenPoints = (p0, p1) => Math.atan2((p1[1] - p0[1]), (p1[0] - p0[0]));
-
-    const compareIndex = (index1, index2) => {
-      if (index1.angle < index2.angle) {
-        return -1
-      } else if (index1.angle > index2.angle) {
-        return 1
-      } else {
-        if (index1.distance < index2.distance) {
-          return -1
-        } else if (index1.distance > index2.distance) {
-          return 1
-        }
-      }
-      return 0
-    };
-
-    // Ported from https://github.com/bkiers/GrahamScan
-    const compute = (points) => {
-      if (points.length < 3) {
-        return points
-      }
-
-      // Find the lowest point
-      let min = 0;
-      points.forEach((point, i) => {
-        const minpoint = points[min];
-        if (point[1] === minpoint[1]) {
-          if (point[0] < minpoint[0]) {
-            min = i;
-          }
-        } else if (point[1] < minpoint[1]) {
-          min = i;
+    /*
+     * Create a convex hull of the given set of points, where each point is an array of [x,y].
+     * Uses https://en.wikipedia.org/wiki/Graham_scan
+     * @param {Array} uniquePoints - list of UNIQUE points from which to create a hull
+     * @returns {Array} a list of points that form the hull
+     */
+    const hullPoints2 = (uniquePoints) => {
+      // find min point
+      let min = vec2.fromValues(Infinity, Infinity);
+      uniquePoints.forEach((point) => {
+        if (point[1] < min[1] || (point[1] === min[1] && point[0] < min[0])) {
+          min = point;
         }
       });
 
-      // Calculate angles and distances from the lowest point
-      const al = [];
-      let angle = 0.0;
-      let dist = 0.0;
-      for (let i = 0; i < points.length; i++) {
-        if (i === min) {
-          continue
+      // gather information for sorting by polar coordinates (point, angle, distSq)
+      const points = [];
+      uniquePoints.forEach((point) => {
+        // use faster fakeAtan2 instead of Math.atan2
+        const angle = fakeAtan2(point[1] - min[1], point[0] - min[0]);
+        const distSq = vec2.squaredDistance(point, min);
+        points.push({ point, angle, distSq });
+      });
+
+      // sort by polar coordinates
+      points.sort((pt1, pt2) => pt1.angle < pt2.angle ? -1 : pt1.angle > pt2.angle ? 1 :
+        pt1.distSq < pt2.distSq ? -1 : pt1.distSq > pt2.distSq ? 1 : 0);
+
+      const stack = []; // start with empty stack
+      points.forEach((point) => {
+        let cnt = stack.length;
+        while (cnt > 1 && ccw(stack[cnt - 2], stack[cnt - 1], point.point) <= Number.EPSILON) {
+          stack.pop(); // get rid of colinear and interior (clockwise) points
+          cnt = stack.length;
         }
-        angle = angleBetweenPoints(points[min], points[i]);
-        if (angle < 0) {
-          angle += Math.PI;
-        }
-        dist = vec2.squaredDistance(points[min], points[i]);
-        al.push({ index: i, angle: angle, distance: dist });
-      }
+        stack.push(point.point);
+      });
 
-      al.sort((a, b) => compareIndex(a, b));
-
-      // Wind around the points CCW, removing interior points
-      const stack = new Array(points.length + 1);
-      let j = 2;
-      for (let i = 0; i < points.length; i++) {
-        if (i === min) {
-          continue
-        }
-        stack[j] = al[j - 2].index;
-        j++;
-      }
-      stack[0] = stack[points.length];
-      stack[1] = min;
-
-      // clockwise < 0, colinear = 0, counter clockwise > 0
-      const ccw = (i1, i2, i3) => (points[i2][0] - points[i1][0]) * (points[i3][1] - points[i1][1]) - (points[i2][1] - points[i1][1]) * (points[i3][0] - points[i1][0]);
-
-      let tmp;
-      let M = 2;
-      for (let i = 3; i <= points.length; i++) {
-        while (ccw(stack[M - 1], stack[M], stack[i]) < Number.EPSILON) {
-          M--;
-        }
-        M++;
-        tmp = stack[i];
-        stack[i] = stack[M];
-        stack[M] = tmp;
-      }
-
-      // Return the indices to the points
-      const indices = new Array(M);
-      for (let i = 0; i < M; i++) {
-        indices[i] = stack[i + 1];
-      }
-      return indices
+      return stack
     };
 
-    /*
-     * Create a convex hull of the given set of points,  where each point is an array of [x,y].
-     * @param {Array} uniquepoints - list of UNIQUE points from which to create a hull
-     * @returns {Array} a list of points that form the hull
-     */
-    const hullPoints2 = (uniquepoints) => {
-      const indices = compute(uniquepoints);
+    // returns: < 0 clockwise, 0 colinear, > 0 counter-clockwise
+    const ccw = (v1, v2, v3) => (v2[0] - v1[0]) * (v3[1] - v1[1]) - (v2[1] - v1[1]) * (v3[0] - v1[0]);
 
-      let hullpoints = [];
-      if (Array.isArray(indices)) {
-        hullpoints = indices.map((index) => uniquepoints[index]);
+    // Returned "angle" is really 1/tan (inverse of slope) made negative to increase with angle.
+    // This function is strictly for sorting in this algorithm.
+    const fakeAtan2 = (y, x) => {
+      // The "if" is a special case for when the minimum vector found in loop above is present.
+      // We need to ensure that it sorts as the minimum point. Otherwise, this becomes NaN.
+      if (y === 0 && x === 0) {
+        return -Infinity
+      } else {
+        return -x / y
       }
-      return hullpoints
     };
 
     var hullPoints2_1 = hullPoints2;
+
+    /*
+     * Return the unique vertices of a geometry
+     */
+    const toUniquePoints = (geometries) => {
+      const found = new Set();
+      const uniquePoints = [];
+
+      const addPoint = (point) => {
+        const key = point.toString();
+        if (!found.has(key)) {
+          uniquePoints.push(point);
+          found.add(key);
+        }
+      };
+
+      geometries.forEach((geometry) => {
+        if (geom2$2.isA(geometry)) {
+          geom2$2.toPoints(geometry).forEach(addPoint);
+        } else if (geom3$2.isA(geometry)) {
+          // points are grouped by polygon
+          geom3$2.toPoints(geometry).forEach((points) => points.forEach(addPoint));
+        } else if (path2$2.isA(geometry)) {
+          path2$2.toPoints(geometry).forEach(addPoint);
+        }
+      });
+
+      return uniquePoints
+    };
+
+    var toUniquePoints_1 = toUniquePoints;
 
     /*
      * Create a convex hull of the given geometries (path2).
@@ -14177,23 +14259,12 @@
       geometries = flatten_1(geometries);
 
       // extract the unique points from the geometries
-      const uniquepoints = [];
-      const found = new Set();
-      geometries.forEach((geometry) => {
-        const points = path2$2.toPoints(geometry);
-        points.forEach((point) => {
-          const key = point.toString();
-          if (!found.has(key)) {
-            uniquepoints.push(point);
-            found.add(key);
-          }
-        });
-      });
+      const unique = toUniquePoints_1(geometries);
 
-      const hullpoints = hullPoints2_1(uniquepoints);
+      const hullPoints = hullPoints2_1(unique);
 
       // assemble a new geometry from the list of points
-      return path2$2.fromPoints({ closed: true }, hullpoints)
+      return path2$2.fromPoints({ closed: true }, hullPoints)
     };
 
     var hullPath2_1 = hullPath2;
@@ -14207,28 +14278,15 @@
       geometries = flatten_1(geometries);
 
       // extract the unique points from the geometries
-      const uniquepoints = [];
-      const found = new Map();
-      for (let g = 0; g < geometries.length; g++) {
-        const sides = geom2$2.toSides(geometries[g]);
-        for (let s = 0; s < sides.length; s++) {
-          const side = sides[s];
-          const point = side[0];
-          const id = `${point[0]},${point[1]}`;
-          if (found.has(id)) continue
-          uniquepoints.push(point);
-          found.set(id, true);
-        }
-      }
-      found.clear();
+      const unique = toUniquePoints_1(geometries);
 
-      const hullpoints = hullPoints2_1(uniquepoints);
+      const hullPoints = hullPoints2_1(unique);
 
       // NOTE: more than three points are required to create a new geometry
-      if (hullpoints.length < 3) return geom2$2.create()
+      if (hullPoints.length < 3) return geom2$2.create()
 
       // assemble a new geometry from the list of points
-      return geom2$2.fromPoints(hullpoints)
+      return geom2$2.fromPoints(hullPoints)
     };
 
     var hullGeom2_1 = hullGeom2;
@@ -15612,26 +15670,12 @@
       if (geometries.length === 1) return geometries[0]
 
       // extract the unique vertices from the geometries
-      const uniquevertices = [];
-      const found = new Map();
-      for (let g = 0; g < geometries.length; ++g) {
-        const polygons = geom3$2.toPolygons(geometries[g]);
-        for (let p = 0; p < polygons.length; ++p) {
-          const vertices = polygons[p].vertices;
-          for (let v = 0; v < vertices.length; ++v) {
-            const id = `${vertices[v]}`;
-            if (found.has(id)) continue
-            uniquevertices.push(vertices[v]);
-            found.set(id, true);
-          }
-        }
-      }
-      found.clear();
+      const unique = toUniquePoints_1(geometries);
 
-      const faces = quickhull(uniquevertices, { skipTriangulation: true });
+      const faces = quickhull(unique, { skipTriangulation: true });
 
       const polygons = faces.map((face) => {
-        const vertices = face.map((index) => uniquevertices[index]);
+        const vertices = face.map((index) => unique[index]);
         return poly3.create(vertices)
       });
 
@@ -15813,9 +15857,12 @@
       return [angle1, angle2]
     };
 
+    const v1 = vec3$1.create();
+    const v2 = vec3$1.create();
+
     const calculateAngle = (prevpoint, point, nextpoint, normal) => {
-      const d0 = vec3$1.subtract(vec3$1.create(), point, prevpoint);
-      const d1 = vec3$1.subtract(vec3$1.create(), nextpoint, point);
+      const d0 = vec3$1.subtract(v1, point, prevpoint);
+      const d1 = vec3$1.subtract(v2, nextpoint, point);
       vec3$1.cross(d0, d0, d1);
       return vec3$1.dot(d0, normal)
     };
@@ -15836,7 +15883,7 @@
 
         edge = next;
       }
-      if (points.length > 0) polygon = poly3.fromPoints(points);
+      if (points.length > 0) polygon = poly3.create(points);
       return polygon
     };
 
@@ -15845,7 +15892,7 @@
      * @param {poly3[]} sourcepolygons - list of polygons
      * @returns {poly3[]} new set of polygons
      */
-    const mergeCoplanarPolygons = (epsilon, sourcepolygons) => {
+    const mergeCoplanarPolygons = (sourcepolygons) => {
       if (sourcepolygons.length < 2) return sourcepolygons
 
       const normal = sourcepolygons[0].plane;
@@ -15927,22 +15974,15 @@
         if (polygon) destpolygons.push(polygon);
       });
 
+      edgeList.clear();
+
       return destpolygons
     };
-
-    // Normals are directional vectors with component values from 0 to 1.0, requiring specialized comparision
-    // This EPS is derived from a serieas of tests to determine the optimal precision for comparing coplanar polygons,
-    // as provided by the sphere primitive at high segmentation
-    // This EPS is for 64 bit Number values
-    const NEPS = 1e-13;
-
-    // Compare two normals (unit vectors) for equality.
-    const aboutEqualNormals = (a, b) => (Math.abs(a[0] - b[0]) <= NEPS && Math.abs(a[1] - b[1]) <= NEPS && Math.abs(a[2] - b[2]) <= NEPS);
 
     const coplanar = (plane1, plane2) => {
       // expect the same distance from the origin, within tolerance
       if (Math.abs(plane1[3] - plane2[3]) < 0.00000015) {
-        return aboutEqualNormals(plane1, plane2)
+        return aboutEqualNormals_1(plane1, plane2)
       }
       return false
     };
@@ -15962,7 +16002,7 @@
       let destpolygons = [];
       polygonsPerPlane.forEach((mapping) => {
         const sourcepolygons = mapping[1];
-        const retesselayedpolygons = mergeCoplanarPolygons(epsilon, sourcepolygons);
+        const retesselayedpolygons = mergeCoplanarPolygons(sourcepolygons);
         destpolygons = destpolygons.concat(retesselayedpolygons);
       });
       return destpolygons
@@ -16216,7 +16256,7 @@
                         // split the side by inserting the vertex:
                         const newvertices = polygon.vertices.slice(0);
                         newvertices.splice(insertionvertextagindex, 0, endvertex);
-                        const newpolygon = poly3.fromPoints(newvertices);
+                        const newpolygon = poly3.create(newvertices);
 
                         newpolygons[polygonindex] = newpolygon;
 
@@ -16260,15 +16300,15 @@
           polygon.vertices.forEach((vertice) => vec3$1.add(midpoint, midpoint, vertice));
           vec3$1.snap(midpoint, vec3$1.divide(midpoint, midpoint, [nv, nv, nv]), epsilon);
           for (let i = 0; i < nv; i++) {
-            const poly = poly3.fromPoints([midpoint, polygon.vertices[i], polygon.vertices[(i + 1) % nv]]);
+            const poly = poly3.create([midpoint, polygon.vertices[i], polygon.vertices[(i + 1) % nv]]);
             if (polygon.color) poly.color = polygon.color;
             triangles.push(poly);
           }
           return
         }
         // exactly 4 vertices, use simple triangulation
-        const poly0 = poly3.fromPoints([polygon.vertices[0], polygon.vertices[1], polygon.vertices[2]]);
-        const poly1 = poly3.fromPoints([polygon.vertices[0], polygon.vertices[2], polygon.vertices[3]]);
+        const poly0 = poly3.create([polygon.vertices[0], polygon.vertices[1], polygon.vertices[2]]);
+        const poly1 = poly3.create([polygon.vertices[0], polygon.vertices[2], polygon.vertices[3]]);
         if (polygon.color) {
           poly0.color = polygon.color;
           poly1.color = polygon.color;
@@ -16295,242 +16335,6 @@
     var triangulatePolygons_1 = triangulatePolygons;
 
     /*
-     * Add a unique edge to the given list of edges.
-     * Each edge has a list of associated polygons.
-     * Edges with two polygons are complete, while edges with one polygon are open, i.e hole or t-junction..
-     */
-    const addEdge = (edges, edge, polygon) => {
-      const ei = edges.findIndex((element) => {
-        if (element) {
-          if (vec3$1.equals(element[0], edge[0]) && vec3$1.equals(element[1], edge[1])) return true
-          if (vec3$1.equals(element[0], edge[1]) && vec3$1.equals(element[1], edge[0])) return true
-        }
-        return false
-      });
-      if (ei >= 0) {
-        edge = edges[ei];
-        edge.polygons.push(polygon);
-      } else {
-        edge.polygons = [polygon];
-        edges.push(edge);
-      }
-    };
-
-    /*
-     * Remove the edge from the given list of edges.
-     */
-    const removeEdge = (edges, edge) => {
-      const ei = edges.findIndex((element) => {
-        if (element) {
-          if (vec3$1.equals(element[0], edge[0]) && vec3$1.equals(element[1], edge[1])) return true
-          if (vec3$1.equals(element[0], edge[1]) && vec3$1.equals(element[1], edge[0])) return true
-        }
-        return false
-      });
-      if (ei >= 0) {
-        edges[ei].polygons = [];
-        edges[ei] = null;
-      }
-    };
-
-    /*
-     * Add all edges of the polygon to the given list of edges.
-     */
-    const addPolygon$1 = (edges, polygon) => {
-      const vertices = polygon.vertices;
-      const nv = vertices.length;
-
-      let edge = [vertices[nv - 1], vertices[0]];
-      addEdge(edges, edge, polygon);
-
-      for (let i = 0; i < (nv - 1); i++) {
-        edge = [vertices[i], vertices[i + 1]];
-        addEdge(edges, edge, polygon);
-      }
-    };
-
-    /*
-     * Remove all polygons associated with the old edge from the given list of edges.
-     */
-    const removePolygons$1 = (edges, oldedge) => {
-      // console.log('removePolygons',oldedge)
-      const polygons = oldedge.polygons;
-      polygons.forEach((polygon) => {
-        const vertices = polygon.vertices;
-        const nv = vertices.length;
-
-        let edge = [vertices[nv - 1], vertices[0]];
-        removeEdge(edges, edge);
-
-        for (let i = 0; i < (nv - 1); i++) {
-          edge = [vertices[i], vertices[i + 1]];
-          removeEdge(edges, edge);
-        }
-      });
-    };
-
-    /*
-     * Split the polygon, ensuring one polygon includes the open edge.
-     */
-    const splitPolygon = (openedge, polygon, eps) => {
-      // console.log('splitPolygon',openedge,polygon)
-      const vertices = polygon.vertices;
-      const i = vertices.findIndex((point) => almostEquals(eps, point, openedge[0]));
-      const polygon1 = poly3.fromPoints([vertices[(i + 0) % 3], vertices[(i + 1) % 3], openedge[1]]);
-      const polygon2 = poly3.fromPoints([openedge[1], vertices[(i + 1) % 3], vertices[(i + 2) % 3]]);
-      if (polygon.color) {
-        polygon1.color = polygon.color;
-        polygon2.color = polygon.color;
-      }
-      // console.log('polygon1',polygon1)
-      // console.log('polygon2',polygon2)
-      return [polygon1, polygon2]
-    };
-
-    /*
-     * TBD This should be part of vec3.
-     */
-    const almostEquals = (eps, v1, v2) => (Math.abs(v1[0] - v2[0]) <= eps && Math.abs(v1[1] - v2[1]) <= eps && Math.abs(v1[2] - v2[2]) <= eps);
-
-    const enclosedEdge = (openedge, edge, eps) => {
-      if (openedge.distance < edge.distance) {
-        // only look for opposing edges
-        if (vec3$1.equals(openedge[0], edge[1])) {
-          // only opposing open edges enclosed by the edge
-          const distanceE0O0 = vec3$1.squaredDistance(openedge[0], edge[0]);
-          const distanceE0O1 = vec3$1.squaredDistance(openedge[1], edge[0]);
-          const distanceE1O0 = vec3$1.squaredDistance(openedge[0], edge[1]);
-          const distanceE1O1 = vec3$1.squaredDistance(openedge[1], edge[1]);
-          if (distanceE0O0 <= edge.distance && distanceE0O1 < edge.distance && distanceE1O0 < edge.distance && distanceE1O1 < edge.distance) {
-            // only look for paralell open edges
-            const line3d = line3.fromPoints(edge[0], edge[1]);
-            const closest0 = vec3$1.snap(vec3$1.create(), eps, line3.closestPoint(openedge[0], line3d));
-            const closest1 = vec3$1.snap(vec3$1.create(), eps, line3.closestPoint(openedge[1], line3d));
-            if (almostEquals(eps, closest0, openedge[0]) && almostEquals(eps, closest1, openedge[1])) {
-              return true
-            }
-          }
-        }
-      }
-      return false
-    };
-
-    /*
-     * Split the edge if posssible from the list of open edges.
-     * Return a list of new polygons, or null if not possible
-     */
-    const splitEdge$1 = (openedges, edge, eps) => {
-      // console.log('splitEdge',edge)
-      for (let i = 0; i < openedges.length; i++) {
-        const openedge = openedges[i];
-        if (openedge) {
-          if (enclosedEdge(openedge, edge, eps)) {
-            // spit the polygon associated with the edge
-            const polygon = edge.polygons[0];
-            const newpolygons = splitPolygon(openedge, polygon, eps);
-            return newpolygons
-          }
-        }
-      }
-      return null
-    };
-
-    /*
-     * Cull a list of open edges (see above) from the list of edges.
-     */
-    const cullOpenEdges$1 = (edges) => {
-      const openedges = [];
-      edges.forEach((edge) => {
-        const polygons = edge.polygons;
-        if (polygons.length === 1) {
-          // console.log('open edge: ',edge[0],'<-->',edge[1])
-          edge.distance = vec3$1.squaredDistance(edge[0], edge[1]);
-          openedges.push(edge);
-        }
-      });
-      // console.log('open edges:',openedges.length)
-      // console.log('**********OPEN*********')
-      // console.log(openedges)
-      // console.log('**********OPEN*********')
-      return openedges
-    };
-
-    /*
-     * Convert the list of edges into a list of polygons.
-     */
-    const edgesToPolygons$1 = (edges) => {
-      const polygons = [];
-      edges.forEach((edge) => {
-        if (edge && edge.polygons) {
-          edge.polygons.forEach((polygon) => {
-            if (polygon.visited) return
-            polygon.visited = true;
-            polygons.push(polygon);
-          });
-        }
-      });
-      return polygons
-    };
-
-    /*
-     * Convert the given list of polygons to a list of edges.
-     */
-    const polygonsToEdges$1 = (polygons) => {
-      const edges = [];
-      polygons.forEach((polygon) => {
-        addPolygon$1(edges, polygon);
-      });
-      return edges
-    };
-
-    var edges = { polygonsToEdges: polygonsToEdges$1, edgesToPolygons: edgesToPolygons$1, cullOpenEdges: cullOpenEdges$1, splitEdge: splitEdge$1, removePolygons: removePolygons$1, addPolygon: addPolygon$1 };
-
-    const { polygonsToEdges, edgesToPolygons, cullOpenEdges, splitEdge, removePolygons, addPolygon } = edges;
-
-    /*
-     */
-    const repairTjunctions = (epsilon, polygons) => {
-      const edges = polygonsToEdges(polygons);
-      let openedges = cullOpenEdges(edges);
-      if (openedges.length === 0) return polygons
-
-      // split open edges until no longer possible
-      let splitting = true;
-      while (splitting) {
-        let splitcount = 0;
-        for (let i = 0; i < openedges.length; i++) {
-          const edge = openedges[i];
-          if (edge && edge.polygons && edge.polygons.length === 1) {
-            const newpolygons = splitEdge(openedges, edge, epsilon);
-            if (newpolygons) {
-              openedges[i] = null;
-              addPolygon(openedges, newpolygons[0]);
-              addPolygon(openedges, newpolygons[1]);
-
-              // adjust the master list as well
-              removePolygons(edges, edge);
-              // add edges for each new polygon
-              addPolygon(edges, newpolygons[0]);
-              addPolygon(edges, newpolygons[1]);
-
-              splitcount++;
-              break // start again
-            }
-          }
-        }
-        splitting = (splitcount > 0);
-      }
-      openedges = openedges.filter((edge) => (edge && edge.polygons && edge.polygons.length === 1));
-      if (openedges.length > 0) console.warn('Repair of all T-junctions failed:', openedges.length);
-
-      // rebuild the list of polygons from the edges
-      polygons = edgesToPolygons(edges);
-      return polygons
-    };
-
-    var repairTjunctions_1 = repairTjunctions;
-
-    /*
      */
     const generalizePath2 = (options, geometry) => geometry;
 
@@ -16544,10 +16348,9 @@
       const defaults = {
         snap: false,
         simplify: false,
-        triangulate: false,
-        repair: false
+        triangulate: false
       };
-      const { snap, simplify, triangulate, repair } = Object.assign({}, defaults, options);
+      const { snap, simplify, triangulate } = Object.assign({}, defaults, options);
 
       const epsilon = measureEpsilon_1(geometry);
       let polygons = geom3$2.toPolygons(geometry);
@@ -16569,13 +16372,6 @@
         polygons = triangulatePolygons_1(epsilon, polygons);
       }
 
-      // repair the polygons (possibly triangles) if requested
-      if (repair) {
-        // fix T junctions
-        polygons = repairTjunctions_1(epsilon, polygons);
-        // TODO fill holes
-      }
-
       // FIXME replace with geom3.cloneShallow() when available
       const clone = Object.assign({}, geometry);
       clone.polygons = polygons;
@@ -16589,7 +16385,6 @@
      * @param {Boolean} [options.snap=false] the geometries should be snapped to epsilons
      * @param {Boolean} [options.simplify=false] the geometries should be simplified
      * @param {Boolean} [options.triangulate=false] the geometries should be triangulated
-     * @param {Boolean} [options.repair=false] the geometries should be repaired
      * @param {...Object} geometries - the geometries to generalize
      * @return {Object|Array} the modified geometry, or a list of modified geometries
      * @alias module:modeling/modifiers.generalize
@@ -16805,7 +16600,7 @@
       const defaults = {
         axes: [true, true, true],
         relativeTo: [0, 0, 0]
-      // TODO : Add addition 'methods' of centering; midpoint, centeriod
+      // TODO: Add additional 'methods' of centering: midpoint, centroid
       };
       const { axes, relativeTo } = Object.assign({}, defaults, options);
 

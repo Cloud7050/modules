@@ -1575,6 +1575,73 @@
     var equals_1$5 = equals$6;
 
     /**
+     * The resolution of space, currently one hundred nanometers.
+     * This should be 1 / EPS.
+     * @alias module:modeling/maths.spatialResolution
+     * @default
+     */
+    const spatialResolution = 1e5;
+
+    /**
+     * Epsilon used during determination of near zero distances.
+     * This should be 1 / spacialResolution.
+     * @default
+     * @alias module:modeling/maths.EPS
+     */
+    const EPS$5 = 1e-5;
+
+    /**
+     * Smaller epsilon used for measuring near zero distances.
+     * @default
+     * @alias module:modeling/maths.NEPS
+     */
+    const NEPS$2 = 1e-13;
+    // NEPS is derived from a series of tests to determine the optimal precision
+    // for comparing coplanar polygons, as provided by the sphere primitive at high
+    // segmentation. NEPS is for 64 bit Number values.
+
+    var constants = {
+      EPS: EPS$5,
+      NEPS: NEPS$2,
+      spatialResolution
+    };
+
+    const { NEPS: NEPS$1 } = constants;
+
+    /*
+     * Returns zero if n is within epsilon of zero, otherwise return n
+     */
+    const rezero = (n) => Math.abs(n) < NEPS$1 ? 0 : n;
+
+    /**
+     * Return Math.sin but accurate for 90 degree rotations.
+     * Fixes rounding errors when sin should be 0.
+     *
+     * @param {Number} radians - angle in radians
+     * @returns {Number} sine of the given angle
+     * @alias module:modeling/utils.sin
+     * @example
+     * sin(Math.PI) == 0
+     * sin(2 * Math.PI) == 0
+     */
+    const sin$b = (radians) => rezero(Math.sin(radians));
+
+    /**
+     * Return Math.cos but accurate for 90 degree rotations.
+     * Fixes rounding errors when cos should be 0.
+     *
+     * @param {Number} radians - angle in radians
+     * @returns {Number} cosine of the given angle
+     * @alias module:modeling/utils.cos
+     * @example
+     * cos(0.5 * Math.PI) == 0
+     * cos(1.5 * Math.PI) == 0
+     */
+    const cos$b = (radians) => rezero(Math.cos(radians));
+
+    var trigonometry = { sin: sin$b, cos: cos$b };
+
+    /**
      * Set a matrix to the identity transform.
      *
      * @param {mat4} out - receiving matrix
@@ -1603,13 +1670,11 @@
 
     var identity_1$1 = identity$1;
 
-    const EPSILON$1 = 0.000001;
+    const { EPS: EPS$4 } = constants;
 
-    var constants$1 = {
-      EPSILON: EPSILON$1
-    };
+    const { sin: sin$a, cos: cos$a } = trigonometry;
 
-    const { EPSILON } = constants$1;
+
 
     /**
      * Creates a matrix from a given angle around a given axis
@@ -1628,20 +1693,20 @@
      */
     const fromRotation$1 = (out, rad, axis) => {
       let [x, y, z] = axis;
-      let len = Math.hypot(x, y, z);
+      const lengthSquared = x * x + y * y + z * z;
 
-      if (Math.abs(len) < EPSILON) {
+      if (Math.abs(lengthSquared) < EPS$4) {
         // axis is 0,0,0 or almost
         return identity_1$1(out)
       }
 
-      len = 1 / len;
+      const len = 1 / Math.sqrt(lengthSquared);
       x *= len;
       y *= len;
       z *= len;
 
-      const s = Math.sin(rad);
-      const c = Math.cos(rad);
+      const s = sin$a(rad);
+      const c = cos$a(rad);
       const t = 1 - c;
 
       // Perform rotation-specific matrix multiplication
@@ -1702,6 +1767,8 @@
 
     var fromScaling_1$1 = fromScaling$1;
 
+    const { sin: sin$9, cos: cos$9 } = trigonometry;
+
     /**
      * Creates a matrix from the given Tait–Bryan angles.
      *
@@ -1719,12 +1786,12 @@
      */
     const fromTaitBryanRotation = (out, yaw, pitch, roll) => {
       // precompute sines and cosines of Euler angles
-      const sy = Math.sin(yaw);
-      const cy = Math.cos(yaw);
-      const sp = Math.sin(pitch);
-      const cp = Math.cos(pitch);
-      const sr = Math.sin(roll);
-      const cr = Math.cos(roll);
+      const sy = sin$9(yaw);
+      const cy = cos$9(yaw);
+      const sp = sin$9(pitch);
+      const cp = cos$9(pitch);
+      const sr = sin$9(roll);
+      const cr = cos$9(roll);
 
       // create and populate rotation matrix
       // left-hand-rule rotation
@@ -1887,9 +1954,9 @@
      * @returns {Number} dot product
      * @alias module:modeling/maths/vec3.dot
      */
-    const dot$2 = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+    const dot$3 = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
 
-    var dot_1$2 = dot$2;
+    var dot_1$3 = dot$3;
 
     /**
      * Calculate the angle between two vectors.
@@ -1906,10 +1973,10 @@
       const bx = b[0];
       const by = b[1];
       const bz = b[2];
-      const mag1 = Math.hypot(ax, ay, az);
-      const mag2 = Math.hypot(bx, by, bz);
+      const mag1 = Math.sqrt(ax * ax + ay * ay + az * az);
+      const mag2 = Math.sqrt(bx * bx + by * by + bz * bz);
       const mag = mag1 * mag2;
-      const cosine = mag && dot_1$2(a, b) / mag;
+      const cosine = mag && dot_1$3(a, b) / mag;
       return Math.acos(Math.min(Math.max(cosine, -1), 1))
     };
 
@@ -2002,7 +2069,7 @@
       const x = b[0] - a[0];
       const y = b[1] - a[1];
       const z = b[2] - a[2];
-      return Math.hypot(x, y, z)
+      return Math.sqrt(x * x + y * y + z * z)
     };
 
     var distance_1$2 = distance$2;
@@ -2046,14 +2113,14 @@
      * @returns {vec3} out
      * @alias module:modeling/maths/vec3.fromScalar
      */
-    const fromScalar$1 = (out, scalar) => {
+    const fromScalar$2 = (out, scalar) => {
       out[0] = scalar;
       out[1] = scalar;
       out[2] = scalar;
       return out
     };
 
-    var fromScalar_1$1 = fromScalar$1;
+    var fromScalar_1$2 = fromScalar$2;
 
     /**
      * Creates a new vector initialized with the given values.
@@ -2103,7 +2170,7 @@
       const x = vector[0];
       const y = vector[1];
       const z = vector[2];
-      return Math.hypot(x, y, z)
+      return Math.sqrt(x * x + y * y + z * z)
     };
 
     var length_1$2 = length$2;
@@ -2446,7 +2513,7 @@
      * @returns {vec3} out
      * @alias module:modeling/maths/vec3.transform
      */
-    const transform$6 = (out, vector, matrix) => {
+    const transform$7 = (out, vector, matrix) => {
       const x = vector[0];
       const y = vector[1];
       const z = vector[2];
@@ -2458,7 +2525,7 @@
       return out
     };
 
-    var transform_1$6 = transform$6;
+    var transform_1$7 = transform$7;
 
     /**
      * Represents a three dimensional vector.
@@ -2475,9 +2542,9 @@
       cross: cross_1$2,
       distance: distance_1$2,
       divide: divide_1$2,
-      dot: dot_1$2,
+      dot: dot_1$3,
       equals: equals_1$4,
-      fromScalar: fromScalar_1$1,
+      fromScalar: fromScalar_1$2,
       fromValues: fromValues_1$3,
       fromVec2: fromVec2,
       length: length_1$2,
@@ -2497,7 +2564,7 @@
       squaredLength: squaredLength_1$2,
       subtract: subtract_1$3,
       toString: toString_1$7,
-      transform: transform_1$6
+      transform: transform_1$7
     };
 
     /**
@@ -2546,6 +2613,8 @@
 
     var fromVectorRotation_1 = fromVectorRotation;
 
+    const { sin: sin$8, cos: cos$8 } = trigonometry;
+
     /**
      * Creates a matrix from the given angle around the X axis.
      * This is equivalent to (but much faster than):
@@ -2561,8 +2630,8 @@
      * let matrix = fromXRotation(create(), Math.PI / 2)
      */
     const fromXRotation$1 = (out, radians) => {
-      const s = Math.sin(radians);
-      const c = Math.cos(radians);
+      const s = sin$8(radians);
+      const c = cos$8(radians);
 
       // Perform axis-specific matrix multiplication
       out[0] = 1;
@@ -2586,6 +2655,8 @@
 
     var fromXRotation_1$1 = fromXRotation$1;
 
+    const { sin: sin$7, cos: cos$7 } = trigonometry;
+
     /**
      * Creates a matrix from the given angle around the Y axis.
      * This is equivalent to (but much faster than):
@@ -2601,8 +2672,8 @@
      * let matrix = fromYRotation(create(), Math.PI / 2)
      */
     const fromYRotation$1 = (out, radians) => {
-      const s = Math.sin(radians);
-      const c = Math.cos(radians);
+      const s = sin$7(radians);
+      const c = cos$7(radians);
 
       // Perform axis-specific matrix multiplication
       out[0] = c;
@@ -2626,6 +2697,8 @@
 
     var fromYRotation_1$1 = fromYRotation$1;
 
+    const { sin: sin$6, cos: cos$6 } = trigonometry;
+
     /**
      * Creates a matrix from the given angle around the Z axis.
      * This is equivalent to (but much faster than):
@@ -2641,8 +2714,8 @@
      * let matrix = fromZRotation(create(), Math.PI / 2)
      */
     const fromZRotation$1 = (out, radians) => {
-      const s = Math.sin(radians);
-      const c = Math.cos(radians);
+      const s = sin$6(radians);
+      const c = cos$6(radians);
 
       // Perform axis-specific matrix multiplication
       out[0] = c;
@@ -2717,15 +2790,19 @@
      * @alias module:modeling/maths/mat4.isMirroring
      */
     const isMirroring = (matrix) => {
-      const u = fromValues_1$3(matrix[0], matrix[4], matrix[8]);
-      const v = fromValues_1$3(matrix[1], matrix[5], matrix[9]);
-      const w = fromValues_1$3(matrix[2], matrix[6], matrix[10]);
+      // const xVector = [matrix[0], matrix[4], matrix[8]]
+      // const yVector = [matrix[1], matrix[5], matrix[9]]
+      // const zVector = [matrix[2], matrix[6], matrix[10]]
 
-      // for a true orthogonal, non-mirrored base, u.cross(v) == w
+      // for a true orthogonal, non-mirrored base, xVector.cross(yVector) == zVector
       // If they have an opposite direction then we are mirroring
-      const mirrorvalue = dot_1$2(cross_1$2(u, u, v), w);
-      const ismirror = (mirrorvalue < 0);
-      return ismirror
+      // calcuate xVector.cross(yVector)
+      const x = matrix[4] * matrix[9] - matrix[8] * matrix[5];
+      const y = matrix[8] * matrix[1] - matrix[0] * matrix[9];
+      const z = matrix[0] * matrix[5] - matrix[4] * matrix[1];
+      // calcualte dot(cross, zVector)
+      const d = x * matrix[2] + y * matrix[6] + z * matrix[10];
+      return (d < 0)
     };
 
     var isMirroring_1 = isMirroring;
@@ -2831,6 +2908,12 @@
 
     var multiply_1$3 = multiply$3;
 
+    const { EPS: EPS$3 } = constants;
+
+    const { sin: sin$5, cos: cos$5 } = trigonometry;
+
+
+
     /**
      * Rotates a matrix by the given angle about the given axis.
      *
@@ -2843,20 +2926,20 @@
      */
     const rotate$4 = (out, matrix, radians, axis) => {
       let [x, y, z] = axis;
-      let len = Math.hypot(x, y, z);
+      const lengthSquared = x * x + y * y + z * z;
 
-      if (Math.abs(len) < 0.000001) {
+      if (Math.abs(lengthSquared) < EPS$3) {
         // axis is 0,0,0 or almost
         return copy_1$5(out, matrix)
       }
 
-      len = 1 / len;
+      const len = 1 / Math.sqrt(lengthSquared);
       x *= len;
       y *= len;
       z *= len;
 
-      const s = Math.sin(radians);
-      const c = Math.cos(radians);
+      const s = sin$5(radians);
+      const c = cos$5(radians);
       const t = 1 - c;
 
       const a00 = matrix[0];
@@ -2908,6 +2991,8 @@
 
     var rotate_1$2 = rotate$4;
 
+    const { sin: sin$4, cos: cos$4 } = trigonometry;
+
     /**
      * Rotates a matrix by the given angle around the X axis.
      *
@@ -2918,8 +3003,8 @@
      * @alias module:modeling/maths/mat4.rotateX
      */
     const rotateX$2 = (out, matrix, radians) => {
-      const s = Math.sin(radians);
-      const c = Math.cos(radians);
+      const s = sin$4(radians);
+      const c = cos$4(radians);
       const a10 = matrix[4];
       const a11 = matrix[5];
       const a12 = matrix[6];
@@ -2954,6 +3039,8 @@
 
     var rotateX_1$2 = rotateX$2;
 
+    const { sin: sin$3, cos: cos$3 } = trigonometry;
+
     /**
      * Rotates a matrix by the given angle around the Y axis.
      *
@@ -2964,8 +3051,8 @@
      * @alias module:modeling/maths/mat4.rotateY
      */
     const rotateY$2 = (out, matrix, radians) => {
-      const s = Math.sin(radians);
-      const c = Math.cos(radians);
+      const s = sin$3(radians);
+      const c = cos$3(radians);
       const a00 = matrix[0];
       const a01 = matrix[1];
       const a02 = matrix[2];
@@ -3000,6 +3087,8 @@
 
     var rotateY_1$2 = rotateY$2;
 
+    const { sin: sin$2, cos: cos$2 } = trigonometry;
+
     /**
      * Rotates a matrix by the given angle around the Z axis.
      *
@@ -3010,8 +3099,8 @@
      * @alias module:modeling/maths/mat4.rotateZ
      */
     const rotateZ$2 = (out, matrix, radians) => {
-      const s = Math.sin(radians);
-      const c = Math.cos(radians);
+      const s = sin$2(radians);
+      const c = cos$2(radians);
       const a00 = matrix[0];
       const a01 = matrix[1];
       const a02 = matrix[2];
@@ -3230,7 +3319,7 @@
         polygons = []; // empty contents
       }
       return {
-        polygons: polygons,
+        polygons,
         transforms: mat4.create()
       }
     };
@@ -3256,7 +3345,7 @@
       if (vertices === undefined || vertices.length < 3) {
         vertices = []; // empty contents
       }
-      return { vertices: vertices }
+      return { vertices }
     };
 
     var create_1$6 = create$6;
@@ -3504,27 +3593,6 @@
 
     var fromPoints_1$3 = fromPoints$3;
 
-    /**
-     * The resolution of space, currently one hundred nanometers.
-     * This should be 1 / EPS.
-     * @alias module:modeling/maths.spatialResolution
-     * @default
-     */
-    const spatialResolution = 1e5;
-
-    /**
-     * Epsilon used during determination of near zero distances.
-     * This should be 1 / spacialResolution.
-     * @default
-     * @alias module:modeling/maths.EPS
-     */
-    const EPS$3 = 1e-5;
-
-    var constants = {
-      EPS: EPS$3,
-      spatialResolution
-    };
-
     const { EPS: EPS$2 } = constants;
 
 
@@ -3618,7 +3686,7 @@
      * @return {plane} out
      * @alias module:modeling/maths/plane.transform
      */
-    const transform$5 = (out, plane, matrix) => {
+    const transform$6 = (out, plane, matrix) => {
       const ismirror = mat4.isMirroring(matrix);
       // get two vectors in the plane:
       const r = vec3$1.orthogonal(vec3$1.create(), plane);
@@ -3642,7 +3710,7 @@
       return out
     };
 
-    var transform_1$5 = transform$5;
+    var transform_1$6 = transform$6;
 
     /**
      * Represents a plane in 3D coordinate space as determined by a normal (perpendicular to the plane)
@@ -3687,7 +3755,7 @@
        * @function toString
        */
       toString: toString_1$5,
-      transform: transform_1$5
+      transform: transform_1$6
     };
 
     /**
@@ -3881,18 +3949,124 @@
     var measureBoundingBox_1$1 = measureBoundingBox$1;
 
     /**
+     * Calculates the dot product of the given vectors.
+     *
+     * @param {vec4} a - first vector
+     * @param {vec4} b - second vector
+     * @returns {Number} dot product
+     * @alias module:modeling/maths/vec4.dot
+     */
+    const dot$2 = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2] + a[3] * b[3];
+
+    var dot_1$2 = dot$2;
+
+    /**
+     * Create a new vector from the given scalar value.
+     *
+     * @param {vec4} out - receiving vector
+     * @param  {Number} scalar
+     * @returns {vec4} out
+     * @alias module:modeling/maths/vec4.fromScalar
+     */
+    const fromScalar$1 = (out, scalar) => {
+      out[0] = scalar;
+      out[1] = scalar;
+      out[2] = scalar;
+      out[3] = scalar;
+      return out
+    };
+
+    var fromScalar_1$1 = fromScalar$1;
+
+    /**
+     * Transform the given vector using the given matrix.
+     *
+     * @param {vec4} out - receiving vector
+     * @param {vec4} vector - vector to transform
+     * @param {mat4} matrix - matrix to transform with
+     * @returns {vec4} out
+     * @alias module:modeling/maths/vec4.transform
+     */
+    const transform$5 = (out, vector, matrix) => {
+      const [x, y, z, w] = vector;
+
+      out[0] = matrix[0] * x + matrix[4] * y + matrix[8] * z + matrix[12] * w;
+      out[1] = matrix[1] * x + matrix[5] * y + matrix[9] * z + matrix[13] * w;
+      out[2] = matrix[2] * x + matrix[6] * y + matrix[10] * z + matrix[14] * w;
+      out[3] = matrix[3] * x + matrix[7] * y + matrix[11] * z + matrix[15] * w;
+      return out
+    };
+
+    var transform_1$5 = transform$5;
+
+    /**
+     * Represents a four dimensional vector.
+     * @see {@link vec4} for data structure information.
+     * @module modeling/maths/vec4
+     */
+    var vec4 = {
+      clone: clone_1$5,
+      copy: copy_1$3,
+      create: create_1$5,
+      dot: dot_1$2,
+      equals: equals_1$3,
+      fromScalar: fromScalar_1$1,
+      fromValues: fromValues_1$2,
+      toString: toString_1$5,
+      transform: transform_1$5
+    };
+
+    const cache$1 = new WeakMap();
+
+    /**
      * Measure the bounding sphere of the given polygon.
      * @param {poly3} polygon - the polygon to measure
-     * @returns {Array} the computed bounding sphere; center point (3D) and radius
+     * @returns {vec4} the computed bounding sphere; center point (3D) and radius
      * @alias module:modeling/geometries/poly3.measureBoundingSphere
      */
     const measureBoundingSphere = (polygon) => {
-      const box = measureBoundingBox_1$1(polygon);
-      const center = box[0];
-      vec3$1.add(center, box[0], box[1]);
-      vec3$1.scale(center, center, 0.5);
-      const radius = vec3$1.distance(center, box[1]);
-      return [center, radius]
+      let boundingSphere = cache$1.get(polygon);
+      if (boundingSphere) return boundingSphere
+
+      const vertices = polygon.vertices;
+      const out = vec4.create();
+
+      if (vertices.length === 0) {
+        out[0] = 0;
+        out[1] = 0;
+        out[2] = 0;
+        out[3] = 0;
+        return out
+      }
+
+      // keep a list of min/max vertices by axis
+      let minx = vertices[0];
+      let miny = minx;
+      let minz = minx;
+      let maxx = minx;
+      let maxy = minx;
+      let maxz = minx;
+
+      vertices.forEach((v) => {
+        if (minx[0] > v[0]) minx = v;
+        if (miny[1] > v[1]) miny = v;
+        if (minz[2] > v[2]) minz = v;
+        if (maxx[0] < v[0]) maxx = v;
+        if (maxy[1] < v[1]) maxy = v;
+        if (maxz[2] < v[2]) maxz = v;
+      });
+
+      out[0] = (minx[0] + maxx[0]) * 0.5; // center of sphere
+      out[1] = (miny[1] + maxy[1]) * 0.5;
+      out[2] = (minz[2] + maxz[2]) * 0.5;
+      const x = out[0] - maxx[0];
+      const y = out[1] - maxy[1];
+      const z = out[2] - maxz[2];
+      out[3] = Math.sqrt(x * x + y * y + z * z); // radius of sphere
+
+      cache$1.set(polygon, out);
+
+      return out
     };
 
     var measureBoundingSphere_1 = measureBoundingSphere;
@@ -3966,6 +4140,13 @@
 
     var transform_1$4 = transform$4;
 
+    const { NEPS } = constants;
+
+
+
+
+
+
     /**
      * Determine if the given object is a valid polygon.
      * Checks for valid data structure, convex polygons, and duplicate points.
@@ -4008,6 +4189,17 @@
           throw new Error(`poly3 invalid vertex ${vertex}`)
         }
       });
+
+      // check that points are co-planar
+      if (object.vertices.length > 3) {
+        const normal = plane_1(object);
+        object.vertices.forEach((vertex) => {
+          const dist = Math.abs(signedDistanceToPoint_1(normal, vertex));
+          if (dist > NEPS) {
+            throw new Error(`poly3 must be coplanar: vertex ${vertex} distance ${dist}`)
+          }
+        });
+      }
     };
 
     var validate_1$3 = validate$3;
@@ -4058,7 +4250,7 @@
 
       const polygons = listofpoints.map((points, index) => {
         // TODO catch the error, and rethrow with index
-        const polygon = poly3.fromPoints(points);
+        const polygon = poly3.create(points);
         return polygon
       });
       const result = create_1$7(polygons);
@@ -4117,9 +4309,8 @@
       if (mat4.isIdentity(geometry.transforms)) return geometry
 
       // apply transforms to each polygon
-      // const isMirror = mat4.isMirroring(geometry.transforms)
-      // TBD if (isMirror) newvertices.reverse()
       geometry.polygons = geometry.polygons.map((polygon) => poly3.transform(geometry.transforms, polygon));
+      // reset transforms
       geometry.transforms = mat4.create();
       return geometry
     };
@@ -4540,7 +4731,7 @@
     const distance$1 = (a, b) => {
       const x = b[0] - a[0];
       const y = b[1] - a[1];
-      return Math.hypot(x, y)
+      return Math.sqrt(x * x + y * y)
     };
 
     var distance_1$1 = distance$1;
@@ -4586,6 +4777,8 @@
 
     var equals_1$2 = equals$3;
 
+    const { sin: sin$1, cos: cos$1 } = trigonometry;
+
     /**
      * Create a new vector in the direction of the given angle.
      *
@@ -4595,8 +4788,8 @@
      * @alias module:modeling/maths/vec2.fromAngleRadians
      */
     const fromAngleRadians = (out, radians) => {
-      out[0] = Math.cos(radians);
-      out[1] = Math.sin(radians);
+      out[0] = cos$1(radians);
+      out[1] = sin$1(radians);
       return out
     };
 
@@ -4654,7 +4847,7 @@
      * @returns {Number} length
      * @alias module:modeling/maths/vec2.length
      */
-    const length$1 = (vector) => Math.hypot(vector[0], vector[1]);
+    const length$1 = (vector) => Math.sqrt(vector[0] * vector[0] + vector[1] * vector[1]);
 
     var length_1$1 = length$1;
 
@@ -5135,22 +5328,42 @@
      * Create a list of edges which SHARE vertices.
      * This allows the edges to be traversed in order.
      */
-    const toEdges = (sides) => {
-      const vertices = {};
+    const toSharedVertices = (sides) => {
+      const unique = new Map(); // {key: vertex}
       const getUniqueVertex = (vertex) => {
         const key = vertex.toString();
-        if (!vertices[key]) {
-          vertices[key] = vertex;
+        if (unique.has(key)) {
+          return unique.get(key)
+        } else {
+          unique.set(key, vertex);
+          return vertex
         }
-        return vertices[key]
       };
 
       return sides.map((side) => side.map(getUniqueVertex))
     };
 
+    /*
+     * Convert a list of sides into a map from vertex to edges.
+     */
+    const toVertexMap = (sides) => {
+      const vertexMap = new Map();
+      // first map to edges with shared vertices
+      const edges = toSharedVertices(sides);
+      // construct adjacent edges map
+      edges.forEach((edge) => {
+        if (vertexMap.has(edge[0])) {
+          vertexMap.get(edge[0]).push(edge);
+        } else {
+          vertexMap.set(edge[0], [edge]);
+        }
+      });
+      return vertexMap
+    };
+
     /**
      * Create the outline(s) of the given geometry.
-     * @param  {geom2} geometry
+     * @param {geom2} geometry - geometry to create outlines from
      * @returns {Array} an array of outlines, where each outline is an array of ordered points
      * @alias module:modeling/geometries/geom2.toOutlines
      *
@@ -5159,65 +5372,35 @@
      * let outlines = toOutlines(geometry) // returns two outlines
      */
     const toOutlines = (geometry) => {
-      const vertexMap = new Map();
-      const edges = toEdges(toSides_1(geometry));
-      edges.forEach((edge) => {
-        if (!(vertexMap.has(edge[0]))) {
-          vertexMap.set(edge[0], []);
-        }
-        const sideslist = vertexMap.get(edge[0]);
-        sideslist.push(edge);
-      });
-
+      const vertexMap = toVertexMap(toSides_1(geometry)); // {vertex: [edges]}
       const outlines = [];
       while (true) {
-        let startside;
+        let startSide;
         for (const [vertex, edges] of vertexMap) {
-          startside = edges.shift();
-          if (!startside) {
+          startSide = edges.shift();
+          if (!startSide) {
             vertexMap.delete(vertex);
             continue
           }
           break
         }
-        if (startside === undefined) break // all starting sides have been visited
+        if (startSide === undefined) break // all starting sides have been visited
 
         const connectedVertexPoints = [];
-        const startvertex = startside[0];
-        const v0 = vec2.create();
+        const startVertex = startSide[0];
         while (true) {
-          connectedVertexPoints.push(startside[0]);
-          const nextvertex = startside[1];
-          if (nextvertex === startvertex) break // the outline has been closed
-          const nextpossiblesides = vertexMap.get(nextvertex);
-          if (!nextpossiblesides) {
-            throw new Error('the given geometry is not closed. verify proper construction')
+          connectedVertexPoints.push(startSide[0]);
+          const nextVertex = startSide[1];
+          if (nextVertex === startVertex) break // the outline has been closed
+          const nextPossibleSides = vertexMap.get(nextVertex);
+          if (!nextPossibleSides) {
+            throw new Error(`geometry is not closed at vertex ${nextVertex}`)
           }
-          let nextsideindex = -1;
-          if (nextpossiblesides.length === 1) {
-            nextsideindex = 0;
-          } else {
-            // more than one side starting at the same vertex
-            let bestangle;
-            const startangle = vec2.angleDegrees(vec2.subtract(v0, startside[1], startside[0]));
-            for (let sideindex = 0; sideindex < nextpossiblesides.length; sideindex++) {
-              const nextpossibleside = nextpossiblesides[sideindex];
-              const nextangle = vec2.angleDegrees(vec2.subtract(v0, nextpossibleside[1], nextpossibleside[0]));
-              let angledif = nextangle - startangle;
-              if (angledif < -180) angledif += 360;
-              if (angledif >= 180) angledif -= 360;
-              if ((nextsideindex < 0) || (angledif > bestangle)) {
-                nextsideindex = sideindex;
-                bestangle = angledif;
-              }
-            }
+          const nextSide = popNextSide(startSide, nextPossibleSides);
+          if (nextPossibleSides.length === 0) {
+            vertexMap.delete(nextVertex);
           }
-          const nextside = nextpossiblesides[nextsideindex];
-          nextpossiblesides.splice(nextsideindex, 1); // remove side from list
-          if (nextpossiblesides.length === 0) {
-            vertexMap.delete(nextvertex);
-          }
-          startside = nextside;
+          startSide = nextSide;
         } // inner loop
 
         // due to the logic of fromPoints()
@@ -5229,6 +5412,30 @@
       } // outer loop
       vertexMap.clear();
       return outlines
+    };
+
+    // find the first counter-clockwise edge from startSide and pop from nextSides
+    const popNextSide = (startSide, nextSides) => {
+      if (nextSides.length === 1) {
+        return nextSides.pop()
+      }
+      const v0 = vec2.create();
+      const startAngle = vec2.angleDegrees(vec2.subtract(v0, startSide[1], startSide[0]));
+      let bestAngle;
+      let bestIndex;
+      nextSides.forEach((nextSide, index) => {
+        const nextAngle = vec2.angleDegrees(vec2.subtract(v0, nextSide[1], nextSide[0]));
+        let angle = nextAngle - startAngle;
+        if (angle < -180) angle += 360;
+        if (angle >= 180) angle -= 360;
+        if (bestIndex === undefined || angle > bestAngle) {
+          bestIndex = index;
+          bestAngle = angle;
+        }
+      });
+      const nextSide = nextSides[bestIndex];
+      nextSides.splice(bestIndex, 1); // remove side from list
+      return nextSide
     };
 
     var toOutlines_1 = toOutlines;
@@ -5912,22 +6119,6 @@
     var concat_1 = concat;
 
     /**
-     * Calls a function for each point in the path.
-     * @param {Object} options - options
-     * @param {Function} thunk - the function to call
-     * @param {path2} path - the path to traverse
-     * @alias module:modeling/geometries/path2.eachPoint
-     *
-     * @example
-     * eachPoint({}, accumulate, path)
-     */
-    const eachPoint = (options, thunk, path) => {
-      toPoints_1(path).forEach(thunk);
-    };
-
-    var eachPoint_1 = eachPoint;
-
-    /**
       * Determine if the given paths are equal.
       * For closed paths, this includes equality under point order rotation.
       * @param {path2} a - the first path to compare
@@ -6196,7 +6387,6 @@
       close: close_1,
       concat: concat_1,
       create: create_1$2,
-      eachPoint: eachPoint_1,
       equals: equals_1$1,
       fromPoints: fromPoints_1,
       fromCompactBinary: fromCompactBinary_1,
@@ -18436,7 +18626,7 @@
 
     var drawAxis_1 = drawAxis;
 
-    const vColorVert = `
+    const vColorVert$1 = `
 precision mediump float;
 
 uniform float camNear, camFar;
@@ -18468,7 +18658,7 @@ void main() {
   //gl_Position = zBufferAdjust(glPosition, camNear, camFar);
 }
 `;
-    const vColorFrag$1 = `
+    const vColorFrag$2 = `
 precision mediump float;
 varying vec3 surfaceNormal, surfacePosition;
 
@@ -18511,7 +18701,7 @@ void main () {
 }
 `;
 
-    var vColorShaders = { frag: vColorFrag$1, vert: vColorVert };
+    var vColorShaders$1 = { frag: vColorFrag$2, vert: vColorVert$1 };
 
     const meshFrag$1 = `
 precision mediump float;
@@ -18577,7 +18767,7 @@ void main() {
         geometry: undefined,
         color: meshColor$2
       };
-      const { geometry, dynamicCulling, useVertexColors, color } = Object.assign({}, defaults, params);
+      const { geometry, dynamicCulling, useVertexColors, color, transparent } = Object.assign({}, defaults, params);
 
       // let ambientOcclusion = vao(geometry.indices, geometry.positions, 64, 64)
       const ambientOcclusion = regl.buffer([]);
@@ -18592,8 +18782,8 @@ void main() {
         ? (flip ? 'front' : 'back')
         : 'back';
 
-      const vert = hasVertexColors ? vColorShaders.vert : meshShaders$1.vert;
-      const frag = hasVertexColors ? vColorShaders.frag : meshShaders$1.frag;
+      const vert = hasVertexColors ? vColorShaders$1.vert : meshShaders$1.vert;
+      const frag = hasVertexColors ? vColorShaders$1.frag : meshShaders$1.frag;
       const modelMatrixInv = glMat4.invert(glMat4.create(), transforms);
 
       let commandParams = {
@@ -18622,15 +18812,17 @@ void main() {
           enable: true,
           face: cullFace
         },
-        depth: {
-          enable: true
-        },
-        blend: {
-          enable: true,
-
-          func: { src: 'src alpha', dst: 'one minus src alpha' }
-        }
+        depth: { enable: !transparent }
       };
+
+      // blending is a bit tricky
+      // https://stackoverflow.com/questions/51938739/regl-color-and-alpha-blending-of-primitives
+      if (transparent) {
+        commandParams.blend = {
+          enable: true,
+          func: { src: 'src alpha', dst: 'one minus src alpha' }
+        };
+      }
 
       if (geometry.cells) {
         commandParams.elements = geometry.cells;
@@ -18655,6 +18847,68 @@ void main() {
     };
 
     var drawMesh_1 = drawMesh;
+
+    const vColorVert = `
+precision mediump float;
+
+uniform float camNear, camFar;
+uniform mat4 model, view, projection;
+
+attribute vec3 position, normal;
+attribute vec4 color;
+
+varying vec3 surfaceNormal, surfacePosition;
+varying vec4 _worldSpacePosition;
+varying vec4 vColor;
+
+void main() {
+  vColor = color;
+
+  surfacePosition = position;
+  surfaceNormal = normal;
+  vec4 worldSpacePosition = model * vec4(position, 1);
+  _worldSpacePosition = worldSpacePosition;
+
+  vec4 glPosition = projection * view * model * vec4(position, 1);
+  gl_Position = glPosition;
+}
+`;
+
+    const vColorFrag$1 = `
+precision mediump float;
+varying vec4 vColor;
+
+void main () {
+  gl_FragColor = vColor;
+}
+`;
+    var vColorShaders = { frag: vColorFrag$1, vert: vColorVert };
+
+    const meshVert = `
+precision mediump float;
+
+uniform float camNear, camFar;
+uniform mat4 model, view, projection;
+
+attribute vec3 position, normal;
+
+
+varying vec3 surfaceNormal, surfacePosition;
+varying vec4 _worldSpacePosition;
+
+
+void main() {
+
+
+  surfacePosition = position;
+  surfaceNormal = normal;
+  vec4 worldSpacePosition = model * vec4(position, 1);
+  _worldSpacePosition = worldSpacePosition;
+
+  vec4 glPosition = projection * view * model * vec4(position, 1);
+  gl_Position = glPosition;
+}
+`;
 
     const meshFrag = `
 precision mediump float;
@@ -18687,28 +18941,6 @@ void main () {
   gl_FragColor = vec4((ambient + diffuse + diffuse2 * v), endColor.a);
 }`;
 
-    const meshVert = `
-precision mediump float;
-
-uniform float camNear, camFar;
-uniform mat4 model, view, projection;
-
-attribute vec3 position, normal;
-
-varying vec3 surfaceNormal, surfacePosition;
-varying vec4 _worldSpacePosition;
-
-void main() {
-  surfacePosition = position;
-  surfaceNormal = normal;
-  vec4 worldSpacePosition = model * vec4(position, 1);
-  _worldSpacePosition = worldSpacePosition;
-
-  vec4 glPosition = projection * view * model * vec4(position, 1);
-  gl_Position = glPosition;
-}
-`;
-
     var meshShaders = { vert: meshVert, frag: meshFrag };
 
     const vColorFrag = `
@@ -18728,17 +18960,21 @@ void main () {
         color: meshColor$1,
         geometry: undefined
       };
-      let { geometry, color } = Object.assign({}, defaults, params);
+      let { geometry, color, transparent } = Object.assign({}, defaults, params);
 
       if ('color' in geometry) color = geometry.color;
 
       const hasIndices = !!(geometry.indices && geometry.indices.length > 0);
       const hasNormals = !!(geometry.normals && geometry.normals.length > 0);
+      const hasVertexColors = !!(geometry.colors && geometry.colors.length > 0);
+
+      const vert = hasVertexColors ? vColorShaders.vert : meshShaders.vert;
+      const frag = hasVertexColors ? vColorShaders.frag : colorOnlyShaders.frag;
 
       const commandParams = {
         primitive: 'lines',
-        vert: meshShaders.vert,
-        frag: colorOnlyShaders.frag,
+        vert,
+        frag,
 
         uniforms: {
           model: (context, props) => props.model || geometry.transforms || glMat4.create(),
@@ -18746,8 +18982,22 @@ void main () {
         },
         attributes: {
           position: regl.buffer({ usage: 'static', type: 'float', data: geometry.positions })
-        }
+        },
+        depth: { enable: !transparent }
       };
+
+      // blending is a bit tricky
+      // https://stackoverflow.com/questions/51938739/regl-color-and-alpha-blending-of-primitives
+      if (transparent) {
+        commandParams.blend = {
+          enable: true,
+          func: { src: 'src alpha', dst: 'one minus src alpha' }
+        };
+      }
+
+      if (hasVertexColors) {
+        commandParams.attributes.color = regl.buffer({ usage: 'static', type: 'float', data: geometry.colors });
+      }
 
       if (hasIndices) {
         commandParams.elements = regl.elements({ usage: 'static', type: 'uint16', data: geometry.indices });
@@ -20371,16 +20621,36 @@ void main () {
 
       if ('color' in solid) color = solid.color;
       const isTransparent = (color[3] < 1.0);
-
+      const colors = [];
       const numgeometries = Math.floor(sides.length / (maxIndex$2)) + 1;
+
+      const addColor = (startColor, endColor) => {
+        // each line needs 2 colors: startColor and endColor
+        // endColor is optional
+        colors.push(startColor, endColor || startColor);
+      };
 
       const geometries = [];
       for (let g = 0; g < numgeometries; g++) {
         const offset = g * maxIndex$2;
         const endset = Math.min(offset + maxIndex$2, sides.length);
         const positions = [];
+
         for (let i = offset; i < endset; i++) {
           const side = sides[i];
+          if (side.color) {
+            // backfill colors, so colors array is not used unless at least one side has color defined
+            if (colors.length === 0 && positions.length > 0) {
+              const toFill = positions.length;
+              for (let j = 0; j < toFill; j++) {
+                colors.push(color); // push default color
+              }
+            }
+            // shader actually allows for gradient on the lines by design
+            addColor(side.color, side.endColor);
+          } else if (colors.length) {
+            addColor(color);
+          }
           positions.push([side[0][0], side[0][1], 0]);
           positions.push([side[1][0], side[1][1], 0]);
         }
@@ -20392,7 +20662,7 @@ void main () {
         // FIXME positions should be Float32Array buffers to eliminate another conversion
         // FIXME normals should be Float32Array buffers to eliminate another conversion
         // FIXME indices should be Uint16Array buffers to eliminate another conversion
-        geometries.push({ type: '2d', positions, normals, indices, transforms, color, isTransparent });
+        geometries.push({ type: '2d', positions, normals, indices, transforms, color, colors, isTransparent });
       }
       return geometries
     };
@@ -20447,9 +20717,8 @@ void main () {
 
           const polygonIndices = [];
           for (let j = 0; j < vertices.length; j++) {
-            const vertex = vertices[j];
+            const position = vertices[j];
 
-            const position = [vertex[0], vertex[1], vertex[2]];
             positions.push(position);
             normals.push(normal);
             colors.push(faceColor);
