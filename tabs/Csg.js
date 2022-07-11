@@ -4617,7 +4617,572 @@
 
     var RenderGroup=function(){function RenderGroup(canvasNumber){this.canvasNumber=canvasNumber;this.render=false;this.hasGrid=true;this.hasAxis=true;this.shapes=[];}RenderGroup.prototype.toReplString=function(){return "<Render #"+this.canvasNumber+">"};return RenderGroup}();var RenderGroupManager=function(){function RenderGroupManager(){this.canvasTracker=1;this.renderGroups=[];this.addRenderGroup();}RenderGroupManager.prototype.addRenderGroup=function(){this.renderGroups.push(new RenderGroup(this.canvasTracker++));};RenderGroupManager.prototype.getCurrentRenderGroup=function(){return this.renderGroups.at(-1)};RenderGroupManager.prototype.nextRenderGroup=function(oldHasGrid,oldHasAxis){if(oldHasGrid===void 0){oldHasGrid=false;}if(oldHasAxis===void 0){oldHasAxis=false;}var oldRenderGroup=this.getCurrentRenderGroup();oldRenderGroup.render=true;oldRenderGroup.hasGrid=oldHasGrid;oldRenderGroup.hasAxis=oldHasAxis;this.addRenderGroup();return oldRenderGroup};RenderGroupManager.prototype.storeShape=function(shape){this.getCurrentRenderGroup().shapes.push(shape);};RenderGroupManager.prototype.shouldRender=function(){return this.getGroupsToRender().length>0};RenderGroupManager.prototype.getGroupsToRender=function(){return this.renderGroups.filter(function(renderGroup){return renderGroup.render})};return RenderGroupManager}();var CsgModuleState=function(){function CsgModuleState(){this.componentCounter=0;this.renderGroupManager=new RenderGroupManager;}CsgModuleState.prototype.nextComponent=function(){return ++this.componentCounter};return CsgModuleState}();function getModuleContext(moduleContexts){var potentialModuleContext=moduleContexts.get("csg");return potentialModuleContext!==null&&potentialModuleContext!==void 0?potentialModuleContext:null}function hexToColor(hex){var _a;var regex=_wrapRegExp(/^#?([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i,{red:1,green:2,blue:3});var potentialGroups=(_a=hex.match(regex))===null||_a===void 0?void 0:_a.groups;if(potentialGroups===undefined)return [0,0,0];var groups=potentialGroups;return [parseInt(groups.red,16)/255,parseInt(groups.green,16)/255,parseInt(groups.blue,16)/255]}function colorToAlphaColor(color,opacity){if(opacity===void 0){opacity=1;}return __spreadArray(__spreadArray([],color),[opacity])}function hexToAlphaColor(hex){return colorToAlphaColor(hexToColor(hex))}function looseInstanceof(object,c){var _a;var objectName=(_a=object===null||object===void 0?void 0:object.constructor)===null||_a===void 0?void 0:_a.name;var className=c===null||c===void 0?void 0:c.name;return objectName!==undefined&&className!==undefined&&objectName===className}
 
-    var SILVER="#AAAAAA";var DEFAULT_COLOR=SILVER;var SA_TAB_BUTTON_WIDTH="40px";var SA_TAB_ICON_SIZE=20;var BP_TOOLTIP_PADDING="10px 12px";var BP_TAB_BUTTON_MARGIN="20px";var BP_TAB_PANEL_MARGIN="20px";var BP_BORDER_RADIUS="3px";var BP_TEXT_COLOR="#F5F8FA";var BP_TOOLTIP_BACKGROUND_COLOR="#E1E8ED";var BP_ICON_COLOR="#A7B6C2";var ACE_GUTTER_TEXT_COLOR="#8091A0";var ACE_GUTTER_BACKGROUND_COLOR="#34495E";var BP_TOOLTIP_TEXT_COLOR="#394B59";var MAIN_TICKS=1;var SUB_TICKS=MAIN_TICKS/4;var GRID_PADDING=MAIN_TICKS;var ROUND_UP_INTERVAL=MAIN_TICKS;var ZOOM_TICK_SCALE=0.1;var ROTATION_SPEED=0.0015;var X_FACTOR=1;var Y_FACTOR=0.75;
+    /*
+     * Copyright 2015 Palantir Technologies, Inc. All rights reserved.
+     *
+     * Licensed under the Apache License, Version 2.0 (the "License");
+     * you may not use this file except in compliance with the License.
+     * You may obtain a copy of the License at
+     *
+     *     http://www.apache.org/licenses/LICENSE-2.0
+     *
+     * Unless required by applicable law or agreed to in writing, software
+     * distributed under the License is distributed on an "AS IS" BASIS,
+     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     * See the License for the specific language governing permissions and
+     * limitations under the License.
+     */
+    // tslint:disable:object-literal-sort-keys
+    /**
+     * The four basic intents.
+     */
+    var Intent = {
+        NONE: "none",
+        PRIMARY: "primary",
+        SUCCESS: "success",
+        WARNING: "warning",
+        DANGER: "danger",
+    };
+
+    /*
+     * Copyright 2015 Palantir Technologies, Inc. All rights reserved.
+     *
+     * Licensed under the Apache License, Version 2.0 (the "License");
+     * you may not use this file except in compliance with the License.
+     * You may obtain a copy of the License at
+     *
+     *     http://www.apache.org/licenses/LICENSE-2.0
+     *
+     * Unless required by applicable law or agreed to in writing, software
+     * distributed under the License is distributed on an "AS IS" BASIS,
+     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     * See the License for the specific language governing permissions and
+     * limitations under the License.
+     */
+    var _a, _b, _c, _d;
+    var NS = "bp3";
+    if (typeof process !== "undefined") {
+        NS = (_d = (_b = (_a = process.env) === null || _a === void 0 ? void 0 : _a.BLUEPRINT_NAMESPACE) !== null && _b !== void 0 ? _b : (_c = process.env) === null || _c === void 0 ? void 0 : _c.REACT_APP_BLUEPRINT_NAMESPACE) !== null && _d !== void 0 ? _d : NS;
+    }
+    var LARGE = "".concat(NS, "-large");
+    var SMALL = "".concat(NS, "-small");
+    intentClass(Intent.PRIMARY);
+    intentClass(Intent.SUCCESS);
+    intentClass(Intent.WARNING);
+    intentClass(Intent.DANGER);
+    var SPINNER = "".concat(NS, "-spinner");
+    var SPINNER_ANIMATION = "".concat(SPINNER, "-animation");
+    var SPINNER_HEAD = "".concat(SPINNER, "-head");
+    var SPINNER_NO_SPIN = "".concat(NS, "-no-spin");
+    var SPINNER_TRACK$1 = "".concat(SPINNER, "-track");
+    var ICON = "".concat(NS, "-icon");
+    function iconClass(iconName) {
+        if (iconName == null) {
+            return undefined;
+        }
+        return iconName.indexOf("".concat(NS, "-icon-")) === 0 ? iconName : "".concat(NS, "-icon-").concat(iconName);
+    }
+    function intentClass(intent) {
+        if (intent == null || intent === Intent.NONE) {
+            return undefined;
+        }
+        return "".concat(NS, "-intent-").concat(intent.toLowerCase());
+    }
+
+    /*
+     * Copyright 2015 Palantir Technologies, Inc. All rights reserved.
+     *
+     * Licensed under the Apache License, Version 2.0 (the "License");
+     * you may not use this file except in compliance with the License.
+     * You may obtain a copy of the License at
+     *
+     *     http://www.apache.org/licenses/LICENSE-2.0
+     *
+     * Unless required by applicable law or agreed to in writing, software
+     * distributed under the License is distributed on an "AS IS" BASIS,
+     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     * See the License for the specific language governing permissions and
+     * limitations under the License.
+     */
+    var ns = "[Blueprint]";
+    var CLAMP_MIN_MAX = ns + " clamp: max cannot be less than min";
+    var SPINNER_WARN_CLASSES_SIZE = ns + " <Spinner> Classes.SMALL/LARGE are ignored if size prop is set.";
+
+    /** Returns whether `process.env.NODE_ENV` exists and equals `env`. */
+    function isNodeEnv(env) {
+        return typeof process !== "undefined" && process.env && process.env.NODE_ENV === env;
+    }
+    /**
+     * Clamps the given number between min and max values. Returns value if within
+     * range, or closest bound.
+     */
+    function clamp(val, min, max) {
+        if (val == null) {
+            return val;
+        }
+        if (max < min) {
+            throw new Error(CLAMP_MIN_MAX);
+        }
+        return Math.min(Math.max(val, min), max);
+    }
+
+    /**
+     * An abstract component that Blueprint components can extend
+     * in order to add some common functionality like runtime props validation.
+     */
+    // eslint-disable-next-line @typescript-eslint/ban-types
+    var AbstractPureComponent2 = /** @class */ (function (_super) {
+        __extends(AbstractPureComponent2, _super);
+        function AbstractPureComponent2(props, context) {
+            var _this = _super.call(this, props, context) || this;
+            // Not bothering to remove entries when their timeouts finish because clearing invalid ID is a no-op
+            _this.timeoutIds = [];
+            _this.requestIds = [];
+            /**
+             * Clear all known timeouts.
+             */
+            _this.clearTimeouts = function () {
+                if (_this.timeoutIds.length > 0) {
+                    for (var _i = 0, _a = _this.timeoutIds; _i < _a.length; _i++) {
+                        var timeoutId = _a[_i];
+                        window.clearTimeout(timeoutId);
+                    }
+                    _this.timeoutIds = [];
+                }
+            };
+            /**
+             * Clear all known animation frame requests.
+             */
+            _this.cancelAnimationFrames = function () {
+                if (_this.requestIds.length > 0) {
+                    for (var _i = 0, _a = _this.requestIds; _i < _a.length; _i++) {
+                        var requestId = _a[_i];
+                        window.cancelAnimationFrame(requestId);
+                    }
+                    _this.requestIds = [];
+                }
+            };
+            if (!isNodeEnv("production")) {
+                _this.validateProps(_this.props);
+            }
+            return _this;
+        }
+        AbstractPureComponent2.prototype.componentDidUpdate = function (_prevProps, _prevState, _snapshot) {
+            if (!isNodeEnv("production")) {
+                this.validateProps(this.props);
+            }
+        };
+        AbstractPureComponent2.prototype.componentWillUnmount = function () {
+            this.clearTimeouts();
+            this.cancelAnimationFrames();
+        };
+        /**
+         * Request an animation frame and remember its ID.
+         * All pending requests will be canceled when component unmounts.
+         *
+         * @returns a "cancel" function that will cancel the request when invoked.
+         */
+        AbstractPureComponent2.prototype.requestAnimationFrame = function (callback) {
+            var handle = window.requestAnimationFrame(callback);
+            this.requestIds.push(handle);
+            return function () { return window.cancelAnimationFrame(handle); };
+        };
+        /**
+         * Set a timeout and remember its ID.
+         * All pending timeouts will be cleared when component unmounts.
+         *
+         * @returns a "cancel" function that will clear timeout when invoked.
+         */
+        AbstractPureComponent2.prototype.setTimeout = function (callback, timeout) {
+            var handle = window.setTimeout(callback, timeout);
+            this.timeoutIds.push(handle);
+            return function () { return window.clearTimeout(handle); };
+        };
+        /**
+         * Ensures that the props specified for a component are valid.
+         * Implementations should check that props are valid and usually throw an Error if they are not.
+         * Implementations should not duplicate checks that the type system already guarantees.
+         *
+         * This method should be used instead of React's
+         * [propTypes](https://facebook.github.io/react/docs/reusable-components.html#prop-validation) feature.
+         * Like propTypes, these runtime checks run only in development mode.
+         */
+        AbstractPureComponent2.prototype.validateProps = function (_props) {
+            // implement in subclass
+        };
+        return AbstractPureComponent2;
+    }(React.PureComponent));
+
+    var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
+
+    function unwrapExports (x) {
+    	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
+    }
+
+    function createCommonjsModule(fn, module) {
+    	return module = { exports: {} }, fn(module, module.exports), module.exports;
+    }
+
+    var DISPLAYNAME_PREFIX = "Blueprint3";
+
+    var classnames = createCommonjsModule(function (module) {
+    /*!
+      Copyright (c) 2017 Jed Watson.
+      Licensed under the MIT License (MIT), see
+      http://jedwatson.github.io/classnames
+    */
+    /* global define */
+
+    (function () {
+
+    	var hasOwn = {}.hasOwnProperty;
+
+    	function classNames () {
+    		var classes = [];
+
+    		for (var i = 0; i < arguments.length; i++) {
+    			var arg = arguments[i];
+    			if (!arg) continue;
+
+    			var argType = typeof arg;
+
+    			if (argType === 'string' || argType === 'number') {
+    				classes.push(arg);
+    			} else if (Array.isArray(arg) && arg.length) {
+    				var inner = classNames.apply(null, arg);
+    				if (inner) {
+    					classes.push(inner);
+    				}
+    			} else if (argType === 'object') {
+    				for (var key in arg) {
+    					if (hasOwn.call(arg, key) && arg[key]) {
+    						classes.push(key);
+    					}
+    				}
+    			}
+    		}
+
+    		return classes.join(' ');
+    	}
+
+    	if (module.exports) {
+    		classNames.default = classNames;
+    		module.exports = classNames;
+    	} else {
+    		window.classNames = classNames;
+    	}
+    }());
+    });
+
+    var reactLifecyclesCompat_cjs = createCommonjsModule(function (module, exports) {
+
+    Object.defineProperty(exports, '__esModule', { value: true });
+
+    /**
+     * Copyright (c) 2013-present, Facebook, Inc.
+     *
+     * This source code is licensed under the MIT license found in the
+     * LICENSE file in the root directory of this source tree.
+     */
+
+    function componentWillMount() {
+      // Call this.constructor.gDSFP to support sub-classes.
+      var state = this.constructor.getDerivedStateFromProps(this.props, this.state);
+      if (state !== null && state !== undefined) {
+        this.setState(state);
+      }
+    }
+
+    function componentWillReceiveProps(nextProps) {
+      // Call this.constructor.gDSFP to support sub-classes.
+      // Use the setState() updater to ensure state isn't stale in certain edge cases.
+      function updater(prevState) {
+        var state = this.constructor.getDerivedStateFromProps(nextProps, prevState);
+        return state !== null && state !== undefined ? state : null;
+      }
+      // Binding "this" is important for shallow renderer support.
+      this.setState(updater.bind(this));
+    }
+
+    function componentWillUpdate(nextProps, nextState) {
+      try {
+        var prevProps = this.props;
+        var prevState = this.state;
+        this.props = nextProps;
+        this.state = nextState;
+        this.__reactInternalSnapshotFlag = true;
+        this.__reactInternalSnapshot = this.getSnapshotBeforeUpdate(
+          prevProps,
+          prevState
+        );
+      } finally {
+        this.props = prevProps;
+        this.state = prevState;
+      }
+    }
+
+    // React may warn about cWM/cWRP/cWU methods being deprecated.
+    // Add a flag to suppress these warnings for this special case.
+    componentWillMount.__suppressDeprecationWarning = true;
+    componentWillReceiveProps.__suppressDeprecationWarning = true;
+    componentWillUpdate.__suppressDeprecationWarning = true;
+
+    function polyfill(Component) {
+      var prototype = Component.prototype;
+
+      if (!prototype || !prototype.isReactComponent) {
+        throw new Error('Can only polyfill class components');
+      }
+
+      if (
+        typeof Component.getDerivedStateFromProps !== 'function' &&
+        typeof prototype.getSnapshotBeforeUpdate !== 'function'
+      ) {
+        return Component;
+      }
+
+      // If new component APIs are defined, "unsafe" lifecycles won't be called.
+      // Error if any of these lifecycles are present,
+      // Because they would work differently between older and newer (16.3+) versions of React.
+      var foundWillMountName = null;
+      var foundWillReceivePropsName = null;
+      var foundWillUpdateName = null;
+      if (typeof prototype.componentWillMount === 'function') {
+        foundWillMountName = 'componentWillMount';
+      } else if (typeof prototype.UNSAFE_componentWillMount === 'function') {
+        foundWillMountName = 'UNSAFE_componentWillMount';
+      }
+      if (typeof prototype.componentWillReceiveProps === 'function') {
+        foundWillReceivePropsName = 'componentWillReceiveProps';
+      } else if (typeof prototype.UNSAFE_componentWillReceiveProps === 'function') {
+        foundWillReceivePropsName = 'UNSAFE_componentWillReceiveProps';
+      }
+      if (typeof prototype.componentWillUpdate === 'function') {
+        foundWillUpdateName = 'componentWillUpdate';
+      } else if (typeof prototype.UNSAFE_componentWillUpdate === 'function') {
+        foundWillUpdateName = 'UNSAFE_componentWillUpdate';
+      }
+      if (
+        foundWillMountName !== null ||
+        foundWillReceivePropsName !== null ||
+        foundWillUpdateName !== null
+      ) {
+        var componentName = Component.displayName || Component.name;
+        var newApiName =
+          typeof Component.getDerivedStateFromProps === 'function'
+            ? 'getDerivedStateFromProps()'
+            : 'getSnapshotBeforeUpdate()';
+
+        throw Error(
+          'Unsafe legacy lifecycles will not be called for components using new component APIs.\n\n' +
+            componentName +
+            ' uses ' +
+            newApiName +
+            ' but also contains the following legacy lifecycles:' +
+            (foundWillMountName !== null ? '\n  ' + foundWillMountName : '') +
+            (foundWillReceivePropsName !== null
+              ? '\n  ' + foundWillReceivePropsName
+              : '') +
+            (foundWillUpdateName !== null ? '\n  ' + foundWillUpdateName : '') +
+            '\n\nThe above lifecycles should be removed. Learn more about this warning here:\n' +
+            'https://fb.me/react-async-component-lifecycle-hooks'
+        );
+      }
+
+      // React <= 16.2 does not support static getDerivedStateFromProps.
+      // As a workaround, use cWM and cWRP to invoke the new static lifecycle.
+      // Newer versions of React will ignore these lifecycles if gDSFP exists.
+      if (typeof Component.getDerivedStateFromProps === 'function') {
+        prototype.componentWillMount = componentWillMount;
+        prototype.componentWillReceiveProps = componentWillReceiveProps;
+      }
+
+      // React <= 16.2 does not support getSnapshotBeforeUpdate.
+      // As a workaround, use cWU to invoke the new lifecycle.
+      // Newer versions of React will ignore that lifecycle if gSBU exists.
+      if (typeof prototype.getSnapshotBeforeUpdate === 'function') {
+        if (typeof prototype.componentDidUpdate !== 'function') {
+          throw new Error(
+            'Cannot polyfill getSnapshotBeforeUpdate() for components that do not define componentDidUpdate() on the prototype'
+          );
+        }
+
+        prototype.componentWillUpdate = componentWillUpdate;
+
+        var componentDidUpdate = prototype.componentDidUpdate;
+
+        prototype.componentDidUpdate = function componentDidUpdatePolyfill(
+          prevProps,
+          prevState,
+          maybeSnapshot
+        ) {
+          // 16.3+ will not execute our will-update method;
+          // It will pass a snapshot value to did-update though.
+          // Older versions will require our polyfilled will-update value.
+          // We need to handle both cases, but can't just check for the presence of "maybeSnapshot",
+          // Because for <= 15.x versions this might be a "prevContext" object.
+          // We also can't just check "__reactInternalSnapshot",
+          // Because get-snapshot might return a falsy value.
+          // So check for the explicit __reactInternalSnapshotFlag flag to determine behavior.
+          var snapshot = this.__reactInternalSnapshotFlag
+            ? this.__reactInternalSnapshot
+            : maybeSnapshot;
+
+          componentDidUpdate.call(this, prevProps, prevState, snapshot);
+        };
+      }
+
+      return Component;
+    }
+
+    exports.polyfill = polyfill;
+    });
+
+    unwrapExports(reactLifecyclesCompat_cjs);
+    var reactLifecyclesCompat_cjs_1 = reactLifecyclesCompat_cjs.polyfill;
+
+    var IconSize;
+    (function (IconSize) {
+        IconSize[IconSize["STANDARD"] = 16] = "STANDARD";
+        IconSize[IconSize["LARGE"] = 20] = "LARGE";
+    })(IconSize || (IconSize = {}));
+    var Icon = /** @class */ (function (_super) {
+        __extends(Icon, _super);
+        function Icon() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        Icon.prototype.render = function () {
+            var icon = this.props.icon;
+            if (icon == null || typeof icon === "boolean") {
+                return null;
+            }
+            else if (typeof icon !== "string") {
+                return icon;
+            }
+            var _a = this.props, className = _a.className, color = _a.color, htmlTitle = _a.htmlTitle, 
+            // eslint-disable-next-line deprecation/deprecation
+            iconSize = _a.iconSize, intent = _a.intent, _b = _a.size, size = _b === void 0 ? iconSize !== null && iconSize !== void 0 ? iconSize : IconSize.STANDARD : _b, title = _a.title, _c = _a.tagName, tagName = _c === void 0 ? "span" : _c, htmlprops = __rest(_a, ["className", "color", "htmlTitle", "iconSize", "intent", "size", "title", "tagName"]);
+            // choose which pixel grid is most appropriate for given icon size
+            var pixelGridSize = size >= IconSize.LARGE ? IconSize.LARGE : IconSize.STANDARD;
+            // render path elements, or nothing if icon name is unknown.
+            var paths = this.renderSvgPaths(pixelGridSize, icon);
+            // eslint-disable-next-line deprecation/deprecation
+            var classes = classnames(ICON, iconClass(icon), intentClass(intent), className);
+            var viewBox = "0 0 ".concat(pixelGridSize, " ").concat(pixelGridSize);
+            return React.createElement(tagName, __assign(__assign({}, htmlprops), { "aria-hidden": title ? undefined : true, className: classes, title: htmlTitle }), React.createElement("svg", { fill: color, "data-icon": icon, width: size, height: size, viewBox: viewBox },
+                title && React.createElement("desc", null, title),
+                paths));
+        };
+        /** Render `<path>` elements for the given icon name. Returns `null` if name is unknown. */
+        Icon.prototype.renderSvgPaths = function (pathsSize, iconName) {
+            var svgPathsRecord = pathsSize === IconSize.STANDARD ? IconSvgPaths16 : IconSvgPaths20;
+            var pathStrings = svgPathsRecord[iconName];
+            if (pathStrings == null) {
+                return null;
+            }
+            return pathStrings.map(function (d, i) { return React.createElement("path", { key: i, d: d, fillRule: "evenodd" }); });
+        };
+        Icon.displayName = "".concat(DISPLAYNAME_PREFIX, ".Icon");
+        /** @deprecated use IconSize.STANDARD */
+        Icon.SIZE_STANDARD = IconSize.STANDARD;
+        /** @deprecated use IconSize.LARGE */
+        Icon.SIZE_LARGE = IconSize.LARGE;
+        Icon = __decorate([
+            reactLifecyclesCompat_cjs_1
+        ], Icon);
+        return Icon;
+    }(AbstractPureComponent2));
+
+    var SpinnerSize;
+    (function (SpinnerSize) {
+        SpinnerSize[SpinnerSize["SMALL"] = 20] = "SMALL";
+        SpinnerSize[SpinnerSize["STANDARD"] = 50] = "STANDARD";
+        SpinnerSize[SpinnerSize["LARGE"] = 100] = "LARGE";
+    })(SpinnerSize || (SpinnerSize = {}));
+    // see http://stackoverflow.com/a/18473154/3124288 for calculating arc path
+    var R = 45;
+    var SPINNER_TRACK = "M 50,50 m 0,-".concat(R, " a ").concat(R, ",").concat(R, " 0 1 1 0,").concat(R * 2, " a ").concat(R, ",").concat(R, " 0 1 1 0,-").concat(R * 2);
+    // unitless total length of SVG path, to which stroke-dash* properties are relative.
+    // https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/pathLength
+    // this value is the result of `<path d={SPINNER_TRACK} />.getTotalLength()` and works in all browsers:
+    var PATH_LENGTH = 280;
+    var MIN_SIZE = 10;
+    var STROKE_WIDTH = 4;
+    var MIN_STROKE_WIDTH = 16;
+    var Spinner = /** @class */ (function (_super) {
+        __extends(Spinner, _super);
+        function Spinner() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        Spinner.prototype.componentDidUpdate = function (prevProps) {
+            if (prevProps.value !== this.props.value) {
+                // IE/Edge: re-render after changing value to force SVG update
+                this.forceUpdate();
+            }
+        };
+        Spinner.prototype.render = function () {
+            var _a;
+            var _b = this.props, className = _b.className, intent = _b.intent, value = _b.value, _c = _b.tagName, tagName = _c === void 0 ? "div" : _c;
+            var size = this.getSize();
+            var classes = classnames(SPINNER, intentClass(intent), (_a = {}, _a[SPINNER_NO_SPIN] = value != null, _a), className);
+            // keep spinner track width consistent at all sizes (down to about 10px).
+            var strokeWidth = Math.min(MIN_STROKE_WIDTH, (STROKE_WIDTH * SpinnerSize.LARGE) / size);
+            var strokeOffset = PATH_LENGTH - PATH_LENGTH * (value == null ? 0.25 : clamp(value, 0, 1));
+            // multiple DOM elements around SVG are necessary to properly isolate animation:
+            // - SVG elements in IE do not support anim/trans so they must be set on a parent HTML element.
+            // - SPINNER_ANIMATION isolates svg from parent display and is always centered inside root element.
+            return React.createElement(tagName, {
+                className: classes,
+                role: "progressbar",
+            }, React.createElement(tagName, { className: SPINNER_ANIMATION }, React.createElement("svg", { width: size, height: size, strokeWidth: strokeWidth.toFixed(2), viewBox: this.getViewBox(strokeWidth) },
+                React.createElement("path", { className: SPINNER_TRACK$1, d: SPINNER_TRACK }),
+                React.createElement("path", { className: SPINNER_HEAD, d: SPINNER_TRACK, pathLength: PATH_LENGTH, strokeDasharray: "".concat(PATH_LENGTH, " ").concat(PATH_LENGTH), strokeDashoffset: strokeOffset }))));
+        };
+        Spinner.prototype.validateProps = function (_a) {
+            var _b = _a.className, className = _b === void 0 ? "" : _b, size = _a.size;
+            if (size != null && (className.indexOf(SMALL) >= 0 || className.indexOf(LARGE) >= 0)) {
+                console.warn(SPINNER_WARN_CLASSES_SIZE);
+            }
+        };
+        /**
+         * Resolve size to a pixel value.
+         * Size can be set by className, props, default, or minimum constant.
+         */
+        Spinner.prototype.getSize = function () {
+            var _a = this.props, _b = _a.className, className = _b === void 0 ? "" : _b, size = _a.size;
+            if (size == null) {
+                // allow Classes constants to determine default size.
+                if (className.indexOf(SMALL) >= 0) {
+                    return SpinnerSize.SMALL;
+                }
+                else if (className.indexOf(LARGE) >= 0) {
+                    return SpinnerSize.LARGE;
+                }
+                return SpinnerSize.STANDARD;
+            }
+            return Math.max(MIN_SIZE, size);
+        };
+        /** Compute viewbox such that stroked track sits exactly at edge of image frame. */
+        Spinner.prototype.getViewBox = function (strokeWidth) {
+            var radius = R + strokeWidth / 2;
+            var viewBoxX = (50 - radius).toFixed(2);
+            var viewBoxWidth = (radius * 2).toFixed(2);
+            return "".concat(viewBoxX, " ").concat(viewBoxX, " ").concat(viewBoxWidth, " ").concat(viewBoxWidth);
+        };
+        Spinner.displayName = "".concat(DISPLAYNAME_PREFIX, ".Spinner");
+        /** @deprecated use SpinnerSize.SMALL */
+        Spinner.SIZE_SMALL = SpinnerSize.SMALL;
+        /** @deprecated use SpinnerSize.STANDARD */
+        Spinner.SIZE_STANDARD = SpinnerSize.STANDARD;
+        /** @deprecated use SpinnerSize.LARGE */
+        Spinner.SIZE_LARGE = SpinnerSize.LARGE;
+        Spinner = __decorate([
+            reactLifecyclesCompat_cjs_1
+        ], Spinner);
+        return Spinner;
+    }(AbstractPureComponent2));
+
+    var SILVER="#AAAAAA";var DEFAULT_COLOR=SILVER;var SA_TAB_BUTTON_WIDTH="40px";var SA_TAB_ICON_SIZE=IconSize.LARGE;var BP_TOOLTIP_PADDING="10px 12px";var BP_TAB_BUTTON_MARGIN="20px";var BP_TAB_PANEL_MARGIN="20px";var BP_BORDER_RADIUS="3px";var STANDARD_MARGIN="10px";var BP_TEXT_COLOR="#F5F8FA";var BP_TOOLTIP_BACKGROUND_COLOR="#E1E8ED";var BP_ICON_COLOR="#A7B6C2";var ACE_GUTTER_TEXT_COLOR="#8091A0";var ACE_GUTTER_BACKGROUND_COLOR="#34495E";var BP_TOOLTIP_TEXT_COLOR="#394B59";var MAIN_TICKS=1;var SUB_TICKS=MAIN_TICKS/4;var GRID_PADDING=MAIN_TICKS;var ROUND_UP_INTERVAL=MAIN_TICKS;var ZOOM_TICK_SCALE=0.1;var ROTATION_SPEED=0.0015;var X_FACTOR=1;var Y_FACTOR=0.75;
 
     /**
      * Flatten the given list of arguments into a single flat array.
@@ -7831,16 +8396,6 @@
       specularLightAmount: 0.16,
       materialShininess: 8.0
     };
-
-    var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
-
-    function unwrapExports (x) {
-    	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
-    }
-
-    function createCommonjsModule(fn, module) {
-    	return module = { exports: {} }, fn(module, module.exports), module.exports;
-    }
 
     var regl = createCommonjsModule(function (module, exports) {
     (function (global, factory) {
@@ -20981,438 +21536,11 @@ void main () {
 
     var MousePointer;(function(MousePointer){MousePointer[MousePointer["LEFT"]=0]="LEFT";MousePointer[MousePointer["MIDDLE"]=1]="MIDDLE";MousePointer[MousePointer["RIGHT"]=2]="RIGHT";MousePointer[MousePointer["BACK"]=3]="BACK";MousePointer[MousePointer["FORWARD"]=4]="FORWARD";MousePointer[MousePointer["NONE"]=-1]="NONE";MousePointer[MousePointer["OTHER"]=7050]="OTHER";})(MousePointer||(MousePointer={}));var InputTracker=function(){function InputTracker(canvas,cameraState,geometryEntities){this.canvas=canvas;this.cameraState=cameraState;this.geometryEntities=geometryEntities;this.controlsState=cloneControlsState();this.zoomToFit=true;this.zoomTicks=0;this.heldPointer=MousePointer.NONE;this.lastX=null;this.lastY=null;this.rotateX=0;this.rotateY=0;this.panX=0;this.panY=0;this.frameDirty=false;this.listenerTracker=new ListenerTracker(canvas);}InputTracker.prototype.changeZoomTicks=function(wheelDelta){this.zoomTicks+=Math.sign(wheelDelta);};InputTracker.prototype.setHeldPointer=function(mouseEventButton){switch(mouseEventButton){case MousePointer.LEFT:case MousePointer.RIGHT:case MousePointer.MIDDLE:this.heldPointer=mouseEventButton;break;default:this.heldPointer=MousePointer.OTHER;break;}};InputTracker.prototype.unsetHeldPointer=function(){this.heldPointer=MousePointer.NONE;};InputTracker.prototype.shouldIgnorePointerMove=function(){return ![MousePointer.LEFT,MousePointer.MIDDLE].includes(this.heldPointer)};InputTracker.prototype.isPointerPan=function(isShiftKey){return this.heldPointer===MousePointer.MIDDLE||this.heldPointer===MousePointer.LEFT&&isShiftKey};InputTracker.prototype.unsetLastCoordinates=function(){this.lastX=null;this.lastY=null;};InputTracker.prototype.tryDynamicResize=function(){var _a=this.canvas,oldWidth=_a.width,oldHeight=_a.height;var canvasBounds=this.canvas.getBoundingClientRect();var devicePixelRatio=window.devicePixelRatio;var newWidth=Math.floor(canvasBounds.width*devicePixelRatio);var newHeight=Math.floor(canvasBounds.height*devicePixelRatio);if(oldWidth===newWidth&&oldHeight===newHeight)return;this.frameDirty=true;this.canvas.width=newWidth;this.canvas.height=newHeight;updateProjection(this.cameraState,newWidth,newHeight);};InputTracker.prototype.tryZoomToFit=function(){if(!this.zoomToFit)return;this.frameDirty=true;zoomToFit(this.cameraState,this.controlsState,this.geometryEntities);this.zoomToFit=false;};InputTracker.prototype.tryZoom=function(){if(this.zoomTicks===0)return;while(this.zoomTicks!==0){var currentTick=Math.sign(this.zoomTicks);this.zoomTicks-=currentTick;var scaledChange=currentTick*ZOOM_TICK_SCALE;var potentialNewScale=this.controlsState.scale+scaledChange;var potentialNewDistance=vec3$1.distance(this.cameraState.position,this.cameraState.target)*potentialNewScale;if(potentialNewDistance>this.controlsState.limits.minDistance&&potentialNewDistance<this.controlsState.limits.maxDistance){this.frameDirty=true;this.controlsState.scale=potentialNewScale;}else break}this.zoomTicks=0;};InputTracker.prototype.tryRotate=function(){if(this.rotateX===0&&this.rotateY===0)return;this.frameDirty=true;rotate(this.cameraState,this.controlsState,this.rotateX,this.rotateY);this.rotateX=0;this.rotateY=0;};InputTracker.prototype.tryPan=function(){if(this.panX===0&&this.panY===0)return;this.frameDirty=true;pan(this.cameraState,this.controlsState,this.panX,this.panY);this.panX=0;this.panY=0;};InputTracker.prototype.addListeners=function(){var _this=this;this.listenerTracker.addListener("dblclick",function(_mouseEvent){_this.zoomToFit=true;});this.listenerTracker.addListener("wheel",function(wheelEvent){wheelEvent.preventDefault();_this.changeZoomTicks(wheelEvent.deltaY);},{passive:false});this.listenerTracker.addListener("pointerdown",function(pointerEvent){pointerEvent.preventDefault();_this.setHeldPointer(pointerEvent.button);_this.lastX=pointerEvent.pageX;_this.lastY=pointerEvent.pageY;_this.canvas.setPointerCapture(pointerEvent.pointerId);},{passive:false});this.listenerTracker.addListener("pointerup",function(pointerEvent){_this.unsetHeldPointer();_this.unsetLastCoordinates();_this.canvas.releasePointerCapture(pointerEvent.pointerId);});this.listenerTracker.addListener("pointermove",function(pointerEvent){if(_this.shouldIgnorePointerMove())return;var currentX=pointerEvent.pageX;var currentY=pointerEvent.pageY;if(_this.lastX!==null&&_this.lastY!==null){var differenceX=_this.lastX-currentX;var differenceY=_this.lastY-currentY;if(_this.isPointerPan(pointerEvent.shiftKey)){_this.panX+=differenceX;_this.panY-=differenceY;}else {_this.rotateX-=differenceX;_this.rotateY+=differenceY;}}_this.lastX=currentX;_this.lastY=currentY;});};InputTracker.prototype.removeListeners=function(){this.listenerTracker.removeListeners();};InputTracker.prototype.respondToInput=function(){this.tryZoomToFit();this.tryZoom();this.tryRotate();this.tryPan();if(this.frameDirty)updateStates(this.cameraState,this.controlsState);this.tryDynamicResize();};InputTracker.prototype.flushMidInput=function(){this.unsetHeldPointer();this.unsetLastCoordinates();};return InputTracker}();
 
-    var StatefulRenderer=function(){function StatefulRenderer(canvas,renderGroup,componentNumber){this.canvas=canvas;this.componentNumber=componentNumber;this.isStarted=false;this.currentRequestId=null;this.cameraState=cloneCameraState();this.cameraState.position=[1000,1000,1500];this.webGlListenerTracker=new ListenerTracker(canvas);this.wrappedRendererData=makeWrappedRendererData(renderGroup,this.cameraState);this.inputTracker=new InputTracker(canvas,this.cameraState,this.wrappedRendererData.geometryEntities);}StatefulRenderer.prototype.addWebGlListeners=function(){var _this=this;this.webGlListenerTracker.addListener("webglcontextlost",function(contextEvent){contextEvent.preventDefault();console.debug(">>> CONTEXT LOST FOR #"+_this.componentNumber);_this.stop();});this.webGlListenerTracker.addListener("webglcontextrestored",function(_contextEvent){console.debug(">>> CONTEXT RESTORED FOR #"+_this.componentNumber);_this.start();});};StatefulRenderer.prototype.forgetEntityCaches=function(){this.wrappedRendererData.entities.forEach(function(entity){entity.visuals.cacheId=null;});};StatefulRenderer.prototype.start=function(firstStart){var _this=this;if(firstStart===void 0){firstStart=false;}if(this.isStarted)return;this.isStarted=true;var wrappedRenderer=makeWrappedRenderer(this.canvas);if(firstStart)this.addWebGlListeners();this.inputTracker.addListeners();var frameCallback=function frameCallback(_timestamp){_this.inputTracker.respondToInput();if(_this.inputTracker.frameDirty){console.debug(">>> Frame for #"+_this.componentNumber);wrappedRenderer(_this.wrappedRendererData);_this.inputTracker.frameDirty=false;}_this.currentRequestId=window.requestAnimationFrame(frameCallback);};if(!firstStart){this.inputTracker.frameDirty=true;}this.currentRequestId=window.requestAnimationFrame(frameCallback);};StatefulRenderer.prototype.stop=function(lastStop){if(lastStop===void 0){lastStop=false;}if(this.currentRequestId!==null){window.cancelAnimationFrame(this.currentRequestId);this.currentRequestId=null;}if(lastStop)this.webGlListenerTracker.removeListeners();this.inputTracker.removeListeners();if(!lastStop){this.inputTracker.flushMidInput();this.forgetEntityCaches();}this.isStarted=false;};return StatefulRenderer}();
-
-    /*
-     * Copyright 2015 Palantir Technologies, Inc. All rights reserved.
-     *
-     * Licensed under the Apache License, Version 2.0 (the "License");
-     * you may not use this file except in compliance with the License.
-     * You may obtain a copy of the License at
-     *
-     *     http://www.apache.org/licenses/LICENSE-2.0
-     *
-     * Unless required by applicable law or agreed to in writing, software
-     * distributed under the License is distributed on an "AS IS" BASIS,
-     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-     * See the License for the specific language governing permissions and
-     * limitations under the License.
-     */
-    // tslint:disable:object-literal-sort-keys
-    /**
-     * The four basic intents.
-     */
-    var Intent = {
-        NONE: "none",
-        PRIMARY: "primary",
-        SUCCESS: "success",
-        WARNING: "warning",
-        DANGER: "danger",
-    };
-
-    /*
-     * Copyright 2015 Palantir Technologies, Inc. All rights reserved.
-     *
-     * Licensed under the Apache License, Version 2.0 (the "License");
-     * you may not use this file except in compliance with the License.
-     * You may obtain a copy of the License at
-     *
-     *     http://www.apache.org/licenses/LICENSE-2.0
-     *
-     * Unless required by applicable law or agreed to in writing, software
-     * distributed under the License is distributed on an "AS IS" BASIS,
-     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-     * See the License for the specific language governing permissions and
-     * limitations under the License.
-     */
-    var _a, _b, _c, _d;
-    var NS = "bp3";
-    if (typeof process !== "undefined") {
-        NS = (_d = (_b = (_a = process.env) === null || _a === void 0 ? void 0 : _a.BLUEPRINT_NAMESPACE) !== null && _b !== void 0 ? _b : (_c = process.env) === null || _c === void 0 ? void 0 : _c.REACT_APP_BLUEPRINT_NAMESPACE) !== null && _d !== void 0 ? _d : NS;
-    }
-    intentClass(Intent.PRIMARY);
-    intentClass(Intent.SUCCESS);
-    intentClass(Intent.WARNING);
-    intentClass(Intent.DANGER);
-    var ICON = "".concat(NS, "-icon");
-    function iconClass(iconName) {
-        if (iconName == null) {
-            return undefined;
-        }
-        return iconName.indexOf("".concat(NS, "-icon-")) === 0 ? iconName : "".concat(NS, "-icon-").concat(iconName);
-    }
-    function intentClass(intent) {
-        if (intent == null || intent === Intent.NONE) {
-            return undefined;
-        }
-        return "".concat(NS, "-intent-").concat(intent.toLowerCase());
-    }
-
-    /** Returns whether `process.env.NODE_ENV` exists and equals `env`. */
-    function isNodeEnv(env) {
-        return typeof process !== "undefined" && process.env && process.env.NODE_ENV === env;
-    }
-
-    /**
-     * An abstract component that Blueprint components can extend
-     * in order to add some common functionality like runtime props validation.
-     */
-    // eslint-disable-next-line @typescript-eslint/ban-types
-    var AbstractPureComponent2 = /** @class */ (function (_super) {
-        __extends(AbstractPureComponent2, _super);
-        function AbstractPureComponent2(props, context) {
-            var _this = _super.call(this, props, context) || this;
-            // Not bothering to remove entries when their timeouts finish because clearing invalid ID is a no-op
-            _this.timeoutIds = [];
-            _this.requestIds = [];
-            /**
-             * Clear all known timeouts.
-             */
-            _this.clearTimeouts = function () {
-                if (_this.timeoutIds.length > 0) {
-                    for (var _i = 0, _a = _this.timeoutIds; _i < _a.length; _i++) {
-                        var timeoutId = _a[_i];
-                        window.clearTimeout(timeoutId);
-                    }
-                    _this.timeoutIds = [];
-                }
-            };
-            /**
-             * Clear all known animation frame requests.
-             */
-            _this.cancelAnimationFrames = function () {
-                if (_this.requestIds.length > 0) {
-                    for (var _i = 0, _a = _this.requestIds; _i < _a.length; _i++) {
-                        var requestId = _a[_i];
-                        window.cancelAnimationFrame(requestId);
-                    }
-                    _this.requestIds = [];
-                }
-            };
-            if (!isNodeEnv("production")) {
-                _this.validateProps(_this.props);
-            }
-            return _this;
-        }
-        AbstractPureComponent2.prototype.componentDidUpdate = function (_prevProps, _prevState, _snapshot) {
-            if (!isNodeEnv("production")) {
-                this.validateProps(this.props);
-            }
-        };
-        AbstractPureComponent2.prototype.componentWillUnmount = function () {
-            this.clearTimeouts();
-            this.cancelAnimationFrames();
-        };
-        /**
-         * Request an animation frame and remember its ID.
-         * All pending requests will be canceled when component unmounts.
-         *
-         * @returns a "cancel" function that will cancel the request when invoked.
-         */
-        AbstractPureComponent2.prototype.requestAnimationFrame = function (callback) {
-            var handle = window.requestAnimationFrame(callback);
-            this.requestIds.push(handle);
-            return function () { return window.cancelAnimationFrame(handle); };
-        };
-        /**
-         * Set a timeout and remember its ID.
-         * All pending timeouts will be cleared when component unmounts.
-         *
-         * @returns a "cancel" function that will clear timeout when invoked.
-         */
-        AbstractPureComponent2.prototype.setTimeout = function (callback, timeout) {
-            var handle = window.setTimeout(callback, timeout);
-            this.timeoutIds.push(handle);
-            return function () { return window.clearTimeout(handle); };
-        };
-        /**
-         * Ensures that the props specified for a component are valid.
-         * Implementations should check that props are valid and usually throw an Error if they are not.
-         * Implementations should not duplicate checks that the type system already guarantees.
-         *
-         * This method should be used instead of React's
-         * [propTypes](https://facebook.github.io/react/docs/reusable-components.html#prop-validation) feature.
-         * Like propTypes, these runtime checks run only in development mode.
-         */
-        AbstractPureComponent2.prototype.validateProps = function (_props) {
-            // implement in subclass
-        };
-        return AbstractPureComponent2;
-    }(React.PureComponent));
-
-    var DISPLAYNAME_PREFIX = "Blueprint3";
-
-    var classnames = createCommonjsModule(function (module) {
-    /*!
-      Copyright (c) 2017 Jed Watson.
-      Licensed under the MIT License (MIT), see
-      http://jedwatson.github.io/classnames
-    */
-    /* global define */
-
-    (function () {
-
-    	var hasOwn = {}.hasOwnProperty;
-
-    	function classNames () {
-    		var classes = [];
-
-    		for (var i = 0; i < arguments.length; i++) {
-    			var arg = arguments[i];
-    			if (!arg) continue;
-
-    			var argType = typeof arg;
-
-    			if (argType === 'string' || argType === 'number') {
-    				classes.push(arg);
-    			} else if (Array.isArray(arg) && arg.length) {
-    				var inner = classNames.apply(null, arg);
-    				if (inner) {
-    					classes.push(inner);
-    				}
-    			} else if (argType === 'object') {
-    				for (var key in arg) {
-    					if (hasOwn.call(arg, key) && arg[key]) {
-    						classes.push(key);
-    					}
-    				}
-    			}
-    		}
-
-    		return classes.join(' ');
-    	}
-
-    	if (module.exports) {
-    		classNames.default = classNames;
-    		module.exports = classNames;
-    	} else {
-    		window.classNames = classNames;
-    	}
-    }());
-    });
-
-    var reactLifecyclesCompat_cjs = createCommonjsModule(function (module, exports) {
-
-    Object.defineProperty(exports, '__esModule', { value: true });
-
-    /**
-     * Copyright (c) 2013-present, Facebook, Inc.
-     *
-     * This source code is licensed under the MIT license found in the
-     * LICENSE file in the root directory of this source tree.
-     */
-
-    function componentWillMount() {
-      // Call this.constructor.gDSFP to support sub-classes.
-      var state = this.constructor.getDerivedStateFromProps(this.props, this.state);
-      if (state !== null && state !== undefined) {
-        this.setState(state);
-      }
-    }
-
-    function componentWillReceiveProps(nextProps) {
-      // Call this.constructor.gDSFP to support sub-classes.
-      // Use the setState() updater to ensure state isn't stale in certain edge cases.
-      function updater(prevState) {
-        var state = this.constructor.getDerivedStateFromProps(nextProps, prevState);
-        return state !== null && state !== undefined ? state : null;
-      }
-      // Binding "this" is important for shallow renderer support.
-      this.setState(updater.bind(this));
-    }
-
-    function componentWillUpdate(nextProps, nextState) {
-      try {
-        var prevProps = this.props;
-        var prevState = this.state;
-        this.props = nextProps;
-        this.state = nextState;
-        this.__reactInternalSnapshotFlag = true;
-        this.__reactInternalSnapshot = this.getSnapshotBeforeUpdate(
-          prevProps,
-          prevState
-        );
-      } finally {
-        this.props = prevProps;
-        this.state = prevState;
-      }
-    }
-
-    // React may warn about cWM/cWRP/cWU methods being deprecated.
-    // Add a flag to suppress these warnings for this special case.
-    componentWillMount.__suppressDeprecationWarning = true;
-    componentWillReceiveProps.__suppressDeprecationWarning = true;
-    componentWillUpdate.__suppressDeprecationWarning = true;
-
-    function polyfill(Component) {
-      var prototype = Component.prototype;
-
-      if (!prototype || !prototype.isReactComponent) {
-        throw new Error('Can only polyfill class components');
-      }
-
-      if (
-        typeof Component.getDerivedStateFromProps !== 'function' &&
-        typeof prototype.getSnapshotBeforeUpdate !== 'function'
-      ) {
-        return Component;
-      }
-
-      // If new component APIs are defined, "unsafe" lifecycles won't be called.
-      // Error if any of these lifecycles are present,
-      // Because they would work differently between older and newer (16.3+) versions of React.
-      var foundWillMountName = null;
-      var foundWillReceivePropsName = null;
-      var foundWillUpdateName = null;
-      if (typeof prototype.componentWillMount === 'function') {
-        foundWillMountName = 'componentWillMount';
-      } else if (typeof prototype.UNSAFE_componentWillMount === 'function') {
-        foundWillMountName = 'UNSAFE_componentWillMount';
-      }
-      if (typeof prototype.componentWillReceiveProps === 'function') {
-        foundWillReceivePropsName = 'componentWillReceiveProps';
-      } else if (typeof prototype.UNSAFE_componentWillReceiveProps === 'function') {
-        foundWillReceivePropsName = 'UNSAFE_componentWillReceiveProps';
-      }
-      if (typeof prototype.componentWillUpdate === 'function') {
-        foundWillUpdateName = 'componentWillUpdate';
-      } else if (typeof prototype.UNSAFE_componentWillUpdate === 'function') {
-        foundWillUpdateName = 'UNSAFE_componentWillUpdate';
-      }
-      if (
-        foundWillMountName !== null ||
-        foundWillReceivePropsName !== null ||
-        foundWillUpdateName !== null
-      ) {
-        var componentName = Component.displayName || Component.name;
-        var newApiName =
-          typeof Component.getDerivedStateFromProps === 'function'
-            ? 'getDerivedStateFromProps()'
-            : 'getSnapshotBeforeUpdate()';
-
-        throw Error(
-          'Unsafe legacy lifecycles will not be called for components using new component APIs.\n\n' +
-            componentName +
-            ' uses ' +
-            newApiName +
-            ' but also contains the following legacy lifecycles:' +
-            (foundWillMountName !== null ? '\n  ' + foundWillMountName : '') +
-            (foundWillReceivePropsName !== null
-              ? '\n  ' + foundWillReceivePropsName
-              : '') +
-            (foundWillUpdateName !== null ? '\n  ' + foundWillUpdateName : '') +
-            '\n\nThe above lifecycles should be removed. Learn more about this warning here:\n' +
-            'https://fb.me/react-async-component-lifecycle-hooks'
-        );
-      }
-
-      // React <= 16.2 does not support static getDerivedStateFromProps.
-      // As a workaround, use cWM and cWRP to invoke the new static lifecycle.
-      // Newer versions of React will ignore these lifecycles if gDSFP exists.
-      if (typeof Component.getDerivedStateFromProps === 'function') {
-        prototype.componentWillMount = componentWillMount;
-        prototype.componentWillReceiveProps = componentWillReceiveProps;
-      }
-
-      // React <= 16.2 does not support getSnapshotBeforeUpdate.
-      // As a workaround, use cWU to invoke the new lifecycle.
-      // Newer versions of React will ignore that lifecycle if gSBU exists.
-      if (typeof prototype.getSnapshotBeforeUpdate === 'function') {
-        if (typeof prototype.componentDidUpdate !== 'function') {
-          throw new Error(
-            'Cannot polyfill getSnapshotBeforeUpdate() for components that do not define componentDidUpdate() on the prototype'
-          );
-        }
-
-        prototype.componentWillUpdate = componentWillUpdate;
-
-        var componentDidUpdate = prototype.componentDidUpdate;
-
-        prototype.componentDidUpdate = function componentDidUpdatePolyfill(
-          prevProps,
-          prevState,
-          maybeSnapshot
-        ) {
-          // 16.3+ will not execute our will-update method;
-          // It will pass a snapshot value to did-update though.
-          // Older versions will require our polyfilled will-update value.
-          // We need to handle both cases, but can't just check for the presence of "maybeSnapshot",
-          // Because for <= 15.x versions this might be a "prevContext" object.
-          // We also can't just check "__reactInternalSnapshot",
-          // Because get-snapshot might return a falsy value.
-          // So check for the explicit __reactInternalSnapshotFlag flag to determine behavior.
-          var snapshot = this.__reactInternalSnapshotFlag
-            ? this.__reactInternalSnapshot
-            : maybeSnapshot;
-
-          componentDidUpdate.call(this, prevProps, prevState, snapshot);
-        };
-      }
-
-      return Component;
-    }
-
-    exports.polyfill = polyfill;
-    });
-
-    unwrapExports(reactLifecyclesCompat_cjs);
-    var reactLifecyclesCompat_cjs_1 = reactLifecyclesCompat_cjs.polyfill;
-
-    var IconSize;
-    (function (IconSize) {
-        IconSize[IconSize["STANDARD"] = 16] = "STANDARD";
-        IconSize[IconSize["LARGE"] = 20] = "LARGE";
-    })(IconSize || (IconSize = {}));
-    var Icon = /** @class */ (function (_super) {
-        __extends(Icon, _super);
-        function Icon() {
-            return _super !== null && _super.apply(this, arguments) || this;
-        }
-        Icon.prototype.render = function () {
-            var icon = this.props.icon;
-            if (icon == null || typeof icon === "boolean") {
-                return null;
-            }
-            else if (typeof icon !== "string") {
-                return icon;
-            }
-            var _a = this.props, className = _a.className, color = _a.color, htmlTitle = _a.htmlTitle, 
-            // eslint-disable-next-line deprecation/deprecation
-            iconSize = _a.iconSize, intent = _a.intent, _b = _a.size, size = _b === void 0 ? iconSize !== null && iconSize !== void 0 ? iconSize : IconSize.STANDARD : _b, title = _a.title, _c = _a.tagName, tagName = _c === void 0 ? "span" : _c, htmlprops = __rest(_a, ["className", "color", "htmlTitle", "iconSize", "intent", "size", "title", "tagName"]);
-            // choose which pixel grid is most appropriate for given icon size
-            var pixelGridSize = size >= IconSize.LARGE ? IconSize.LARGE : IconSize.STANDARD;
-            // render path elements, or nothing if icon name is unknown.
-            var paths = this.renderSvgPaths(pixelGridSize, icon);
-            // eslint-disable-next-line deprecation/deprecation
-            var classes = classnames(ICON, iconClass(icon), intentClass(intent), className);
-            var viewBox = "0 0 ".concat(pixelGridSize, " ").concat(pixelGridSize);
-            return React.createElement(tagName, __assign(__assign({}, htmlprops), { "aria-hidden": title ? undefined : true, className: classes, title: htmlTitle }), React.createElement("svg", { fill: color, "data-icon": icon, width: size, height: size, viewBox: viewBox },
-                title && React.createElement("desc", null, title),
-                paths));
-        };
-        /** Render `<path>` elements for the given icon name. Returns `null` if name is unknown. */
-        Icon.prototype.renderSvgPaths = function (pathsSize, iconName) {
-            var svgPathsRecord = pathsSize === IconSize.STANDARD ? IconSvgPaths16 : IconSvgPaths20;
-            var pathStrings = svgPathsRecord[iconName];
-            if (pathStrings == null) {
-                return null;
-            }
-            return pathStrings.map(function (d, i) { return React.createElement("path", { key: i, d: d, fillRule: "evenodd" }); });
-        };
-        Icon.displayName = "".concat(DISPLAYNAME_PREFIX, ".Icon");
-        /** @deprecated use IconSize.STANDARD */
-        Icon.SIZE_STANDARD = IconSize.STANDARD;
-        /** @deprecated use IconSize.LARGE */
-        Icon.SIZE_LARGE = IconSize.LARGE;
-        Icon = __decorate([
-            reactLifecyclesCompat_cjs_1
-        ], Icon);
-        return Icon;
-    }(AbstractPureComponent2));
+    var StatefulRenderer=function(){function StatefulRenderer(canvas,renderGroup,componentNumber,loseCallback,restoreCallback){this.canvas=canvas;this.componentNumber=componentNumber;this.loseCallback=loseCallback;this.restoreCallback=restoreCallback;this.isStarted=false;this.currentRequestId=null;this.cameraState=cloneCameraState();this.cameraState.position=[1000,1000,1500];this.webGlListenerTracker=new ListenerTracker(canvas);this.wrappedRendererData=makeWrappedRendererData(renderGroup,this.cameraState);this.inputTracker=new InputTracker(canvas,this.cameraState,this.wrappedRendererData.geometryEntities);}StatefulRenderer.prototype.addWebGlListeners=function(){var _this=this;this.webGlListenerTracker.addListener("webglcontextlost",function(contextEvent){contextEvent.preventDefault();console.debug(">>> CONTEXT LOST FOR #"+_this.componentNumber);_this.loseCallback();_this.stop();});this.webGlListenerTracker.addListener("webglcontextrestored",function(_contextEvent){console.debug(">>> CONTEXT RESTORED FOR #"+_this.componentNumber);_this.start();_this.restoreCallback();});};StatefulRenderer.prototype.forgetEntityCaches=function(){this.wrappedRendererData.entities.forEach(function(entity){entity.visuals.cacheId=null;});};StatefulRenderer.prototype.start=function(firstStart){var _this=this;if(firstStart===void 0){firstStart=false;}if(this.isStarted)return;this.isStarted=true;var wrappedRenderer=makeWrappedRenderer(this.canvas);if(firstStart)this.addWebGlListeners();this.inputTracker.addListeners();var frameCallback=function frameCallback(_timestamp){_this.inputTracker.respondToInput();if(_this.inputTracker.frameDirty){console.debug(">>> Frame for #"+_this.componentNumber);wrappedRenderer(_this.wrappedRendererData);_this.inputTracker.frameDirty=false;}_this.currentRequestId=window.requestAnimationFrame(frameCallback);};if(!firstStart){this.inputTracker.frameDirty=true;}this.currentRequestId=window.requestAnimationFrame(frameCallback);};StatefulRenderer.prototype.stop=function(lastStop){if(lastStop===void 0){lastStop=false;}if(this.currentRequestId!==null){window.cancelAnimationFrame(this.currentRequestId);this.currentRequestId=null;}if(lastStop)this.webGlListenerTracker.removeListeners();this.inputTracker.removeListeners();if(!lastStop){this.inputTracker.flushMidInput();this.forgetEntityCaches();}this.isStarted=false;};return StatefulRenderer}();
 
     var HoverControlHint=function(_super){__extends(HoverControlHint,_super);function HoverControlHint(props){var _this=_super.call(this,props)||this;_this.state={showTooltip:false};return _this}HoverControlHint.prototype.render=function(){var _this=this;return React__default['default'].createElement("div",{style:{display:"flex",flexDirection:"column",justifyContent:"center",height:SA_TAB_BUTTON_WIDTH},onMouseEnter:function(){return _this.setState({showTooltip:true})},onMouseLeave:function(){return _this.setState({showTooltip:false})}},React__default['default'].createElement(Icon,{icon:this.props.iconName,size:SA_TAB_ICON_SIZE,color:BP_ICON_COLOR}),React__default['default'].createElement("span",{style:{display:this.state.showTooltip?"inline":"none",position:"absolute",left:SA_TAB_ICON_SIZE*4+"px",zIndex:1,padding:BP_TOOLTIP_PADDING,borderRadius:BP_BORDER_RADIUS,color:BP_TOOLTIP_TEXT_COLOR,backgroundColor:BP_TOOLTIP_BACKGROUND_COLOR}},this.props.tooltipText))};return HoverControlHint}(React__default['default'].Component);
 
-    var CanvasHolder=function(_super){__extends(CanvasHolder,_super);function CanvasHolder(){var _this=_super!==null&&_super.apply(this,arguments)||this;_this.canvasReference=React__default['default'].createRef();_this.statefulRenderer=null;return _this}CanvasHolder.prototype.componentDidMount=function(){console.debug(">>> MOUNT #"+this.props.componentNumber);var canvas=this.canvasReference.current;if(canvas===null)return;var renderGroups=this.props.moduleState.renderGroupManager.getGroupsToRender();var lastRenderGroup=renderGroups.at(-1);this.statefulRenderer=new StatefulRenderer(canvas,lastRenderGroup,this.props.componentNumber);this.statefulRenderer.start(true);};CanvasHolder.prototype.componentWillUnmount=function(){var _a;console.debug(">>> UNMOUNT #"+this.props.componentNumber);(_a=this.statefulRenderer)===null||_a===void 0?void 0:_a.stop(true);};CanvasHolder.prototype.render=function(){return React__default['default'].createElement("div",{style:{display:"flex",justifyContent:"center"}},React__default['default'].createElement("div",{style:{display:"flex",flexDirection:"column",gap:BP_TAB_BUTTON_MARGIN,marginRight:BP_TAB_PANEL_MARGIN}},React__default['default'].createElement(HoverControlHint,{tooltipText:"Zoom in \u2022 Scroll up",iconName:ZOOM_IN}),React__default['default'].createElement(HoverControlHint,{tooltipText:"Zoom out \u2022 Scroll down",iconName:ZOOM_OUT}),React__default['default'].createElement(HoverControlHint,{tooltipText:"Zoom to fit \u2022 Double left-click",iconName:ZOOM_TO_FIT}),React__default['default'].createElement(HoverControlHint,{tooltipText:"Rotate \u2022 Left-click",iconName:REPEAT}),React__default['default'].createElement(HoverControlHint,{tooltipText:"Pan \u2022 Middle-click OR shift + left-click",iconName:MOVE})),React__default['default'].createElement("div",{style:{width:"100%",maxWidth:"max(70vh, 30vw)",aspectRatio:"1"}},React__default['default'].createElement("canvas",{ref:this.canvasReference,style:{display:"block",width:"100%",height:"100%",borderRadius:BP_BORDER_RADIUS},width:"0",height:"0"})))};return CanvasHolder}(React__default['default'].Component);
+    var CanvasHolder=function(_super){__extends(CanvasHolder,_super);function CanvasHolder(props){var _this=_super.call(this,props)||this;_this.canvasReference=React__default['default'].createRef();_this.statefulRenderer=null;_this.state={contextLost:false};return _this}CanvasHolder.prototype.componentDidMount=function(){var _this=this;console.debug(">>> MOUNT #"+this.props.componentNumber);var canvas=this.canvasReference.current;if(canvas===null)return;var renderGroups=this.props.moduleState.renderGroupManager.getGroupsToRender();var lastRenderGroup=renderGroups.at(-1);this.statefulRenderer=new StatefulRenderer(canvas,lastRenderGroup,this.props.componentNumber,function(){return _this.setState({contextLost:true})},function(){return _this.setState({contextLost:false})});this.statefulRenderer.start(true);};CanvasHolder.prototype.componentWillUnmount=function(){var _a;console.debug(">>> UNMOUNT #"+this.props.componentNumber);(_a=this.statefulRenderer)===null||_a===void 0?void 0:_a.stop(true);};CanvasHolder.prototype.render=function(){return React__default['default'].createElement(React__default['default'].Fragment,null,React__default['default'].createElement("div",{style:{display:this.state.contextLost?"none":"flex",justifyContent:"center"}},React__default['default'].createElement("div",{style:{display:"flex",flexDirection:"column",gap:BP_TAB_BUTTON_MARGIN,marginRight:BP_TAB_PANEL_MARGIN}},React__default['default'].createElement(HoverControlHint,{tooltipText:"Zoom in \u2022 Scroll up",iconName:ZOOM_IN}),React__default['default'].createElement(HoverControlHint,{tooltipText:"Zoom out \u2022 Scroll down",iconName:ZOOM_OUT}),React__default['default'].createElement(HoverControlHint,{tooltipText:"Zoom to fit \u2022 Double left-click",iconName:ZOOM_TO_FIT}),React__default['default'].createElement(HoverControlHint,{tooltipText:"Rotate \u2022 Left-click",iconName:REPEAT}),React__default['default'].createElement(HoverControlHint,{tooltipText:"Pan \u2022 Middle-click OR shift + left-click",iconName:MOVE})),React__default['default'].createElement("div",{style:{width:"100%",maxWidth:"max(70vh, 30vw)",aspectRatio:"1"}},React__default['default'].createElement("canvas",{ref:this.canvasReference,style:{display:"block",width:"100%",height:"100%",borderRadius:BP_BORDER_RADIUS},width:"0",height:"0"}))),React__default['default'].createElement("div",{className:"bp3-dark",style:{display:this.state.contextLost?"block":"none",textAlign:"center"}},React__default['default'].createElement("h2",{style:{margin:"0px 0px "+STANDARD_MARGIN+" 0px"}},"WebGL Context Lost"),React__default['default'].createElement(Spinner,{intent:"warning",size:SpinnerSize.LARGE}),React__default['default'].createElement("p",{style:{margin:STANDARD_MARGIN+" 0px 0px 0px"}},"Your GPU is probably busy. Attempting to re-establish connection...")))};return CanvasHolder}(React__default['default'].Component);
 
     var index = {toSpawn:function(_debuggerContext){return Core.getRenderGroupManager().shouldRender()},body:function(debuggerContext){var moduleContexts=debuggerContext.context.moduleContexts;var potentialModuleContext=getModuleContext(moduleContexts);if(potentialModuleContext===null)return React__default['default'].createElement("div",null);var moduleContext=potentialModuleContext;var potentialModuleState=moduleContext.state;if(!looseInstanceof(potentialModuleState,CsgModuleState))return React__default['default'].createElement("div",null);var moduleState=potentialModuleState;Core.initialize(moduleState);return React__default['default'].createElement(CanvasHolder,{moduleState:moduleState,componentNumber:moduleState.nextComponent()})},iconName:SHAPES,label:"CSG Tab"};
 
