@@ -9,10 +9,13 @@ import {
   BP_TAB_PANEL_MARGIN,
   STANDARD_MARGIN,
 } from '../../bundles/csg/constants.js';
+import { Core } from '../../bundles/csg/core.js';
 import StatefulRenderer from '../../bundles/csg/stateful_renderer.js';
 import { RenderGroup } from '../../bundles/csg/utilities.js';
 import HoverControlHint from './hover_control_hint';
 import { CanvasHolderProps, CanvasHolderState } from './types';
+
+
 
 /* [Main] */
 export default class CanvasHolder extends React.Component<
@@ -37,7 +40,9 @@ CanvasHolderState
     let { current: canvas } = this.canvasReference;
     if (canvas === null) return;
 
-    let renderGroups: RenderGroup[] = this.props.moduleState.renderGroupManager.getGroupsToRender();
+    let renderGroups: RenderGroup[] = Core
+      .getRenderGroupManager()
+      .getGroupsToRender();
     //TODO Issue #35
     let lastRenderGroup: RenderGroup = renderGroups.at(-1) as RenderGroup;
 
@@ -160,7 +165,7 @@ CanvasHolderState
               margin: `${STANDARD_MARGIN} 0px 0px 0px`,
             }}
           >
-            Your GPU is probably busy. Attempting to re-establish connection...
+            Your GPU is probably busy. Waiting for browser to re-establish connection...
           </p>
         </div>
       </>
