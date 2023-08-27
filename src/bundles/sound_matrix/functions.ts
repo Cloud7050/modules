@@ -22,11 +22,11 @@ export const ToneMatrix = {
 
 let $tone_matrix: HTMLCanvasElement; // canvas container for tone matrix
 
-const color_white: string = '#ffffff'; // color of the highlighted square
-const color_white_2: string = '#666666'; // color of the adjacent squares
-const color_white_3: string = '#444444'; // color of the squares that are two units from the highlighted square
-const color_on: string = '#cccccc';
-const color_off: string = '#333333';
+const color_white: string = '#ff0000'; // color of the highlighted square
+const color_white_2: string = '#0000ff'; // color of the adjacent squares
+const color_white_3: string = '#00ffff'; // color of the squares that are two units from the highlighted square
+const color_on: string = '#00ff00';
+const color_off: string = '#000000';
 
 // the side length of the squares in the matrix
 const square_side_length: number = 18;
@@ -243,6 +243,9 @@ function bind_events_to_rect(c) {
         matrix[row][column] = false;
         set_color(row, column, color_off);
       }
+
+      console.log('CLICK:');
+      console.log(matrix);
     },
     false,
   );
@@ -319,6 +322,9 @@ function randomise_matrix(): void {
       }
     }
   }
+
+  console.log('RANDOMISE:');
+  console.log(matrix);
 }
 
 ToneMatrix.randomise_matrix = randomise_matrix;
@@ -340,9 +346,12 @@ ToneMatrix.bindMatrixButtons = bindMatrixButtons;
 // ********** THE FOLLOWING FUNCTIONS ARE EXPOSED TO STUDENTS **********
 // return the current state of the matrix, represented by a list of lists of bits
 export function get_matrix(): List {
+  console.log('get_matrix:');
+  console.log(matrix);
+
   if (!matrix) {
     throw new Error(
-      'Please activate the tone matrix first by clicking on the tab!',
+      'New error',
     );
   }
   const matrix_list = matrix.slice(0);

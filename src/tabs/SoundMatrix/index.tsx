@@ -64,10 +64,10 @@ class SoundMatrix extends React.Component<Props, State> {
             )}
           >
             <Button id="clear-matrix" onClick={this.handleClear}>
-              Clear
+              Clear2
             </Button>
             <Button id="randomise-matrix" onClick={this.handleRandomise}>
-              Randomise
+              Randomise2
             </Button>
           </div>
         </div>
