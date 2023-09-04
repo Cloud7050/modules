@@ -1222,7 +1222,7 @@ require => (() => {
           var ContextProvider = REACT_PROVIDER_TYPE;
           var Element2 = REACT_ELEMENT_TYPE;
           var ForwardRef = REACT_FORWARD_REF_TYPE;
-          var Fragment3 = REACT_FRAGMENT_TYPE;
+          var Fragment2 = REACT_FRAGMENT_TYPE;
           var Lazy = REACT_LAZY_TYPE;
           var Memo = REACT_MEMO_TYPE;
           var Portal2 = REACT_PORTAL_TYPE;
@@ -1281,7 +1281,7 @@ require => (() => {
           exports.ContextProvider = ContextProvider;
           exports.Element = Element2;
           exports.ForwardRef = ForwardRef;
-          exports.Fragment = Fragment3;
+          exports.Fragment = Fragment2;
           exports.Lazy = Lazy;
           exports.Memo = Memo;
           exports.Portal = Portal2;
@@ -12713,22 +12713,11 @@ require => (() => {
           })
         })]
       });
-      return (0, import_jsx_runtime3.jsxs)(import_jsx_runtime3.Fragment, {
-        children: [(0, import_jsx_runtime3.jsx)("div", {
-          style: {
-            display: "flex",
-            alignContent: "center",
-            justifyContent: "center"
-          },
-          children: (0, import_jsx_runtime3.jsx)(webgl_canvas_default, {
-            style: {
-              flexGrow: 1
-            },
-            ref: r => {
-              this.canvas = r;
-            }
-          })
-        }), (0, import_jsx_runtime3.jsxs)("div", {
+      return (0, import_jsx_runtime3.jsxs)("div", {
+        style: {
+          width: "100%"
+        },
+        children: [(0, import_jsx_runtime3.jsxs)("div", {
           style: {
             display: "flex",
             marginTop: "10px",
@@ -12748,6 +12737,21 @@ require => (() => {
             onChange: this.autoPlaySwitchChanged,
             checked: this.state.autoPlay
           })]
+        }), (0, import_jsx_runtime3.jsx)("div", {
+          style: {
+            marginTop: "15px",
+            display: "flex",
+            alignContent: "center",
+            justifyContent: "center"
+          },
+          children: (0, import_jsx_runtime3.jsx)(webgl_canvas_default, {
+            style: {
+              flexGrow: 1
+            },
+            ref: r => {
+              this.canvas = r;
+            }
+          })
         })]
       });
     }
