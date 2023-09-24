@@ -52,7 +52,7 @@ require => {
     phase_mod: () => phase_mod,
     piano: () => piano,
     play: () => play,
-    play_concurrently: () => play_concurrently,
+    play_in_tab: () => play_in_tab,
     play_wave: () => play_wave,
     record: () => record,
     record_for: () => record_for,
@@ -275,6 +275,9 @@ require => {
     };
   }
   function make_sound(wave, duration) {
+    if (duration <= 0) {
+      throw new Error("Sound duration must be greater than 0");
+    }
     return (0, import_list.pair)(t => t >= duration ? 0 : wave(t), duration);
   }
   function get_wave(sound) {
@@ -289,13 +292,15 @@ require => {
   function play_wave(wave, duration) {
     return play(make_sound(wave, duration));
   }
-  function play(sound) {
+  function play_in_tab(sound) {
     if (!is_sound(sound)) {
-      throw new Error(`play is expecting sound, but encountered ${sound}`);
+      throw new Error(`${play_in_tab.name} is expecting sound, but encountered ${sound}`);
     } else if (isPlaying) {
-      throw new Error("play: audio system still playing previous sound");
+      throw new Error(`${play_in_tab.name}: audio system still playing previous sound`);
     } else if (get_duration(sound) < 0) {
-      throw new Error("play: duration of sound is negative");
+      throw new Error(`${play_in_tab.name}: duration of sound is negative`);
+    } else if (get_duration(sound) === 0) {
+      return sound;
     } else {
       if (!audioplayer) {
         init_audioCtx();
@@ -332,13 +337,17 @@ require => {
         dataUri: riffwave.dataURI
       };
       audioPlayed.push(soundToPlay);
-      return soundToPlay;
+      return sound;
     }
   }
-  function play_concurrently(sound) {
+  function play(sound) {
     if (!is_sound(sound)) {
-      throw new Error(`play_concurrently is expecting sound, but encountered ${sound}`);
-    } else if (get_duration(sound) <= 0) {} else {
+      throw new Error(`${play.name} is expecting sound, but encountered ${sound}`);
+    } else if (get_duration(sound) < 0) {
+      throw new Error(`${play.name}: duration of sound is negative`);
+    } else if (get_duration(sound) === 0) {
+      return sound;
+    } else {
       if (!audioplayer) {
         init_audioCtx();
       }
@@ -370,6 +379,7 @@ require => {
         source.disconnect(audioplayer.destination);
         isPlaying = false;
       };
+      return sound;
     }
   }
   function stop() {
@@ -437,7 +447,8 @@ require => {
       return make_sound(new_wave, new_dur);
     }
     const mushed_sounds = (0, import_list.accumulate)(simul_two, silence_sound(0), list_of_sounds);
-    const normalised_wave = t => (0, import_list.head)(mushed_sounds)(t) / (0, import_list.length)(list_of_sounds);
+    const len = (0, import_list.length)(list_of_sounds);
+    const normalised_wave = t => (0, import_list.head)(mushed_sounds)(t) / len;
     const highest_duration = (0, import_list.tail)(mushed_sounds);
     return make_sound(normalised_wave, highest_duration);
   }

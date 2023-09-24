@@ -56,7 +56,7 @@ require => {
     phase_mod: () => phase_mod,
     piano: () => piano,
     play: () => play,
-    play_concurrently: () => play_concurrently,
+    play_in_tab: () => play_in_tab,
     play_wave: () => play_wave,
     play_waves: () => play_waves,
     record: () => record,
@@ -300,13 +300,15 @@ require => {
   function play_waves(wave1, wave2, duration) {
     return play(make_stereo_sound(wave1, wave2, duration));
   }
-  function play(sound) {
+  function play_in_tab(sound) {
     if (!is_sound(sound)) {
-      throw new Error(`play is expecting sound, but encountered ${sound}`);
+      throw new Error(`${play_in_tab.name} is expecting sound, but encountered ${sound}`);
     } else if (isPlaying) {
-      throw new Error("play: audio system still playing previous sound");
+      throw new Error(`${play_in_tab.name}: audio system still playing previous sound`);
     } else if (get_duration(sound) < 0) {
-      throw new Error("play: duration of sound is negative");
+      throw new Error(`${play_in_tab.name}: duration of sound is negative`);
+    } else if (get_duration(sound) === 0) {
+      return sound;
     } else {
       if (!audioplayer) {
         init_audioCtx();
@@ -358,50 +360,55 @@ require => {
         dataUri: riffwave.dataURI
       };
       audioPlayed.push(audio);
-      return audio;
+      return sound;
     }
   }
-  function play_concurrently(sound) {
+  function play(sound) {
     if (!is_sound(sound)) {
-      throw new Error(`play_concurrently is expecting sound, but encountered ${sound}`);
-    } else if (get_duration(sound) <= 0) {} else {
+      throw new Error(`${play.name} is expecting sound, but encountered ${sound}`);
+    } else if (isPlaying) {
+      throw new Error(`${play.name}: audio system still playing previous sound`);
+    } else if (get_duration(sound) < 0) {
+      throw new Error(`${play.name}: duration of sound is negative`);
+    } else if (get_duration(sound) === 0) {
+      return sound;
+    } else {
       if (!audioplayer) {
         init_audioCtx();
       }
-      const channel = Array[2 * Math.ceil(FS * get_duration(sound))];
+      const channel = [];
+      const len = Math.ceil(FS * get_duration(sound));
       let Ltemp;
       let Rtemp;
-      let prev_value = 0;
+      let Lprev_value = 0;
+      let Rprev_value = 0;
       const left_wave = get_left_wave(sound);
-      for (let i = 0; i < channel.length; i += 2) {
+      const right_wave = get_right_wave(sound);
+      for (let i = 0; i < len; i += 1) {
         Ltemp = left_wave(i / FS);
         if (Ltemp > 1) {
-          channel[i] = 1;
+          channel[2 * i] = 1;
         } else if (Ltemp < -1) {
-          channel[i] = -1;
+          channel[2 * i] = -1;
         } else {
-          channel[i] = Ltemp;
+          channel[2 * i] = Ltemp;
         }
-        if (channel[i] === 0 && Math.abs(channel[i] - prev_value) > 0.01) {
-          channel[i] = prev_value * 0.999;
+        if (channel[2 * i] === 0 && Math.abs(channel[2 * i] - Lprev_value) > 0.01) {
+          channel[2 * i] = Lprev_value * 0.999;
         }
-        prev_value = channel[i];
-      }
-      prev_value = 0;
-      const right_wave = get_right_wave(sound);
-      for (let i = 1; i < channel.length; i += 2) {
+        Lprev_value = channel[2 * i];
         Rtemp = right_wave(i / FS);
         if (Rtemp > 1) {
-          channel[i] = 1;
+          channel[2 * i + 1] = 1;
         } else if (Rtemp < -1) {
-          channel[i] = -1;
+          channel[2 * i + 1] = -1;
         } else {
-          channel[i] = Rtemp;
+          channel[2 * i + 1] = Rtemp;
         }
-        if (channel[i] === 0 && Math.abs(channel[i] - prev_value) > 0.01) {
-          channel[i] = prev_value * 0.999;
+        if (channel[2 * i + 1] === 0 && Math.abs(channel[2 * i] - Rprev_value) > 0.01) {
+          channel[2 * i + 1] = Rprev_value * 0.999;
         }
-        prev_value = channel[i];
+        Rprev_value = channel[2 * i + 1];
       }
       for (let i = 0; i < channel.length; i += 1) {
         channel[i] = Math.floor(channel[i] * 32767.999);
@@ -420,6 +427,7 @@ require => {
         source2.disconnect(audioplayer.destination);
         isPlaying = false;
       };
+      return sound;
     }
   }
   function stop() {
